@@ -4,7 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{9C3B9C2D-FDE4-4BB5-963C-A6454B217EAD}" Name="UseCaseBolnica" Selected="Yes" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="UseCaseBolnica.oom"/>
+		<Model Expanded="Yes" ID="{9C3B9C2D-FDE4-4BB5-963C-A6454B217EAD}" Name="UseCaseBolnica" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="UseCaseBolnica.oom"/>
+		<Model Expanded="Yes" ID="{B9F752CC-20ED-482F-89AD-0ED3C7E3EF0F}" Name="ClassDiagramBolnica" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="/Users/Nemanja/Desktop/Healrh clinic/health-clinic CLASS DIAGRAM/ClassDiagramBolnica.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
