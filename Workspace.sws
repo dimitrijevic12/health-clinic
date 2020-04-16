@@ -6,7 +6,7 @@
 	<Local Expanded="Yes">
 		<Model Expanded="Yes" ID="{9C3B9C2D-FDE4-4BB5-963C-A6454B217EAD}" Loaded="No" Name="UseCaseBolnica" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="UseCaseBolnica.oom"/>
 		<Model Expanded="Yes" ID="{B9F752CC-20ED-482F-89AD-0ED3C7E3EF0F}" Name="ClassDiagramBolnica" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="/Users/Nemanja/Desktop/Healrh clinic/health-clinic CLASS DIAGRAM/ClassDiagramBolnica.oom"/>
-		<Model Expanded="Yes" ID="{C2B7E219-25BD-40ED-8CAD-5A73288E3FEC}" Loaded="No" Name="Project_2" Selected="Yes" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="/Users/Nemanja/Desktop/proba/Project_2/Project_2.prj"/>
+		<Model Expanded="Yes" ID="{E4CB7BEF-C09E-4940-97D3-85FB28D3554E}" Name="health-clinicClassDiagram" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="/Users/Nemanja/Desktop/proba/Project_2/health-clinicClassDiagram.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>
