@@ -8,13 +8,13 @@ using System;
 
 namespace Model.Surveys
 {
-   public class Grade
+   public enum Grade
    {
-      private EnumConstant 1Star;
-      private EnumConstant 2Stars;
-      private EnumConstant 3Stars;
-      private EnumConstant 4Stars;
-      private EnumConstant 5Stars;
+       OneStar,
+       TwoStars,
+       ThreeStars,
+       FourStars,
+       FiveStars
    
    }
 }

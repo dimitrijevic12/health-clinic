@@ -4,11 +4,12 @@
  * Purpose: Definition of the Interface Service.IAppointmentService
  ***********************************************************************/
 
+using Model.Appointment;
 using System;
 
 namespace Service
 {
-   public interface IAppointmentService : IService
+   public interface IAppointmentService : IService<Appointment>
    {
       Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);
       Boolean CheckIfVacant(DateTime from, DateTime to);

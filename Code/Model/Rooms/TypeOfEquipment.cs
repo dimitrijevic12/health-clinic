@@ -8,12 +8,12 @@ using System;
 
 namespace Model.Rooms
 {
-   public class TypeOfEquipment
+   public enum TypeOfEquipment
    {
-      private EnumConstant Bed;
-      private EnumConstant Chair;
-      private EnumConstant Table;
-      private EnumConstant Medical_equipment;
+      BED,
+      CHAIR,
+      TABLE,
+      MEDICALEQUIPMENT
    
    }
 }

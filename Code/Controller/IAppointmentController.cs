@@ -4,11 +4,12 @@
  * Purpose: Definition of the Interface Controller.IAppointmentController
  ***********************************************************************/
 
+using Model.Appointment;
 using System;
 
 namespace Controller
 {
-   public interface IAppointmentController : IController
+   public interface IAppointmentController : IController<Appointment>
    {
       Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment[] GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);

@@ -8,10 +8,10 @@ using System;
 
 namespace Model.Appointment
 {
-   public class TypeOfAppointment
+   public enum TypeOfAppointment
    {
-      private EnumConstant Surgery;
-      private EnumConstant Exam;
+      SURGERY,
+      EXAM
    
    }
 }

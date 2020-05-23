@@ -1,21 +1,24 @@
-Microsoft Visual Studio Solution File, Format Version 8.00
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "health_clinicClassDiagram", "health_clinicClassDiagram.csproj", "{DC7AED20-D51C-448A-90BC-C341EB97D786}"
 EndProject
 Global
-	GlobalSection(SolutionConfiguration) = preSolution
-		ConfigName.0 = Debug
-		ConfigName.1 = Release
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectDependencies) = postSolution
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfiguration) = postSolution
-		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Debug.ActiveCfg = Debug|.NET
-		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Debug.Build.0 = Debug|.NET
-		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Release.ActiveCfg = Release|.NET
-		{DC7AED20-D51C-448A-90BC-C341EB97D786}.Release.Build.0 = Release|.NET
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
+		SolutionGuid = {261AF8B3-C2A5-45DB-A8F3-8B2E7CD48A7C}
 	EndGlobalSection
 EndGlobal

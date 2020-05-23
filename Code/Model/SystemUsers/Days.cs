@@ -8,15 +8,15 @@ using System;
 
 namespace Model.SystemUsers
 {
-   public class Days
+   public enum Days
    {
-      private EnumConstant Monday;
-      private EnumConstant Tuesday;
-      private EnumConstant Wednesday;
-      private EnumConstant Thursday;
-      private EnumConstant Friday;
-      private EnumConstant Saturday;
-      private EnumConstant Sunday;
+      MONDAY,
+      TUESDAY,
+      WEDNESDAY,
+      THURSDAY,
+      FRIDAY,
+      SATURDAY,
+      SUNDAY
    
    }
 }

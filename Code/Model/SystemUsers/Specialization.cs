@@ -8,12 +8,12 @@ using System;
 
 namespace Model.SystemUsers
 {
-   public class Specialization
+   public enum Specialization
    {
-      private EnumConstant Cardiology;
-      private EnumConstant Pulmology;
-      private EnumConstant Nephrology;
-      private EnumConstant Endocrinology;
+      CARDIOLOGY,
+      PULMOLOGY,
+      NEPHROLOGY,
+      ENDOCRINOLOGY
    
    }
 }

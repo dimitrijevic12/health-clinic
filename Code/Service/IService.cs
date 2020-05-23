@@ -3,16 +3,16 @@
  * Author:  user
  * Purpose: Definition of the Interface Service.IService
  ***********************************************************************/
-
+using health_clinicClassDiagram.Model;
 using System;
 
 namespace Service
 {
-   public interface IService
+   public interface IService<T>
    {
-      Object Create(Object object);
-      Object Edit(Object object);
-      Boolean Delete(Object object);
-      Object[] GetAll();
+      T Create(T obj);
+      T Edit(T obj);
+      Boolean Delete(T obj);
+      T[] GetAll();
    }
 }

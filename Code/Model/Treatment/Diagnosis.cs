@@ -56,7 +56,7 @@ namespace Model.Treatment
             symptoms.Clear();
       }
    
-      private String Diagnosis;
+      private String diagnosis;
    
    }
 }

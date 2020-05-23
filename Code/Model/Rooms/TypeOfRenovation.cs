@@ -8,12 +8,12 @@ using System;
 
 namespace Model.Rooms
 {
-   public class TypeOfRenovation
+   public enum TypeOfRenovation
    {
-      private EnumConstant Painting;
-      private EnumConstant Merging;
-      private EnumConstant Splitting;
-      private EnumConstant ChangingTypeOfRoom;
+      PAINTING,
+      MERGING,
+      SPLITTING,
+      CHANINGTYPEOFROOM
    
    }
 }

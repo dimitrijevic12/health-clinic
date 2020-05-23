@@ -10,7 +10,7 @@ namespace Model.Treatment
 {
    public class Review
    {
-      private String Review;
+      private String review;
    
    }
 }

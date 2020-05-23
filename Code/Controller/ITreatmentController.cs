@@ -4,11 +4,12 @@
  * Purpose: Definition of the Interface Controller.ITreatmentController
  ***********************************************************************/
 
+using Model.Treatment;
 using System;
 
 namespace Controller
 {
-   public interface ITreatmentController : IController
+   public interface ITreatmentController : IController<Treatment>
    {
       Model.Treatment.Prescription WritePrescription(Model.SystemUsers.Doctor doctor, Model.SystemUsers.Patient patient, Model.Rooms.Drug[] drugs);
       Model.Treatment.ReferralToASpecialist WriteReferralToASpecialist(Model.SystemUsers.Doctor doctor, Model.SystemUsers.Patient patient, Model.SystemUsers.Specialist specialist);
