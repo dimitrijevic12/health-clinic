@@ -305,6 +305,9 @@
     <Compile Include="Repository\BlogRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\CSV\Converter\ICSVConverter.cs" />
+    <Compile Include="Repository\CSV\Stream\CSVStream.cs" />
+    <Compile Include="Repository\CSV\Stream\ICSVStream.cs" />
     <Compile Include="Repository\DrugInventoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -456,6 +459,7 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

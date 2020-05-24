@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public WorkingSchedule GetAll()
+        public WorkingSchedule[] GetAll()
         {
             throw new NotImplementedException();
         }

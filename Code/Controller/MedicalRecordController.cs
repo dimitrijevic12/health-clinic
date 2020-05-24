@@ -7,6 +7,7 @@
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
+using Service;
 using System;
 
 namespace Controller
@@ -15,6 +16,13 @@ namespace Controller
    {
       public Service.MedicalRecordService medicalRecordService;
 
+        private readonly IMedicalRecordService _service;
+
+        public MedicalRecordController(IMedicalRecordService service)
+        {
+            _service = service;
+        }
+
         public MedicalRecord AddTreatment(Treatment treatment)
         {
             throw new NotImplementedException();
@@ -22,22 +30,26 @@ namespace Controller
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _service.Create(obj);
+            return obj;
         }
 
         public bool Delete(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _service.Delete(obj);
+            return true;
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _service.Edit(obj);
+            return obj;
         }
 
-        public MedicalRecord GetAll()
+        public MedicalRecord[] GetAll()
         {
-            throw new NotImplementedException();
+            var records = (MedicalRecord[]) _service.GetAll();
+            return records;
         }
 
         public Treatment[] GetAllTreatments()
@@ -47,7 +59,9 @@ namespace Controller
 
         public MedicalRecord GetMedRecByPatient(Patient patient)
         {
-            throw new NotImplementedException();
+           var record = _service.GetMedRecByPatient(patient);
+           return record;
         }
+
     }
 }

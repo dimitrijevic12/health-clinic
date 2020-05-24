@@ -33,7 +33,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public InventoryDrugs GetAll()
+        public InventoryDrugs[] GetAll()
         {
             throw new NotImplementedException();
         }

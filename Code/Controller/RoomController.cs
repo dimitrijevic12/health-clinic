@@ -39,7 +39,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Room GetAll()
+        public Room[] GetAll()
         {
             throw new NotImplementedException();
         }

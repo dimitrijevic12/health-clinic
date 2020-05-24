@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Blog GetAll()
+        public Blog[] GetAll()
         {
             throw new NotImplementedException();
         }

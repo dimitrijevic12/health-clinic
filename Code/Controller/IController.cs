@@ -10,7 +10,7 @@ namespace Controller
 {
    public interface IController<T>
    {
-      T GetAll();
+      T[] GetAll();
       Boolean Delete(T obj);
       T Create(T obj);
       T Edit(T obj);

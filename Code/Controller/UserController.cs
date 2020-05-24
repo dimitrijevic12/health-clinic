@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public RegisteredUser GetAll()
+        public RegisteredUser[] GetAll()
         {
             throw new NotImplementedException();
         }

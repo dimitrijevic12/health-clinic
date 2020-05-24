@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Equipment GetAll()
+        public Equipment[] GetAll()
         {
             throw new NotImplementedException();
         }

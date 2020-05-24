@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Renovation GetAll()
+        public Renovation[] GetAll()
         {
             throw new NotImplementedException();
         }

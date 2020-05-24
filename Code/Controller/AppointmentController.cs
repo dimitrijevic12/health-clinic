@@ -36,7 +36,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Appointment GetAll()
+        public Appointment[] GetAll()
         {
             throw new NotImplementedException();
         }
@@ -75,5 +75,6 @@ namespace Controller
         {
             throw new NotImplementedException();
         }
+
     }
 }

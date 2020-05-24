@@ -30,7 +30,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Treatment GetAll()
+        public Treatment[] GetAll()
         {
             throw new NotImplementedException();
         }

@@ -28,7 +28,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public Drug GetAll()
+        public Drug[] GetAll()
         {
             throw new NotImplementedException();
         }
