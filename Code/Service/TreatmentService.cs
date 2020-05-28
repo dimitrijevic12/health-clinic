@@ -15,6 +15,7 @@ namespace Service
    public class TreatmentService : ITreatmentService
    {
       public Repository.TreatmentRepository treatmentRepository;
+        public Service.AppointmentService appointmentService;
 
         public Treatment Create(Treatment obj)
         {
@@ -39,6 +40,7 @@ namespace Service
         public Appointment ScheduleControlExam(Appointment appointment)
         {
             throw new NotImplementedException();
+         
         }
 
         public Diagnosis WriteDiagnosis(Treatment treatment, Diagnosis diagnosis)

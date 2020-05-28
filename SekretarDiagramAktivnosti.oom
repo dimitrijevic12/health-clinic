@@ -5557,7 +5557,7 @@ STRN 0 Arial,8,N</a:FontList>
 <o:FlowSymbol Id="o199">
 <a:CreationDate>1589985212</a:CreationDate>
 <a:ModificationDate>1589985216</a:ModificationDate>
-<a:Rect>((-10595,-34945), (-9595,-30431))</a:Rect>
+<a:Rect>((-10327,-34945), (-9864,-30431))</a:Rect>
 <a:ListOfPoints>((-10065,-30431),(-10126,-34945))</a:ListOfPoints>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16711680</a:LineColor>
@@ -6321,7 +6321,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Creator>user</a:Creator>
 <a:ModificationDate>1589985165</a:ModificationDate>
 <a:Modifier>user</a:Modifier>
-<a:TargetModelURL>file:///F|/SIMS/Projekat/health-clinic/health-clinicClassDiagram.oom</a:TargetModelURL>
+<a:TargetModelURL>file:///C|/health-clinic/health-clinic/health-clinicClassDiagram.oom</a:TargetModelURL>
 <a:TargetModelID>E4CB7BEF-C09E-4940-97D3-85FB28D3554E</a:TargetModelID>
 <a:TargetModelClassID>18112060-1A4B-11D1-83D9-444553540000</a:TargetModelClassID>
 <c:SessionShortcuts>
