@@ -5,13 +5,14 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Repository.Csv.Stream
 {
-   public interface ICSVStream
-   {
-      void SaveAll(List<Object> entities);
-      List<Object> ReadAll();
-      void AppendToFile(Object entity);
+   public interface ICSVStream<E> where E : class
+    {
+      void SaveAll(List<E> entities);
+      List<E> ReadAll();
+      void AppendToFile(E entity);
    }
 }

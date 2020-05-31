@@ -7,10 +7,11 @@
 
 using Model.Appointment;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
-   public interface IAppointmentController : IController
+   public interface IAppointmentController : IController<Appointment>
    {
       List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
       Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);

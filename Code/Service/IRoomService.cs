@@ -4,11 +4,14 @@
  * Purpose: Definition of the Interface Service.IRoomService
  ***********************************************************************/
 
+using Model.Rooms;
+using Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public interface IRoomService : IService
+   public interface IRoomService : IService<Room>
    {
       Boolean IsRoomFree(DateTime from, DateTime to, Model.Rooms.Room room);
       List<Patient> GetAllPatientsByRoom(Model.Rooms.Room room);

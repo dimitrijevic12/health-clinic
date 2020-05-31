@@ -10,7 +10,7 @@ namespace Repository
 {
    public class NotificationRepository : IRepository
    {
-      public NotificationRepository GetInstance()
+      public NotificationRepository GetInstance() 
       {
          // TODO: implement
          return null;

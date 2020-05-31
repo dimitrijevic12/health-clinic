@@ -4,11 +4,13 @@
  * Purpose: Definition of the Interface Service.ITreatmentService
  ***********************************************************************/
 
+using Controller;
+using Model.Treatment;
 using System;
 
 namespace Service
 {
-   public interface ITreatmentService : IService
+   public interface ITreatmentService : IService<Treatment>
    {
       Model.Treatment.Prescription WritePrescription(Model.Rooms.Drug[] drugs, Model.Treatment.Treatment treatment);
       ReferralToASpecialist WriteReferralToASpecialist(Model.SystemUsers.Doctor specialist, Model.Treatment.Treatment treatment);

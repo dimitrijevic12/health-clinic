@@ -5,14 +5,15 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
-   public interface IController
+   public interface IController<T>
    {
-      Object GetAll();
-      Boolean Delete(Object object);
-      Object Create(Object object);
-      Object Edit(Object object);
+        List<T> GetAll();
+        Boolean Delete(T obj);
+        T Create(T obj);
+        T Edit(T obj);
    }
 }

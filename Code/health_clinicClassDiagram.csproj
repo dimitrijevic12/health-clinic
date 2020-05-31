@@ -172,6 +172,7 @@
     <Compile Include="Controller\NotificationController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\ReferralToASpecialist.cs" />
     <Compile Include="Controller\RenovationController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -415,6 +416,7 @@
     <Compile Include="Repository\IRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\IRepository1.cs" />
     <Compile Include="Repository\IRoomRepository.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -5,14 +5,15 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
-   public interface IService
+   public interface IService<T>
    {
-      Object Create(Object object);
-      Object Edit(Object object);
-      Boolean Delete(Object object);
-      List<Object> GetAll();
+        T Create(T obj);
+        T Edit(T obj);
+      Boolean Delete(T obj);
+      List<T> GetAll();
    }
 }

@@ -4,7 +4,11 @@
  * Purpose: Definition of the Class Controller.ReportController
  ***********************************************************************/
 
+using Model.Appointment;
+using Model.Rooms;
+using Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
@@ -61,8 +65,23 @@ namespace Controller
          if (iReportService != null)
             iReportService.Clear();
       }
-   
-      private ReportController Instance;
+
+        public List<Appointment> GenerateReportForDoctor(Doctor doctor, DateTime from, DateTime to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Room> GenereteReportForRooms(DateTime from, DateTime to)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Drug> GenerateReportForDrugs(DateTime from, DateTime to)
+        {
+            throw new NotImplementedException();
+        }
+
+        private ReportController Instance;
    
    }
 }

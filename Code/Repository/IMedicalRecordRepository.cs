@@ -4,11 +4,12 @@
  * Purpose: Definition of the Interface Repository.IMedicalRecordRepository
  ***********************************************************************/
 
+using Model.Appointment;
 using System;
 
 namespace Repository
 {
-   public interface IMedicalRecordRepository : IRepository
+   public interface IMedicalRecordRepository : IRepository<MedicalRecord>
    {
       Model.Appointment.MedicalRecord GetMedRecByPatient(Model.SystemUsers.Patient patient);
       Model.Appointment.MedicalRecord GetMedRecByTreatmentId();

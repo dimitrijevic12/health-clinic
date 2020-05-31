@@ -4,14 +4,16 @@
  * Purpose: Definition of the Class Rooms.RehabilitationRoom
  ***********************************************************************/
 
+using Model.Appointment;
 using System;
+using System.Collections.Generic;
 
 namespace Model.Rooms
 {
    public class RehabilitationRoom : Room
    {
-      public InventoryDrugs[] inventoryDrugs;
-      public MedicalRecord[] medicalRecord;
+      public List<InventoryDrugs> inventoryDrugs;
+      public List<MedicalRecord> medicalRecord;
    
       private int MaxCapacity;
       private int CurrentlyInUse;

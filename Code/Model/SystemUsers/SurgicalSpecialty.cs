@@ -8,12 +8,11 @@ using System;
 
 namespace Model.SystemUsers
 {
-   public class SurgicalSpecialty
+   public enum SurgicalSpecialty
    {
-      private EnumConstant Cardiothoracic;
-      private EnumConstant Neurosurgery;
-      private EnumConstant Plastical;
-      private EnumConstant General;
-   
+      CARDIOTHORACIC,
+      NEUROSURGERY,
+      PLASTICAL,
+      GENERAL
    }
 }

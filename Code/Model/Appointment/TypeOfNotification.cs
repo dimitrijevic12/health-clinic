@@ -8,11 +8,11 @@ using System;
 
 namespace Model.Appointment
 {
-   public class TypeOfNotification
+   public enum TypeOfNotification
    {
-      private EnumConstant New;
-      private EnumConstant Cancel;
-      private EnumConstant Change;
+      NEW,
+      CANCEL,
+      CHANGE
    
    }
 }

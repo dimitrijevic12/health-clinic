@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.NotificationService
  ***********************************************************************/
 
+using Model.Appointment;
 using System;
 
 namespace Service
@@ -15,8 +16,18 @@ namespace Service
          // TODO: implement
          return null;
       }
-   
-      public Repository.IRepository iRepository;
+
+        public void NotifyPatient(Notification notification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotifyDoctor(Notification notification)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Repository.IRepository iRepository;
    
       private static NotificationService Instance;
    

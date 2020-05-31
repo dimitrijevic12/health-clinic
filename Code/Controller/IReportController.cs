@@ -4,7 +4,10 @@
  * Purpose: Definition of the Interface Controller.IReportController
  ***********************************************************************/
 
+using Model.Appointment;
+using Model.Rooms;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {

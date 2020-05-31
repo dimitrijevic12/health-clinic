@@ -8,11 +8,10 @@ using System;
 
 namespace Service
 {
-   public class TypeOfPriority
+   public enum TypeOfPriority
    {
-      private EnumConstant Doctor;
-      private EnumConstant Date;
-      private EnumConstant Emergency;
+      DOCTOR,
+      DATE
    
    }
 }

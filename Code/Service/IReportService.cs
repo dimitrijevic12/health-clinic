@@ -4,7 +4,10 @@
  * Purpose: Definition of the Interface Service.IReportService
  ***********************************************************************/
 
+using Model.Appointment;
+using Model.Rooms;
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {

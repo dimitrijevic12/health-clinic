@@ -5,15 +5,16 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Repository
 {
-   public interface IRepository
+   public interface IRepository<T>
    {
-      Object Save(Object object);
-      Object Edit(Object object);
-      Boolean Delete(Object object);
-      List<Object> GetAll();
+        T Save(T obj);
+        T Edit(T obj);
+      Boolean Delete(T obj);
+      List<T> GetAll();
       Boolean OpenFile(String path);
       Boolean CloseFile(String path);
    }

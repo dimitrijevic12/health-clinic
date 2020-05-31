@@ -8,9 +8,9 @@ using System;
 
 namespace Repository.Csv.Converter
 {
-   public interface ICSVConverter
-   {
-      String ConvertEntityToCSVFormat(Object entity);
-      Object ConvertCSVFormatToEntity(String entityCSVFormat);
+   public interface ICSVConverter<E> where E : class
+    {
+      String ConvertEntityToCSVFormat(E entity);
+        E ConvertCSVFormatToEntity(String entityCSVFormat);
    }
 }
