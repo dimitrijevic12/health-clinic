@@ -8,11 +8,11 @@ using System;
 
 namespace Controller
 {
-   public interface IController<T>
+   public interface IController
    {
-      T[] GetAll();
-      Boolean Delete(T obj);
-      T Create(T obj);
-      T Edit(T obj);
+      Object GetAll();
+      Boolean Delete(Object object);
+      Object Create(Object object);
+      Object Edit(Object object);
    }
 }

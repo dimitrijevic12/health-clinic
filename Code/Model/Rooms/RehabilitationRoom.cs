@@ -4,7 +4,6 @@
  * Purpose: Definition of the Class Rooms.RehabilitationRoom
  ***********************************************************************/
 
-using Model.Appointment;
 using System;
 
 namespace Model.Rooms

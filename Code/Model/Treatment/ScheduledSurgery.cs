@@ -8,13 +8,12 @@ using System;
 
 namespace Model.Treatment
 {
-   public class ReferralToOperation
+   public class ScheduledSurgery
    {
       public Model.SystemUsers.Surgeon surgeon;
    
       private DateTime StartDate;
       private DateTime EndDate;
-      private String Procedure;
       private String CauseForOperation;
    
    }

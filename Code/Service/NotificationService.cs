@@ -8,39 +8,17 @@ using System;
 
 namespace Service
 {
-   public class NotificationService
+   public class NotificationService : INotifcationService
    {
-      public void NotifyPatientOfNewAppointment(Model.Appointment.Appointment appointment)
+      public NotificationService GetInstance()
       {
          // TODO: implement
-      }
-      
-      public void NotifyPatientOfEditedAppointment(Model.Appointment.Appointment oldAppointment, Model.Appointment.Appointment newAppointment)
-      {
-         // TODO: implement
-      }
-      
-      public void NotifyPatientOfCanceledAppointment(Model.Appointment.Appointment appointment)
-      {
-         // TODO: implement
-      }
-      
-      public void NotifyDoctorOfNewAppointment(Model.Appointment.Appointment appointment)
-      {
-         // TODO: implement
-      }
-      
-      public void NotifyDoctorOfEditedAppointment(Model.Appointment.Appointment oldAppointment, Model.Appointment.Appointment newAppointment)
-      {
-         // TODO: implement
-      }
-      
-      public void NotifyDoctorOfCanceledAppointment(Model.Appointment.Appointment appointment)
-      {
-         // TODO: implement
+         return null;
       }
    
-      public NotificationService notificationService;
+      public Repository.IRepository iRepository;
+   
+      private static NotificationService Instance;
    
    }
 }

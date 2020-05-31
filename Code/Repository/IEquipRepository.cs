@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Repository.IEquipRepository
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Repository
 {
-   public interface IEquipRepository : IRepository<Equipment>
+   public interface IEquipRepository : IRepository
    {
       Model.Rooms.Equipment GetEquip(Model.Rooms.Equipment equipment);
    }

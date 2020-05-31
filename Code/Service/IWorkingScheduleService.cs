@@ -4,14 +4,13 @@
  * Purpose: Definition of the Interface Service.IWorkingScheduleService
  ***********************************************************************/
 
-using Model.SystemUsers;
 using System;
 
 namespace Service
 {
-   public interface IWorkingScheduleService : IService<WorkingSchedule>
+   public interface IWorkingScheduleService : IService
    {
-      Model.SystemUsers.WorkingSchedule[] GetWorkingScheduleByDoctor(Model.SystemUsers.Doctor doctor);
-      Model.SystemUsers.WorkingSchedule[] GetWorkingScheduleByDate(DateTime day);
+      List<WorkingSchedule> GetWorkingScheduleByDoctor(Model.SystemUsers.Doctor doctor);
+      List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day);
    }
 }

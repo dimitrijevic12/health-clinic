@@ -4,13 +4,12 @@
  * Purpose: Definition of the Interface Service.IDrugService
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Service
 {
-   public interface IDrugService : IService<Drug>
+   public interface IDrugService
    {
-      Boolean ValidateDrugs(Model.Rooms.Drug drug);
+      List<Drug> GetAllDrugs();
    }
 }

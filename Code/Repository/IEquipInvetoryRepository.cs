@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Repository.IEquipInvetoryRepository
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Repository
 {
-   public interface IEquipInvetoryRepository : IRepository<InventoryEquip>
+   public interface IEquipInvetoryRepository : IRepository
    {
       Model.Rooms.InventoryEquip GetEquipInv(Model.Rooms.InventoryEquip invEquip);
    }

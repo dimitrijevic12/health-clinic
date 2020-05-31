@@ -4,13 +4,12 @@
  * Purpose: Definition of the Interface Repository.ITreatmentRepository
  ***********************************************************************/
 
-using Model.Treatment;
 using System;
 
 namespace Repository
 {
-   public interface ITreatmentRepository : IRepository<Treatment>
+   public interface ITreatmentRepository : IRepository
    {
-      Model.Treatment.Treatment GetTreatment(Model.Treatment.Treatment treatment);
+      Model.Treatment.Treatment GetTreatment();
    }
 }

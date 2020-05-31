@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+/***********************************************************************
+ * Module:  ICSVConverter.cs
+ * Author:  user
+ * Purpose: Definition of the Interface Repository.ICSVConverter
+ ***********************************************************************/
 
-namespace health_clinicClassDiagram.Repository.CSV.Converter
+using System;
+
+namespace Repository.Csv.Converter
 {
-    public interface ICSVConverter<E> where E : class
-    {
-        string ConvertEntityToCSVFormat(E entity);
-
-        E ConvertCSVFormatToEntity(string entityCSVFormat);
-    }
+   public interface ICSVConverter
+   {
+      String ConvertEntityToCSVFormat(Object entity);
+      Object ConvertCSVFormatToEntity(String entityCSVFormat);
+   }
 }

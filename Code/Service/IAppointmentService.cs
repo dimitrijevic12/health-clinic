@@ -4,21 +4,24 @@
  * Purpose: Definition of the Interface Service.IAppointmentService
  ***********************************************************************/
 
-using Model.Appointment;
 using System;
 
 namespace Service
 {
-   public interface IAppointmentService : IService<Appointment>
+   public interface IAppointmentService : IService
    {
       Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);
       Boolean CheckIfVacant(DateTime from, DateTime to);
-      Model.Appointment.Appointment[] GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);
-      Model.Appointment.Appointment[] GetAppointmentsByTime(DateTime fromTime, DateTime toTime);
-      Model.Appointment.Appointment[] GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
-      Model.Appointment.Appointment[] GetApointmentByPatient(Model.SystemUsers.Patient patient);
-      Model.Appointment.Appointment[] GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
+      List<Appointment> GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);
+      List<Appointment> GetAppointmentsByTime(DateTime fromTime, DateTime toTime);
+      List<Appointment> GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
+      List<Appointment> GetApointmentByPatient(Model.SystemUsers.Patient patient);
+      List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
       Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
+      TypeOfPriority ChoosePriority(TypeOfPriority priority);
+      List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
+      List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
+      List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
    }
 }

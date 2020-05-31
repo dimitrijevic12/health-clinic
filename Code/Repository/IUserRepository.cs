@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Repository.IUserRepository
  ***********************************************************************/
 
-using Model.SystemUsers;
 using System;
 
 namespace Repository
 {
-   public interface IUserRepository : IRepository<RegisteredUser>
+   public interface IUserRepository : IRepository
    {
       Model.SystemUsers.RegisteredUser GetRegisteredUser(String username);
    }

@@ -8,15 +8,15 @@ using System;
 
 namespace Model.Treatment
 {
-   public enum Urgency
+   public class Urgency
    {
-      CRITICAL,
-      TODAY,
-      THISWEEK,
-      THISMONTH,
-      THISYEAR,
-      THISSIXMONTHS,
-      THISTHREEMONTHS
+      private EnumConstant Critical;
+      private EnumConstant Today;
+      private EnumConstant ThisWeek;
+      private EnumConstant ThisMonth;
+      private EnumConstant ThisYear;
+      private EnumConstant ThisSixMonths;
+      private EnumConstant ThisThreeMonths;
    
    }
 }

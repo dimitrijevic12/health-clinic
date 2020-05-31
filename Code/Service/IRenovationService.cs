@@ -4,13 +4,13 @@
  * Purpose: Definition of the Interface Service.IRenovationService
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Service
 {
-   public interface IRenovationService : IService<Renovation>
+   public interface IRenovationService : IService
    {
+      Model.Rooms.Renovation ChangeDates(DateTime lastDate, Model.Rooms.Renovation renovation);
       Model.Rooms.Renovation DoPainting();
       Model.Rooms.Renovation DoMerge();
       Model.Rooms.Renovation DoSplit();

@@ -4,15 +4,14 @@
  * Purpose: Definition of the Interface Controller.IDrugInvetoryController
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Controller
 {
-   public interface IDrugInvetoryController : IController<InventoryDrugs>
+   public interface IDrugInvetoryController : IController
    {
       Boolean MoveDrugInventory(Model.Rooms.Room roomFrom, Model.Rooms.Room roomTo, Model.Rooms.InventoryDrugs inventory, int ammount);
-      void AddAmmount(Model.Rooms.InventoryDrugs inventory, int ammount);
-      Model.Rooms.InventoryDrugs[] GetInventory(Model.Rooms.Room room);
+      void AddAmmount(Model.Rooms.InventoryDrugs inventory, int ammount, Model.Rooms.Drug drug);
+      List<InventoryDrugs> GetInventory(Model.Rooms.Room room);
    }
 }

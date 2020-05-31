@@ -4,14 +4,13 @@
  * Purpose: Definition of the Interface Service.IMedicalRecordService
  ***********************************************************************/
 
-using Model.Appointment;
 using System;
 
 namespace Service
 {
-   public interface IMedicalRecordService : IService<MedicalRecord>
+   public interface IMedicalRecordService : IService
    {
-      Model.Appointment.MedicalRecord AddTreatment(Model.Treatment.Treatment treatment);
+      Model.Appointment.MedicalRecord AddTreatment(Model.Treatment.Treatment treatment, Model.Appointment.MedicalRecord medRec);
       Model.Appointment.MedicalRecord GetMedRecByPatient(Model.SystemUsers.Patient patient);
       Model.Appointment.MedicalRecord GetMedRecByTreatment(Model.Treatment.Treatment treatment);
    }

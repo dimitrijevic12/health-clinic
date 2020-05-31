@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Repository.IDrugRepository
  ***********************************************************************/
 
-using Model.Rooms;
 using System;
 
 namespace Repository
 {
-   public interface IDrugRepository : IRepository<Drug>
+   public interface IDrugRepository : IRepository
    {
       Model.Rooms.Drug GetDrug(Model.Rooms.Drug drug);
    }

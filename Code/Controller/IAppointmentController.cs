@@ -4,20 +4,26 @@
  * Purpose: Definition of the Interface Controller.IAppointmentController
  ***********************************************************************/
 
+
 using Model.Appointment;
 using System;
 
 namespace Controller
 {
-   public interface IAppointmentController : IController<Appointment>
+   public interface IAppointmentController : IController
    {
+      List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
       Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);
-      Model.Appointment.Appointment[] GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);
-      Model.Appointment.Appointment[] GetAppointmentsByTime(DateTime fromTime, DateTime toTime);
-      Model.Appointment.Appointment[] GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
-      Model.Appointment.Appointment[] GetApointmentByPatient(Model.SystemUsers.Patient patient);
-      Model.Appointment.Appointment[] GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
-      Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment, Model.Treatment.Treatment treatment);
+      List<Appointment> GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);
+      List<Appointment> GetAppointmentsByTime(DateTime fromTime, DateTime toTime);
+      List<Appointment> GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
+      List<Appointment> GetApointmentByPatient(Model.SystemUsers.Patient patient);
+      List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
+      Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
+      Service.TypeOfPriority ChoosePriority(Service.TypeOfPriority priority);
+      Boolean IsPatientRegistered(Model.SystemUsers.Patient patient);
+      List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
+      List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
    }
 }

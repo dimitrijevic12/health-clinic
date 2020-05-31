@@ -100,6 +100,12 @@
     <Compile Include="Controller\BlogController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\DecoratedDrugController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controller\DoctorDrugController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controller\DrugController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -136,7 +142,13 @@
     <Compile Include="Controller\IMedicalRecordController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\INotificaitonController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controller\IRenovationController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controller\IReportController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\IRoomController.cs">
@@ -151,10 +163,19 @@
     <Compile Include="Controller\IWorkingSchedule.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\ManagerDrugController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controller\MedicalRecordController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\NotificationController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controller\RenovationController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controller\ReportController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\RoomController.cs">
@@ -175,10 +196,18 @@
     <Compile Include="Model\Appointment\MedicalRecord.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Appointment\Notification.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Model\Appointment\TermDTO.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Model\Appointment\TypeOfAppointment.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Object.cs" />
+    <Compile Include="Model\Appointment\TypeOfNotification.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Model\Rooms\Drug.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -272,25 +301,16 @@
     <Compile Include="Model\SystemUsers\WorkingSchedule.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Treatment\Diagnosis.cs">
+    <Compile Include="Model\Treatment\DiagnosisAndReview.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Treatment\Prescription.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Treatment\ReferralToASpecialist.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Model\Treatment\ReferralToHospitalTreatment.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Treatment\ReferralToOperation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Treatment\Review.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Treatment\Symptoms.cs">
+    <Compile Include="Model\Treatment\ScheduledSurgery.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Treatment\Treatment.cs">
@@ -305,9 +325,57 @@
     <Compile Include="Repository\BlogRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\CSV\Converter\ICSVConverter.cs" />
-    <Compile Include="Repository\CSV\Stream\CSVStream.cs" />
-    <Compile Include="Repository\CSV\Stream\ICSVStream.cs" />
+    <Compile Include="Repository\Csv\Converter\AppointmentCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\BlogCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\DrugCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\DrugInvetoryCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\EquipmentCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\EquipmentInvetoryCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\ICSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\MedicalRecordCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\ReportCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\RoomCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\TreatmentCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\UserCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Converter\WorkingScheduleCSVConverter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Stream\CSVStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\Csv\Stream\ICSVStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Repository\DrugInventoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -362,7 +430,13 @@
     <Compile Include="Repository\MedicalRecordRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\NotificationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Repository\RenovationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repository\ReportRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\RoomRepository.cs">
@@ -377,13 +451,16 @@
     <Compile Include="Repository\WorkingScheduleRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ServiceRepository\NotificationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\AppointmentService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\BlogService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\DecoratedDrugService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\DoctorDrugService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\DrugInventoryService.cs">
@@ -419,7 +496,13 @@
     <Compile Include="Service\IMedicalRecordService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\INotifcationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\IRenovationService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\IReportService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\IRoomService.cs">
@@ -437,6 +520,9 @@
     <Compile Include="Service\IWorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\ManagerDrugService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\MedicalRecordService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -446,10 +532,16 @@
     <Compile Include="Service\RenovationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\ReportService.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Service\RoomService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\TreatmentService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Service\TypeOfPriority.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\UserService.cs">
@@ -459,7 +551,6 @@
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

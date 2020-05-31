@@ -8,10 +8,10 @@ using System;
 
 namespace Model.Rooms
 {
-   public enum TypeOfRoom
+   public class TypeOfRoom
    {
-      OPERATION,
-      EXAM
+      private EnumConstant Operation;
+      private EnumConstant Exam;
    
    }
 }

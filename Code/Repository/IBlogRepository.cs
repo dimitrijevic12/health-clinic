@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Repository.IBlogRepository
  ***********************************************************************/
 
-using Model.Surveys;
 using System;
 
 namespace Repository
 {
-   public interface IBlogRepository : IRepository<Blog>
+   public interface IBlogRepository : IRepository
    {
       Model.Surveys.Blog GetBlog(String title);
    }

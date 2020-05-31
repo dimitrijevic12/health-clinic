@@ -10,6 +10,13 @@ namespace Model.Rooms
 {
    public class Equipment
    {
+      public static Equipment GetInstance()
+      {
+         // TODO: implement
+         return null;
+      }
+   
+      private Equipment Instance;
       private int Id;
       private TypeOfEquipment Type;
       private int Quantity;

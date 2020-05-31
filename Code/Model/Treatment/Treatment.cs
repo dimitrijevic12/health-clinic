@@ -55,14 +55,14 @@ namespace Model.Treatment
          if (prescription != null)
             prescription.Clear();
       }
-      public ReferralToASpecialist referralToASpecialist;
-      public ReferralToOperation referralToOperation;
-      public Review review;
-      public Diagnosis diagnosis;
+      public ScheduledSurgery scheduledSurgery;
+      public DiagnosisAndReview diagnosisAndReview;
       public ReferralToHospitalTreatment referralToHospitalTreatment;
+      public Model.SystemUsers.Doctor doctor;
    
       private DateTime FromDate;
       private DateTime EndDate;
+      private int Id;
    
    }
 }

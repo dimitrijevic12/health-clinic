@@ -4,12 +4,11 @@
  * Purpose: Definition of the Interface Controller.IBlogController
  ***********************************************************************/
 
-using Model.Surveys;
 using System;
 
 namespace Controller
 {
-   public interface IBlogController : IController<Blog>
+   public interface IBlogController : IController
    {
       Model.Surveys.Blog GetBlogByTitle(String title);
    }

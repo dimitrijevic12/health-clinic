@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+/***********************************************************************
+ * Module:  ICSVStream.cs
+ * Author:  user
+ * Purpose: Definition of the Interface Repository.ICSVStream
+ ***********************************************************************/
 
-namespace health_clinicClassDiagram.Repository.CSV.Stream
+using System;
+
+namespace Repository.Csv.Stream
 {
-    public interface ICSVStream<E> where E : class
-    {
-        void SaveAll(IEnumerable<E> entities);
-        IEnumerable<E> ReadAll();
-        void AppendToFile(E entity);
-    }
+   public interface ICSVStream
+   {
+      void SaveAll(List<Object> entities);
+      List<Object> ReadAll();
+      void AppendToFile(Object entity);
+   }
 }

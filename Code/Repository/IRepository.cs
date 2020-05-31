@@ -8,12 +8,12 @@ using System;
 
 namespace Repository
 {
-   public interface IRepository<T>
+   public interface IRepository
    {
-      T Save(T obj);
-      T Edit(T obj);
-      Boolean Delete(T obj);
-      T[] GetAll();
+      Object Save(Object object);
+      Object Edit(Object object);
+      Boolean Delete(Object object);
+      List<Object> GetAll();
       Boolean OpenFile(String path);
       Boolean CloseFile(String path);
    }
