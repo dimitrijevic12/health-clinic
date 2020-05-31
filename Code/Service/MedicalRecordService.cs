@@ -7,6 +7,7 @@
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,16 @@ namespace Service
 {
    public class MedicalRecordService : IMedicalRecordService
    {
-      public MedicalRecordService GetInstance() { return null; }
+        private readonly IMedicalRecordRepository _medicalRecordRepository;
+        //private readonly IRepository<MedicalRecord> _medicalRecordRepository;
+        private readonly IService<Patient> _patientService;
+        public MedicalRecordService GetInstance() { return null; }
+
+        public MedicalRecordService(IMedicalRecordRepository repository, IService<Patient> service)
+        {
+            _medicalRecordRepository = repository;
+            _patientService = service;
+        }
 
         public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medRec)
         {
@@ -23,7 +33,10 @@ namespace Service
 
         public MedicalRecord GetMedRecByPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            var record = _medicalRecordRepository.GetMedRecByPatient(patient);
+            //fali red
+            return record;
+            return null;
         }
 
         public MedicalRecord GetMedRecByTreatment(Treatment treatment)
@@ -33,22 +46,38 @@ namespace Service
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            var _patient = _patientService.Create(obj.patient);
+            var newMedicalRecord = _medicalRecordRepository.Save(obj);
+            newMedicalRecord.patient = _patient;
+            return newMedicalRecord;
+            //fali treatment ali to vrv u add treatment
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _patientService.Edit(obj.patient);
+            _medicalRecordRepository.Edit(obj);
+            return obj;
         }
 
         public bool Delete(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _patientService.Delete(obj.patient);
+            _medicalRecordRepository.Delete(obj);
+            return true;
         }
 
         public List<MedicalRecord> GetAll()
         {
-            throw new NotImplementedException();
+            var patients = _patientService.GetAll();
+            var records = _medicalRecordRepository.GetAll();
+            //BindPatientsWithRecords(patients, records);
+            return records;
+        }
+
+        private void BindPatientsWithRecords(Patient[] patients, MedicalRecord[] records)
+        {
+            //records.ToList().ForEach(record => record.patient = GetMedRecByPatient(record.patient));
         }
 
         public Repository.IMedicalRecordRepository iMedicalRecordRepository;

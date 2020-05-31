@@ -7,14 +7,26 @@
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
-      public MedicalRecordRepository GetInstance() { return null; }
+        private readonly ICSVStream<MedicalRecord> _stream;
+
+        private String _path;
+        private static MedicalRecordRepository Instance;
+        public MedicalRecordRepository GetInstance() { return null; }
+
+        public MedicalRecordRepository(string path, CSVStream<MedicalRecord> stream)
+        {
+            _path = path;
+            _stream = stream;
+        }
 
         public MedicalRecord GetMedRecByPatient(Patient patient)
         {
@@ -38,22 +50,40 @@ namespace Repository
 
         public MedicalRecord Save(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            _stream.AppendToFile(obj);
+            return obj;
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            var records = _stream.ReadAll().ToList();
+            records[records.FindIndex(rcrd => rcrd.patient.Equals(obj.patient))] = obj;
+            _stream.SaveAll(records);
+
+            return obj;
         }
 
         public bool Delete(MedicalRecord obj)
         {
-            throw new NotImplementedException();
+            var records = _stream.ReadAll().ToList();
+            var recordToRemove = records.SingleOrDefault(rcrd => rcrd.patient.Equals(obj.patient));
+
+            if (recordToRemove != null)
+            {
+                records.Remove(recordToRemove);
+                _stream.SaveAll(records);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<MedicalRecord> GetAll()
         {
-            throw new NotImplementedException();
+            var records = (List<MedicalRecord>)_stream.ReadAll();
+            return records;
         }
 
         public bool OpenFile(string path)
@@ -66,8 +96,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        private String Path;
-      private static MedicalRecordRepository Instance;
+        
    
    }
 }
