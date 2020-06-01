@@ -15,7 +15,13 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-      public AppointmentService GetInstance() { return null; }
+        public Repository.IAppointmentRepository iAppointmentRepository;
+        private readonly IService<Doctor> _doctorService;
+        private readonly IService<Patient> _patientService;
+        private readonly IService<ExamOperationRoom> _roomService;
+
+        private static AppointmentService Instance;
+        public AppointmentService GetInstance() { return null; }
 
         public Appointment MoveAppointment(DateTime from, DateTime to, Appointment appointment)
         {
@@ -84,12 +90,23 @@ namespace Service
 
         public Appointment Create(Appointment obj)
         {
-            throw new NotImplementedException();
+            var doctor = _doctorService.Create(obj.doctor);
+            var patient = _patientService.Create(obj.patient);
+            var room = _roomService.Create(obj.examOperationRoom);
+            var appointment = iAppointmentRepository.Save(obj);
+            appointment.doctor = doctor;
+            appointment.patient = patient;
+            appointment.examOperationRoom = room;
+            return appointment;
         }
 
         public Appointment Edit(Appointment obj)
         {
-            throw new NotImplementedException();
+            _doctorService.Edit(obj.doctor);
+            _patientService.Edit(obj.patient);
+            _roomService.Edit(obj.examOperationRoom);
+            iAppointmentRepository.Edit(obj);
+            return obj;
         }
 
         public bool Delete(Appointment obj)
@@ -102,9 +119,7 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        public Repository.IAppointmentRepository iAppointmentRepository;
-   
-      private static AppointmentService Instance;
+        
    
    }
 }
