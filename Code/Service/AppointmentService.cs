@@ -10,6 +10,7 @@ using Model.SystemUsers;
 using Model.Treatment;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Service
 {
@@ -111,15 +112,26 @@ namespace Service
 
         public bool Delete(Appointment obj)
         {
-            throw new NotImplementedException();
+            _doctorService.Delete(obj.doctor);
+            _patientService.Delete(obj.patient);
+            _roomService.Delete(obj.examOperationRoom);
+            iAppointmentRepository.Delete(obj);
+            return true;
         }
 
         public List<Appointment> GetAll()
         {
-            throw new NotImplementedException();
+            var doctors = _doctorService.GetAll();
+            var patients = _patientService.GetAll();
+            var rooms = _roomService.GetAll();
+            var appointments = iAppointmentRepository.GetAll();
+            BindAllForAppointments(appointments, doctors, patients, rooms);
+            return appointments;
         }
 
-        
-   
-   }
+        private void BindAllForAppointments(List<Appointment> appointments, List<Doctor> doctors, List<Patient> patients, List<ExamOperationRoom> rooms)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

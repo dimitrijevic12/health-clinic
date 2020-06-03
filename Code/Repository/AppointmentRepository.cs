@@ -4,17 +4,36 @@
  * Purpose: Definition of the Class Repository.UserRepository
  ***********************************************************************/
 
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
    public class AppointmentRepository : IAppointmentRepository
    {
-      public AppointmentRepository GetInstance() { return null; }
+        private String Path;
+        private static AppointmentRepository Instance;
+        private readonly ICSVStream<Appointment> _stream;
+        private readonly iSequencer<long> _sequencer;
+        public AppointmentRepository GetInstance() { return null; }
+
+        public AppointmentRepository(ICSVStream<Appointment> stream, iSequencer<long> sequencer)
+        {
+            _stream = stream;
+            _sequencer = sequencer;
+            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
+        }
+
+        private long GetMaxId(List<Appointment> appointments)
+        {
+            return appointments.Count() == 0 ? 0 : appointments.Max(apt => apt.Id);
+        }
 
         public Appointment GetAppointment(Appointment appointment)
         {
@@ -43,22 +62,40 @@ namespace Repository
 
         public Appointment Save(Appointment obj)
         {
-            throw new NotImplementedException();
+            _stream.AppendToFile(obj);
+            return obj;
         }
 
         public Appointment Edit(Appointment obj)
         {
-            throw new NotImplementedException();
+            
+            var appointments = _stream.ReadAll().ToList();
+            appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
+            _stream.SaveAll(appointments);
+            return obj;
+                     
         }
 
+        
         public bool Delete(Appointment obj)
         {
-            throw new NotImplementedException();
+            var appointments = _stream.ReadAll().ToList();
+            var appointmentToRemove = appointments.SingleOrDefault(acc => acc.Id == obj.Id);
+            if (appointmentToRemove != null)
+            {
+                appointments.Remove(appointmentToRemove);
+                _stream.SaveAll(appointments);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Appointment> GetAll()
         {
-            throw new NotImplementedException();
+            return _stream.ReadAll();
         }
 
         public bool OpenFile(string path)
@@ -71,8 +108,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        private String Path;
-      private static AppointmentRepository Instance;
+        
    
    }
 }

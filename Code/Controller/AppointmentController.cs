@@ -16,6 +16,14 @@ namespace Controller
 {
    public class AppointmentController : IAppointmentController
    {
+        public Service.IAppointmentService _service;
+
+        private static AppointmentController Instance;
+
+        public AppointmentController(IAppointmentService service)
+        {
+            _service = service;
+        }
         public AppointmentController GetInstance() { return null; }
     
 
@@ -86,27 +94,29 @@ namespace Controller
 
         public List<Appointment> GetAll()
         {
-            throw new NotImplementedException();
+            return _service.GetAll();
+            
         }
 
         public bool Delete(Appointment obj)
         {
-            throw new NotImplementedException();
+            _service.Delete(obj);
+            return true;
         }
 
         public Appointment Create(Appointment obj)
         {
-            throw new NotImplementedException();
+            return _service.Create(obj);
+            
         }
 
         public Appointment Edit(Appointment obj)
         {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
+            
         }
 
-        public Service.IAppointmentService iAppointmentService;
-   
-      private static AppointmentController Instance;
+        
    
    }
 }
