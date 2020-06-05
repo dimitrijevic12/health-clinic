@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.NapisiClanak"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="430">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2">
+        <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                <StackPanel>
+                    <Image Source="images/dots.png" Height="46" Width="20"/>
+                </StackPanel>
+            </local:MyDropDownButton>
+            <Label DockPanel.Dock="Left" Name="title" Content="Napiši članak" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+                <StackPanel>
+                    <Image Source="images/back.png" Height="59"/>
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click">
+                <StackPanel>
+                    <Image Source="images/home.png" Height="67"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+        <StackPanel Width="430">
+            <StackPanel Height="92">
+                <Label x:Name="labelNaslov" Content="Naslov:" VerticalAlignment="Center" FontSize="24" Margin="30,5,0,5" FontWeight="Bold"/>
+                <TextBox x:Name="textBoxNaslov" Height="30" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" TextChanged="textBoxNaslov_TextChanged"/>
+            </StackPanel>
+            <StackPanel Height="340">
+                <Label x:Name="labelTekst" Content="Tekst:" VerticalAlignment="Center" FontSize="24" Margin="30,5,0,5" FontWeight="Bold"/>
+                <TextBox x:Name="textBoxTekst" Height="284" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" VerticalScrollBarVisibility="Auto" Margin="40,0,40.4,0"/>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="buttonPotvrdi" Content="Potvrdi" Margin="0,25,0,25" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonPotvrdi_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

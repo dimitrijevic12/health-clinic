@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.ZakazivanjeKodSpecijaliste"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="430">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2">
+        <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                <StackPanel>
+                    <Image Source="images/dots.png" Height="46" Width="20"/>
+                </StackPanel>
+            </local:MyDropDownButton>
+            <Label DockPanel.Dock="Left" Name="title" Content="Zakaži kod specijaliste" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+                <StackPanel>
+                    <Image Source="images/back.png" Height="59"/>
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click">
+                <StackPanel>
+                    <Image Source="images/home.png" Height="67"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+        <ScrollViewer Width="430">
+        <StackPanel Width="430">
+            <DockPanel Margin="0,10,0,0">
+                <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 5, 0, 0"/>
+                <Label x:Name="imePrezime" Content="Pera Peric" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 5, 30, 0"/>
+            </DockPanel>
+            <DockPanel Margin="0,10,0,0">
+                <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 0, 0, 0"/>
+                <Label x:Name="datumRodjenja" Content="01. 01. 1999." FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 0, 30, 0"/>
+            </DockPanel>
+                <StackPanel Margin="30,5,40,0">
+                <Label x:Name="labelSpecijalisti" Content="Specijalisti:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                <DataGrid x:Name="dataGrid" Height="248">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ime i prezime" Width="*" IsReadOnly="True">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Header="Specijalizacija" IsReadOnly="True">
+                            <DataGridTextColumn.HeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                </Style>
+                            </DataGridTextColumn.HeaderStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+                <StackPanel>
+                    <StackPanel Height="285" Margin="30,5,40,0">
+                        <Label x:Name="labelRazlogOperacije" Content="Razlog za specijalistu:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+                        <TextBox x:Name="textBoxRazlogOperacije" Height="227" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" VerticalScrollBarVisibility="Auto"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="buttonOdaberiDatum" Content="Odaberi datum" Margin="0,20,0,25" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonOdaberiDatum_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
