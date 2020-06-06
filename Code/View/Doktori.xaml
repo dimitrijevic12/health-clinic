@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.Doktori"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid x:Name="GridDoktori">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18"/>
+                <RowDefinition />
+                <RowDefinition Height="50"/>
+                <RowDefinition Height ="44"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Menu Grid.Row="0" Grid.Column="0">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="_Početna"></MenuItem>
+                <MenuItem Header="_Raspored"></MenuItem>
+                <MenuItem Header="_Registrovani pacijenti"></MenuItem>
+                <MenuItem Header="_Doktori"></MenuItem>
+                <MenuItem Header="_Help"></MenuItem>
+
+            </Menu>
+
+            <Grid Grid.Row="3" Grid.Column="0" Background="LightSkyBlue">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="68*" />
+                    <ColumnDefinition Width="157*" />
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" Click="Button_Home">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="View/Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="View/Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+                <Label Grid.Column="8" Grid.Row="0" FontSize="20" Foreground="White" Name ="labelDateTime" Margin="40,0,0,0">Datum i vreme</Label>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="2">
+                <Grid.RowDefinitions>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+
+                </Grid.ColumnDefinitions>
+
+
+            </Grid>
+            <!--<DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Path=DoktoriCollection}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Stretch" 
+                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridDoktori_SelectionChanged"  />-->
+
+        </Grid>
+    </Grid>
+</UserControl>

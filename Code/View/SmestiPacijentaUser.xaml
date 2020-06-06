@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.SmestiPacijentaUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid x:Name="GridSmestanje">
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Background="LightSkyBlue" Height="44" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="68*" />
+                    <ColumnDefinition Width="157*" />
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" Click="Button_Home">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="View/Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="View/Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+                <Label Grid.Column="7" Grid.Row="0" FontSize="20" Foreground="White" Grid.ColumnSpan="2" Name ="labelDateTime" Margin="40,0,0,0">Datum i vreme</Label>
+            </Grid>
+
+            <Grid DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="3" Name ="ImeSale">Sala XX:</Label>
+                <Label  Grid.Column="1" Grid.Row="2" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Ime:</Label>
+                <Label  Grid.Column="1" Grid.Row="4" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Prezime:</Label>
+                <Label  Grid.Column="1" Grid.Row="6" FontSize="18"  Grid.ColumnSpan="3">JMBG:</Label>
+                <Label  Grid.Column="1" Grid.Row="8" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Center">Od:</Label>
+                <Label  Grid.Column="1" Grid.Row="10" FontSize="18"  Grid.ColumnSpan="3">Napomena:</Label>
+                <TextBox Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="5"/>
+                <TextBox Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="5"/>
+                <TextBox Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="5" Name ="JMBGTekst"  Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"/>
+
+                <DatePicker Grid.Column="4"  Grid.Row="8"/>
+                <Label Grid.Column="6" Grid.Row="8" FontSize="20">Do:</Label>
+                <DatePicker Grid.Column="8"  Grid.Row="8"/>
+                <TextBox Grid.Column="4" Grid.Row="10" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
+                <Button Grid.Column="8" Grid.Row="14" Grid.ColumnSpan="2" Background="LightSkyBlue" FontSize="20" Margin="0,0,10,0" Click="Button_Potvrda">Potvrda</Button>
+                <Button Grid.Column="5" Grid.Row="14" Grid.ColumnSpan="2" Background="LightSkyBlue" FontSize="20" Margin="0,0,10,0" Click="Button_Odustanak">Odustanak</Button>
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

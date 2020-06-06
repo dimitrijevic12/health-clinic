@@ -1,0 +1,64 @@
+﻿<Window x:Class="health_clinicClassDiagram.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+        mc:Ignorable="d"
+        Title="Login" Height="768" Width="1024" >
+    <Grid Name ="GridMain" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="44"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Background="LightSkyBlue"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="44" Foreground="White" FontSize="17 px" TextAlignment="Right">Datum i vreme</TextBlock>
+            <DockPanel Background="LightSkyBlue"
+                    Grid.Column="0" Grid.Row="0" Height="492 px" Width="380 px">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="131" Margin="0,123,0,238">
+                    <Run FontSize="40 px" Foreground="White">Dobrodošli, </Run> <LineBreak/>
+                    <Run FontSize="28 px" Foreground="White">molim Vas prijavite se.</Run>
+                </TextBlock>
+            </DockPanel>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label  Grid.Column="2" Grid.Row="1" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center">Sekretar</Label>
+                <Label  Grid.Column="1" Grid.Row="3" FontSize="20"  Grid.ColumnSpan="2">Username:</Label>
+                <Label  Grid.Column="1" Grid.Row="5" FontSize="20" Grid.ColumnSpan="2">Password:</Label>
+                <Button Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="3" Background="LightSkyBlue" Click="Button_Click">Prijavi se</Button>
+                <TextBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,7,0,13"/>
+                <TextBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="3" Margin="0,7,0,13"/>
+                <Image Grid.Column="5" Grid.Row="1" Source="View/Images/indetification.png"></Image>
+
+            </Grid>
+
+
+
+        </Grid>
+    </Grid>
+</Window>
