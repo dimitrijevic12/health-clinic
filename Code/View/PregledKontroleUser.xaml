@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:health_clinicClassDiagram.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid x:Name="GridPregled">
         <DockPanel>
-            <Grid DockPanel.Dock="Bottom" Background="LightSkyBlue" Height="44">
+            <Grid DockPanel.Dock="Bottom" Background="SkyBlue" Height="44">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="113*" />
                     <ColumnDefinition Width="113*" />
@@ -23,7 +23,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" Click="Button_Home">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="F:/HCI/ProjekatSekretar/ProjekatSekretar/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <Image Source="View/Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
                 </Button>
 
@@ -93,7 +93,7 @@
                 </ComboBox>
 
                 <TextBox Grid.Column="4" Grid.Row="15" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
-                <Button Grid.Column="8" Grid.Row="19" Grid.ColumnSpan="2" Background="LightSkyBlue" FontSize="20" Margin="0,0,10,0" Click="Button_Izadji">Izađi</Button>
+                <Button Grid.Column="8" Grid.Row="19" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Izadji">Izađi</Button>
 
             </Grid>
         </DockPanel>
