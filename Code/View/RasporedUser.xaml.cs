@@ -19,7 +19,8 @@ namespace health_clinicClassDiagram.View
     /// Interaction logic for RasporedUser.xaml
     /// </summary>
     public partial class RasporedUser : UserControl
-    {
+    { 
+    
         public RasporedUser()
         {
             InitializeComponent();
@@ -27,12 +28,19 @@ namespace health_clinicClassDiagram.View
 
         private void buttonIdiNaDatum_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new RasporedTerminiUser();
+            UserControl rasporedTermini = new RasporedTerminiUser();
+            (this.Parent as Panel).Children.Add(rasporedTermini);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

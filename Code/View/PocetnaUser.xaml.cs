@@ -27,37 +27,40 @@ namespace health_clinicClassDiagram.View
 
         private void buttonRaspored_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new RasporedUser();
+            UserControl usc = new RasporedUser();
+            (this.Parent as Panel).Children.Add(usc);
+//            this.Content = new RasporedUser();
         }
 
         private void buttonZapocniPregled_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZapocniPregled();
+            UserControl usc = new ZapocniPregled();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonNapisiClanak_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new NapisiClanak();
+            UserControl usc = new NapisiClanak();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonZdravstveniKartoni_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZdravstveniKartoniLista();
+            UserControl usc = new ZdravstveniKartoniLista();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonOdobravanjePregleda_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new OdobravanjeLekova();
-        }
-
-        private void homeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new PocetnaUser();
+            UserControl usc = new OdobravanjeLekova();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonPregledStatistike_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new IzvestajOPotrosnjiLekova();
+            UserControl usc = new IzvestajOPotrosnjiLekova();
+            (this.Parent as Panel).Children.Add(usc);
         }
+
     }
 }

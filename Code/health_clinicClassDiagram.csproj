@@ -642,17 +642,8 @@
     <Compile Include="View\Pregled.xaml.cs">
       <DependentUpon>Pregled.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PregledStatistike.xaml.cs">
-      <DependentUpon>PregledStatistike.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\PregledTermina.xaml.cs">
-      <DependentUpon>PregledTermina.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\PregledTerminaUser.xaml.cs">
       <DependentUpon>PregledTerminaUser.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\RasporedTermini.xaml.cs">
-      <DependentUpon>RasporedTermini.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RasporedTerminiUser.xaml.cs">
       <DependentUpon>RasporedTerminiUser.xaml</DependentUpon>
@@ -665,9 +656,6 @@
     </Compile>
     <Compile Include="View\TerminiZakazivanje.xaml.cs">
       <DependentUpon>TerminiZakazivanje.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ZahtevZaBolnickoLecenje.xaml.cs">
       <DependentUpon>ZahtevZaBolnickoLecenje.xaml</DependentUpon>
@@ -752,19 +740,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\PregledStatistike.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\PregledTermina.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\PregledTerminaUser.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\RasporedTermini.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -783,10 +759,6 @@
     <Page Include="View\TerminiZakazivanje.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ZahtevZaBolnickoLecenje.xaml">
       <Generator>MSBuild:Compile</Generator>

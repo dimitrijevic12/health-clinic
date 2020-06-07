@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:health_clinicClassDiagram.View"
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="430">
-    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0, 0,-4.2" VerticalAlignment="Top">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0, 0,-4.2" VerticalAlignment="Top" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
             <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
                 <StackPanel>

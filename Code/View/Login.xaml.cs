@@ -27,12 +27,8 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPrijaviSe_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
-        }
-
-        private void homeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new PocetnaUser();
+            PocetnaUser pocetnaUser = new PocetnaUser();
+            (this.Parent as Panel).Children.Add(pocetnaUser);
         }
     }
 }

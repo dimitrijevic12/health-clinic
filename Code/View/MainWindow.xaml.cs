@@ -22,8 +22,8 @@ namespace health_clinicClassDiagram.View
     {
         public MainWindow()
         {
-            InitializeComponent(); 
-            this.contentControl.Content = new Login();
+            InitializeComponent();;
+           (this.GridMain as Panel).Children.Add(new Login());
         }
     }
 }

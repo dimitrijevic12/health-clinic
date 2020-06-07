@@ -27,7 +27,14 @@ namespace health_clinicClassDiagram.View
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+        }
+
+        private void buttonOdobriLek_Click(object sender, RoutedEventArgs e)
+        {
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
     }
 }

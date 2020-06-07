@@ -7,7 +7,7 @@
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="430">
-    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
             <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
                 <StackPanel>
@@ -22,7 +22,7 @@
                     <Image Source="C:\health-clinic\health-clinic\Code\View\images\back.png" Height="59"/>
                 </StackPanel>
             </Button>
-            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click">
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0">
                 <StackPanel>
                     <Image Source="C:\health-clinic\health-clinic\Code\View\images\home.png" Height="67"/>
                 </StackPanel>

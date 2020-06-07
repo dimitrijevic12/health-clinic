@@ -25,14 +25,10 @@ namespace health_clinicClassDiagram.View
             InitializeComponent();
         }
 
-        private void buttonIstorijaBolesti_Click(object sender, RoutedEventArgs e)
-        {
-            this.Content = new ZdravstveniKartoniPacijent();
-        }
-
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
     }

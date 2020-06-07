@@ -31,42 +31,55 @@ namespace health_clinicClassDiagram.View
         {
             //            this.Content = new NapisiRecept(_imePrezime);
             //            this.Content = napisiRecept;
-            this.Content = new NapisiRecept();
+            UserControl usc = new NapisiRecept();
+            (this.Parent as Panel).Children.Add(usc);
+            //            this.mainPanel.Children.Remove();
+            //            this.mainPanel.Children.Add(napisiRecept);
+            //            (this.Parent as Panel).Children.Add(napisiRecept);
+            //            this.Content = this.;
+            //            this.Content = new NapisiRecept();
         }
 
         private void buttonNapisiUputZaOperaciju_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZakazivanjeOperacije();
+            UserControl usc = new ZakazivanjeOperacije();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonNapisiUputZaSpecijalistu_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZakazivanjeKodSpecijaliste();
+            UserControl usc = new ZakazivanjeKodSpecijaliste();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonZahtevZaBolnickoLecenje_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZahtevZaBolnickoLecenje();
+            UserControl usc = new ZahtevZaBolnickoLecenje();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonNapisiIzvestaj_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new DijagnozaProcedura();
+            UserControl usc = new DijagnozaProcedura();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void buttonZakaziKontrolu_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZakaziKontrolu();
+            UserControl usc = new ZakaziKontrolu();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void buttonIstorijaBolesti_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new ZdravstveniKartoniPacijent();
+            UserControl usc = new ZdravstveniKartoniPacijent();
+            (this.Parent as Panel).Children.Add(usc);
         }
     }
 }

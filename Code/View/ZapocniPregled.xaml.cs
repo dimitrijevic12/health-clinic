@@ -27,12 +27,14 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPregled_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new Pregled();
+            UserControl usc = new Pregled();
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
     }
 }
