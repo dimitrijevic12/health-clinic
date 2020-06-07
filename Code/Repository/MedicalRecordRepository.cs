@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Repository.UserRepository
  ***********************************************************************/
 
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
@@ -17,15 +18,23 @@ namespace Repository
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
         private readonly ICSVStream<MedicalRecord> _stream;
+        private readonly iSequencer<long> _sequencer;
 
         private String _path;
         private static MedicalRecordRepository Instance;
         public MedicalRecordRepository GetInstance() { return null; }
 
-        public MedicalRecordRepository(string path, CSVStream<MedicalRecord> stream)
+        public MedicalRecordRepository(string path, CSVStream<MedicalRecord> stream, iSequencer<long> sequencer)
         {
             _path = path;
             _stream = stream;
+            _sequencer = sequencer;
+            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
+        }
+
+        private long GetMaxId(List<MedicalRecord> records)
+        {
+            return records.Count() == 0 ? 0 : records.Max(apt => apt.id);
         }
 
         public MedicalRecord GetMedRecByPatient(Patient patient)

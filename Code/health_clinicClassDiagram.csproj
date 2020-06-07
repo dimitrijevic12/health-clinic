@@ -280,6 +280,7 @@
     <Compile Include="Model\SystemUsers\Doctor.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\SystemUsers\Gender.cs" />
     <Compile Include="Model\SystemUsers\Manager.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -562,6 +563,9 @@
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Converter\AbstractConverter.cs" />
+    <Compile Include="View\Converter\AppointmentConverter.cs" />
+    <Compile Include="View\Converter\MedicalRecordConverter.cs" />
     <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs">
       <DependentUpon>DetaljanPrikazRasporedaUser.xaml</DependentUpon>
     </Compile>

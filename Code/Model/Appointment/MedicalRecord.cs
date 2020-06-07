@@ -4,21 +4,42 @@
  * Purpose: Definition of the Class Appointment.MedicalRecord
  ***********************************************************************/
 
+using Model.SystemUsers;
 using System;
+using System.Collections;
 
 namespace Model.Appointment
 {
    public class MedicalRecord
    {
-      public System.Collections.ArrayList treatment;
-      
-      /// <pdGenerated>default getter</pdGenerated>
-      public System.Collections.ArrayList GetTreatment()
+        public long id;
+        public System.Collections.ArrayList treatments;
+        public Doctor choosenDoctor;
+        public Model.SystemUsers.Patient patient;
+
+        /// <pdGenerated>default getter</pdGenerated>
+
+        public MedicalRecord(long id, Patient patient, Doctor doctor)
       {
-         if (treatment == null)
-            treatment = new System.Collections.ArrayList();
-         return treatment;
+            this.id = id;
+            this.patient = patient;
+            this.choosenDoctor = doctor;
       }
+
+        public MedicalRecord(Patient patient, ArrayList treatments, Doctor doctor)
+        {
+            this.id = id;
+            this.patient = patient;
+            this.treatments = treatments;
+            this.choosenDoctor = doctor;
+        }
+
+        public System.Collections.ArrayList GetTreatment()
+        {
+            if (treatments == null)
+            treatments = new System.Collections.ArrayList();
+            return treatments;
+        }
       
       /// <pdGenerated>default setter</pdGenerated>
       public void SetTreatment(System.Collections.ArrayList newTreatment)
@@ -33,10 +54,10 @@ namespace Model.Appointment
       {
          if (newTreatment == null)
             return;
-         if (this.treatment == null)
-            this.treatment = new System.Collections.ArrayList();
-         if (!this.treatment.Contains(newTreatment))
-            this.treatment.Add(newTreatment);
+         if (this.treatments == null)
+            this.treatments = new System.Collections.ArrayList();
+         if (!this.treatments.Contains(newTreatment))
+            this.treatments.Add(newTreatment);
       }
       
       /// <pdGenerated>default Remove</pdGenerated>
@@ -44,18 +65,18 @@ namespace Model.Appointment
       {
          if (oldTreatment == null)
             return;
-         if (this.treatment != null)
-            if (this.treatment.Contains(oldTreatment))
-               this.treatment.Remove(oldTreatment);
+         if (this.treatments != null)
+            if (this.treatments.Contains(oldTreatment))
+               this.treatments.Remove(oldTreatment);
       }
       
       /// <pdGenerated>default removeAll</pdGenerated>
       public void RemoveAllTreatment()
       {
-         if (treatment != null)
-            treatment.Clear();
+         if (treatments != null)
+            treatments.Clear();
       }
-      public Model.SystemUsers.Patient patient;
+      
    
    }
 }

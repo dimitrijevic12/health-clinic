@@ -10,13 +10,13 @@ namespace Model.SystemUsers
 {
    public class RegisteredUser
    {
-      public Adress adress;
+        public Adress adress;
    
-      private String Username;
-      private String Password;
-      private String Name;
-      private String Surname;
-      private int Id;
+        public String Username;
+        public String Password;
+        public String Name;
+        public String Surname;
+        public int Id;
    
    }
 }

@@ -5,22 +5,34 @@
  ***********************************************************************/
 
 using Model.Appointment;
+using Model.SystemUsers;
 using System;
+using System.Windows.Forms.VisualStyles;
 
 namespace Repository.Csv.Converter
 {
    public class MedicalRecordCSVConverter : ICSVConverter<MedicalRecord>
    {
-      private String Delimiter;
+      private String _delimiter;
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)
         {
-            throw new NotImplementedException();
+            string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
+
+            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Parse(tokens[4]), Gender.MALE);
+            
+            return new MedicalRecord(
+                long.Parse(tokens[0]),
+                patient,
+                new Doctor()); //ne treba new doctor treba promeniti (tokens[6]), kao i u patient u Gender.MALE
         }
 
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
-            throw new NotImplementedException();
+            return string.Join(_delimiter,
+              entity.id,
+              entity.patient,
+              entity.choosenDoctor);
         }
     }
 }

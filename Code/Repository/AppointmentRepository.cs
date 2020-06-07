@@ -17,14 +17,15 @@ namespace Repository
 {
    public class AppointmentRepository : IAppointmentRepository
    {
-        private String Path;
+        private String _path;
         private static AppointmentRepository Instance;
         private readonly ICSVStream<Appointment> _stream;
         private readonly iSequencer<long> _sequencer;
         public AppointmentRepository GetInstance() { return null; }
 
-        public AppointmentRepository(ICSVStream<Appointment> stream, iSequencer<long> sequencer)
+        public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
         {
+            _path = path;
             _stream = stream;
             _sequencer = sequencer;
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
