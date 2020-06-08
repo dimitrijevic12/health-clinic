@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="sala" Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -33,13 +33,12 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="111" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="351" FontWeight="Bold" Height="184" Grid.RowSpan="3"  Margin="84,10,0,74" RenderTransformOrigin="0.501,0.446"/>
-        <!--Text="{x:Static language:Lang.sala}"-->
-        <Button Grid.Row="3" Width="300px" Margin="136,14,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  HorizontalAlignment="Center" Click="Button_prikaz" Grid.RowSpan="2" Height="164" VerticalAlignment="Top"/>
-        <!--Content="{x:Static language:Lang.prikazOpreme}"-->
-        <Button Grid.Row="6" HorizontalAlignment="Center" Width="300px" Margin="0,20,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.home}" Click="Button_pocetna" Grid.RowSpan="2" Grid.Column="4"/>
-        <Button Grid.Row="6" Width="300px" Margin="136,14,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.premestiOpremu}" HorizontalAlignment="Center"  Grid.RowSpan="2" Height="164" VerticalAlignment="Top" Click="Button_premestanje"/>
-        <Button Grid.Row="3" Width="300px" Margin="0,14,135,0" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.dodajNovuSalu}" HorizontalAlignment="Center"  Grid.RowSpan="2" Height="164" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Column="4" Click="Button_novaSala"/>
+        <TextBlock Grid.Column="2" Grid.Row="1" FontSize="111" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="351" FontWeight="Bold" Height="184" Grid.RowSpan="3"  Margin="84,10,0,74" RenderTransformOrigin="0.501,0.446" Text="{x:Static language:Lang.sala}"/>
+
+        <Button Grid.Row="3" Width="300px" Margin="136,14,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  HorizontalAlignment="Center" Click="Button_prikaz" Grid.RowSpan="2" Height="164" VerticalAlignment="Top" Content="{x:Static language:Lang.prikazOpreme}"/>
+        <Button Grid.Row="6" HorizontalAlignment="Center" Width="300px" Margin="0,20,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.home}" Click="Button_pocetna" Grid.RowSpan="2" Grid.Column="4"/>
+        <Button Grid.Row="6" Width="300px" Margin="136,14,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.premestiOpremu}" HorizontalAlignment="Center"  Grid.RowSpan="2" Height="164" VerticalAlignment="Top" Click="Button_premestanje"/>
+        <Button Grid.Row="3" Width="300px" Margin="0,14,135,0" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.dodajNovuSalu}" HorizontalAlignment="Center"  Grid.RowSpan="2" Height="164" VerticalAlignment="Top" Grid.ColumnSpan="3" Grid.Column="4" Click="Button_novaSala"/>
 
         <Separator Grid.ColumnSpan="7" HorizontalAlignment="Right" Height="31" Margin="0,48,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1016" Background="Black"/>
 

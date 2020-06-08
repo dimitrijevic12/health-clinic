@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         mc:Ignorable="d"
         Title="dodaj_salu"  Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+   
     <Grid>
 
         <Grid.RowDefinitions>
@@ -29,16 +30,16 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="460"  Height="54" Margin="10,10,38,31" Grid.ColumnSpan="3"/>
-        <!--Text="{x:Static language:Lang.NovaSalaInfo}"-->
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="460"  Height="54" Margin="10,10,38,31" Grid.ColumnSpan="3" Text="{x:Static language:Lang.NovaSalaInfo}"/>
 
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="384"  Height="54" Margin="10,73,115,141" Grid.ColumnSpan="3"/>
-        <!--Text="{x:Static language:Lang.unesiIdNoveSale}"-->
+
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="384"  Height="54" Margin="10,73,115,141" Grid.ColumnSpan="3" Text="{x:Static language:Lang.unesiIdNoveSale}"/>
+        
 
 
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_potvrdi" />
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_otkazi"/>
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_potvrdi" />
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_otkazi"/>
 
         <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,241,42,90" Grid.ColumnSpan="4" Grid.RowSpan="2"><Run Text=" "/><Run Text="Choose type for new room:"/></TextBlock>
 

@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="izvestaj" Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -33,10 +33,10 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="111" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="5" Width="638" FontWeight="Bold" Height="184" Grid.RowSpan="3" Margin="0,59,0,25"/> <!--Text="{x:Static language:Lang.izvestaj}"-->
-        <Button Grid.Row="5" HorizontalAlignment="Center" Width="300px" Margin="136,0,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  Content=" {x:Static language:Lang.planlekar}" Click="Button_plan"/>
-        <Button Grid.Column="4" Grid.Row="5" HorizontalAlignment="Center" Width="300px" Margin="0,0,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.prikazdogadjaja}"/>
-        <Button Grid.Column="4" Grid.Row="7" HorizontalAlignment="Center" Width="300px" Margin="0,0,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.home}" Click="Button_pocetna"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="111" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="5" Width="638" FontWeight="Bold" Height="184" Grid.RowSpan="3" Margin="0,59,0,25" Text="{x:Static language:Lang.izvestaj}"/> 
+        <Button Grid.Row="5" HorizontalAlignment="Center" Width="300px" Margin="136,0,0,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  Content="{x:Static language:Lang.planlekar}" Click="Button_plan"/>
+        <Button Grid.Column="4" Grid.Row="5" HorizontalAlignment="Center" Width="300px" Margin="0,0,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.prikazdogadjaja}"/>
+        <Button Grid.Column="4" Grid.Row="7" HorizontalAlignment="Center" Width="300px" Margin="0,0,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.home}" Click="Button_pocetna"/>
         <Separator Grid.ColumnSpan="7" HorizontalAlignment="Right" Height="37" Margin="0,27,0,0" Grid.Row="3" VerticalAlignment="Top" Width="1016" Background="Black"/>
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,10,0" Background="SkyBlue">

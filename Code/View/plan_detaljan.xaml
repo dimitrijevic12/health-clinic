@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="plan_detaljan" Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
         <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
 Margin="0,37,0,190" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -27,9 +27,9 @@ ScrollViewer.VerticalScrollBarVisibility="Auto">
 
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="0,0,391,682"/>
-        <!--Text="{x:Static language:Lang.prikazPlana}"-->
-        <Button HorizontalAlignment="Center" Width="257" Margin="637,580,122,36" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeIzadji}" Click="Button_izadji"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="0,0,391,682" Text="{x:Static language:Lang.prikazPlana}"/>
+        
+        <Button HorizontalAlignment="Center" Width="257" Margin="637,580,122,36" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeIzadji}" Click="Button_izadji"/>
 
     </Grid>
 </Window>

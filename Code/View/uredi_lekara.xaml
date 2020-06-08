@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="uredi_lekara"  Height="800" Width="768" Background="AliceBlue" >
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -33,22 +33,22 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.IdLekar}"-->
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.Ime}"-->
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.Prezime}"-->
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.Pol}"-->
-        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.Jmbg}"-->
-        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,25,62,0" Height="52" />
-        <!--Text="{x:Static language:Lang.DatumRodjenja}"-->
-        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="227" Margin="0,25,89,0" Height="52" />
-        <!--Text="{x:Static language:Lang.RadnoVreme}"-->
-        <TextBlock Grid.Column="0" Grid.Row="7" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" />
-        <!--Text="{x:Static language:Lang.Specijalista}"-->
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.IdLekar}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Ime}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Prezime}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Pol}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Jmbg}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,25,62,0" Height="52" Text="{x:Static language:Lang.DatumRodjenja}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="227" Margin="0,25,89,0" Height="52" Text="{x:Static language:Lang.RadnoVreme}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="7" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Specijalista}"/>
+        
 
         <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara"/>
         <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Ime"/>
@@ -64,8 +64,8 @@
             <ComboBoxItem Content="DA"/>
             <ComboBoxItem Content="NE"/>
         </ComboBox>
-        <Button Grid.Row="9" HorizontalAlignment="Center" Width="247" Margin="10,10,67,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeOtkazi}" Grid.ColumnSpan="3" Click="Button_otkazi" Grid.Column="4"/>
-        <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="51,10,28,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>
+        <Button Grid.Row="9" HorizontalAlignment="Center" Width="247" Margin="10,10,67,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.ColumnSpan="3" Click="Button_otkazi" Grid.Column="4"/>
+        <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="51,10,28,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>
 
 
     </Grid>

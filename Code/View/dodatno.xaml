@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"     
         mc:Ignorable="d"
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
+        
         
         Title="dodatno"  Height="768" Width="1024" Background="AliceBlue" >
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.View.Lang"-->
+   
 
     <Grid>
 
@@ -38,13 +39,13 @@
 
        
         <Image Grid.Column="0" Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/user2.png" Width="100" Margin="50,10,141,0" Grid.Row="1" RenderTransformOrigin="0.55,0.133" Grid.ColumnSpan="2"/>
-        <Label x:Name="label"  Grid.Column="1" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260" FontWeight="Bold" Height="57" FontSize="35" Grid.ColumnSpan="2" Content=" {x:Static language:Lang.Upravnik}"/>
+        <Label x:Name="label"  Grid.Column="1" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="1" VerticalAlignment="Top" Width="260" FontWeight="Bold" Height="57" FontSize="35" Grid.ColumnSpan="2" Content="{x:Static language:Lang.Upravnik}"/>
         <Image Grid.Column="4" Grid.Row="1" Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/clock3.png" Width="100" Margin="137,17,53,10" Grid.ColumnSpan="2"/>
         <Separator Grid.ColumnSpan="7" HorizontalAlignment="Right" Height="26" Margin="0,22,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1016" Background="Black"/>
-        <Button Grid.Row="4" HorizontalAlignment="Center" Width="300px" Margin="140,0,141,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  Content=" {x:Static language:Lang.promenajezika}" Click="Button_jezik"/>
+        <Button Grid.Row="4" HorizontalAlignment="Center" Width="300px" Margin="140,0,141,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black"  Content="{x:Static language:Lang.promenajezika}" Click="Button_jezik"/>
         <TextBlock Grid.Column="4" Grid.Row="3" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center"  Grid.ColumnSpan="3" Margin="0,49,127,10" Width="299">Svetla tema/Tamna tema</TextBlock>
-        <Button Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" Width="300px" Margin="140,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}"  OpacityMask="Black" Content=" {x:Static language:Lang.promenateme}" />
-        <Button Grid.Column="3" Grid.Row="6" HorizontalAlignment="Center" Width="300px" Margin="140,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}"  OpacityMask="Black" Content=" {x:Static language:Lang.home}" Click="Button_pocetna"/>
+        <Button Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" Width="300px" Margin="140,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}"  OpacityMask="Black" Content="{x:Static language:Lang.promenateme}" />
+        <Button Grid.Column="3" Grid.Row="6" HorizontalAlignment="Center" Width="300px" Margin="140,0" Grid.ColumnSpan="4" FontSize="25" Style="{StaticResource RoundButton}"  OpacityMask="Black" Content="{x:Static language:Lang.home}" Click="Button_pocetna"/>
 
         <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,10,0" Background="SkyBlue">
             <Menu.ItemsPanel>
@@ -63,8 +64,8 @@
         <Label x:Name="labelTime" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="101,53,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.211,-1.385" Width="145" FontSize="25" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="0,57,0,0" Grid.Row="3" VerticalAlignment="Top" Width="291" Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="comboBox_SelectionChanged">
-            <ComboBoxItem Content="Srpski"/>
-            <ComboBoxItem Content="English"/>
+            <ComboBoxItem Content="{x:Static language:Lang.sr}"/>
+            <ComboBoxItem Content="{x:Static language:Lang.en}"/>
         </ComboBox>
 
 

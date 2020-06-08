@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="premestanje_opreme" Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -30,7 +30,7 @@
             <ColumnDefinition Width="169*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="10,10,42,10" Grid.ColumnSpan="5" /> <!--Text="{x:Static language:Lang.izaberiSaluZaPremestanjeOpreme}"-->
+        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="10,10,42,10" Grid.ColumnSpan="5" Text="{x:Static language:Lang.izaberiSaluZaPremestanjeOpreme}"/> 
         <ComboBox Height="42" Name="tip2" Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="3" Margin="137,10,10,3" RenderTransformOrigin="0.443,-3.243">
             <ComboBoxItem Content="Magacin"/>
             <ComboBoxItem Content="102"/>
@@ -39,8 +39,8 @@
             <ComboBoxItem Content="105"/>
         </ComboBox>
 
-        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="10,0,42,273" Grid.ColumnSpan="5"   Grid.Row="1"/>
-        <!--Text="{x:Static language:Lang.izaberiOpremu}"-->
+        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="10,0,42,273" Grid.ColumnSpan="5"   Grid.Row="1" Text="{x:Static language:Lang.izaberiOpremu}"/>
+        
 
         <DataGrid  x:Name="dataGridIzSale" ItemsSource="{Binding Path=DetaljnaOprema}" AutoGenerateColumns="True" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,40,0,116" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="7" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged">
@@ -55,8 +55,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="36" Margin="10,197,42,75" Grid.ColumnSpan="5"  />
-        <!--Text="{x:Static language:Lang.odabranaOprema}"-->
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="36" Margin="10,197,42,75" Grid.ColumnSpan="5"  Text="{x:Static language:Lang.odabranaOprema}"/>
+        
         <DataGrid  x:Name="dataGridUSale" ItemsSource="{Binding Path=DetaljnaOprema}" AutoGenerateColumns="True" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,238,0,42" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="7" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged" Grid.RowSpan="2">
             <DataGrid.Columns>
@@ -71,10 +71,10 @@
         </DataGrid>
 
 
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="138,36,139,10" Click="Button_potvrdi" />
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3" Margin="137,36,138,10" Click="Button_otkazi"/>
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="138,36,139,10" Click="Button_potvrdi" />
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3" Margin="137,36,138,10" Click="Button_otkazi"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,29,32,42" Grid.ColumnSpan="5"  /> <!--Text="{x:Static language:Lang.izaberiSaluUKojuPrebacujes}"-->
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,29,32,42" Grid.ColumnSpan="5"  Text="{x:Static language:Lang.izaberiSaluUKojuPrebacujes}"/> 
         <ComboBox Height="42" Name="tip" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="3" Margin="137,29,10,54">
             <ComboBoxItem Content="Magacin"/>
             <ComboBoxItem Content="102"/>

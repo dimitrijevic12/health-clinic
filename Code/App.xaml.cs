@@ -18,7 +18,9 @@ namespace health_clinicClassDiagram
         {
             //var langCode = health_clinicClassDiagram.View.Properties.Settings.Default.languageCode;
             //Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(langCode);
-            //base.OnStartup(e);
+            var langCode = health_clinicClassDiagram.Properties.Settings.Default.languageCode;
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(langCode);
+            base.OnStartup(e);
         }
     }
 }

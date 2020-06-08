@@ -44,15 +44,16 @@ namespace health_clinicClassDiagram.view
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-        //    if(comboBox.SelectedIndex == 0)
-        //    {
-        //        Properties.Settings.Default.languageCode = "se-SE";
-        //    }
-        //    else
-        //    {
-        //        Properties.Settings.Default.languageCode = "en-US";
-        //    }
-        //    Properties.Settings.Default.Save();
+            if (comboBox.SelectedIndex == 0)
+            {
+                Properties.Settings.Default.languageCode = "se-SE";
+            }
+            else
+            {
+                Properties.Settings.Default.languageCode = "en-US";
+            }
+            Properties.Settings.Default.Save();
+
         }
 
       

@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="naruci_opremu"  Height="768" Width="1024" Background="AliceBlue">
-    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    
     <Grid>
 
         <Grid.RowDefinitions>
@@ -30,21 +30,21 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="45" Margin="10,10,42,0" Grid.ColumnSpan="4" />
-        <!--Text="{x:Static language:Lang.oprema}"-->
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="45" Margin="10,10,42,0" Grid.ColumnSpan="4" Text="{x:Static language:Lang.oprema}"/>
+        
 
         <DataGrid  x:Name="dataGridNaruciOpremu" ItemsSource="{Binding Path=Oprema}" AutoGenerateColumns="True" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,5,0,128" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="6" Grid.Row="2" Grid.Column="0"/>
 
 
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,61,139,101" Grid.RowSpan="2" />
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="137,61,138,101" Click="Button_otkazi" Grid.RowSpan="2"/>
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,61,139,101" Grid.RowSpan="2" />
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="137,61,138,101" Click="Button_otkazi" Grid.RowSpan="2"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54"  Margin="10,185,42,69" Grid.ColumnSpan="4"/> <!--Text="{x:Static language:Lang.unesiOpremuNarucivanje}"-->
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="996"  Height="54"  Margin="20,245,0,9" Grid.ColumnSpan="6" Foreground="#FFD81313"/>
-        <!--Text="{x:Static language:Lang.PorukaNaruciOpremu}"-->
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54"  Margin="10,29,42,42" Grid.ColumnSpan="4"/>
-        <!--Text="{x:Static language:Lang.unesiKolicinu}"-->
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54"  Margin="10,185,42,69" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.unesiOpremuNarucivanje}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="996"  Height="54"  Margin="20,245,0,9" Grid.ColumnSpan="6" Foreground="#FFD81313" Text="{x:Static language:Lang.PorukaNaruciOpremu}"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54"  Margin="10,29,42,42" Grid.ColumnSpan="4" Text="{x:Static language:Lang.unesiKolicinu}"/>
+        
 
         <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,185,20,81" FontSize="30" VerticalAlignment="Center"></TextBox>
         <TextBox Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Margin="0,29,20,54" FontSize="30" VerticalAlignment="Center"></TextBox>
