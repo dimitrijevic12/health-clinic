@@ -1,0 +1,35 @@
+﻿<Window x:Class="health_clinicClassDiagram.view.plan_detaljan"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:local="clr-namespace:health_clinicClassDiagram.view"
+        mc:Ignorable="d"
+        Title="plan_detaljan" Height="768" Width="1024" Background="AliceBlue">
+    <!--xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"-->
+    <Grid>
+        <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
+Margin="0,37,0,190" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+RowBackground="#fff" FontWeight="Bold" Foreground="#525252"
+ScrollViewer.CanContentScroll="True" MaxHeight="490"
+AlternatingRowBackground="#f2f2f2" BorderBrush="#000" BorderThickness="1"
+ScrollViewer.HorizontalScrollBarVisibility="Visible"
+ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tip termina"  IsReadOnly="True" />
+                <DataGridTextColumn Header="Ime pacijenta"  IsReadOnly="True" />
+                <DataGridTextColumn Header="Prezime pacijenta"  IsReadOnly="True" />
+                <DataGridTextColumn Header="Jmbg pacijenta"  IsReadOnly="True" />
+                <DataGridTextColumn Header="Datum"  IsReadOnly="True" />
+                <DataGridTextColumn Header="Početak"  IsReadOnly="True" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="0,0,391,682"/>
+        <!--Text="{x:Static language:Lang.prikazPlana}"-->
+        <Button HorizontalAlignment="Center" Width="257" Margin="637,580,122,36" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content=" {x:Static language:Lang.DugmeIzadji}" Click="Button_izadji"/>
+
+    </Grid>
+</Window>
