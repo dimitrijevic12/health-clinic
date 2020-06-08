@@ -107,25 +107,27 @@ namespace health_clinicClassDiagram.View
 
             
 
-            GridKreiraj.Children.Clear();
+            
             RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
-            GridKreiraj.Children.Add(pacijenti);
+            (this.Parent as Panel).Children.Add(pacijenti);
 
 
         }
 
         private void Button_Odustani(object sender, RoutedEventArgs e)
         {
-            GridKreiraj.Children.Clear();
-            RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
-            GridKreiraj.Children.Add(pacijenti);
+            (this.Parent as Panel).Children.Remove(this);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridKreiraj.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridKreiraj.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

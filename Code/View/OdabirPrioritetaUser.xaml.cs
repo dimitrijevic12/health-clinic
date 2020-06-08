@@ -28,12 +28,13 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridOdabir.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridOdabir.Children.Add(home);
-
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
         }
 
-        
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace health_clinicClassDiagram.View
 {
@@ -10,13 +11,9 @@ namespace health_clinicClassDiagram.View
         public MainWindow()
         {
             InitializeComponent();
+            (this.GridMain as Panel).Children.Add(new LoginUser());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GridMain.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridMain.Children.Add(home);
-        }
+        
     }
 }

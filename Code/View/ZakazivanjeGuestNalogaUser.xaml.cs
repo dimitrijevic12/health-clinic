@@ -59,23 +59,25 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            GridZakazivanje.Children.Clear();
+            
             DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
-            GridZakazivanje.Children.Add(raspored);
+            (this.Parent as Panel).Children.Add(raspored);
         }
 
         private void Button_Odustanak(object sender, RoutedEventArgs e)
         {
-            GridZakazivanje.Children.Clear();
-            DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
-            GridZakazivanje.Children.Add(raspored);
+            (this.Parent as Panel).Children.Remove(this);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
-        {           
-            GridZakazivanje.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridZakazivanje.Children.Add(home);
+        {
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

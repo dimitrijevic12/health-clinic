@@ -51,32 +51,32 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Kreiraj(object sender, RoutedEventArgs e)
         {
-            GridPacijenti.Children.Clear();
+            
             KreirajNalogUser kreiraj = new KreirajNalogUser();
-            GridPacijenti.Children.Add(kreiraj);
+            (this.Parent as Panel).Children.Add(kreiraj);
         }
 
         private void Button_Obrisi(object sender, RoutedEventArgs e)
         {
             //Nalozi.Remove(nalog);
-            GridPacijenti.Children.Clear();
+            
             RegistrovaniPacijentiUser reg = new RegistrovaniPacijentiUser();
-            GridPacijenti.Children.Add(reg);
+            (this.Parent as Panel).Children.Add(reg);
         }
 
         private void Button_Izmeni(object sender, RoutedEventArgs e)
         {
-            GridPacijenti.Children.Clear();
-            
+            IzmeniNalogUser izmeni = new IzmeniNalogUser();
+            (this.Parent as Panel).Children.Add(izmeni);
+
             //IzmeniNalogUser izmeni = new IzmeniNalogUser(nalog);
             //GridPacijenti.Children.Add(izmeni);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridPacijenti.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridPacijenti.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
         }
 
         public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
@@ -117,6 +117,11 @@ namespace health_clinicClassDiagram.View
 
             PregledNalogaUser pregled = new PregledNalogaUser();
             GridPacijenti.Children.Add(pregled);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

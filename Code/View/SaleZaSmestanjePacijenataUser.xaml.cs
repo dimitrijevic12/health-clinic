@@ -50,16 +50,15 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Smesti(object sender, RoutedEventArgs e)
         {
-            GridSale.Children.Clear();
-            //SmestiPacijentaUser smesti = new SmestiPacijentaUser(sala);
-            //GridSale.Children.Add(smesti);
+            
+            SmestiPacijentaUser smesti = new SmestiPacijentaUser();
+            (this.Parent as Panel).Children.Add(smesti);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridSale.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridSale.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
         }
 
         public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
@@ -96,9 +95,14 @@ namespace health_clinicClassDiagram.View
 
         private void btnPrikazi_Click(object sender, RoutedEventArgs e)
         {
-            GridSale.Children.Clear();
+            
             PrikazSaleZaSmestanjePacijenataUser prikaz = new PrikazSaleZaSmestanjePacijenataUser();
-            GridSale.Children.Add(prikaz);
+            (this.Parent as Panel).Children.Add(prikaz);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

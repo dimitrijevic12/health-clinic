@@ -28,23 +28,26 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Kontrola(object sender, RoutedEventArgs e)
         {
-            GridIzvestaj.Children.Clear();
+            
             PregledKontroleUser pregled = new PregledKontroleUser();
-            GridIzvestaj.Children.Add(pregled);
+            (this.Parent as Panel).Children.Add(pregled);
         }
 
         private void Button_Lekovi(object sender, RoutedEventArgs e)
         {
-            GridIzvestaj.Children.Clear();
             IzvestajLekoviUser izvestaj = new IzvestajLekoviUser();
-            GridIzvestaj.Children.Add(izvestaj);
+            (this.Parent as Panel).Children.Add(izvestaj);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridIzvestaj.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridIzvestaj.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

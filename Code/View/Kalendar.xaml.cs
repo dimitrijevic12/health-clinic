@@ -29,16 +29,15 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izaberi(object sender, RoutedEventArgs e)
         {
-            GridKalendar.Children.Clear();
+            
             DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
-            GridKalendar.Children.Add(detaljan);
+            (this.Parent as Panel).Children.Add(detaljan);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridKalendar.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridKalendar.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
         }
 
         private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -53,6 +52,11 @@ namespace health_clinicClassDiagram.View
                 date = calendar.SelectedDate.Value;
                 
             }
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

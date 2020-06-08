@@ -60,23 +60,25 @@ namespace health_clinicClassDiagram.View
         //    }          
 
 
-        //    GridSmestanje.Children.Clear();
-        //    SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-        //    GridSmestanje.Children.Add(sale);
+            
+            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
+            (this.Parent as Panel).Children.Add(sale);
         }
 
         private void Button_Odustanak(object sender, RoutedEventArgs e)
         {
-            GridSmestanje.Children.Clear();
-            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            GridSmestanje.Children.Add(sale);
+            (this.Parent as Panel).Children.Remove(this);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridSmestanje.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridSmestanje.Children.Add(home);
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

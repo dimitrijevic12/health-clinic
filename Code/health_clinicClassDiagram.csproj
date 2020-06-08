@@ -620,6 +620,9 @@
     <Compile Include="View\KreirajNalogUser.xaml.cs">
       <DependentUpon>KreirajNalogUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\LoginUser.xaml.cs">
+      <DependentUpon>LoginUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -705,6 +708,10 @@
     <Page Include="View\KreirajNalogUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LoginUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

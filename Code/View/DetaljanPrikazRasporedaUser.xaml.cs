@@ -21,9 +21,9 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Zakazivanje(object sender, RoutedEventArgs e)
         {
-            GridDetaljan.Children.Clear();
+            
             ZakazivanjePregledaUser zakazivanje = new ZakazivanjePregledaUser(date);
-            GridDetaljan.Children.Add(zakazivanje);
+            (this.Parent as Panel).Children.Add(zakazivanje);
         }
 
         private void Button_Otkazivanje(object sender, RoutedEventArgs e)
@@ -33,30 +33,35 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izmena(object sender, RoutedEventArgs e)
         {
-            GridDetaljan.Children.Clear();
+            
             IzmenaPregledaUser izmena = new IzmenaPregledaUser(date);
-            GridDetaljan.Children.Add(izmena);
+            (this.Parent as Panel).Children.Add(izmena);
         }
 
         private void Button_Guest(object sender, RoutedEventArgs e)
         {
-            GridDetaljan.Children.Clear();
+            
             ZakazivanjeGuestNalogaUser zakazivanje = new ZakazivanjeGuestNalogaUser(date);
-            GridDetaljan.Children.Add(zakazivanje);
+            (this.Parent as Panel).Children.Add(zakazivanje);
         }
 
         private void Button_Prikaz(object sender, RoutedEventArgs e)
         {
-            GridDetaljan.Children.Clear();
+            
             SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            GridDetaljan.Children.Add(sale);
+            (this.Parent as Panel).Children.Add(sale);
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
-            GridDetaljan.Children.Clear();
-            HomeUser home = new HomeUser();
-            GridDetaljan.Children.Add(home);
+
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }

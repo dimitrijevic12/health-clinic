@@ -28,38 +28,39 @@ namespace health_clinicClassDiagram.View
 
         private void Button_DanasnjiRaspored(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             DateTime date = DateTime.Now;
             DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
-            GridHome.Children.Add(detaljan);
+            (this.Parent as Panel).Children.Add(detaljan);
         }
 
         private void Button_Smestaj(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            GridHome.Children.Add(sale);
+            
+            (this.Parent as Panel).Children.Add(sale);
         }
 
         private void Button_Raspored(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             Kalendar kalendar = new Kalendar();
-            GridHome.Children.Add(kalendar);
+            (this.Parent as Panel).Children.Add(kalendar);
         }
 
         private void Button_Pacijenti(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
-            GridHome.Children.Add(pacijenti);
+            (this.Parent as Panel).Children.Add(pacijenti);
         }
 
         private void Button_Doktori(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             Doktori doktori = new Doktori();
-            GridHome.Children.Add(doktori);
+            (this.Parent as Panel).Children.Add(doktori);
         }
 
         private void Button_Help(object sender, RoutedEventArgs e)
@@ -76,16 +77,21 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izvestaj(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             GenerisiIzvestajUser generisi = new GenerisiIzvestajUser();
-            GridHome.Children.Add(generisi);
+            (this.Parent as Panel).Children.Add(generisi);
         }
 
         private void Button_Prioritet(object sender, RoutedEventArgs e)
         {
-            GridHome.Children.Clear();
+            
             OdabirPrioritetaUser prioritet = new OdabirPrioritetaUser();
-            GridHome.Children.Add(prioritet);
+            (this.Parent as Panel).Children.Add(prioritet);
+        }
+
+        private void Button_Back(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
         }
     }
 }
