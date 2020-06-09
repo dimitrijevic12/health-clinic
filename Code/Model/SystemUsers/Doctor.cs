@@ -11,6 +11,8 @@ namespace Model.SystemUsers
    public class Doctor : RegisteredUser
    {
       public WorkingSchedule[] workingSchedule;
+
+     public Doctor() { }
    
    }
 }
