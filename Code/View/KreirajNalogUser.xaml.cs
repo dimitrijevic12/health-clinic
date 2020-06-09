@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Controller;
+using Model.SystemUsers;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,11 +57,21 @@ namespace health_clinicClassDiagram.View
             }
         }
 
+        private readonly IMedicalRecordController _recordController;
+        private readonly IController<Patient> _patientController;
+
+        private readonly IList<Patient> _patients;
+
         public KreirajNalogUser()
         {
             InitializeComponent();
             this.DataContext = this;
             labelDateTime.Content = DateTime.Now.ToShortDateString();
+
+            var app = Application.Current as App;
+            _recordController = app
+
+
         }
 
         private void Button_Potvrdi(object sender, RoutedEventArgs e)
