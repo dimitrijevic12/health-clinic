@@ -69,15 +69,15 @@ namespace Repository
 
         public Appointment Edit(Appointment obj)
         {
-            
+
             var appointments = _stream.ReadAll().ToList();
             appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(appointments);
             return obj;
-                     
+
         }
 
-        
+
         public bool Delete(Appointment obj)
         {
             var appointments = _stream.ReadAll().ToList();
@@ -109,7 +109,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        
-   
-   }
+
+
+    }
 }

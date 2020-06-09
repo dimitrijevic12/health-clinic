@@ -12,7 +12,11 @@ namespace Model.SystemUsers
    {
         public Adress adress;
    
+<<<<<<< HEAD
         public String Username;
+=======
+      public String Username;
+>>>>>>> master
         public String Password;
         public String Name;
         public String Surname;

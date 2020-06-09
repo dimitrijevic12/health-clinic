@@ -4,16 +4,24 @@
  * Purpose: Definition of the Class SystemUsers.Patient
  ***********************************************************************/
 
+using health_clinicClassDiagram.Model.SystemUsers;
 using System;
 
 namespace Model.SystemUsers
 {
    public class Patient : RegisteredUser
    {
+<<<<<<< HEAD
       private DateTime dateOfBirth;
       private Boolean guestAccount;
       private Gender gender;
         
+=======
+        private DateTime dateOfBirth;
+        private Boolean guestAccount;
+        private Gender gender;
+
+>>>>>>> master
 
         public Patient(String name, String surname, int jmbg)
         {
@@ -30,6 +38,10 @@ namespace Model.SystemUsers
             this.dateOfBirth = dateOfBirth;
             this.gender = gender;
         }
+<<<<<<< HEAD
    
    }
+=======
+    }
+>>>>>>> master
 }
