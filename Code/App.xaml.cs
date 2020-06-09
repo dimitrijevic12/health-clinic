@@ -3,6 +3,7 @@ using Model.Appointment;
 using Repository;
 using Repository.Csv.Converter;
 using Repository.Csv.Stream;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -35,8 +36,11 @@ namespace health_clinicClassDiagram
 
             var recordRepository = new MedicalRecordRepository(
                 MEDICALRECORD_FILE,
-                new CSVStream<MedicalRecord>(MEDICALRECORD_FILE, new MedicalRecordCSVConverter()),
+                new CSVStream<MedicalRecord>(MEDICALRECORD_FILE, new MedicalRecordCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
+
+            var appointmentService = new AppointmentService;
+            var recordService = new MedicalRecordService;
         }
     }
 }
