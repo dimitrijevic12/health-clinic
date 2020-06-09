@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,17 @@ namespace Service
 {
    public class UserService : IUserService
    {
-      public UserService GetInstance() { return null; }
+        public Repository.IUserRepository _userRepository;
+
+        private static UserService Instance;
+
+        public UserService GetInstance() { return null; }
+
+        public UserService(IUserRepository repository)
+        {
+            _userRepository = repository;
+
+        }
 
         public RegisteredUser LoginUser(string username, string password)
         {
@@ -31,27 +42,26 @@ namespace Service
 
         public RegisteredUser Create(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            var newRegisteredUser = _userRepository.Save(obj);
+            return newRegisteredUser;
         }
 
         public RegisteredUser Edit(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            return _userRepository.Edit(obj);
         }
 
         public bool Delete(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            return _userRepository.Delete(obj);
+
         }
 
         public List<RegisteredUser> GetAll()
         {
-            throw new NotImplementedException();
+            var users = _userRepository.GetAll();
+            return users;
         }
 
-        public Repository.IUserRepository iUserRepository;
-   
-      private static UserService Instance;
-   
-   }
+    }
 }
