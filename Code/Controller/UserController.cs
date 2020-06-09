@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,17 @@ namespace Controller
 {
    public class UserController : IUserController
    {
-      public UserController GetInstance() { return null; }
+        public Service.IUserService _service;
+
+        private static UserController Instance;
+
+        public UserController GetInstance() { return null; }
+
+        public UserController(IUserService service)
+        {
+            _service = service;
+        }
+
         public RegisteredUser LoginUser(string username, string password)
         {
             throw new NotImplementedException();
@@ -20,27 +31,27 @@ namespace Controller
 
         public List<RegisteredUser> GetAll()
         {
-            throw new NotImplementedException();
+            var users = (List<RegisteredUser>)_service.GetAll();
+            return users;
         }
 
         public bool Delete(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            _service.Delete(obj);
+            return true;
         }
 
         public RegisteredUser Create(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            _service.Create(obj);
+            return obj;
         }
 
         public RegisteredUser Edit(RegisteredUser obj)
         {
-            throw new NotImplementedException();
+            _service.Edit(obj);
+            return obj;
         }
 
-        public Service.IUserService iUserService;
-   
-      private static UserController Instance;
-   
-   }
+    }
 }

@@ -13,13 +13,25 @@ namespace Repository.Csv.Converter
 {
    public class MedicalRecordCSVConverter : ICSVConverter<MedicalRecord>
    {
-        private String _delimiter;
+
+        private readonly string _delimiter;
+        private readonly string _datetimeFormat;
+
+        public MedicalRecordCSVConverter(string delimiter, string datetimeFormat)
+        {
+            _delimiter = delimiter;
+            _datetimeFormat = datetimeFormat;
+        }
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Parse(tokens[4]), Gender.MALE);
+            String genderString = tokens[5];
+
+            Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
+
+            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);
 
             return new MedicalRecord(
                 long.Parse(tokens[0]),
@@ -31,7 +43,11 @@ namespace Repository.Csv.Converter
         {
             return string.Join(_delimiter,
               entity.id,
-              entity.patient,
+              entity.patient.Name,
+              entity.patient.Surname,
+              entity.patient.Id,
+              DateTime.Now,
+              entity.patient.Gender,
               entity.choosenDoctor);
         }
     }

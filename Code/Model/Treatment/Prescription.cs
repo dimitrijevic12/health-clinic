@@ -5,12 +5,15 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Model.Treatment
 {
    public class Prescription
    {
-      public Model.Rooms.Drug[] drug;
-   
-   }
+        private int id;
+        public List<Model.Rooms.Drug> drug;
+
+        public int Id { get => id; set => id = value; }
+    }
 }

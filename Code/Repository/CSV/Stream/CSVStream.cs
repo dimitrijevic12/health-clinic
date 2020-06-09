@@ -7,26 +7,38 @@
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Repository.Csv.Stream
 {
    public class CSVStream<E> : ICSVStream<E> where E : class
     {
+        private readonly string _path;
         private readonly ICSVConverter<E> _converter;
 
-        public void AppendToFile(E entity)
+        public CSVStream(string path, ICSVConverter<E> converter)
         {
-            throw new NotImplementedException();
+            _path = path;
+            _converter = converter;
         }
+
+        public void AppendToFile(E entity)
+         => File.AppendAllText(_path,
+               _converter.ConvertEntityToCSVFormat(entity) + Environment.NewLine);
 
         public List<E> ReadAll()
-        {
-            throw new NotImplementedException();
-        }
+            => File.ReadAllLines(_path)
+                    .Select(_converter.ConvertCSVFormatToEntity)
+                    .ToList();
 
         public void SaveAll(List<E> entities)
-        {
-            throw new NotImplementedException();
-        }
+            => WriteAllLinesToFile(
+                     entities
+                     .Select(_converter.ConvertEntityToCSVFormat)
+                     .ToList());
+
+        public void WriteAllLinesToFile(IEnumerable<string> content)
+            => File.WriteAllLines(_path, content.ToArray());
     }
 }
