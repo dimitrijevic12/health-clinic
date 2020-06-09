@@ -13,7 +13,15 @@ namespace Repository.Csv.Converter
 {
    public class MedicalRecordCSVConverter : ICSVConverter<MedicalRecord>
    {
-        private String _delimiter;
+      
+        private readonly string _delimiter;
+        private readonly string _datetimeFormat;
+
+        public MedicalRecordCSVConverter(string delimiter, string datetimeFormat)
+        {
+            _delimiter = delimiter;
+            _datetimeFormat = datetimeFormat;
+        }
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)
         {
