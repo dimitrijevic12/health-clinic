@@ -14,6 +14,7 @@ namespace Model.SystemUsers
    
       private DateTime From;
       private DateTime To;
-   
-   }
+
+        public long Id { get; set; }
+    }
 }

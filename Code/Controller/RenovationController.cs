@@ -12,30 +12,32 @@ namespace Controller
 {
    public class RenovationController : IRenovationController
    {
-      public RenovationController GetInstance() { return null; }
+
+        public Service.IRenovationService iRenovationService;
+
+        private static RenovationController Instance;
+
+        public RenovationController GetInstance() { return null; }
 public List<Renovation> GetAll()
         {
-            throw new NotImplementedException();
+            return iRenovationService.GetAll();
         }
 
         public bool Delete(Renovation obj)
         {
-            throw new NotImplementedException();
+            return iRenovationService.Delete(obj);
         }
 
         public Renovation Create(Renovation obj)
         {
-            throw new NotImplementedException();
+            return iRenovationService.Create(obj);
         }
 
         public Renovation Edit(Renovation obj)
         {
-            throw new NotImplementedException();
+            return iRenovationService.Edit(obj);
         }
 
-        public Service.IRenovationService iRenovationService;
-   
-      private static RenovationController Instance;
    
    }
 }

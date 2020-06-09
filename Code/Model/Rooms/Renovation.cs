@@ -15,6 +15,18 @@ namespace Model.Rooms
       private DateTime StartDate;
       private DateTime EndDate;
       private TypeOfRenovation TypeOfRenovation;
-   
-   }
+
+        public DateTime startDate  // property
+        {
+            get { return StartDate; }   // get method
+            set { StartDate = value; }  // set method
+        }
+        public DateTime endDate  // property
+        {
+            get { return EndDate; }   // get method
+            set { EndDate = value; }  // set method
+        }
+
+        public int Id { get; internal set; }
+    }
 }
