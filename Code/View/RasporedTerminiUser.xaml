@@ -28,11 +28,11 @@
                 </StackPanel>
             </Button>
         </DockPanel>
-        <Button x:Name="buttonPregledTermina" Content="Button" Width="75" Click="buttonPregledTermina_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="565"  VerticalAlignment="Top" Width="430" Margin="0,0,0,-0.2">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="565"  VerticalAlignment="Top" Width="430" Margin="0,0,0,-0.2" ItemsSource="{Binding BlankAppointments}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Width="200" Header="Start" DisplayMemberBinding="{Binding Path=StartDate, StringFormat=HH:mm}" />
+                    <GridViewColumn Width="200" Header="End" DisplayMemberBinding="{Binding Path=EndDate, StringFormat=HH:mm}" />
                 </GridView>
             </ListView.View>
         </ListView>

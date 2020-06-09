@@ -664,6 +664,7 @@
     <Compile Include="View\TerminiZakazivanje.xaml.cs">
       <DependentUpon>TerminiZakazivanje.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Util\AppointmentGenerator.cs" />
     <Compile Include="View\ZahtevZaBolnickoLecenje.xaml.cs">
       <DependentUpon>ZahtevZaBolnickoLecenje.xaml</DependentUpon>
     </Compile>

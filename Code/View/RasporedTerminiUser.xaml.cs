@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Appointment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Util;
 
 namespace health_clinicClassDiagram.View
 {
@@ -20,9 +22,14 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class RasporedTerminiUser : UserControl
     {
+        List<Appointment> blankAppointments = AppointmentGenerator.Instance.generateList(DateTime.Today);
+
+        public List<Appointment> BlankAppointments { get => blankAppointments; set => blankAppointments = value; }
+
         public RasporedTerminiUser()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         private void buttonPregledTermina_Click(object sender, RoutedEventArgs e)
