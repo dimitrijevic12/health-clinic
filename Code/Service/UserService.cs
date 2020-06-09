@@ -22,7 +22,11 @@ namespace Service
         public UserService(IUserRepository repository)
         {
             _userRepository = repository;
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> master
         }
 
         public RegisteredUser LoginUser(string username, string password)
@@ -54,11 +58,16 @@ namespace Service
         public bool Delete(RegisteredUser obj)
         {
             return _userRepository.Delete(obj);
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> master
         }
 
         public List<RegisteredUser> GetAll()
         {
+<<<<<<< HEAD
             var users = _userRepository.GetAll();          
             return users;
         }
@@ -66,4 +75,11 @@ namespace Service
         
    
    }
+=======
+            var users = _userRepository.GetAll();
+            return users;
+        }
+
+    }
+>>>>>>> master
 }

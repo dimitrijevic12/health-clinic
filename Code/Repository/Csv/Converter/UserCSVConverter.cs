@@ -21,6 +21,15 @@ namespace Repository.Csv.Converter
             _datetimeFormat = datetimeFormat;
         }
 
+        private readonly string _delimiter;
+        private readonly string _datetimeFormat;
+
+        public UserCSVConverter(string delimiter, string datetimeFormat)
+        {
+            _delimiter = delimiter;
+            _datetimeFormat = datetimeFormat;
+        }
+
         public RegisteredUser ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());

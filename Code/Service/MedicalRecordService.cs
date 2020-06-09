@@ -36,7 +36,11 @@ namespace Service
             var record = _medicalRecordRepository.GetMedRecByPatient(patient);
             //fali red
             return record;
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> master
         }
 
         public MedicalRecord GetMedRecByTreatment(Treatment treatment)
@@ -82,8 +86,13 @@ namespace Service
         }
 
         public Repository.IMedicalRecordRepository iMedicalRecordRepository;
+<<<<<<< HEAD
    
       
    
    }
+=======
+
+    }
+>>>>>>> master
 }

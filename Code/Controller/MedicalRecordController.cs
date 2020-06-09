@@ -24,7 +24,7 @@ namespace Controller
         {
             _service = service;
         }
-        
+
         public List<Treatment> GetAllTreatments()
         {
             throw new NotImplementedException();
@@ -65,9 +65,13 @@ namespace Controller
             return obj;
         }
 
+<<<<<<< HEAD
         
    
       
    
    }
+=======
+    }
+>>>>>>> master
 }

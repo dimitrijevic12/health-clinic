@@ -220,6 +220,7 @@
     <Compile Include="Controller\WorkingScheduleController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Main.cs" />
     <Compile Include="Model\Appointment\Appointment.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -362,6 +363,7 @@
     <Compile Include="Repository\Csv\Converter\BlogCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\DiagnosisAndReviewCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\DrugCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -407,6 +409,7 @@
     <Compile Include="Repository\Csv\Stream\ICSVStream.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\DiagnosisAndReviewRepository.cs" />
     <Compile Include="Repository\DrugInventoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -425,6 +428,7 @@
     <Compile Include="Repository\IBlogRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\IDiagnosisAndReviewRepository.cs" />
     <Compile Include="Repository\IDrugInvetoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -440,6 +444,7 @@
     <Compile Include="Repository\IMedicalRecordRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\IPrescriptionRepository.cs" />
     <Compile Include="Repository\IRenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -465,6 +470,7 @@
     <Compile Include="Repository\NotificationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
