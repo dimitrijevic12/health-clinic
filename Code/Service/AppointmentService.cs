@@ -8,6 +8,7 @@ using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,15 @@ namespace Service
 
         private static AppointmentService Instance;
         public AppointmentService GetInstance() { return null; }
+
+        public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
+        {
+            iAppointmentRepository = repository;
+            _doctorService = doctorService;
+            _patientService = patientService;
+            _roomService = roomService;
+
+        }
 
         public Appointment MoveAppointment(DateTime from, DateTime to, Appointment appointment)
         {
