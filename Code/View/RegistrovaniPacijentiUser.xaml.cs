@@ -4,6 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 using System.Collections;
+using Model.Appointment;
+using Controller;
+using System.Linq;
 
 namespace health_clinicClassDiagram.View
 {
@@ -13,21 +16,17 @@ namespace health_clinicClassDiagram.View
     public partial class RegistrovaniPacijentiUser : UserControl
     {
         private int colNum = 0;
-        //private NalogPacijent nalog = null;
-        //public static ObservableCollection<NalogPacijent> Nalozi
-        //{
-        //    get;
-        //    set;
-        //}
+        private readonly IMedicalRecordController _recordController;
+        private MedicalRecord record;
 
-        //private void naloziInicijalizacija()
-        //{
-        //    Nalozi = new ObservableCollection<NalogPacijent>();
-        //    Nalozi.Add(new NalogPacijent() { IDnaloga = 1, Ime = "Petar", Prezime = "Peric", JMBG = 111111, Pol = EnumPol.M, OdabraniDoktor = "Doktor Savo", DatumRodjenja = "13/13/13", IstorijaLecenja = "Neki tekst" });
-        //    Nalozi.Add(new NalogPacijent() { IDnaloga = 2, Ime = "Marko", Prezime = "Markovic", JMBG = 222222, Pol = EnumPol.M, OdabraniDoktor = "Doktor Savo", DatumRodjenja = "13/13/13", IstorijaLecenja = "Neki tekst" });
-        //    Nalozi.Add(new NalogPacijent() { IDnaloga = 3, Ime = "Nikola", Prezime = "Nikolic", JMBG = 333333, Pol = EnumPol.M, OdabraniDoktor = "Doktor Savo", DatumRodjenja = "13/13/13", IstorijaLecenja = "Neki tekst" });
+        public static ObservableCollection<MedicalRecord> recordsCollection
+        {
+            get;
+            set;
+        }
 
-        //}
+        public List<MedicalRecord> records;
+        
         public RegistrovaniPacijentiUser()
         {
             InitializeComponent();
@@ -35,10 +34,13 @@ namespace health_clinicClassDiagram.View
 
             this.DataContext = this;
 
-            //if (Nalozi == null)
-            //{
-            //    naloziInicijalizacija();
-            //}
+            var app = Application.Current as App;
+            _recordController = app.MedicalRecordController;
+
+            records = _recordController.GetAll();
+
+            recordsCollection = new ObservableCollection<MedicalRecord>(records);
+
             dataGridNalozi.Items.Refresh();
         }
 
@@ -58,7 +60,8 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Obrisi(object sender, RoutedEventArgs e)
         {
-            //Nalozi.Remove(nalog);
+
+            _recordController.Delete(record);
             
             RegistrovaniPacijentiUser reg = new RegistrovaniPacijentiUser();
             (this.Parent as Panel).Children.Add(reg);
@@ -66,7 +69,8 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izmeni(object sender, RoutedEventArgs e)
         {
-            IzmeniNalogUser izmeni = new IzmeniNalogUser();
+            
+            IzmeniNalogUser izmeni = new IzmeniNalogUser(record);
             (this.Parent as Panel).Children.Add(izmeni);
 
             //IzmeniNalogUser izmeni = new IzmeniNalogUser(nalog);
@@ -101,8 +105,8 @@ namespace health_clinicClassDiagram.View
                     {
                         if (single_row.IsSelected == true)
                         {
-                           
-                            //nalog = Nalozi[single_row.GetIndex()];
+                            record = records.ElementAt(single_row.GetIndex());
+                                                 
                         }
                     }
                 }

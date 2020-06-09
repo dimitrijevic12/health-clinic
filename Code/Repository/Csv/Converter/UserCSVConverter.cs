@@ -6,21 +6,37 @@
 
 using Model.SystemUsers;
 using System;
+using System.ComponentModel;
 
 namespace Repository.Csv.Converter
 {
    public class UserCSVConverter : ICSVConverter<RegisteredUser>
    {
-      private String Delimiter;
+        private readonly string _delimiter;
+        private readonly string _datetimeFormat;
+
+        public UserCSVConverter(string delimiter, string datetimeFormat)
+        {
+            _delimiter = delimiter;
+            _datetimeFormat = datetimeFormat;
+        }
 
         public RegisteredUser ConvertCSVFormatToEntity(string entityCSVFormat)
         {
-            throw new NotImplementedException();
+            string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
+
+
+            return new RegisteredUser();
         }
 
         public string ConvertEntityToCSVFormat(RegisteredUser entity)
         {
-            throw new NotImplementedException();
+            return string.Join(_delimiter,
+              entity.Id,
+              entity.Name,
+              entity.Surname,
+              entity.adress,
+              entity.Username);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Controller
 {
    public class MedicalRecordController : IMedicalRecordController
    {
+        private static MedicalRecordController Instance;
         public MedicalRecordController GetInstance() { return null; }
 
         private readonly IMedicalRecordService _service;
@@ -64,9 +65,9 @@ namespace Controller
             return obj;
         }
 
-        public Service.IMedicalRecordService iMedicalRecordService;
+        
    
-      private static MedicalRecordController Instance;
+      
    
    }
 }

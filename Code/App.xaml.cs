@@ -1,5 +1,7 @@
-﻿using health_clinicClassDiagram.Repository.Sequencer;
+﻿using Controller;
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
+using Model.SystemUsers;
 using Repository;
 using Repository.Csv.Converter;
 using Repository.Csv.Stream;
@@ -9,6 +11,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -23,9 +26,14 @@ namespace health_clinicClassDiagram
     {
         private const string APPOINTMENT_FILE = "../../Resources/Data/appointments.csv";
         private const string MEDICALRECORD_FILE = "../../Resources/Data/records.csv";
+        private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string CSV_DELIMITER = ",";
 
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
+
+        public IMedicalRecordController MedicalRecordController { get; private set; }
+        public IAppointmentController AppointmentController { get; private set; }
+        public IUserController userController { get; private set; }
 
         public App()
         {
@@ -39,8 +47,22 @@ namespace health_clinicClassDiagram
                 new CSVStream<MedicalRecord>(MEDICALRECORD_FILE, new MedicalRecordCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
 
-            var appointmentService = new AppointmentService;
-            var recordService = new MedicalRecordService;
+            var userRepository = new UserRepository(
+                USER_FILE,
+                new CSVStream<RegisteredUser>(USER_FILE, new UserCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+                new LongSequencer());
+
+            var userService = new UserService(userRepository);
+
+
+            //var patientService = new UserService();
+
+            var recordService = new MedicalRecordService(recordRepository, userService);
+            var appointmentService = new AppointmentService(appointmentRepository, null, null, null);
+
+            MedicalRecordController = new MedicalRecordController(recordService);
+            AppointmentController = new AppointmentController(appointmentService);
+
         }
     }
 }

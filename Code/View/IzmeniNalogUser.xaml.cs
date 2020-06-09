@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Controller;
+using Model.Appointment;
+using Model.SystemUsers;
+using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +15,12 @@ namespace health_clinicClassDiagram.View
     public partial class IzmeniNalogUser : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private readonly IMedicalRecordController _recordController;
+        private long _idNaloga;
+        private string _imePacijenta;
+        private string _prezimePacijenta;
+        private int _jmbgPacijenta;
+        private Gender _gender;
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -20,49 +30,19 @@ namespace health_clinicClassDiagram.View
             }
         }
 
-        private double _test1;
-        private double _test2;
-        public double Test1
-        {
-            get
-            {
-                return _test1;
-            }
-            set
-            {
-                if (value != _test1)
-                {
-                    _test1 = value;
-                    OnPropertyChanged("Test1");
-                }
-            }
-        }
-
-        public double Test2
-        {
-            get
-            {
-                return _test2;
-            }
-            set
-            {
-                if (value != _test2)
-                {
-                    _test2 = value;
-                    OnPropertyChanged("Test2");
-                }
-            }
-        }
-
-        public IzmeniNalogUser(/*NalogPacijent nalog*/)
+        public IzmeniNalogUser(MedicalRecord record)
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
-            //IDTekst.Text = nalog.IDnaloga.ToString();
-            //ImeTekst.Text = nalog.Ime;
-            //PrezimeTekst.Text = nalog.Prezime;
-            //JMBGTekst.Text = nalog.JMBG.ToString();
+
+            var app = Application.Current as App;
+            _recordController = app.MedicalRecordController;
+
+            IDTekst.Text = record.id.ToString();
+            ImeTekst.Text = record.patient.Name;
+            PrezimeTekst.Text = record.patient.Surname;
+            JMBGTekst.Text = record.patient.Id.ToString();
             DoktorCombo.SelectedIndex = 1;
             
 
@@ -70,11 +50,55 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrdi(object sender, RoutedEventArgs e)
         {
-            
+            String idNalogaString = IDTekst.Text;
+            String ime = ImeTekst.Text;
+            String prezime = PrezimeTekst.Text;
+            String jmbgString = JMBGTekst.Text;
+
+            String dateString;
+            DateTime? izabraniDatum = DatumPicker.SelectedDate;
+            if (izabraniDatum.HasValue)
+            {
+                dateString = izabraniDatum.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            }
+
+            _idNaloga = long.Parse(idNalogaString);
+            _imePacijenta = ime;
+            _prezimePacijenta = prezime;
+            _jmbgPacijenta = int.Parse(jmbgString);
+
+            String genderString = null;
+
+            if (muski.IsChecked == true)
+            {
+                genderString = "MALE";
+            }
+            else if (zenski.IsChecked == true)
+            {
+                genderString = "FEMALE";
+            }
+            else
+            {
+                Console.WriteLine("Niste uneli pol");
+            }
+
+            _gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
+
+            MedicalRecord newRecord = EditMedicalRecord();
+
+
             RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
             (this.Parent as Panel).Children.Add(pacijenti);
 
 
+        }
+
+        private MedicalRecord EditMedicalRecord()
+        {
+            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
+            var record = new MedicalRecord(_idNaloga, pacijent, new Doctor());
+
+            return _recordController.Edit(record);
         }
 
         private void Button_Odustani(object sender, RoutedEventArgs e)

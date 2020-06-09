@@ -16,7 +16,7 @@ namespace Model.SystemUsers
         public String Password;
         public String Name;
         public String Surname;
-        public int Id;
+        public long Id;
 
     }
 }

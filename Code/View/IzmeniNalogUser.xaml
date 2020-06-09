@@ -80,18 +80,18 @@
                 <Label  Grid.Column="1" Grid.Row="11" FontSize="20"  Grid.ColumnSpan="3">Pol:</Label>
                 <Label  Grid.Column="1" Grid.Row="13" FontSize="20"  Grid.ColumnSpan="3" VerticalAlignment="Center">Odabrani doktor:</Label>
                 <Label  Grid.Column="1" Grid.Row="15" FontSize="20"  Grid.ColumnSpan="3">Istorija lečenja:</Label>
-                <TextBox Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="5" Name="IDTekst" Text="{Binding Path=Test2,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="5" Name="IDTekst" IsReadOnly="True"/>
                 <TextBox Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="5" Name="ImeTekst"/>
                 <TextBox Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="5" Name="PrezimeTekst"/>
-                <TextBox Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="5" Name="JMBGTekst" Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="5" Name="JMBGTekst" IsReadOnly="True"/>
                 <DatePicker Grid.Column="4" Grid.Row="9" Grid.ColumnSpan="5" Name="DatumPicker"/>
                 <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo">
                     <ComboBoxItem Content = "Doktor Petar"/>
                     <ComboBoxItem Content= "Doktor Mitar"/>
                 </ComboBox>
-                <StackPanel  Grid.Column="4" Grid.Row="11" Grid.ColumnSpan="5">
-                    <RadioButton GroupName="pol" Content="Muški" IsChecked="True"/>
-                    <RadioButton GroupName="pol" Content="Ženski" />
+                <StackPanel  Grid.Column="4" Grid.Row="11" Grid.ColumnSpan="5" Name="PolCombo">
+                    <RadioButton GroupName="pol" Content="Muški" IsChecked="True" Name="muski"/>
+                    <RadioButton GroupName="pol" Content="Ženski" Name ="zenski"/>
                 </StackPanel>
                 <TextBox Grid.Column="4" Grid.Row="15" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
                 <Button Grid.Column="8" Grid.Row="19" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Potvrdi">Potvrdi</Button>

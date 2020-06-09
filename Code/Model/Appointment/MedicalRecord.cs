@@ -5,19 +5,145 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
+using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
 using System.Collections;
+using System.ComponentModel;
 
 namespace Model.Appointment
 {
-    public class MedicalRecord
+    public class MedicalRecord : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         public long id;
         public System.Collections.ArrayList treatments;
         public Doctor choosenDoctor;
         public Model.SystemUsers.Patient patient;
 
         /// <pdGenerated>default getter</pdGenerated>
+        /// 
+        public long IDnaloga
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                if (value != id)
+                {
+                    id = value;
+                    OnPropertyChanged("IDNaloga");
+                }
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return patient.Name;
+            }
+            set
+            {
+                if (!value.Equals(patient.Name))
+                {
+                    patient.Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
+        public string Surname
+        {
+            get
+            {
+                return patient.Surname;
+            }
+            set
+            {
+                if (!value.Equals(patient.Surname))
+                {
+                    patient.Surname = value;
+                    OnPropertyChanged("Surname");
+                }
+            }
+        }
+
+        public long IDPatient
+        {
+            get
+            {
+                return patient.Id;
+            }
+            set
+            {
+                if (value != patient.Id)
+                {
+                    patient.Id = value;
+                    OnPropertyChanged("IDPatient");
+                }
+            }
+        }
+
+        public DateTime DateOfBirth
+        {
+            get
+            {
+                return patient.DateOfBirth;
+            }
+            set
+            {
+                if (!value.Equals(patient.DateOfBirth))
+                {
+                    patient.DateOfBirth = value;
+                    OnPropertyChanged("DateOfBirth");
+                }
+            }
+        }
+
+        public Gender GenderProp
+        {
+            get
+            {
+                return patient.Gender;
+            }
+            set
+            {
+                if (!value.Equals(patient.Gender))
+                {
+                    patient.Gender = value;
+                    OnPropertyChanged("DateOfBirth");
+                }
+            }
+        }
+
+        public String Doctor
+        {
+            get
+            {
+                return choosenDoctor.Name + " " + choosenDoctor.Surname;
+            }
+            set
+            {
+                if (!value.Equals(patient.Name + " " + choosenDoctor.Surname))
+                {
+                    patient.Name= value;
+                    OnPropertyChanged("DateOfBirth");
+                }
+            }
+        }
+
+
 
         public MedicalRecord(long id, Patient patient, Doctor doctor)
         {

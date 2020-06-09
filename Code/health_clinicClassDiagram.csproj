@@ -587,6 +587,7 @@
     <Compile Include="View\Converter\AbstractConverter.cs" />
     <Compile Include="View\Converter\AppointmentConverter.cs" />
     <Compile Include="View\Converter\MedicalRecordConverter.cs" />
+    <Compile Include="View\Converter\UserConverter.cs" />
     <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs">
       <DependentUpon>DetaljanPrikazRasporedaUser.xaml</DependentUpon>
     </Compile>

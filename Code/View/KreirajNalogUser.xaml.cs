@@ -1,10 +1,13 @@
 ﻿using Controller;
+using Model.Appointment;
 using Model.SystemUsers;
+using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 
 namespace health_clinicClassDiagram.View
 {
@@ -14,6 +17,7 @@ namespace health_clinicClassDiagram.View
     public partial class KreirajNalogUser : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        
 
         protected virtual void OnPropertyChanged(string name)
         {
@@ -60,7 +64,13 @@ namespace health_clinicClassDiagram.View
         private readonly IMedicalRecordController _recordController;
         private readonly IController<Patient> _patientController;
 
-        private readonly IList<Patient> _patients;
+        private readonly IList<Doctor> _doctors;
+
+        private long _idNaloga;
+        private string _imePacijenta;
+        private string _prezimePacijenta;
+        private int _jmbgPacijenta;
+        private Gender _gender;
 
         public KreirajNalogUser()
         {
@@ -68,8 +78,16 @@ namespace health_clinicClassDiagram.View
             this.DataContext = this;
             labelDateTime.Content = DateTime.Now.ToShortDateString();
 
+
             var app = Application.Current as App;
-            _recordController = app
+            _recordController = app.MedicalRecordController;
+
+            //_doctorController = app
+
+            //_doctors = 
+
+            
+            
 
 
         }
@@ -88,43 +106,47 @@ namespace health_clinicClassDiagram.View
                 dateString = izabraniDatum.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
             }
 
-            //EnumPol pol = EnumPol.Z;
+            _idNaloga = long.Parse(idNalogaString);
+            _imePacijenta = ime;
+            _prezimePacijenta = prezime;
+            _jmbgPacijenta = int.Parse(jmbgString);
 
-            //if (muski.IsChecked == true)
-            //{
-            //    pol = EnumPol.M;
-            //}
-            //else if (zenski.IsChecked == true)
-            //{
-            //    pol = EnumPol.Z;
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Niste uneli pol");
-            //}
+            String genderString = null;
 
-            //String odabraniDoktor = DoktorCombo.SelectedItem.ToString();
+            if (muski.IsChecked == true)
+            {
+                genderString = "MALE";
+            }
+            else if (zenski.IsChecked == true)
+            {
+                genderString = "FEMALE";
+            }
+            else
+            {
+                Console.WriteLine("Niste uneli pol");
+            }
 
-            //String istorijaLecenja = IstorijaTekst.Text;
+            _gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-
-            //int idNaloga;
-            //int jmbg;
-
-            //bool isParsable = Int32.TryParse(idNalogaString, out idNaloga);
-            //isParsable = Int32.TryParse(jmbgString, out jmbg);
-
-            //NalogPacijent np = new NalogPacijent { IDnaloga = idNaloga, Ime = ime, Prezime = prezime, JMBG = jmbg, Pol = pol, OdabraniDoktor = "Odabrani doktor", DatumRodjenja = "13/13/13", IstorijaLecenja = istorijaLecenja };
-
-            //RegistrovaniPacijentiUser.Nalozi.Add(np);
-
+            MedicalRecord record = CreateMedicalRecord();
             
-
-            
+           
             RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
             (this.Parent as Panel).Children.Add(pacijenti);
 
 
+        }
+
+       
+
+        private MedicalRecord CreateMedicalRecord()
+        {
+
+            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
+            var record = new MedicalRecord(_idNaloga, pacijent, new Doctor());
+
+            return _recordController.Create(record);
+            
         }
 
         private void Button_Odustani(object sender, RoutedEventArgs e)

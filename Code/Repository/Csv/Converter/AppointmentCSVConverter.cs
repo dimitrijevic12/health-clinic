@@ -25,11 +25,11 @@ namespace Repository.Csv.Converter
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]));    //preskocimo prvi button select patient
+            //Patient patient = new Patient(tokens[0], tokens[1], int.Parse(tokens[2]));    //preskocimo prvi button select patient
 
             return new Appointment(
                new Doctor(), //doctor tokens[4]
-                patient,
+                new Patient("Ime", "Prezime", 123123),
                 TypeOfAppointment.EXAM); //tokens[6]
         }
 

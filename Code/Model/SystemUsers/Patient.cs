@@ -16,6 +16,17 @@ namespace Model.SystemUsers
         private Boolean guestAccount;
         private Gender gender;
 
+        public Gender Gender
+        {
+            get { return gender; }   // get method
+            set { gender = value; }
+        }
+
+        public DateTime DateOfBirth
+        {
+            get { return dateOfBirth; }   // get method
+            set { dateOfBirth = value; }
+        }
 
         public Patient(String name, String surname, int jmbg)
         {
@@ -32,7 +43,6 @@ namespace Model.SystemUsers
             this.dateOfBirth = dateOfBirth;
             this.gender = gender;
         }
-
 
     }
 
