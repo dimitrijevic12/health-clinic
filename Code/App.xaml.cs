@@ -1,5 +1,7 @@
-﻿using Model.Appointment;
+﻿using health_clinicClassDiagram.Repository.Sequencer;
+using Model.Appointment;
 using Repository;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -22,12 +24,19 @@ namespace health_clinicClassDiagram
         private const string MEDICALRECORD_FILE = "../../Resources/Data/records.csv";
         private const string CSV_DELIMITER = ",";
 
+        private const string DATETIME_FORMAT = "dd.MM.yyyy.";
+
         public App()
         {
             var appointmentRepository = new AppointmentRepository(
                 APPOINTMENT_FILE,
-                new CSVStream<Appointment>(new AccountCSVConverter(CSV_DELIMITER))
-                )
+                new CSVStream<Appointment>(APPOINTMENT_FILE, new AppointmentCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+                new LongSequencer());
+
+            var recordRepository = new MedicalRecordRepository(
+                MEDICALRECORD_FILE,
+                new CSVStream<MedicalRecord>(MEDICALRECORD_FILE, new MedicalRecordCSVConverter()),
+                new LongSequencer());
         }
     }
 }
