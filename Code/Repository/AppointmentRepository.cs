@@ -17,14 +17,15 @@ namespace Repository
 {
    public class AppointmentRepository : IAppointmentRepository
    {
-        private String Path;
+        private String _path;
         private static AppointmentRepository Instance;
         private readonly ICSVStream<Appointment> _stream;
         private readonly iSequencer<long> _sequencer;
         public AppointmentRepository GetInstance() { return null; }
 
-        public AppointmentRepository(ICSVStream<Appointment> stream, iSequencer<long> sequencer)
+        public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
         {
+            _path = path;
             _stream = stream;
             _sequencer = sequencer;
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
@@ -68,15 +69,15 @@ namespace Repository
 
         public Appointment Edit(Appointment obj)
         {
-            
+
             var appointments = _stream.ReadAll().ToList();
             appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(appointments);
             return obj;
-                     
+
         }
 
-        
+
         public bool Delete(Appointment obj)
         {
             var appointments = _stream.ReadAll().ToList();
@@ -108,7 +109,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        
-   
-   }
+
+
+    }
 }

@@ -272,6 +272,7 @@
     <Compile Include="Model\SystemUsers\Doctor.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\SystemUsers\Gender.cs" />
     <Compile Include="Model\SystemUsers\Manager.cs">
       <SubType>Code</SubType>
     </Compile>
