@@ -356,6 +356,7 @@
     <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\PrescriptionCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
