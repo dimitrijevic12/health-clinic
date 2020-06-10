@@ -23,6 +23,29 @@ namespace Model.Treatment
       private DateTime endDate;
       private long id;
 
+        public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, long id, Doctor doctor)
+        {
+            Prescription = prescription;
+            ScheduledSurgery = scheduledSurgery;
+            DiagnosisAndReview = diagnosisAndReview;
+            ReferralToHospitalTreatment = referralToHospitalTreatment;
+            FromDate = fromDate;
+            EndDate = endDate;
+            Id = id;
+            Doctor = doctor;
+        }
+
+        public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, Doctor doctor)
+        {
+            Prescription = prescription;
+            ScheduledSurgery = scheduledSurgery;
+            DiagnosisAndReview = diagnosisAndReview;
+            ReferralToHospitalTreatment = referralToHospitalTreatment;
+            FromDate = fromDate;
+            EndDate = endDate;
+            Doctor = doctor;
+        }
+
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }
@@ -31,5 +54,9 @@ namespace Model.Treatment
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+
+        public long GetId() => Id;
+
+        public void SetId(long id) => Id = id;
     }
 }

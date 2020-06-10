@@ -21,5 +21,13 @@ namespace Model.Treatment
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public string CauseForOperation { get => causeForOperation; set => causeForOperation = value; }
         public Surgeon Surgeon { get => surgeon; set => surgeon = value; }
+
+        public ScheduledSurgery(DateTime startDate, DateTime endDate, string causeForOperation, Surgeon surgeon)
+        {
+            StartDate = startDate;
+            EndDate = endDate;
+            CauseForOperation = causeForOperation;
+            Surgeon = surgeon;
+        }
     }
 }

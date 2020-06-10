@@ -61,6 +61,13 @@ namespace Model.Treatment
       private DateTime endDate;
       private String causeForHospTreatment;
 
+        public ReferralToHospitalTreatment(DateTime startDate, DateTime endDate, string causeForHospTreatment)
+        {
+            StartDate = startDate;
+            EndDate = endDate;
+            CauseForHospTreatment = causeForHospTreatment;
+        }
+
         public ArrayList Drug { get => drug; set => drug = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
         public DateTime EndDate { get => endDate; set => endDate = value; }

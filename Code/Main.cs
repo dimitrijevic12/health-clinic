@@ -5,6 +5,7 @@ using System.Text;
 using Model.Rooms;
 using Model.Treatment;
 using Repository;
+using Model.SystemUsers;
 
 namespace health_clinicClassDiagram
 {
@@ -25,21 +26,31 @@ namespace health_clinicClassDiagram
                         }
             //            Console.WriteLine("Dijagnoza id == 3:" + DiagnosisAndReviewRepository.Instance.GetDiagnosisAndReview(3).Id);
             */
+            /*            Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
+                        Drug drug2 = new Drug(null, "Aerius 50mg", "Opis Aeriusa", false, 5);
+                        List<Drug> drugs = new List<Drug>();
+                        drugs.Add(drug1);
+                        drugs.Add(drug2);
+
+                        Prescription prescription = new Prescription(drugs);
+                        PrescriptionRepository.Instance.Save(prescription);
+                        List<Prescription> prescriptions = PrescriptionRepository.Instance.GetAll();
+                        PrescriptionRepository.Instance.Delete(3);
+                        foreach (Prescription p in prescriptions)
+                        {
+                            Console.WriteLine(p);
+                        }
+                    }
+            */
+            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
             Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
             Drug drug2 = new Drug(null, "Aerius 50mg", "Opis Aeriusa", false, 5);
             List<Drug> drugs = new List<Drug>();
             drugs.Add(drug1);
             drugs.Add(drug2);
-
             Prescription prescription = new Prescription(drugs);
-            PrescriptionRepository.Instance.Save(prescription);
-            List<Prescription> prescriptions = PrescriptionRepository.Instance.GetAll();
-            PrescriptionRepository.Instance.Delete(3);
-            foreach (Prescription p in prescriptions)
-            {
-                Console.WriteLine(p);
-            }
+            Treatment treatment = new Treatment(prescription, new ScheduledSurgery(DateTime.Today, DateTime.Now, "Razlog operacije", new Surgeon("Pera", "Peric", SurgicalSpecialty.CARDIOTHORACIC)), diagnosisAndReview, new ReferralToHospitalTreatment(DateTime.Today, DateTime.Now, "Razlog bolnickog lecenja"), DateTime.Today, DateTime.Now, new Doctor("Marko", "Markovic"));
+            TreatmentRepository.Instance.Save(treatment);
         }
-
     }
 }

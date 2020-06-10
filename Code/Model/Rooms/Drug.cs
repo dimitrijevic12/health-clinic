@@ -29,6 +29,11 @@ namespace Model.Rooms
             Quantity = quantity;
         }
 
+        public Drug(string name)
+        {
+            Name = name;
+        }
+
         public Drug(Ingredients ingredients, string name, string description, bool validation, int quantity)
         {
             this.ingredients = ingredients;
