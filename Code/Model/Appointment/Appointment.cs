@@ -7,11 +7,21 @@
 using Model.Rooms;
 using Model.SystemUsers;
 using System;
+using System.ComponentModel;
 
 namespace Model.Appointment
 {
-   public class Appointment
-   {
+   public class Appointment : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         public Model.SystemUsers.Patient patient;
         public Model.SystemUsers.Doctor doctor;
         public Model.Rooms.ExamOperationRoom examOperationRoom;
@@ -21,6 +31,38 @@ namespace Model.Appointment
         public DateTime StartDate;
         public DateTime EndDate;
         public TypeOfAppointment Type;
+
+        public DateTime Start
+        {
+            get
+            {
+                return StartDate;
+            }
+            set
+            {
+                if (!value.Equals(StartDate))
+                {
+                    StartDate = value;
+                    OnPropertyChanged("StartDate");
+                }
+            }
+        }
+
+        public DateTime End
+        {
+            get
+            {
+                return EndDate;
+            }
+            set
+            {
+                if (!value.Equals(EndDate))
+                {
+                    EndDate = value;
+                    OnPropertyChanged("EndDate");
+                }
+            }
+        }
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {

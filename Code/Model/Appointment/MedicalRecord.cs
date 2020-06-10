@@ -4,7 +4,6 @@
  * Purpose: Definition of the Class Appointment.MedicalRecord
  ***********************************************************************/
 
-using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
@@ -13,14 +12,9 @@ using System.ComponentModel;
 
 namespace Model.Appointment
 {
-<<<<<<< HEAD
+
     public class MedicalRecord : INotifyPropertyChanged
     {
-
-=======
-   public class MedicalRecord : INotifyPropertyChanged
-    {
->>>>>>> master
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string name)
         {
@@ -143,11 +137,7 @@ namespace Model.Appointment
             {
                 if (!value.Equals(patient.Name + " " + choosenDoctor.Surname))
                 {
-<<<<<<< HEAD
-                    patient.Name= value;
-=======
                     patient.Name = value;
->>>>>>> master
                     OnPropertyChanged("DateOfBirth");
                 }
             }

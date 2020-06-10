@@ -87,11 +87,5 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
-        
-   }
-=======
-
     }
->>>>>>> master
 }

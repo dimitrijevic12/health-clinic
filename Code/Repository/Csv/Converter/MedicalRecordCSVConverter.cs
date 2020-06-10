@@ -28,11 +28,7 @@ namespace Repository.Csv.Converter
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
             String genderString = tokens[5];
-<<<<<<< HEAD
-      
-=======
 
->>>>>>> master
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
             Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);

@@ -1,4 +1,10 @@
-﻿using System;
+﻿using health_clinicClassDiagram.View.Util;
+using Model.Appointment;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,14 +15,71 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class DetaljanPrikazRasporedaUser : UserControl
     {
+        private int colNum = 0;
         private DateTime date;
+        private Appointment appointment;
+
+        List<Appointment> blankAppointments = AppointmentGenerator.Instance.generateList(DateTime.Today);
+
+        public List<Appointment> BlankAppointments { get => blankAppointments; set => blankAppointments = value; }
+
+        public static ObservableCollection<Appointment> appointmentCollection
+        {
+            get;
+            set;
+        }
+
         public DetaljanPrikazRasporedaUser(DateTime date)
         {
             InitializeComponent();
             Datum.Content = date.ToShortDateString();
+            this.DataContext = this;
             this.date = date;
             labelDateTime.Content = DateTime.Now.ToShortDateString();
 
+            appointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
+
+            dataGridNalozi.Items.Refresh();
+
+        }
+
+        private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            colNum++;
+            if (colNum == 3)
+                e.Column.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+
+        public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
+        {
+            var itemsSource = grid.ItemsSource as IEnumerable;
+            if (null == itemsSource) yield return null;
+            foreach (var item in itemsSource)
+            {
+                var row = grid.ItemContainerGenerator.ContainerFromItem(item) as DataGridRow;
+                if (null != row) yield return row;
+            }
+        }
+
+        private void dataGridNalozi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var row_list = GetDataGridRows(dataGridNalozi);
+                foreach (DataGridRow single_row in row_list)
+                {
+                    if (single_row != null)
+                    {
+                        if (single_row.IsSelected == true)
+                        {
+                            appointment = appointmentCollection.ElementAt(single_row.GetIndex());
+
+                        }
+                    }
+                }
+
+            }
+            catch { }
         }
 
         private void Button_Zakazivanje(object sender, RoutedEventArgs e)

@@ -65,13 +65,6 @@ namespace Controller
             return obj;
         }
 
-<<<<<<< HEAD
-        
-   
-      
-   
-   }
-=======
     }
->>>>>>> master
+
 }
