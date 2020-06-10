@@ -66,17 +66,15 @@ namespace Repository
         public MedicalRecord Edit(MedicalRecord obj)
         {
             var records = _stream.ReadAll().ToList();
-            records[records.FindIndex(rcrd => rcrd.patient.Equals(obj.patient))] = obj;
+            records[records.FindIndex(apt => apt.id == obj.id)] = obj;
             _stream.SaveAll(records);
-
             return obj;
         }
 
         public bool Delete(MedicalRecord obj)
         {
             var records = _stream.ReadAll().ToList();
-            var recordToRemove = records.SingleOrDefault(rcrd => rcrd.patient.Equals(obj.patient));
-
+            var recordToRemove = records.SingleOrDefault(acc => acc.id == obj.id);
             if (recordToRemove != null)
             {
                 records.Remove(recordToRemove);

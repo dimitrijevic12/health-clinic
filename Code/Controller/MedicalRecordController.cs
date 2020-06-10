@@ -15,6 +15,7 @@ namespace Controller
 {
    public class MedicalRecordController : IMedicalRecordController
    {
+        private static MedicalRecordController Instance;
         public MedicalRecordController GetInstance() { return null; }
 
         private readonly IMedicalRecordService _service;
@@ -23,7 +24,7 @@ namespace Controller
         {
             _service = service;
         }
-        
+
         public List<Treatment> GetAllTreatments()
         {
             throw new NotImplementedException();
@@ -64,9 +65,5 @@ namespace Controller
             return obj;
         }
 
-        public Service.IMedicalRecordService iMedicalRecordService;
-   
-      private static MedicalRecordController Instance;
-   
-   }
+    }
 }

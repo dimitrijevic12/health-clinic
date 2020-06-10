@@ -16,11 +16,11 @@ namespace Service
    public class MedicalRecordService : IMedicalRecordService
    {
         private readonly IMedicalRecordRepository _medicalRecordRepository;
-        //private readonly IRepository<MedicalRecord> _medicalRecordRepository;
-        private readonly IService<Patient> _patientService;
+        private readonly IUserService _patientService;
+        private static MedicalRecordService Instance;
         public MedicalRecordService GetInstance() { return null; }
 
-        public MedicalRecordService(IMedicalRecordRepository repository, IService<Patient> service)
+        public MedicalRecordService(IMedicalRecordRepository repository, IUserService service)
         {
             _medicalRecordRepository = repository;
             _patientService = service;
@@ -36,7 +36,7 @@ namespace Service
             var record = _medicalRecordRepository.GetMedRecByPatient(patient);
             //fali red
             return record;
-            return null;
+
         }
 
         public MedicalRecord GetMedRecByTreatment(Treatment treatment)
@@ -46,9 +46,10 @@ namespace Service
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            var _patient = _patientService.Create(obj.patient);
+            var _user = _patientService.Create(obj.patient);
+            var patient = (Patient)_user;
             var newMedicalRecord = _medicalRecordRepository.Save(obj);
-            newMedicalRecord.patient = _patient;
+            newMedicalRecord.patient = patient;
             return newMedicalRecord;
             //fali treatment ali to vrv u add treatment
         }
@@ -81,8 +82,6 @@ namespace Service
         }
 
         public Repository.IMedicalRecordRepository iMedicalRecordRepository;
-   
-      private static MedicalRecordService Instance;
-   
-   }
+
+    }
 }
