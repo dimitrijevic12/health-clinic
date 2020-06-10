@@ -175,6 +175,7 @@
     <Compile Include="Controller\INotificaitonController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\IRehabilitationRoomController.cs" />
     <Compile Include="Controller\IRenovationController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -203,6 +204,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\ReferralToASpecialist.cs" />
+    <Compile Include="Controller\RehabilitationRoomController.cs" />
     <Compile Include="Controller\RenovationController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -387,6 +389,7 @@
     <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -448,6 +451,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IRehabilitationRoomRepository.cs" />
     <Compile Include="Repository\IRenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -474,6 +478,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -543,6 +548,7 @@
     <Compile Include="Service\INotifcationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\IRehabilitationRoomService.cs" />
     <Compile Include="Service\IRenovationService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -573,6 +579,7 @@
     <Compile Include="Service\NotificationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\RehabilitationRoomService.cs" />
     <Compile Include="Service\RenovationService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -597,6 +604,7 @@
     <Compile Include="View\Converter\AbstractConverter.cs" />
     <Compile Include="View\Converter\AppointmentConverter.cs" />
     <Compile Include="View\Converter\MedicalRecordConverter.cs" />
+    <Compile Include="View\Converter\RehabilitationRoomConverter.cs" />
     <Compile Include="View\Converter\UserConverter.cs" />
     <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs">
       <DependentUpon>DetaljanPrikazRasporedaUser.xaml</DependentUpon>

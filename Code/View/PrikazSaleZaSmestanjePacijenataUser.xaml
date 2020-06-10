@@ -18,7 +18,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontSize="24" >
+            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" FontSize="24" Name="labelSala" >
                 Sala 8
             </Label>
 
@@ -64,22 +64,15 @@
                 <Button Grid.Column="2" Grid.Row="0" Style="{StaticResource RoundButton}" Margin="21,21,72,21" Click="Button_Izadji">Izađi</Button>
 
             </Grid>
-            <ListView Margin="10" Name="lvDataBinding" Grid.Row="1" Grid.Column="0">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="ID naloga: " FontSize="24" />
-                            <TextBlock Text="{Binding IDnaloga}" FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text=", " FontSize="24"/>
-                            <TextBlock Text="Ime: " FontSize="24" />
-                            <TextBlock Text="{Binding Ime}" FontWeight="Bold" FontSize="24"/>
-                            <TextBlock Text=", " FontSize="24" />
-                            <TextBlock Text="Prezime: " FontSize="24"/>
-                            <TextBlock Text="{Binding Prezime}" FontWeight="Bold" FontSize="24"/>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <DataGrid x:Name="dataGridNalozi" ItemsSource="{Binding Path=recordsCollection}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Stretch" 
+                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="IDNaloga" Binding="{Binding IDnaloga}"/>
+                    <DataGridTextColumn Header="Ime" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Prezime" Binding="{Binding Surname}"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
         </Grid>
     </Grid>

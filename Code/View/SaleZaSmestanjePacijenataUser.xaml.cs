@@ -1,7 +1,10 @@
-﻿using System;
+﻿using health_clinicClassDiagram.Controller;
+using Model.Rooms;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,32 +16,35 @@ namespace health_clinicClassDiagram.View
     public partial class SaleZaSmestanjePacijenataUser : UserControl
     {
         private int colNum = 0;
-        //private SaleZaSmestanje sala = null;
-        //public static ObservableCollection<SaleZaSmestanje> Sale
-        //{
-        //    get;
-        //    set;
-        //}
 
-        public void inicijalizujSale()
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
+        private RehabilitationRoom rehabilitationRoom;
+
+        public static ObservableCollection<RehabilitationRoom> rehabilitationRoomsCollection
         {
-            //Sale = new ObservableCollection<SaleZaSmestanje>();
-            //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 7", ZauzetiKreveti = 6, UkupniKreveti = 10 });
-            //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 8", ZauzetiKreveti = 3, UkupniKreveti = 10});
-            //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 9", ZauzetiKreveti = 1, UkupniKreveti = 5});
-            //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 10", ZauzetiKreveti = 3, UkupniKreveti = 5});
+            get;
+            set;
         }
+
+        public List<RehabilitationRoom> rehabilitationRooms;
+
+        //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 10", ZauzetiKreveti = 3, UkupniKreveti = 5});
+
         public SaleZaSmestanjePacijenataUser()
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
 
-            //if (Sale == null)
-            //{
-            //    inicijalizujSale();
-            //}
-            //dataGridSale.Items.Refresh();
+            var app = Application.Current as App;
+            _rehabilitationRoomController = app.RehabilitationRoomController;
+
+            rehabilitationRooms = _rehabilitationRoomController.GetAll();
+
+            rehabilitationRoomsCollection = new ObservableCollection<RehabilitationRoom>(rehabilitationRooms);
+
+            dataGridSale.Items.Refresh();
+
         }
 
         private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -51,7 +57,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Smesti(object sender, RoutedEventArgs e)
         {
             
-            SmestiPacijentaUser smesti = new SmestiPacijentaUser();
+            SmestiPacijentaUser smesti = new SmestiPacijentaUser(rehabilitationRoom);
             (this.Parent as Panel).Children.Add(smesti);
         }
 
@@ -72,31 +78,30 @@ namespace health_clinicClassDiagram.View
             }
         }
 
-        //private void dataGridNSale_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        var row_list = GetDataGridRows(dataGridSale);
-        //        foreach (DataGridRow single_row in row_list)
-        //        {
-        //            if (single_row != null)
-        //            {
-        //                if (single_row.IsSelected == true)
-        //                {
+        private void dataGridNSale_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var row_list = GetDataGridRows(dataGridSale);
+                foreach (DataGridRow single_row in row_list)
+                {
+                    if (single_row != null)
+                    {
+                        if (single_row.IsSelected == true)
+                        {
+                            rehabilitationRoom = rehabilitationRooms.ElementAt(single_row.GetIndex());
+                        }
+                    }
+                }
 
-        //                    sala = Sale[single_row.GetIndex()];
-        //                }
-        //            }
-        //        }
-
-        //    }
-        //    catch { }
-        //}
+            }
+            catch { }
+        }
 
         private void btnPrikazi_Click(object sender, RoutedEventArgs e)
         {
             
-            PrikazSaleZaSmestanjePacijenataUser prikaz = new PrikazSaleZaSmestanjePacijenataUser();
+            PrikazSaleZaSmestanjePacijenataUser prikaz = new PrikazSaleZaSmestanjePacijenataUser(rehabilitationRoom);
             (this.Parent as Panel).Children.Add(prikaz);
         }
 

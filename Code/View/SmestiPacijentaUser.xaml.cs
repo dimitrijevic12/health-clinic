@@ -1,4 +1,8 @@
-﻿using System;
+﻿using health_clinicClassDiagram.Controller;
+using Model.Appointment;
+using Model.Rooms;
+using Model.SystemUsers;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +25,15 @@ namespace health_clinicClassDiagram.View
         }
 
         private double _test1;
-        //private SaleZaSmestanje sala = null;
+
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
+
+
+        private long _idNaloga;
+        private string _imePacijenta;
+        private string _prezimePacijenta;
+        private int _jmbgPacijenta;
+        private RehabilitationRoom _rehabilitationRoom;
 
         public double Test1
         {
@@ -38,26 +50,32 @@ namespace health_clinicClassDiagram.View
                 }
             }
         }
-        //public SmestiPacijentaUser(SaleZaSmestanje sala)
-        //{
-        //    InitializeComponent();
-        //    labelDateTime.Content = DateTime.Now.ToShortDateString();
-        //    this.DataContext = this;
-        //    ImeSale.Content = sala.Ime;
-        //    this.sala = sala;
-        //}
+        public SmestiPacijentaUser(RehabilitationRoom rehabilitationRoom)
+        {
+            InitializeComponent();
+            this.DataContext = this;
+            labelSala.Content = rehabilitationRoom.IdRoom.ToString();
+            labelDateTime.Content = DateTime.Now.ToShortDateString();
+
+            _rehabilitationRoom = rehabilitationRoom;
+
+            var app = Application.Current as App;
+            _rehabilitationRoomController = app.RehabilitationRoomController;
+
+
+        }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-        //    foreach (NalogPacijent nalog in RegistrovaniPacijentiUser.Nalozi)
-        //    {
-        //        if (nalog.JMBG.ToString().Equals(JMBGTekst.Text))
-        //        {
-        //            sala.ZauzetiKreveti++;
-        //            sala.Nal.Add(nalog);
-                    
-        //        }
-        //    }          
+            _idNaloga = 1;
+            _imePacijenta = textIme.Text;
+            _prezimePacijenta = textPrezime.Text;
+            _jmbgPacijenta = int.Parse(textJMBG.Text);
+
+            Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
+            MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor());
+
+            var result = _rehabilitationRoomController.AddPatient(record, _rehabilitationRoom);
 
 
             

@@ -12,7 +12,7 @@ namespace Model.Rooms
    {
       public InventoryEquip[] inventoryEquip;
    
-      private int Id;
+      protected long Id;
    
    }
 }

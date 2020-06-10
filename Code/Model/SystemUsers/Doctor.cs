@@ -4,12 +4,12 @@
  * Purpose: Definition of the Class SystemUsers.Doctor
  ***********************************************************************/
 
-using health_clinicClassDiagram.Model.SystemUsers;
+using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
 
 namespace Model.SystemUsers
 {
-   public class Doctor : RegisteredUser
+    public class Doctor : RegisteredUser
    {
         private WorkingSchedule[] workingSchedule;
         private Gender gender;
