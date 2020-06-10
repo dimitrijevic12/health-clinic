@@ -53,14 +53,14 @@
         <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara"/>
         <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Ime"/>
         <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime"/>
-        <ComboBox Height="42" Name="Pol" Width="412" Grid.Column="3" Grid.Row="3">
+        <ComboBox Height="42" Name="PolCombo" Width="412" Grid.Column="3" Grid.Row="3" >
             <ComboBoxItem Content="Muški"/>
             <ComboBoxItem Content="Ženski"/>
         </ComboBox>
         <TextBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft"  Name="Jmbg"/>
         <TextBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="DatumRodjenja"/>
         <TextBox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="RadnoVreme"/>
-        <ComboBox Height="42" Name="Specijalista" Width="412" Grid.Column="3" Grid.Row="7">
+        <ComboBox Height="42" Name="SpecijalistaCombo" Width="412" Grid.Column="3" Grid.Row="7">
             <ComboBoxItem Content="DA"/>
             <ComboBoxItem Content="NE"/>
         </ComboBox>

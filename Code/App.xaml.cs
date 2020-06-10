@@ -1,6 +1,12 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
+using health_clinicClassDiagram.Repository;
+using health_clinicClassDiagram.Repository.Csv.Converter;
+using health_clinicClassDiagram.Repository.Sequencer;
+using health_clinicClassDiagram.Service;
 using Model.SystemUsers;
 using Repository;
+using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -33,9 +39,14 @@ namespace health_clinicClassDiagram
 
         public App()
         {
-          /*  var doctorRepository = new Repository(
-                
-                );*/
+            var doctorRepository = new DoctorRepository(
+                DOCTOR_FILE,
+                new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+                new LongSequencer());
+
+            var doctorService = new DoctorService(doctorRepository);
+
+            doctorController = new DoctorController(doctorService);
          
         }
     }

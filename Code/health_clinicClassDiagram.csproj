@@ -161,6 +161,7 @@
     <Compile Include="Controller\DecoratedDrugController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\DoctorController.cs" />
     <Compile Include="Controller\DoctorDrugController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -455,6 +456,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\DiagnosisAndReviewRepository.cs" />
+    <Compile Include="Repository\DoctorRepository.cs" />
     <Compile Include="Repository\DrugInventoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -548,6 +550,7 @@
     <Compile Include="Service\DoctorDrugService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\DoctorService.cs" />
     <Compile Include="Service\DrugInventoryService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -635,6 +638,8 @@
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Converter\AbstractConverter.cs" />
+    <Compile Include="View\Converter\DoctorConverter.cs" />
     <Compile Include="View\dodaj_salu.xaml.cs">
       <DependentUpon>dodaj_salu.xaml</DependentUpon>
     </Compile>

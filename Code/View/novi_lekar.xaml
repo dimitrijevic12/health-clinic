@@ -53,16 +53,18 @@
         <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara" TextChanged="IdLekara_TextChanged"/>
         <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Ime"/>
         <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime"/>
-        <ComboBox Height="42" Name="Pol" Width="412" Grid.Column="3" Grid.Row="3">
+        <ComboBox Height="42" Name="PolCombo" Width="412" Grid.Column="3" Grid.Row="3">
             <ComboBoxItem Content="Muški"/>
             <ComboBoxItem Content="Ženski"/>
         </ComboBox>
         <TextBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft"  Name="Jmbg"/>
         <TextBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="DatumRodjenja"/>
         <TextBox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="RadnoVreme"/>
-        <ComboBox Height="42" Name="Specijalista" Width="412" Grid.Column="3" Grid.Row="7">
-            <ComboBoxItem Content="DA"/>
-            <ComboBoxItem Content="NE"/>
+        <ComboBox Height="42" Name="SpecijalistaCombo" Width="412" Grid.Column="3" Grid.Row="7">
+            <ComboBoxItem Content="CARDIOLOGY"/>
+            <ComboBoxItem Content="PULMOLOGY"/>
+            <ComboBoxItem Content="NEPHROLOGY"/>
+            <ComboBoxItem Content="ENDOCRINOLOGY"/>
         </ComboBox>
         <Button Grid.Column="4" Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="38,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.ColumnSpan="3" Click="Button_otkazi"/>
         <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="49,10,30,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>

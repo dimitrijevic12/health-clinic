@@ -21,7 +21,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <DataGrid  x:Name="dataGridLekari" ItemsSource="{Binding Path=Lekari}" AutoGenerateColumns="True" 
+        <DataGrid  x:Name="dataGridLekari" ItemsSource="{Binding Path=doctorsCollection}" AutoGenerateColumns="True" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,47,0,10" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridLekari_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Uredi">

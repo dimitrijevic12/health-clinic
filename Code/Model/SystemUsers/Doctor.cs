@@ -16,7 +16,25 @@ namespace Model.SystemUsers
       private WorkingSchedule[] workingSchedule;
       private Gender gender;
       private DateTime dateOfBirth;
-        private string Spec;
+      private Specialization spec;
+
+        public long IdDoctor
+        {
+            get { return Id; }   // get method
+            set { Id = value; }
+        }
+
+        public String NameDoctor
+        {
+            get { return Name; }   // get method
+            set { Name = value; }
+        }
+
+        public String SurnameDoctor
+        {
+            get { return Surname; }   // get method
+            set { Surname = value; }
+        }
 
         public Gender Gender
         {
@@ -28,8 +46,15 @@ namespace Model.SystemUsers
             get { return dateOfBirth; }   // get method
             set { dateOfBirth = value; }
         }
+
+        public Specialization Spec
+        {
+            get { return spec; }   // get method
+            set { spec = value; }
+        }
+
         public Doctor() { }
-        public Doctor(int jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, String specijalista) 
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, Specialization specijalista) 
         {
 
             this.Id = jmbg;
@@ -41,7 +66,7 @@ namespace Model.SystemUsers
             Spec = specijalista;
             
         }
-        public Doctor(int jmbg, String name, String surname)
+        public Doctor(long jmbg, String name, String surname)
         {
             this.Id = jmbg;
             this.Name = name;
