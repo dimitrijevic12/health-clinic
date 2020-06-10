@@ -50,7 +50,7 @@
         <TextBlock Grid.Column="0" Grid.Row="7" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Specijalista}"/>
         
 
-        <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara"/>
+        <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara" IsReadOnly="True"/>
         <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Ime"/>
         <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="4" Margin="10,3,10,8" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime"/>
         <ComboBox Height="42" Name="PolCombo" Width="412" Grid.Column="3" Grid.Row="3" >

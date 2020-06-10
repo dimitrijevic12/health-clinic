@@ -74,27 +74,16 @@ namespace health_clinicClassDiagram.view
             var s = new novi_lekar();
             s.Show();
             this.Close();
-
-        }
-
-        private void Button_uredi(object sender, RoutedEventArgs e)
-        {
-            var s = new uredi_lekara(doctor);
-            s.Show();
-            this.Close();
-
-           
-        }
-
-        private void Button_obrisi(object sender, RoutedEventArgs e)
-        {
-            _doctorController.Delete(doctor);      
-            var s = new lekar();
-            s.Show();
-            this.Close();
+            /* var s = new uredi_lekara(doctor);
+             s.Show();
+             this.Close();*/
 
 
         }
+
+      
+
+        
 
         public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
         {
@@ -129,12 +118,19 @@ namespace health_clinicClassDiagram.view
         {
             //var s = new projekatUpravnikRA137_2017.view.uredi_lekara(JedanLekar);
             //s.Show();
-
+            var s = new uredi_lekara(doctor);
+            s.Show();
+            this.Close();
         }
 
         private void Button_delete(object sender, RoutedEventArgs e)
         {
             //Lekari.Remove(JedanLekar);
+            _doctorController.Delete(doctor);
+            var s = new lekar();
+            s.Show();
+            this.Close();
+
         }
     }
 }

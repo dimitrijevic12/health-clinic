@@ -4,6 +4,7 @@ using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Repository.Csv.Converter;
 using health_clinicClassDiagram.Repository.Sequencer;
 using health_clinicClassDiagram.Service;
+using Model.Rooms;
 using Model.SystemUsers;
 using Repository;
 using Repository.Csv.Stream;
@@ -24,10 +25,12 @@ namespace health_clinicClassDiagram
     public partial class App : Application
     {
         private const string DOCTOR_FILE = "../../Resources/Data/doctors.csv";
+        private const string EXAMOPERATIONROOM_FILE = "../../Resources/Data/examOperationRooms.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
         public IController<Doctor> doctorController { get; private set; }
+        public IExamOperationRoomController examOperationRoomController { get; private set; }
         protected override void OnStartup(StartupEventArgs e)
         {
             //var langCode = health_clinicClassDiagram.View.Properties.Settings.Default.languageCode;
@@ -44,8 +47,16 @@ namespace health_clinicClassDiagram
                 new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
 
+            var examOperationRoomRepository = new ExamOperationRoomRepository(
+                EXAMOPERATIONROOM_FILE,
+                new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(CSV_DELIMITER)),
+                new LongSequencer());
+
             var doctorService = new DoctorService(doctorRepository);
 
+            var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
+
+            examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
          
         }

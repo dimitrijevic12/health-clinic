@@ -24,9 +24,9 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="602"  Height="55"  Margin="10,0,404,0" Grid.ColumnSpan="2" Text="{x:Static language:Lang.izaberiSaluZaOpremu}"/>
-        
 
-        <DataGrid  x:Name="dataGridSale" ItemsSource="{Binding Path=Spisak}" AutoGenerateColumns="True" 
+
+        <DataGrid  x:Name="dataGridSale" ItemsSource="{Binding Path=roomsCollection}" AutoGenerateColumns="True" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,66" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridSale_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Prikaz">

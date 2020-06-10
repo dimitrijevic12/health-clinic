@@ -106,7 +106,7 @@ namespace health_clinicClassDiagram.view
         {
             Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, _specijalnost);
 
-            return _doctorController.Create(doctor);
+            return _doctorController.Edit(doctor);
         }
     }
 }

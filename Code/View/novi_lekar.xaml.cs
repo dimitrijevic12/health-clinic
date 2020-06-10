@@ -34,9 +34,10 @@ namespace health_clinicClassDiagram.view
         private void Button_otkazi(object sender, RoutedEventArgs e)
         {
            
-            this.Close();
+         
             var s = new lekar();
             s.Show();
+            this.Close();
         }
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
@@ -96,9 +97,10 @@ namespace health_clinicClassDiagram.view
             //lekar.Lekari.Add(new lekari() { IdLekara = ID, Ime = IME, Prezime = PREZIME, Pol = POL, Jmbg = JMBG, DatumRodjenja = DATUMRODJ, RadnoVreme = RADNOVREM, Specijalista = SPECIJALISTA } );
 
            
-            this.Close();
+           
             var s = new lekar();
             s.Show();
+            this.Close();
 
         }
 

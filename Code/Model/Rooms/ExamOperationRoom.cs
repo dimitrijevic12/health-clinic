@@ -12,6 +12,19 @@ namespace Model.Rooms
    {
       private Boolean InUse;
       private TypeOfRoom TypeOfRoom;
-   
+
+        public long _id;
+        public long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        
+
+        public ExamOperationRoom(long id)
+        {
+            this.Id = id;
+        }
+        
    }
 }

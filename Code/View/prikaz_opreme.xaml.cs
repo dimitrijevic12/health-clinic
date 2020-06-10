@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using Controller;
+using Model.Rooms;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,27 +14,35 @@ namespace health_clinicClassDiagram.view
     {
 
         private int colNum = 0;
+        private readonly IController<ExamOperationRoom> _examOperationRoomController;
+        private ExamOperationRoom room;
+
+        public static ObservableCollection<ExamOperationRoom> roomsCollection
+        {
+            get;
+            set;
+        }
 
         //public static ObservableCollection<SpisakSala> Spisak
         //{
         //    get;
         //    set;
         //}
-
-        public void inicijalizuj()
-        {
-            
-            //Spisak = new ObservableCollection<SpisakSala>();
-            //Spisak.Add(new SpisakSala { Sala = "101", TipSale = "Operaciona" });
-            //Spisak.Add(new SpisakSala { Sala = "102", TipSale = "Kontrolna " });
-            //Spisak.Add(new SpisakSala { Sala = "103", TipSale = "Operaciona" });
-            //Spisak.Add(new SpisakSala { Sala = "104", TipSale = "Rehabilitaciona" });
-        }
+        public List<ExamOperationRoom> rooms;
+      
         public prikaz_opreme()
         {
             InitializeComponent();
             this.DataContext = this;
 
+            var app = Application.Current as App;
+            _examOperationRoomController = app.examOperationRoomController;
+
+            rooms = _examOperationRoomController.GetAll();
+
+            roomsCollection = new ObservableCollection<ExamOperationRoom>(rooms);
+
+            dataGridSale.Items.Refresh();
 
             //if (Spisak == null)
             //{
