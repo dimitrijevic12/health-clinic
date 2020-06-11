@@ -17,7 +17,7 @@
             <Label DockPanel.Dock="Left" Name="title" Content="Započni pregled" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -28,13 +28,18 @@
                 </StackPanel>
             </Button>
         </DockPanel>
-        <Button x:Name="buttonPregled" Content="Button" Width="75" Click="buttonPregled_Click"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="565"  VerticalAlignment="Top" Width="430" Margin="0,0,0,-0.2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <StackPanel Width="430">
+            <StackPanel Height="565" Margin="0,0,0.4,0">
+                <ListView x:Name="listView" HorizontalAlignment="Left" Height="474"  VerticalAlignment="Top" Width="430" ItemsSource="{Binding BlankAppointments}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="200" Header="Start" DisplayMemberBinding="{Binding StartDate, StringFormat=HH:mm}" />
+                            <GridViewColumn Width="200" Header="End" DisplayMemberBinding="{Binding EndDate, StringFormat=HH:mm}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Button x:Name="buttonPregledTermina" Content="Prikaži termin" Margin="0,20,0,25" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonPregledTermina_Click"/>
+            </StackPanel>
+        </StackPanel>
     </DockPanel>
 </UserControl>

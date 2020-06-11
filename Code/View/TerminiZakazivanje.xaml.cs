@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Model.Appointment;
+using Model.Treatment;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +35,7 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPotvrdiZakazivanje_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new Pregled();
+            this.Content = new Pregled(new Treatment());
         }
     }
 }

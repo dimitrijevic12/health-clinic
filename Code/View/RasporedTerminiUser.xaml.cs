@@ -34,7 +34,9 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPregledTermina_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PregledTerminaUser();
+            Appointment appointment = (Appointment)listView.SelectedItem;
+            UserControl usc = new PregledTerminaUser(appointment);
+            (this.Parent as Panel).Children.Add(usc);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)

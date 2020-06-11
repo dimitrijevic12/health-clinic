@@ -817,6 +817,9 @@
     <Content Include="View\images\heart.png" />
     <Content Include="View\images\home.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Dialogs\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

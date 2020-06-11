@@ -39,9 +39,17 @@
                 </DockPanel>
                 <StackPanel>
                     <Label x:Name="sviLekoviLabel" Content="Svi lekovi:" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Bold"/>
-                    <DataGrid x:Name="dataGrid" Height="248" Margin="30,5,30,10">
+                    <DataGrid x:Name="dataGrid" Height="248" Margin="30,5,30,10" ItemsSource="{Binding AllDrugs}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True">
+                            <DataGridTextColumn Header="Id" Width="*" IsReadOnly="True" Binding="{Binding Id}">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True" Binding="{Binding Name}">
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -59,13 +67,21 @@
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="buttonDodajLek" Content="Dodaj lek" Margin="0,15,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Background="#FF1C439F" Foreground="White"  FontSize="24"/>
+                    <Button x:Name="buttonDodaj" Content="Dodaj" Margin="0,15,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonDodaj_Click"/>
                 </StackPanel>
                 <StackPanel>
                     <Label x:Name="lekoviKojiSePrepisujuLabel" Content="Lekovi koji se prepisuju:" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Bold"/>
-                    <DataGrid x:Name="dataGridDodati" Height="248" Margin="30,5,30,10">
+                    <DataGrid x:Name="dataGridDodati" Height="248" Margin="30,5,30,10" ItemsSource="{Binding PresrcibedDrugs}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True">
+                            <DataGridTextColumn Header="Id" Width="*" IsReadOnly="True" Binding="{Binding Id}">
+                                <DataGridTextColumn.HeaderStyle>
+                                    <Style TargetType="DataGridColumnHeader">
+                                        <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                    </Style>
+                                </DataGridTextColumn.HeaderStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True" Binding="{Binding Name}">
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -83,7 +99,7 @@
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="buttonObrisiLek" Content="Obriši lek" Margin="0,15,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Background="#FF1C439F" Foreground="White"  FontSize="24"/>
+                    <Button x:Name="buttonObrisiLek" Content="Obriši lek" Margin="0,15,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonObrisiLek_Click"/>
                 </StackPanel>
                 <StackPanel>
                     <Button x:Name="buttonPotvrdiRecept" Content="Potvrdi recept" Margin="0,25,0,25" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonPotvrdiRecept_Click"/>

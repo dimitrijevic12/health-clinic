@@ -30,7 +30,7 @@
         <StackPanel Width="430">
             <StackPanel Height="92">
                 <Label x:Name="labelNaslov" Content="Naslov:" VerticalAlignment="Center" FontSize="24" Margin="30,5,0,5" FontWeight="Bold"/>
-                <TextBox x:Name="textBoxNaslov" Height="30" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" TextChanged="textBoxNaslov_TextChanged"/>
+                <TextBox x:Name="textBoxNaslov" Height="30" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center"/>
             </StackPanel>
             <StackPanel Height="340">
                 <Label x:Name="labelTekst" Content="Tekst:" VerticalAlignment="Center" FontSize="24" Margin="30,5,0,5" FontWeight="Bold"/>

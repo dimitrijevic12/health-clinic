@@ -27,13 +27,31 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPotvrdi_Click(object sender, RoutedEventArgs e)
         {
-            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(3, thisCount);;
-        }
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxResult result  = MessageBox.Show("Da li ste sigurni da zelite da potvrdite clanak", "Potvrdjivanje clanka", button, MessageBoxImage.Question);
 
-        private void textBoxNaslov_TextChanged(object sender, TextChangedEventArgs e)
-        {
+            switch (result)
+            {
+                case MessageBoxResult.Cancel:
+                    {
+                        return;
+                    }
+                case MessageBoxResult.No:
+                    {
+                       int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+                       (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+                        return;
+                    }
+                case MessageBoxResult.Yes:
+                    {
+                       int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+                       (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+                        return;
+                    }
+            }
 
+//            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+//            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
