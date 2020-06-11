@@ -1,4 +1,5 @@
-﻿using Model.Appointment;
+﻿using health_clinicClassDiagram.Controller;
+using Model.Appointment;
 using Model.Rooms;
 using System;
 using System.Collections;
@@ -34,6 +35,9 @@ namespace health_clinicClassDiagram.View
         }
 
         public List<MedicalRecord> records;
+        private RehabilitationRoom rehabilitationRoom;
+
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
 
         public PrikazSaleZaSmestanjePacijenataUser(RehabilitationRoom rehabilitationRoom)
         {
@@ -42,7 +46,10 @@ namespace health_clinicClassDiagram.View
             labelSala.Content = rehabilitationRoom.IdRoom.ToString();
 
             this.DataContext = this;
+            this.rehabilitationRoom = rehabilitationRoom;
 
+            var app = Application.Current as App;
+            _rehabilitationRoomController = app.RehabilitationRoomController;
 
             records = rehabilitationRoom.Patients;
 
@@ -103,7 +110,16 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izadji(object sender, RoutedEventArgs e)
         {
-            (this.Parent as Panel).Children.Remove(this);
+            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
+            (this.Parent as Panel).Children.Add(sale);
+        }
+
+        private void Button_Otpusti(object sender, RoutedEventArgs e)
+        {
+            _rehabilitationRoomController.releasePatient(record, rehabilitationRoom);
+
+            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
+            (this.Parent as Panel).Children.Add(sale);
         }
     }
 }

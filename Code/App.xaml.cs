@@ -33,6 +33,7 @@ namespace health_clinicClassDiagram
         private const string MEDICALRECORD_FILE = "../../Resources/Data/records.csv";
         private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string REHABILATIONRROM_FILE = "../../Resources/Data/rehabilitationrooms.csv";
+        private const string DOCTOR_FILE = "../../Resources/Data/doctors.csv";
         private const string CSV_DELIMITER = ",";
 
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
@@ -41,6 +42,7 @@ namespace health_clinicClassDiagram
         public IAppointmentController AppointmentController { get; private set; }
         public IRehabilitationRoomController RehabilitationRoomController { get; private set; }
         public IUserController userController { get; private set; }
+        public IController<Doctor> DoctorController { get; private set; }
 
         public App()
         {
@@ -63,6 +65,11 @@ namespace health_clinicClassDiagram
                 REHABILATIONRROM_FILE,
                 new CSVStream<RehabilitationRoom>(REHABILATIONRROM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
+
+            var doctorRepository = new DoctorRepository(
+                DOCTOR_FILE,
+                new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+                new LongSequencer());
                 
 
             var userService = new UserService(userRepository);
@@ -70,11 +77,13 @@ namespace health_clinicClassDiagram
 
             //var patientService = new UserService();
 
+            var doctorService = new DoctorService(doctorRepository);
             var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository, userService);
             var recordService = new MedicalRecordService(recordRepository, userService);
             var appointmentService = new AppointmentService(appointmentRepository, null, null, null);
 
 
+            DoctorController = new DoctorController(doctorService);
             RehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
             MedicalRecordController = new MedicalRecordController(recordService);
             AppointmentController = new AppointmentController(appointmentService);

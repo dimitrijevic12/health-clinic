@@ -70,9 +70,9 @@
 
 
             </Grid>
-            <!--<DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Path=DoktoriCollection}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
+            <DataGrid x:Name="dataGridDoktori" ItemsSource="{Binding Path=doctorsCollection}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Stretch" 
-                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridDoktori_SelectionChanged"  />-->
+                  Margin="10,47,0,0" VerticalAlignment="Stretch"  />
 
         </Grid>
     </Grid>

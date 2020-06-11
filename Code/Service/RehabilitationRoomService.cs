@@ -80,5 +80,22 @@ namespace health_clinicClassDiagram.Service
         {
             return _roomRepository.GetRoom(room);
         }
+
+        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        {
+            var foundRehabilitationRoom = _roomRepository.GetRoom(room);
+            //var foundPatient = _patientService.Get(patient);
+            foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
+            {
+                if (oneRecord.IDnaloga.Equals(record.IDnaloga))
+                {
+                    foundRehabilitationRoom.Patients.Remove(oneRecord);
+                    break;
+                }
+            }
+            foundRehabilitationRoom.CurrentlyInUse--;
+            _roomRepository.Edit(foundRehabilitationRoom);
+            return true;
+        }
     }
 }

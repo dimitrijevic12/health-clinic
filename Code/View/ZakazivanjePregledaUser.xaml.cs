@@ -60,8 +60,8 @@ namespace health_clinicClassDiagram.View
         private void Button_Pronadji(object sender, RoutedEventArgs e)
         {
             
-            IzaberiNalogUser izaberi = new IzaberiNalogUser();
-            (this.Parent as Panel).Children.Add(izaberi);
+            /*IzaberiNalogUser izaberi = new IzaberiNalogUser();
+            (this.Parent as Panel).Children.Add(izaberi);*/
         }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)

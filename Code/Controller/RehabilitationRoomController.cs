@@ -68,5 +68,10 @@ namespace health_clinicClassDiagram.Controller
         {
             return _service.getRoom(room);
         }
+
+        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        {
+            return _service.releasePatient(record, room);
+        }
     }
 }

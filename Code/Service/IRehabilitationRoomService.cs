@@ -16,7 +16,7 @@ namespace health_clinicClassDiagram.Service
         Boolean IsRoomFree(DateTime from, DateTime to, Model.Rooms.Room room);
         List<Patient> GetAllPatientsByRoom(Model.Rooms.Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
-
+        Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
         RehabilitationRoom getRoom(RehabilitationRoom room);
     }
 }

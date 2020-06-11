@@ -16,6 +16,9 @@ namespace health_clinicClassDiagram.View
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+       
+        
+
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -62,12 +65,23 @@ namespace health_clinicClassDiagram.View
             var app = Application.Current as App;
             _rehabilitationRoomController = app.RehabilitationRoomController;
 
+            
+
+            if (IzaberiNalogUser.StaticRecord != null)
+            {
+                Console.WriteLine(IzaberiNalogUser.StaticRecord.IDnaloga);
+                textIDNaloga.Text = IzaberiNalogUser.StaticRecord.IDnaloga.ToString();
+                textIme.Text = IzaberiNalogUser.StaticRecord.Name.ToString();
+                textPrezime.Text = IzaberiNalogUser.StaticRecord.Surname.ToString();
+                textJMBG.Text = IzaberiNalogUser.StaticRecord.IDPatient.ToString();
+            }
+
 
         }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            _idNaloga = 1;
+            _idNaloga = long.Parse(textIDNaloga.Text);
             _imePacijenta = textIme.Text;
             _prezimePacijenta = textPrezime.Text;
             _jmbgPacijenta = int.Parse(textJMBG.Text);
@@ -97,6 +111,12 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void Button_Izaberi(object sender, RoutedEventArgs e)
+        {
+            IzaberiNalogUser izaberi = new IzaberiNalogUser(_rehabilitationRoom);
+            (this.Parent as Panel).Children.Add(izaberi);
         }
     }
 }
