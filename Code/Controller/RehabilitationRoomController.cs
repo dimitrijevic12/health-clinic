@@ -6,13 +6,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD
 using System.Threading.Tasks;
+=======
+>>>>>>> master
 
 namespace health_clinicClassDiagram.Controller
 {
     public class RehabilitationRoomController : IRehabilitationRoomController
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         private static RehabilitationRoomController instance;
         public RehabilitationRoomController GetInstance() { return null; }
 
@@ -35,12 +41,20 @@ namespace health_clinicClassDiagram.Controller
 
         public bool Delete(RehabilitationRoom obj)
         {
+<<<<<<< HEAD
             return _service.Delete(obj);           
+=======
+            return _service.Delete(obj);
+>>>>>>> master
         }
 
         public RehabilitationRoom Edit(RehabilitationRoom obj)
         {
+<<<<<<< HEAD
             return _service.Edit(obj);          
+=======
+            return _service.Edit(obj);
+>>>>>>> master
         }
 
         public int GenerateReport(Room room)
