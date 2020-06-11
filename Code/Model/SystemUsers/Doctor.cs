@@ -13,10 +13,17 @@ namespace Model.SystemUsers
 {
    public class Doctor : RegisteredUser
    {
+<<<<<<< HEAD
       private WorkingSchedule[] workingSchedule;
       private Gender gender;
       private DateTime dateOfBirth;
       private Specialization spec;
+=======
+        private WorkingSchedule[] workingSchedule;
+        private Gender gender;
+        private DateTime dateOfBirth;
+        private Specialization spec;
+>>>>>>> master
 
         public long IdDoctor
         {
@@ -54,26 +61,51 @@ namespace Model.SystemUsers
         }
 
         public Doctor() { }
+<<<<<<< HEAD
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, Specialization specijalista) 
+=======
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, Specialization specijalista)
+>>>>>>> master
         {
 
             this.Id = jmbg;
             this.Name = name;
+<<<<<<< HEAD
             this.Surname = surname;            
             this.gender = gender;
             this.dateOfBirth = dateOfBirth;
            // workingSchedule = workSc;
             Spec = specijalista;
             
+=======
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            // workingSchedule = workSc;
+            Spec = specijalista;
+
+>>>>>>> master
         }
         public Doctor(long jmbg, String name, String surname)
         {
             this.Id = jmbg;
             this.Name = name;
             this.Surname = surname;
+<<<<<<< HEAD
             
         }
 
+=======
+
+        }
+
+        public Doctor(String name, String surname)
+        {
+            this.Name = name;
+            this.Surname = surname;
+
+        }
+>>>>>>> master
 
     }
 }

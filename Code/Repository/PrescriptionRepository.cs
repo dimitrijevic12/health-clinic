@@ -1,5 +1,6 @@
 ﻿using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Treatment;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,14 @@ namespace Repository
 {
     public sealed class PrescriptionRepository : IPrescriptionRepository
     {
+        private readonly CSVStream<Prescription> _stream = new CSVStream<Prescription>("C:\\health-clinic\\health-clinic\\Code\\prescriptionRepo", new PrescriptionCSVConverter("|"));
+        private readonly LongSequencer _sequencer = new LongSequencer();
         private PrescriptionRepository()
         {
+            InitializeId();
         }
         private static PrescriptionRepository instance = null;
-        private static PrescriptionRepository Instance
+        public static PrescriptionRepository Instance
         {
             get
             {
@@ -22,13 +26,9 @@ namespace Repository
                 {
                     instance = new PrescriptionRepository();
                 }
-                return Instance;
+                return instance;
             }
         }
-        private String _path;
-        private readonly ICSVStream<Prescription> _stream;
-        private readonly iSequencer<long> _sequencer;
-
 
         private long GetMaxId(List<Prescription> prescriptions)
         {
@@ -44,6 +44,22 @@ namespace Repository
         {
             var prescriptions = _stream.ReadAll().ToList();
             var prescriptionToRemove = prescriptions.SingleOrDefault(acc => acc.Id == obj.Id);
+            if (prescriptionToRemove != null)
+            {
+                prescriptions.Remove(prescriptionToRemove);
+                _stream.SaveAll(prescriptions);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(long id)
+        {
+            var prescriptions = _stream.ReadAll().ToList();
+            var prescriptionToRemove = prescriptions.SingleOrDefault(ent => ent.Id.CompareTo(id) == 0);
             if (prescriptionToRemove != null)
             {
                 prescriptions.Remove(prescriptionToRemove);
@@ -94,8 +110,11 @@ namespace Repository
 
         public Prescription Save(Prescription obj)
         {
+            obj.SetId(_sequencer.GenerateId());
             _stream.AppendToFile(obj);
             return obj;
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }

@@ -11,6 +11,6 @@ namespace Repository
 {
    public interface ITreatmentRepository : IRepository<Treatment>
    {
-      Model.Treatment.Treatment GetTreatment();
+      Model.Treatment.Treatment GetTreatment(long id);
    }
 }

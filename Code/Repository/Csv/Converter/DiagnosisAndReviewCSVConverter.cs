@@ -25,9 +25,9 @@ namespace Repository.Csv.Converter
         {
             string[] tokens = entityCSVFormat.Split(Delimiter.ToCharArray());
             return new DiagnosisAndReview(
+                long.Parse(tokens[0]),
                 tokens[1],
-                tokens[2],
-                int.Parse(tokens[0]));
+                tokens[2]);
         }
     }
 }
