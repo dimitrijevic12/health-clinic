@@ -17,9 +17,11 @@ namespace Model.Appointment
         public Model.Rooms.ExamOperationRoom examOperationRoom;
 
         public long Id { get; set; }
+        public DateTime EndDate { get => endDate; set => endDate = value; }
+        public DateTime StartDate { get => startDate; set => startDate = value; }
 
-        public DateTime StartDate;
-        public DateTime EndDate;
+        private DateTime startDate;
+        private DateTime endDate;
         public TypeOfAppointment Type;
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
