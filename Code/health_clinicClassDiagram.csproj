@@ -174,7 +174,6 @@
     <Compile Include="Controller\NotificationController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\ReferralToASpecialist.cs" />
     <Compile Include="Controller\RehabilitationRoomController.cs" />
     <Compile Include="Controller\RenovationController.cs">
       <SubType>Code</SubType>
@@ -319,6 +318,7 @@
     <Compile Include="Model\Treatment\ScheduledSurgery.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Treatment\SpecialistAppointment.cs" />
     <Compile Include="Model\Treatment\Treatment.cs">
       <SubType>Code</SubType>
     </Compile>

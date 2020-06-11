@@ -18,9 +18,25 @@ namespace Repository
    public class AppointmentRepository : IAppointmentRepository
    {
         private String _path;
-        private static AppointmentRepository Instance;
+        private static AppointmentRepository instance;
         private readonly ICSVStream<Appointment> _stream;
         private readonly iSequencer<long> _sequencer;
+
+        public static AppointmentRepository Instance 
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AppointmentRepository();
+                }
+                return instance;
+            }
+        }
+        
+        private AppointmentRepository()
+        {
+        }
         public AppointmentRepository GetInstance() { return null; }
 
         public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)

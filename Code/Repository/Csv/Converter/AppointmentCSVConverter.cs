@@ -35,8 +35,8 @@ namespace Repository.Csv.Converter
 
         public string ConvertEntityToCSVFormat(Appointment entity)
              => string.Join(_delimiter,
-               entity.doctor,
-               entity.patient,
+               entity.Doctor,
+               entity.Patient,
                entity.Type);
     }
 }

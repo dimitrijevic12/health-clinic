@@ -7,7 +7,9 @@
 using health_clinicClassDiagram.Model.SystemUsers;
 using Model.Appointment;
 using Model.SystemUsers;
+using Model.Treatment;
 using System;
+using System.Collections.Generic;
 
 namespace Repository.Csv.Converter
 {
@@ -33,22 +35,41 @@ namespace Repository.Csv.Converter
 
             Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);
 
+            String treatmentsString = tokens[7];
+            String[] treatmentsParts = treatmentsString.Split(',');
+            List<Treatment> treatments = new List<Treatment>();
+            foreach(String id in treatmentsParts)
+            {
+                //                treatmentIds.Add(long.Parse(id));
+                //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
+                treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
+
+            }
+
             return new MedicalRecord(
                 long.Parse(tokens[0]),
                 patient,
-                new Doctor()); //ne treba new doctor treba promeniti (tokens[6]), kao i u patient u Gender.MALE
+                new Doctor(),
+                treatments); //ne treba new doctor treba promeniti (tokens[6]), kao i u patient u Gender.MALE
         }
 
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
+            String treatments = "";
+            foreach (Treatment treatment in entity.Treatments)
+            {
+                treatments += treatment.Id + ",";
+            }
+
             return string.Join(_delimiter,
               entity.id,
-              entity.patient.Name,
-              entity.patient.Surname,
-              entity.patient.Id,
+              entity.Patient.Name,
+              entity.Patient.Surname,
+              entity.Patient.Id,
               DateTime.Now,
-              entity.patient.Gender,
-              entity.choosenDoctor);
+              entity.Patient.Gender,
+              entity.choosenDoctor,
+              treatments);
         }
     }
 

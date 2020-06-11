@@ -26,6 +26,10 @@ namespace Model.Treatment
             this.Drug = drug;
         }
 
+        public Prescription()
+        {
+        }
+
         public long Id { get => id; set => id = value; }
         public List<Drug> Drug { get => drug; set => drug = value; }
 
