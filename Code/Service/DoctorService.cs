@@ -5,10 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
+
 using System.Threading.Tasks;
-=======
->>>>>>> master
+
 
 namespace health_clinicClassDiagram.Service
 {
@@ -16,11 +15,7 @@ namespace health_clinicClassDiagram.Service
     {
 
         private readonly IRepository<Doctor> _doctorRepository;
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> master
         private static DoctorService Instance;
 
         public MedicalRecordService GetInstance() { return null; }
@@ -28,11 +23,7 @@ namespace health_clinicClassDiagram.Service
         public DoctorService(IRepository<Doctor> repository)
         {
             _doctorRepository = repository;
-<<<<<<< HEAD
-           
-=======
 
->>>>>>> master
         }
 
         public Doctor Create(Doctor obj)
@@ -42,22 +33,17 @@ namespace health_clinicClassDiagram.Service
         }
 
         public bool Delete(Doctor obj)
-<<<<<<< HEAD
+
         {         
             return _doctorRepository.Delete(obj);          
-=======
-        {
-            return _doctorRepository.Delete(obj);
->>>>>>> master
+
         }
 
         public Doctor Edit(Doctor obj)
         {
-<<<<<<< HEAD
+
             return _doctorRepository.Edit(obj);         
-=======
-            return _doctorRepository.Edit(obj);
->>>>>>> master
+
         }
 
         public List<Doctor> GetAll()

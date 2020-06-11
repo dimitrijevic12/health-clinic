@@ -6,6 +6,7 @@
 
 using Model.Rooms;
 using Model.SystemUsers;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,17 @@ namespace Controller
 {
    public class RoomController : IRoomController
    {
-      public RoomController GetInstance() { return null; }
+       private readonly Service.IRoomService _service;
+
+        private static RoomController Instance;
+
+        public RoomController GetInstance() { return null; }
+
+        public RoomController(IRoomService service)
+        {
+            _service = service;
+        }
+
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();
@@ -36,27 +47,26 @@ namespace Controller
 
         public List<Room> GetAll()
         {
-            throw new NotImplementedException();
+            var rooms = (List<Room>)_service.GetAll();
+            return rooms;
         }
 
         public bool Delete(Room obj)
         {
-            throw new NotImplementedException();
+            return _service.Delete(obj);
         }
 
         public Room Create(Room obj)
         {
-            throw new NotImplementedException();
+             return _service.Create(obj);
         }
 
         public Room Edit(Room obj)
         {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
         }
 
-        public Service.IRoomService iRoomService;
-   
-      private static RoomController Instance;
+       
    
    }
 }

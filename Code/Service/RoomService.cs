@@ -6,6 +6,7 @@
 
 using Model.Rooms;
 using Model.SystemUsers;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -13,7 +14,17 @@ namespace Service
 {
    public class RoomService : IRoomService
    {
-      public RoomService GetInstance() { return null; }
+        private readonly IRoomRepository _roomRepository;
+
+        private static RoomService Instance;
+
+        public RoomService GetInstance() { return null; }
+
+        public RoomService(IRoomRepository repository)
+        {
+            _roomRepository = repository;
+        }
+
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();
@@ -31,27 +42,31 @@ namespace Service
 
         public Room Create(Room obj)
         {
-            throw new NotImplementedException();
+            var newRoom = _roomRepository.Save(obj);
+
+            return newRoom;
         }
 
         public Room Edit(Room obj)
         {
-            throw new NotImplementedException();
+            var newRoom = _roomRepository.Edit(obj);
+
+            return newRoom;
         }
 
         public bool Delete(Room obj)
         {
-            throw new NotImplementedException();
+            var newRoom = _roomRepository.Delete(obj);
+
+            return true;
         }
 
         public List<Room> GetAll()
         {
-            throw new NotImplementedException();
+            var rooms = _roomRepository.GetAll();
+            return rooms;
         }
 
-        public Repository.IRoomRepository iRoomRepository;
-   
-      private static RoomService Instance;
-   
+       
    }
 }

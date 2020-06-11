@@ -7,7 +7,9 @@ using health_clinicClassDiagram.Service;
 using Model.Rooms;
 using Model.SystemUsers;
 using Repository;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -26,11 +28,20 @@ namespace health_clinicClassDiagram
     {
         private const string DOCTOR_FILE = "../../Resources/Data/doctors.csv";
         private const string EXAMOPERATIONROOM_FILE = "../../Resources/Data/examOperationRooms.csv";
+        private const string REHABILITATIONROOM_FILE = "../../Resources/Data/rehabilitationRooms.csv";
+        private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
         public IController<Doctor> doctorController { get; private set; }
         public IExamOperationRoomController examOperationRoomController { get; private set; }
+
+        public IRoomController roomController { get; private set; }
+
+        public IRehabilitationRoomController rehabilitationRoomController { get; private set; }
+
+        public UserController userController { get; private set; }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             //var langCode = health_clinicClassDiagram.View.Properties.Settings.Default.languageCode;
@@ -52,13 +63,34 @@ namespace health_clinicClassDiagram
                 new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(CSV_DELIMITER)),
                 new LongSequencer());
 
+            /* var rehabilitationRoomRepository = new RehabilitationRoomRepository(
+                REHABILITATIONROOM_FILE,
+                new CSVStream<Room>(REHABILITATIONROOM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+                new LongSequencer());*/
+
+            var rehabilitationRoomRepository = new RehabilitationRoomRepository(
+               REHABILITATIONROOM_FILE,
+               new CSVStream<RehabilitationRoom>(REHABILITATIONROOM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+               new LongSequencer());
+
+            var userRepository = new UserRepository(
+              USER_FILE,
+              new CSVStream<RegisteredUser>(REHABILITATIONROOM_FILE, new UserCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+              new LongSequencer());
+
             var doctorService = new DoctorService(doctorRepository);
 
             var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
+            var userService = new UserService(userRepository);
+
+            var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository, userService);
+
+            
 
             examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
-         
+            rehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
+
         }
     }
 }

@@ -15,9 +15,11 @@ namespace health_clinicClassDiagram.view
 
         private int colNum = 0;
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
-        private ExamOperationRoom room;
+        private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private Room room;
+                //examOperationRoom
 
-        public static ObservableCollection<ExamOperationRoom> roomsCollection
+        public static ObservableCollection<Room> roomsCollection
         {
             get;
             set;
@@ -29,7 +31,9 @@ namespace health_clinicClassDiagram.view
         //    set;
         //}
         public List<ExamOperationRoom> rooms;
-      
+        public List<RehabilitationRoom> rooms2;
+        public List<Room> finalRooms;
+
         public prikaz_opreme()
         {
             InitializeComponent();
@@ -37,10 +41,17 @@ namespace health_clinicClassDiagram.view
 
             var app = Application.Current as App;
             _examOperationRoomController = app.examOperationRoomController;
+            _rehabilitationRoomController = app.rehabilitationRoomController;
+
+
 
             rooms = _examOperationRoomController.GetAll();
+            rooms2 = _rehabilitationRoomController.GetAll();
 
-            roomsCollection = new ObservableCollection<ExamOperationRoom>(rooms);
+            finalRooms.AddRange(rooms);
+            finalRooms.AddRange(rooms2);
+
+            roomsCollection = new ObservableCollection<Room>(finalRooms);
 
             dataGridSale.Items.Refresh();
 
@@ -75,10 +86,7 @@ namespace health_clinicClassDiagram.view
             s.Show();
         }
 
-        private void dataGridSale_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+      
 
         private void Button_Detaljno(object sender, RoutedEventArgs e)
         {
@@ -90,6 +98,11 @@ namespace health_clinicClassDiagram.view
         {
             var s = new odabrana_sala();
             s.Show();
+        }
+
+        private void dataGridSale_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

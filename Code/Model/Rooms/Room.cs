@@ -10,17 +10,22 @@ namespace Model.Rooms
 {
    public class Room
    {
-<<<<<<< HEAD
+       //bio private ili protected (ne secam se) long Id, ali sam ga obrisao zbog dole gettera i settera
       public InventoryEquip[] inventoryEquip;
    
-      protected long Id;
-   
-   }
-=======
-        public InventoryEquip[] inventoryEquip;
+      
 
-        protected long Id;
+        protected long _id;
+        public long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
+        public Room(long id)
+        {
+            this.Id = id;
+        }
     }
->>>>>>> master
+
 }

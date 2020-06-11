@@ -42,7 +42,7 @@ namespace health_clinicClassDiagram
                         }
                     }
             */
-            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
+          /*  DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
             Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
             Drug drug2 = new Drug(null, "Aerius 50mg", "Opis Aeriusa", false, 5);
             List<Drug> drugs = new List<Drug>();
