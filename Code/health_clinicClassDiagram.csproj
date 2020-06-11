@@ -146,6 +146,7 @@
     <Compile Include="Controller\INotificaitonController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\IRehabilitationRoomController.cs" />
     <Compile Include="Controller\IRenovationController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -174,6 +175,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\ReferralToASpecialist.cs" />
+    <Compile Include="Controller\RehabilitationRoomController.cs" />
     <Compile Include="Controller\RenovationController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -359,6 +361,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\Csv\Converter\PrescriptionCSVConverter.cs" />
+    <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -420,6 +423,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\IPrescriptionRepository.cs" />
+    <Compile Include="Repository\IRehabilitationRoomRepository.cs" />
     <Compile Include="Repository\IRenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -446,6 +450,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PrescriptionRepository.cs" />
+    <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -515,6 +520,7 @@
     <Compile Include="Service\INotifcationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\IRehabilitationRoomService.cs" />
     <Compile Include="Service\IRenovationService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -545,6 +551,7 @@
     <Compile Include="Service\NotificationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\RehabilitationRoomService.cs" />
     <Compile Include="Service\RenovationService.cs">
       <SubType>Code</SubType>
     </Compile>
