@@ -5,20 +5,19 @@
  ***********************************************************************/
 
 using System;
-using System.Collections;
 
 namespace Model.Treatment
 {
    public class ReferralToHospitalTreatment
    {
-        private System.Collections.ArrayList drug;
-
-        /// <pdGenerated>default getter</pdGenerated>
-        public System.Collections.ArrayList GetDrug()
+      public System.Collections.ArrayList drug;
+      
+      /// <pdGenerated>default getter</pdGenerated>
+      public System.Collections.ArrayList GetDrug()
       {
-         if (Drug == null)
-            Drug = new System.Collections.ArrayList();
-         return Drug;
+         if (drug == null)
+            drug = new System.Collections.ArrayList();
+         return drug;
       }
       
       /// <pdGenerated>default setter</pdGenerated>
@@ -34,10 +33,10 @@ namespace Model.Treatment
       {
          if (newDrug == null)
             return;
-         if (this.Drug == null)
-            this.Drug = new System.Collections.ArrayList();
-         if (!this.Drug.Contains(newDrug))
-            this.Drug.Add(newDrug);
+         if (this.drug == null)
+            this.drug = new System.Collections.ArrayList();
+         if (!this.drug.Contains(newDrug))
+            this.drug.Add(newDrug);
       }
       
       /// <pdGenerated>default Remove</pdGenerated>
@@ -45,32 +44,21 @@ namespace Model.Treatment
       {
          if (oldDrug == null)
             return;
-         if (this.Drug != null)
-            if (this.Drug.Contains(oldDrug))
-               this.Drug.Remove(oldDrug);
+         if (this.drug != null)
+            if (this.drug.Contains(oldDrug))
+               this.drug.Remove(oldDrug);
       }
       
       /// <pdGenerated>default removeAll</pdGenerated>
       public void RemoveAllDrug()
       {
-         if (Drug != null)
-            Drug.Clear();
+         if (drug != null)
+            drug.Clear();
       }
    
-      private DateTime startDate;
-      private DateTime endDate;
-      private String causeForHospTreatment;
-
-        public ReferralToHospitalTreatment(DateTime startDate, DateTime endDate, string causeForHospTreatment)
-        {
-            StartDate = startDate;
-            EndDate = endDate;
-            CauseForHospTreatment = causeForHospTreatment;
-        }
-
-        public ArrayList Drug { get => drug; set => drug = value; }
-        public DateTime StartDate { get => startDate; set => startDate = value; }
-        public DateTime EndDate { get => endDate; set => endDate = value; }
-        public string CauseForHospTreatment { get => causeForHospTreatment; set => causeForHospTreatment = value; }
-    }
+      private DateTime StartDate;
+      private DateTime EndDate;
+      private String CauseForHospTreatment;
+   
+   }
 }

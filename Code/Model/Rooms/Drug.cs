@@ -17,33 +17,13 @@ namespace Model.Rooms
       }
    
       public Ingredients ingredients;
+   
+      private Drug Instance;
       private int Id;
-      private String name;
+      private String Name;
       private String Description;
       private Boolean Validation;
-      private int quantity;
-
-        public Drug(string name, int quantity)
-        {
-            Name = name;
-            Quantity = quantity;
-        }
-
-        public Drug(string name)
-        {
-            Name = name;
-        }
-
-        public Drug(Ingredients ingredients, string name, string description, bool validation, int quantity)
-        {
-            this.ingredients = ingredients;
-            this.name = name;
-            Description = description;
-            Validation = validation;
-            this.quantity = quantity;
-        }
-
-        public string Name { get => name; set => name = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
-    }
+      private int Quantity;
+   
+   }
 }

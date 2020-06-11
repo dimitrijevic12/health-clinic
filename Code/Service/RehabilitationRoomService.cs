@@ -7,10 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
 using System.Threading.Tasks;
-=======
->>>>>>> master
 
 namespace health_clinicClassDiagram.Service
 {
@@ -20,18 +17,10 @@ namespace health_clinicClassDiagram.Service
         private readonly IUserService _patientService;
 
         private static MedicalRecordService instance = null;
-<<<<<<< HEAD
         public static RehabilitationRoomService GetInstance() {
 
             return null;
             
-=======
-        public static RehabilitationRoomService GetInstance()
-        {
-
-            return null;
-
->>>>>>> master
         }
 
         public RehabilitationRoomService(IRehabilitationRoomRepository repository, IUserService service)
@@ -54,33 +43,19 @@ namespace health_clinicClassDiagram.Service
 
         public RehabilitationRoom Create(RehabilitationRoom obj)
         {
-<<<<<<< HEAD
           
             var RehabilitationRoom = _roomRepository.Save(obj);           
-=======
-
-            var RehabilitationRoom = _roomRepository.Save(obj);
->>>>>>> master
             return RehabilitationRoom;
         }
 
         public bool Delete(RehabilitationRoom obj)
-<<<<<<< HEAD
         {      
-=======
-        {
->>>>>>> master
             return _roomRepository.Delete(obj);
         }
 
         public RehabilitationRoom Edit(RehabilitationRoom obj)
-<<<<<<< HEAD
         {        
             return _roomRepository.Edit(obj);            
-=======
-        {
-            return _roomRepository.Edit(obj);
->>>>>>> master
         }
 
         public List<RehabilitationRoom> GetAll()

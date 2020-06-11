@@ -11,11 +11,8 @@ namespace Repository
 {
     public class DiagnosisAndReviewRepository : IDiagnosisAndReviewRepository
     {
-        private readonly CSVStream<DiagnosisAndReview> _stream = new CSVStream<DiagnosisAndReview>("C:\\health-clinic\\health-clinic\\Code\\diagnosisAndReviewRepo", new DiagnosisAndReviewConverter("|"));
-        private readonly LongSequencer _sequencer = new LongSequencer();
         private DiagnosisAndReviewRepository()
         {
-            InitializeId();
         }
         private static DiagnosisAndReviewRepository instance = null;
         public static DiagnosisAndReviewRepository Instance
@@ -29,11 +26,13 @@ namespace Repository
                 return instance;
             }
         }
+        private String _path;
+        private readonly CSVStream<DiagnosisAndReview> _stream = new CSVStream<DiagnosisAndReview>("C:\\health-clinic\\health-clinic\\Code\\diagnosisAndReviewRepo", new DiagnosisAndReviewConverter("|"));
+        private readonly iSequencer<long> _sequencer;
 
         private long GetMaxId(List<DiagnosisAndReview> dAndRs)
         {
-//            return dAndRs.OrderBy(d => d.Id).First().Id;
-            return dAndRs.Count() == 0 ? default : dAndRs.Max(dAr => dAr.Id);
+            return dAndRs.Count() == 0 ? 0 : dAndRs.Max(apt => apt.Id);
         }
 
         public bool CloseFile(string path)
@@ -111,11 +110,8 @@ namespace Repository
 
         public DiagnosisAndReview Save(DiagnosisAndReview obj)
         {
-            obj.SetId(_sequencer.GenerateId());
             _stream.AppendToFile(obj);
             return obj;
         }
-
-        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }

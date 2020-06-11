@@ -12,19 +12,11 @@ namespace Model.Rooms
 {
    public class RehabilitationRoom : Room
    {
-<<<<<<< HEAD
       public List<InventoryDrugs> inventoryDrugs;
       private List<MedicalRecord> _patients;
    
       private int _maxCapacity;
       private int _currentlyInUse;
-=======
-        public List<InventoryDrugs> inventoryDrugs;
-        private List<MedicalRecord> _patients;
-
-        private int _maxCapacity;
-        private int _currentlyInUse;
->>>>>>> master
 
         public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<MedicalRecord> patients)
         {
@@ -58,10 +50,7 @@ namespace Model.Rooms
             set { Id = value; }
         }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> master
     }
 }

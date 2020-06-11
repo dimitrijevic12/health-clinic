@@ -3,18 +3,12 @@ using Model.Rooms;
 using Model.SystemUsers;
 using Repository.Csv.Converter;
 using System;
-<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-=======
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
->>>>>>> master
 
 namespace health_clinicClassDiagram.Repository.Csv.Converter
 {
@@ -39,11 +33,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             int i = 3;
 
-<<<<<<< HEAD
             while (i<tokens.Length-1)
-=======
-            while (i < tokens.Length - 1)
->>>>>>> master
             {
                 long idNaloga = long.Parse(tokens[i]);
                 i++;
@@ -52,27 +42,18 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 string prezime = tokens[i];
                 i++;
                 int idPatient = int.Parse(tokens[i]);
-<<<<<<< HEAD
                 Patient patient = new Patient(ime,prezime,idPatient);
-=======
-                Patient patient = new Patient(ime, prezime, idPatient);
->>>>>>> master
                 MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor());
                 records.Add(record);
                 i++;
             }
 
-<<<<<<< HEAD
             return new RehabilitationRoom(idRoom, inUse, max, records); 
-=======
-            return new RehabilitationRoom(idRoom, inUse, max, records);
->>>>>>> master
         }
 
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
         {
             String resenje = "";
-<<<<<<< HEAD
             
             
             foreach(MedicalRecord record in entity.Patients)
@@ -82,17 +63,6 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             }
 
      
-=======
-
-
-            foreach (MedicalRecord record in entity.Patients)
-            {
-                resenje += string.Join(_delimiter, record.IDnaloga, record.Name, record.Surname, record.IDPatient);
-                resenje += _delimiter;
-            }
-
-
->>>>>>> master
             return string.Join(_delimiter,
               entity.IdRoom,
               entity.CurrentlyInUse,
