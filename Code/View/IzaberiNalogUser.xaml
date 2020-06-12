@@ -75,7 +75,7 @@
             </Grid>
             <DataGrid x:Name="dataGridNalozi" ItemsSource="{Binding Path=recordsCollection}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Stretch" 
-                  Margin="10,47,0,0" VerticalAlignment="Stretch"/>
+                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged"/>
         </Grid>
     </Grid>
 </UserControl>

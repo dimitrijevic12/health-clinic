@@ -4,6 +4,7 @@ using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -63,14 +64,22 @@ namespace health_clinicClassDiagram.View
 
         private readonly IMedicalRecordController _recordController;
         private readonly IController<Patient> _patientController;
+        private readonly IController<Doctor> _doctorController;
 
-        private readonly IList<Doctor> _doctors;
+        public ObservableCollection<Doctor> doctorsCollection
+        {
+            get;
+            set;
+        }
+
+        private List<Doctor> doctors;
 
         private long _idNaloga;
         private string _imePacijenta;
         private string _prezimePacijenta;
         private int _jmbgPacijenta;
         private Gender _gender;
+        private Doctor choosenDoctor;
 
         public KreirajNalogUser()
         {
@@ -82,12 +91,11 @@ namespace health_clinicClassDiagram.View
             var app = Application.Current as App;
             _recordController = app.MedicalRecordController;
 
-            //_doctorController = app
+            _doctorController = app.DoctorController;
 
-            //_doctors = 
+            doctors = _doctorController.GetAll();
 
-            
-            
+            doctorsCollection = new ObservableCollection<Doctor>(doctors);
 
 
         }
@@ -143,7 +151,7 @@ namespace health_clinicClassDiagram.View
         {
 
             Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
-            var record = new MedicalRecord(_idNaloga, pacijent, new Doctor());
+            var record = new MedicalRecord(_idNaloga, pacijent, choosenDoctor);
 
             return _recordController.Create(record);
             
@@ -163,6 +171,17 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void DoktorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = (ComboBox)sender;
+            
+
+            choosenDoctor = (Doctor)cmb.SelectedItem;
+
+            
+            
         }
     }
 }

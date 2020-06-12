@@ -85,9 +85,18 @@
                 <TextBox Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="5" Name="PrezimeTekst"/>
                 <TextBox Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="5" Name="JMBGTekst" IsReadOnly="True"/>
                 <DatePicker Grid.Column="4" Grid.Row="9" Grid.ColumnSpan="5" Name="DatumPicker"/>
-                <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo">
-                    <ComboBoxItem Content = "Doktor Petar"/>
-                    <ComboBoxItem Content= "Doktor Mitar"/>
+                <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo" ItemsSource="{Binding Path = doctorsCollection}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=IdDoctor}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=NameDoctor}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=SurnameDoctor}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
                 <StackPanel  Grid.Column="4" Grid.Row="11" Grid.ColumnSpan="5" Name="PolCombo">
                     <RadioButton GroupName="pol" Content="Muški" IsChecked="True" Name="muski"/>

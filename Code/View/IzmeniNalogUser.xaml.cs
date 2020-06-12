@@ -3,6 +3,8 @@ using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,6 +32,16 @@ namespace health_clinicClassDiagram.View
             }
         }
 
+        private readonly IController<Doctor> _doctorController;
+
+        public ObservableCollection<Doctor> doctorsCollection
+        {
+            get;
+            set;
+        }
+
+        private List<Doctor> doctors;
+
         public IzmeniNalogUser(MedicalRecord record)
         {
             InitializeComponent();
@@ -38,6 +50,12 @@ namespace health_clinicClassDiagram.View
 
             var app = Application.Current as App;
             _recordController = app.MedicalRecordController;
+
+            _doctorController = app.DoctorController;
+
+            doctors = _doctorController.GetAll();
+
+            doctorsCollection = new ObservableCollection<Doctor>(doctors);
 
             IDTekst.Text = record.id.ToString();
             ImeTekst.Text = record.patient.Name;

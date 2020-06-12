@@ -82,7 +82,7 @@ namespace health_clinicClassDiagram.View
                         if (single_row.IsSelected == true)
                         {
                             record = records.ElementAt(single_row.GetIndex());
-                            staticRecord.IDnaloga = record.IDnaloga;
+                            StaticRecord = records.ElementAt(single_row.GetIndex());
 
                         }
                     }

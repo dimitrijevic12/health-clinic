@@ -28,7 +28,7 @@ namespace health_clinicClassDiagram.View
 
         public List<RehabilitationRoom> rehabilitationRooms;
 
-        //Sale.Add(new SaleZaSmestanje() { Ime = "Sala 10", ZauzetiKreveti = 3, UkupniKreveti = 5});
+        
 
         public SaleZaSmestanjePacijenataUser()
         {
@@ -44,6 +44,8 @@ namespace health_clinicClassDiagram.View
             rehabilitationRoomsCollection = new ObservableCollection<RehabilitationRoom>(rehabilitationRooms);
 
             dataGridSale.Items.Refresh();
+
+            
 
         }
 
