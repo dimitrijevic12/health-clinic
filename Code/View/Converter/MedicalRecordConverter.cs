@@ -9,7 +9,7 @@ namespace health_clinicClassDiagram.View.Converter
     class MedicalRecordConverter : AbstractConverter
     {
         public static string ConvertMedicalRecordToString(MedicalRecord record)
-            => string.Join(" ", record.patient, record.treatments);
+            => string.Join(" ", record.Patient, record.Doctor, record.Treatments);
 
         public static IList<string> ConvertMedicalRecordListToStringList(IList<MedicalRecord> records)
             => ConvertEntityListToViewList(records, ConvertMedicalRecordToString);

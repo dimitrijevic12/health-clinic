@@ -9,6 +9,7 @@ using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -32,6 +33,7 @@ namespace Controller
 
         private TreatmentController()
         {
+            _service = TreatmentService.Instance;
         }
 
         public TreatmentController GetInstance() { return null; }

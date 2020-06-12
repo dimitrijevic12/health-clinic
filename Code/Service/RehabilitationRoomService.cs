@@ -16,10 +16,6 @@ namespace health_clinicClassDiagram.Service
         private readonly IRehabilitationRoomRepository _roomRepository;
         private readonly IUserService _patientService;
 
-<<<<<<< HEAD
-        private static MedicalRecordService instance = null;
-        public static RehabilitationRoomService GetInstance() {
-=======
         private static RehabilitationRoomService instance = null;
 
         public static RehabilitationRoomService Instance
@@ -40,10 +36,9 @@ namespace health_clinicClassDiagram.Service
 
         public static RehabilitationRoomService GetInstance()
         {
->>>>>>> master
 
             return null;
-            
+
         }
 
         public RehabilitationRoomService(IRehabilitationRoomRepository repository, IUserService service)
@@ -66,19 +61,19 @@ namespace health_clinicClassDiagram.Service
 
         public RehabilitationRoom Create(RehabilitationRoom obj)
         {
-          
-            var RehabilitationRoom = _roomRepository.Save(obj);           
+
+            var RehabilitationRoom = _roomRepository.Save(obj);
             return RehabilitationRoom;
         }
 
         public bool Delete(RehabilitationRoom obj)
-        {      
+        {
             return _roomRepository.Delete(obj);
         }
 
         public RehabilitationRoom Edit(RehabilitationRoom obj)
-        {        
-            return _roomRepository.Edit(obj);            
+        {
+            return _roomRepository.Edit(obj);
         }
 
         public List<RehabilitationRoom> GetAll()

@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Treatment.Prescription
  ***********************************************************************/
 
+using Model.Rooms;
 using System;
 using System.Collections.Generic;
 
@@ -11,12 +12,14 @@ namespace Model.Treatment
 {
    public class Prescription
    {
-        private int id;
-        public List<Model.Rooms.Drug> drug;
+        private long id;
+        private List<Drug> drug;
+        public Prescription(long id, List<Drug> drug)
+        {
+            Id = id;
+            this.Drug = drug; ;
+        }
 
-<<<<<<< HEAD
-        public int Id { get => id; set => id = value; }
-=======
         public Prescription(List<Drug> drug)
         {
             Id = id;
@@ -37,13 +40,12 @@ namespace Model.Treatment
         public override string ToString()
         {
             string outString = "";
-            outString = Id + " " ;
-            foreach(Drug oneDrug in Drug)
+            outString = Id + " ";
+            foreach (Drug oneDrug in Drug)
             {
                 outString += oneDrug.Name + " " + oneDrug.Quantity;
             }
             return outString;
         }
->>>>>>> master
     }
 }

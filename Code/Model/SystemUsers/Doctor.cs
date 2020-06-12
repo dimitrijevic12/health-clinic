@@ -77,5 +77,12 @@ namespace Model.SystemUsers
 
         }
 
+        public Doctor(String name, String surname)
+        {
+            this.Name = name;
+            this.Surname = surname;
+
+        }
+
     }
 }

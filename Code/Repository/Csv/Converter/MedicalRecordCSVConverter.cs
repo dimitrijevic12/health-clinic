@@ -6,11 +6,8 @@
 
 using Model.Appointment;
 using Model.SystemUsers;
-<<<<<<< HEAD
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
-=======
 using Model.Treatment;
->>>>>>> master
 using System;
 using System.Collections.Generic;
 
@@ -41,12 +38,15 @@ namespace Repository.Csv.Converter
             String treatmentsString = tokens[7];
             String[] treatmentsParts = treatmentsString.Split(',');
             List<Treatment> treatments = new List<Treatment>();
-            foreach(String id in treatmentsParts)
+            if (treatmentsString != "")
             {
-                //                treatmentIds.Add(long.Parse(id));
-                //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
-                treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
-
+                foreach (String id in treatmentsParts)
+                {
+                    //                treatmentIds.Add(long.Parse(id));
+                    //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
+                    treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
+                    
+                }
             }
 
             return new MedicalRecord(
@@ -59,9 +59,16 @@ namespace Repository.Csv.Converter
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
             String treatments = "";
-            foreach (Treatment treatment in entity.Treatments)
+            if (entity.Treatments != null)
             {
-                treatments += treatment.Id + ",";
+                foreach (Treatment treatment in entity.Treatments)
+                {
+                    if (treatment != null)
+                    {
+                        treatments += treatment.Id + ",";
+                    }
+                }
+
             }
 
             return string.Join(_delimiter,

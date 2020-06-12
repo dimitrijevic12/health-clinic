@@ -13,8 +13,8 @@ namespace health_clinicClassDiagram.Service
 {
     public interface IRehabilitationRoomService : IService<RehabilitationRoom>
     {
-        Boolean IsRoomFree(DateTime from, DateTime to, Model.Rooms.Room room);
-        List<Patient> GetAllPatientsByRoom(Model.Rooms.Room room);
+        Boolean IsRoomFree(DateTime from, DateTime to, Room room);
+        List<Patient> GetAllPatientsByRoom(Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
         Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
         RehabilitationRoom getRoom(RehabilitationRoom room);

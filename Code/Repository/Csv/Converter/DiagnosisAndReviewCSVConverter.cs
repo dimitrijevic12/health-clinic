@@ -20,14 +20,14 @@ namespace Repository.Csv.Converter
               entity.Id,
               entity.Diagnosis,
               entity.Review);
-        
+
         public DiagnosisAndReview ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(Delimiter.ToCharArray());
             return new DiagnosisAndReview(
+                long.Parse(tokens[0]),
                 tokens[1],
-                tokens[2],
-                int.Parse(tokens[0]));
+                tokens[2]);
         }
     }
 }

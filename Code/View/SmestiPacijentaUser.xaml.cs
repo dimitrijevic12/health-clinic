@@ -2,7 +2,9 @@
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using Model.Treatment;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -87,7 +89,7 @@ namespace health_clinicClassDiagram.View
             _jmbgPacijenta = int.Parse(textJMBG.Text);
 
             Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
-            MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor());
+            MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor(), new List<Treatment>());
 
             var result = _rehabilitationRoomController.AddPatient(record, _rehabilitationRoom);
 

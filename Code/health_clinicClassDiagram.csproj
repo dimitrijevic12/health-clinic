@@ -669,6 +669,9 @@
     <Compile Include="View\SmestiPacijentaUser.xaml.cs">
       <DependentUpon>SmestiPacijentaUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\TretmaniUser.xaml.cs">
+      <DependentUpon>TretmaniUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Util\AppointmentGenerator.cs" />
     <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs">
       <DependentUpon>ZakazivanjeGuestNalogaUser.xaml</DependentUpon>
@@ -768,6 +771,10 @@
     <Page Include="View\SmestiPacijentaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TretmaniUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ZakazivanjeGuestNalogaUser.xaml">
       <Generator>MSBuild:Compile</Generator>

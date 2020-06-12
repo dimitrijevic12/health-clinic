@@ -11,26 +11,9 @@ using System.ComponentModel;
 
 namespace Model.Appointment
 {
-<<<<<<< HEAD
-   public class Appointment : INotifyPropertyChanged
+
+    public class Appointment
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        public Model.SystemUsers.Patient patient;
-        public Model.SystemUsers.Doctor doctor;
-        public Model.Rooms.ExamOperationRoom examOperationRoom;
-
-        public long Id { get; set; }
-=======
-   public class Appointment
-   {
         private Patient patient;
         private Doctor doctor;
         private ExamOperationRoom examOperationRoom;
@@ -43,43 +26,10 @@ namespace Model.Appointment
         public Doctor Doctor1 { get => doctor; set => doctor = value; }
         public Patient Patient1 { get => patient; set => patient = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
->>>>>>> master
 
-        public DateTime StartDate;
-        public DateTime EndDate;
+        private DateTime startDate;
+        private DateTime endDate;
         public TypeOfAppointment Type;
-
-        public DateTime Start
-        {
-            get
-            {
-                return StartDate;
-            }
-            set
-            {
-                if (!value.Equals(StartDate))
-                {
-                    StartDate = value;
-                    OnPropertyChanged("StartDate");
-                }
-            }
-        }
-
-        public DateTime End
-        {
-            get
-            {
-                return EndDate;
-            }
-            set
-            {
-                if (!value.Equals(EndDate))
-                {
-                    EndDate = value;
-                    OnPropertyChanged("EndDate");
-                }
-            }
-        }
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {

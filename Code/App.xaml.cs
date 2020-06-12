@@ -34,6 +34,7 @@ namespace health_clinicClassDiagram
         private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string REHABILATIONRROM_FILE = "../../Resources/Data/rehabilitationrooms.csv";
         private const string DOCTOR_FILE = "../../Resources/Data/doctors.csv";
+        private const string TREATMENT_FILE = "../../Resources/Data/treatments.csv";
         private const string CSV_DELIMITER = ",";
 
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
@@ -70,7 +71,8 @@ namespace health_clinicClassDiagram
                 DOCTOR_FILE,
                 new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
-                
+
+           
 
             var userService = new UserService(userRepository);
 

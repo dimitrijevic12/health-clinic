@@ -2,6 +2,7 @@
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
+using Model.Treatment;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,9 +59,9 @@ namespace health_clinicClassDiagram.View
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
 
             IDTekst.Text = record.id.ToString();
-            ImeTekst.Text = record.patient.Name;
-            PrezimeTekst.Text = record.patient.Surname;
-            JMBGTekst.Text = record.patient.Id.ToString();
+            ImeTekst.Text = record.Patient.Name;
+            PrezimeTekst.Text = record.Patient.Surname;
+            JMBGTekst.Text = record.Patient.Id.ToString();
             DoktorCombo.SelectedIndex = 1;
             
 
@@ -114,7 +115,7 @@ namespace health_clinicClassDiagram.View
         private MedicalRecord EditMedicalRecord()
         {
             Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
-            var record = new MedicalRecord(_idNaloga, pacijent, _choosenDoctor);
+            var record = new MedicalRecord(_idNaloga, pacijent, _choosenDoctor, new List<Treatment>());
 
             return _recordController.Edit(record);
         }

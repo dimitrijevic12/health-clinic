@@ -10,29 +10,18 @@ namespace Model.Rooms
 {
    public class Drug
    {
-      public Drug GetInstance()
-      {
-         // TODO: implement
-         return null;
-      }
-   
-      public Ingredients ingredients;
-<<<<<<< HEAD
-   
-      private Drug Instance;
-      private int Id;
-      private String Name;
-      private String Description;
-      private Boolean Validation;
-      private int Quantity;
-   
-   }
-=======
-      private int id;
-      private String name;
-      private String Description;
-      private Boolean Validation;
-      private int quantity;
+        public Drug GetInstance()
+        {
+            // TODO: implement
+            return null;
+        }
+
+        public Ingredients ingredients;
+        private int id;
+        private String name;
+        private String Description;
+        private Boolean Validation;
+        private int quantity;
 
         public Drug(string name, int quantity)
         {
@@ -58,5 +47,4 @@ namespace Model.Rooms
         public int Quantity { get => quantity; set => quantity = value; }
         public int Id { get => id; set => id = value; }
     }
->>>>>>> master
 }

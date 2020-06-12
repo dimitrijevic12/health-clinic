@@ -4,33 +4,24 @@
  * Purpose: Definition of the Class Treatment.Treatment
  ***********************************************************************/
 
-<<<<<<< HEAD
-=======
 using health_clinicClassDiagram.Model.Treatment;
+using Model.Appointment;
 using Model.SystemUsers;
->>>>>>> master
 using System;
+using System.ComponentModel;
 
 namespace Model.Treatment
 {
-   public class Treatment
-<<<<<<< HEAD
-   {  
-      /// <pdGenerated>default getter</pdGenerated>
-     
-      public Prescription prescription;
-      public ScheduledSurgery scheduledSurgery;
-      public DiagnosisAndReview diagnosisAndReview;
-      public ReferralToHospitalTreatment referralToHospitalTreatment;
-      public Model.SystemUsers.Doctor doctor;
-   
-      private DateTime FromDate;
-      private DateTime EndDate;
-      private int Id;
-   
-   }
-=======
-   {
+    public class Treatment : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
         /// <pdGenerated>default getter</pdGenerated>
 
         private Prescription prescription;
@@ -39,6 +30,7 @@ namespace Model.Treatment
         private ReferralToHospitalTreatment referralToHospitalTreatment;
         private Model.SystemUsers.Doctor doctor;
         private SpecialistAppointment specialistAppointment;
+        private MedicalRecord record;
 
         private DateTime fromDate;
         private DateTime endDate;
@@ -77,6 +69,7 @@ namespace Model.Treatment
         {
         }
 
+        public MedicalRecord Record { get => record; set => record = value; }
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }
@@ -91,5 +84,4 @@ namespace Model.Treatment
 
         public void SetId(long id) => Id = id;
     }
->>>>>>> master
 }

@@ -117,10 +117,8 @@ namespace health_clinicClassDiagram.View
 
         private void btnPrikazi_Click(object sender, RoutedEventArgs e)
         {
-            GridPacijenti.Children.Clear();
-
-            PregledNalogaUser pregled = new PregledNalogaUser();
-            GridPacijenti.Children.Add(pregled);
+            TretmaniUser tretmani = new TretmaniUser(record);
+            (this.Parent as Panel).Children.Add(tretmani);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

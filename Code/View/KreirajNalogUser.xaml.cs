@@ -2,6 +2,7 @@
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
+using Model.Treatment;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -151,7 +152,7 @@ namespace health_clinicClassDiagram.View
         {
 
             Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
-            var record = new MedicalRecord(_idNaloga, pacijent, choosenDoctor);
+            var record = new MedicalRecord(_idNaloga, pacijent, choosenDoctor, new List<Treatment>());
 
             return _recordController.Create(record);
             

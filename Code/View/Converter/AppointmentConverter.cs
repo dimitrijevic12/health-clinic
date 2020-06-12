@@ -9,7 +9,7 @@ namespace health_clinicClassDiagram.View.Converter
     class AppointmentConverter : AbstractConverter
     {
         public static string ConvertAppointmentToString(Appointment appointment)
-            => string.Join(" ", appointment.Id, appointment.patient, appointment.doctor, appointment.examOperationRoom);
+            => string.Join(" ", appointment.Id, appointment.Patient, appointment.Doctor, appointment.ExamOperationRoom);
 
         public static IList<string> ConvertAppointmentListToStringList(IList<Appointment> appointments)
             => ConvertEntityListToViewList(appointments, ConvertAppointmentToString);
