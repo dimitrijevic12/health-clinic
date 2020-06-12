@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +11,8 @@ namespace health_clinicClassDiagram
 {
     public static class MainClass
     {
- /*      static void Main()
-        {
+       
+       *//* {
                         DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
                         DiagnosisAndReview diagnosisAndReview2 = new DiagnosisAndReview("Nova dijagnoza2", "Nova procedura2");
                         DiagnosisAndReviewRepository.Instance.Save(diagnosisAndReview);
@@ -51,6 +51,8 @@ namespace health_clinicClassDiagram
             Prescription prescription = new Prescription(drugs);
             Treatment treatment = new Treatment(prescription, new ScheduledSurgery(DateTime.Today, DateTime.Now, "Razlog operacije", new Surgeon("Pera", "Peric", SurgicalSpecialty.CARDIOTHORACIC)), diagnosisAndReview, new ReferralToHospitalTreatment(DateTime.Today, DateTime.Now, "Razlog bolnickog lecenja"), DateTime.Today, DateTime.Now, new Doctor("Marko", "Markovic"));
             TreatmentRepository.Instance.Save(treatment);
-        }*/
+        }*//*
+        
     }
 }
+*/
