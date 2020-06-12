@@ -25,20 +25,20 @@ namespace Repository.Csv.Converter
         public Appointment ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
-            string doctorName = tokens[1];
-            string doctorSurname = tokens[2];
-            string patientName = tokens[3];
-            string patientSurname = tokens[4];
-            int patientId = int.Parse(tokens[5]);
-            ExamOperationRoom room = new ExamOperationRoom(tokens[9]);
-            TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[6], true);
-            DateTime startDate = DateTime.Parse(tokens[7]);
-            DateTime endDate = DateTime.Parse(tokens[8]);
+            string doctorName = tokens[2];
+            string doctorSurname = tokens[3];
+            string patientName = tokens[4];
+            string patientSurname = tokens[5];
+            int patientId = int.Parse(tokens[6]);
+            ExamOperationRoom room = new ExamOperationRoom(long.Parse(tokens[10]));
+            TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[7], true);
+            DateTime startDate = DateTime.Parse(tokens[8]);
+            DateTime endDate = DateTime.Parse(tokens[9]);
 
             //Patient patient = new Patient(tokens[0], tokens[1], int.Parse(tokens[2]));    //preskocimo prvi button select patient
 
             return new Appointment(long.Parse(tokens[0]),
-               new Doctor(doctorName, doctorSurname), //doctor tokens[4]
+               new Doctor(long.Parse(tokens[1]), doctorName, doctorSurname), //doctor tokens[4]
                 new Patient(patientName, patientSurname, patientId),
                 room, 
                 type,
@@ -49,6 +49,7 @@ namespace Repository.Csv.Converter
         public string ConvertEntityToCSVFormat(Appointment entity)
              => string.Join(_delimiter,
                entity.Id,
+               entity.Doctor.Id,
                entity.Doctor.Name,
                entity.Doctor.Surname,
                entity.Patient.Name,
