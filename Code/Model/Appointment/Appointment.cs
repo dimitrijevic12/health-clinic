@@ -41,6 +41,17 @@ namespace Model.Appointment
             this.EndDate = endDate;
         }
 
+        public Appointment(long id, Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
+        {
+            Id = id;
+            this.Doctor = doctor;
+            this.Patient = patient;
+            this.ExamOperationRoom = room;
+            this.Type = type;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
         public Appointment(Doctor doctor, Patient patient, TypeOfAppointment type)
         {
             this.Doctor = doctor;

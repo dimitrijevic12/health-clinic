@@ -148,6 +148,7 @@
     <Compile Include="Controller\EquipmentController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\ExamOperationRoomController.cs" />
     <Compile Include="Controller\IAppointmentController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -169,6 +170,7 @@
     <Compile Include="Controller\IEquipmentController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\IExamOperationRoomController.cs" />
     <Compile Include="Controller\IMedicalRecordController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -380,6 +382,7 @@
     <Compile Include="Repository\Csv\Converter\EquipmentInvetoryCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\ExamOperationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\ICSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -399,6 +402,7 @@
     <Compile Include="Repository\Csv\Converter\RoomCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\SurgeonCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\TreatmentCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -428,6 +432,7 @@
     <Compile Include="Repository\EquipRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\ExamOperationRoomRepository.cs" />
     <Compile Include="Repository\IAppointmentRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -447,6 +452,7 @@
     <Compile Include="Repository\IEquipRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\IExamOperationRoomRepository.cs" />
     <Compile Include="Repository\IMedicalRecordRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -490,6 +496,7 @@
     </Compile>
     <Compile Include="Repository\Sequencer\iSequencer.cs" />
     <Compile Include="Repository\Sequencer\LongSequencer.cs" />
+    <Compile Include="Repository\SurgeonRepository.cs" />
     <Compile Include="Repository\TreatmentRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -524,6 +531,7 @@
     <Compile Include="Service\EquipmentService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\ExamOperationRoomService.cs" />
     <Compile Include="Service\IAppointmentService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -542,6 +550,7 @@
     <Compile Include="Service\IEquipmentService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\IExamOperationRoomService.cs" />
     <Compile Include="Service\IMedicalRecordService.cs">
       <SubType>Code</SubType>
     </Compile>

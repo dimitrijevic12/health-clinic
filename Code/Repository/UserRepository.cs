@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.SystemUsers;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,29 @@ namespace Repository
    public class UserRepository : IUserRepository
    {
         private String _path;
-        private static UserRepository Instance;
+        private static UserRepository instance;
 
-        private readonly ICSVStream<RegisteredUser> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly ICSVStream<RegisteredUser> _stream = new CSVStream<RegisteredUser>("C:\\health-clinic\\health-clinic\\Code\\resources\\data", new UserCSVConverter("|", "dd/MM//yyyy"));
+        private readonly iSequencer<long> _sequencer =  new LongSequencer();
 
         public UserRepository GetInstance() { return null; }
+
+        public static UserRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UserRepository();
+                }
+                return instance;
+            }
+        }
+
+        private UserRepository()
+        {
+//            InitializeId();
+        }
 
         public UserRepository(string path, CSVStream<RegisteredUser> stream, iSequencer<long> sequencer)
         {
@@ -87,5 +105,9 @@ namespace Repository
             throw new NotImplementedException();
         }
 
+<<<<<<< HEAD
+=======
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
+>>>>>>> master
     }
 }

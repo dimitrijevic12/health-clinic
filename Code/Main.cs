@@ -9,6 +9,7 @@ namespace health_clinicClassDiagram
 {
     public static class MainClass
     {
+<<<<<<< HEAD
       static void Main()
         {
 
@@ -24,6 +25,10 @@ namespace health_clinicClassDiagram
             Console.WriteLine("Dijagnoza id == 3:" + DiagnosisAndReviewRepository.Instance.GetDiagnosisAndReview(3).Id);
         }
 
+=======
+       
+       *//* {
+>>>>>>> master
                         DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
                         DiagnosisAndReview diagnosisAndReview2 = new DiagnosisAndReview("Nova dijagnoza2", "Nova procedura2");
                         DiagnosisAndReviewRepository.Instance.Save(diagnosisAndReview);
@@ -62,8 +67,13 @@ namespace health_clinicClassDiagram
             Prescription prescription = new Prescription(drugs);
             Treatment treatment = new Treatment(prescription, new ScheduledSurgery(DateTime.Today, DateTime.Now, "Razlog operacije", new Surgeon("Pera", "Peric", SurgicalSpecialty.CARDIOTHORACIC)), diagnosisAndReview, new ReferralToHospitalTreatment(DateTime.Today, DateTime.Now, "Razlog bolnickog lecenja"), DateTime.Today, DateTime.Now, new Doctor("Marko", "Markovic"));
             TreatmentRepository.Instance.Save(treatment);
+<<<<<<< HEAD
         }
 
+=======
+        }*//*
+        
+>>>>>>> master
     }
 }
 */

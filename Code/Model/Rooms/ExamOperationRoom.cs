@@ -12,6 +12,28 @@ namespace Model.Rooms
    {
       private Boolean InUse;
       private TypeOfRoom TypeOfRoom;
+
+        public long _id;
+       
+
+
+        public ExamOperationRoom(long id) : base(id)
+        {
+            this.Id = id;
+            tip = TypeOfRoom.EXAMOPERATION;
+        }
+        public long Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
+        public TypeOfRoom tip
+        {
+            get { return tipSobe; }
+            set { tipSobe = value; }
+        }
+    }
    
-   }
+
 }
