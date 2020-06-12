@@ -16,8 +16,31 @@ namespace health_clinicClassDiagram.Service
         private readonly IRehabilitationRoomRepository _roomRepository;
         private readonly IUserService _patientService;
 
+<<<<<<< HEAD
         private static MedicalRecordService instance = null;
         public static RehabilitationRoomService GetInstance() {
+=======
+        private static RehabilitationRoomService instance = null;
+
+        public static RehabilitationRoomService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RehabilitationRoomService();
+                }
+                return instance;
+            }
+        }
+
+        private RehabilitationRoomService()
+        {
+        }
+
+        public static RehabilitationRoomService GetInstance()
+        {
+>>>>>>> master
 
             return null;
             

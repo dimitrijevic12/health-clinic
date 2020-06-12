@@ -22,7 +22,24 @@ namespace Service
         private readonly IService<Patient> _patientService;
         private readonly IService<ExamOperationRoom> _roomService;
 
-        private static AppointmentService Instance;
+        private static AppointmentService instance;
+
+        public static AppointmentService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AppointmentService();
+                }
+                return instance;
+            }
+        }
+
+        private AppointmentService()
+        {
+        }
+
         public AppointmentService GetInstance() { return null; }
 
         public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
@@ -101,30 +118,30 @@ namespace Service
 
         public Appointment Create(Appointment obj)
         {
-            var doctor = _doctorService.Create(obj.doctor);
-            var patient = _patientService.Create(obj.patient);
-            var room = _roomService.Create(obj.examOperationRoom);
+            var doctor = _doctorService.Create(obj.Doctor);
+            var patient = _patientService.Create(obj.Patient);
+            var room = _roomService.Create(obj.ExamOperationRoom);
             var appointment = iAppointmentRepository.Save(obj);
-            appointment.doctor = doctor;
-            appointment.patient = patient;
-            appointment.examOperationRoom = room;
+            appointment.Doctor = doctor;
+            appointment.Patient = patient;
+            appointment.ExamOperationRoom = room;
             return appointment;
         }
 
         public Appointment Edit(Appointment obj)
         {
-            _doctorService.Edit(obj.doctor);
-            _patientService.Edit(obj.patient);
-            _roomService.Edit(obj.examOperationRoom);
+            _doctorService.Edit(obj.Doctor);
+            _patientService.Edit(obj.Patient);
+            _roomService.Edit(obj.ExamOperationRoom);
             iAppointmentRepository.Edit(obj);
             return obj;
         }
 
         public bool Delete(Appointment obj)
         {
-            _doctorService.Delete(obj.doctor);
-            _patientService.Delete(obj.patient);
-            _roomService.Delete(obj.examOperationRoom);
+            _doctorService.Delete(obj.Doctor);
+            _patientService.Delete(obj.Patient);
+            _roomService.Delete(obj.ExamOperationRoom);
             iAppointmentRepository.Delete(obj);
             return true;
         }

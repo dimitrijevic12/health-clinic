@@ -51,6 +51,11 @@ namespace Model.SystemUsers
             set { spec = value; }
         }
 
+        public String NameAndSurname
+        {
+            get { return Name + " " + Surname; }
+        }
+
         public Doctor() { }
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, Specialization specijalista)
         {

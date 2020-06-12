@@ -5,10 +5,14 @@
  ***********************************************************************/
 
 using Controller;
+using health_clinicClassDiagram.Model.Treatment;
+using health_clinicClassDiagram.Repository;
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -16,61 +20,102 @@ namespace Service
 {
    public class TreatmentService : ITreatmentService
    {
-      public TreatmentService GetInstance() { return null; }
+        public Repository.ITreatmentRepository iTreatmentRepository;
 
-        public Prescription WritePrescription(Drug[] drugs, Treatment treatment)
+        private static TreatmentService instance = null;
+
+        private TreatmentService()
         {
-            throw new NotImplementedException();
         }
 
-        public ReferralToASpecialist WriteReferralToASpecialist(Doctor specialist, Treatment treatment)
+        public static TreatmentService Instance
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TreatmentService();
+                }
+                return instance;
+            }
         }
 
-        public ScheduledSurgery ScheduleSurgery(Treatment treatment, DateTime fromDate, DateTime toDate, string cause)
+        public Prescription WritePrescription(List<Drug> drugs, Treatment treatment)
         {
-            throw new NotImplementedException();
+            Prescription prescription = new Prescription(drugs);
+            treatment.Prescription = prescription;
+            return treatment.Prescription;
+        }
+
+        public SpecialistAppointment WriteReferralToASpecialist(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        {
+            SpecialistAppointment specialistAppointment = new SpecialistAppointment(cause, specialist);
+            treatment.SpecialistAppointment = specialistAppointment;
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            Patient patient = medicalRecord.Patient;
+            Appointment Appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
+            return treatment.SpecialistAppointment;
+        }
+
+        public ScheduledSurgery ScheduleSurgery(Treatment treatment, DateTime startDate, DateTime endDate, string cause, Surgeon surgeon, ExamOperationRoom room)
+        {
+            ScheduledSurgery scheduledSurgery = new ScheduledSurgery(startDate, endDate, cause, surgeon);
+            treatment.ScheduledSurgery = scheduledSurgery;
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            Patient patient = medicalRecord.Patient;
+            Appointment surgery = new Appointment(surgeon, patient, room,TypeOfAppointment.SURGERY, startDate, endDate);
+            AppointmentRepository.Instance.Save(surgery);
+            return treatment.ScheduledSurgery;
         }
 
         public DiagnosisAndReview WriteDiagnosisAndReview(Treatment treatment, string diagnosis, string review)
         {
-            throw new NotImplementedException();
+            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview(diagnosis, review);
+            treatment.DiagnosisAndReview = diagnosisAndReview;
+            return treatment.DiagnosisAndReview;
         }
 
-        public ReferralToHospitalTreatment WriteReferralToHospTreat(Treatment treatment, DateTime startDate, DateTime endDate, string cause, Drug[] drugs)
+        public ReferralToHospitalTreatment WriteReferralToHospTreat(Treatment treatment, DateTime startDate, DateTime endDate, string cause, List<Drug> drugs, RehabilitationRoom room)
         {
-            throw new NotImplementedException();
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, cause, drugs);
+            treatment.ReferralToHospitalTreatment = referralToHospitalTreatment;
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            RehabilitationRoomService.Instance.AddPatient(medicalRecord, room);
+            return treatment.ReferralToHospitalTreatment;
         }
 
-        public Appointment ScheduleControlAppointment(Appointment appointment, int fromDate, int toDate)
+        public Appointment ScheduleControlAppointment(Appointment appointment)
         {
-            throw new NotImplementedException();
+            return AppointmentRepository.Instance.Save(appointment);
         }
 
-        public Treatment Create(Treatment obj)
+        public Treatment Create(Patient patient, Treatment obj)
         {
-            throw new NotImplementedException();
+            MedicalRecordRepository.Instance.AddTreatmentToMedRec(patient, obj);
+            return TreatmentRepository.Instance.Save(obj);
+//            return iTreatmentRepository.Save(obj);
         }
 
         public Treatment Edit(Treatment obj)
         {
-            throw new NotImplementedException();
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(obj.Id);
+            MedicalRecordRepository.Instance.EditTreatmentInMedRec(obj, medicalRecord);
+            return obj;
         }
 
         public bool Delete(Treatment obj)
         {
-            throw new NotImplementedException();
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(obj.Id);
+            MedicalRecordRepository.Instance.EditTreatmentInMedRec(null, medicalRecord);
+            return true;
         }
 
         public List<Treatment> GetAll()
         {
-            throw new NotImplementedException();
+            return TreatmentRepository.Instance.GetAll();
         }
 
-        public Repository.ITreatmentRepository iTreatmentRepository;
-   
-      private static TreatmentService Instance;
+        
    
    }
 }

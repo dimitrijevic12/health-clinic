@@ -12,7 +12,28 @@ namespace Repository
 {
    public class TreatmentRepository : ITreatmentRepository
    {
+<<<<<<< HEAD
       public TreatmentRepository GetInstance() { return null; }
+=======
+        private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("C:\\health-clinic\\health-clinic\\Code\\treatmentRepo", new TreatmentCSVConverter("|"));//TODO: Namesti stream kao Stefan
+        private readonly LongSequencer _sequencer = new LongSequencer();
+        private TreatmentRepository()
+        {
+            InitializeId();
+        }
+        private static TreatmentRepository instance = null;
+        public static TreatmentRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TreatmentRepository();
+                }
+                return instance;
+            }
+        }
+>>>>>>> master
 
         public Treatment GetTreatment()
         {

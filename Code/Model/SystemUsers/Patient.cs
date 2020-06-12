@@ -28,6 +28,11 @@ namespace Model.SystemUsers
             set { dateOfBirth = value; }
         }
 
+        public String NameAndSurname
+        {
+            get { return Name + " " + Surname; }
+        }
+
         public Patient(String name, String surname, int jmbg)
         {
             this.Name = name;
