@@ -1,6 +1,7 @@
 ﻿using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using Model.Treatment;
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 i++;
                 int idPatient = int.Parse(tokens[i]);
                 Patient patient = new Patient(ime, prezime, idPatient);
-                MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor());
+                MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
                 records.Add(record);
                 i++;
             }

@@ -12,15 +12,27 @@ namespace Repository.Csv.Converter
    public class RoomCSVConverter : ICSVConverter<Room>
    {
       private String Delimiter;
-
+        private readonly string _delimiter;
+        public RoomCSVConverter(string delimiter)
+        {
+            _delimiter = delimiter;
+        }
         public Room ConvertCSVFormatToEntity(string entityCSVFormat)
         {
-            throw new NotImplementedException();
+            string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
+            String tipString = tokens[2];
+
+            TypeOfRoom tipS = (TypeOfRoom)Enum.Parse(typeof(TypeOfRoom), tipString, true);
+
+            Room room = new Room(long.Parse(tokens[0]), tipS);
+            
+            return room;
         }
 
         public string ConvertEntityToCSVFormat(Room entity)
         {
-            throw new NotImplementedException();
+            return string.Join(_delimiter,
+                  entity.Id);
         }
     }
 }
