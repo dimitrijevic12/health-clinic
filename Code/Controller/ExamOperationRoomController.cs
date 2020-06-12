@@ -1,11 +1,17 @@
 ﻿using health_clinicClassDiagram.Service;
 using Model.Rooms;
+<<<<<<< HEAD
 using Service;
+=======
+>>>>>>> master
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD
 using System.Threading.Tasks;
+=======
+>>>>>>> master
 
 namespace health_clinicClassDiagram.Controller
 {
@@ -39,7 +45,11 @@ namespace health_clinicClassDiagram.Controller
 
         public List<ExamOperationRoom> GetAll()
         {
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> master
             var rooms = (List<ExamOperationRoom>)_service.GetAll();
             return rooms;
         }
@@ -49,4 +59,8 @@ namespace health_clinicClassDiagram.Controller
             throw new NotImplementedException();
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 }

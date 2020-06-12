@@ -51,6 +51,11 @@ namespace Model.Rooms
             get { return Id; }   // get method
             set { Id = value; }
         }
+        public TypeOfRoom tip
+        {
+            get { return tipSobe; }
+            set { tipSobe = value; }
+        }
 
         public TypeOfRoom tip
         {

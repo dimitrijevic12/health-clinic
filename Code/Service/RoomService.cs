@@ -24,7 +24,10 @@ namespace Service
         {
             _roomRepository = repository;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();
@@ -67,6 +70,10 @@ namespace Service
             return rooms;
         }
 
+<<<<<<< HEAD
        
+=======
+      
+>>>>>>> master
    }
 }

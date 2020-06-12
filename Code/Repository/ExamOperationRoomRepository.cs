@@ -82,4 +82,8 @@ namespace health_clinicClassDiagram.Repository
             return obj;
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master

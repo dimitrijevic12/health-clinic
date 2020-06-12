@@ -11,9 +11,9 @@ namespace health_clinicClassDiagram
 {
     public static class MainClass
     {
-        static void Main()
-        {
-            /*            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
+       
+       *//* {
+                        DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
                         DiagnosisAndReview diagnosisAndReview2 = new DiagnosisAndReview("Nova dijagnoza2", "Nova procedura2");
                         DiagnosisAndReviewRepository.Instance.Save(diagnosisAndReview);
                         DiagnosisAndReviewRepository.Instance.Save(diagnosisAndReview2);
@@ -25,8 +25,8 @@ namespace health_clinicClassDiagram
                             Console.WriteLine(dAndR);
                         }
             //            Console.WriteLine("Dijagnoza id == 3:" + DiagnosisAndReviewRepository.Instance.GetDiagnosisAndReview(3).Id);
-            */
-            /*            Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
+            
+                        Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
                         Drug drug2 = new Drug(null, "Aerius 50mg", "Opis Aeriusa", false, 5);
                         List<Drug> drugs = new List<Drug>();
                         drugs.Add(drug1);
@@ -41,8 +41,13 @@ namespace health_clinicClassDiagram
                             Console.WriteLine(p);
                         }
                     }
+<<<<<<< HEAD
             */
           /*  DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
+=======
+                    
+            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
+>>>>>>> master
             Drug drug1 = new Drug(null, "Panklav 200mg", "Opis Panklava", true, 20);
             Drug drug2 = new Drug(null, "Aerius 50mg", "Opis Aeriusa", false, 5);
             List<Drug> drugs = new List<Drug>();
@@ -51,6 +56,12 @@ namespace health_clinicClassDiagram
             Prescription prescription = new Prescription(drugs);
             Treatment treatment = new Treatment(prescription, new ScheduledSurgery(DateTime.Today, DateTime.Now, "Razlog operacije", new Surgeon("Pera", "Peric", SurgicalSpecialty.CARDIOTHORACIC)), diagnosisAndReview, new ReferralToHospitalTreatment(DateTime.Today, DateTime.Now, "Razlog bolnickog lecenja"), DateTime.Today, DateTime.Now, new Doctor("Marko", "Markovic"));
             TreatmentRepository.Instance.Save(treatment);
-        }
+        }*//*
+        
     }
+<<<<<<< HEAD
 }*/
+=======
+}
+*/
+>>>>>>> master

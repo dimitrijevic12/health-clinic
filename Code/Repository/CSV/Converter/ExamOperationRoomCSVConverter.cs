@@ -13,10 +13,17 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
         private String Delimiter;
 
         private readonly string _delimiter;
+<<<<<<< HEAD
       
         public ExamOperationRoomCSVConverter(string delimiter)
         {
             _delimiter = delimiter;      
+=======
+
+        public ExamOperationRoomCSVConverter(string delimiter)
+        {
+            _delimiter = delimiter;
+>>>>>>> master
         }
         public ExamOperationRoom ConvertCSVFormatToEntity(string entityCSVFormat)
         {
@@ -32,3 +39,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
         }
     }
 }
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> master

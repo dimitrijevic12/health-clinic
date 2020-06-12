@@ -1,5 +1,8 @@
 ﻿using health_clinicClassDiagram.Repository.Sequencer;
+using Model.Appointment;
 using Model.Rooms;
+using Model.Treatment;
+using Repository;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -14,8 +17,25 @@ namespace health_clinicClassDiagram.Repository
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static RehabilitationRoomRepository Instance;
+        private static RehabilitationRoomRepository instance;
+
+        public static RehabilitationRoomRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RehabilitationRoomRepository();
+                }
+                return instance;
+            }
+        }
+
         public RehabilitationRoomRepository GetInstance() { return null; }
+
+        private RehabilitationRoomRepository()
+        {
+        }
 
         public RehabilitationRoomRepository(string path, CSVStream<RehabilitationRoom> stream, iSequencer<long> sequencer)
         {
@@ -80,6 +100,20 @@ namespace health_clinicClassDiagram.Repository
         {
             var rooms = _stream.ReadAll().ToList();
             return rooms[rooms.FindIndex(apt => apt.IdRoom == room.IdRoom)];
+        }
+
+        public List<RehabilitationRoom> GetFreeRoomsByDate(DateTime startDate, DateTime endDate)
+        {
+            List<RehabilitationRoom> rooms = GetAll();
+            //TODO: Pronaci slobodne sobe
+            /*foreach(Treatment treatment in TreatmentRepository.Instance.GetAll())
+            {
+                if(treatment.ReferralToHospitalTreatment.StartDate >= startDate && ((treatment.ReferralToHospitalTreatment.EndDate <= endDate)){
+                    rooms. 
+                }
+            }
+            */
+            return rooms;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Model.Rooms
       }
    
       public Ingredients ingredients;
-      private int Id;
+      private int id;
       private String name;
       private String Description;
       private Boolean Validation;
@@ -45,5 +45,6 @@ namespace Model.Rooms
 
         public string Name { get => name; set => name = value; }
         public int Quantity { get => quantity; set => quantity = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

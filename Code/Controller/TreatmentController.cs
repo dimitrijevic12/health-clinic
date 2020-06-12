@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.TreatmentService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Model.Treatment;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -15,60 +16,75 @@ namespace Controller
 {
    public class TreatmentController : ITreatmentController
    {
-      public TreatmentController GetInstance() { return null; }
-        public Prescription WritePrescription(Drug[] drugs, Treatment treatment)
+        private static TreatmentController instance;
+
+        public static TreatmentController Instance 
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new TreatmentController();
+                }
+                return instance;
+            }
         }
 
-        public ReferralToASpecialist WriteReferralToASpecialist(Doctor specialist, Treatment treatment)
+        private TreatmentController()
         {
-            throw new NotImplementedException();
         }
 
-        public ScheduledSurgery ScheduleOperation(Treatment treatment, DateTime fromDate, DateTime toDate, string cause)
+        public TreatmentController GetInstance() { return null; }
+        public Prescription WritePrescription(List<Drug> drugs, Treatment treatment)
         {
-            throw new NotImplementedException();
+            return _service.WritePrescription(drugs, treatment);
         }
 
-        public DiagnosisAndReview WriteDiagnosisAndReview(Treatment treatment, DiagnosisAndReview diagnosis)
+        public SpecialistAppointment WriteReferralToASpecialist(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            return _service.WriteReferralToASpecialist(specialist, cause, treatment, room, startDate, endDate);
         }
 
-        public ReferralToHospitalTreatment WriteReferralToHospTreat(Treatment treatment, DateTime startDate, DateTime endDate, string cause, Drug[] drugs)
+        public ScheduledSurgery ScheduleSurgery(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, Surgeon surgeon, ExamOperationRoom room)
         {
-            throw new NotImplementedException();
+            return _service.ScheduleSurgery(treatment, startDate, endDate, cause, surgeon, room);
         }
 
-        public Appointment ScheduleControlAppointment(Appointment appointment, int fromDate, int toDate)
+        public DiagnosisAndReview WriteDiagnosisAndReview(Treatment treatment, String diagnosis, String review)
         {
-            throw new NotImplementedException();
+            return _service.WriteDiagnosisAndReview(treatment, diagnosis, review);
+        }
+
+        public ReferralToHospitalTreatment WriteReferralToHospTreat(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, List<Drug> drugs, RehabilitationRoom room)
+        {
+            return _service.WriteReferralToHospTreat(treatment, startDate, endDate, cause, drugs, room);
+        }
+
+        public Appointment ScheduleControlAppointment(Appointment appointment)
+        {
+            return _service.ScheduleControlAppointment(appointment);
         }
 
         public List<Treatment> GetAll()
         {
-            throw new NotImplementedException();
+            return _service.GetAll();
         }
 
         public bool Delete(Treatment obj)
         {
-            throw new NotImplementedException();
+            return _service.Delete(obj);
         }
 
-        public Treatment Create(Treatment obj)
+        public Treatment Create(Patient patient, Treatment obj)
         {
-            throw new NotImplementedException();
+            return _service.Create(patient, obj);
         }
 
         public Treatment Edit(Treatment obj)
         {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
         }
 
-        public Service.ITreatmentService iTreatmentService;
-   
-      private static TreatmentController Instance;
-   
-   }
+        public Service.ITreatmentService _service;
+    }
 }

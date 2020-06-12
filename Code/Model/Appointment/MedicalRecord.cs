@@ -6,8 +6,10 @@
 
 using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
+using Model.Treatment;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Model.Appointment
@@ -24,9 +26,9 @@ namespace Model.Appointment
         }
 
         public long id;
-        public System.Collections.ArrayList treatments;
+        private List<Model.Treatment.Treatment> treatments;
         public Doctor choosenDoctor;
-        public Model.SystemUsers.Patient patient;
+        private Patient patient;
 
         /// <pdGenerated>default getter</pdGenerated>
         /// 
@@ -50,13 +52,13 @@ namespace Model.Appointment
         {
             get
             {
-                return patient.Name;
+                return Patient.Name;
             }
             set
             {
-                if (!value.Equals(patient.Name))
+                if (!value.Equals(Patient.Name))
                 {
-                    patient.Name = value;
+                    Patient.Name = value;
                     OnPropertyChanged("Name");
                 }
             }
@@ -66,13 +68,13 @@ namespace Model.Appointment
         {
             get
             {
-                return patient.Surname;
+                return Patient.Surname;
             }
             set
             {
-                if (!value.Equals(patient.Surname))
+                if (!value.Equals(Patient.Surname))
                 {
-                    patient.Surname = value;
+                    Patient.Surname = value;
                     OnPropertyChanged("Surname");
                 }
             }
@@ -82,13 +84,13 @@ namespace Model.Appointment
         {
             get
             {
-                return patient.Id;
+                return Patient.Id;
             }
             set
             {
-                if (value != patient.Id)
+                if (value != Patient.Id)
                 {
-                    patient.Id = value;
+                    Patient.Id = value;
                     OnPropertyChanged("IDPatient");
                 }
             }
@@ -98,13 +100,13 @@ namespace Model.Appointment
         {
             get
             {
-                return patient.DateOfBirth;
+                return Patient.DateOfBirth;
             }
             set
             {
-                if (!value.Equals(patient.DateOfBirth))
+                if (!value.Equals(Patient.DateOfBirth))
                 {
-                    patient.DateOfBirth = value;
+                    Patient.DateOfBirth = value;
                     OnPropertyChanged("DateOfBirth");
                 }
             }
@@ -114,13 +116,13 @@ namespace Model.Appointment
         {
             get
             {
-                return patient.Gender;
+                return Patient.Gender;
             }
             set
             {
-                if (!value.Equals(patient.Gender))
+                if (!value.Equals(Patient.Gender))
                 {
-                    patient.Gender = value;
+                    Patient.Gender = value;
                     OnPropertyChanged("DateOfBirth");
                 }
             }
@@ -134,72 +136,31 @@ namespace Model.Appointment
             }
             set
             {
-                if (!value.Equals(patient.Name + " " + choosenDoctor.Surname))
+                if (!value.Equals(Patient.Name + " " + choosenDoctor.Surname))
                 {
-                    patient.Name = value;
+                    Patient.Name = value;
                     OnPropertyChanged("DateOfBirth");
                 }
             }
         }
 
+        public List<Model.Treatment.Treatment> Treatments { get => treatments; set => treatments = value; }
+        public Patient Patient { get => patient; set => patient = value; }
 
-
-        public MedicalRecord(long id, Patient patient, Doctor doctor)
+        public MedicalRecord(long id, Patient patient, Doctor doctor, List<Model.Treatment.Treatment> treatments)
         {
             this.id = id;
-            this.patient = patient;
+            this.Patient = patient;
             this.choosenDoctor = doctor;
+            Treatments = treatments;
         }
 
-        public MedicalRecord(Patient patient, ArrayList treatments, Doctor doctor)
+        public MedicalRecord(Patient patient, List<Model.Treatment.Treatment> treatments, Doctor doctor)
         {
             this.id = id;
-            this.patient = patient;
-            this.treatments = treatments;
+            this.Patient = patient;
+            this.Treatments = treatments;
             this.choosenDoctor = doctor;
-        }
-
-        public System.Collections.ArrayList GetTreatment()
-        {
-            if (treatments == null)
-                treatments = new System.Collections.ArrayList();
-            return treatments;
-        }
-
-        /// <pdGenerated>default setter</pdGenerated>
-        public void SetTreatment(System.Collections.ArrayList newTreatment)
-        {
-            RemoveAllTreatment();
-            foreach (Model.Treatment.Treatment oTreatment in newTreatment)
-                AddTreatment(oTreatment);
-        }
-
-        /// <pdGenerated>default Add</pdGenerated>
-        public void AddTreatment(Model.Treatment.Treatment newTreatment)
-        {
-            if (newTreatment == null)
-                return;
-            if (this.treatments == null)
-                this.treatments = new System.Collections.ArrayList();
-            if (!this.treatments.Contains(newTreatment))
-                this.treatments.Add(newTreatment);
-        }
-
-        /// <pdGenerated>default Remove</pdGenerated>
-        public void RemoveTreatment(Model.Treatment.Treatment oldTreatment)
-        {
-            if (oldTreatment == null)
-                return;
-            if (this.treatments != null)
-                if (this.treatments.Contains(oldTreatment))
-                    this.treatments.Remove(oldTreatment);
-        }
-
-        /// <pdGenerated>default removeAll</pdGenerated>
-        public void RemoveAllTreatment()
-        {
-            if (treatments != null)
-                treatments.Clear();
         }
 
     }

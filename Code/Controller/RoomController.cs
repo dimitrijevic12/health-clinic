@@ -14,7 +14,12 @@ namespace Controller
 {
    public class RoomController : IRoomController
    {
+<<<<<<< HEAD
        private readonly Service.IRoomService _service;
+=======
+      
+        private readonly Service.IRoomService _service;
+>>>>>>> master
 
         private static RoomController Instance;
 
@@ -24,7 +29,10 @@ namespace Controller
         {
             _service = service;
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();
@@ -58,7 +66,11 @@ namespace Controller
 
         public Room Create(Room obj)
         {
+<<<<<<< HEAD
              return _service.Create(obj);
+=======
+            return _service.Create(obj);
+>>>>>>> master
         }
 
         public Room Edit(Room obj)
@@ -66,7 +78,11 @@ namespace Controller
             return _service.Edit(obj);
         }
 
+<<<<<<< HEAD
        
+=======
+     
+>>>>>>> master
    
    }
 }

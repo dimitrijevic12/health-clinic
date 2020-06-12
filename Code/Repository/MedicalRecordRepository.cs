@@ -21,8 +21,25 @@ namespace Repository
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static MedicalRecordRepository Instance;
+        private static MedicalRecordRepository instance;
+
+        public static MedicalRecordRepository Instance 
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalRecordRepository();
+                }
+                return instance;
+            }
+        }
+
         public MedicalRecordRepository GetInstance() { return null; }
+
+        private MedicalRecordRepository()
+        {
+        }
 
         public MedicalRecordRepository(string path, CSVStream<MedicalRecord> stream, iSequencer<long> sequencer)
         {
@@ -39,22 +56,69 @@ namespace Repository
 
         public MedicalRecord GetMedRecByPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            List<MedicalRecord> medicalRecords = GetAll();
+            foreach(MedicalRecord medicalRecord in medicalRecords)
+            {
+                if(patient.Id == medicalRecord.IDPatient)
+                {
+                    return medicalRecord;
+                }
+            }
+            return null;
         }
 
-        public MedicalRecord GetMedRecByTreatmentId()
+        public MedicalRecord GetMedRecByTreatmentId(long id)
         {
-            throw new NotImplementedException();
+            Treatment treatmentToChange;
+            foreach(MedicalRecord medicalRecord in GetAll())
+            {
+                foreach(Treatment treatment in medicalRecord.Treatments)
+                {
+                    if (treatment.Id == id)
+                    {
+                        return medicalRecord;
+                    }
+                }
+            }
+            return null;
         }
 
         public MedicalRecord AddTreatmentToMedRec(Patient patient, Treatment treatment)
         {
-            throw new NotImplementedException();
+            MedicalRecord medicalRecord = GetMedRecByPatient(patient);
+            medicalRecord.Treatments.Add(treatment);
+            Edit(medicalRecord);
+            return medicalRecord;
         }
 
-        public MedicalRecord EditTreatmentInMedRec(Treatment treatment, MedicalRecord medRec)
+        public MedicalRecord EditTreatmentInMedRec(Treatment treatment, MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
+            Treatment treatmentToChange;
+            foreach(Treatment oneTreatment in medicalRecord.Treatments)
+            {
+                if(oneTreatment.Id == treatment.Id)
+                {
+                    treatmentToChange = oneTreatment;
+                }
+            }
+            treatmentToChange = treatment;
+            Edit(medicalRecord);
+            return medicalRecord;
+        }
+
+        public Treatment GetTreatmentByTreatmentId(long id)
+        {
+            foreach (MedicalRecord medicalRecord in GetAll())
+            {
+                foreach (Treatment treatment in medicalRecord.Treatments)
+                {
+                    if (treatment.Id == id)
+                    {
+                        return treatment;
+                    }
+                }
+            }
+            return null;
         }
 
         public MedicalRecord Save(MedicalRecord obj)

@@ -18,9 +18,25 @@ namespace Repository
    public class AppointmentRepository : IAppointmentRepository
    {
         private String _path;
-        private static AppointmentRepository Instance;
+        private static AppointmentRepository instance;
         private readonly ICSVStream<Appointment> _stream;
         private readonly iSequencer<long> _sequencer;
+
+        public static AppointmentRepository Instance 
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AppointmentRepository();
+                }
+                return instance;
+            }
+        }
+        
+        private AppointmentRepository()
+        {
+        }
         public AppointmentRepository GetInstance() { return null; }
 
         public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
@@ -34,6 +50,47 @@ namespace Repository
         private long GetMaxId(List<Appointment> appointments)
         {
             return appointments.Count() == 0 ? 0 : appointments.Max(apt => apt.Id);
+        }
+
+        public List<Appointment> getAppointmentsByDate(DateTime startDate, DateTime endDate)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            foreach(Appointment appointment in GetAll())
+            {
+                if (appointment.StartDate >= startDate && (appointment.EndDate <= endDate))
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
+        }
+
+        public List<Appointment> getAppointmentsByDayAndDoctor(DateTime day, Doctor doctor)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            DateTime endOfDay = day.AddDays(1);
+            foreach (Appointment appointment in getAppointmentsByDate(day, endOfDay))
+            {
+                if(appointment.Doctor == doctor)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+
+            return appointments;
+        }
+
+        public List<Appointment> getAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            foreach (Appointment appointment in getAppointmentsByDayAndDoctor(day, doctor))
+            {
+                if (appointment.ExamOperationRoom == room)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
         }
 
         public Appointment GetAppointment(Appointment appointment)
