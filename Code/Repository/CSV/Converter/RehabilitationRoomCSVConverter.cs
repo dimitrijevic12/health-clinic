@@ -43,11 +43,9 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 string prezime = tokens[i];
                 i++;
                 int idPatient = int.Parse(tokens[i]);
-<<<<<<< HEAD
-                Patient patient = new Patient(ime,prezime,idPatient);
-=======
+
                 Patient patient = new Patient(ime, prezime, idPatient);
->>>>>>> master
+
                 MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
                 records.Add(record);
                 i++;

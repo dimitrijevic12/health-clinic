@@ -105,9 +105,8 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
-=======
+
         protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
->>>>>>> master
+
     }
 }
