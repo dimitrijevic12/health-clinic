@@ -120,11 +120,11 @@ namespace Service
         {
             var doctor = _doctorService.Create(obj.Doctor);
             var patient = _patientService.Create(obj.Patient);
-            var room = _roomService.Create(obj.examOperationRoom);
+            var room = _roomService.Create(obj.ExamOperationRoom);
             var appointment = iAppointmentRepository.Save(obj);
             appointment.Doctor = doctor;
             appointment.Patient = patient;
-            appointment.examOperationRoom = room;
+            appointment.ExamOperationRoom = room;
             return appointment;
         }
 
@@ -132,7 +132,7 @@ namespace Service
         {
             _doctorService.Edit(obj.Doctor);
             _patientService.Edit(obj.Patient);
-            _roomService.Edit(obj.examOperationRoom);
+            _roomService.Edit(obj.ExamOperationRoom);
             iAppointmentRepository.Edit(obj);
             return obj;
         }
@@ -141,7 +141,7 @@ namespace Service
         {
             _doctorService.Delete(obj.Doctor);
             _patientService.Delete(obj.Patient);
-            _roomService.Delete(obj.examOperationRoom);
+            _roomService.Delete(obj.ExamOperationRoom);
             iAppointmentRepository.Delete(obj);
             return true;
         }

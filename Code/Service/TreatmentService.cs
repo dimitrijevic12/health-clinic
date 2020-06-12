@@ -6,6 +6,8 @@
 
 using Controller;
 using health_clinicClassDiagram.Model.Treatment;
+using health_clinicClassDiagram.Repository;
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -77,7 +79,8 @@ namespace Service
         {
             ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, cause, drugs);
             treatment.ReferralToHospitalTreatment = referralToHospitalTreatment;
-            //TODO: Ubacivanje pacijenta u sobu kad se napravi RoomRepo
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            RehabilitationRoomService.Instance.AddPatient(medicalRecord, room);
             return treatment.ReferralToHospitalTreatment;
         }
 
