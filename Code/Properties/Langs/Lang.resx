@@ -240,6 +240,9 @@
   <data name="magacin" xml:space="preserve">
     <value>MAGACIN</value>
   </data>
+  <data name="Max" xml:space="preserve">
+    <value>Unesi maksimalan broj pacijenata u sobi:</value>
+  </data>
   <data name="narucilekove" xml:space="preserve">
     <value>Naruči lekove</value>
   </data>

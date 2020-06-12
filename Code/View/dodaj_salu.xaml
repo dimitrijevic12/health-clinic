@@ -7,7 +7,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         mc:Ignorable="d"
         Title="dodaj_salu"  Height="768" Width="1024" Background="AliceBlue">
-   
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -34,22 +34,25 @@
 
 
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="384"  Height="54" Margin="10,73,115,141" Grid.ColumnSpan="3" Text="{x:Static language:Lang.unesiIdNoveSale}"/>
-        
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="384"  Height="54" Margin="42,158,83,56" Grid.ColumnSpan="3" Text="{x:Static language:Lang.unesiIdNoveSale}"/>
+
+
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="456"  Height="54" Margin="42,35,10,28" Grid.ColumnSpan="3" Text="{x:Static language:Lang.Max}"/>
 
 
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_potvrdi" />
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_otkazi"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,241,42,90" Grid.ColumnSpan="4" Grid.RowSpan="2"><Run Text=" "/><Run Text="Choose type for new room:"/></TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="42,10,10,204" Grid.ColumnSpan="4" Text="{x:Static language:Lang.izaberiNoviTipSale}" />
 
-        <ComboBox Height="42" Name="tip" Width="412" Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,241,85,102" Grid.RowSpan="2">
-            <ComboBoxItem Content="OPERACIONA"/>
+        <ComboBox Height="42" Name="tip" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,19,35,207">
+            <ComboBoxItem Content="OPERACIONA ili KONTROLNA"/>
             <ComboBoxItem Content="REHABILITACIONA"/>
-            <ComboBoxItem Content="KONTROLNA"/>
         </ComboBox>
 
-        <TextBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,73,85,141" FontSize="30" VerticalAlignment="Center" Name="Id_sale" Height="54"></TextBox>
+        <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Margin="0,158,35,56" FontSize="30" VerticalAlignment="Center" Name="Id_sale" Height="54"></TextBox>
+
+        <TextBox Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="4" Margin="159,35,35,28" FontSize="30" VerticalAlignment="Center" Name="maxi" Height="54"></TextBox>
 
 
     </Grid>

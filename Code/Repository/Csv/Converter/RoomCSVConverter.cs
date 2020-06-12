@@ -22,7 +22,11 @@ namespace Repository.Csv.Converter
         public Room ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
-            Room room = new Room(long.Parse(tokens[0]));
+            String tipString = tokens[2];
+
+            TypeOfRoom tipS = (TypeOfRoom)Enum.Parse(typeof(TypeOfRoom), tipString, true);
+
+            Room room = new Room(long.Parse(tokens[0]), tipS);
             return room;
         }
 

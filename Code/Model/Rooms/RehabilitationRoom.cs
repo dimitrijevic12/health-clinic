@@ -24,7 +24,8 @@ namespace Model.Rooms
             _patients = patients;
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
-            IdRoom = idRoom;           
+            IdRoom = idRoom;
+            tip = TypeOfRoom.REHABILITATION;
         }
 
         public List<MedicalRecord> Patients
@@ -50,6 +51,13 @@ namespace Model.Rooms
             get { return Id; }   // get method
             set { Id = value; }
         }
+
+        public TypeOfRoom tip
+        {
+            get { return tipSobe; }
+            set { tipSobe = value; }
+        }
+
 
     }
 }

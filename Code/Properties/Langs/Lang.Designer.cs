@@ -430,6 +430,15 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unesi maksimalan broj pacijenata u sobi:.
+        /// </summary>
+        public static string Max {
+            get {
+                return ResourceManager.GetString("Max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Naruči lekove.
         /// </summary>
         public static string narucilekove {

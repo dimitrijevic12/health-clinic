@@ -10,8 +10,8 @@ namespace Model.Rooms
 {
    public enum TypeOfRoom
    {
-      OPERATION,
-      EXAM
+      EXAMOPERATION,
+      REHABILITATION
    
    }
 }
