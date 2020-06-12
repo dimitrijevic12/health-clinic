@@ -12,13 +12,18 @@ namespace Model.Appointment
 {
    public class Appointment
    {
-        public Model.SystemUsers.Patient patient;
-        public Model.SystemUsers.Doctor doctor;
-        public Model.Rooms.ExamOperationRoom examOperationRoom;
+        private Patient patient;
+        private Doctor doctor;
+        private ExamOperationRoom examOperationRoom;
 
         public long Id { get; set; }
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
+        public Doctor Doctor { get => Doctor1; set => Doctor1 = value; }
+        public Patient Patient { get => Patient1; set => Patient1 = value; }
+        public Doctor Doctor1 { get => doctor; set => doctor = value; }
+        public Patient Patient1 { get => patient; set => patient = value; }
+        public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
 
         private DateTime startDate;
         private DateTime endDate;
@@ -26,9 +31,9 @@ namespace Model.Appointment
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {
-            this.doctor = doctor;
-            this.patient = patient;
-            this.examOperationRoom = room;
+            this.Doctor = doctor;
+            this.Patient = patient;
+            this.ExamOperationRoom = room;
             this.Type = type;
             this.StartDate = startDate;
             this.EndDate = endDate;
@@ -36,17 +41,21 @@ namespace Model.Appointment
 
         public Appointment(Doctor doctor, Patient patient, TypeOfAppointment type)
         {
-            this.doctor = doctor;
-            this.patient = patient;
+            this.Doctor = doctor;
+            this.Patient = patient;
             this.Type = type;
         }
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type)
         {
-            this.doctor = doctor;
-            this.patient = patient;
-            this.examOperationRoom = room;
+            this.Doctor = doctor;
+            this.Patient = patient;
+            this.ExamOperationRoom = room;
             this.Type = type;
+        }
+
+        public Appointment()
+        {
         }
 
     }

@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Treatment.Treatment
  ***********************************************************************/
 
+using health_clinicClassDiagram.Model.Treatment;
 using Model.SystemUsers;
 using System;
 
@@ -18,10 +19,11 @@ namespace Model.Treatment
         private DiagnosisAndReview diagnosisAndReview;
         private ReferralToHospitalTreatment referralToHospitalTreatment;
         private Model.SystemUsers.Doctor doctor;
+        private SpecialistAppointment specialistAppointment;
 
         private DateTime fromDate;
-      private DateTime endDate;
-      private long id;
+        private DateTime endDate;
+        private long id;
 
         public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, long id, Doctor doctor)
         {
@@ -46,6 +48,16 @@ namespace Model.Treatment
             Doctor = doctor;
         }
 
+        public Treatment(DateTime fromDate, DateTime endDate)
+        {
+            FromDate = fromDate;
+            EndDate = endDate;
+        }
+
+        public Treatment()
+        {
+        }
+
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }
@@ -54,6 +66,7 @@ namespace Model.Treatment
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
+        public SpecialistAppointment SpecialistAppointment { get => specialistAppointment; set => specialistAppointment = value; }
 
         public long GetId() => Id;
 

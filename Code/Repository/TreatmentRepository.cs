@@ -16,7 +16,7 @@ namespace Repository
 {
    public class TreatmentRepository : ITreatmentRepository
    {
-        private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("C:\\health-clinic\\health-clinic\\Code\\treatmentRepo", new TreatmentCSVConverter("|"));
+        private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("C:\\health-clinic\\health-clinic\\Code\\treatmentRepo", new TreatmentCSVConverter("|"));//TODO: Namesti stream kao Stefan
         private readonly LongSequencer _sequencer = new LongSequencer();
         private TreatmentRepository()
         {

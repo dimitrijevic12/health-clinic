@@ -10,9 +10,9 @@ namespace Model.Rooms
 {
    public class Room
    {
-      public InventoryEquip[] inventoryEquip;
-   
-      private int Id;
-   
-   }
+        public InventoryEquip[] inventoryEquip;
+
+        protected long Id;
+
+    }
 }

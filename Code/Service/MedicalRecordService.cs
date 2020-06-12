@@ -46,24 +46,24 @@ namespace Service
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            var _user = _patientService.Create(obj.patient);
+            var _user = _patientService.Create(obj.Patient);
             var patient = (Patient)_user;
             var newMedicalRecord = _medicalRecordRepository.Save(obj);
-            newMedicalRecord.patient = patient;
+            newMedicalRecord.Patient = patient;
             return newMedicalRecord;
             //fali treatment ali to vrv u add treatment
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            _patientService.Edit(obj.patient);
+            _patientService.Edit(obj.Patient);
             _medicalRecordRepository.Edit(obj);
             return obj;
         }
 
         public bool Delete(MedicalRecord obj)
         {
-            _patientService.Delete(obj.patient);
+            _patientService.Delete(obj.Patient);
             _medicalRecordRepository.Delete(obj);
             return true;
         }
