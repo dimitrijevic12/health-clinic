@@ -13,13 +13,13 @@ namespace health_clinicClassDiagram.Repository
     public class SurgeonRepository : IRepository<Surgeon>
     {
         private static SurgeonRepository instance = null;
-        private readonly CSVStream<Surgeon> stream = new CSVStream<Surgeon>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DoctorRepo.csv", new SurgeonCSVConverter("|", ""));
+        private readonly CSVStream<Surgeon> stream = new CSVStream<Surgeon>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\SurgeonRepo.csv", new SurgeonCSVConverter("|", ""));
         private readonly LongSequencer sequencer = new LongSequencer();
         private readonly ICSVStream<Doctor> _stream;
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static SurgeonRepository Instance
+        public static SurgeonRepository Instance
         {
             get
             {
