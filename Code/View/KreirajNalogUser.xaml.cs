@@ -177,11 +177,7 @@ namespace health_clinicClassDiagram.View
         {
             ComboBox cmb = (ComboBox)sender;
             
-
-            choosenDoctor = (Doctor)cmb.SelectedItem;
-
-            
-            
+            choosenDoctor = (Doctor)cmb.SelectedItem;            
         }
     }
 }

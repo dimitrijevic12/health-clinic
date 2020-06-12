@@ -85,7 +85,7 @@
                 <TextBox Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="5" Name="PrezimeTekst"/>
                 <TextBox Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="5" Name="JMBGTekst" IsReadOnly="True"/>
                 <DatePicker Grid.Column="4" Grid.Row="9" Grid.ColumnSpan="5" Name="DatumPicker"/>
-                <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo" ItemsSource="{Binding Path = doctorsCollection}">
+                <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo" ItemsSource="{Binding Path = doctorsCollection}" SelectionChanged="DoktorCombo_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">

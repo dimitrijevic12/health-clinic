@@ -23,7 +23,7 @@ namespace health_clinicClassDiagram.View
         private string _prezimePacijenta;
         private int _jmbgPacijenta;
         private Gender _gender;
-
+        private Doctor _choosenDoctor;
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -114,7 +114,7 @@ namespace health_clinicClassDiagram.View
         private MedicalRecord EditMedicalRecord()
         {
             Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
-            var record = new MedicalRecord(_idNaloga, pacijent, new Doctor());
+            var record = new MedicalRecord(_idNaloga, pacijent, _choosenDoctor);
 
             return _recordController.Edit(record);
         }
@@ -133,6 +133,13 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void DoktorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = (ComboBox)sender;
+
+            _choosenDoctor = (Doctor)cmb.SelectedItem;
         }
     }
 }
