@@ -54,7 +54,7 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public bool Delete(Doctor obj)
+        public bool Delete(Surgeon obj)
         {
             //            var doctors = _stream.ReadAll().ToList();
             var doctors = stream.ReadAll().ToList();
@@ -72,7 +72,7 @@ namespace health_clinicClassDiagram.Repository
             }
         }
 
-        public Doctor Edit(Surgeon obj)
+        public Surgeon Edit(Surgeon obj)
         {
             //            var doctors = _stream.ReadAll().ToList();
             var doctors = stream.ReadAll().ToList();
@@ -93,7 +93,7 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public Doctor Save(Surgeon obj)
+        public Surgeon Save(Surgeon obj)
         {
             stream.AppendToFile(obj);
             return obj;
