@@ -10,12 +10,8 @@ namespace health_clinicClassDiagram.Repository
 {
     public interface IExamOperationRoomRepository : IRepository<ExamOperationRoom>
     {
-<<<<<<< HEAD
+
        Room GetRoom(int id);
     }
 }
-=======
-        Room GetRoom(int id);
-    }
-}
->>>>>>> master
+

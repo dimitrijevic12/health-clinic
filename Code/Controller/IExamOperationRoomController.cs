@@ -12,8 +12,6 @@ namespace health_clinicClassDiagram.Controller
     {
         Boolean IsRoomFree(DateTime from, DateTime to, Room room);
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> master
+

@@ -13,15 +13,10 @@ namespace Model.Rooms
        //bio private ili protected (ne secam se) long Id, ali sam ga obrisao zbog dole gettera i settera
       public InventoryEquip[] inventoryEquip;
 
-<<<<<<< HEAD
 
-
-        protected TypeOfRoom tipSobe;
-        protected long _id;
-=======
         protected long _id;
         protected TypeOfRoom tipSobe;
->>>>>>> master
+
         public long Id
         {
             get { return _id; }
@@ -32,7 +27,7 @@ namespace Model.Rooms
             get { return tipSobe; }
             set { tipSobe = value; }
         }
-<<<<<<< HEAD
+
 
         public Room(long id)
         {
@@ -44,18 +39,7 @@ namespace Model.Rooms
             this.Id = id;
             this.tipSobe = tip;
         }
-=======
->>>>>>> master
 
-        public Room(long id)
-        {
-            Id = id;
-        }
-        public Room(long id, TypeOfRoom tip)
-        {
-            this.Id = id;
-            this.tipSobe = tip;
-        }
     }
 
 }

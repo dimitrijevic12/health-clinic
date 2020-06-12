@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-﻿using health_clinicClassDiagram.Repository;
-=======
-﻿using health_clinicClassDiagram.Controller;
+
+using health_clinicClassDiagram.Controller;
 using health_clinicClassDiagram.Repository;
->>>>>>> master
 using Model.Rooms;
 using System;
 using System.Collections.Generic;
@@ -27,15 +24,11 @@ namespace health_clinicClassDiagram.Service
 
         public ExamOperationRoom Create(ExamOperationRoom obj)
         {
-<<<<<<< HEAD
+
            
             var newExamOperRoom = _examOperationRoomRepository.Save(obj);
            
-=======
 
-            var newExamOperRoom = _examOperationRoomRepository.Save(obj);
-
->>>>>>> master
             return newExamOperRoom;
         }
 
@@ -64,8 +57,6 @@ namespace health_clinicClassDiagram.Service
             throw new NotImplementedException();
         }
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> master
+

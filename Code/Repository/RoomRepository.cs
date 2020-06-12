@@ -17,27 +17,9 @@ namespace Repository
    {
         private String _path;
         private static RoomRepository Instance;
-<<<<<<< HEAD
-=======
 
-        private readonly ICSVStream<Room> _stream;
-        private readonly iSequencer<long> _sequencer;
 
-        public RoomRepository GetInstance() { return null; }
-
-        public RoomRepository(string path, CSVStream<Room> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
-        private long GetMaxId(List<Room> rooms)
-        {
-            return rooms.Count() == 0 ? 0 : rooms.Max(ro => ro.Id);
-        }
->>>>>>> master
+   
 
         private readonly ICSVStream<Room> _stream;
         private readonly iSequencer<long> _sequencer;

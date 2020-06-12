@@ -10,15 +10,10 @@ namespace Model.Rooms
 {
    public enum TypeOfRoom
    {
-<<<<<<< HEAD
+
       EXAMOPERATION,
       REHABILITATION
    
    }
-=======
-        EXAMOPERATION,
-        REHABILITATION
 
-    }
->>>>>>> master
 }

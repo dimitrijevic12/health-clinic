@@ -57,11 +57,7 @@ namespace Model.Rooms
             set { tipSobe = value; }
         }
 
-        public TypeOfRoom tip
-        {
-            get { return tipSobe; }
-            set { tipSobe = value; }
-        }
+     
 
 
     }

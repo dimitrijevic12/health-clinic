@@ -59,9 +59,6 @@ namespace health_clinicClassDiagram
         }*//*
         
     }
-<<<<<<< HEAD
+
 }*/
-=======
-}
-*/
->>>>>>> master
+
