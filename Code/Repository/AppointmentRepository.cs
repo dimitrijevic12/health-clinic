@@ -74,7 +74,7 @@ namespace Repository
             DateTime endOfDay = day.AddDays(1);
             foreach (Appointment appointment in getAppointmentsByDate(day, endOfDay))
             {
-                if(appointment.Doctor == doctor)
+                if(appointment.Doctor.Id == doctor.Id)
                 {
                     appointments.Add(appointment);
                 }
