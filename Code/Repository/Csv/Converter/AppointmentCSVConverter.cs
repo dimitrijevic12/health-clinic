@@ -30,7 +30,7 @@ namespace Repository.Csv.Converter
             string patientName = tokens[3];
             string patientSurname = tokens[4];
             int patientId = int.Parse(tokens[5]);
-            ExamOperationRoom room = new ExamOperationRoom();
+            ExamOperationRoom room = new ExamOperationRoom(tokens[9]);
             TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[6], true);
             DateTime startDate = DateTime.Parse(tokens[7]);
             DateTime endDate = DateTime.Parse(tokens[8]);
@@ -56,6 +56,7 @@ namespace Repository.Csv.Converter
                entity.Patient.Id,
                entity.Type,
                entity.StartDate.ToString(),
-               entity.EndDate.ToString());
+               entity.EndDate.ToString(),
+               entity.ExamOperationRoom.Id);
     }
 }

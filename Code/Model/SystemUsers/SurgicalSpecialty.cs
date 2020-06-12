@@ -13,6 +13,7 @@ namespace Model.SystemUsers
       CARDIOTHORACIC,
       NEUROSURGERY,
       PLASTICAL,
-      GENERAL
+      GENERAL,
+      NOT_SURGEON
    }
 }
