@@ -77,6 +77,18 @@ namespace Model.SystemUsers
             
 
         }
+
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth)
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            // workingSchedule = workSc;
+
+        }
         public Doctor(long jmbg, String name, String surname)
         {
             this.Id = jmbg;

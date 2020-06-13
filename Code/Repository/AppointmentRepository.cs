@@ -8,6 +8,7 @@ using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,10 @@ namespace Repository
    public class AppointmentRepository : IAppointmentRepository
    {
         private String _path;
-        private static AppointmentRepository instance;
+        private static AppointmentRepository instance = null;
+        private readonly CSVStream<Appointment> stream = new CSVStream<Appointment>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\AppointmentRepo.csv", new AppointmentCSVConverter("|", ""));
         private readonly ICSVStream<Appointment> _stream;
+        private readonly LongSequencer sequencer = new LongSequencer();
         private readonly iSequencer<long> _sequencer;
 
         public static AppointmentRepository Instance 
@@ -71,7 +74,7 @@ namespace Repository
             DateTime endOfDay = day.AddDays(1);
             foreach (Appointment appointment in getAppointmentsByDate(day, endOfDay))
             {
-                if(appointment.Doctor == doctor)
+                if(appointment.Doctor.Id == doctor.Id)
                 {
                     appointments.Add(appointment);
                 }
@@ -120,7 +123,7 @@ namespace Repository
 
         public Appointment Save(Appointment obj)
         {
-            _stream.AppendToFile(obj);
+            stream.AppendToFile(obj);
             return obj;
         }
 
@@ -129,7 +132,7 @@ namespace Repository
 
             var appointments = _stream.ReadAll().ToList();
             appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            _stream.SaveAll(appointments);
+            stream.SaveAll(appointments);
             return obj;
 
         }
@@ -142,7 +145,7 @@ namespace Repository
             if (appointmentToRemove != null)
             {
                 appointments.Remove(appointmentToRemove);
-                _stream.SaveAll(appointments);
+                stream.SaveAll(appointments);
                 return true;
             }
             else
@@ -153,7 +156,7 @@ namespace Repository
 
         public List<Appointment> GetAll()
         {
-            return _stream.ReadAll();
+            return stream.ReadAll();
         }
 
         public bool OpenFile(string path)

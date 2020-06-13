@@ -8,38 +8,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using System.Threading.Tasks;
-
-
 namespace health_clinicClassDiagram.Repository
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class SurgeonRepository : IRepository<Surgeon>
     {
-        private static DoctorRepository instance = null;
-        private readonly CSVStream<Doctor> stream = new CSVStream<Doctor>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter("|", ""));
+        private static SurgeonRepository instance = null;
+        private readonly CSVStream<Surgeon> stream = new CSVStream<Surgeon>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\SurgeonRepo.csv", new SurgeonCSVConverter("|", ""));
         private readonly LongSequencer sequencer = new LongSequencer();
         private readonly ICSVStream<Doctor> _stream;
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static DoctorRepository Instance
+        public static SurgeonRepository Instance
         {
-             get
+            get
             {
                 if (instance == null)
                 {
-                    instance = new DoctorRepository();
+                    instance = new SurgeonRepository();
                 }
                 return instance;
             }
         }
 
-        private DoctorRepository()
+        private SurgeonRepository()
         {
         }
         public MedicalRecordRepository GetInstance() { return null; }
 
-        public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
+        public SurgeonRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
         {
             _path = path;
             _stream = stream;
@@ -57,14 +54,16 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public bool Delete(Doctor obj)
+        public bool Delete(Surgeon obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            //            var doctors = _stream.ReadAll().ToList();
+            var doctors = stream.ReadAll().ToList();
             var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
-                _stream.SaveAll(doctors);
+                //                _stream.SaveAll(doctors);
+                stream.SaveAll(doctors);
                 return true;
             }
             else
@@ -73,17 +72,19 @@ namespace health_clinicClassDiagram.Repository
             }
         }
 
-        public Doctor Edit(Doctor obj)
+        public Surgeon Edit(Surgeon obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            //            var doctors = _stream.ReadAll().ToList();
+            var doctors = stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            _stream.SaveAll(doctors);
+            //            _stream.SaveAll(doctors);
+            stream.SaveAll(doctors);
             return obj;
         }
 
-        public List<Doctor> GetAll()
+        public List<Surgeon> GetAll()
         {
-            var doctors = (List<Doctor>)_stream.ReadAll();
+            var doctors = (List<Surgeon>)stream.ReadAll();
             return doctors;
         }
 
@@ -92,9 +93,9 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public Doctor Save(Doctor obj)
+        public Surgeon Save(Surgeon obj)
         {
-            _stream.AppendToFile(obj);
+            stream.AppendToFile(obj);
             return obj;
         }
     }
