@@ -88,7 +88,7 @@ namespace Repository
             List<Appointment> appointments = new List<Appointment>();
             foreach (Appointment appointment in getAppointmentsByDayAndDoctor(day, doctor))
             {
-                if (appointment.ExamOperationRoom == room)
+                if (appointment.ExamOperationRoom.Id == room.Id)
                 {
                     appointments.Add(appointment);
                 }
