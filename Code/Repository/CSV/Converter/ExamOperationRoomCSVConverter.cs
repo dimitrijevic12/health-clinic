@@ -10,7 +10,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 {
     class ExamOperationRoomCSVConverter : ICSVConverter<ExamOperationRoom>
     {
-        private String Delimiter;
+        
 
         private readonly string _delimiter;
 

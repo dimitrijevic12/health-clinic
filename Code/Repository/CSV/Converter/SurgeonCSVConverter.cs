@@ -33,7 +33,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             SurgicalSpecialty surgicalSpecialty = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), specializationString, true);
 
-            Surgeon surgeon = new Surgeon(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, surgicalSpecialty);
+            Surgeon surgeon = new Surgeon(long.Parse(tokens[0]), tokens[1], tokens[2], gender, /*DateTime.Now*/ tokens[4], surgicalSpecialty);
 
             return surgeon;
         }
@@ -45,7 +45,8 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             DateTime.Now,
+             /*DateTime.Now,*/
+             entity.DateOfBirth,
              entity.SurgicalSpecialty);
         }
     }

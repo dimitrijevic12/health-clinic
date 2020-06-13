@@ -30,6 +30,7 @@ namespace health_clinicClassDiagram
         private const string EXAMOPERATIONROOM_FILE = "../../Resources/Data/examOperationRooms.csv";
         private const string REHABILITATIONROOM_FILE = "../../Resources/Data/rehabilitationRooms.csv";
         private const string USER_FILE = "../../Resources/Data/users.csv";
+        private const string EQUIP_FILE = "../../Resources/Data/equipments.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
@@ -39,6 +40,8 @@ namespace health_clinicClassDiagram
         public IRoomController roomController { get; private set; }
 
         public IRehabilitationRoomController rehabilitationRoomController { get; private set; }
+
+        public IEquipmentController equipController { get; private set; }
 
         public UserController userController { get; private set; }
 
@@ -75,7 +78,12 @@ namespace health_clinicClassDiagram
 
             var userRepository = new UserRepository(
               USER_FILE,
-              new CSVStream<RegisteredUser>(REHABILITATIONROOM_FILE, new UserCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+              new CSVStream<RegisteredUser>(USER_FILE, new UserCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+              new LongSequencer());
+
+            var equipRepository = new EquipRepository(
+              EQUIP_FILE,
+              new CSVStream<Equipment>(EQUIP_FILE, new EquipmentCSVConverter(CSV_DELIMITER)),
               new LongSequencer());
 
             var doctorService = new DoctorService(doctorRepository);
@@ -85,11 +93,13 @@ namespace health_clinicClassDiagram
 
             var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository, userService);
 
-            
+            var equipService = new EquipmentService(equipRepository);
+
 
             examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
             rehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
+            equipController = new EquipmentController(equipService);
 
         }
     }

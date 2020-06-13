@@ -22,9 +22,11 @@ namespace Model.Rooms
       private String Description;
       private Boolean Validation;
       private int quantity;
+        private static int brojac = 0;
 
         public Drug(string name, int quantity)
         {
+            id = brojac++;
             Name = name;
             Quantity = quantity;
         }
@@ -32,6 +34,7 @@ namespace Model.Rooms
         public Drug(string name)
         {
             Name = name;
+           // id = brojac++;
         }
 
         public Drug(Ingredients ingredients, string name, string description, bool validation, int quantity)
@@ -41,6 +44,7 @@ namespace Model.Rooms
             Description = description;
             Validation = validation;
             this.quantity = quantity;
+          //  id = brojac++;
         }
 
         public string Name { get => name; set => name = value; }

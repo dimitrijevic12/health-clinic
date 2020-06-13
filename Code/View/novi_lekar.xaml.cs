@@ -19,8 +19,10 @@ namespace health_clinicClassDiagram.view
         private string _ime;
         private string _prezime;
         private Gender _gender;
-        private DateTime _datum;
+        /*private DateTime _datum;*/
+        private string _datum;
         private Specialization _specijalnost;
+        private SurgicalSpecialty _hirurg;
 
         public novi_lekar()
         {
@@ -75,18 +77,46 @@ namespace health_clinicClassDiagram.view
             {
                 _specijalnost = Specialization.NEPHROLOGY;
             }
-            else
+            else if (combo2 == 3)
             {
                 _specijalnost = Specialization.PULMOLOGY;
             }
+            else
+            {
+                _specijalnost = Specialization.NOT_SPECIALIST;
+            }
+
+            int combo3 = HirurgCombo.SelectedIndex;
+
+            if (combo3 == 0)
+            {
+                _hirurg = SurgicalSpecialty.CARDIOTHORACIC;
+            }
+            else if (combo3 == 1)
+            {
+                _hirurg = SurgicalSpecialty.NEUROSURGERY;
+            }
+            else if (combo3 == 2)
+            {
+                _hirurg = SurgicalSpecialty.NEUROSURGERY;
+            }
+            else if (combo3 == 3)
+            {
+                _hirurg = SurgicalSpecialty.GENERAL;
+            }
+            else
+            {
+                _hirurg = SurgicalSpecialty.NOT_SURGEON;
+            }
+
 
 
             _id = long.Parse(ID);
             _ime = IME;
             _prezime = PREZIME;
-            
-            
-            _datum = DateTime.Now;
+
+            /*_datum = DateTime.Now;*/
+            _datum = DatumRodjenja.Text;
 
             Doctor doctor = CreateDoctor();
 
@@ -106,7 +136,7 @@ namespace health_clinicClassDiagram.view
 
         private Doctor CreateDoctor()
         {
-            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, _specijalnost);
+            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, _specijalnost, _hirurg);
 
             return _doctorController.Create(doctor);
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using Controller;
+using Model.Rooms;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,6 +13,8 @@ namespace health_clinicClassDiagram.view
     {
         private int colNum = 0;
 
+        private readonly IEquipmentController _equipController;
+
         //public static ObservableCollection<oprema> Oprema
         //{
         //    get;
@@ -20,6 +24,8 @@ namespace health_clinicClassDiagram.view
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            _equipController = app.equipController;
             //Oprema = new ObservableCollection<oprema>();
             //Oprema.Add(new oprema() { VrstaOpreme = "Sto", Sifra = "1", Kolicina = "10" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Krevet", Sifra = "2", Kolicina = "20" });
@@ -39,6 +45,19 @@ namespace health_clinicClassDiagram.view
         {
             
             this.Close();
+        }
+
+        private void Button_potvrdi(object sender, RoutedEventArgs e)
+        {
+            int idSalji = equipCombo.SelectedIndex;
+
+            int quant = int.Parse(quantity.Text);
+
+            _equipController.addEquipment(idSalji, quant);
+
+            this.Close();
+
+
         }
     }
 }

@@ -3,6 +3,7 @@ using Model.SystemUsers;
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
@@ -38,7 +39,11 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, specialization);
+            String hirurgString = tokens[6];
+
+            SurgicalSpecialty hirurg = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), hirurgString, true);
+
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, /*DateTime.Now*/ tokens[4] , specialization, hirurg);
 
             return doctor;
         }
@@ -50,8 +55,10 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             DateTime.Now,
-             entity.Spec);
+             /*DateTime.Now,*/
+             entity.DateOfBirth,
+             entity.Spec,
+             entity.Sur);
         }
     }
 }

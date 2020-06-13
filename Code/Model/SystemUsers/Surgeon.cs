@@ -13,7 +13,12 @@ namespace Model.SystemUsers
    {
       private SurgicalSpecialty surgicalSpecialty;
         
-        public Surgeon(long id, String name, String surname, Gender gender, DateTime dateOfBirth, SurgicalSpecialty surgicalSpecialty) : base(id, name, surname, gender, dateOfBirth)
+        public Surgeon(long id, String name, String surname, Gender gender, /*DateTime*/string dateOfBirth, SurgicalSpecialty surgicalSpecialty) : base(id, name, surname, gender, dateOfBirth)
+        {
+            SurgicalSpecialty = surgicalSpecialty;
+        }
+
+        public Surgeon(String name, String surname, SurgicalSpecialty surgicalSpecialty)
         {
             SurgicalSpecialty = surgicalSpecialty;
         }

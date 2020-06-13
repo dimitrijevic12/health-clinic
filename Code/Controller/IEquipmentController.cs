@@ -11,5 +11,6 @@ namespace Controller
 {
    public interface IEquipmentController : IController<Equipment>
    {
+        void addEquipment(int idE, int quant);
    }
 }

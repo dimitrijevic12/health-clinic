@@ -13,7 +13,8 @@ namespace Model.SystemUsers
       CARDIOLOGY,
       PULMOLOGY,
       NEPHROLOGY,
-      ENDOCRINOLOGY
-   
-   }
+      ENDOCRINOLOGY,
+      NOT_SPECIALIST
+
+    }
 }

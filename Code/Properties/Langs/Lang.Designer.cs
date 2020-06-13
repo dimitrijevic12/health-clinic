@@ -142,6 +142,15 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hirurg.
+        /// </summary>
+        public static string hirurg {
+            get {
+                return ResourceManager.GetString("hirurg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to POČETNA STRANA.
         /// </summary>
         public static string home {

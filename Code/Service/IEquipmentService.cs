@@ -9,7 +9,8 @@ using System;
 
 namespace Service
 {
-   public interface IEquipmentService : IService<Equipment>
-   {
-   }
+    public interface IEquipmentService : IService<Equipment>
+    {
+        void addEquipment(int idE, int quant);
+    }
 }

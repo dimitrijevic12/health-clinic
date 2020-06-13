@@ -144,6 +144,9 @@
   <data name="en" xml:space="preserve">
     <value>Engleski</value>
   </data>
+  <data name="hirurg" xml:space="preserve">
+    <value>Hirurg</value>
+  </data>
   <data name="home" xml:space="preserve">
     <value>POČETNA STRANA</value>
   </data>

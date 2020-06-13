@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,30 +13,43 @@ namespace Controller
 {
    public class EquipmentController : IEquipmentController
    {
+        private readonly IEquipmentService _service;
+
+        private static EquipmentController Instance;
         public EquipmentController GetInstance() { return null; }
+
+        public EquipmentController(IEquipmentService service)
+        {
+            _service = service;
+        }
+
         public List<Equipment> GetAll()
         {
-            throw new NotImplementedException();
+            var rooms = (List<Equipment>)_service.GetAll();
+            return rooms;
         }
 
         public bool Delete(Equipment obj)
         {
-            throw new NotImplementedException();
+            return _service.Delete(obj);
         }
 
         public Equipment Create(Equipment obj)
         {
-            throw new NotImplementedException();
+            return _service.Create(obj);
         }
 
         public Equipment Edit(Equipment obj)
         {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
         }
 
-        public Service.IEquipmentService iEquipmentService;
-   
-      private static EquipmentController Instance;
-   
-   }
+        public void addEquipment(int idE, int quant)
+        {
+           _service.addEquipment(idE,quant);
+        }
+
+
+
+    }
 }
