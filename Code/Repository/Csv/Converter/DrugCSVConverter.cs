@@ -11,16 +11,32 @@ namespace Repository.Csv.Converter
 {
    public class DrugCSVConverter : ICSVConverter<Drug>
    {
-      private String Delimiter;
+        private readonly string _delimiter;
 
+
+        public DrugCSVConverter(string delimiter)
+        {
+            _delimiter = delimiter;
+
+        }
         public Drug ConvertCSVFormatToEntity(string entityCSVFormat)
         {
-            throw new NotImplementedException();
+            string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
+
+            
+
+            Drug eq = new Drug(int.Parse(tokens[0]), tokens[1], int.Parse(tokens[2]));
+            return eq;
         }
 
         public string ConvertEntityToCSVFormat(Drug entity)
         {
-            throw new NotImplementedException();
+            return string.Join(_delimiter,
+                 entity.Id,
+                 entity.Name,
+                 entity.Quantity,
+                 entity.Validation
+                 );
         }
     }
 }

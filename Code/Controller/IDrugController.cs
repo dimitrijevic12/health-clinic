@@ -10,8 +10,9 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public interface IDrugController
-   {
+   public interface IDrugController : IController<Drug>
+    {
       List<Drug> GetAllDrugs();
-   }
+        void addDrug(String naziv, int quant);
+    }
 }

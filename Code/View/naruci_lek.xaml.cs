@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Controller;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace health_clinicClassDiagram.view
@@ -9,7 +10,7 @@ namespace health_clinicClassDiagram.view
     public partial class naruci_lek : Window
     {
         private int colNum = 0;
-
+        private readonly IDrugController _drugController;
         //public static ObservableCollection<lekovi> Lekovi
         //{
         //    get;
@@ -19,6 +20,8 @@ namespace health_clinicClassDiagram.view
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            _drugController = app.drugController;
             //Lekovi = new ObservableCollection<lekovi>();
             //Lekovi.Add(new lekovi() { Lek = "Brufen", SifraLeka = "213", Kolicina = "10" });
             //Lekovi.Add(new lekovi() { Lek = "Paracetamol", SifraLeka = "442", Kolicina = "20" });
@@ -35,6 +38,15 @@ namespace health_clinicClassDiagram.view
         private void Button_otkazi(object sender, RoutedEventArgs e)
         {
             
+            this.Close();
+        }
+
+        private void Button_potvrdi(object sender, RoutedEventArgs e)
+        {
+            string naziv = name.Text;
+            int qu = int.Parse(quant.Text);
+            _drugController.addDrug(naziv, qu);
+
             this.Close();
         }
     }

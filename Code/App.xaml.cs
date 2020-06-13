@@ -31,6 +31,7 @@ namespace health_clinicClassDiagram
         private const string REHABILITATIONROOM_FILE = "../../Resources/Data/rehabilitationRooms.csv";
         private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string EQUIP_FILE = "../../Resources/Data/equipments.csv";
+        private const string DRUGS_FILE = "../../Resources/Data/drugs.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
@@ -42,6 +43,8 @@ namespace health_clinicClassDiagram
         public IRehabilitationRoomController rehabilitationRoomController { get; private set; }
 
         public IEquipmentController equipController { get; private set; }
+
+        public IDrugController drugController { get; private set; }
 
         public UserController userController { get; private set; }
 
@@ -86,6 +89,11 @@ namespace health_clinicClassDiagram
               new CSVStream<Equipment>(EQUIP_FILE, new EquipmentCSVConverter(CSV_DELIMITER)),
               new LongSequencer());
 
+            var drugRepository = new DrugRepository(
+            DRUGS_FILE,
+            new CSVStream<Drug>(DRUGS_FILE, new DrugCSVConverter(CSV_DELIMITER)),
+            new LongSequencer());
+
             var doctorService = new DoctorService(doctorRepository);
 
             var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
@@ -95,11 +103,14 @@ namespace health_clinicClassDiagram
 
             var equipService = new EquipmentService(equipRepository);
 
+            var drugsService = new DrugService(drugRepository);
+
 
             examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
             rehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
             equipController = new EquipmentController(equipService);
+            drugController = new DrugController(drugsService);
 
         }
     }

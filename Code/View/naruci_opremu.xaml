@@ -30,7 +30,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="616"  Height="45" Margin="20,10,42,0" Grid.ColumnSpan="4" Text="{x:Static language:Lang.oprema}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="598"  Height="45" Margin="38,10,42,0" Grid.ColumnSpan="4" Text="{x:Static language:Lang.oprema}"/>
 
 
         <DataGrid  x:Name="dataGridNaruciOpremu" ItemsSource="{Binding Path=Oprema}" AutoGenerateColumns="True" 
@@ -40,10 +40,10 @@
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,61,139,101" Grid.RowSpan="2" Click="Button_potvrdi"/>
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="137,61,138,101" Click="Button_otkazi" Grid.RowSpan="2"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="616"  Height="54"  Margin="20,185,42,69" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.unesiOpremuNarucivanje}"/>
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="23" HorizontalAlignment="Center" VerticalAlignment="Center" Width="996"  Height="54"  Margin="20,245,0,9" Grid.ColumnSpan="6" Foreground="#FFD81313" Text="{x:Static language:Lang.PorukaNaruciOpremu}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="598"  Height="54"  Margin="38,185,42,69" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.unesiOpremuNarucivanje}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="23" HorizontalAlignment="Center" VerticalAlignment="Center" Width="978"  Height="54"  Margin="38,245,0,9" Grid.ColumnSpan="6" Foreground="#FFD81313" Text="{x:Static language:Lang.PorukaNaruciOpremu}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="616"  Height="54"  Margin="20,25,42,38" Grid.ColumnSpan="4" Text="{x:Static language:Lang.unesiKolicinu}"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="598"  Height="54"  Margin="38,25,42,38" Grid.ColumnSpan="4" Text="{x:Static language:Lang.unesiKolicinu}"/>
 
 
 

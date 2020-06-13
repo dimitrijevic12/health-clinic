@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Service
 {
-   public class DecoratedDrugService : IDrugService
+   public class DecoratedDrugService //: IDrugService
    {
       private IDrugService DrugServiceReference;
 
@@ -19,9 +19,9 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        List<Drug> IDrugService.GetAllDrugs()
+      /*  List<Drug> IDrugService.GetAllDrugs()
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

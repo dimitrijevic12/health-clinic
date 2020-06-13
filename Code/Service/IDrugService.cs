@@ -10,8 +10,10 @@ using System.Collections.Generic;
 
 namespace Service
 {
-   public interface IDrugService
-   {
+   public interface IDrugService : IService<Drug>
+    {
       List<Drug> GetAllDrugs();
-   }
+
+      void addDrug(String naziv, int quant);
+    }
 }

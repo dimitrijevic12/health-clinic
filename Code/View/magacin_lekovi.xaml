@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="magacin_lekovi" Height="668" Width="1000" Background="AliceBlue">
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -24,11 +24,18 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="56" Margin="0,2,367,435" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{x:Static language:Lang.listadostupnihlekova}"/>
-        
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="611"  Height="56" Margin="14,2,367,435" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{x:Static language:Lang.listadostupnihlekova}"/>
 
-        <DataGrid  x:Name="dataGridMagacinLekovi" ItemsSource="{Binding Path=Lekovi}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,28,0,32" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="0"/>
+
+        <DataGrid  x:Name="dataGridMagacinLekovi" ItemsSource="{Binding Path=drugCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,28,0,32" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*"  Header="Id leka" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv leka" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Width="*"  Header="Validacija" Binding="{Binding Validation}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
         <Button HorizontalAlignment="Center" Width="232" Margin="146,10,118,22" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeIzadji}" Grid.Column="1" Grid.Row="3" Click="Button_izadji"/>
