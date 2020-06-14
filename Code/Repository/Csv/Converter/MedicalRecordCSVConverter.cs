@@ -4,10 +4,15 @@
  * Purpose: Definition of the Class Repository.Csv.Converter.MedicalRecordCSVConverter
  ***********************************************************************/
 
+using health_clinicClassDiagram.Repository;
+using health_clinicClassDiagram.Repository.Csv.Converter;
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using Model.Treatment;
+using Repository.Csv.Stream;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -35,24 +40,37 @@ namespace Repository.Csv.Converter
 
             Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);
 
-            String treatmentsString = tokens[7];
-            String[] treatmentsParts = treatmentsString.Split(',');
+            long idDoctor = long.Parse(tokens[6]);
+
+            var doctorRepository = new DoctorRepository(
+                "../../Resources/Data/doctors.csv",
+                new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy.")),
+                new LongSequencer());
+
+            Doctor doctor = new Doctor(idDoctor, tokens[7], tokens[8]);
             List<Treatment> treatments = new List<Treatment>();
-            if (treatmentsString != "")
+
+            if (!tokens[9].Equals(""))
             {
-                foreach (String id in treatmentsParts)
+                String treatmentsString = tokens[9];
+                String[] treatmentsParts = treatmentsString.Split(',');
+                treatments = new List<Treatment>();
+                if (treatmentsString != "")
                 {
-                    //                treatmentIds.Add(long.Parse(id));
-                    //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
-                    treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
-                    
+                    foreach (String id in treatmentsParts)
+                    {
+                        //                treatmentIds.Add(long.Parse(id));
+                        //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
+                        treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
+
+                    }
                 }
             }
 
             return new MedicalRecord(
                 long.Parse(tokens[0]),
                 patient,
-                new Doctor(),
+                doctor,
                 treatments); //ne treba new doctor treba promeniti (tokens[6]), kao i u patient u Gender.MALE
         }
 
@@ -78,7 +96,9 @@ namespace Repository.Csv.Converter
               entity.Patient.Id,
               DateTime.Now,
               entity.Patient.Gender,
-              entity.choosenDoctor,
+              entity.choosenDoctor.Id,
+              entity.choosenDoctor.NameDoctor,
+              entity.choosenDoctor.SurnameDoctor,
               treatments);
         }
     }

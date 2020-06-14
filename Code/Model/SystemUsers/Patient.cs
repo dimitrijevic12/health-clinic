@@ -33,14 +33,19 @@ namespace Model.SystemUsers
             get { return Name + " " + Surname; }
         }
 
-        public Patient(String name, String surname, int jmbg)
+        public Patient()
+        {
+
+        }
+
+        public Patient(String name, String surname, long jmbg)
         {
             this.Name = name;
             this.Surname = surname;
             this.Id = jmbg;
         }
 
-        public Patient(String name, String surname, int jmbg, DateTime dateOfBirth, Gender gender)
+        public Patient(String name, String surname, long jmbg, DateTime dateOfBirth, Gender gender)
         {
             this.Name = name;
             this.Surname = surname;

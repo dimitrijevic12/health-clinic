@@ -20,7 +20,8 @@ namespace Repository
    {
         private String _path;
         private static AppointmentRepository instance = null;
-        private readonly CSVStream<Appointment> stream = new CSVStream<Appointment>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\AppointmentRepo.csv", new AppointmentCSVConverter("|", ""));
+        private const string APPOINMENT_FILE = "../../Resources/Data/appointments.csv";
+        private readonly CSVStream<Appointment> stream = new CSVStream<Appointment>(APPOINMENT_FILE, new AppointmentCSVConverter(",", "dd.MM.yyyy."));
         private readonly ICSVStream<Appointment> _stream;
         private readonly LongSequencer sequencer = new LongSequencer();
         private readonly iSequencer<long> _sequencer;

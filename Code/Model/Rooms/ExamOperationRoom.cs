@@ -15,7 +15,7 @@ namespace Model.Rooms
 
         public long _id;
        
-
+        public ExamOperationRoom() { }
 
         public ExamOperationRoom(long id) : base(id)
         {

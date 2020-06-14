@@ -83,7 +83,19 @@ namespace Service
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            throw new NotImplementedException();
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.RoomId.Equals(room.Id))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+
+            return trazeni;
         }
 
         public Treatment GenerateTreatment(Appointment appointment)
@@ -118,30 +130,30 @@ namespace Service
 
         public Appointment Create(Appointment obj)
         {
-            var doctor = _doctorService.Create(obj.Doctor);
-            var patient = _patientService.Create(obj.Patient);
-            var room = _roomService.Create(obj.ExamOperationRoom);
+            //var doctor = _doctorService.Create(obj.Doctor);
+            //var patient = _patientService.Create(obj.Patient);
+            //var room = _roomService.Create(obj.ExamOperationRoom);
             var appointment = iAppointmentRepository.Save(obj);
-            appointment.Doctor = doctor;
-            appointment.Patient = patient;
-            appointment.ExamOperationRoom = room;
+            //appointment.Doctor = doctor;
+            //appointment.Patient = patient;
+            //appointment.ExamOperationRoom = room;
             return appointment;
         }
 
         public Appointment Edit(Appointment obj)
         {
-            _doctorService.Edit(obj.Doctor);
-            _patientService.Edit(obj.Patient);
-            _roomService.Edit(obj.ExamOperationRoom);
+            //_doctorService.Edit(obj.Doctor);
+            //_patientService.Edit(obj.Patient);
+            //_roomService.Edit(obj.ExamOperationRoom);
             iAppointmentRepository.Edit(obj);
             return obj;
         }
 
         public bool Delete(Appointment obj)
         {
-            _doctorService.Delete(obj.Doctor);
-            _patientService.Delete(obj.Patient);
-            _roomService.Delete(obj.ExamOperationRoom);
+            //_doctorService.Delete(obj.Doctor);
+            //_patientService.Delete(obj.Patient);
+            //_roomService.Delete(obj.ExamOperationRoom);
             iAppointmentRepository.Delete(obj);
             return true;
         }
@@ -152,7 +164,7 @@ namespace Service
             var patients = _patientService.GetAll();
             var rooms = _roomService.GetAll();
             var appointments = iAppointmentRepository.GetAll();
-            BindAllForAppointments(appointments, doctors, patients, rooms);
+            //BindAllForAppointments(appointments, doctors, patients, rooms);
             return appointments;
         }
 

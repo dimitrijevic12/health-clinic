@@ -130,20 +130,13 @@ namespace Model.Appointment
             }
         }
 
-        public String Doctor
+        public String IdNameSurnameDoctor
         {
             get
             {
-                return choosenDoctor.Name + " " + choosenDoctor.Surname;
+                return (choosenDoctor.Id + " " + choosenDoctor.Name + " " + choosenDoctor.Surname);
             }
-            set
-            {
-                if (!value.Equals(Patient.Name + " " + choosenDoctor.Surname))
-                {
-                    Patient.Name = value;
-                    OnPropertyChanged("DateOfBirth");
-                }
-            }
+            
         }
 
         public List<Model.Treatment.Treatment> Treatments { get => treatments; set => treatments = value; }

@@ -807,18 +807,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\Images\arrow_back.png" />
-    <Content Include="View\Images\bed.png" />
-    <Content Include="View\Images\calendar.png" />
-    <Content Include="View\Images\doctor.png" />
-    <Content Include="View\Images\help.png" />
-    <Content Include="View\Images\home_icon.png" />
-    <Content Include="View\Images\indetification.png" />
-    <Content Include="View\Images\onecalendar.png" />
-    <Content Include="View\Images\patient.png" />
-    <Content Include="View\Images\priority.png" />
-    <Content Include="View\Images\report.png" />
+    <Resource Include="View\Images\arrow_back.png" />
+    <Resource Include="View\Images\bed.png" />
+    <Resource Include="View\Images\calendar.png" />
+    <Resource Include="View\Images\doctor.png" />
+    <Resource Include="View\Images\help.png" />
+    <Resource Include="View\Images\home_icon.png" />
+    <Resource Include="View\Images\indetification.png" />
+    <Resource Include="View\Images\onecalendar.png" />
+    <Resource Include="View\Images\patient.png" />
+    <Resource Include="View\Images\priority.png" />
+    <Resource Include="View\Images\report.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

@@ -16,6 +16,7 @@ namespace Repository
 {
     public class TreatmentRepository : ITreatmentRepository
     {
+        private const string TREATMENT_FILE = "../../Resources/Data/treatments.csv";
         private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("F:\\SIMS\\Projekat\\health-clinic\\Code\\treatmentRepo", new TreatmentCSVConverter("|"));//TODO: Namesti stream kao Stefan
         private readonly LongSequencer _sequencer = new LongSequencer();
         private TreatmentRepository()

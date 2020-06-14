@@ -26,6 +26,14 @@ namespace Model.Appointment
         public Doctor Doctor1 { get => doctor; set => doctor = value; }
         public Patient Patient1 { get => patient; set => patient = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
+        public long RoomId { get => examOperationRoom.Id; set => examOperationRoom.Id = value; }
+
+        public String DoctorIdNameSurname { get => doctor.IdDoctor + " " + doctor.NameDoctor + " " + doctor.SurnameDoctor; }
+
+        public String PatientIdNameSurname { get => patient.Id + " " + patient.Name + " " + patient.Surname; }
+
+        public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
+
 
         private DateTime startDate;
         private DateTime endDate;

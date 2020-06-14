@@ -47,13 +47,13 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" Click="Button_Home">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="View/Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <Image Source="Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
                 </Button>
 
                 <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue" Click ="Button_Back">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="View/Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <Image Source="Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
                 </Button>
                 <Label Grid.Column="8" Grid.Row="0" FontSize="20" Foreground="White" Name ="labelDateTime" Margin="40,0,0,0">Datum i vreme</Label>

@@ -1,7 +1,10 @@
 ﻿using Model.Appointment;
+using Model.Rooms;
+using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +41,7 @@ namespace health_clinicClassDiagram.View.Util
                 DateTime startDate = date.AddHours(i);
                 DateTime endDate = date.AddHours(i + 1.0);
 
-                Appointment temp = new Appointment(null, null, null, 0, startDate, endDate);
+                Appointment temp = new Appointment(new Doctor(), new Patient(), new ExamOperationRoom(), 0, startDate, endDate);
                 blankAppointments.Add(temp);
             }
 

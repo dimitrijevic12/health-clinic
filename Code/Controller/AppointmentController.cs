@@ -59,7 +59,7 @@ namespace Controller
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            throw new NotImplementedException();
+            return _service.GetAppointmentsByRoom(room); 
         }
 
         public Treatment GenerateTreatment(Appointment appointment)
@@ -115,8 +115,6 @@ namespace Controller
             return _service.Edit(obj);
             
         }
-
-        
-   
+  
    }
 }

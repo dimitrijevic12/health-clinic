@@ -43,7 +43,7 @@ namespace health_clinicClassDiagram.View
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
-            labelSala.Content = rehabilitationRoom.IdRoom.ToString();
+            labelSala.Content = "Sala broj " + rehabilitationRoom.IdRoom.ToString();
 
             this.DataContext = this;
             this.rehabilitationRoom = rehabilitationRoom;

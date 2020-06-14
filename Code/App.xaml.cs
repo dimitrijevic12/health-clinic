@@ -35,6 +35,7 @@ namespace health_clinicClassDiagram
         private const string REHABILATIONRROM_FILE = "../../Resources/Data/rehabilitationrooms.csv";
         private const string DOCTOR_FILE = "../../Resources/Data/doctors.csv";
         private const string TREATMENT_FILE = "../../Resources/Data/treatments.csv";
+        private const string EXAMOPERATIONROOM_FILE = "../../Resources/Data/examoperationrooms.csv";
         private const string CSV_DELIMITER = ",";
 
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
@@ -42,6 +43,7 @@ namespace health_clinicClassDiagram
         public IMedicalRecordController MedicalRecordController { get; private set; }
         public IAppointmentController AppointmentController { get; private set; }
         public IRehabilitationRoomController RehabilitationRoomController { get; private set; }
+        public IExamOperationRoomController ExamOperationRoomController { get; private set; }
         public IUserController userController { get; private set; }
         public IController<Doctor> DoctorController { get; private set; }
 
@@ -67,6 +69,11 @@ namespace health_clinicClassDiagram
                 new CSVStream<RehabilitationRoom>(REHABILATIONRROM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
 
+            var examOperationRoomRepository = new ExamOperationRoomRepository(
+                EXAMOPERATIONROOM_FILE,
+                new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(CSV_DELIMITER)),
+                new LongSequencer());
+
             var doctorRepository = new DoctorRepository(
                 DOCTOR_FILE,
                 new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
@@ -81,14 +88,16 @@ namespace health_clinicClassDiagram
 
             var doctorService = new DoctorService(doctorRepository);
             var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository, userService);
+            var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
             var recordService = new MedicalRecordService(recordRepository, userService);
-            var appointmentService = new AppointmentService(appointmentRepository, null, null, null);
+            var appointmentService = new AppointmentService(appointmentRepository, doctorService, null, examOperationRoomService);
 
 
             DoctorController = new DoctorController(doctorService);
             RehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
             MedicalRecordController = new MedicalRecordController(recordService);
             AppointmentController = new AppointmentController(appointmentService);
+            ExamOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
 
         }
     }

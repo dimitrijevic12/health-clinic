@@ -94,9 +94,10 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izaberi(object sender, RoutedEventArgs e)
         {
-            
+
             SmestiPacijentaUser smesti = new SmestiPacijentaUser(_rehabilitationRoom);  
             (this.Parent as Panel).Children.Add(smesti);
+            
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)

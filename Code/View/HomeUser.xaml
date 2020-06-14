@@ -39,13 +39,13 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="View/Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <Image Source="Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
                 </Button>
 
                 <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue" Click ="Button_Back">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="View/Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <Image Source="Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </StackPanel>
                 </Button>
 
@@ -80,7 +80,7 @@
 
                 <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" Click="Button_DanasnjiRaspored">
                     <StackPanel>
-                        <Image Source="View/Images/onecalendar.png" Height="20" />
+                        <Image Source="Images/onecalendar.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Prikaz današnjeg rasporeda" FontSize="12"/>
                         </StackPanel>
@@ -89,7 +89,7 @@
                 </Button>
                 <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Smestaj">
                     <StackPanel>
-                        <Image Source="View/Images/bed.png" Height="20" />
+                        <Image Source="Images/bed.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Današnje sale za smeštanje" FontSize="12"/>
                         </StackPanel>
@@ -98,7 +98,7 @@
                 </Button>
                 <Button Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Raspored">
                     <StackPanel>
-                        <Image Source="View/Images/calendar.png" Height="20" />
+                        <Image Source="Images/calendar.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Raspored" FontSize="12"/>
                         </StackPanel>
@@ -107,7 +107,7 @@
                 </Button>
                 <Button Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Pacijenti">
                     <StackPanel>
-                        <Image Source="View/Images/patient.png" Height="20" />
+                        <Image Source="Images/patient.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Registrovani pacijenti" FontSize="12"/>
                         </StackPanel>
@@ -116,7 +116,7 @@
                 </Button>
                 <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Doktori">
                     <StackPanel>
-                        <Image Source="View/Images/doctor.png" Height="20" />
+                        <Image Source="Images/doctor.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Doktori" FontSize="12"/>
                         </StackPanel>
@@ -125,7 +125,7 @@
                 </Button>
                 <Button Grid.Column="7" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Help">
                     <StackPanel>
-                        <Image Source="View/Images/help.png" Height="20" />
+                        <Image Source="Images/help.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Help" FontSize="12"/>
                         </StackPanel>
@@ -134,7 +134,7 @@
                 </Button>
                 <Button Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Izvestaj">
                     <StackPanel>
-                        <Image Source="View/Images/report.png" Height="25" />
+                        <Image Source="Images/report.png" Height="25" />
                         <StackPanel>
                             <TextBlock Text="Generiši izveštaj" FontSize="12"/>
                         </StackPanel>
@@ -143,7 +143,7 @@
                 </Button>
                 <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Prioritet">
                     <StackPanel>
-                        <Image Source="View/Images/priority.png" Height="20" />
+                        <Image Source="Images/priority.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Zakazivanje putem prioriteta" FontSize="12"/>
                         </StackPanel>
@@ -151,7 +151,7 @@
                     </StackPanel>
                 </Button>
                 <Label  Grid.Column="8" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">Dušan</Label>
-                <Image Grid.Column="9" Grid.Row="0" Source="View/Images/indetification.png" Width="45" Height="45"></Image>
+                <Image Grid.Column="9" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45"></Image>
                 <Button Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="15" Margin="10,0,10,30" Click="Button_Odjava">
                     Odjavi se
                 </Button>

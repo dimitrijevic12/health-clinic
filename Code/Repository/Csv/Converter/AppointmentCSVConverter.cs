@@ -34,6 +34,8 @@ namespace Repository.Csv.Converter
             TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[7], true);
             DateTime startDate = DateTime.Parse(tokens[8]);
             DateTime endDate = DateTime.Parse(tokens[9]);
+            //DateTime startDate = DateTime.Now;
+            //DateTime endDate = DateTime.Now;
 
             //Patient patient = new Patient(tokens[0], tokens[1], int.Parse(tokens[2]));    //preskocimo prvi button select patient
 

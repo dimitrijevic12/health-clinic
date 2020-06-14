@@ -25,6 +25,8 @@ namespace Model.Rooms
             set { tipSobe = value; }
         }
 
+        public Room() { }
+
         public Room(long id)
         {
             Id = id;
