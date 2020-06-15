@@ -80,9 +80,9 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="2" FontSize="24" Grid.ColumnSpan="4" Margin="0,19,0,44" Grid.RowSpan="2">Generiši izveštaj zauzetosti prostorija</Label>
                 <Label Grid.Row="1" Grid.Column="1"   FontSize="24" VerticalAlignment="Center">Od:</Label>
-                <DatePicker Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Height="25" Width="200" Margin="19,24,10,14"/>
+                <DatePicker Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Height="25" Width="200" Margin="19,24,10,14" Name="startDate"/>
                 <Label Grid.Row="3" Grid.Column="1"   FontSize="24" VerticalAlignment="Center" Margin="0,0,0,22">Do:</Label>
-                <DatePicker Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Height="25" Width="200" Margin="20,17,10,22"/>
+                <DatePicker Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Height="25" Width="200" Margin="20,17,10,22" Name="endDate"/>
 
             </Grid>
 
@@ -98,7 +98,7 @@
                     <ColumnDefinition />
                     
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" FontSize="18" Style="{StaticResource RoundButton}" Margin="0,-22,0,0">Generiši izveštaj
+                <Button Grid.Column="1" FontSize="18" Style="{StaticResource RoundButton}" Margin="0,-22,0,0" Click="Button_Click">Generiši izveštaj
                     <Button.ToolTip>
                         <StackPanel>
                             <TextBlock>

@@ -20,6 +20,9 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class GenerisiIzvestajUser : UserControl
     {
+        private DateTime _startDate;
+        private DateTime _endDate;
+
         public GenerisiIzvestajUser()
         {
             InitializeComponent();
@@ -35,6 +38,33 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            if ((startDate.SelectedDate==null) || (endDate.SelectedDate == null))
+            {
+                string message = "Morate uneti datume";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            } else if (_startDate >= _endDate)
+            {
+                _startDate = (DateTime)startDate.SelectedDate;
+                _endDate = (DateTime)endDate.SelectedDate;
+                _endDate = _endDate.AddHours(24);
+
+                string message = "Neispravno uneseni datumi";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+
+                ZauzetostProstorijaUser zauzetost = new ZauzetostProstorijaUser(_startDate, _endDate);
+                (this.Parent as Panel).Children.Add(zauzetost);
+            }
         }
     }
 }

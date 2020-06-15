@@ -38,7 +38,9 @@ namespace Repository.Csv.Converter
 
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);
+            DateTime dateOfBirth = DateTime.Parse(tokens[4]);
+
+            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), dateOfBirth, gender);
 
             long idDoctor = long.Parse(tokens[6]);
 
@@ -50,7 +52,7 @@ namespace Repository.Csv.Converter
             Doctor doctor = new Doctor(idDoctor, tokens[7], tokens[8]);
             List<Treatment> treatments = new List<Treatment>();
 
-            if (!tokens[9].Equals(""))
+            /*if (!tokens[9].Equals(""))
             {
                 String treatmentsString = tokens[9];
                 String[] treatmentsParts = treatmentsString.Split(',');
@@ -65,7 +67,32 @@ namespace Repository.Csv.Converter
 
                     }
                 }
+            }*/
+
+            int i = 9;
+
+            //Console.WriteLine(TreatmentRepository.Instance.GetAll().Count);
+            foreach (Treatment treat in TreatmentRepository.Instance.GetAll())
+            {
+                Console.WriteLine(treat.Id);
+                Console.WriteLine(treat.DiagnosisAndReview.Review);
+                Console.WriteLine(treat.Doctor.NameDoctor);
             }
+
+            while (i < tokens.Length - 1)
+            {
+                long id = long.Parse(tokens[i]);
+
+                //Console.WriteLine(id);
+
+                //Console.WriteLine(TreatmentRepository.Instance.GetTreatment(id).Id);
+
+                treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
+
+                i++;
+            }
+
+
 
             return new MedicalRecord(
                 long.Parse(tokens[0]),
@@ -76,7 +103,7 @@ namespace Repository.Csv.Converter
 
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
-            String treatments = "";
+            /*String treatments = "";
             if (entity.Treatments != null)
             {
                 foreach (Treatment treatment in entity.Treatments)
@@ -87,19 +114,42 @@ namespace Repository.Csv.Converter
                     }
                 }
 
+            }*/
+
+
+            String resenje = "";
+
+
+            foreach (Treatment treatment in entity.Treatments)
+            {
+                resenje += string.Join(_delimiter, treatment.Id);
+                resenje += _delimiter;
             }
+
+            /*return string.Join(_delimiter,
+              entity.id,
+              entity.Patient.Name,
+              entity.Patient.Surname,
+              entity.Patient.Id,
+              DateTime.DateOfBirth,
+              entity.Patient.Gender,
+              entity.choosenDoctor.Id,
+              entity.choosenDoctor.NameDoctor,
+              entity.choosenDoctor.SurnameDoctor,
+              treatments);*/
 
             return string.Join(_delimiter,
               entity.id,
               entity.Patient.Name,
               entity.Patient.Surname,
               entity.Patient.Id,
-              DateTime.Now,
+              entity.DateOfBirth,
               entity.Patient.Gender,
               entity.choosenDoctor.Id,
               entity.choosenDoctor.NameDoctor,
               entity.choosenDoctor.SurnameDoctor,
-              treatments);
+              resenje);
+
         }
     }
 

@@ -115,7 +115,7 @@
                     <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding Name}"/>
                     <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding Surname}"/>
                     <DataGridTextColumn Width="*" Header="JMBG" Binding="{Binding IDPatient}"/>
-                    <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirthTekst}"/>
                     <DataGridTextColumn Width="*" Header="Pol" Binding="{Binding GenderProp}"/>
                     <DataGridTextColumn Width="*" Header="Izabrani doktor" Binding="{Binding IdNameSurnameDoctor}"/>
                     <DataGridTemplateColumn Width="*" Header="Istorija lecenja">

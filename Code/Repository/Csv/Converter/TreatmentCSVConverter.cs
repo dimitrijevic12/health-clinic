@@ -32,6 +32,7 @@ namespace Repository.Csv.Converter
 
             DateTime fromDate = DateTime.Parse(tokens[3]);
             DateTime toDate = DateTime.Parse(tokens[4]);
+            toDate = toDate.AddHours(2);
 
             List<Drug> drugs = new List<Drug>();
             string drugString = tokens[5];
@@ -68,7 +69,7 @@ namespace Repository.Csv.Converter
             string hospitalTreatmentCause = hospitalTreatmentParts[2];
             ReferralToHospitalTreatment hospitalTreatment = new ReferralToHospitalTreatment(hospitalTreatmentFromDate, hospitalTreatmentToDate, hospitalTreatmentCause);
 
-            return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, hospitalTreatment, fromDate, toDate, doctor);
+            return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, hospitalTreatment, fromDate, toDate, id, doctor);
         }
 
         public string ConvertEntityToCSVFormat(Treatment entity)

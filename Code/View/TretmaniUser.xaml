@@ -75,8 +75,13 @@
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Stretch" 
                   Margin="10,47,0,0" VerticalAlignment="Stretch" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
-                    
+                    <DataGridTextColumn Width="0.4*" Header="ID" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorNameSurname}"/>
+                    <DataGridTextColumn Width="*" Header="Od" Binding="{Binding FromDate}"/>
+                    <DataGridTextColumn Width="*" Header="Do" Binding="{Binding EndDate}"/>
+                    <DataGridTextColumn Width="*" Header="Lekovi" Binding="{Binding Prescription}"/>
+                    <DataGridTextColumn Width="*" Header="Dijagnoza" Binding="{Binding DiagnosisAndReview}"/>
+
                 </DataGrid.Columns>
             </DataGrid>
 

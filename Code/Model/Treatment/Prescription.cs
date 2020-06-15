@@ -40,10 +40,10 @@ namespace Model.Treatment
         public override string ToString()
         {
             string outString = "";
-            outString = Id + " ";
+            //outString = Id + " ";
             foreach (Drug oneDrug in Drug)
             {
-                outString += oneDrug.Name + " " + oneDrug.Quantity;
+                outString += oneDrug.Name + ", "/* + " " + oneDrug.Quantity*/;
             }
             return outString;
         }

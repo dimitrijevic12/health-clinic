@@ -41,7 +41,7 @@ namespace Model.Treatment
         public override string ToString()
         {
             string outString = "";
-            outString = Id + " " + Diagnosis + " " + Review;
+            outString = /*Id + " " +*/ Diagnosis + ",  " + Review;
             return outString;
         }
 

@@ -60,21 +60,38 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Obrisi(object sender, RoutedEventArgs e)
         {
+            if (record == null)
+            {               
+                
+                string message = "Niste izabrali nalog za brisanje";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+                                                          
+            }
+            else
+            {
+                _recordController.Delete(record);
 
-            _recordController.Delete(record);
-            
-            RegistrovaniPacijentiUser reg = new RegistrovaniPacijentiUser();
-            (this.Parent as Panel).Children.Add(reg);
+                RegistrovaniPacijentiUser reg = new RegistrovaniPacijentiUser();
+                (this.Parent as Panel).Children.Add(reg);
+            }
         }
 
         private void Button_Izmeni(object sender, RoutedEventArgs e)
         {
-            
-            IzmeniNalogUser izmeni = new IzmeniNalogUser(record);
-            (this.Parent as Panel).Children.Add(izmeni);
+            if (record == null)
+            {
 
-            //IzmeniNalogUser izmeni = new IzmeniNalogUser(nalog);
-            //GridPacijenti.Children.Add(izmeni);
+                string message = "Niste izabrali nalog za izmenu";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+
+            }
+            else
+            {
+                IzmeniNalogUser izmeni = new IzmeniNalogUser(record);
+                (this.Parent as Panel).Children.Add(izmeni);
+            }
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)

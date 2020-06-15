@@ -32,6 +32,7 @@ namespace health_clinicClassDiagram.View
             
             DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
             (this.Parent as Panel).Children.Add(detaljan);
+            
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)

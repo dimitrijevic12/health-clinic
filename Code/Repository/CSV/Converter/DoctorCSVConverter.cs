@@ -27,12 +27,13 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
+            DateTime dateOfBirth = DateTime.Parse(tokens[4]);
 
             String specializationString = tokens[5];
 
             Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, specialization);
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth, specialization);
 
             return doctor;
         }
@@ -44,7 +45,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             DateTime.Now,
+             entity.DateOfBirth,
              entity.Spec);
         }
     }

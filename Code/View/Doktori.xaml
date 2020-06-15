@@ -78,7 +78,7 @@
                     <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding NameDoctor}"/>
                     <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding SurnameDoctor}"/>
                     <DataGridTextColumn Width="*" Header="Pol" Binding="{Binding Gender}"/>
-                    <DataGridTextColumn Width="*" Header="Datum rođenja" Binding="{Binding DateOfBirth}"/>
+                    <DataGridTextColumn Width="*" Header="Datum rođenja" Binding="{Binding DateOfBirthTekst}"/>
                     <DataGridTextColumn Width="*" Header="Specijalnost" Binding="{Binding Spec}"/>
                     
                 </DataGrid.Columns>

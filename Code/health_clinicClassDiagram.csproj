@@ -697,6 +697,9 @@
     <Compile Include="View\ZakazivanjePregledaUser.xaml.cs">
       <DependentUpon>ZakazivanjePregledaUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ZauzetostProstorijaUser.xaml.cs">
+      <DependentUpon>ZauzetostProstorijaUser.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -813,6 +816,10 @@
     <Page Include="View\ZakazivanjePregledaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZauzetostProstorijaUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

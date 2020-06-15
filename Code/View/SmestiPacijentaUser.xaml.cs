@@ -90,6 +90,8 @@ namespace health_clinicClassDiagram.View
             Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
             MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor(), new List<Treatment>());
 
+            
+
             var result = _rehabilitationRoomController.AddPatient(record, _rehabilitationRoom);
 
 

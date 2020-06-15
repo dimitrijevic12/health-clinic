@@ -15,7 +15,7 @@ using System.ComponentModel;
 
 namespace Model.Appointment
 {
- 
+
     public class MedicalRecord : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -129,6 +129,8 @@ namespace Model.Appointment
                 }
             }
         }
+
+        public String DateOfBirthTekst { get => DateOfBirth.ToShortDateString(); }
 
         public String IdNameSurnameDoctor
         {

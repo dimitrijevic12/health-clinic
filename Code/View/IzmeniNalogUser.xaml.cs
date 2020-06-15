@@ -25,6 +25,7 @@ namespace health_clinicClassDiagram.View
         private int _jmbgPacijenta;
         private Gender _gender;
         private Doctor _choosenDoctor;
+        private DateTime _dateOfBirth;
         protected virtual void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -41,6 +42,8 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
+        private MedicalRecord _stariRecord;
+
         private List<Doctor> doctors;
 
         public IzmeniNalogUser(MedicalRecord record)
@@ -56,6 +59,8 @@ namespace health_clinicClassDiagram.View
 
             doctors = _doctorController.GetAll();
 
+            _stariRecord = record;
+
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
 
             IDTekst.Text = record.id.ToString();
@@ -63,6 +68,7 @@ namespace health_clinicClassDiagram.View
             PrezimeTekst.Text = record.Patient.Surname;
             JMBGTekst.Text = record.Patient.Id.ToString();
             DoktorCombo.SelectedIndex = 1;
+            DatumPicker.SelectedDate = record.DateOfBirth;
             
 
         }
@@ -74,12 +80,7 @@ namespace health_clinicClassDiagram.View
             String prezime = PrezimeTekst.Text;
             String jmbgString = JMBGTekst.Text;
 
-            String dateString;
-            DateTime? izabraniDatum = DatumPicker.SelectedDate;
-            if (izabraniDatum.HasValue)
-            {
-                dateString = izabraniDatum.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            }
+            _dateOfBirth = (DateTime)DatumPicker.SelectedDate;
 
             _idNaloga = long.Parse(idNalogaString);
             _imePacijenta = ime;
@@ -114,8 +115,8 @@ namespace health_clinicClassDiagram.View
 
         private MedicalRecord EditMedicalRecord()
         {
-            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
-            var record = new MedicalRecord(_idNaloga, pacijent, _choosenDoctor, new List<Treatment>());
+            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, _dateOfBirth, _gender);
+            var record = new MedicalRecord(_idNaloga, pacijent, _choosenDoctor, _stariRecord.Treatments);
 
             return _recordController.Edit(record);
         }

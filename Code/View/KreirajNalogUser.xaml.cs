@@ -80,6 +80,7 @@ namespace health_clinicClassDiagram.View
         private string _prezimePacijenta;
         private int _jmbgPacijenta;
         private Gender _gender;
+        private DateTime _dateOfBirth;
         private Doctor choosenDoctor;
 
         public KreirajNalogUser()
@@ -108,12 +109,7 @@ namespace health_clinicClassDiagram.View
             String prezime = PrezimeTekst.Text;
             String jmbgString = JMBGTekst.Text;
 
-            String dateString;
-            DateTime? izabraniDatum = DatumPicker.SelectedDate;
-            if (izabraniDatum.HasValue)
-            {
-                dateString = izabraniDatum.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            }
+            _dateOfBirth = (DateTime)DatumPicker.SelectedDate;
 
             _idNaloga = long.Parse(idNalogaString);
             _imePacijenta = ime;
@@ -151,7 +147,7 @@ namespace health_clinicClassDiagram.View
         private MedicalRecord CreateMedicalRecord()
         {
 
-            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, DateTime.Now, _gender);
+            Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, _dateOfBirth, _gender);
             var record = new MedicalRecord(_idNaloga, pacijent, choosenDoctor, new List<Treatment>());
 
             return _recordController.Create(record);

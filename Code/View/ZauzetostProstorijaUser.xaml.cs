@@ -9,15 +9,27 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using DataGrid = System.Windows.Controls.DataGrid;
+using Panel = System.Windows.Controls.Panel;
 
 namespace health_clinicClassDiagram.View
 {
     /// <summary>
-    /// Interaction logic for DetaljanPrikazRasporedaUser.xaml
+    /// Interaction logic for ZauzetostProstorijaUser.xaml
     /// </summary>
-    public partial class DetaljanPrikazRasporedaUser : UserControl, INotifyPropertyChanged
+    public partial class ZauzetostProstorijaUser : UserControl
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -49,7 +61,7 @@ namespace health_clinicClassDiagram.View
 
         public List<Appointment> BlankAppointments { get => blankAppointments; set => blankAppointments = value; }
 
-        public static ObservableCollection<Appointment> appointmentCollection
+        public static ObservableCollection<Appointment> AppointmentCollection
         {
             get;
             set;
@@ -61,15 +73,34 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        public DetaljanPrikazRasporedaUser(DateTime date)
+        public static ObservableCollection<DateTime> datesCollection
+        {
+            get;
+            set;
+        }
+
+        private DateTime _startDate;
+        private DateTime _endDate;
+        private List<DateTime> dates = new List<DateTime>();
+
+        public ZauzetostProstorijaUser(DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
-            Datum.Content = date.ToShortDateString();
+
+            Datum.SelectedIndex = 0;
             this.DataContext = this;
-            this.date = date;
             labelDateTime.Content = DateTime.Now.ToShortDateString();
 
             comboSala.SelectedIndex = 0;
+
+            _startDate = startDate;
+            _endDate = endDate;
+
+            for (var dt = _startDate; dt <= _endDate; dt = dt.AddDays(1))
+            {
+                dates.Add(dt);
+            }
+
 
             var app = Application.Current as App;
             _roomController = app.ExamOperationRoomController;
@@ -79,13 +110,12 @@ namespace health_clinicClassDiagram.View
 
             roomsCollection = new ObservableCollection<ExamOperationRoom>(rooms);
 
-            appointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
+            datesCollection = new ObservableCollection<DateTime>(dates);
+
+            AppointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
 
             dataGridNalozi.Items.Refresh();
 
-            
-
-            
 
         }
 
@@ -142,144 +172,7 @@ namespace health_clinicClassDiagram.View
 
             }
             catch { }*/
-        }
-
-        private void Button_Zakazivanje(object sender, RoutedEventArgs e)
-        {
-            int flag = 0;
-
-            if (selectedAppointments == null)
-            {      
-                string message = "Morate izabrati datum za izmenu";
-                string title = "Greška";
-                MessageBox.Show(message, title);
-                flag = 1;
-            }
-
-            if (flag == 0)
-            {
-                foreach (Appointment a in selectedAppointments)
-                {
-                    if (a.Id != 0)
-                    {
-                        string message = "Termin je već zauzet";
-                        string title = "Greška";
-                        MessageBox.Show(message, title);
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-
-            if (flag == 0)
-            {
-                ZakazivanjePregledaUser zakazivanje = new ZakazivanjePregledaUser(date, startDate, endDate, room);
-                (this.Parent as Panel).Children.Add(zakazivanje);
-            }
-        }
-
-        private void Button_Otkazivanje(object sender, RoutedEventArgs e)
-        {
-            int flag = 0;
-            if (appointment == null)
-            {
-                string message = "Morate izabrati pregled za otkazivanje";
-                string title = "Greška";
-                MessageBox.Show(message, title);
-                flag = 1;
-            }
-
-            if (flag == 0)
-            {
-                if (appointment.Id == 0)
-                {
-                    string message = "Ne možete izabrati prazan za otkazivanje";
-                    string title = "Greška";
-                    MessageBox.Show(message, title);
-                    flag = 1;
-                }
-            }
-
-            if (flag == 0)
-            {
-                _appointmentController.Delete(appointment);
-                DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
-                (this.Parent as Panel).Children.Add(detaljan);
-            }
-            
-        }
-
-        private void Button_Izmena(object sender, RoutedEventArgs e)
-        {
-            int flag = 0;
-            
-            if (appointment == null)
-            {
-                string message = "Morate izabrati pregled za izmenu";
-                string title = "Greška";
-                MessageBox.Show(message, title);
-                flag = 1;
-                
-            }
-
-            if (flag == 0)
-            {
-                if (appointment.Id == 0)
-                {
-                    string message = "Ne možete izabrati prazan za izmenu";
-                    string title = "Greška";
-                    MessageBox.Show(message, title);
-                    flag = 1;
-                }
-            }
-
-            if (flag == 0)
-            {
-                IzmenaPregledaUser izmena = new IzmenaPregledaUser(date, appointment, room, startDate, endDate);
-                (this.Parent as Panel).Children.Add(izmena);
-            }
-        }
-
-        private void Button_Guest(object sender, RoutedEventArgs e)
-        {
-            int flag = 0;
-
-            if (selectedAppointments == null)
-            {
-                string message = "Morate izabrati datum za izmenu";
-                string title = "Greška";
-                MessageBox.Show(message, title);
-                flag = 1;
-            }
-
-            if (flag == 0)
-            {
-                foreach (Appointment a in selectedAppointments)
-                {
-                    if (a.Id != 0)
-                    {
-                        string message = "Termin je već zauzet";
-                        string title = "Greška";
-                        MessageBox.Show(message, title);
-                        flag = 1;
-                        break;
-                    }
-                }
-            }
-
-            if (flag == 0)
-            {
-                ZakazivanjeGuestNalogaUser zakazivanje = new ZakazivanjeGuestNalogaUser(date, startDate, endDate, room);
-                (this.Parent as Panel).Children.Add(zakazivanje);
-            }
-        }
-
-        private void Button_Prikaz(object sender, RoutedEventArgs e)
-        {
-            
-            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            (this.Parent as Panel).Children.Add(sale);
-        }
+        }      
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
@@ -310,9 +203,9 @@ namespace health_clinicClassDiagram.View
 
             blankAppointments = AppointmentGenerator.Instance.generateList(startDate);
 
-            appointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
+            AppointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
 
-            
+
 
             foreach (Appointment a in trazeniAppointmenti)
             {
@@ -320,21 +213,28 @@ namespace health_clinicClassDiagram.View
                 {
                     if (a.StartDate.Equals(a2.StartDate))
                     {
-                        int index = appointmentCollection.IndexOf(a2);
-                        appointmentCollection[index] = a;
-                    } 
+                        int index = AppointmentCollection.IndexOf(a2);
+                        AppointmentCollection[index] = a;
+                    }
                     else if (a2.StartDate >= a.StartDate && a2.EndDate <= a.EndDate)
                     {
-                        int index = appointmentCollection.IndexOf(a2);
-                        appointmentCollection.RemoveAt(index);
+                        int index = AppointmentCollection.IndexOf(a2);
+                        AppointmentCollection.RemoveAt(index);
                     }
-                    
+
                 }
             }
 
-            dataGridNalozi.ItemsSource = appointmentCollection;
+            dataGridNalozi.ItemsSource = AppointmentCollection;
             dataGridNalozi.Items.Refresh();
 
+        }
+
+        private void Datum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = (ComboBox)sender;
+
+            date = (DateTime)cmb.SelectedItem;
         }
     }
 }

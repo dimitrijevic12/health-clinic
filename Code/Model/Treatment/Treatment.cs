@@ -79,6 +79,9 @@ namespace Model.Treatment
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public SpecialistAppointment SpecialistAppointment { get => specialistAppointment; set => specialistAppointment = value; }
+        public string DoctorNameSurname { get => doctor.Name + " " + doctor.Surname; }
+
+        
 
         public long GetId() => Id;
 

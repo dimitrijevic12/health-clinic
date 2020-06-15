@@ -58,9 +58,27 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Smesti(object sender, RoutedEventArgs e)
         {
-            
-            SmestiPacijentaUser smesti = new SmestiPacijentaUser(rehabilitationRoom);
-            (this.Parent as Panel).Children.Add(smesti);
+            if (rehabilitationRoom == null)
+            {
+                string message = "Morate izabrati sobu";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+                if (rehabilitationRoom.CurrentlyInUse >= rehabilitationRoom.MaxCapacity)
+                {
+                    string message = "Sala je vec puna";
+                    string title = "Greška";
+                    MessageBox.Show(message, title);
+                }
+                else
+                {
+
+                    SmestiPacijentaUser smesti = new SmestiPacijentaUser(rehabilitationRoom);
+                    (this.Parent as Panel).Children.Add(smesti);
+                }
+            }
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)
