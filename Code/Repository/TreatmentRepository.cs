@@ -117,7 +117,7 @@ namespace Repository
 
         public Treatment Save(Treatment obj)
         {
-            obj.SetId(_sequencer.GenerateId());
+            //obj.SetId(_sequencer.GenerateId());
             _stream.AppendToFile(obj);
             return obj;
         }

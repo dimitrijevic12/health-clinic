@@ -65,7 +65,8 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        private Appointment _appointment;
+        private DateTime _startDate;
+        private DateTime _endDate;
 
         private List<Doctor> doctors;
 
@@ -75,14 +76,20 @@ namespace health_clinicClassDiagram.View
         private Doctor _doctor;
         private ExamOperationRoom _room;
         private TypeOfAppointment _type;
-        private int _trajanje;
 
-        public ZakazivanjePregledaUser(DateTime date, Appointment appointment, ExamOperationRoom room)
+        
+
+        public ZakazivanjePregledaUser(DateTime date, DateTime startDate, DateTime endDate, ExamOperationRoom room)
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
             this.date = date;
+
+            _startDate = startDate;
+            _endDate = endDate;
+
+            labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
 
             var app = Application.Current as App;
 
@@ -90,10 +97,16 @@ namespace health_clinicClassDiagram.View
 
             _doctorController = app.DoctorController;
 
-            _appointment = appointment;
             _room = room;
 
             doctors = _doctorController.GetAll();
+
+            if (ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord != null)
+            {
+                textImePacijenta.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.Name;
+                textPrezimePacijenta.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.Surname;
+                textJMBG.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.IDPatient.ToString();
+            }
 
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
         }
@@ -101,8 +114,8 @@ namespace health_clinicClassDiagram.View
         private void Button_Pronadji(object sender, RoutedEventArgs e)
         {
             
-            /*IzaberiNalogUser izaberi = new IzaberiNalogUser();
-            (this.Parent as Panel).Children.Add(izaberi);*/
+            ZakazivanjeIzaberiNalogUser izaberi = new ZakazivanjeIzaberiNalogUser(date, _startDate, _endDate, _room);
+            (this.Parent as Panel).Children.Add(izaberi);
         }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
@@ -113,10 +126,8 @@ namespace health_clinicClassDiagram.View
 
             Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
 
-            DateTime startDate = _appointment.StartDate;
-            DateTime endDate = startDate.AddHours(_trajanje);
-
-            Appointment appointment = new Appointment(DetaljanPrikazRasporedaUser.staticID++,_doctor, patient, _room, _type, startDate, endDate);
+        
+            Appointment appointment = new Appointment(LongRandom(0,1000000000, new Random()), _doctor, patient, _room, _type, _startDate, _endDate);
 
             _appointmentController.Create(appointment);
 
@@ -148,26 +159,6 @@ namespace health_clinicClassDiagram.View
             _doctor = (Doctor)cmb.SelectedItem;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = (ComboBox)sender;
-
-            int index = cmb.SelectedIndex;
-
-            if (index == 0)
-            {
-                _trajanje = 1;
-            }
-            else if (index == 1)
-            {
-                _trajanje = 2;
-            } 
-            else
-            {
-                _trajanje = 3;
-            }
-        }
-
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = (ComboBox)sender;
@@ -181,6 +172,15 @@ namespace health_clinicClassDiagram.View
             {
                 _type = TypeOfAppointment.SURGERY;
             }
+        }
+
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
     }
 }

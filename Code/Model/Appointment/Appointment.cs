@@ -25,6 +25,7 @@ namespace Model.Appointment
         public Patient Patient { get => Patient1; set => Patient1 = value; }
         public Doctor Doctor1 { get => doctor; set => doctor = value; }
         public Patient Patient1 { get => patient; set => patient = value; }
+        public TypeOfAppointment TypeAppointment { get => Type; set => Type = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
         public long RoomId { get => examOperationRoom.Id; set => examOperationRoom.Id = value; }
 

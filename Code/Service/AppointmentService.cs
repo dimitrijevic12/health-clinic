@@ -98,6 +98,22 @@ namespace Service
             return trazeni;
         }
 
+        public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        {
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if ((a.RoomId.Equals(room.Id)) && (a.StartDate>=startDate) && (a.EndDate <= endDate))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+            return trazeni;
+        }
+
         public Treatment GenerateTreatment(Appointment appointment)
         {
             throw new NotImplementedException();

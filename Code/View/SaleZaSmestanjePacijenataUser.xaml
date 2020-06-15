@@ -69,7 +69,18 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource RoundButton}" Margin="72,21,37,21" Click="Button_Smesti">Smesti novog pacijenta</Button>
+                <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource RoundButton}" Margin="72,21,37,21" Click="Button_Smesti">Smesti novog pacijenta
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                           Smesti novog pacijenta u izabranu salu.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
                 
             </Grid>
             <DataGrid x:Name="dataGridSale" ItemsSource="{Binding Path=rehabilitationRoomsCollection}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0"

@@ -72,7 +72,18 @@
                 </Grid.RowDefinitions>
                 <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="3" Name ="labelSala">Sala XX:</Label>
                 <Label  Grid.Column="1" Grid.Row="2" FontSize="18" Grid.ColumnSpan="3">Izaberi pacijenta:</Label>
-                <Button Grid.Column="4" Grid.Row="2" FontSize="18" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" Click="Button_Izaberi"> Izaberi </Button>
+                <Button Grid.Column="4" Grid.Row="2" FontSize="18" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" Click="Button_Izaberi"> Izaberi
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                           Izaberi nalog pacijenta kog želite da smestite
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
                 <Label  Grid.Column="1" Grid.Row="4" FontSize="18" Grid.ColumnSpan="3">ID Naloga:</Label>
                 <Label  Grid.Column="1" Grid.Row="6" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Ime:</Label>
                 <Label  Grid.Column="1" Grid.Row="8" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Prezime:</Label>
@@ -82,7 +93,7 @@
                 <TextBox Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="5" Name="textIDNaloga"/>
                 <TextBox Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="5" Name="textIme"/>
                 <TextBox Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="5" Name="textPrezime"/>
-                <TextBox Grid.Column="4" Grid.Row="10" Grid.ColumnSpan="5" Name ="textJMBG"  Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="10" Grid.ColumnSpan="5" Name ="textJMBG"  /> <!--Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"-->
 
                 <DatePicker Grid.Column="4"  Grid.Row="12"/>
                 <Label Grid.Column="6" Grid.Row="12" FontSize="20">Do:</Label>

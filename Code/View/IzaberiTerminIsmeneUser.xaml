@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="health_clinicClassDiagram.View.DetaljanPrikazRasporedaUser"
+﻿<UserControl x:Class="health_clinicClassDiagram.View.IzaberiTerminIsmeneUser"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -60,80 +60,14 @@
                     <DataGridTextColumn Width="*" Header="Kraj" Binding="{Binding EndDate}"/>
                     <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientIdNameSurname}"/>
                     <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorIdNameSurname}"/>
-                    <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding TypeAppointment}"/>
 
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button Grid.Column="0" Grid.Row="3" Margin="30,21,30,21" Click="Button_Zakazivanje" Style="{StaticResource RoundButton}">Zakazivanje pregleda
-                <Button.ToolTip>
-                    <StackPanel>
-                        
-                        <TextBlock>
-                        Izaberite slobodan termin kada želite da zakažete pregled.
-                        </TextBlock>
-                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-                        
-                    </StackPanel>
-                </Button.ToolTip>
-            </Button>
+            
+            <Button Grid.Column="2" Grid.Row="3" Margin="30,21,30,21" Click="Button_Potvrdi" Style="{StaticResource RoundButton}">Potvrdi</Button>
 
-            <Button Grid.Column="1" Grid.Row="3" Margin="30,21,30,21" Click="Button_Otkazivanje" Style="{StaticResource RoundButton}">Oktazivanje pregleda
-                <Button.ToolTip>
-                    <StackPanel>
-                        
-                        <TextBlock>
-                        Izaberite jedan od termina koji želite da otkažete.
-                        </TextBlock>
-                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-
-                    </StackPanel>
-                </Button.ToolTip>
-            </Button>
-
-            <Button Grid.Column="2" Grid.Row="3" Margin="30,21,30,21" Click="Button_Izmena" Style="{StaticResource RoundButton}">Izmena pregleda
-                <Button.ToolTip>
-                    <StackPanel>
-                        
-                        <TextBlock>
-                        Izaberite jedan od termina koji želite da izmenite.
-                        </TextBlock>
-                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-
-                    </StackPanel>
-                </Button.ToolTip>
-            </Button>
-
-            <Button Grid.Column="3" Grid.Row="3" Margin="30,21,30,21" Click="Button_Guest" Style="{StaticResource RoundButton}">Zakazivanje guest naloga
-                <Button.ToolTip>
-                    <StackPanel>
-                        
-                        <TextBlock>
-                        Izaberite slobodan termin kada želite da zakažete pregled
-                        <LineBreak />
-                        za neregistrovanog korisnika.
-                        </TextBlock>
-                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-
-                    </StackPanel>
-                </Button.ToolTip>
-            </Button>
-
-            <Button Grid.Column="4" Grid.Row="3" Margin="30,21,30,21" Click="Button_Prikaz" Style="{StaticResource RoundButton}">Sale za smeštanje
-                <Button.ToolTip>
-                    <StackPanel>
-                       
-                        <TextBlock>
-                        Prikaz sala koje služe za smeštanje pacijenata
-                        <LineBreak />
-                        na bolničko lečenje.
-                        </TextBlock>
-                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-
-                    </StackPanel>
-                </Button.ToolTip>
-            </Button>
-
+           
             <ComboBox x:Name="comboSala" ItemsSource="{Binding Path = roomsCollection}" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="comboSala_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -148,18 +82,16 @@
                 </ComboBox.ItemTemplate>
                 <ComboBox.ToolTip>
                     <StackPanel>
-                        
-                        <TextBlock>
-                        Spisak svih sala namenjenje za vršenje pregleda i operacija.
-                        <LineBreak />
 
+                        <TextBlock>
+                        Spisak svih sala koje služe za vršenje pregleda i operacija.
                         </TextBlock>
                         <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
 
                     </StackPanel>
                 </ComboBox.ToolTip>
             </ComboBox>
-
+            
         </Grid>
     </Grid>
 </UserControl>

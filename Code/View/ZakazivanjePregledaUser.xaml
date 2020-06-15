@@ -72,19 +72,31 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="3">Termin XX, Sala XX:</Label>
+                <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="4" Name="labelSala" Margin="0,0,54,0">Termin XX, Sala XX:</Label>
                 <Label  Grid.Column="1" Grid.Row="2" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Izaberi nalog:</Label>
-                <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2"  FontSize="18" Margin="0,0,10,0" Click="Button_Pronadji" Style="{StaticResource RoundButton}">Pronađi</Button>
+                <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2"  FontSize="18" Margin="0,0,10,0" Click="Button_Pronadji" Style="{StaticResource RoundButton}">Izaberi
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                           Izaberi nalog pacijenta za koga želite da zakažete pregled.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
                 <Label  Grid.Column="1" Grid.Row="4" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Ime:</Label>
                 <Label  Grid.Column="1" Grid.Row="6" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Prezime:</Label>
                 <Label  Grid.Column="1" Grid.Row="8" FontSize="18"  Grid.ColumnSpan="3">JMBG:</Label>
                 <Label  Grid.Column="1" Grid.Row="10" FontSize="18"  Grid.ColumnSpan="3">Doktor:</Label>
                 <Label  Grid.Column="1" Grid.Row="12" FontSize="18"  Grid.ColumnSpan="3">Vrsta pregleda:</Label>
-                <Label  Grid.Column="1" Grid.Row="14" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Center">Trajanje: </Label>
-                <Label  Grid.Column="1" Grid.Row="16" FontSize="18"  Grid.ColumnSpan="3">Napomena:</Label>
+               
+                <Label  Grid.Column="1" Grid.Row="14" FontSize="18"  Grid.ColumnSpan="3">Napomena:</Label>
                 <TextBox Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="5" Name="textImePacijenta"/>
                 <TextBox Grid.Column="4" Grid.Row="6" Grid.ColumnSpan="5" Name="textPrezimePacijenta"/>
-                <TextBox Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="5" Name ="textJMBG"  Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="8" Grid.ColumnSpan="5" Name ="textJMBG" />
+                <!--Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"-->
                 <ComboBox Grid.Column="4" Grid.Row="10" Grid.ColumnSpan="5" Name="DoktorCombo"  ItemsSource="{Binding Path = doctorsCollection}" SelectionChanged="DoktorCombo_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -98,17 +110,13 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="5" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBox Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="5" SelectionChanged="ComboBox_SelectionChanged_1">
                     <ComboBoxItem Content = "EXAM"/>
                     <ComboBoxItem Content= "SURGERY"/>
                 </ComboBox>
-                <ComboBox Grid.Column="4" Grid.Row="14" SelectionChanged="ComboBox_SelectionChanged_1" >
-                    <ComboBoxItem Content = "1"/>
-                    <ComboBoxItem Content= "2"/>
-                    <ComboBoxItem Content= "3"/>
-                </ComboBox>
-                <Label Grid.Column="5" Grid.Row="14" FontSize="20">h</Label>
-                <TextBox Grid.Column="4" Grid.Row="16" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
+                
+               
+                <TextBox Grid.Column="4" Grid.Row="14" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
                 <Button Grid.Column="8" Grid.Row="20" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Potvrda">Potvrda</Button>
                 <Button Grid.Column="5" Grid.Row="20" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Odustanak">Odustanak</Button>
 

@@ -624,11 +624,17 @@
     <Compile Include="View\GenerisiIzvestajUser.xaml.cs">
       <DependentUpon>GenerisiIzvestajUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\HelpUser.xaml.cs">
+      <DependentUpon>HelpUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\HomeUser.xaml.cs">
       <DependentUpon>HomeUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IzaberiNalogUser.xaml.cs">
       <DependentUpon>IzaberiNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzaberiTerminIsmeneUser.xaml.cs">
+      <DependentUpon>IzaberiTerminIsmeneUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\IzmenaPregledaUser.xaml.cs">
       <DependentUpon>IzmenaPregledaUser.xaml</DependentUpon>
@@ -685,6 +691,9 @@
     <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs">
       <DependentUpon>ZakazivanjeGuestNalogaUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ZakazivanjeIzaberiNalogUser.xaml.cs">
+      <DependentUpon>ZakazivanjeIzaberiNalogUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ZakazivanjePregledaUser.xaml.cs">
       <DependentUpon>ZakazivanjePregledaUser.xaml</DependentUpon>
     </Compile>
@@ -709,6 +718,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\HelpUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\HomeUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -716,6 +729,10 @@
     <Page Include="View\IzaberiNalogUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzaberiTerminIsmeneUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\IzmenaPregledaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -788,6 +805,10 @@
     <Page Include="View\ZakazivanjeGuestNalogaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjeIzaberiNalogUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ZakazivanjePregledaUser.xaml">
       <Generator>MSBuild:Compile</Generator>

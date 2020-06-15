@@ -9,15 +9,24 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace health_clinicClassDiagram.View
 {
     /// <summary>
-    /// Interaction logic for DetaljanPrikazRasporedaUser.xaml
+    /// Interaction logic for IzaberiTerminIsmeneUser.xaml
     /// </summary>
-    public partial class DetaljanPrikazRasporedaUser : UserControl, INotifyPropertyChanged
+    public partial class IzaberiTerminIsmeneUser : UserControl
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -61,7 +70,7 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        public DetaljanPrikazRasporedaUser(DateTime date)
+        public IzaberiTerminIsmeneUser(DateTime date)
         {
             InitializeComponent();
             Datum.Content = date.ToShortDateString();
@@ -83,9 +92,9 @@ namespace health_clinicClassDiagram.View
 
             dataGridNalozi.Items.Refresh();
 
-            
 
-            
+
+
 
         }
 
@@ -144,40 +153,7 @@ namespace health_clinicClassDiagram.View
             catch { }*/
         }
 
-        private void Button_Zakazivanje(object sender, RoutedEventArgs e)
-        {
-            
-            ZakazivanjePregledaUser zakazivanje = new ZakazivanjePregledaUser(date, startDate, endDate, room);
-            (this.Parent as Panel).Children.Add(zakazivanje);
-        }
-
-        private void Button_Otkazivanje(object sender, RoutedEventArgs e)
-        {
-            _appointmentController.Delete(appointment);
-            DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
-            (this.Parent as Panel).Children.Add(detaljan);
-        }
-
-        private void Button_Izmena(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine(appointment.Id);
-            IzmenaPregledaUser izmena = new IzmenaPregledaUser(date, appointment, room, startDate, endDate);
-            (this.Parent as Panel).Children.Add(izmena);
-        }
-
-        private void Button_Guest(object sender, RoutedEventArgs e)
-        {
-            
-            ZakazivanjeGuestNalogaUser zakazivanje = new ZakazivanjeGuestNalogaUser(date, startDate, endDate, room);
-            (this.Parent as Panel).Children.Add(zakazivanje);
-        }
-
-        private void Button_Prikaz(object sender, RoutedEventArgs e)
-        {
-            
-            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            (this.Parent as Panel).Children.Add(sale);
-        }
+        
 
         private void Button_Home(object sender, RoutedEventArgs e)
         {
@@ -210,7 +186,7 @@ namespace health_clinicClassDiagram.View
 
             appointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
 
-            
+
 
             foreach (Appointment a in trazeniAppointmenti)
             {
@@ -220,19 +196,25 @@ namespace health_clinicClassDiagram.View
                     {
                         int index = appointmentCollection.IndexOf(a2);
                         appointmentCollection[index] = a;
-                    } 
+                    }
                     else if (a2.StartDate >= a.StartDate && a2.EndDate <= a.EndDate)
                     {
                         int index = appointmentCollection.IndexOf(a2);
                         appointmentCollection.RemoveAt(index);
                     }
-                    
+
                 }
             }
 
             dataGridNalozi.ItemsSource = appointmentCollection;
             dataGridNalozi.Items.Refresh();
 
+        }
+
+        private void Button_Potvrdi(object sender, RoutedEventArgs e)
+        {
+            IzmenaPregledaUser izmena = new IzmenaPregledaUser(date, appointment, room, startDate, endDate);
+            (this.Parent as Panel).Children.Add(izmena);
         }
     }
 }

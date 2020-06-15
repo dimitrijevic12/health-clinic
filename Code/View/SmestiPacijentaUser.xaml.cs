@@ -71,7 +71,6 @@ namespace health_clinicClassDiagram.View
 
             if (IzaberiNalogUser.StaticRecord != null)
             {
-                Console.WriteLine(IzaberiNalogUser.StaticRecord.IDnaloga);
                 textIDNaloga.Text = IzaberiNalogUser.StaticRecord.IDnaloga.ToString();
                 textIme.Text = IzaberiNalogUser.StaticRecord.Name.ToString();
                 textPrezime.Text = IzaberiNalogUser.StaticRecord.Surname.ToString();

@@ -29,7 +29,7 @@ namespace health_clinicClassDiagram.View
         private void Button_DanasnjiRaspored(object sender, RoutedEventArgs e)
         {
             
-            DateTime date = DateTime.Now;
+            DateTime date = DateTime.Today;
             DetaljanPrikazRasporedaUser detaljan = new DetaljanPrikazRasporedaUser(date);
             (this.Parent as Panel).Children.Add(detaljan);
         }
@@ -65,14 +65,15 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Help(object sender, RoutedEventArgs e)
         {
-
+            HelpUser help = new HelpUser();
+            (this.Parent as Panel).Children.Add(help);
         }
 
         private void Button_Odjava(object sender, RoutedEventArgs e)
         {
-            var s = new MainWindow();
-            s.Show();
-            
+            LoginUser login = new LoginUser();
+            (this.Parent as Panel).Children.Add(login);
+
         }
 
         private void Button_Izvestaj(object sender, RoutedEventArgs e)

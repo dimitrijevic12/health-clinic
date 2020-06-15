@@ -67,7 +67,7 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        private Appointment _appointment;
+        //private Appointment _appointment;
 
         private List<Doctor> doctors;
 
@@ -77,14 +77,36 @@ namespace health_clinicClassDiagram.View
         private Doctor _doctor;
         private ExamOperationRoom _room;
         private TypeOfAppointment _type;
-        private int _trajanje;
 
-        public IzmenaPregledaUser(DateTime date, ExamOperationRoom room, Appointment appointment)
+        public static Appointment izmenaAppointment;
+
+        private DateTime _startDate;
+        private DateTime _endDate;
+
+        public IzmenaPregledaUser(DateTime date, Appointment appointment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
             this.date = date;
+            _startDate = startDate;
+            _endDate = endDate;
+
+            if (_startDate != null)
+            {
+                labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
+            } else
+            {
+                labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + appointment.StartDate.ToShortDateString() + " " + appointment.StartDate.ToShortTimeString() + "-" + appointment.EndDate.ToShortTimeString();
+            }
+
+            //textIme.Text = appointment.Patient.Name;
+            //textPrezime.Text = appointment.Patient.Surname;
+            //textJMBG.Text = appointment.Patient.Id.ToString();
+
+            //treba promeniti
+            DoktorCombo.SelectedIndex = 0;
+            VrstaCombo.SelectedIndex = 0;
 
             var app = Application.Current as App;
 
@@ -92,7 +114,12 @@ namespace health_clinicClassDiagram.View
 
             _doctorController = app.DoctorController;
 
-            _appointment = appointment;
+            //_appointment = appointment;
+
+            if (appointment != null)
+            {
+                izmenaAppointment = appointment;
+            }
             _room = room;
 
             doctors = _doctorController.GetAll();
@@ -115,10 +142,21 @@ namespace health_clinicClassDiagram.View
 
             Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
 
-            DateTime startDate = _appointment.StartDate;
-            DateTime endDate = startDate.AddHours(_trajanje);
+            DateTime startDate;
+            DateTime endDate;
 
-            Appointment appointment = new Appointment(_doctor, patient, _room, _type, startDate, endDate);
+            if (_startDate != null)
+            {
+                startDate = _startDate;
+                endDate = _endDate;
+            } else {
+
+                startDate = izmenaAppointment.StartDate;
+                endDate = izmenaAppointment.EndDate;
+            }
+
+            Console.WriteLine(izmenaAppointment.Id);
+            Appointment appointment = new Appointment(izmenaAppointment.Id, _doctor, patient, _room, _type, startDate, endDate);
 
             _appointmentController.Edit(appointment);
 
@@ -150,25 +188,7 @@ namespace health_clinicClassDiagram.View
             _doctor = (Doctor)cmb.SelectedItem;
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = (ComboBox)sender;
-
-            int index = cmb.SelectedIndex;
-
-            if (index == 0)
-            {
-                _trajanje = 1;
-            }
-            else if (index == 1)
-            {
-                _trajanje = 2;
-            }
-            else
-            {
-                _trajanje = 3;
-            }
-        }
+   
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -184,6 +204,29 @@ namespace health_clinicClassDiagram.View
             {
                 _type = TypeOfAppointment.SURGERY;
             }
+        }
+
+        private void Button_Izaberi(object sender, RoutedEventArgs e)
+        {
+            IzaberiTerminIsmeneUser izaberi = new IzaberiTerminIsmeneUser(date);
+            (this.Parent as Panel).Children.Add(izaberi);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cmb = (ComboBox)sender;
+
+            int index = cmb.SelectedIndex;
+
+            if (index == 0)
+            {
+                _type = TypeOfAppointment.EXAM;
+            }
+            else
+            {
+                _type = TypeOfAppointment.SURGERY;
+            }
+            
         }
     }
 }

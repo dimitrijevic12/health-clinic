@@ -86,6 +86,18 @@
                         </StackPanel>
                         
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Prikaz rasporeda prostorija za vršenje pregleda i operacija
+                        <LineBreak />
+                            za današnji datum.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Smestaj">
                     <StackPanel>
@@ -93,8 +105,20 @@
                         <StackPanel>
                             <TextBlock Text="Današnje sale za smeštanje" FontSize="12"/>
                         </StackPanel>
-
+                    
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Prikaz svih sala za smeštanje pacijenata
+                        <LineBreak />
+                            na bolničko lečenje.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Raspored">
                     <StackPanel>
@@ -104,6 +128,18 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Kalenadr koji služi za prikaz
+                        <LineBreak />
+                            zauzetosti prostorija za izabrani datum.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Pacijenti">
                     <StackPanel>
@@ -113,7 +149,18 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Spisak svih pacijenata koji imaju nalog u bolnici.                
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
+                
                 <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Doktori">
                     <StackPanel>
                         <Image Source="Images/doctor.png" Height="20" />
@@ -122,6 +169,16 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                        Spisak svih doktora koji rade u bolnici.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="7" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Help">
                     <StackPanel>
@@ -131,6 +188,16 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                        Detaljniji prikaz pomoći.                     
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Izvestaj">
                     <StackPanel>
@@ -140,6 +207,16 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Iznegeriši izveštaj o zauzetosti prostorija u određenom vremenskom periodu.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
                 </Button>
                 <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Prioritet">
                     <StackPanel>
@@ -149,6 +226,17 @@
                         </StackPanel>
 
                     </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                        Zakazivajne pregleda u zavisnosti od izbora prioriteta.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+
                 </Button>
                 <Label  Grid.Column="8" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">Dušan</Label>
                 <Image Grid.Column="9" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45"></Image>

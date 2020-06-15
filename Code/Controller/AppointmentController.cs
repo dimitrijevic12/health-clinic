@@ -62,6 +62,11 @@ namespace Controller
             return _service.GetAppointmentsByRoom(room); 
         }
 
+        public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        {
+            return _service.GetAppointmentsByTimeAndRoom(room, startDate, endDate);
+        }
+
         public Treatment GenerateTreatment(Appointment appointment)
         {
             throw new NotImplementedException();
@@ -115,6 +120,8 @@ namespace Controller
             return _service.Edit(obj);
             
         }
+
+
   
    }
 }
