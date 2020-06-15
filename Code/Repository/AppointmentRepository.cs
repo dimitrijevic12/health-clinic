@@ -20,7 +20,7 @@ namespace Repository
    {
         private String _path;
         private static AppointmentRepository instance = null;
-        private readonly CSVStream<Appointment> stream = new CSVStream<Appointment>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\AppointmentRepo.csv", new AppointmentCSVConverter("|", ""));
+        private readonly CSVStream<Appointment> stream/* = new CSVStream<Appointment>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\AppointmentRepo.csv", new AppointmentCSVConverter("|", ""))*/;
         private readonly ICSVStream<Appointment> _stream;
         private readonly LongSequencer sequencer = new LongSequencer();
         private readonly iSequencer<long> _sequencer;
@@ -156,7 +156,9 @@ namespace Repository
 
         public List<Appointment> GetAll()
         {
-            return stream.ReadAll();
+            var apps = (List<Appointment>)_stream.ReadAll();
+            return apps;
+           /* return stream.ReadAll();*/
         }
 
         public bool OpenFile(string path)

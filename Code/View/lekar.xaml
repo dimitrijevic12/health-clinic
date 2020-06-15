@@ -24,7 +24,7 @@
         <DataGrid  x:Name="dataGridLekari" ItemsSource="{Binding Path=doctorsCollection}" AutoGenerateColumns="False" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,47,0,10" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="3" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridLekari_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="*"  Header="Uredi">
+                <DataGridTemplateColumn Width="65"  Header="Uredi">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnUredi" Content="Uredi" Click="Button_edit" />
@@ -32,7 +32,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Width="*"  Header="Obriši">
+                <DataGridTemplateColumn Width="65"  Header="Obriši">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnObrisi" Content="Obrisi" Click="Button_delete"/>
@@ -43,8 +43,9 @@
                 <DataGridTextColumn Width="*"  Header="Id Doktora" Binding="{Binding IdDoctor}"/>
                 <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding NameDoctor}"/>
                 <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding SurnameDoctor}"/>
-                <DataGridTextColumn Width="*" Header="Pol" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Width="50" Header="Pol" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirth}"/>
+                <DataGridTextColumn Width="*" Header="Smena" Binding="{Binding Smena}"/>
                 <DataGridTextColumn Width="*" Header="Specijalista" Binding="{Binding Spec}"/>
                 <DataGridTextColumn Width="*" Header="Hirurg" Binding="{Binding Sur}"/>
                 

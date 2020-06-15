@@ -7,28 +7,36 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="plan_detaljan" Height="768" Width="1024" Background="AliceBlue">
-    
+
     <Grid>
-        <DataGrid Name="dataGrid" AutoGenerateColumns="False" CanUserAddRows="False"
-Margin="0,37,0,190" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-RowBackground="#fff" FontWeight="Bold" Foreground="#525252"
-ScrollViewer.CanContentScroll="True" MaxHeight="490"
-AlternatingRowBackground="#f2f2f2" BorderBrush="#000" BorderThickness="1"
-ScrollViewer.HorizontalScrollBarVisibility="Visible"
-ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+        <DataGrid  x:Name="dataGridApps" ItemsSource="{Binding Path=appCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True"  HorizontalAlignment="Left" Margin="0,74,0,207" VerticalAlignment="Stretch" Width="1016" Grid.Column="0">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Tip termina"  IsReadOnly="True" />
-                <DataGridTextColumn Header="Ime pacijenta"  IsReadOnly="True" />
-                <DataGridTextColumn Header="Prezime pacijenta"  IsReadOnly="True" />
-                <DataGridTextColumn Header="Jmbg pacijenta"  IsReadOnly="True" />
-                <DataGridTextColumn Header="Datum"  IsReadOnly="True" />
-                <DataGridTextColumn Header="Početak"  IsReadOnly="True" />
+
+                <DataGridTextColumn Width="*"  Header="Id Appointmenta" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorPrikaz}"/>
+                <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientPrikaz}"/>
+                <DataGridTextColumn Width="*" Header="id Sobe" Binding="{Binding roomPrikaz}"/>
+                <DataGridTextColumn Width="*" Header="Pocetak" Binding="{Binding StartDate}"/>
+                
 
             </DataGrid.Columns>
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
+
         </DataGrid>
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="0,0,391,682" Text="{x:Static language:Lang.prikazPlana}"/>
-        
+
+
+
+
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="615"  Height="55"  Margin="10,19,391,663" Text="{x:Static language:Lang.prikazPlana}"/>
+
         <Button HorizontalAlignment="Center" Width="257" Margin="637,580,122,36" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeIzadji}" Click="Button_izadji"/>
 
     </Grid>

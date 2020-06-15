@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="plan_lekar" Height="768" Width="1024" Background="AliceBlue">
-    
+
     <Grid RenderTransformOrigin="0.508,0.499">
 
         <Grid.RowDefinitions>
@@ -24,17 +24,53 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="10,10,381,82" Grid.ColumnSpan="2" Text="{x:Static language:Lang.izaberiLekara}"/>
-        
-        <ComboBox Height="42" Name="sala" Grid.Row="0" Grid.ColumnSpan="2" Margin="42,52,48,53" ItemsSource="{Binding Path=Lekari}"/>
+
+        <DataGrid  x:Name="dataGridLekari" ItemsSource="{Binding Path=doctorsCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,74,0,86" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="2" Grid.Column="0"  Grid.RowSpan="3">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Width="*"  Header="Id Doktora" Binding="{Binding IdDoctor}"/>
+                <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding NameDoctor}"/>
+                <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding SurnameDoctor}"/>
+                <DataGridTextColumn Width="*" Header="Pol" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirth}"/>
+                <DataGridTextColumn Width="*" Header="Specijalista" Binding="{Binding Spec}"/>
+                <DataGridTextColumn Width="*" Header="Hirurg" Binding="{Binding Sur}"/>
+
+
+            </DataGrid.Columns>
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
+
+        </DataGrid>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="11,19,380,73" Grid.ColumnSpan="2" Text="{x:Static language:Lang.lekari}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="11,82,380,10" Grid.ColumnSpan="2" Text="{x:Static language:Lang.izaberiLekara}"/>
+
+        <ComboBox x:Name="comboLekar" ItemsSource="{Binding Path = doctorsCollection}" Height="42" Grid.Column="1" Grid.Row="2" Margin="110,82,10,23" SelectionChanged="comboLekar_SelectionChanged"  >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=NameAndSurname}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
         <Button HorizontalAlignment="Center" Width="232" Margin="134,10,142,41" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.pogledajPlan}" Grid.Column="0" Grid.Row="4" Click="Button_potvrdi"/>
         <Button HorizontalAlignment="Center" Width="232" Margin="156,10,120,41" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Column="1" Grid.Row="4" Click="Button_otkazi"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,58,380,36" Grid.ColumnSpan="2" Text="{x:Static language:Lang.prviDatum}" />
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,59,0,35" Grid.ColumnSpan="2" Text="{x:Static language:Lang.drugiDatum}"/> 
-        <DatePicker Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="110,58,0,0" VerticalAlignment="Top" Height="54" Width="350"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,10,380,84" Grid.ColumnSpan="2" Text="{x:Static language:Lang.prviDatum}" />
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Left" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,84,0,10" Grid.ColumnSpan="2" Text="{x:Static language:Lang.drugiDatum}"/>
+        <DatePicker Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Height="38" Width="388" Name="dat1"/>
 
-        <DatePicker Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="110,59,0,0" VerticalAlignment="Top" Height="54" Width="350"/>
+        <DatePicker Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Margin="110,84,0,0" VerticalAlignment="Top" Height="37" Width="388" Name="dat2"/>
 
     </Grid>
 </Window>

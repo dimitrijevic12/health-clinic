@@ -360,6 +360,7 @@
     <Compile Include="Model\SystemUsers\SurgicalSpecialty.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\SystemUsers\TypeOfWorkingSchedule.cs" />
     <Compile Include="Model\SystemUsers\WorkingDays.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -663,6 +664,9 @@
     <Compile Include="View\dodatno.xaml.cs">
       <DependentUpon>dodatno.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\izaberi_izvestaj.xaml.cs">
+      <DependentUpon>izaberi_izvestaj.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\izvestaj.xaml.cs">
       <DependentUpon>izvestaj.xaml</DependentUpon>
     </Compile>
@@ -769,6 +773,10 @@
     <Page Include="View\dodatno.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\izaberi_izvestaj.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\izvestaj.xaml">
       <Generator>MSBuild:Compile</Generator>

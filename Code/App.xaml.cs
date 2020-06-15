@@ -4,6 +4,7 @@ using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Repository.Csv.Converter;
 using health_clinicClassDiagram.Repository.Sequencer;
 using health_clinicClassDiagram.Service;
+using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Repository;
@@ -32,6 +33,7 @@ namespace health_clinicClassDiagram
         private const string USER_FILE = "../../Resources/Data/users.csv";
         private const string EQUIP_FILE = "../../Resources/Data/equipments.csv";
         private const string DRUGS_FILE = "../../Resources/Data/drugs.csv";
+        private const string APPS_FILE = "../../Resources/Data/appointments.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
@@ -45,6 +47,8 @@ namespace health_clinicClassDiagram
         public IEquipmentController equipController { get; private set; }
 
         public IDrugController drugController { get; private set; }
+
+        public IAppointmentController appController { get; private set; }
 
         public UserController userController { get; private set; }
 
@@ -94,6 +98,11 @@ namespace health_clinicClassDiagram
             new CSVStream<Drug>(DRUGS_FILE, new DrugCSVConverter(CSV_DELIMITER)),
             new LongSequencer());
 
+            var appRepository = new AppointmentRepository(
+            APPS_FILE,
+            new CSVStream<Appointment>(APPS_FILE, new AppointmentCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
+            new LongSequencer());
+
             var doctorService = new DoctorService(doctorRepository);
 
             var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
@@ -105,12 +114,15 @@ namespace health_clinicClassDiagram
 
             var drugsService = new DrugService(drugRepository);
 
+            var appService = new AppointmentService(appRepository, doctorService, null, examOperationRoomService);
+
 
             examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
             rehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
             equipController = new EquipmentController(equipService);
             drugController = new DrugController(drugsService);
+            appController = new AppointmentController(appService);
 
         }
     }

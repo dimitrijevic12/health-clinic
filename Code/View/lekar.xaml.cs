@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using Controller;
 using Model.SystemUsers;
+using health_clinicClassDiagram.View;
 
 namespace health_clinicClassDiagram.view
 {
@@ -63,6 +64,7 @@ namespace health_clinicClassDiagram.view
 
         private void Button_pocetna(object sender, RoutedEventArgs e)
         {
+
             var s = new pocetna();
             s.Show();
             this.Close();
@@ -130,6 +132,7 @@ namespace health_clinicClassDiagram.view
             var s = new lekar();
             s.Show();
             this.Close();
+
 
         }
     }

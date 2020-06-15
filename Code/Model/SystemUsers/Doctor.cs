@@ -20,6 +20,8 @@ namespace Model.SystemUsers
         private string dateOfBirth;
       private Specialization spec;
       private SurgicalSpecialty sur;
+        private TypeOfWorkingSchedule smena;
+
 
 
         public long IdDoctor
@@ -62,6 +64,11 @@ namespace Model.SystemUsers
             get { return sur; }   // get method
             set { sur = value; }
         }
+        public TypeOfWorkingSchedule Smena
+        {
+            get { return smena; }   // get method
+            set { smena = value; }
+        }
 
         public String NameAndSurname
         {
@@ -70,7 +77,7 @@ namespace Model.SystemUsers
 
         public Doctor() { }
 
-        public Doctor(long jmbg, String name, String surname, Gender gender, String dateOfBirth/* DateTime dateOfBirth*/, Specialization specijalista, SurgicalSpecialty surg) 
+        public Doctor(long jmbg, String name, String surname, Gender gender, String dateOfBirth/* DateTime dateOfBirth*/, TypeOfWorkingSchedule sm, Specialization specijalista, SurgicalSpecialty surg) 
 
         {
 
@@ -80,6 +87,7 @@ namespace Model.SystemUsers
             this.Surname = surname;            
             this.gender = gender;
             this.dateOfBirth = dateOfBirth;
+            this.smena = sm;
            // workingSchedule = workSc;
             Spec = specijalista;
             Sur = surg;
@@ -118,6 +126,8 @@ namespace Model.SystemUsers
 
         }
 
+
+       
 
     }
 }

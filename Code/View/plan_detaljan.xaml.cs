@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Controller;
+using Model.Appointment;
+using Model.Rooms;
+using Model.SystemUsers;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,10 +25,37 @@ namespace health_clinicClassDiagram.view
     /// </summary>
     public partial class plan_detaljan : Window
     {
-        public plan_detaljan()
+        private int colNum = 0;
+
+        private readonly IAppointmentController _appController;
+        public static ObservableCollection<Appointment> appCollection
+        {
+            get;
+            set;
+        }
+        public List<Appointment> apps;
+        public List<Appointment> appsPrikaz = new List<Appointment>();
+        public plan_detaljan(Doctor doctor, DateTime date1, DateTime date2)
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            var app = Application.Current as App;
+            _appController = app.appController;
+
+            apps = _appController.GetAll();
+
+            foreach(Appointment a in apps)
+            {
+                if((a.Doctor.Id == doctor.Id) && (a.StartDate >= date1) && (a.StartDate <= date2.AddHours(24)))
+                {
+                    appsPrikaz.Add(a);
+                }
+            }
+
+            appCollection = new ObservableCollection<Appointment>(appsPrikaz);
         }
+        
 
         private void Button_izadji(object sender, RoutedEventArgs e)
         {

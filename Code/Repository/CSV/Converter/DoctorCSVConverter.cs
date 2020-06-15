@@ -34,16 +34,19 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
+            String smenaString = tokens[5];
 
-            String specializationString = tokens[5];
+            TypeOfWorkingSchedule smena = (TypeOfWorkingSchedule)Enum.Parse(typeof(TypeOfWorkingSchedule), smenaString, true);
+
+            String specializationString = tokens[6];
 
             Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
-            String hirurgString = tokens[6];
+            String hirurgString = tokens[7];
 
             SurgicalSpecialty hirurg = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), hirurgString, true);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, /*DateTime.Now*/ tokens[4] , specialization, hirurg);
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, /*DateTime.Now*/ tokens[4] ,smena, specialization, hirurg);
 
             return doctor;
         }
@@ -57,6 +60,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Gender,
              /*DateTime.Now,*/
              entity.DateOfBirth,
+             entity.Smena,
              entity.Spec,
              entity.Sur);
         }

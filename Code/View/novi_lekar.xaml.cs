@@ -23,6 +23,7 @@ namespace health_clinicClassDiagram.view
         private string _datum;
         private Specialization _specijalnost;
         private SurgicalSpecialty _hirurg;
+        private TypeOfWorkingSchedule smena;
 
         public novi_lekar()
         {
@@ -109,6 +110,20 @@ namespace health_clinicClassDiagram.view
                 _hirurg = SurgicalSpecialty.NOT_SURGEON;
             }
 
+            int combo4 = ComboRadnoVreme.SelectedIndex;
+            if (combo4 == 0)
+            {
+                smena = TypeOfWorkingSchedule.PRVA;
+            }
+            else if (combo4 == 1)
+            {
+                smena = TypeOfWorkingSchedule.DRUGA;
+            }
+            else
+            {
+                smena = TypeOfWorkingSchedule.TRECA;
+            }
+
 
 
             _id = long.Parse(ID);
@@ -136,7 +151,7 @@ namespace health_clinicClassDiagram.view
 
         private Doctor CreateDoctor()
         {
-            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, _specijalnost, _hirurg);
+            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, smena, _specijalnost, _hirurg);
 
             return _doctorController.Create(doctor);
         }
