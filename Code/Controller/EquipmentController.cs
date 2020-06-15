@@ -44,12 +44,24 @@ namespace Controller
             return _service.Edit(obj);
         }
 
-        public void addEquipment(int idE, int quant)
+        public void addEquipment(string naz, int quant)
         {
-           _service.addEquipment(idE,quant);
+           _service.addEquipment(naz,quant);
         }
 
+        public void deleteEquipment(int Id, int quant)
+        {
+            _service.deleteEquipment(Id, quant);
+        }
 
+        public string getNazivOpreme(int Id)
+        {
+            return _service.getNazivOpreme(Id);
+        }
 
+        public int getIdOpreme(string naziv)
+        {
+            return _service.getIdOpreme(naziv);
+        }
     }
 }

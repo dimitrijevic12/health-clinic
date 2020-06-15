@@ -26,6 +26,27 @@ namespace Model.Rooms
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
             tip = TypeOfRoom.REHABILITATION;
+            Equipments = new List<Equipment>();
+        }
+
+        public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<Equipment> equipments) : base(idRoom)
+        {
+
+            Equipments = equipments;
+            _maxCapacity = maxCapacity;
+            _currentlyInUse = currentlyInUse;
+            IdRoom = idRoom;
+            tip = TypeOfRoom.REHABILITATION;
+        }
+        public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity) : base(idRoom)
+        {
+
+            
+            _maxCapacity = maxCapacity;
+            _currentlyInUse = currentlyInUse;
+            IdRoom = idRoom;
+            tip = TypeOfRoom.REHABILITATION;
+            Equipments = new List<Equipment>();
         }
 
         public List<MedicalRecord> Patients
@@ -57,7 +78,11 @@ namespace Model.Rooms
             set { tipSobe = value; }
         }
 
-     
+        /*public List<Equipment> Equipments
+        {
+            get { return equipments; }
+            set { equipments = value; }
+        }*/
 
 
     }

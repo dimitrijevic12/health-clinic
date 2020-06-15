@@ -25,10 +25,10 @@ namespace Repository.Csv.Converter
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
             
-            String tipString = tokens[0];
-            TypeOfEquipment tip = (TypeOfEquipment)Enum.Parse(typeof(TypeOfEquipment), tipString, true);
+           /* String tipString = tokens[0];
+            TypeOfEquipment tip = (TypeOfEquipment)Enum.Parse(typeof(TypeOfEquipment), tipString, true);*/
 
-            Equipment eq = new Equipment(int.Parse(tokens[0]),tip, int.Parse(tokens[2]));
+            Equipment eq = new Equipment(int.Parse(tokens[0]), tokens[1], int.Parse(tokens[2]));
             return eq;
         }
 
@@ -36,7 +36,7 @@ namespace Repository.Csv.Converter
         {
             return string.Join(_delimiter,
                 entity.Id,
-                entity.Type,
+                entity.Naziv,
                 entity.Quantity
                 );
         }

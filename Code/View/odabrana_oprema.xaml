@@ -23,10 +23,16 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="10,8,357,430" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{x:Static language:Lang.listadostupneopreme}"/> 
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55"  Margin="10,8,357,430" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{x:Static language:Lang.listadostupneopreme}"/>
 
         <DataGrid  x:Name="dataGridDetaljnaOprema" ItemsSource="{Binding Path=DetaljnaOprema}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,66" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridDetaljnaOprema_SelectionChanged"/>
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,66" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridDetaljnaOprema_SelectionChanged">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
 
         <Button HorizontalAlignment="Center" Width="232" Margin="140,51,136,31" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeIzadji}" Grid.Column="1" Grid.Row="2" Click="Button_izadji" />

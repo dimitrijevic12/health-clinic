@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="birajTIPsale" xml:space="preserve">
-    <value>Izaberite tip nove sale:</value>
+    <value> Izaberite tip nove sale:</value>
   </data>
   <data name="DatumRodjenja" xml:space="preserve">
     <value>Datum rodjenja</value>
@@ -130,7 +130,7 @@
     <value>Dodaj novu salu</value>
   </data>
   <data name="drugiDatum" xml:space="preserve">
-    <value>Izaberite datum do kada želite da vidite plan:</value>
+    <value> Izaberite datum do kada želite da vidite plan:</value>
   </data>
   <data name="DugmeIzadji" xml:space="preserve">
     <value>Izađi</value>
@@ -157,61 +157,61 @@
     <value>Ime</value>
   </data>
   <data name="imeDruge" xml:space="preserve">
-    <value>Unesite ime druge sale:</value>
+    <value> Unesite ime druge sale:</value>
   </data>
   <data name="imePrve" xml:space="preserve">
-    <value>Unesite ime prve sale:</value>
+    <value> Unesite ime prve sale:</value>
   </data>
   <data name="izaberiDatum" xml:space="preserve">
-    <value>Izaberite datum kada će se renovacija izvršiti:</value>
+    <value> Izaberite datum kada će se renovacija izvršiti:</value>
   </data>
   <data name="izaberiDatumKrajnji" xml:space="preserve">
-    <value>Izaberite datum kad se renovacija zavrsava:</value>
+    <value> Izaberite datum kad se renovacija završava:</value>
   </data>
   <data name="izaberiDatumPocetni" xml:space="preserve">
-    <value>Izaberite datum kad renovacija pocijne:</value>
+    <value> Izaberite datum kad renovacija počinje:</value>
   </data>
   <data name="izaberiLekara" xml:space="preserve">
-    <value>Izaberite lekara za kog želite da vidite plan:</value>
+    <value> Izaberite lekara za kog želite da vidite plan:</value>
   </data>
   <data name="izaberiNazivSale" xml:space="preserve">
-    <value>Izaberite salu:</value>
+    <value> Izaberite salu:</value>
   </data>
   <data name="izaberiNoviTipSale" xml:space="preserve">
-    <value>Izaberite novi tip sale:</value>
+    <value> Izaberite novi tip sale:</value>
   </data>
   <data name="izaberiOpremu" xml:space="preserve">
-    <value>Izaberi opremu:</value>
+    <value> Izaberi opremu:</value>
   </data>
   <data name="izaberiOpremuDetaljno" xml:space="preserve">
-    <value>Izaberite opremu za detaljan prikaz:</value>
+    <value> Izaberite opremu za detaljan prikaz:</value>
   </data>
   <data name="izaberisaludva" xml:space="preserve">
-    <value>Izaberite drugu salu koja će biti spojena:</value>
+    <value> Izaberite drugu salu koja će biti spojena:</value>
   </data>
   <data name="izaberisalujedan" xml:space="preserve">
-    <value>Izaberite prvu salu koja će biti spojena:</value>
+    <value> Izaberite prvu salu koja će biti spojena:</value>
   </data>
   <data name="izaberiSaluUKojuPrebacujes" xml:space="preserve">
-    <value>Izaberite salu u koju želite da prebaciš opremu:</value>
+    <value> Izaberite salu u koju želite da prebaciš opremu:</value>
   </data>
   <data name="izaberiSaluZaKojuMenjasTip" xml:space="preserve">
-    <value>Izaberite salu za koju menjaš tip:</value>
+    <value> Izaberite salu za koju menjaš tip:</value>
   </data>
   <data name="izaberiSaluZaOpremu" xml:space="preserve">
-    <value>Izaberite salu za koju želite da vidite opremu:</value>
+    <value> Izaberite salu za koju želite da vidite opremu:</value>
   </data>
   <data name="izaberiSaluZaPodelu" xml:space="preserve">
-    <value>Izaberite salu za podelu</value>
+    <value> Izaberite salu za podelu</value>
   </data>
   <data name="izaberiSaluZaPremestanjeOpreme" xml:space="preserve">
-    <value>Izaberite salu iz koje želite da prebacite opremu:</value>
+    <value> Izaberite salu iz koje želite da prebacite opremu:</value>
   </data>
   <data name="izDrugeUOvu" xml:space="preserve">
-    <value>Iz druge u ovu</value>
+    <value> Iz magacina u ovu sobu</value>
   </data>
   <data name="izOveUDrugu" xml:space="preserve">
-    <value>Iz ove u drugu</value>
+    <value> Iz ove sobe u magacin</value>
   </data>
   <data name="izvestaj" xml:space="preserve">
     <value>IZVEŠTAJ</value>
@@ -235,16 +235,16 @@
     <value>Lekovi:</value>
   </data>
   <data name="listadostupneopreme" xml:space="preserve">
-    <value>Lista dostupne opreme</value>
+    <value> Lista dostupne opreme</value>
   </data>
   <data name="listadostupnihlekova" xml:space="preserve">
-    <value>Lista dostupnih lekova</value>
+    <value> Lista dostupnih lekova</value>
   </data>
   <data name="magacin" xml:space="preserve">
     <value>MAGACIN</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Unesi maksimalan broj pacijenata u sobi:</value>
+    <value> Unesi maksimalan broj pacijenata u sobi:</value>
   </data>
   <data name="narucilekove" xml:space="preserve">
     <value>Naruči lekove</value>
@@ -253,7 +253,7 @@
     <value>Naruči opremu</value>
   </data>
   <data name="NovaSalaInfo" xml:space="preserve">
-    <value>Unesite informacije za novu salu:</value>
+    <value> Unesite informacije za novu salu:</value>
   </data>
   <data name="odabranaOprema" xml:space="preserve">
     <value>Izabrana oprema:</value>
@@ -265,10 +265,10 @@
     <value>OPCIJE</value>
   </data>
   <data name="oprema" xml:space="preserve">
-    <value>Oprema:</value>
+    <value> Oprema:</value>
   </data>
   <data name="opremaUOdabranojsali" xml:space="preserve">
-    <value>Oprema u odabranoj sali:</value>
+    <value> Oprema u odabranoj sali:</value>
   </data>
   <data name="planlekar" xml:space="preserve">
     <value>Plan za lekara</value>
@@ -286,22 +286,22 @@
     <value>POMOĆ</value>
   </data>
   <data name="PorukaNaruciLek" xml:space="preserve">
-    <value>Ukoliko se naručuje lek koji do sada nije naručivan, biće mu dodeljna nova šifra</value>
+    <value> Ukoliko se naručuje lek koji do sada nije naručivan, biće mu dodeljna nova šifra</value>
   </data>
   <data name="PorukaNaruciOpremu" xml:space="preserve">
-    <value>Ukoliko se naručuje oprema koji do sada nije naručivana, biće joj dodeljna nova šifra</value>
+    <value> Ukoliko se naručuje oprema koji do sada nije naručivana, biće joj dodeljna nova šifra</value>
   </data>
   <data name="PorukaPodela" xml:space="preserve">
-    <value>Pri podeli obe ove sale zadržavaju tip originalne sale, svaka sala dobija polovinu opreme.</value>
+    <value> Pri podeli obe ove sale zadržavaju tip originalne sale, svaka sala dobija polovinu opreme.</value>
   </data>
   <data name="porukaSpajanje" xml:space="preserve">
-    <value>Pri spajanju tip i ime nove sale će biti isti kao tip i ime prve odabrane sale.</value>
+    <value> Pri spajanju tip i ime nove sale će biti isti kao tip i ime prve odabrane sale.</value>
   </data>
   <data name="premestiOpremu" xml:space="preserve">
-    <value>Premesti opremu</value>
+    <value> Premesti opremu</value>
   </data>
   <data name="premstanjeOpreme" xml:space="preserve">
-    <value>Premeštanje opreme:</value>
+    <value> Premeštanje opreme:</value>
   </data>
   <data name="Prezime" xml:space="preserve">
     <value>Prezime</value>
@@ -325,7 +325,7 @@
     <value>Promena namene sale</value>
   </data>
   <data name="prviDatum" xml:space="preserve">
-    <value>Izaberite datum od kada želite da vidite plan:</value>
+    <value> Izaberite datum od kada želite da vidite plan:</value>
   </data>
   <data name="RadnoVreme" xml:space="preserve">
     <value>Radno vreme</value>
@@ -335,6 +335,9 @@
   </data>
   <data name="sala" xml:space="preserve">
     <value>SALA</value>
+  </data>
+  <data name="sale" xml:space="preserve">
+    <value> Sale:</value>
   </data>
   <data name="sifra" xml:space="preserve">
     <value>Šifra:</value>
@@ -352,13 +355,13 @@
     <value>Unesite id za novu salu:</value>
   </data>
   <data name="unesiKolicinu" xml:space="preserve">
-    <value>Unesite količinu koju želite da naručite:</value>
+    <value> Unesite količinu:</value>
   </data>
   <data name="unesiLekNarucivanje" xml:space="preserve">
-    <value>Unesite lek koji želiš da naručiš:</value>
+    <value> Unesite lek koji želiš da naručiš:</value>
   </data>
   <data name="unesiOpremuNarucivanje" xml:space="preserve">
-    <value>Unesi opremu koju želiš da naručiš</value>
+    <value> Unesi opremu koju želiš da naručiš</value>
   </data>
   <data name="Upravnik" xml:space="preserve">
     <value>UPRAVNIK</value>

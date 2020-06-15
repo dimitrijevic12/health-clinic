@@ -50,7 +50,12 @@
                 
 
             </DataGrid.Columns>
-            
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
 
         </DataGrid>
         <TextBlock Grid.Row="1" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,9,30,420" Width="299" Text="{x:Static language:Lang.lekari}"/>

@@ -6,7 +6,7 @@
          xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="naruci_lek" Height="768" Width="1024">
+        Title="naruci_lek" Height="768" Width="1024" Background="AliceBlue">
 
     <Grid>
 
@@ -32,8 +32,21 @@
 
         <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="616"  Height="54" Margin="20,10,42,299" Grid.ColumnSpan="4" Grid.RowSpan="2" Text="{x:Static language:Lang.lekovi}"/>
 
-        <DataGrid  x:Name="dataGridNaruciLek" ItemsSource="{Binding Path=Lekovi}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,10,0,128" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="6" Grid.Row="2" Grid.Column="0"/>
+        <DataGrid  x:Name="dataGridNaruciLek" ItemsSource="{Binding Path=drugCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,10,0,128" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="6" Grid.Row="2" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*"  Header="Id leka" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv leka" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Width="*"  Header="Validacija" Binding="{Binding Validation}"/>
+            </DataGrid.Columns>
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
 
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,61,139,101" Grid.RowSpan="2" Click="Button_potvrdi" />

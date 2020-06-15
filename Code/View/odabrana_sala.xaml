@@ -25,8 +25,20 @@
 
         <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="55" Margin="10,8,357,430" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="{x:Static language:Lang.opremaUOdabranojsali}"/>
 
-        <DataGrid  x:Name="dataGridOdabranaSala" ItemsSource="{Binding Path=Oprema}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,213" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridMagacinLekovi_SelectionChanged"/>
+        <DataGrid  x:Name="dataGridOdabranaSala" ItemsSource="{Binding Path=equipCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,213" VerticalAlignment="Stretch" Width="972" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridMagacinLekovi_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Naziv}"/>
+                <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
 
         <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="625"  Height="56" Margin="10,263,357,139" Grid.ColumnSpan="2" Text="{x:Static language:Lang.premstanjeOpreme}"/>

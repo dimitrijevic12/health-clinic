@@ -116,17 +116,17 @@ namespace health_clinicClassDiagram.view
 
         }
 
-        private void Button_sala(object sender, RoutedEventArgs e)
+      /*  private void Button_sala(object sender, RoutedEventArgs e)
         {
             var s = new odabrana_sala();
             s.Show();
-        }
+        }*/
 
       
 
         private void Button_Detaljno(object sender, RoutedEventArgs e)
         {
-            var s = new odabrana_sala();
+            var s = new odabrana_sala(roomD);
             s.Show();
         }
 

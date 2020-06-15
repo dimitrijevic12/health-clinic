@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="premestanje_iz_ove"  Height="768" Width="1024" Background="AliceBlue">
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -30,48 +30,40 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="10,20,42,0" Grid.ColumnSpan="4" Text="{x:Static language:Lang.izaberiOpremu}"/>
-        
 
-        <DataGrid  x:Name="dataGridIzSale" ItemsSource="{Binding Path=DetaljnaOprema}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,13,0,143" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged">
+
+        <DataGrid  x:Name="dataGridIzSale" ItemsSource="{Binding Path=equipCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,13,0,99" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Premesti">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnPremesti" Content="Premesti"  />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Naziv}"/>
+                <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="36" Margin="10,197,42,75" Grid.ColumnSpan="4" Text="{x:Static language:Lang.odabranaOprema}"/>
-        
-        <DataGrid  x:Name="dataGridUSale" ItemsSource="{Binding Path=DetaljnaOprema}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,238,0,42" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged" Grid.RowSpan="2">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Poništi">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Name="btnPonisti" Content="Poništi"  />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
 
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,256,32,123" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.izaberiOpremu}" Grid.RowSpan="2"/>
+
+        <ComboBox x:Name="comboEquip" ItemsSource="{Binding Path = equipCollection}" Height="42" Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3" Margin="10,256,10,10" SelectionChanged="comboEquip_SelectionChanged"  >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Naziv}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,35,32,36" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.unesiKolicinu}"/>
+
+        <TextBox Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3" Margin="10,35,10,40" FontSize="30" VerticalAlignment="Center" Name="quantity" Height="50"></TextBox>
 
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_potvrdi" />
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_otkazi"/>
-
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,29,42,42" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.izaberiNazivSale}"/>
-       
-        <ComboBox Height="42" Name="tip" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Margin="10,29,10,54">
-            <ComboBoxItem Content="Magacin"/>
-            <ComboBoxItem Content="102"/>
-            <ComboBoxItem Content="103"/>
-            <ComboBoxItem Content="104"/>
-            <ComboBoxItem Content="105"/>
-        </ComboBox>
     </Grid>
 </Window>

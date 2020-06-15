@@ -51,13 +51,60 @@ namespace Service
             return rooms;
         }
 
-        public void addEquipment(int idE, int quant)
+        public void addEquipment(string naziv, int quant)
         {
-            var Foundequip = _equipmentRepository.GetEquip(idE);
-            Foundequip.Quantity += quant;
-            _equipmentRepository.Edit(Foundequip);
+            bool postoji = _equipmentRepository.EquipExists(naziv);
+            if (postoji)
+            {
+                var Foundequip = _equipmentRepository.GetEquip(naziv);
+                Foundequip.Quantity += quant;
+                _equipmentRepository.Edit(Foundequip);
+            }
+            else
+            {
+                Equipment d = new Equipment(naziv, quant);
+                var newDrag = _equipmentRepository.Save(d);
+            }
 
+        }
 
+        public void deleteEquipment(int Id, int quant)
+        {
+            bool postoji = _equipmentRepository.EquipExists(Id);
+            if (postoji)
+            {
+                var Foundequip = _equipmentRepository.GetEquip(Id);
+                Foundequip.Quantity -= quant;
+                _equipmentRepository.Edit(Foundequip);
+            }
+        }
+
+        public string getNazivOpreme(int Id)
+        {
+            var eqs = _equipmentRepository.GetAll();
+            foreach(Equipment e in eqs)
+            {
+                if(e.Id == Id)
+                {
+                    return e.Naziv;
+                    break;
+                }
+            }
+            return "ne postoji";
+        }
+
+        public int getIdOpreme(string naziv)
+        {
+            var eqs = _equipmentRepository.GetAll();
+            foreach (Equipment e in eqs)
+            {
+                if (e.Naziv.Equals(naziv))
+                {
+                    return e.Id;
+                    break;
+                }
+            }
+            return 0;
         }
 
         /* public void addEquipment(TypeOfEquipment tip, int quantity)

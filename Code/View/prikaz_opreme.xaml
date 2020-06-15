@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="prikaz_opreme" Height="768" Width="1024" Background="AliceBlue">
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -23,29 +23,42 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="602"  Height="55"  Margin="10,0,404,0" Grid.ColumnSpan="2" Text="{x:Static language:Lang.izaberiSaluZaOpremu}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="591"  Height="55"  Margin="21,0,404,0" Grid.ColumnSpan="2" Text="{x:Static language:Lang.izaberiSaluZaOpremu}"/>
 
 
-        <DataGrid  x:Name="dataGridSale" ItemsSource="{Binding Path=roomsCollection}" AutoGenerateColumns="True" 
+        <DataGrid  x:Name="dataGridSale" ItemsSource="{Binding Path=roomsCollection}" AutoGenerateColumns="False" 
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,29,0,66" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridSale_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Prikaz">
+                <DataGridTemplateColumn Width="70" Header="Prikaz">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnDetaljno" Content="Detaljno" Click="Button_Detaljno" />
+                            <Button  Name="btnDetaljno" Content="Detaljno" Click="Button_Detaljno" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Obriši">
+                <DataGridTemplateColumn Width="70" Header="Obriši">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Name="btnObrisi" Content="Obrisi" Click="Button_Obrisi"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="*"  Header="Id Sobe" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding tip}"/>
+
             </DataGrid.Columns>
 
+
+
+
+
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
         <Button HorizontalAlignment="Center" Width="232" Margin="140,51,136,31" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Column="1" Grid.Row="2" Click="Button_otkazi"/>
 

@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model.Rooms;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,13 @@ namespace health_clinicClassDiagram.view
         //    get;
         //    set;
         //}
+        public static ObservableCollection<Equipment> equipCollection
+        {
+            get;
+            set;
+        }
+
+        public List<Equipment> equips;
         public naruci_opremu()
         {
             InitializeComponent();
@@ -30,8 +38,12 @@ namespace health_clinicClassDiagram.view
             //Oprema.Add(new oprema() { VrstaOpreme = "Sto", Sifra = "1", Kolicina = "10" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Krevet", Sifra = "2", Kolicina = "20" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Stolica", Sifra = "3", Kolicina = "14" });
+            
 
-
+            equips = _equipController.GetAll();
+            equipCollection = new ObservableCollection<Equipment>(equips);
+            dataGridNaruciOpremu.Items.Refresh();
+            
 
         }
         private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -49,11 +61,11 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            int idSalji = equipCombo.SelectedIndex;
+            string naz = name.Text;
 
             int quant = int.Parse(quantity.Text);
 
-            _equipController.addEquipment(idSalji, quant);
+            _equipController.addEquipment(naz, quant);
 
             this.Close();
 

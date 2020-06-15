@@ -11,6 +11,11 @@ namespace Repository
 {
    public interface IEquipRepository : IRepository<Equipment>
    {
-      Model.Rooms.Equipment GetEquip(int idE);
-   }
+      Model.Rooms.Equipment GetEquip(String naziv);
+        
+        bool EquipExists(string naziv);
+
+        Equipment GetEquip(int id);
+        bool EquipExists(int id);
+    }
 }

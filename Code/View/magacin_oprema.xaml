@@ -32,9 +32,14 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
-                <DataGridTextColumn Width="*"  Header="Tip opreme" Binding="{Binding Type}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Naziv}"/>
                 <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
 
 

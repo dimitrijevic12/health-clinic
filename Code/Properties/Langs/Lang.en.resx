@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="birajTIPsale" xml:space="preserve">
-    <value>Choose type for new room:</value>
+    <value> Choose type for new room:</value>
   </data>
   <data name="DatumRodjenja" xml:space="preserve">
     <value>Date of birth</value>
@@ -130,7 +130,7 @@
     <value>Add new room</value>
   </data>
   <data name="drugiDatum" xml:space="preserve">
-    <value>Select the date to which you want to see the plan:</value>
+    <value> Select the date to which you want to see the plan:</value>
   </data>
   <data name="DugmeIzadji" xml:space="preserve">
     <value>Back</value>
@@ -157,61 +157,61 @@
     <value>Name</value>
   </data>
   <data name="imeDruge" xml:space="preserve">
-    <value>Choose name for second room:</value>
+    <value> Choose name for second room:</value>
   </data>
   <data name="imePrve" xml:space="preserve">
-    <value>Choose name for first room:</value>
+    <value> Choose name for first room:</value>
   </data>
   <data name="izaberiDatum" xml:space="preserve">
-    <value>Choose date for renovation:</value>
+    <value> Choose date for renovation:</value>
   </data>
   <data name="izaberiDatumKrajnji" xml:space="preserve">
-    <value>Select the date when the renovation ends:</value>
+    <value> Select the date when the renovation ends:</value>
   </data>
   <data name="izaberiDatumPocetni" xml:space="preserve">
-    <value>Select the date when the renovation starts:</value>
+    <value> Select the date when the renovation starts:</value>
   </data>
   <data name="izaberiLekara" xml:space="preserve">
-    <value>Choose doctor:</value>
+    <value> Choose doctor:</value>
   </data>
   <data name="izaberiNazivSale" xml:space="preserve">
-    <value>Choose room:</value>
+    <value> Choose room:</value>
   </data>
   <data name="izaberiNoviTipSale" xml:space="preserve">
-    <value>Choose new type:</value>
+    <value> Choose new type:</value>
   </data>
   <data name="izaberiOpremu" xml:space="preserve">
-    <value>Choose equipment:</value>
+    <value> Choose equipment:</value>
   </data>
   <data name="izaberiOpremuDetaljno" xml:space="preserve">
-    <value>Choose equipment for detailed view:</value>
+    <value> Choose equipment for detailed view:</value>
   </data>
   <data name="izaberisaludva" xml:space="preserve">
-    <value>Choose second room for merging:</value>
+    <value> Choose second room for merging:</value>
   </data>
   <data name="izaberisalujedan" xml:space="preserve">
-    <value>Choose  first room for merging:</value>
+    <value> Choose  first room for merging:</value>
   </data>
   <data name="izaberiSaluUKojuPrebacujes" xml:space="preserve">
-    <value>Select room where you want to transfer the equipment:</value>
+    <value> Select room where you want to transfer the equipment:</value>
   </data>
   <data name="izaberiSaluZaKojuMenjasTip" xml:space="preserve">
-    <value>Choose room for renovation:</value>
+    <value> Choose room for renovation:</value>
   </data>
   <data name="izaberiSaluZaOpremu" xml:space="preserve">
-    <value>Select room for which you want to see the equipment:</value>
+    <value> Select room for which you want to see the equipment:</value>
   </data>
   <data name="izaberiSaluZaPodelu" xml:space="preserve">
-    <value>Choose room you want to split:</value>
+    <value> Choose room you want to split:</value>
   </data>
   <data name="izaberiSaluZaPremestanjeOpreme" xml:space="preserve">
-    <value>Select room from which you want to transfer equipment:</value>
+    <value> Select room from which you want to transfer equipment:</value>
   </data>
   <data name="izDrugeUOvu" xml:space="preserve">
-    <value>From other room to this</value>
+    <value> From warehouse to this room</value>
   </data>
   <data name="izOveUDrugu" xml:space="preserve">
-    <value>From this room to other</value>
+    <value> From this room to warehouse</value>
   </data>
   <data name="izvestaj" xml:space="preserve">
     <value>REPORT</value>
@@ -244,7 +244,7 @@
     <value>WAREHOUSE</value>
   </data>
   <data name="Max" xml:space="preserve">
-    <value>Enter maximum capacity of a room:</value>
+    <value> Enter maximum capacity of a room:</value>
   </data>
   <data name="narucilekove" xml:space="preserve">
     <value>Order drugs</value>
@@ -253,10 +253,10 @@
     <value>Order equipment</value>
   </data>
   <data name="NovaSalaInfo" xml:space="preserve">
-    <value>Enter informations about the new room:</value>
+    <value> Enter informations about the new room:</value>
   </data>
   <data name="odabranaOprema" xml:space="preserve">
-    <value>Chosen equipment:</value>
+    <value> Chosen equipment:</value>
   </data>
   <data name="odjava" xml:space="preserve">
     <value>LOG OUT</value>
@@ -265,10 +265,10 @@
     <value>OPTIONS</value>
   </data>
   <data name="oprema" xml:space="preserve">
-    <value>Equipment:</value>
+    <value> Equipment:</value>
   </data>
   <data name="opremaUOdabranojsali" xml:space="preserve">
-    <value>Equipment in this room:</value>
+    <value> Equipment in this room:</value>
   </data>
   <data name="planlekar" xml:space="preserve">
     <value>Plan for doctors</value>
@@ -286,22 +286,22 @@
     <value>   HELP</value>
   </data>
   <data name="PorukaNaruciLek" xml:space="preserve">
-    <value>If you are ordering this drug for the first time, new ID will be assigned to that drug</value>
+    <value> If you are ordering this drug for the first time, new ID will be assigned to that drug</value>
   </data>
   <data name="PorukaNaruciOpremu" xml:space="preserve">
-    <value>If you are ordering this equipment for the first time, new ID will be assigned to that equipment</value>
+    <value> If you are ordering this equipment for the first time, new ID will be assigned to that equipment</value>
   </data>
   <data name="PorukaPodela" xml:space="preserve">
-    <value>When dividing both of these halls, they retain the type of the original hall, each hall received half of the equipment.</value>
+    <value> When dividing both of these halls, they retain the type of the original hall, each hall received half of the equipment.</value>
   </data>
   <data name="porukaSpajanje" xml:space="preserve">
-    <value>When merging, the type and name of the new room will be the same as the type and name of the first selected room.</value>
+    <value> When merging, the type and name of the new room will be the same as the type and name of the first selected room.</value>
   </data>
   <data name="premestiOpremu" xml:space="preserve">
     <value>Move equipment</value>
   </data>
   <data name="premstanjeOpreme" xml:space="preserve">
-    <value>Moving equipment:</value>
+    <value> Moving equipment:</value>
   </data>
   <data name="Prezime" xml:space="preserve">
     <value>Surname</value>
@@ -325,7 +325,7 @@
     <value>Change type for room</value>
   </data>
   <data name="prviDatum" xml:space="preserve">
-    <value>Select the date from which you want to see the plan:</value>
+    <value> Select the date from which you want to see the plan:</value>
   </data>
   <data name="RadnoVreme" xml:space="preserve">
     <value>Working schedule</value>
@@ -335,6 +335,9 @@
   </data>
   <data name="sala" xml:space="preserve">
     <value>ROOM</value>
+  </data>
+  <data name="sale" xml:space="preserve">
+    <value> Rooms:</value>
   </data>
   <data name="sifra" xml:space="preserve">
     <value>Password:</value>
@@ -349,16 +352,16 @@
     <value>Serbian</value>
   </data>
   <data name="unesiIdNoveSale" xml:space="preserve">
-    <value>Enter id for new room:</value>
+    <value> Enter id for new room:</value>
   </data>
   <data name="unesiKolicinu" xml:space="preserve">
-    <value>Enter quantity:</value>
+    <value> Enter quantity:</value>
   </data>
   <data name="unesiLekNarucivanje" xml:space="preserve">
-    <value>Enter drug you want to order:</value>
+    <value> Enter drug you want to order:</value>
   </data>
   <data name="unesiOpremuNarucivanje" xml:space="preserve">
-    <value>Enter equimpent you want to order:</value>
+    <value> Enter equimpent you want to order:</value>
   </data>
   <data name="Upravnik" xml:space="preserve">
     <value>MANAGER</value>

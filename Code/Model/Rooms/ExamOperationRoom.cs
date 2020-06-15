@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Model.Rooms
 {
@@ -22,6 +23,14 @@ namespace Model.Rooms
         {
             this.Id = id;
             tip = TypeOfRoom.EXAMOPERATION;
+            Equipments = new List<Equipment>();
+        }
+
+        public ExamOperationRoom(long id, List<Equipment>equipments) : base(id)
+        {
+            this.Id = id;
+            tip = TypeOfRoom.EXAMOPERATION;
+            Equipments = equipments;
         }
 
         public long Id
@@ -35,7 +44,11 @@ namespace Model.Rooms
             get { return tipSobe; }
             set { tipSobe = value; }
         }
-
+        /*public List<Equipment> Equipments
+        {
+            get { return equipments; }
+            set { equipments = value; }
+        }*/
 
     }
 }

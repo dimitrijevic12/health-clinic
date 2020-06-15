@@ -48,9 +48,9 @@ namespace health_clinicClassDiagram.view
             String IME = Ime.Text;
             String PREZIME = Prezime.Text;
 
-            String JMBG = Jmbg.Text;
+           // String JMBG = Jmbg.Text;
             String DATUMRODJ = DatumRodjenja.Text;
-            String RADNOVREME = RadnoVreme.Text;
+           // String RADNOVREME = RadnoVreme.Text;
             String SPECIJALISTA = "DA";
 
             int combo1 = PolCombo.SelectedIndex;
@@ -71,7 +71,7 @@ namespace health_clinicClassDiagram.view
             }
             else if (combo2 == 1)
             {
-                _specijalnost = Specialization.ENDOCRINOLOGY;
+                _specijalnost = Specialization.PULMOLOGY;
             }
             else if (combo2 == 2)
             {
@@ -79,7 +79,7 @@ namespace health_clinicClassDiagram.view
             }
             else if (combo2 == 3)
             {
-                _specijalnost = Specialization.PULMOLOGY;
+                _specijalnost = Specialization.ENDOCRINOLOGY;
             }
             else
             {
@@ -98,7 +98,7 @@ namespace health_clinicClassDiagram.view
             }
             else if (combo3 == 2)
             {
-                _hirurg = SurgicalSpecialty.NEUROSURGERY;
+                _hirurg = SurgicalSpecialty.PLASTICAL;
             }
             else if (combo3 == 3)
             {

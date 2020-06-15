@@ -1,4 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using Controller;
+using Model.Rooms;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Web.ModelBinding;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,17 +15,57 @@ namespace health_clinicClassDiagram.view
     /// </summary>
     public partial class premestanje_opreme : Window
     {
+        private readonly IController<ExamOperationRoom> _examOperationRoomController;
+        private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IEquipmentController _equipController;
+        private Room room;
+        private Equipment equTest;
+        
         private int colNum = 0;
 
+        public static ObservableCollection<Room> roomsCollection
+        {
+            get;
+            set;
+        }
+        public static ObservableCollection<Equipment> equipCollection
+        {
+            get;
+            set;
+        }
         //public static ObservableCollection<oprema_detaljno> DetaljnaOprema
         //{
         //    get;
         //    set;
         //}
+
+        public List<ExamOperationRoom> rooms;
+        public List<RehabilitationRoom> rooms2;
+        public List<Room> finalRooms;
+        public List<Equipment> equips;
+        private ExamOperationRoom sobaZaDodavanje;
+        private RehabilitationRoom sobaZaDodavanje2;
         public premestanje_opreme()
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+            _equipController = app.equipController;
+            _examOperationRoomController = app.examOperationRoomController;
+            _rehabilitationRoomController = app.rehabilitationRoomController;
+            rooms = _examOperationRoomController.GetAll();
+            rooms2 = _rehabilitationRoomController.GetAll();
+
+            finalRooms = rooms2.Cast<Room>().ToList();
+
+            finalRooms.AddRange(rooms);
+            
+
+            roomsCollection = new ObservableCollection<Room>(finalRooms);
+
+            equips = _equipController.GetAll();
+            equipCollection = new ObservableCollection<Equipment>(equips);
+            dataGridIzMagacina.Items.Refresh();
             //DetaljnaOprema = new ObservableCollection<oprema_detaljno>();
             //DetaljnaOprema.Add(new oprema_detaljno() { VrstaOpreme = "Sto", Sifra = "1", Id = "100" });
             //DetaljnaOprema.Add(new oprema_detaljno() { VrstaOpreme = "Sto", Sifra = "1", Id = "204" });
@@ -39,12 +85,101 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
+            string naz = equTest.Naziv;
+            int IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
+            int quan = int.Parse(quantity.Text);
+           // string naz = _equipController.getNazivOpreme(IdOpreme);
+            Equipment equ = new Equipment(IdOpreme, naz, quan);
+
+
+
+
+            int flag = 0;
+            if (room.Equipments != null)
+            {
+                //Console.WriteLine(" broj" + room.Equipments.Count);
+                foreach (Equipment ek in room.Equipments)
+                {
+                    if (ek.Id == IdOpreme)
+                    {
+                        ek.Quantity += quan;
+                        flag += 1;
+                        
+                    }
+                   
+                }
+
+                if (flag == 0)
+                {
+                    room.Equipments.Add(equ);
+                    foreach (Equipment ek in room.Equipments)
+                    {
+                       // Console.WriteLine(ek.Id);
+                    }
+                }
+            }
+            else
+            {
+                
+                room.Equipments.Add(equ);
+                
+
+            }
+
+            foreach (ExamOperationRoom r in rooms)
+            {
+                if (r.Id.Equals(room.Id))
+                {
+                    sobaZaDodavanje = r;
+                    sobaZaDodavanje.Equipments = room.Equipments;
+                    break;
+                }
+            }
+
+            foreach (RehabilitationRoom r in rooms2)
+            {
+                if (r.Id.Equals(room.Id))
+                {
+                    sobaZaDodavanje2 = r;
+                    sobaZaDodavanje2.Equipments = room.Equipments;
+                    break;
+                }
+            }
+
+            if (sobaZaDodavanje != null)
+            {
+                _examOperationRoomController.Edit(sobaZaDodavanje);
+            } else
+            {
+                _rehabilitationRoomController.Edit(sobaZaDodavanje2);
+            }
+
+           /* foreach (Equipment es in room.Equipments)
+            {
+                Console.WriteLine(es.Ispisi().ToString());
+            }
+*/
+            _equipController.deleteEquipment(IdOpreme,quan);
+
+
             this.Close();
         }
 
         private void Button_otkazi(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void tip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            room = (Room)cb.SelectedItem;
+        }
+
+        private void comboEquip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            equTest= (Equipment)cb.SelectedItem;
         }
     }
 }

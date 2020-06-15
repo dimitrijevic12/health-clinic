@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Model.Rooms
 {
@@ -13,7 +14,7 @@ namespace Model.Rooms
        //bio private ili protected (ne secam se) long Id, ali sam ga obrisao zbog dole gettera i settera
       public InventoryEquip[] inventoryEquip;
 
-
+        protected List<Equipment> equipments;
         protected long _id;
         protected TypeOfRoom tipSobe;
 
@@ -28,18 +29,27 @@ namespace Model.Rooms
             set { tipSobe = value; }
         }
 
+        public List<Equipment> Equipments
+        {
+            get { return equipments; }
+            set { equipments = value; }
+        }
+
 
         public Room(long id)
         {
             this.Id = id;
+            Equipments = new List<Equipment>();
         }
 
         public Room(long id, TypeOfRoom tip)
         {
             this.Id = id;
             this.tipSobe = tip;
+            Equipments = new List<Equipment>();
         }
 
+        
     }
 
 }

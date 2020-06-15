@@ -19,6 +19,7 @@ namespace Model.Rooms
       public Ingredients ingredients;
       private int id;
       private String name;
+      Random rnd = new Random();
       private String Description;
       private Boolean validation;
       private int quantity;
@@ -26,7 +27,7 @@ namespace Model.Rooms
 
         public Drug(string name, int quantity)
         {
-            id = brojac++;
+            Id = rnd.Next(1, 10000);
             Name = name;
             Quantity = quantity;
             Validation = false;

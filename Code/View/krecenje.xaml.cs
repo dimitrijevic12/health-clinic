@@ -1,4 +1,6 @@
 ﻿
+using Controller;
+using Model.Rooms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,16 +24,39 @@ namespace health_clinicClassDiagram.view
     public partial class krecenje : Window
     {
         private int colNum = 0;
+        private readonly IController<ExamOperationRoom> _examOperationRoomController;
+        private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
 
+        public static ObservableCollection<Room> roomsCollection
+        {
+            get;
+            set;
+        }
         //public static ObservableCollection<SpisakSala> Spisak
         //{
         //    get;
         //    set;
         //}
+        public List<ExamOperationRoom> rooms;
+        public List<RehabilitationRoom> rooms2;
+        public List<Room> finalRooms;
         public krecenje()
         {
             InitializeComponent();
             this.DataContext = this;
+            var app = Application.Current as App;
+           
+            _examOperationRoomController = app.examOperationRoomController;
+            _rehabilitationRoomController = app.rehabilitationRoomController;
+            rooms = _examOperationRoomController.GetAll();
+            rooms2 = _rehabilitationRoomController.GetAll();
+
+            finalRooms = rooms2.Cast<Room>().ToList();
+
+            finalRooms.AddRange(rooms);
+
+
+            roomsCollection = new ObservableCollection<Room>(finalRooms);
             //Spisak = new ObservableCollection<SpisakSala>();
             //Spisak.Add(new SpisakSala { Sala = "101", TipSale = "Operaciona" });
         }
@@ -45,6 +70,11 @@ namespace health_clinicClassDiagram.view
         private void Button_otkazi(object sender, RoutedEventArgs e)
         {
            
+            this.Close();
+        }
+
+        private void Button_potvrdi(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

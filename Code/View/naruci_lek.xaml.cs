@@ -1,4 +1,7 @@
 ﻿using Controller;
+using Model.Rooms;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +19,13 @@ namespace health_clinicClassDiagram.view
         //    get;
         //    set;
         //}
+        public static ObservableCollection<Drug> drugCollection
+        {
+            get;
+            set;
+        }
+
+        public List<Drug> drugs;
         public naruci_lek()
         {
             InitializeComponent();
@@ -26,6 +36,9 @@ namespace health_clinicClassDiagram.view
             //Lekovi.Add(new lekovi() { Lek = "Brufen", SifraLeka = "213", Kolicina = "10" });
             //Lekovi.Add(new lekovi() { Lek = "Paracetamol", SifraLeka = "442", Kolicina = "20" });
 
+            drugs = _drugController.GetAll();
+            drugCollection = new ObservableCollection<Drug>(drugs);
+            dataGridNaruciLek.Items.Refresh();
         }
 
         private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)

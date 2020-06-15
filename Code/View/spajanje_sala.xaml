@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
         Title="spajanje_sala" Height="768" Width="1024" Background="AliceBlue">
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -29,39 +29,62 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="453"  Height="54" Margin="10,14,45,47" Grid.ColumnSpan="3"  Text="{x:Static language:Lang.izaberisalujedan}"/>
-        <ComboBox Height="42" Name="sala" Width="412" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="4" Margin="0,10,149,63" HorizontalAlignment="Right">
-            <ComboBoxItem Content="101"/>
-            <ComboBoxItem Content="102"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="452"  Height="54" Margin="0,23,57,38" Grid.ColumnSpan="3"  Text="{x:Static language:Lang.sale}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="452"  Height="54" Margin="10,175,47,39" Grid.ColumnSpan="3"  Text="{x:Static language:Lang.izaberisalujedan}"/>
+        <ComboBox x:Name="comboSala1" ItemsSource="{Binding Path = roomsCollection}" Height="42" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,175,10,51" SelectionChanged="comboSala1_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="453"  Height="54" Margin="10,229,46,103" Grid.ColumnSpan="3" Grid.RowSpan="2"  Text="{x:Static language:Lang.izaberisaludva}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="453"  Height="54" Margin="10,68,45,261" Grid.ColumnSpan="3" Grid.RowSpan="2"  Text="{x:Static language:Lang.izaberisaludva}"/>
-       
-        <ComboBox Height="42" Name="sala2" Width="412" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="4" Margin="0,63,149,10" HorizontalAlignment="Right">
-            <ComboBoxItem Content="101"/>
-            <ComboBoxItem Content="102"/>
+        <ComboBox x:Name="comboSala2" ItemsSource="{Binding Path = roomsCollection}" Height="42" Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,226,10,0" SelectionChanged="comboSala2_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
+        <DataGrid  x:Name="dataGridOdabranaSala" ItemsSource="{Binding Path=roomsCollection}" AutoGenerateColumns="False" 
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,58,0,110" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Column="0" Grid.RowSpan="2">
 
-        <DataGrid  x:Name="dataGridOdabranaSala" ItemsSource="{Binding Path=Spisak}" AutoGenerateColumns="True" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,50,0,22" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0"/>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Width="*"  Header="Id Sobe" Binding="{Binding Id}"/>
+                <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding tip}"/>
+
+            </DataGrid.Columns>
+            
+            <DataGrid.Resources>
+            <Style TargetType="{x:Type DataGrid}">
+                <Setter Property="Background" Value="AliceBlue"/>
+            </Style>
+            </DataGrid.Resources>
+        </DataGrid>
 
 
         <TextBlock Grid.Column="0" Grid.Row="2" FontSize="19" HorizontalAlignment="Center" VerticalAlignment="Center" Width="1006"  Height="54" Margin="10,15,0,49" Grid.ColumnSpan="6" Foreground="#FFF02828" Text="{x:Static language:Lang.porukaSpajanje}"/>
-        
 
 
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" />
+
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_potvrdi"/>
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,36,139,10" Click="Button_otkazi"/>
         <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,17,42,54" Grid.ColumnSpan="4" Text="{x:Static language:Lang.izaberiDatumPocetni}"/>
 
         <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="54" Margin="10,71,42,0" Grid.ColumnSpan="4" Text="{x:Static language:Lang.izaberiDatumKrajnji}"/>
-        
 
 
 
-        <DatePicker Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" Margin="31,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="54" Width="328"/>
 
-        <DatePicker Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" Margin="31,71,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="54" Width="328"/>
+        <DatePicker Grid.Column="4" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="34" Width="328" Margin="0,10,0,0" Name="datep1"/>
+
+        <DatePicker Grid.Column="4" Grid.Row="3" HorizontalAlignment="Left" Margin="0,67,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="31" Width="328" Name="datep2"/>
 
 
 

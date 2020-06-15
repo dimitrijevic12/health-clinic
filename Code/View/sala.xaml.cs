@@ -26,6 +26,8 @@ namespace health_clinicClassDiagram.view
 
         private void Button_pocetna(object sender, RoutedEventArgs e)
         {
+            
+           
             var s = new pocetna();
             s.Show();
             this.Close();

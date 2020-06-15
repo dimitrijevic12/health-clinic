@@ -34,10 +34,10 @@ namespace Repository
             return equip.Count() == 0 ? 0 : equip.Max(eq => eq.Id);
         }
 
-        public Equipment GetEquip(int idE)
+        public Equipment GetEquip(String naz)
         {
             var equip = _stream.ReadAll().ToList();
-            return equip[equip.FindIndex(apt => apt.Id == idE)];
+            return equip[equip.FindIndex(apt => apt.Naziv.Equals(naz))];
         }
 
         public Equipment Save(Equipment obj)
@@ -86,7 +86,38 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-       
-   
-   }
+        public bool EquipExists(string naziv)
+        {
+            var equips = _stream.ReadAll().ToList();
+            foreach (Equipment d in equips)
+            {
+                if (d.Naziv.Equals(naziv))
+                {
+                    return true;
+                    break;
+                }
+            }
+            return false;
+        }
+
+        public Equipment GetEquip(int id)
+        {
+            var equip = _stream.ReadAll().ToList();
+            return equip[equip.FindIndex(apt => apt.Id == id)];
+        }
+
+        public bool EquipExists(int id)
+        {
+            var equips = _stream.ReadAll().ToList();
+            foreach (Equipment d in equips)
+            {
+                if (d.Id == id)
+                {
+                    return true;
+                    break;
+                }
+            }
+            return false;
+        }
+    }
 }

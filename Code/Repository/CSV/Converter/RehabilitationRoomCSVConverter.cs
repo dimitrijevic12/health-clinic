@@ -29,7 +29,26 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             int inUse = int.Parse(tokens[1]);
             int max = int.Parse(tokens[2]);
 
+            List<Equipment> equipments = new List<Equipment>();
+
             int i = 3;
+
+            while (i < tokens.Length - 1)
+            {
+                int idEquip = int.Parse(tokens[i]);
+                i++;
+                string naziv = tokens[i];
+                i++;
+                int quantity = int.Parse(tokens[i]);
+
+                Equipment equipment = new Equipment(idEquip, naziv, quantity);
+                equipments.Add(equipment);
+                i++;
+            }
+
+            return new RehabilitationRoom(idRoom, inUse, max, equipments);
+
+            /*int i = 3;
 
             while (i < tokens.Length - 1)
             {
@@ -46,7 +65,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 i++;
             }
 
-            return new RehabilitationRoom(idRoom, inUse, max, records);
+            return new RehabilitationRoom(idRoom, inUse, max, records);*/
         }
 
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
@@ -54,9 +73,15 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             String resenje = "";
 
 
-            foreach (MedicalRecord record in entity.Patients)
+            /*foreach (MedicalRecord record in entity.Patients)
             {
                 resenje += string.Join(_delimiter, record.IDnaloga, record.Name, record.Surname, record.IDPatient);
+                resenje += _delimiter;
+            }*/
+
+            foreach (Equipment equipment in entity.Equipments)
+            {
+                resenje += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
                 resenje += _delimiter;
             }
 

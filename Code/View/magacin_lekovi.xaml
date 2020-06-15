@@ -35,10 +35,16 @@
                 <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
                 <DataGridTextColumn Width="*"  Header="Validacija" Binding="{Binding Validation}"/>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGrid}">
+                    <Setter Property="Background" Value="AliceBlue"/>
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
 
 
         <Button HorizontalAlignment="Center" Width="232" Margin="146,10,118,22" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeIzadji}" Grid.Column="1" Grid.Row="3" Click="Button_izadji"/>
 
+        
     </Grid>
 </Window>
