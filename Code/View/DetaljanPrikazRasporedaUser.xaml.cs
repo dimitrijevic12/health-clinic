@@ -286,7 +286,7 @@ namespace health_clinicClassDiagram.View
         {
 
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

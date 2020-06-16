@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
@@ -49,18 +49,18 @@ namespace health_clinicClassDiagram.View
                 string message = "Morate uneti datume";
                 string title = "Greška";
                 MessageBox.Show(message, title);
-            } else if (_startDate >= _endDate)
+            } else if ((DateTime)startDate.SelectedDate > (DateTime)endDate.SelectedDate)
             {
-                _startDate = (DateTime)startDate.SelectedDate;
-                _endDate = (DateTime)endDate.SelectedDate;
-                _endDate = _endDate.AddHours(24);
-
+              
                 string message = "Neispravno uneseni datumi";
                 string title = "Greška";
                 MessageBox.Show(message, title);
             }
             else
             {
+                _startDate = (DateTime)startDate.SelectedDate;
+                _endDate = (DateTime)endDate.SelectedDate;
+                //_endDate = _endDate.AddHours(24);
 
                 ZauzetostProstorijaUser zauzetost = new ZauzetostProstorijaUser(_startDate, _endDate);
                 (this.Parent as Panel).Children.Add(zauzetost);

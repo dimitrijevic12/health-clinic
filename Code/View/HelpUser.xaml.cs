@@ -29,34 +29,12 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
-        }
-
-        private bool _isToolTipVisible = true;
-
-        private void checkBox_Checked(object sender, RoutedEventArgs e)
-        {
-            Style style = new Style(typeof(ToolTip));
-            style.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));
-            style.Seal();
-
-           
-                if (_isToolTipVisible)
-                {
-                    this.Resources.Add(typeof(ToolTip), style); //hide
-                    _isToolTipVisible = false;
-                }
-                else
-                {
-                    this.Resources.Remove(typeof(ToolTip)); //show
-                    _isToolTipVisible = true;
-                }
-            
         }
     }
 }

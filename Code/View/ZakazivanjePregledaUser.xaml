@@ -110,7 +110,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="5" SelectionChanged="ComboBox_SelectionChanged_1">
+                <ComboBox Grid.Column="4" Grid.Row="12" Grid.ColumnSpan="5" Name="vrstaCombo" SelectionChanged="ComboBox_SelectionChanged_1">
                     <ComboBoxItem Content = "EXAM"/>
                     <ComboBoxItem Content= "SURGERY"/>
                 </ComboBox>

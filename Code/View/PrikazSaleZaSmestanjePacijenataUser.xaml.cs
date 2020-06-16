@@ -100,7 +100,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)
@@ -116,10 +116,19 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Otpusti(object sender, RoutedEventArgs e)
         {
-            _rehabilitationRoomController.releasePatient(record, rehabilitationRoom);
+            if (record == null)
+            {
+                string message = "Morate izabrati nalog za brisanje";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            } else
+            {
+                _rehabilitationRoomController.releasePatient(record, rehabilitationRoom);
 
-            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            (this.Parent as Panel).Children.Add(sale);
+                SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
+                (this.Parent as Panel).Children.Add(sale);
+            }
+            
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:health_clinicClassDiagram.View"
         mc:Ignorable="d"
-        Title="Login" Height="768" Width="1024" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        Title="Login" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
     <Grid Name ="GridMain" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         
     </Grid>

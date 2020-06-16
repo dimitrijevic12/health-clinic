@@ -20,11 +20,56 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class HomeUser : UserControl
     {
+        public static RoutedCommand detaljanShorcut = new RoutedCommand();
+        public static RoutedCommand smestanjeShorcut = new RoutedCommand();
+        public static RoutedCommand kalendarShortcut = new RoutedCommand();
+        public static RoutedCommand registrovaniShortcut = new RoutedCommand();
+        public static RoutedCommand doktoriShorcut = new RoutedCommand();
+        public static RoutedCommand helpShorcut = new RoutedCommand();
+        public static RoutedCommand izvestajShorcut = new RoutedCommand();
+
+        public static bool tooltipEnabled = true;
         public HomeUser()
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
-        }
+
+            detaljanShorcut.InputGestures.Add(new KeyGesture(Key.D, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(detaljanShorcut, Button_DanasnjiRaspored));
+
+            smestanjeShorcut.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(smestanjeShorcut, Button_Smestaj));
+
+            kalendarShortcut.InputGestures.Add(new KeyGesture(Key.K, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(kalendarShortcut, Button_Raspored));
+
+            registrovaniShortcut.InputGestures.Add(new KeyGesture(Key.R, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(registrovaniShortcut, Button_Pacijenti));
+
+            doktoriShorcut.InputGestures.Add(new KeyGesture(Key.C, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(doktoriShorcut, Button_Doktori));
+
+            helpShorcut.InputGestures.Add(new KeyGesture(Key.H, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(helpShorcut, Button_Help));
+
+            izvestajShorcut.InputGestures.Add(new KeyGesture(Key.I, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(izvestajShorcut, Button_Izvestaj));
+
+            Style style = new Style(typeof(ToolTip));
+            style.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));
+            style.Seal();
+
+            if ((bool)checkBox.IsChecked)
+            {
+                this.Resources.Remove(typeof(ToolTip)); //show
+
+            }else
+            {
+                this.Resources.Add(typeof(ToolTip), style); //hide
+            }
+
+
+    }
 
         private void Button_DanasnjiRaspored(object sender, RoutedEventArgs e)
         {
@@ -93,6 +138,44 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void checkBox_Checked(object sender, RoutedEventArgs e)
+        {
+            tooltipEnabled = true;
+
+            Style style = new Style(typeof(ToolTip));
+            style.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));
+            style.Seal();
+
+            if ((bool)checkBox.IsChecked)
+            {
+                this.Resources.Remove(typeof(ToolTip)); //show
+
+            }
+            else
+            {
+                this.Resources.Add(typeof(ToolTip), style); //hide
+            }
+        }
+
+        private void checkBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            tooltipEnabled = false;
+
+            Style style = new Style(typeof(ToolTip));
+            style.Setters.Add(new Setter(UIElement.VisibilityProperty, Visibility.Collapsed));
+            style.Seal();
+
+            if ((bool)checkBox.IsChecked)
+            {
+                this.Resources.Remove(typeof(ToolTip)); //show
+
+            }
+            else
+            {
+                this.Resources.Add(typeof(ToolTip), style); //hide
+            }
         }
     }
 }

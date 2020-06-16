@@ -114,21 +114,30 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            _imePacijenta = textImePacijenta.Text;
-            _prezimePacijenta = textPrezimePacijenta.Text;
-            _jmbgPacijenta = long.Parse(textJMBG.Text);
+            if ((textImePacijenta.Text == "") || (textPrezimePacijenta.Text == "") || (textJMBG.Text == "") || (DoktorCombo.SelectedIndex == -1) || (vrstaCombo.SelectedIndex == -1))
+            {
+                string message = "Sva polja moraju biti popunjena";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+                _imePacijenta = textImePacijenta.Text;
+                _prezimePacijenta = textPrezimePacijenta.Text;
+                _jmbgPacijenta = long.Parse(textJMBG.Text);
 
-            Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
-
-        
-
-            Appointment appointment = new Appointment(LongRandom(0, 1000000000, new Random()), _doctor, patient, _room, _type, _startDate, _endDate);
-
-            _appointmentController.Create(appointment);
+                Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
 
 
-            DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
-            (this.Parent as Panel).Children.Add(raspored);
+
+                Appointment appointment = new Appointment(LongRandom(0, 1000000000, new Random()), _doctor, patient, _room, _type, _startDate, _endDate);
+
+                _appointmentController.Create(appointment);
+
+
+                DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
+                (this.Parent as Panel).Children.Add(raspored);
+            }
         }
 
         private void Button_Odustanak(object sender, RoutedEventArgs e)
@@ -139,7 +148,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

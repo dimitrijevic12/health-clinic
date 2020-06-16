@@ -70,9 +70,27 @@ namespace Repository.Csv.Converter
             }*/
 
             int i = 9;
+            int flag = 0;
+            if (tokens.Length >= 10)
+            {
+                if (tokens[9] != "")
+                {
+                    long id = long.Parse(tokens[9]);
+                    treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
+                }
+            }
+
+            if (tokens.Length >= 11)
+            {
+                if (tokens[10] != "")
+                {
+                    long id = long.Parse(tokens[10]);
+                    treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
+                }
+            }
            
 
-            while (i < tokens.Length - 1)
+            /*while (i < tokens.Length)
             {
                 long id = long.Parse(tokens[i]);
 
@@ -83,7 +101,7 @@ namespace Repository.Csv.Converter
                 treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
 
                 i++;
-            }
+            }*/
 
 
 

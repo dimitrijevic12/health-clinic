@@ -62,8 +62,7 @@
 
                 <Label Grid.Column="8" Grid.Row="0" FontSize="20" Foreground="White" Name ="labelDateTime" Margin="40,0,0,0">Datum i vreme</Label>
             </Grid>
-            <Label x:Name="label" Content="Da li želite upaljene Tooltip-ove:" HorizontalAlignment="Left" Margin="23,7,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2" Width="271"/>
-            <CheckBox x:Name="checkBox" Content="Upaljeni Tooltip-ovi" Grid.Column="1" HorizontalAlignment="Left" Margin="53,13,0,0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Checked="checkBox_Checked"/>
+            <Label x:Name="label" Content="U Detaljnom prikazu rasporeda se nalaze operacije za Zakzaivanje novog pregleda, Zakazivanje pregleda preko &#xD;&#xA;Guest naloga, kao i Brisanje i Izmena postojećih.&#xD;&#xA;&#xD;&#xA;U prozoru Sale za smeštanje se nalaze operacije za smeštanje pacijenata u sale predviđene za to, kao i otpuštanje iz istih.&#xD;&#xA;&#xD;&#xA;U prozoru Raspored nalazi se kalendar sa svim datumima, iz koga biramo datum za koji želimo da pogledamo raspored &#xD;&#xA;prostorija.&#xD;&#xA;&#xD;&#xA;Registrovani pacijenti sadrži listu svih pacijenata, kao i operacije za kreiranje novog naloga, brisanje i izmenu postojećeg.&#xD;&#xA;Takođe sadrži i celokupnu istoriju tretmana za svakog pacijenta.&#xD;&#xA;&#xD;&#xA;Generisanje izveštaja otvara prozor gde se nalaze 2 polja za datum između kojih želimo da se izgeneriše izveštaj&#xD;&#xA;o zauzetosti prostorija.&#xD;&#xA;&#xD;&#xA;Prečice:&#xD;&#xA;CTRL + R DETALJAN RASPORED ZA DANAŠNJI DAN&#xD;&#xA;CTRL + S SALE ZA SMEŠTAJNE&#xD;&#xA;CTRL + K RASPORED&#xD;&#xA;CTRL + P REGISTROVANI PACIJENTI&#xD;&#xA;CTRL + D DOKTORI&#xD;&#xA;CTRL + H HELP&#xD;&#xA;CTRL + I GENERISANJE IZVEŠTAJA" HorizontalAlignment="Left" Margin="10,10,-457.333,-174" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="1248" Height="596" FontSize="18" Grid.RowSpan="4"/>
 
         </Grid>
     </Grid>

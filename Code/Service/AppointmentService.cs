@@ -176,9 +176,9 @@ namespace Service
 
         public List<Appointment> GetAll()
         {
-            var doctors = _doctorService.GetAll();
-            var patients = _patientService.GetAll();
-            var rooms = _roomService.GetAll();
+            //var doctors = _doctorService.GetAll();
+            //var patients = _patientService.GetAll();
+            //var rooms = _roomService.GetAll();
             var appointments = iAppointmentRepository.GetAll();
             //BindAllForAppointments(appointments, doctors, patients, rooms);
             return appointments;

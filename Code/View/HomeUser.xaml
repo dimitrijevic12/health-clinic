@@ -10,11 +10,6 @@
     <Grid Name ="GridHome">
         <DockPanel>
             <Menu DockPanel.Dock ="Top" Background="SkyBlue">
-                <Menu.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                    </ItemsPanelTemplate>
-                </Menu.ItemsPanel>
                 <MenuItem Header="_Početna"></MenuItem>
                 <MenuItem Header="_Raspored"></MenuItem>
                 <MenuItem Header="_Registrovani pacijenti"></MenuItem>
@@ -54,16 +49,17 @@
 
             <Grid DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="69*" />
+                    <ColumnDefinition Width="11*"/>
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -84,7 +80,7 @@
                         <StackPanel>
                             <TextBlock Text="Prikaz današnjeg rasporeda" FontSize="12"/>
                         </StackPanel>
-                        
+
                     </StackPanel>
                     <Button.ToolTip>
                         <StackPanel>
@@ -99,13 +95,13 @@
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Smestaj">
+                <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource RoundButton}"  Click="Button_Smestaj">
                     <StackPanel>
                         <Image Source="Images/bed.png" Height="20" />
                         <StackPanel>
                             <TextBlock Text="Današnje sale za smeštanje" FontSize="12"/>
                         </StackPanel>
-                    
+
                     </StackPanel>
                     <Button.ToolTip>
                         <StackPanel>
@@ -120,7 +116,7 @@
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="7" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Raspored">
+                <Button Grid.Column="8" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Raspored">
                     <StackPanel>
                         <Image Source="Images/calendar.png" Height="20" />
                         <StackPanel>
@@ -153,15 +149,15 @@
                         <StackPanel>
 
                             <TextBlock>
-                            Spisak svih pacijenata koji imaju nalog u bolnici.                
+                            Spisak svih pacijenata koji imaju nalog u bolnici.
                             </TextBlock>
                             <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
 
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                
-                <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Doktori">
+
+                <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="3" Style="{StaticResource RoundButton}"  Click="Button_Doktori">
                     <StackPanel>
                         <Image Source="Images/doctor.png" Height="20" />
                         <StackPanel>
@@ -180,7 +176,7 @@
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="7" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Help">
+                <Button Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Help">
                     <StackPanel>
                         <Image Source="Images/help.png" Height="20" />
                         <StackPanel>
@@ -192,14 +188,14 @@
                         <StackPanel>
 
                             <TextBlock>
-                        Detaljniji prikaz pomoći.                     
+                        Detaljniji prikaz pomoći.
                             </TextBlock>
                             <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
 
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="7" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Izvestaj">
+                <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Izvestaj">
                     <StackPanel>
                         <Image Source="Images/report.png" Height="25" />
                         <StackPanel>
@@ -218,31 +214,12 @@
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
-                <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Prioritet">
-                    <StackPanel>
-                        <Image Source="Images/priority.png" Height="20" />
-                        <StackPanel>
-                            <TextBlock Text="Zakazivanje putem prioriteta" FontSize="12"/>
-                        </StackPanel>
-
-                    </StackPanel>
-                    <Button.ToolTip>
-                        <StackPanel>
-
-                            <TextBlock>
-                        Zakazivajne pregleda u zavisnosti od izbora prioriteta.
-                            </TextBlock>
-                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
-
-                        </StackPanel>
-                    </Button.ToolTip>
-
-                </Button>
-                <Label  Grid.Column="8" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center">Dušan</Label>
-                <Image Grid.Column="9" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45"></Image>
-                <Button Grid.Column="8" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="15" Margin="10,0,10,30" Click="Button_Odjava">
+                <Label  Grid.Column="9" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1">Dušan</Label>
+                <Image Grid.Column="10" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45" Margin="18,-4,17,37" Grid.RowSpan="2"></Image>
+                <Button Grid.Column="9" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="15" Margin="10,0,10,30" Click="Button_Odjava">
                     Odjavi se
                 </Button>
+                <CheckBox x:Name="checkBox" FontSize="15" Content="Uključeni Tooltip-ovi" Grid.Column="9" Margin="24,28,-48,-14" Grid.Row="9" VerticalAlignment="Top" Checked="checkBox_Checked" Grid.ColumnSpan="2" Height="25" Unchecked="checkBox_Unchecked"/>
 
             </Grid>
 

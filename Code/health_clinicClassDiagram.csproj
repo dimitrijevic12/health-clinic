@@ -82,6 +82,12 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
@@ -691,6 +697,9 @@
       <DependentUpon>TretmaniUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Util\AppointmentGenerator.cs" />
+    <Compile Include="View\Wizard.xaml.cs">
+      <DependentUpon>Wizard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs">
       <DependentUpon>ZakazivanjeGuestNalogaUser.xaml</DependentUpon>
     </Compile>
@@ -706,6 +715,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -812,6 +822,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Wizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ZakazivanjeGuestNalogaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -854,7 +868,19 @@
     <Resource Include="View\Images\priority.png" />
     <Resource Include="View\Images\report.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="View\Images\DetaljanPrikazRasporeda.png" />
+    <Resource Include="View\Images\DetaljanPrikazRasporeda1.png" />
+    <Resource Include="View\Images\GenerisiIzvestaj.png" />
+    <Resource Include="View\Images\Home.png" />
+    <Resource Include="View\Images\Home1.png" />
+    <Resource Include="View\Images\Home2.png" />
+    <Resource Include="View\Images\Home3.png" />
+    <Resource Include="View\Images\Home4.png" />
+    <Resource Include="View\Images\Home5.png" />
+    <Resource Include="View\Images\PrikazSaleZaSmestanje.png" />
+    <Resource Include="View\Images\RegistrovaniPacijenti.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

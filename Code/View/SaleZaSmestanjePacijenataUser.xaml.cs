@@ -84,7 +84,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)

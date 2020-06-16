@@ -59,7 +59,7 @@ namespace health_clinicClassDiagram.View
         {
             InitializeComponent();
             this.DataContext = this;
-            labelSala.Content = rehabilitationRoom.IdRoom.ToString();
+            labelSala.Content = "Sala broj: " + rehabilitationRoom.IdRoom.ToString();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
 
             _rehabilitationRoom = rehabilitationRoom;
@@ -82,22 +82,31 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            _idNaloga = long.Parse(textIDNaloga.Text);
-            _imePacijenta = textIme.Text;
-            _prezimePacijenta = textPrezime.Text;
-            _jmbgPacijenta = int.Parse(textJMBG.Text);
+            if ((textIDNaloga.Text == "") || (textIme.Text == "") || (textPrezime.Text == "") || (textJMBG.Text == ""))
+            {
+                string message = "Sva polja moraju biti popunjena";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+                _idNaloga = long.Parse(textIDNaloga.Text);
+                _imePacijenta = textIme.Text;
+                _prezimePacijenta = textPrezime.Text;
+                _jmbgPacijenta = int.Parse(textJMBG.Text);
 
-            Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
-            MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor(), new List<Treatment>());
-
-            
-
-            var result = _rehabilitationRoomController.AddPatient(record, _rehabilitationRoom);
+                Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
+                MedicalRecord record = new MedicalRecord(_idNaloga, patient, new Doctor(), new List<Treatment>());
 
 
-            
-            SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
-            (this.Parent as Panel).Children.Add(sale);
+
+                var result = _rehabilitationRoomController.AddPatient(record, _rehabilitationRoom);
+
+
+
+                SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
+                (this.Parent as Panel).Children.Add(sale);
+            }
         }
 
         private void Button_Odustanak(object sender, RoutedEventArgs e)
@@ -108,7 +117,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

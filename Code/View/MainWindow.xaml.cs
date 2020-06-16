@@ -11,7 +11,11 @@ namespace health_clinicClassDiagram.View
         public MainWindow()
         {
             InitializeComponent();
-            (this.GridMain as Panel).Children.Add(new LoginUser());
+            (this.GridMain as Panel).Children.Add(new Wizard());
+            //(this.GridMain as Panel).Children.Add(new LoginUser());
+
+
+            
         }
 
         

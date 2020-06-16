@@ -148,32 +148,45 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            _imePacijenta = textIme.Text;
-            _prezimePacijenta = textPrezime.Text;
-            _jmbgPacijenta = long.Parse(textJMBG.Text);
 
-            Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
-
-            DateTime startDate;
-            DateTime endDate;
-
-            if (_startDate != null)
+            if ((textIme.Text == "") || (textPrezime.Text == "") || (textJMBG.Text == "") || (DoktorCombo.SelectedIndex == -1) || (VrstaCombo.SelectedIndex == -1))
             {
-                startDate = _startDate;
-                endDate = _endDate;
-            } else {
-
-                startDate = izmenaAppointment.StartDate;
-                endDate = izmenaAppointment.EndDate;
+                string message = "Sva polja moraju biti popunjena";
+                string title = "Greška";
+                MessageBox.Show(message, title);
             }
+            else
+            {
 
-            Console.WriteLine(izmenaAppointment.Id);
-            Appointment appointment = new Appointment(izmenaAppointment.Id, _doctor, patient, _room, _type, startDate, endDate);
+                _imePacijenta = textIme.Text;
+                _prezimePacijenta = textPrezime.Text;
+                _jmbgPacijenta = long.Parse(textJMBG.Text);
 
-            _appointmentController.Edit(appointment);
+                Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
 
-            DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
-            (this.Parent as Panel).Children.Add(raspored);
+                DateTime startDate;
+                DateTime endDate;
+
+                if (_startDate != null)
+                {
+                    startDate = _startDate;
+                    endDate = _endDate;
+                }
+                else
+                {
+
+                    startDate = izmenaAppointment.StartDate;
+                    endDate = izmenaAppointment.EndDate;
+                }
+
+                Console.WriteLine(izmenaAppointment.Id);
+                Appointment appointment = new Appointment(izmenaAppointment.Id, _doctor, patient, _room, _type, startDate, endDate);
+
+                _appointmentController.Edit(appointment);
+
+                DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
+                (this.Parent as Panel).Children.Add(raspored);
+            }
         }
 
         private void Button_Odustanak(object sender, RoutedEventArgs e)
@@ -185,7 +198,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

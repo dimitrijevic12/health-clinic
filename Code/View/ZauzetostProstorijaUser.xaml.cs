@@ -3,6 +3,9 @@ using health_clinicClassDiagram.Controller;
 using health_clinicClassDiagram.View.Util;
 using Model.Appointment;
 using Model.Rooms;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Pdf;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -56,6 +59,7 @@ namespace health_clinicClassDiagram.View
 
         private readonly IExamOperationRoomController _roomController;
         private readonly IAppointmentController _appointmentController;
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
 
         public static List<Appointment> blankAppointments = new List<Appointment>();
 
@@ -82,10 +86,16 @@ namespace health_clinicClassDiagram.View
         private DateTime _startDate;
         private DateTime _endDate;
         private List<DateTime> dates = new List<DateTime>();
+        private List<Appointment> appointmentsToWrite = new List<Appointment>();
+
+        private List<Appointment> allAppointments = new List<Appointment>();
+
+        private List<RehabilitationRoom> rehabilitationRooms;
 
         public ZauzetostProstorijaUser(DateTime startDate, DateTime endDate)
         {
             InitializeComponent();
+
 
             Datum.SelectedIndex = 0;
             this.DataContext = this;
@@ -105,14 +115,55 @@ namespace health_clinicClassDiagram.View
             var app = Application.Current as App;
             _roomController = app.ExamOperationRoomController;
             _appointmentController = app.AppointmentController;
+            _rehabilitationRoomController = app.RehabilitationRoomController;
 
             rooms = _roomController.GetAll();
+
+            rehabilitationRooms = _rehabilitationRoomController.GetAll();
 
             roomsCollection = new ObservableCollection<ExamOperationRoom>(rooms);
 
             datesCollection = new ObservableCollection<DateTime>(dates);
 
             AppointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
+
+            allAppointments = _appointmentController.GetAll();
+
+            foreach (Appointment appoint in allAppointments)
+            {
+                if (appoint.StartDate>=_startDate && appoint.EndDate <= _endDate)
+                {
+                    appointmentsToWrite.Add(appoint);
+                }
+            }
+
+
+            string pdfFilename = "Izvestaj.pdf";
+            PdfDocument pdfDocument = new PdfDocument(pdfFilename);
+            pdfDocument.Info.Title = "Zauzetost prostorija u odredjenom vremenskom periodu";
+            PdfPage pdfPage = pdfDocument.AddPage();
+            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+            XFont fontTitle = new XFont("Helvetica", 24, XFontStyle.Bold);
+            XFont font = new XFont("Helvetica", 14, XFontStyle.Regular);
+            XTextFormatter tf = new XTextFormatter(graph);
+            String write = "Sale za vršenje pregleda/operacija:\n\n";
+
+            foreach (Appointment appoint in appointmentsToWrite)
+            {
+                String line = "Sala broj: " + appoint.RoomId + " | Početak: " + appoint.StartDate + " | Kraj: " + appoint.EndDate + " | Pacijent: " + appoint.Patient.Id + " " + appoint.Patient.Name + " " + appoint.Patient.Surname + " | Doktor: " + appoint.Doctor.Id + " " + appoint.Doctor.NameDoctor + " " + appoint.Doctor.SurnameDoctor + "\n\n";
+                write += line;
+            }
+
+            write += "\n\n Sale za smeštanje pacijenata:\n\n";
+
+            foreach(RehabilitationRoom reh in rehabilitationRooms)
+            {
+                write += "Sala broj " + reh.Id + " | Broj zauzetih kreveta: " + reh.CurrentlyInUse + " | Broj ukupnih kreveta: " + reh.MaxCapacity + "\n\n";
+            }
+
+            tf.DrawString(write, font, XBrushes.Black, new XRect(0, 0, pdfPage.Width, pdfPage.Height), XStringFormats.TopLeft);
+
+            pdfDocument.Close();
 
             dataGridNalozi.Items.Refresh();
 
@@ -178,7 +229,7 @@ namespace health_clinicClassDiagram.View
         {
 
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

@@ -92,10 +92,10 @@
                     <DataGridTextColumn Width="*" Header="Zauzeto" Binding="{Binding CurrentlyInUse}"/>
                     <DataGridTextColumn Width="*" Header="Ukupno" Binding="{Binding MaxCapacity}"/>
 
-                    <DataGridTemplateColumn Width="*" Header="Prikazi">
+                    <DataGridTemplateColumn Width="*" Header="Prikaži">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnPrikazi" Content="Prikazi" Click = "btnPrikazi_Click"/>
+                                <Button Name="btnPrikazi" Content="Prikaži" Click = "btnPrikazi_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

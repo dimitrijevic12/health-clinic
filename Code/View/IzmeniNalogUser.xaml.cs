@@ -75,40 +75,50 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrdi(object sender, RoutedEventArgs e)
         {
-            String idNalogaString = IDTekst.Text;
-            String ime = ImeTekst.Text;
-            String prezime = PrezimeTekst.Text;
-            String jmbgString = JMBGTekst.Text;
 
-            _dateOfBirth = (DateTime)DatumPicker.SelectedDate;
-
-            _idNaloga = long.Parse(idNalogaString);
-            _imePacijenta = ime;
-            _prezimePacijenta = prezime;
-            _jmbgPacijenta = int.Parse(jmbgString);
-
-            String genderString = null;
-
-            if (muski.IsChecked == true)
+            if ((IDTekst.Text == "") || (ImeTekst.Text == "") || (PrezimeTekst.Text == "") || (JMBGTekst.Text == "") || (DoktorCombo.SelectedIndex == -1) || (DatumPicker.SelectedDate == null))
             {
-                genderString = "MALE";
-            }
-            else if (zenski.IsChecked == true)
-            {
-                genderString = "FEMALE";
+                string message = "Sva polja moraju biti popunjena";
+                string title = "Greška";
+                MessageBox.Show(message, title);
             }
             else
             {
-                Console.WriteLine("Niste uneli pol");
+                String idNalogaString = IDTekst.Text;
+                String ime = ImeTekst.Text;
+                String prezime = PrezimeTekst.Text;
+                String jmbgString = JMBGTekst.Text;
+
+                _dateOfBirth = (DateTime)DatumPicker.SelectedDate;
+
+                _idNaloga = long.Parse(idNalogaString);
+                _imePacijenta = ime;
+                _prezimePacijenta = prezime;
+                _jmbgPacijenta = int.Parse(jmbgString);
+
+                String genderString = null;
+
+                if (muski.IsChecked == true)
+                {
+                    genderString = "MALE";
+                }
+                else if (zenski.IsChecked == true)
+                {
+                    genderString = "FEMALE";
+                }
+                else
+                {
+                    Console.WriteLine("Niste uneli pol");
+                }
+
+                _gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
+
+                MedicalRecord newRecord = EditMedicalRecord();
+
+
+                RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
+                (this.Parent as Panel).Children.Add(pacijenti);
             }
-
-            _gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
-
-            MedicalRecord newRecord = EditMedicalRecord();
-
-
-            RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
-            (this.Parent as Panel).Children.Add(pacijenti);
 
 
         }
@@ -129,7 +139,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void Button_Back(object sender, RoutedEventArgs e)

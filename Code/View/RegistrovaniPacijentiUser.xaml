@@ -127,6 +127,8 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBox x:Name="textSearch" HorizontalAlignment="Left" Height="23" Margin="874,19,-194,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" KeyUp="textSearch_KeyUp"/>
+            <Label x:Name="labelPretraga" Content="Pretraga: " HorizontalAlignment="Left" Margin="800,19,-61,0" Grid.Row="1" VerticalAlignment="Top"/>
 
         </Grid>
     </Grid>

@@ -7,6 +7,7 @@ using System.Collections;
 using Model.Appointment;
 using Controller;
 using System.Linq;
+using health_clinicClassDiagram.Service;
 
 namespace health_clinicClassDiagram.View
 {
@@ -97,7 +98,7 @@ namespace health_clinicClassDiagram.View
         private void Button_Home(object sender, RoutedEventArgs e)
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(2, thisCount);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         public IEnumerable<DataGridRow> GetDataGridRows(DataGrid grid)
@@ -141,6 +142,12 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void textSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filter = records.Where(MedicalRecord => MedicalRecord.Name.Contains(textSearch.Text));
+            dataGridNalozi.ItemsSource = filter;
         }
     }
 }
