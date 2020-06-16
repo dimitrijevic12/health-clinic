@@ -85,5 +85,7 @@
             </DataGrid>
 
         </Grid>
+        <TextBox x:Name="textSearch" Height="23" Margin="880,33,-200,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" KeyUp="textSearch_KeyUp"/>
+        <Label x:Name="label" Content="Pretraga: " HorizontalAlignment="Left" Margin="784,27,-84,0" VerticalAlignment="Top" Width="100" FontSize="16"/>
     </Grid>
 </UserControl>

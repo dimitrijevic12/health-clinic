@@ -86,6 +86,8 @@
                     <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding Surname}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <TextBox x:Name="textSearch" Height="23" Margin="871,14,-191,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" KeyUp="textBox_KeyUp"/>
+            <Label x:Name="label" Content="Pretraga:" HorizontalAlignment="Left" Margin="792,10,-49,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16"/>
 
         </Grid>
     </Grid>

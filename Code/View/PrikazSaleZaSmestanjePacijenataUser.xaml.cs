@@ -130,5 +130,11 @@ namespace health_clinicClassDiagram.View
             }
             
         }
+
+        private void textBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            var filter = records.Where(MedicalRecord => MedicalRecord.Name.Contains(textSearch.Text));
+            dataGridNalozi.ItemsSource = filter;
+        }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -59,6 +60,14 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void textSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            
+            var filter = doctors.Where(Doctor => Doctor.NameDoctor.Contains(textSearch.Text));
+            dataGridDoktori.ItemsSource = filter;
+            
         }
     }
 }
