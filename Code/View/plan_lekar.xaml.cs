@@ -64,10 +64,20 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            DateTime date1 = (DateTime)dat1.SelectedDate;
-            DateTime date2 = (DateTime)dat2.SelectedDate;
-            var s = new plan_detaljan(doctor, date1, date2);
-            s.Show();
+            if ((dat1.ToString() == "") || (comboLekar.SelectedIndex == -1) || (dat2.ToString() == ""))
+            {
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
+
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+                DateTime date1 = (DateTime)dat1.SelectedDate;
+                DateTime date2 = (DateTime)dat2.SelectedDate;
+                var s = new plan_detaljan(doctor, date1, date2);
+                s.Show();
+            }
         }
 
         private void comboLekar_SelectionChanged(object sender, SelectionChangedEventArgs e)

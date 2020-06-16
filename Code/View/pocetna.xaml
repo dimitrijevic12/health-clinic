@@ -6,8 +6,9 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs" 
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="pocetna" Height="768" Width="1024" Background="AliceBlue">
-    
+        Title="pocetna" Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
+   
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -34,16 +35,16 @@
         </Grid.ColumnDefinitions>
 
 
-        <Image Grid.Column="0" Grid.Row="1" Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/user2.png" Width="100" Height="77" Margin="45,0,0,0" VerticalAlignment="Bottom"/>
-        <TextBlock Grid.Row="1" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,21,20,10" Width="261" FontWeight="Bold" Height="56" Grid.Column="1"  Text="{x:Static language:Lang.Upravnik}"/>
-        <Image Grid.Column="4" Grid.Row="1" Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/clock3.png" Margin="118,5,49,10" Grid.ColumnSpan="2" RenderTransformOrigin="0.486,1.382"/>
+        <Image Grid.Column="0" Grid.Row="1" Source="images/user2.png" Width="100" Height="77" Margin="45,0,0,83" VerticalAlignment="Bottom" Grid.RowSpan="2"/>
+        <TextBlock Grid.Row="1" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10,34,20,0" Width="261" FontWeight="Bold" Height="56" Grid.Column="1"  Text="{x:Static language:Lang.Upravnik}"/>
+        <Image Grid.Column="4" Grid.Row="1" Source="images/clock3.png" Margin="118,21,49,83" Grid.ColumnSpan="2" RenderTransformOrigin="0.486,1.382" Grid.RowSpan="2"/>
 
 
         <Button Grid.Column="1" Grid.Row="2" Click="Button_lekar" Style="{StaticResource RoundButton}" Margin="0,86,0,0" Grid.RowSpan="2">
 
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/doctor.png" Height="50"  />
-                <TextBlock  FontSize="20" Text="{x:Static language:Lang.lekar}"/> 
+                <Image Source="images/doctor.png" Height="50"  />
+                <TextBlock  FontSize="20" Text="{x:Static language:Lang.lekar}"/>
             </StackPanel>
         </Button>
 
@@ -51,76 +52,73 @@
         <Button Grid.Column="3" Grid.Row="3" Click="Button_sala" Style="{StaticResource RoundButton}" Margin="0,0,0,86" Grid.RowSpan="2">
 
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/room2.png" Height="58" />
+                <Image Source="images/room2.png" Height="58" />
                 <TextBlock  FontSize="20" Width="59" Text="{x:Static language:Lang.sala}"/>
-                
+
             </StackPanel>
         </Button>
-    
+
         <Button Grid.Column="5" Grid.Row="3" Click="Button_magacin" Style="{StaticResource RoundButton}" Margin="0,1,0,86" Grid.RowSpan="2">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/storage.png" Height="58" />
+                <Image Source="images/storage.png" Height="58" />
                 <TextBlock  FontSize="20" Text="{x:Static language:Lang.magacin}"/>
-                
+
             </StackPanel>
         </Button>
 
         <Button Grid.Column="1" Grid.Row="5" Click="Button_izvestaj" Style="{StaticResource RoundButton}" Margin="0,0,0,86" Grid.RowSpan="2">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/report.png" Height="58" />
+                <Image Source="images/report.png" Height="58" />
                 <TextBlock  FontSize="20" Text="{x:Static language:Lang.izvestaj}"/>
-                
+
             </StackPanel>
         </Button>
 
         <Button Grid.Column="3" Grid.Row="5" Click="Button_renoviranje" Style="{StaticResource RoundButton}">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/renovation.png" Height="58" />
+                <Image Source="images/renovation.png" Height="58" />
                 <TextBlock  FontSize="20" Text="{x:Static language:Lang.renoviranje}" />
-                
+
             </StackPanel>
         </Button>
 
-        <Button Grid.Column="5" Grid.Row="5" Style="{StaticResource RoundButton}" Click="Button_Click">
+        <Button Grid.Column="5" Grid.Row="5" Style="{StaticResource RoundButton}" Click="Button_pomoc">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/question.png" Height="58" />
+                <Image Source="images/question.png" Height="58" />
                 <TextBlock  FontSize="20" Width="82" Text="{x:Static language:Lang.pomoc}"/>
-                
+
             </StackPanel>
         </Button>
 
         <Button Grid.Column="1" Grid.Row="6" Click="Button_dodatno" Style="{StaticResource RoundButton}" Margin="0,86,0,0" Grid.RowSpan="2">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/settngs.png" Height="58" />
+                <Image Source="images/settngs.png" Height="58" />
                 <TextBlock  FontSize="20" Text="{x:Static language:Lang.opcije}"/>
-                
+
             </StackPanel>
         </Button>
 
         <Button Grid.Column="3" Grid.Row="6" Click="Button_odjava" Style="{StaticResource RoundButton}" Margin="0,86,0,1" Grid.RowSpan="2">
             <StackPanel>
-                <Image Source="C:\Users\Aleksa\Desktop\HCI PROJEKAT UPRAVNIK\img/logout.png" Height="58" />
+                <Image Source="images/logout.png" Height="58" />
                 <TextBlock  FontSize="20" Text="{x:Static language:Lang.odjava}"/>
-                
+
             </StackPanel>
         </Button>
 
 
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,10,0" Background="SkyBlue">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            <MenuItem Header="_Početna"></MenuItem>
-            <MenuItem Header="_Lekari"></MenuItem>
-            <MenuItem Header="_Izveštaj"></MenuItem>
-            <MenuItem Header="_Magacin"></MenuItem>
-            <MenuItem Header="_Pomoć" ></MenuItem>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="SkyBlue">
+
+            <MenuItem Header="Početna"  Click="MenuItem_pocetna"></MenuItem>
+            <MenuItem Header="_Lekari"   Click="MenuItem_lekar"></MenuItem>
+            <MenuItem Header="_Izveštaj" Click="MenuItem_izvestaj"></MenuItem>
+            <MenuItem Header="_Magacin" Click="MenuItem_magacin"></MenuItem>
+            <MenuItem Header="_Pomoć" Click="MenuItem_pomoc"></MenuItem>
         </Menu>
+
         <Separator Grid.ColumnSpan="7" HorizontalAlignment="Right" Height="16" Margin="0,22,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1016" Background="Black"/>
-        <Label x:Name="labelDate" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="101,5,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.211,-1.385" Width="169" FontSize="25" Grid.ColumnSpan="2"/>
-        <Label x:Name="labelTime" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="101,53,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.211,-1.385" Width="141" FontSize="25" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Label x:Name="labelDate" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="101,10,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.211,-1.385" Width="169" FontSize="25" Grid.ColumnSpan="2"/>
+        <Label x:Name="labelTime" Content="Label" Grid.Column="5" HorizontalAlignment="Left" Margin="101,58,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.211,-1.385" Width="141" FontSize="25" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

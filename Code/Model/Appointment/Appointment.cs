@@ -27,11 +27,13 @@ namespace Model.Appointment
         public string DoctorPrikaz { get => Doctor1.NameAndSurname; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
 
+        public TypeOfAppointment Type  { get => type; set => type = value; }
+
         public long roomPrikaz { get => examOperationRoom.Id; }
 
         private DateTime startDate;
         private DateTime endDate;
-        public TypeOfAppointment Type;
+        public TypeOfAppointment type;
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {

@@ -171,6 +171,9 @@
   <data name="izaberiDatumPocetni" xml:space="preserve">
     <value> Izaberite datum kad renovacija počinje:</value>
   </data>
+  <data name="izaberijezik" xml:space="preserve">
+    <value> Izaberi jezik:</value>
+  </data>
   <data name="izaberiLekara" xml:space="preserve">
     <value> Izaberite lekara za kog želite da vidite plan:</value>
   </data>
@@ -229,10 +232,10 @@
     <value>LEKAR</value>
   </data>
   <data name="lekari" xml:space="preserve">
-    <value>Lekari:</value>
+    <value> Lekari:</value>
   </data>
   <data name="lekovi" xml:space="preserve">
-    <value>Lekovi:</value>
+    <value> Lekovi:</value>
   </data>
   <data name="listadostupneopreme" xml:space="preserve">
     <value> Lista dostupne opreme</value>
@@ -303,6 +306,9 @@
   <data name="premstanjeOpreme" xml:space="preserve">
     <value> Premeštanje opreme:</value>
   </data>
+  <data name="pretraga" xml:space="preserve">
+    <value> Pretraga:</value>
+  </data>
   <data name="Prezime" xml:space="preserve">
     <value>Prezime</value>
   </data>
@@ -313,7 +319,7 @@
     <value>Prikaz opreme</value>
   </data>
   <data name="prikazPlana" xml:space="preserve">
-    <value>Prikaz plana:</value>
+    <value> Prikaz plana:</value>
   </data>
   <data name="promenajezika" xml:space="preserve">
     <value>PROMENA JEZIKA</value>
@@ -352,7 +358,7 @@
     <value>Srpski</value>
   </data>
   <data name="unesiIdNoveSale" xml:space="preserve">
-    <value>Unesite id za novu salu:</value>
+    <value> Unesite id za novu salu:</value>
   </data>
   <data name="unesiKolicinu" xml:space="preserve">
     <value> Unesite količinu:</value>

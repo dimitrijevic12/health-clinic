@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="premestanje_opreme" Height="768" Width="1024" Background="AliceBlue">
+        Title="premestanje_opreme" Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 
@@ -30,7 +30,7 @@
             <ColumnDefinition Width="169*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="626"  Height="35" Margin="20,10,32,10" Grid.ColumnSpan="5" Text="{x:Static language:Lang.izaberiOpremu}"/>
+        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="35" Margin="10,10,32,10" Grid.ColumnSpan="5" Text="{x:Static language:Lang.izaberiOpremu}"/>
 
 
         <DataGrid  x:Name="dataGridIzMagacina" ItemsSource="{Binding Path=equipCollection}" AutoGenerateColumns="False" 
@@ -54,8 +54,8 @@
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" Margin="138,36,139,10" Click="Button_potvrdi" />
         <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="3" Margin="137,36,138,10" Click="Button_otkazi"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,29,32,42" Grid.ColumnSpan="5"  Text="{x:Static language:Lang.izaberiSaluUKojuPrebacujes}"/>
-        <ComboBox x:Name="comboSala" ItemsSource="{Binding Path = roomsCollection}" Height="42" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="3" Margin="137,29,10,54" SelectionChanged="tip_SelectionChanged">
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="636"  Height="54" Margin="10,10,32,61" Grid.ColumnSpan="5"  Text="{x:Static language:Lang.izaberiSaluUKojuPrebacujes}"/>
+        <ComboBox x:Name="comboSala" ItemsSource="{Binding Path = roomsCollection}" Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="3" Margin="137,10,10,69" SelectionChanged="tip_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

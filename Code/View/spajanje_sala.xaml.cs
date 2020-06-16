@@ -78,95 +78,106 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
+            if ((datep1.ToString() == "") || (datep2.ToString() == "") || (comboSala1.SelectedIndex == -1) || (comboSala2.SelectedIndex == -1))
+            {
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
 
-            DateTime dt1 = (DateTime) datep1.SelectedDate;
-            //int result = DateTime.Compare(dt1, dt2);
-            if (DateTime.Now.Date == dt1)
+                MessageBox.Show(message, title);
+            }
+            else
             {
 
-                foreach (Equipment ek2 in room2.Equipments)
-                {
-                    int flag = 0;
 
-                    foreach (Equipment ek1 in room1.Equipments)
+                DateTime dt1 = (DateTime)datep1.SelectedDate;
+                //int result = DateTime.Compare(dt1, dt2);
+                if (DateTime.Now.Date == dt1)
+                {
+
+                    foreach (Equipment ek2 in room2.Equipments)
                     {
-                        if (ek2.Id == ek1.Id)
+                        int flag = 0;
+
+                        foreach (Equipment ek1 in room1.Equipments)
                         {
-                            ek1.Quantity += ek2.Quantity;
-                            flag += 1;
+                            if (ek2.Id == ek1.Id)
+                            {
+                                ek1.Quantity += ek2.Quantity;
+                                flag += 1;
+
+                            }
+                            //equ = ek2;
 
                         }
-                        //equ = ek2;
-
+                        if (flag == 0)
+                        {
+                            room1.Equipments.Add(ek2);
+                        }
                     }
-                    if (flag == 0)
+
+
+                    foreach (ExamOperationRoom r in rooms)
                     {
-                        room1.Equipments.Add(ek2);
+                        if (r.Id.Equals(room1.Id))
+                        {
+                            sobaZaEdit = r;
+
+                            break;
+                        }
                     }
-                }
 
-
-                foreach (ExamOperationRoom r in rooms)
-                {
-                    if (r.Id.Equals(room1.Id))
+                    foreach (RehabilitationRoom r in rooms2)
                     {
-                        sobaZaEdit = r;
+                        if (r.Id.Equals(room1.Id))
+                        {
+                            sobaZaEdit2 = r;
 
-                        break;
+                            break;
+                        }
                     }
-                }
 
-                foreach (RehabilitationRoom r in rooms2)
-                {
-                    if (r.Id.Equals(room1.Id))
+                    if (sobaZaEdit != null)
                     {
-                        sobaZaEdit2 = r;
-
-                        break;
+                        _examOperationRoomController.Edit(sobaZaEdit);
                     }
-                }
-
-                if (sobaZaEdit != null)
-                {
-                    _examOperationRoomController.Edit(sobaZaEdit);
-                }
-                else
-                {
-                    _rehabilitationRoomController.Edit(sobaZaEdit2);
-                }
-
-
-
-                foreach (ExamOperationRoom r in rooms)
-                {
-                    if (r.Id.Equals(room2.Id))
+                    else
                     {
-                        sobaZaBrisanje = r;
-
-                        break;
+                        _rehabilitationRoomController.Edit(sobaZaEdit2);
                     }
-                }
 
-                foreach (RehabilitationRoom r in rooms2)
-                {
-                    if (r.Id.Equals(room2.Id))
+
+
+                    foreach (ExamOperationRoom r in rooms)
                     {
-                        sobaZaBrisanje2 = r;
+                        if (r.Id.Equals(room2.Id))
+                        {
+                            sobaZaBrisanje = r;
 
-                        break;
+                            break;
+                        }
+                    }
+
+                    foreach (RehabilitationRoom r in rooms2)
+                    {
+                        if (r.Id.Equals(room2.Id))
+                        {
+                            sobaZaBrisanje2 = r;
+
+                            break;
+                        }
+                    }
+
+                    if (sobaZaBrisanje != null)
+                    {
+                        _examOperationRoomController.Delete(sobaZaBrisanje);
+                    }
+                    else
+                    {
+                        _rehabilitationRoomController.Delete(sobaZaBrisanje2);
                     }
                 }
-
-                if (sobaZaBrisanje != null)
-                {
-                    _examOperationRoomController.Delete(sobaZaBrisanje);
-                }
-                else
-                {
-                    _rehabilitationRoomController.Delete(sobaZaBrisanje2);
-                }
+                this.Close();
             }
-            this.Close();
         }
 
         private void comboSala1_SelectionChanged(object sender, SelectionChangedEventArgs e)

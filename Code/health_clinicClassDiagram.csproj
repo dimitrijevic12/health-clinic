@@ -111,6 +111,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
@@ -400,6 +406,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Themes\Theme.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Theme.resx</DependentUpon>
     </Compile>
     <Compile Include="Repository\AppointmentRepository.cs">
       <SubType>Code</SubType>
@@ -746,20 +757,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\Images\Clock.png" />
-    <Content Include="View\Images\clock2.png" />
-    <Content Include="View\Images\clock3.png" />
-    <Content Include="View\Images\doctor.png" />
-    <Content Include="View\Images\logout.png" />
-    <Content Include="View\Images\question.png" />
-    <Content Include="View\Images\renovation.png" />
-    <Content Include="View\Images\report.png" />
-    <Content Include="View\Images\room.png" />
-    <Content Include="View\Images\room2.png" />
-    <Content Include="View\Images\settngs.png" />
-    <Content Include="View\Images\storage.png" />
-    <Content Include="View\Images\User.png" />
-    <Content Include="View\Images\user2.png" />
+    <Resource Include="View\Images\Clock.png" />
+    <Resource Include="View\Images\clock2.png" />
+    <Resource Include="View\Images\clock3.png" />
+    <Resource Include="View\Images\doctor.png" />
+    <Resource Include="View\Images\logout.png" />
+    <Resource Include="View\Images\question.png" />
+    <Resource Include="View\Images\renovation.png" />
+    <Resource Include="View\Images\report.png" />
+    <Resource Include="View\Images\room.png" />
+    <Resource Include="View\Images\room2.png" />
+    <Resource Include="View\Images\settngs.png" />
+    <Resource Include="View\Images\storage.png" />
+    <Resource Include="View\Images\User.png" />
+    <Resource Include="View\Images\user2.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -881,6 +892,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -895,9 +907,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Themes\Theme.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Theme.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Lang\Lang.en.resx" />
     <EmbeddedResource Include="View\Lang\Lang.resx" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

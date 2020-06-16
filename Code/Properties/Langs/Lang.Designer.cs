@@ -223,6 +223,15 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Izaberi jezik:.
+        /// </summary>
+        public static string izaberijezik {
+            get {
+                return ResourceManager.GetString("izaberijezik", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  Izaberite lekara za kog želite da vidite plan:.
         /// </summary>
         public static string izaberiLekara {
@@ -394,7 +403,7 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lekari:.
+        ///   Looks up a localized string similar to  Lekari:.
         /// </summary>
         public static string lekari {
             get {
@@ -403,7 +412,7 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lekovi:.
+        ///   Looks up a localized string similar to  Lekovi:.
         /// </summary>
         public static string lekovi {
             get {
@@ -619,6 +628,15 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to  Pretraga:.
+        /// </summary>
+        public static string pretraga {
+            get {
+                return ResourceManager.GetString("pretraga", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prezime.
         /// </summary>
         public static string Prezime {
@@ -646,7 +664,7 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prikaz plana:.
+        ///   Looks up a localized string similar to  Prikaz plana:.
         /// </summary>
         public static string prikazPlana {
             get {
@@ -763,7 +781,7 @@ namespace health_clinicClassDiagram.Properties.Langs {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unesite id za novu salu:.
+        ///   Looks up a localized string similar to  Unesite id za novu salu:.
         /// </summary>
         public static string unesiIdNoveSale {
             get {

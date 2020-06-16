@@ -6,7 +6,7 @@
          xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="novi_lekar" Height="800" Width="768" Background="AliceBlue">
+        Title="novi_lekar" Height="800" Width="768" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 
@@ -51,7 +51,8 @@
 
 
         <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="5" Margin="105,0,23.143,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara" TextChanged="IdLekara_TextChanged"/>
-        <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="0,0,20,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Ime"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Margin="108,0,18.743,6" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right"  Name="Ime" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Height="48">
+        </TextBox>
         <TextBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" Margin="108,0,21,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime"/>
         <ComboBox Height="42" Name="PolCombo" Width="412" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="4" Margin="3,25,19.743,10">
             <ComboBoxItem Content="Muški"/>

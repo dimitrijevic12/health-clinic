@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="naruci_opremu"  Height="768" Width="1024" Background="AliceBlue">
+        Title="naruci_opremu"  Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 
@@ -34,7 +34,7 @@
 
 
         <DataGrid  x:Name="dataGridNaruciOpremu" ItemsSource="{Binding Path=equipCollection}" AutoGenerateColumns="False" 
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="10,5,0,153" VerticalAlignment="Stretch" Width="996" Grid.ColumnSpan="6" Grid.Row="2" Grid.Column="0">
+                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,5,0,153" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Row="2" Grid.Column="0">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
@@ -51,8 +51,8 @@
         </DataGrid>
 
 
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="138,61,139,101" Grid.RowSpan="2" Click="Button_potvrdi"/>
-        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" Margin="137,61,138,101" Click="Button_otkazi" Grid.RowSpan="2"/>
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="139,10,138,35" Click="Button_potvrdi"/>
+        <Button HorizontalAlignment="Center" Width="232"  FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" Margin="138,10,137,35" Click="Button_otkazi"/>
 
         <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Width="612"  Height="54"  Margin="24,185,42,69" Grid.ColumnSpan="4"  Text="{x:Static language:Lang.unesiOpremuNarucivanje}"/>
         <TextBlock Grid.Column="0" Grid.Row="2" FontSize="23" HorizontalAlignment="Center" VerticalAlignment="Center" Width="992"  Height="54"  Margin="24,245,0,9" Grid.ColumnSpan="6" Foreground="#FFD81313" Text="{x:Static language:Lang.PorukaNaruciOpremu}"/>

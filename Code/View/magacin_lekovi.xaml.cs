@@ -2,6 +2,7 @@
 using Model.Rooms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -55,6 +56,12 @@ namespace health_clinicClassDiagram.view
         {
           
             this.Close();
+        }
+
+        private void pretragaLekovi_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filter = drugs.Where(Drug => Drug.Id.ToString().Contains(pretragaLekovi.Text) || Drug.Name.Contains(pretragaLekovi.Text) || Drug.Validation.ToString().Contains(pretragaLekovi.Text));
+            dataGridMagacinLekovi.ItemsSource = filter;
         }
     }
 }

@@ -18,6 +18,7 @@ using System.Collections;
 using Controller;
 using Model.SystemUsers;
 using health_clinicClassDiagram.View;
+using health_clinicClassDiagram.Model.SystemUsers;
 
 namespace health_clinicClassDiagram.view
 {
@@ -27,11 +28,15 @@ namespace health_clinicClassDiagram.view
 
     public partial class lekar : Window
     {
+        public static RoutedCommand Pocetnashortcut = new RoutedCommand();
         private int colNum = 0;
         private readonly IController<Doctor> _doctorController;
         private Doctor doctor;
-        
-
+        private int c1 = 0;
+        private int c2 = 0;
+        private int c3 = 0;
+        private int c4 = 0;
+        private Doctor doc;
         public static ObservableCollection<Doctor> doctorsCollection
         {
             get;
@@ -42,8 +47,11 @@ namespace health_clinicClassDiagram.view
 
         public lekar()
         {
+
             InitializeComponent();
             this.DataContext = this;
+            Pocetnashortcut.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(Pocetnashortcut, Button_pocetna));
 
             var app = Application.Current as App;
             _doctorController = app.doctorController;
@@ -120,7 +128,74 @@ namespace health_clinicClassDiagram.view
         {
             //var s = new projekatUpravnikRA137_2017.view.uredi_lekara(JedanLekar);
             //s.Show();
-            var s = new uredi_lekara(doctor);
+            //pol
+            if(doctor.Gender == Gender.MALE)
+            {
+                c1 = 0;
+            }
+            else
+            {
+                c1 = 1;
+            }
+            //smena
+            if (doctor.Smena == TypeOfWorkingSchedule.PRVA)
+            {
+                c2 = 0;
+            }
+            else if (doctor.Smena == TypeOfWorkingSchedule.DRUGA)
+            {
+                c2 = 1;
+            }
+            else
+            {
+                c2 = 2;
+            }
+            //spec
+            if (doctor.Spec == Specialization.CARDIOLOGY)
+            {
+                c3 = 0;
+            }
+            else if (doctor.Spec == Specialization.PULMOLOGY)
+            {
+                c3 = 1;
+            }
+            else if(doctor.Spec == Specialization.NEPHROLOGY)
+            {
+                c3 = 2;
+            }
+            else if (doctor.Spec == Specialization.ENDOCRINOLOGY)
+            {
+                c3 = 3;
+            }
+            else
+            {
+                c3 = 4;
+            }
+            //hirurg
+
+            if (doctor.Sur == SurgicalSpecialty.CARDIOTHORACIC)
+            {
+                c4 = 0;
+            }
+            else if (doctor.Sur == SurgicalSpecialty.NEUROSURGERY)
+            {
+                c4 = 1;
+            }
+            else if (doctor.Sur == SurgicalSpecialty.PLASTICAL)
+            {
+                c4 = 2;
+            }
+            else if (doctor.Sur == SurgicalSpecialty.GENERAL)
+            {
+                c4 = 3;
+            }
+            else
+            {
+                c4 = 4;
+            }
+
+
+            var s = new uredi_lekara(doctor,c1,c2,c3,c4);
             s.Show();
             this.Close();
         }
@@ -134,6 +209,47 @@ namespace health_clinicClassDiagram.view
             this.Close();
 
 
+        }
+        private void MenuItem_lekar(object sender, RoutedEventArgs e)
+        {
+            var s = new lekar();
+            s.Show();
+            this.Close();
+        }
+
+
+
+        private void MenuItem_izvestaj(object sender, RoutedEventArgs e)
+        {
+            var s = new izvestaj();
+            s.Show();
+            this.Close();
+        }
+
+
+        private void MenuItem_pocetna(object sender, RoutedEventArgs e)
+        {
+            var s = new pocetna();
+            s.Show();
+            this.Close();
+        }
+
+        private void MenuItem_magacin(object sender, RoutedEventArgs e)
+        {
+            var s = new magacin();
+            s.Show();
+            this.Close();
+        }
+
+        private void MenuItem_pomoc(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void pretragaLekari_KeyUp(object sender, KeyEventArgs e)
+        {
+            var filter = doctors.Where(Doctor => Doctor.Name.Contains(pretragaLekari.Text) || Doctor.Surname.Contains(pretragaLekari.Text) || Doctor.IdDoctor.ToString().Contains(pretragaLekari.Text) || Doctor.Smena.ToString().Contains(pretragaLekari.Text) || Doctor.Gender.ToString().Contains(pretragaLekari.Text) || Doctor.Spec.ToString().Contains(pretragaLekari.Text) || Doctor.Sur.ToString().Contains(pretragaLekari.Text));
+            dataGridLekari.ItemsSource = filter;
         }
     }
 }

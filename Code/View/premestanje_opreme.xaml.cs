@@ -85,84 +85,96 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            string naz = equTest.Naziv;
-            int IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
-            int quan = int.Parse(quantity.Text);
-           // string naz = _equipController.getNazivOpreme(IdOpreme);
-            Equipment equ = new Equipment(IdOpreme, naz, quan);
-
-
-
-
-            int flag = 0;
-            if (room.Equipments != null)
+            if ((quantity.Text == "") || (comboSala.SelectedIndex == -1) || (comboEquip.SelectedIndex == -1))
             {
-                //Console.WriteLine(" broj" + room.Equipments.Count);
-                foreach (Equipment ek in room.Equipments)
-                {
-                    if (ek.Id == IdOpreme)
-                    {
-                        ek.Quantity += quan;
-                        flag += 1;
-                        
-                    }
-                   
-                }
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
 
-                if (flag == 0)
-                {
-                    room.Equipments.Add(equ);
-                    foreach (Equipment ek in room.Equipments)
-                    {
-                       // Console.WriteLine(ek.Id);
-                    }
-                }
+                MessageBox.Show(message, title);
             }
             else
             {
-                
-                room.Equipments.Add(equ);
-                
 
-            }
+                string naz = equTest.Naziv;
+                int IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
+                int quan = int.Parse(quantity.Text);
+                // string naz = _equipController.getNazivOpreme(IdOpreme);
+                Equipment equ = new Equipment(IdOpreme, naz, quan);
 
-            foreach (ExamOperationRoom r in rooms)
-            {
-                if (r.Id.Equals(room.Id))
+
+
+
+                int flag = 0;
+                if (room.Equipments != null)
                 {
-                    sobaZaDodavanje = r;
-                    sobaZaDodavanje.Equipments = room.Equipments;
-                    break;
-                }
-            }
+                    //Console.WriteLine(" broj" + room.Equipments.Count);
+                    foreach (Equipment ek in room.Equipments)
+                    {
+                        if (ek.Id == IdOpreme)
+                        {
+                            ek.Quantity += quan;
+                            flag += 1;
 
-            foreach (RehabilitationRoom r in rooms2)
-            {
-                if (r.Id.Equals(room.Id))
+                        }
+
+                    }
+
+                    if (flag == 0)
+                    {
+                        room.Equipments.Add(equ);
+                        foreach (Equipment ek in room.Equipments)
+                        {
+                            // Console.WriteLine(ek.Id);
+                        }
+                    }
+                }
+                else
                 {
-                    sobaZaDodavanje2 = r;
-                    sobaZaDodavanje2.Equipments = room.Equipments;
-                    break;
+
+                    room.Equipments.Add(equ);
+
+
                 }
+
+                foreach (ExamOperationRoom r in rooms)
+                {
+                    if (r.Id.Equals(room.Id))
+                    {
+                        sobaZaDodavanje = r;
+                        sobaZaDodavanje.Equipments = room.Equipments;
+                        break;
+                    }
+                }
+
+                foreach (RehabilitationRoom r in rooms2)
+                {
+                    if (r.Id.Equals(room.Id))
+                    {
+                        sobaZaDodavanje2 = r;
+                        sobaZaDodavanje2.Equipments = room.Equipments;
+                        break;
+                    }
+                }
+
+                if (sobaZaDodavanje != null)
+                {
+                    _examOperationRoomController.Edit(sobaZaDodavanje);
+                }
+                else
+                {
+                    _rehabilitationRoomController.Edit(sobaZaDodavanje2);
+                }
+
+                /* foreach (Equipment es in room.Equipments)
+                 {
+                     Console.WriteLine(es.Ispisi().ToString());
+                 }
+     */
+                _equipController.deleteEquipment(IdOpreme, quan);
+
+
+                this.Close();
             }
-
-            if (sobaZaDodavanje != null)
-            {
-                _examOperationRoomController.Edit(sobaZaDodavanje);
-            } else
-            {
-                _rehabilitationRoomController.Edit(sobaZaDodavanje2);
-            }
-
-           /* foreach (Equipment es in room.Equipments)
-            {
-                Console.WriteLine(es.Ispisi().ToString());
-            }
-*/
-            _equipController.deleteEquipment(IdOpreme,quan);
-
-
-            this.Close();
         }
 
         private void Button_otkazi(object sender, RoutedEventArgs e)

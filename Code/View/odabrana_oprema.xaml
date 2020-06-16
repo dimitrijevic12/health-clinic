@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="odabrana_oprema" Height="668" Width="1000" Background="AliceBlue">
+        Title="odabrana_oprema" Height="668" Width="1000" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
     
     <Grid>
 

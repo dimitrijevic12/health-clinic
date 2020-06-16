@@ -6,8 +6,45 @@
          xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="izaberi" Height="768" Width="1024" Background="AliceBlue">
+        Title="izaberi" Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen" >
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="7" HorizontalAlignment="Center" Width="290" Margin="81,79,64,10" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.home}" Click="Button_pocetna"  Grid.Column="4" Grid.RowSpan="2"/>
+
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="SkyBlue">
+
+            <MenuItem Header="_Početna" Click="MenuItem_pocetna"></MenuItem>
+            <MenuItem Header="_Lekari" Click="MenuItem_lekar"></MenuItem>
+            <MenuItem Header="_Izveštaj" Click="MenuItem_izvestaj"></MenuItem>
+            <MenuItem Header="_Magacin" Click="MenuItem_magacin"></MenuItem>
+            <MenuItem Header="_Pomoć" Click="MenuItem_pomoc"></MenuItem>
+        </Menu>
+
+        <Label x:Name="label1" Content="Aplikacija je prilagodjena za korišćenje sa i bez miša. Sve &#xD;&#xA;funkcionalnosti su predstavljene jednostavnim i jasnim &#xD;&#xA;dizajnom.&#xD;&#xA;&#xD;&#xA;PREČICE NA POČETNOJ STRANI: &#xD;&#xA;1.  CTRL+L&#x9;OTVARA SE LISTA LEKARA&#xD;&#xA;2.  CTRL+S&#x9;OTVARA SE LISTA SOBA&#xD;&#xA;3.  CTRL+M&#x9;OTVARA SE MAGACIN&#xD;&#xA;4.  CTRL+I&#x9;OTVARA SE IZVEŠTAJ&#xD;&#xA;5.  CTRL+R&#x9;OTVARA SE RENOVIRANJE&#xD;&#xA;6.  CTRL+O&#x9;OTVARAJU SE OPCIJE&#xD;&#xA;7.  CTRL+P&#x9;OTVARA SE POMOĆ&#xD;&#xA;PREČICE NA OSTALIM PROZORIMA: &#xD;&#xA;-  CTRL+P&#x9;OTVARA SE POČETNA STRANA&#xD;&#xA;" HorizontalAlignment="Left" Margin="65,10,0,0" Grid.Row="1" VerticalAlignment="Top" Height="575" Grid.RowSpan="7" Width="868" Grid.ColumnSpan="7" FontSize="30"/>
+
     </Grid>
 </Window>

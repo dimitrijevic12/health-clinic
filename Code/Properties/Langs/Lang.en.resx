@@ -171,6 +171,9 @@
   <data name="izaberiDatumPocetni" xml:space="preserve">
     <value> Select the date when the renovation starts:</value>
   </data>
+  <data name="izaberijezik" xml:space="preserve">
+    <value> Choose language:</value>
+  </data>
   <data name="izaberiLekara" xml:space="preserve">
     <value> Choose doctor:</value>
   </data>
@@ -229,10 +232,10 @@
     <value>DOCTOR</value>
   </data>
   <data name="lekari" xml:space="preserve">
-    <value>Doctors:</value>
+    <value> Doctors:</value>
   </data>
   <data name="lekovi" xml:space="preserve">
-    <value>Drugs:</value>
+    <value> Drugs:</value>
   </data>
   <data name="listadostupneopreme" xml:space="preserve">
     <value>Equipment in warehouse</value>
@@ -303,6 +306,9 @@
   <data name="premstanjeOpreme" xml:space="preserve">
     <value> Moving equipment:</value>
   </data>
+  <data name="pretraga" xml:space="preserve">
+    <value> Search:</value>
+  </data>
   <data name="Prezime" xml:space="preserve">
     <value>Surname</value>
   </data>
@@ -313,7 +319,7 @@
     <value>Show equipment</value>
   </data>
   <data name="prikazPlana" xml:space="preserve">
-    <value>Plan:</value>
+    <value> Plan:</value>
   </data>
   <data name="promenajezika" xml:space="preserve">
     <value>CHANGE LANGUAGE</value>

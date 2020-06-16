@@ -18,9 +18,20 @@ namespace health_clinicClassDiagram
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            var s = new pocetna();
-            s.Show();
-            this.Close();
+            if (username.Text.Equals("ana") && password.Password.Equals("ana"))
+            {
+                var s = new pocetna();
+                s.Show();
+                this.Close();
+            }
+            else
+            {
+                string message = "Neispravan username/password";
+                string title = "Greška";
+                username.Text = "";
+                password.Password = "";
+                MessageBox.Show(message, title);
+            }
         }
     }
 }

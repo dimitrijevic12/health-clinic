@@ -41,37 +41,48 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            String TIP = null;
-            
 
-            if (tip.SelectedIndex == 0)
+            if ((maxi.Text == "") || (Id_sale.Text == "") || (tip.SelectedIndex == -1))
             {
-                String ID = Id_sale.Text;
-                _idSobe = long.Parse(ID);
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
 
-                ExamOperationRoom newERoom = createExamOperationRoom();
-
+                MessageBox.Show(message, title);
             }
             else
             {
-                String ID = Id_sale.Text;
-                _idSobe = long.Parse(ID);
-                String maximum = maxi.Text;
-                _max = int.Parse(maximum);
 
-                RehabilitationRoom newRRoom = createRehabilitationRoom();
-                
+                String TIP = null;
+
+
+                if (tip.SelectedIndex == 0)
+                {
+                    String ID = Id_sale.Text;
+                    _idSobe = long.Parse(ID);
+
+                    ExamOperationRoom newERoom = createExamOperationRoom();
+
+                }
+                else
+                {
+                    String ID = Id_sale.Text;
+                    _idSobe = long.Parse(ID);
+                    String maximum = maxi.Text;
+                    _max = int.Parse(maximum);
+
+                    RehabilitationRoom newRRoom = createRehabilitationRoom();
+
+                }
+
+
+
+
+
+
+                //prikaz_opreme.Spisak.Add(new SpisakSala() {Sala = ID, TipSale = IME});
+
+                this.Close();
             }
-
-           
-
-            
-
-
-            //prikaz_opreme.Spisak.Add(new SpisakSala() {Sala = ID, TipSale = IME});
-
-            this.Close();
-
         }
 
         private RehabilitationRoom createRehabilitationRoom()

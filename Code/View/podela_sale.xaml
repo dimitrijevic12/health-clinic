@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="podela_sale" Height="768" Width="1024" Background="AliceBlue">
+        Title="podela_sale" Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 

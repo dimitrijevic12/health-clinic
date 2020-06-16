@@ -2,6 +2,9 @@
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -47,13 +50,32 @@ namespace health_clinicClassDiagram.view
 
             foreach(Appointment a in apps)
             {
-                if((a.Doctor.Id == doctor.Id) && (a.StartDate >= date1) && (a.StartDate <= date2.AddHours(24)))
+                if((a.Doctor.Id == doctor.Id) && (a.StartDate >= date1) && (a.EndDate <= date2.AddHours(24)))
                 {
                     appsPrikaz.Add(a);
                 }
             }
 
             appCollection = new ObservableCollection<Appointment>(appsPrikaz);
+
+
+            string pdfFilename = "IzvestajPlanLekara.pdf";
+            PdfDocument pdfDocument = new PdfDocument(pdfFilename);
+            pdfDocument.Info.Title = "Plan rada lekara u odredjenom vremenu";
+            PdfPage pdfPage = pdfDocument.AddPage();
+            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
+            XFont fontTitle = new XFont("Helvetica", 24, XFontStyle.Bold);
+            XFont font = new XFont("Helvetica", 14, XFontStyle.Regular);
+            XTextFormatter tf = new XTextFormatter(graph);
+            String write = "Zakazani termini za izabranog lekara:\n\n";
+            foreach(Appointment a in appsPrikaz)
+            {
+                String st = "ID pregleda: " + a.Id + "Lekar: " + a.DoctorPrikaz + "| Pacijent: " + a.PatientPrikaz + "| Tip: " + a.Type + "| Sala: " + a.roomPrikaz + "| Početak: " + a.StartDate + "\n";
+                write += st; 
+            }
+
+            tf.DrawString(write, font, XBrushes.Black, new XRect(0, 0, pdfPage.Width, pdfPage.Height), XStringFormats.TopLeft);
+            pdfDocument.Close();
         }
         
 

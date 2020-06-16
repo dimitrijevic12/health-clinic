@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="izvestaj" Height="768" Width="1024" Background="AliceBlue">
+        Title="izvestaj" Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
     
     <Grid>
 
@@ -39,18 +39,15 @@
         <Button Grid.Column="4" Grid.Row="7" HorizontalAlignment="Center" Width="300px" Margin="0,0,135,0" Grid.ColumnSpan="3" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.home}" Click="Button_pocetna"/>
         <Separator Grid.ColumnSpan="7" HorizontalAlignment="Right" Height="37" Margin="0,27,0,0" Grid.Row="3" VerticalAlignment="Top" Width="1016" Background="Black"/>
 
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,10,0" Background="SkyBlue">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
-            <MenuItem Header="_Početna"></MenuItem>
-            <MenuItem Header="_Lekari"></MenuItem>
-            <MenuItem Header="_Izveštaj"></MenuItem>
-            <MenuItem Header="_Magacin"></MenuItem>
-            <MenuItem Header="_Pomoć" Width="714" ></MenuItem>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Background="SkyBlue">
+
+            <MenuItem Header="_Početna" Click="MenuItem_pocetna"></MenuItem>
+            <MenuItem Header="_Lekari" Click="MenuItem_lekar"></MenuItem>
+            <MenuItem Header="_Izveštaj" Click="MenuItem_izvestaj"></MenuItem>
+            <MenuItem Header="_Magacin" Click="MenuItem_magacin"></MenuItem>
+            <MenuItem Header="_Pomoć" Click="MenuItem_pomoc"></MenuItem>
         </Menu>
+
 
     </Grid>
 </Window>

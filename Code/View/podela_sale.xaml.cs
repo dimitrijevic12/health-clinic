@@ -99,60 +99,72 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            // string nazivDruge = ime.Text;
-            DateTime dt1 = (DateTime)date1.SelectedDate;
-            //int result = DateTime.Compare(dt1, dt2);
-            if (DateTime.Now.Date == dt1)
+            if ((date1.ToString() == "") || (date2.ToString() == "") || (comboSala1.SelectedIndex == -1))
             {
-                int idDruge = (int)room.Id + 100;
-                if (room.tip == TypeOfRoom.EXAMOPERATION)
-                {
-                    ExamOperationRoom soba1 = new ExamOperationRoom(idDruge);
-                    foreach (ExamOperationRoom s1 in rooms)
-                    {
-                        if (s1.Id == room.Id)
-                        {
-                            sobaZaAdd = soba1;
-                            sobaZaEdit = s1;
-                            foreach (Equipment ek in sobaZaEdit.Equipments)
-                            {
-                                int pola = ek.Quantity / 2;
-                                ek.Quantity -= pola;
-                                Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
-                                sobaZaAdd.Equipments.Add(noviEk);
-                            }
-                        }
-                    }
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
 
-                    _examOperationRoomController.Edit(sobaZaEdit);
-                    _examOperationRoomController.Create(sobaZaAdd);
-                    //Console.WriteLine(idDruge);
-                }
-                else
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+
+
+                // string nazivDruge = ime.Text;
+                DateTime dt1 = (DateTime)date1.SelectedDate;
+                //int result = DateTime.Compare(dt1, dt2);
+                if (DateTime.Now.Date == dt1)
                 {
-                    RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5);
-                    foreach (RehabilitationRoom s2 in rooms2)
+                    int idDruge = (int)room.Id + 100;
+                    if (room.tip == TypeOfRoom.EXAMOPERATION)
                     {
-                        if (s2.Id == room.Id)
+                        ExamOperationRoom soba1 = new ExamOperationRoom(idDruge);
+                        foreach (ExamOperationRoom s1 in rooms)
                         {
-                            sobaZaAdd2 = soba2;
-                            sobaZaEdit2 = s2;
-                            foreach (Equipment ek in sobaZaEdit2.Equipments)
+                            if (s1.Id == room.Id)
                             {
-                                int pola = ek.Quantity / 2;
-                                ek.Quantity -= pola;
-                                Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
-                                sobaZaAdd2.Equipments.Add(noviEk);
+                                sobaZaAdd = soba1;
+                                sobaZaEdit = s1;
+                                foreach (Equipment ek in sobaZaEdit.Equipments)
+                                {
+                                    int pola = ek.Quantity / 2;
+                                    ek.Quantity -= pola;
+                                    Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                                    sobaZaAdd.Equipments.Add(noviEk);
+                                }
                             }
                         }
+
+                        _examOperationRoomController.Edit(sobaZaEdit);
+                        _examOperationRoomController.Create(sobaZaAdd);
+                        //Console.WriteLine(idDruge);
                     }
-                    _rehabilitationRoomController.Edit(sobaZaEdit2);
-                    _rehabilitationRoomController.Create(sobaZaAdd2);
-                    //Console.WriteLine("ovde2");
+                    else
+                    {
+                        RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5);
+                        foreach (RehabilitationRoom s2 in rooms2)
+                        {
+                            if (s2.Id == room.Id)
+                            {
+                                sobaZaAdd2 = soba2;
+                                sobaZaEdit2 = s2;
+                                foreach (Equipment ek in sobaZaEdit2.Equipments)
+                                {
+                                    int pola = ek.Quantity / 2;
+                                    ek.Quantity -= pola;
+                                    Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                                    sobaZaAdd2.Equipments.Add(noviEk);
+                                }
+                            }
+                        }
+                        _rehabilitationRoomController.Edit(sobaZaEdit2);
+                        _rehabilitationRoomController.Create(sobaZaAdd2);
+                        //Console.WriteLine("ovde2");
+                    }
                 }
+                //foreach (ek)
+                this.Close();
             }
-            //foreach (ek)
-            this.Close();
         }
     }
 }

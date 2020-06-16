@@ -21,7 +21,7 @@ namespace health_clinicClassDiagram.view
         private string _datum;
         private Specialization _specijalnost;
         private SurgicalSpecialty _hirurg;
-        public uredi_lekara(Doctor doctor)
+        public uredi_lekara(Doctor doctor, int c1, int c2, int c3, int c4)
         {
             InitializeComponent();
             this.DataContext = this;
@@ -35,7 +35,10 @@ namespace health_clinicClassDiagram.view
             //Jmbg.Text = doctor.Jmbg;
             DatumRodjenja.Text = doctor.DateOfBirth.ToString();
             //RadnoVreme.Text = doctor.;
-            
+            PolCombo.SelectedIndex = c1;
+            ComboRadnoVreme.SelectedIndex = c2;
+            SpecijalistaCombo.SelectedIndex = c3;
+            HirurgCombo.SelectedIndex = c4;
 
         }
 
@@ -50,96 +53,105 @@ namespace health_clinicClassDiagram.view
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
 
-            String ID = IdLekara.Text;
-            String IME = Ime.Text;
-            String PREZIME = Prezime.Text;
-
-           // String JMBG = Jmbg.Text;
-            String DATUMRODJ = DatumRodjenja.Text;
-            //String RADNOVREME = RadnoVreme.Text;
-            String SPECIJALISTA = "DA";
-
-            int combo1 = PolCombo.SelectedIndex;
-
-            if (combo1 == 0)
+            if ((IdLekara.Text == "") || (Ime.Text == "") || (Prezime.Text == "") || (DatumRodjenja.Text == "") || (PolCombo.SelectedIndex == -1) || (SpecijalistaCombo.SelectedIndex == -1) || (HirurgCombo.SelectedIndex == -1) || (ComboRadnoVreme.SelectedIndex == -1))
             {
-                _gender = Gender.MALE;
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
+
+                MessageBox.Show(message, title);
             }
             else
             {
-                _gender = Gender.FEMALE;
-            }
+                String ID = IdLekara.Text;
+                String IME = Ime.Text;
+                String PREZIME = Prezime.Text;
 
-            int combo2 = SpecijalistaCombo.SelectedIndex;
+                // String JMBG = Jmbg.Text;
+                String DATUMRODJ = DatumRodjenja.Text;
+                //String RADNOVREME = RadnoVreme.Text;
+                String SPECIJALISTA = "DA";
 
-            if (combo2 == 0)
-            {
-                _specijalnost = Specialization.CARDIOLOGY;
-            }
-            else if (combo2 == 1)
-            {
-                _specijalnost = Specialization.PULMOLOGY;
-            }
-            else if (combo2 == 2)
-            {
-                _specijalnost = Specialization.NEPHROLOGY;
-            }
-            else
-            {
-                _specijalnost = Specialization.ENDOCRINOLOGY;
-            }
+                int combo1 = PolCombo.SelectedIndex;
 
-            int combo3 = HirurgCombo.SelectedIndex;
+                if (combo1 == 0)
+                {
+                    _gender = Gender.MALE;
+                }
+                else
+                {
+                    _gender = Gender.FEMALE;
+                }
 
-            if (combo3 == 0)
-            {
-                _hirurg = SurgicalSpecialty.CARDIOTHORACIC;
-            }
-            else if (combo3 == 1)
-            {
-                _hirurg = SurgicalSpecialty.NEUROSURGERY;
-            }
-            else if (combo3 == 2)
-            {
-                _hirurg = SurgicalSpecialty.PLASTICAL;
-            }
-            else if (combo3 == 3)
-            {
-                _hirurg = SurgicalSpecialty.GENERAL;
-            }
-            else
-            {
-                _hirurg = SurgicalSpecialty.NOT_SURGEON;
-            }
+                int combo2 = SpecijalistaCombo.SelectedIndex;
 
-            int combo4 = ComboRadnoVreme.SelectedIndex;
-            if (combo4 == 0)
-            {
-                smena = TypeOfWorkingSchedule.PRVA;
+                if (combo2 == 0)
+                {
+                    _specijalnost = Specialization.CARDIOLOGY;
+                }
+                else if (combo2 == 1)
+                {
+                    _specijalnost = Specialization.PULMOLOGY;
+                }
+                else if (combo2 == 2)
+                {
+                    _specijalnost = Specialization.NEPHROLOGY;
+                }
+                else
+                {
+                    _specijalnost = Specialization.ENDOCRINOLOGY;
+                }
+
+                int combo3 = HirurgCombo.SelectedIndex;
+
+                if (combo3 == 0)
+                {
+                    _hirurg = SurgicalSpecialty.CARDIOTHORACIC;
+                }
+                else if (combo3 == 1)
+                {
+                    _hirurg = SurgicalSpecialty.NEUROSURGERY;
+                }
+                else if (combo3 == 2)
+                {
+                    _hirurg = SurgicalSpecialty.PLASTICAL;
+                }
+                else if (combo3 == 3)
+                {
+                    _hirurg = SurgicalSpecialty.GENERAL;
+                }
+                else
+                {
+                    _hirurg = SurgicalSpecialty.NOT_SURGEON;
+                }
+
+                int combo4 = ComboRadnoVreme.SelectedIndex;
+                if (combo4 == 0)
+                {
+                    smena = TypeOfWorkingSchedule.PRVA;
+                }
+                else if (combo4 == 1)
+                {
+                    smena = TypeOfWorkingSchedule.DRUGA;
+                }
+                else
+                {
+                    smena = TypeOfWorkingSchedule.TRECA;
+                }
+
+                _id = long.Parse(ID);
+                _ime = IME;
+                _prezime = PREZIME;
+
+
+                /*_datum = DateTime.Now;*/
+                _datum = DatumRodjenja.Text;
+
+                Doctor newDoctor = EditDoctor();
+
+                var s = new lekar();
+                s.Show();
+                this.Close();
             }
-            else if (combo4 == 1)
-            {
-                smena = TypeOfWorkingSchedule.DRUGA;
-            }
-            else
-            {
-                smena = TypeOfWorkingSchedule.TRECA;
-            }
-
-            _id = long.Parse(ID);
-            _ime = IME;
-            _prezime = PREZIME;
-
-
-            /*_datum = DateTime.Now;*/
-            _datum = DatumRodjenja.Text;
-
-            Doctor newDoctor = EditDoctor();
-
-            var s = new lekar();
-            s.Show();
-            this.Close();
-
         }
 
         private Doctor EditDoctor()

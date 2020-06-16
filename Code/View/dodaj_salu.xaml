@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         mc:Ignorable="d"
-        Title="dodaj_salu"  Height="768" Width="1024" Background="AliceBlue">
+        Title="dodaj_salu"  Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 

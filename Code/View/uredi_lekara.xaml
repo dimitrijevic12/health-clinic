@@ -6,7 +6,7 @@
         xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
         xmlns:local="clr-namespace:health_clinicClassDiagram.view"
         mc:Ignorable="d"
-        Title="uredi_lekara"  Height="800" Width="768" Background="AliceBlue" >
+        Title="uredi_lekara"  Height="800" Width="768" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
 
     <Grid>
 

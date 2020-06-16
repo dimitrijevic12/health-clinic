@@ -56,11 +56,21 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            string naziv = name.Text;
-            int qu = int.Parse(quant.Text);
-            _drugController.addDrug(naziv, qu);
+            if ((quant.Text == "") || (name.Text == ""))
+            {
+                string message = "Sva polja moraju biti popunjena!";
+                string title = "Greška";
 
-            this.Close();
+                MessageBox.Show(message, title);
+            }
+            else
+            {
+                string naziv = name.Text;
+                int qu = int.Parse(quant.Text);
+                _drugController.addDrug(naziv, qu);
+
+                this.Close();
+            }
         }
     }
 }

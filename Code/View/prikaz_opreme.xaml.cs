@@ -150,6 +150,10 @@ namespace health_clinicClassDiagram.view
             
         }
 
-       
+        private void pretragaSale_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filter = finalRooms.Where(Room => Room.Id.ToString().Contains(pretragaSale.Text) || Room.tip.ToString().Contains(pretragaSale.Text));
+            dataGridSale.ItemsSource = filter;
+        }
     }
 }

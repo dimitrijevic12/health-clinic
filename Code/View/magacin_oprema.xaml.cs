@@ -2,6 +2,7 @@
 using Model.Rooms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -68,6 +69,12 @@ namespace health_clinicClassDiagram.view
         private void dataGridMagacinOprema_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void pretragaOprema_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var filter = equips.Where(Equipment => Equipment.Id.ToString().Contains(pretragaOprema.Text) || Equipment.Naziv.Contains(pretragaOprema.Text) || Equipment.Quantity.ToString().Contains(pretragaOprema.Text));
+            dataGridMagacinOprema.ItemsSource = filter;
         }
     }
 }
