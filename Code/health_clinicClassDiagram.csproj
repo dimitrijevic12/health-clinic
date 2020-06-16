@@ -636,6 +636,9 @@
     <Compile Include="View\IzaberiTerminIsmeneUser.xaml.cs">
       <DependentUpon>IzaberiTerminIsmeneUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\IzmenaIzaberiNalog.xaml.cs">
+      <DependentUpon>IzmenaIzaberiNalog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\IzmenaPregledaUser.xaml.cs">
       <DependentUpon>IzmenaPregledaUser.xaml</DependentUpon>
     </Compile>
@@ -734,6 +737,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\IzaberiTerminIsmeneUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IzmenaIzaberiNalog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

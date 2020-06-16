@@ -100,9 +100,21 @@ namespace health_clinicClassDiagram.View
                 labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + appointment.StartDate.ToShortDateString() + " " + appointment.StartDate.ToShortTimeString() + "-" + appointment.EndDate.ToShortTimeString();
             }
 
-            //textIme.Text = appointment.Patient.Name;
-            //textPrezime.Text = appointment.Patient.Surname;
-            //textJMBG.Text = appointment.Patient.Id.ToString();
+            if (appointment != null)
+            {
+                textIme.Text = appointment.Patient.Name;
+                textPrezime.Text = appointment.Patient.Surname;
+                textJMBG.Text = appointment.Patient.Id.ToString();
+            }else if (IzmenaIzaberiNalog.StaticIzmenaRecord!=null){
+                textIme.Text = IzmenaIzaberiNalog.StaticIzmenaRecord.Name;
+                textPrezime.Text = IzmenaIzaberiNalog.StaticIzmenaRecord.Surname;
+                textJMBG.Text = IzmenaIzaberiNalog.StaticIzmenaRecord.IDPatient.ToString();
+            } else
+            {
+                textIme.Text = izmenaAppointment.Patient.Name;
+                textPrezime.Text = izmenaAppointment.Patient.Surname;
+                textJMBG.Text = izmenaAppointment.Patient.Id.ToString();
+            }
 
             //treba promeniti
             DoktorCombo.SelectedIndex = 0;
@@ -129,9 +141,9 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Pronadji(object sender, RoutedEventArgs e)
         {
-            
-            /*IzaberiNalogUser izaberi = new IzaberiNalogUser();
-            (this.Parent as Panel).Children.Add(izaberi);*/
+
+            IzmenaIzaberiNalog izaberi = new IzmenaIzaberiNalog(date, _startDate, _endDate, _room);
+            (this.Parent as Panel).Children.Add(izaberi);
         }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)

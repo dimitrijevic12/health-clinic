@@ -133,11 +133,24 @@ namespace health_clinicClassDiagram.View
 
             _gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            MedicalRecord record = CreateMedicalRecord();
-            
-           
-            RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
-            (this.Parent as Panel).Children.Add(pacijenti);
+            int flag = 0;
+            foreach (MedicalRecord mr in _recordController.GetAll())
+            {
+                if ((mr.IDnaloga.Equals(_idNaloga)) || (mr.IDPatient.Equals(_jmbgPacijenta))){
+                    string message = "Id naloga i jmbg moraju biti jedinstveni";
+                    string title = "Greška";
+                    MessageBox.Show(message, title);
+                    flag = 1;
+                }
+            }
+
+            if (flag == 0) {
+                MedicalRecord record = CreateMedicalRecord();
+
+
+                RegistrovaniPacijentiUser pacijenti = new RegistrovaniPacijentiUser();
+                (this.Parent as Panel).Children.Add(pacijenti);
+            }
 
 
         }
@@ -146,7 +159,7 @@ namespace health_clinicClassDiagram.View
 
         private MedicalRecord CreateMedicalRecord()
         {
-
+                        
             Patient pacijent = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta, _dateOfBirth, _gender);
             var record = new MedicalRecord(_idNaloga, pacijent, choosenDoctor, new List<Treatment>());
 

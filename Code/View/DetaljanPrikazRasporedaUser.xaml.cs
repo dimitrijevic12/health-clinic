@@ -109,6 +109,7 @@ namespace health_clinicClassDiagram.View
 
         private void dataGridNalozi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            selectedAppointments = new List<Appointment>();
 
             IList rows = dataGridNalozi.SelectedItems;
 

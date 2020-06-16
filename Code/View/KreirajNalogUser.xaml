@@ -78,7 +78,7 @@
                 <Label  Grid.Column="1" Grid.Row="9" FontSize="20"  Grid.ColumnSpan="3">Datum rođenja:</Label>
                 <Label  Grid.Column="1" Grid.Row="11" FontSize="20"  Grid.ColumnSpan="3">Pol:</Label>
                 <Label  Grid.Column="1" Grid.Row="13" FontSize="20"  Grid.ColumnSpan="3" VerticalAlignment="Center">Odabrani doktor:</Label>
-                <Label  Grid.Column="1" Grid.Row="15" FontSize="20"  Grid.ColumnSpan="3">Istorija lečenja:</Label>
+                <Label  Grid.Column="1" Grid.Row="15" FontSize="20"  Grid.ColumnSpan="3">Napomena:</Label>
                 <TextBox Grid.Column="4" Grid.Row="1" Grid.ColumnSpan="5" Name="IDTekst" Text="{Binding Path=Test2,UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="5" Name="ImeTekst"/>
                 <TextBox Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="5" Name="PrezimeTekst"/>

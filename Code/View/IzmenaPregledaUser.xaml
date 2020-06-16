@@ -76,7 +76,7 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="3" Name ="labelSala">Termin XX, Sala XX:</Label>
+                <Label  Grid.Column="3" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="5" Name ="labelSala" Margin="10,0,45,10" Grid.RowSpan="2">Termin XX, Sala XX:</Label>
                 <Button Grid.Column="4" Grid.Row="3" Grid.ColumnSpan="2"  FontSize="18" Margin="0,0,10,0" Click="Button_Izaberi" Style="{StaticResource RoundButton}">Izaberi
                     <Button.ToolTip>
                         <StackPanel>
@@ -108,11 +108,12 @@
                 <Label  Grid.Column="1" Grid.Row="11" FontSize="18"  Grid.ColumnSpan="3">JMBG:</Label>
                 <Label  Grid.Column="1" Grid.Row="13" FontSize="18"  Grid.ColumnSpan="3">Doktor:</Label>
                 <Label  Grid.Column="1" Grid.Row="15" FontSize="18"  Grid.ColumnSpan="3">Vrsta pregleda:</Label>
-                
+
                 <Label  Grid.Column="1" Grid.Row="17" FontSize="18"  Grid.ColumnSpan="3">Napomena:</Label>
                 <TextBox Grid.Column="4" Grid.Row="7" Grid.ColumnSpan="5" Name ="textIme"/>
                 <TextBox Grid.Column="4" Grid.Row="9" Grid.ColumnSpan="5" Name ="textPrezime"/>
-                <TextBox Grid.Column="4" Grid.Row="11" Grid.ColumnSpan="5" Name ="textJMBG"  Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="4" Grid.Row="11" Grid.ColumnSpan="5" Name ="textJMBG"  />
+                <!--Text="{Binding Path=Test1,UpdateSourceTrigger=PropertyChanged}"-->
                 <ComboBox Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="5" Name="DoktorCombo"  ItemsSource="{Binding Path = doctorsCollection}" SelectionChanged="DoktorCombo_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -130,7 +131,7 @@
                     <ComboBoxItem Content = "EXAM"/>
                     <ComboBoxItem Content= "SURGERY"/>
                 </ComboBox>
-               
+
                 <TextBox Grid.Column="4" Grid.Row="17" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
                 <Button Grid.Column="8" Grid.Row="23" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Potvrda">Potvrda</Button>
                 <Button Grid.Column="5" Grid.Row="23" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Odustanak">Odustanak</Button>

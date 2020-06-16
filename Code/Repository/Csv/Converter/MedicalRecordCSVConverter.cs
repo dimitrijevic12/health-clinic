@@ -70,14 +70,7 @@ namespace Repository.Csv.Converter
             }*/
 
             int i = 9;
-
-            //Console.WriteLine(TreatmentRepository.Instance.GetAll().Count);
-            foreach (Treatment treat in TreatmentRepository.Instance.GetAll())
-            {
-                Console.WriteLine(treat.Id);
-                Console.WriteLine(treat.DiagnosisAndReview.Review);
-                Console.WriteLine(treat.Doctor.NameDoctor);
-            }
+           
 
             while (i < tokens.Length - 1)
             {

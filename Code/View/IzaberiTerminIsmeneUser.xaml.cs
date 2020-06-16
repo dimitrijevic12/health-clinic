@@ -118,6 +118,7 @@ namespace health_clinicClassDiagram.View
 
         private void dataGridNalozi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            selectedAppointments = new List<Appointment>();
 
             IList rows = dataGridNalozi.SelectedItems;
 
@@ -213,8 +214,36 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Potvrdi(object sender, RoutedEventArgs e)
         {
-            IzmenaPregledaUser izmena = new IzmenaPregledaUser(date, appointment, room, startDate, endDate);
-            (this.Parent as Panel).Children.Add(izmena);
+            int flag = 0;
+
+            if (selectedAppointments == null)
+            {
+                string message = "Morate izabrati datum za izmenu";
+                string title = "Greška";
+                MessageBox.Show(message, title);
+                flag = 1;
+            }
+
+            if (flag == 0)
+            {
+                foreach (Appointment a in selectedAppointments)
+                {
+                    if (a.Id != 0)
+                    {
+                        string message = "Termin je već zauzet";
+                        string title = "Greška";
+                        MessageBox.Show(message, title);
+                        flag = 1;
+                        break;
+                    }
+                }
+            }
+
+            if (flag == 0)
+            {
+                IzmenaPregledaUser izmena = new IzmenaPregledaUser(date, null, room, startDate, endDate);
+                (this.Parent as Panel).Children.Add(izmena);
+            }
         }
     }
 }

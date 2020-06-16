@@ -72,8 +72,8 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label  Grid.Column="4" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="3" Name="labelSala">Termin XX, Sala XX:</Label>
-             
+                <Label  Grid.Column="3" Grid.Row="0" FontSize="18"  Grid.ColumnSpan="5" Name="labelSala" Margin="10,0,46,10" Grid.RowSpan="2">Termin XX, Sala XX:</Label>
+
                 <Label  Grid.Column="1" Grid.Row="4" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Ime:</Label>
                 <Label  Grid.Column="1" Grid.Row="6" FontSize="18"  Grid.ColumnSpan="3" VerticalAlignment="Top">Prezime:</Label>
                 <Label  Grid.Column="1" Grid.Row="8" FontSize="18"  Grid.ColumnSpan="3">JMBG:</Label>
@@ -101,7 +101,7 @@
                     <ComboBoxItem Content= "SURGERY"/>
                 </ComboBox>
                 <Label Grid.Column="1" Grid.Row="14" FontSize="18"  Grid.ColumnSpan="3">Napomena:</Label>
-               
+
                 <TextBox Grid.Column="4" Grid.Row="14" Grid.ColumnSpan="5" Grid.RowSpan="3"/>
                 <Button Grid.Column="8" Grid.Row="20" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Potvrda">Potvrda</Button>
                 <Button Grid.Column="5" Grid.Row="20" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="20" Margin="0,0,10,0" Click="Button_Odustanak">Odustanak</Button>
