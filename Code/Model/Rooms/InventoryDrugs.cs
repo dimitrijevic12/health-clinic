@@ -12,8 +12,10 @@ namespace Model.Rooms
    {
       public RehabilitationRoom rehabilitationRoom;
       public Drug drug;
-   
+      private long id;
       private int Quantity;
-   
-   }
+
+      public long Id { get { return id; } set { id = value; } }
+
+    }
 }

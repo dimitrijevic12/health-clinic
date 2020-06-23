@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,15 @@ namespace Service
 {
    public class DrugInventoryService : IDrugInvetoryService
    {
-      public DrugInventoryService GetInstance() { return null; }
+        public Repository.IDrugInvetoryRepository _drugRepository;
+
+        private static DrugInventoryService Instance;
+        public DrugInventoryService GetInstance() { return null; }
+
+        public DrugInventoryService(IDrugInvetoryRepository repository)
+        {
+            _drugRepository = repository;
+        }
         public bool MoveDrugInventory(Room roomFrom, Room roomTo, InventoryDrugs inventory, int ammount)
         {
             throw new NotImplementedException();
@@ -30,22 +39,28 @@ namespace Service
 
         public InventoryDrugs Create(InventoryDrugs obj)
         {
-            throw new NotImplementedException();
+            var newEquip = _drugRepository.Save(obj);
+
+
+            return newEquip;
         }
 
         public InventoryDrugs Edit(InventoryDrugs obj)
         {
-            throw new NotImplementedException();
+            _drugRepository.Edit(obj);
+            return obj;
         }
 
         public bool Delete(InventoryDrugs obj)
         {
-            throw new NotImplementedException();
+            _drugRepository.Delete(obj);
+            return true;
         }
 
         public List<InventoryDrugs> GetAll()
         {
-            throw new NotImplementedException();
+            var rooms = _drugRepository.GetAll();
+            return rooms;
         }
 
         List<InventoryDrugs> IDrugInvetoryService.GetInventory(Room room)
@@ -53,9 +68,7 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        public Repository.IDrugInvetoryRepository iDrugInvetoryRepository;
-   
-      private static DrugInventoryService Instance;
+       
    
    }
 }

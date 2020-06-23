@@ -5,15 +5,18 @@
  ***********************************************************************/
 
 using System;
+using System.Windows.Navigation;
 
 namespace Model.Rooms
 {
    public class InventoryEquip
    {
-      public Room room;
-      public Equipment equipment;
-   
+      private Room room;
+      private Equipment equipment;
+      private long id;
       private int Quantity;
    
-   }
+        public long Id { get { return id; } set { id = value; } }
+       
+    }
 }
