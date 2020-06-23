@@ -36,13 +36,13 @@ namespace Repository.Csv.Converter
             List<Drug> prescriptionDrugs = new List<Drug>();
             string prescriptionDrugString = tokens[5];
             string[] prescriptionDrugParts = prescriptionDrugString.Split('|');
-            foreach(long oneDrug in prescriptionDrugParts)
+/*            foreach(long drugID in prescriptionDrugParts)
             {
-                Drug drug = new Drug(oneDrug);
+                Drug drug = DrugRepository.
                 prescriptionDrugs.Add(drug);
             }
             Prescription prescription = new Prescription(drugs);
-
+*/
             string scheduledSurgeryString = tokens[6];
             string[] scheduledSurgeryParts = scheduledSurgeryString.Split(',');
             DateTime ssFromDate = DateTime.Parse(scheduledSurgeryParts[0]);
@@ -67,7 +67,8 @@ namespace Repository.Csv.Converter
             string hospitalTreatmentCause = hospitalTreatmentParts[2];
             ReferralToHospitalTreatment hospitalTreatment = new ReferralToHospitalTreatment(hospitalTreatmentFromDate, hospitalTreatmentToDate, hospitalTreatmentCause);
 
-            return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, hospitalTreatment, fromDate, toDate, doctor);
+            //            return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, hospitalTreatment, startDate, endDate, doctor);
+            return null;
         }
 
         public string ConvertEntityToCSVFormat(Treatment entity)
