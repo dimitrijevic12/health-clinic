@@ -24,13 +24,25 @@ namespace Model.Appointment
         public Doctor Doctor1 { get => doctor; set => doctor = value; }
         public Patient Patient1 { get => patient; set => patient = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
+        public TypeOfAppointment Type { get => type; set => type = value; }
 
         private DateTime startDate;
         private DateTime endDate;
-        public TypeOfAppointment Type;
+        private TypeOfAppointment type;
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {
+            this.Doctor = doctor;
+            this.Patient = patient;
+            this.ExamOperationRoom = room;
+            this.Type = type;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+        }
+
+        public Appointment(long id, Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
+        {
+            Id = id;
             this.Doctor = doctor;
             this.Patient = patient;
             this.ExamOperationRoom = room;

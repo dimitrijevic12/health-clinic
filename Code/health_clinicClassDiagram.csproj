@@ -374,6 +374,8 @@
     <Compile Include="Repository\Csv\Converter\RoomCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\SpecialistCSVConverter.cs" />
+    <Compile Include="Repository\Csv\Converter\SurgeonCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\TreatmentCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -467,6 +469,8 @@
     </Compile>
     <Compile Include="Repository\Sequencer\iSequencer.cs" />
     <Compile Include="Repository\Sequencer\LongSequencer.cs" />
+    <Compile Include="Repository\SpecialistRepository.cs" />
+    <Compile Include="Repository\SurgeonRepository.cs" />
     <Compile Include="Repository\TreatmentRepository.cs">
       <SubType>Code</SubType>
     </Compile>

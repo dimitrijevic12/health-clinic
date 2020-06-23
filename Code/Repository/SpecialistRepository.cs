@@ -10,33 +10,33 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class SpecialistRepository : IRepository<Specialist>
     {
-        private static DoctorRepository instance = null;
-        private readonly CSVStream<Doctor> stream = new CSVStream<Doctor>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter("|", ""));
+        private static SpecialistRepository instance = null;
+        private readonly CSVStream<Specialist> stream = new CSVStream<Specialist>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\SpecialistRepo.csv", new SpecialistCSVConverter("|", ""));
         private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly ICSVStream<Doctor> _stream;
+        private readonly ICSVStream<Specialist> _stream;
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static DoctorRepository Instance
+        public static SpecialistRepository Instance
         {
-             get
+            get
             {
                 if (instance == null)
                 {
-                    instance = new DoctorRepository();
+                    instance = new SpecialistRepository();
                 }
                 return instance;
             }
         }
 
-        private DoctorRepository()
+        private SpecialistRepository()
         {
         }
         public MedicalRecordRepository GetInstance() { return null; }
 
-        public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
+        public SpecialistRepository(string path, CSVStream<Specialist> stream, iSequencer<long> sequencer)
         {
             _path = path;
             _stream = stream;
@@ -44,9 +44,9 @@ namespace health_clinicClassDiagram.Repository
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
         }
 
-        private long GetMaxId(List<Doctor> doctors)
+        private long GetMaxId(List<Specialist> specialists)
         {
-            return doctors.Count() == 0 ? 0 : doctors.Max(apt => apt.Id);
+            return specialists.Count() == 0 ? 0 : specialists.Max(apt => apt.Id);
         }
 
         public bool CloseFile(string path)
@@ -54,14 +54,16 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public bool Delete(Doctor obj)
+        public bool Delete(Specialist obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            //            var doctors = _stream.ReadAll().ToList();
+            var doctors = stream.ReadAll().ToList();
             var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
-                _stream.SaveAll(doctors);
+                //                _stream.SaveAll(doctors);
+                stream.SaveAll(doctors);
                 return true;
             }
             else
@@ -70,17 +72,19 @@ namespace health_clinicClassDiagram.Repository
             }
         }
 
-        public Doctor Edit(Doctor obj)
+        public Specialist Edit(Specialist obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            //            var doctors = _stream.ReadAll().ToList();
+            var doctors = stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            _stream.SaveAll(doctors);
+            //            _stream.SaveAll(doctors);
+            stream.SaveAll(doctors);
             return obj;
         }
 
-        public List<Doctor> GetAll()
+        public List<Specialist> GetAll()
         {
-            var doctors = (List<Doctor>)_stream.ReadAll();
+            var doctors = (List<Specialist>)stream.ReadAll();
             return doctors;
         }
 
@@ -89,9 +93,9 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public Doctor Save(Doctor obj)
+        public Specialist Save(Specialist obj)
         {
-            _stream.AppendToFile(obj);
+            stream.AppendToFile(obj);
             return obj;
         }
     }
