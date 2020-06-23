@@ -20,19 +20,33 @@ namespace Model.Rooms
       private int id;
       private String name;
       private String Description;
-      private Boolean Validation;
-      private int quantity;
+      private Boolean validation;
+        Random rnd = new Random();
+        private int quantity;
 
+       
         public Drug(string name, int quantity)
         {
+            Id = rnd.Next(1, 10000);
             Name = name;
             Quantity = quantity;
+            Validation = false;
+        }
+        public Drug(int id, string name, int quantity)
+        {
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Validation = false;
         }
 
         public Drug(string name)
         {
             Name = name;
+            Validation = false;
+            // id = brojac++;
         }
+
 
         public Drug(Ingredients ingredients, string name, string description, bool validation, int quantity)
         {
@@ -46,5 +60,10 @@ namespace Model.Rooms
         public string Name { get => name; set => name = value; }
         public int Quantity { get => quantity; set => quantity = value; }
         public int Id { get => id; set => id = value; }
+        public bool Validation
+        {
+            get { return validation; }   // get method
+            set { validation = value; }
+        }
     }
 }
