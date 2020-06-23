@@ -21,7 +21,7 @@ namespace Model.Treatment
         private Model.SystemUsers.Doctor doctor;
         private SpecialistAppointment specialistAppointment;
 
-        private DateTime fromDate;
+        private DateTime startDate;
         private DateTime endDate;
         private long id;
 
@@ -62,7 +62,7 @@ namespace Model.Treatment
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }
         public ReferralToHospitalTreatment ReferralToHospitalTreatment { get => referralToHospitalTreatment; set => referralToHospitalTreatment = value; }
-        public DateTime FromDate { get => fromDate; set => fromDate = value; }
+        public DateTime FromDate { get => startDate; set => startDate = value; }
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }

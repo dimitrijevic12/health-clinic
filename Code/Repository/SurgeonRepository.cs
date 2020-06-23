@@ -98,5 +98,10 @@ namespace health_clinicClassDiagram.Repository
             stream.AppendToFile(obj);
             return obj;
         }
+
+        public Surgeon GetSurgeonById(int id)
+        {
+            return GetAll().SingleOrDefault(surgeon => surgeon.Id == id);
+        }
     }
 }

@@ -18,6 +18,13 @@ namespace Model.SystemUsers
             SurgicalSpecialty = surgicalSpecialty;
         }
 
+        public Surgeon(String name, String surname, SurgicalSpecialty surgicalSpecialty)
+        {
+            Name = name;
+            Surname = surname;
+            SurgicalSpecialty = surgicalSpecialty;
+        }
+
         public SurgicalSpecialty SurgicalSpecialty { get => surgicalSpecialty; set => surgicalSpecialty = value; }
     }
 }

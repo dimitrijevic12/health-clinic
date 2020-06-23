@@ -19,7 +19,7 @@ namespace health_clinicClassDiagram.Repository
         private readonly iSequencer<long> _sequencer;
 
         private String _path;
-        private static DoctorRepository Instance
+        public static DoctorRepository Instance
         {
              get
             {
@@ -34,7 +34,6 @@ namespace health_clinicClassDiagram.Repository
         private DoctorRepository()
         {
         }
-        public MedicalRecordRepository GetInstance() { return null; }
 
         public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
         {
@@ -93,6 +92,11 @@ namespace health_clinicClassDiagram.Repository
         {
             _stream.AppendToFile(obj);
             return obj;
+        }
+
+        public Doctor GetDoctorById(long id)
+        {
+            return GetAll().SingleOrDefault(doctor => doctor.Id == id);
         }
     }
 }
