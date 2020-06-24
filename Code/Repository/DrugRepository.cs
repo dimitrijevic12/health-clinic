@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Rooms;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -15,21 +16,29 @@ namespace Repository
 {
    public class DrugRepository : IDrugRepository
    {
-        private readonly ICSVStream<Drug> _stream;
-        private readonly iSequencer<long> _sequencer;
-
-        private String _path;
-        private static DrugRepository Instance;
+        private static DrugRepository instance = null;
+        private readonly CSVStream<Drug> _stream = new CSVStream<Drug>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DrugRepo.csv", new DrugCSVConverter(","));
+        private readonly LongSequencer _sequencer = new LongSequencer();
 
         public DrugRepository GetInstance() { return null; }
 
-        public DrugRepository(string path, CSVStream<Drug> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
+        private DrugRepository()
+        { 
         }
+
+        public static DrugRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DrugRepository();
+                }
+                return instance;
+            }
+        }
+
+
         private long GetMaxId(List<Drug> equip)
         {
             return equip.Count() == 0 ? 0 : equip.Max(eq => eq.Id);
@@ -101,7 +110,11 @@ namespace Repository
             return drug[drug.FindIndex(apt => apt.Name.Equals(naziv))];
         }
 
-
+        public Drug GetDrugById(long id)
+        {
+            var drug = _stream.ReadAll().ToList();
+            return drug[drug.FindIndex(ent => ent.Id == id)];
+        }
 
     }
 }

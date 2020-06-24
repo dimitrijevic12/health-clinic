@@ -34,7 +34,6 @@ namespace health_clinicClassDiagram.Repository
         private SpecialistRepository()
         {
         }
-        public MedicalRecordRepository GetInstance() { return null; }
 
         public SpecialistRepository(string path, CSVStream<Specialist> stream, iSequencer<long> sequencer)
         {
@@ -97,6 +96,11 @@ namespace health_clinicClassDiagram.Repository
         {
             stream.AppendToFile(obj);
             return obj;
+        }
+
+        public Specialist GetSpecialistById(long id)
+        {
+            return GetAll().Find(specialist => specialist.Id == id);
         }
     }
 }

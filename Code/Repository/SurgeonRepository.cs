@@ -13,7 +13,7 @@ namespace health_clinicClassDiagram.Repository
     public class SurgeonRepository : IRepository<Surgeon>
     {
         private static SurgeonRepository instance = null;
-        private readonly CSVStream<Surgeon> stream = new CSVStream<Surgeon>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\SurgeonRepo.csv", new SurgeonCSVConverter("|", ""));
+        private readonly CSVStream<Surgeon> stream = new CSVStream<Surgeon>("C:\\health-clinic\\health-clinic\\Code\\resources\\data\\SurgeonRepo.csv", new SurgeonCSVConverter(",", ""));
         private readonly LongSequencer sequencer = new LongSequencer();
         private readonly ICSVStream<Doctor> _stream;
         private readonly iSequencer<long> _sequencer;
@@ -99,7 +99,7 @@ namespace health_clinicClassDiagram.Repository
             return obj;
         }
 
-        public Surgeon GetSurgeonById(int id)
+        public Surgeon GetSurgeonById(long id)
         {
             return GetAll().SingleOrDefault(surgeon => surgeon.Id == id);
         }

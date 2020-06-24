@@ -17,7 +17,7 @@ namespace Model.Rooms
       }
    
       public Ingredients ingredients;
-      private int id;
+      private long id;
       private String name;
       private String Description;
       private Boolean validation;
@@ -57,13 +57,24 @@ namespace Model.Rooms
             this.quantity = quantity;
         }
 
+        public Drug(long id, Ingredients ingredients, string name, string description, bool validation, int quantity)
+        {
+            Id = id;
+            this.ingredients = ingredients;
+            this.name = name;
+            Description = description;
+            Validation = validation;
+            this.quantity = quantity;
+        }
+
         public string Name { get => name; set => name = value; }
         public int Quantity { get => quantity; set => quantity = value; }
-        public int Id { get => id; set => id = value; }
         public bool Validation
         {
             get { return validation; }   // get method
             set { validation = value; }
         }
+
+        public long Id { get => id; set => id = value; }
     }
 }

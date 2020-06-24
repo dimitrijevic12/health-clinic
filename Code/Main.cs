@@ -8,6 +8,8 @@ using Repository;
 using Model.SystemUsers;
 using Model.Surveys;
 using Controller;
+using health_clinicClassDiagram.Repository;
+using health_clinicClassDiagram.Model.Treatment;
 
 namespace health_clinicClassDiagram
 {
@@ -54,14 +56,62 @@ namespace health_clinicClassDiagram
              Treatment treatment = new Treatment(prescription, new ScheduledSurgery(DateTime.Today, DateTime.Now, "Razlog operacije", new Surgeon("Pera", "Peric", SurgicalSpecialty.CARDIOTHORACIC)), diagnosisAndReview, new ReferralToHospitalTreatment(DateTime.Today, DateTime.Now, "Razlog bolnickog lecenja"), DateTime.Today, DateTime.Now, new Doctor("Marko", "Markovic"));
              TreatmentRepository.Instance.Save(treatment);
          */
-            Blog blog1 = new Blog("naslov 1", "blablbalblalba", DateTime.Now);
-            Blog blog2 = new Blog("naslov 2", "blablbalblalba", DateTime.Now.AddHours(2));
-            BlogController.Instance.Create(blog1);
-            BlogController.Instance.Create(blog2);
-            BlogController.Instance.GetBlogByTitle("naslov 1");
-            BlogController.Instance.Delete(blog1);
-            blog2.Text = "Promenjen text";
-            BlogController.Instance.Edit(blog2);
+            /*            Blog blog1 = new Blog("naslov 1", "blablbalblalba", DateTime.Now);
+                        Blog blog2 = new Blog("naslov 2", "blablbalblalba", DateTime.Now.AddHours(2));
+                        BlogController.Instance.Create(blog1);
+                        BlogController.Instance.Create(blog2);
+                        BlogController.Instance.GetBlogByTitle("naslov 1");
+                        BlogController.Instance.Delete(blog1);
+                        blog2.Text = "Promenjen text";
+                        BlogController.Instance.Edit(blog2);*/
+            Drug drug1 = new Drug(213, null, "Panklav 200mg", "Opis Panklava", true, 20);
+            Drug drug2 = new Drug(312, null, "Aerius 50mg", "Opis Aeriusa", false, 5);
+            List<Drug> drugs = new List<Drug>();
+            drugs.Add(drug1);
+            drugs.Add(drug2);
+            DrugRepository.Instance.Save(drug1);
+            DrugRepository.Instance.Save(drug2);
+
+            Doctor doctor = new Doctor(123, "Marko", "Markovic", Model.SystemUsers.Gender.MALE, DateTime.Now);
+            DoctorRepository.Instance.Save(doctor);
+
+            DateTime startDate = DateTime.Now;
+            DateTime endDate = DateTime.Now.AddDays(1);
+
+            Prescription prescription = new Prescription(drugs);
+
+            Surgeon surgeon = new Surgeon(222, "Pera", "Peric", Model.SystemUsers.Gender.FEMALE, DateTime.Now, SurgicalSpecialty.CARDIOTHORACIC);
+            SurgeonRepository.Instance.Save(surgeon);
+            ScheduledSurgery scheduledSurgery = new ScheduledSurgery(startDate, endDate, "Razlog za operaciju", surgeon);
+
+            Specialist specialist = new Specialist(333, "Ana", "Jovanovic", Model.SystemUsers.Gender.FEMALE, DateTime.Now, Specialization.ENDOCRINOLOGY);
+            SpecialistRepository.Instance.Save(specialist);
+            SpecialistAppointment specialistAppointment = new SpecialistAppointment("Razlog za specijalistu", specialist);
+
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, "Razlog za bolnicko lecenje", drugs);
+
+            DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Dijagnoza", "Procedura");
+
+            Treatment treatment = new Treatment(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, startDate, endDate, 23, doctor, specialistAppointment);
+            TreatmentRepository.Instance.Save(treatment);
+
+            Treatment treatment1 = TreatmentRepository.Instance.GetTreatment(23);
+
+            foreach(Drug oneDrug in treatment1.Prescription.Drug)
+            {
+                Console.WriteLine(oneDrug.Name);
+            }
+
+            Console.WriteLine("\n\n");
+            foreach (Drug oneDrug in treatment1.ReferralToHospitalTreatment.Drugs)
+            {
+                Console.WriteLine(oneDrug.Name);
+            }
+
+            Console.WriteLine("\n\n");
+            Console.WriteLine(treatment1.Doctor.NameAndSurname);
+            Console.WriteLine(treatment1.ScheduledSurgery.Surgeon.NameAndSurname);
+            Console.WriteLine(treatment1.SpecialistAppointment.Doctor.NameAndSurname);
         }
         
 

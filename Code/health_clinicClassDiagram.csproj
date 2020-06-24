@@ -363,7 +363,6 @@
     <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\Csv\Converter\PrescriptionCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
@@ -456,7 +455,6 @@
     <Compile Include="Repository\NotificationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>

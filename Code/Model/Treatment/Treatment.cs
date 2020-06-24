@@ -58,6 +58,11 @@ namespace Model.Treatment
         {
         }
 
+        public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, long id, Doctor doctor, SpecialistAppointment specialistAppointment) : this(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, fromDate, endDate, id, doctor)
+        {
+            SpecialistAppointment = specialistAppointment;
+        }
+
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }

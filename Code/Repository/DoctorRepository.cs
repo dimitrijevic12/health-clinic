@@ -13,10 +13,8 @@ namespace health_clinicClassDiagram.Repository
     public class DoctorRepository : IRepository<Doctor>
     {
         private static DoctorRepository instance = null;
-        private readonly CSVStream<Doctor> stream = new CSVStream<Doctor>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter("|", ""));
-        private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly ICSVStream<Doctor> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly CSVStream<Doctor> _stream = new CSVStream<Doctor>("C:\\health-clinic\\health-clinic\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter(",", ""));
+        private readonly LongSequencer _sequencer = new LongSequencer();
 
         private String _path;
         public static DoctorRepository Instance
@@ -33,14 +31,6 @@ namespace health_clinicClassDiagram.Repository
 
         private DoctorRepository()
         {
-        }
-
-        public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
         }
 
         private long GetMaxId(List<Doctor> doctors)
