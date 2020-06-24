@@ -96,6 +96,19 @@ namespace Repository
             return appointments;
         }
 
+        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            foreach (Appointment appointment in getAppointmentsByDayAndDoctorAndRoom(day, doctor, room))
+            {
+                if (appointment.Patient.Id == patient.Id)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
+        }
+
         public Appointment GetAppointment(Appointment appointment)
         {
             throw new NotImplementedException();

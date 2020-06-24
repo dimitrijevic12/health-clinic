@@ -1,4 +1,5 @@
-﻿using Model.SystemUsers;
+﻿using health_clinicClassDiagram.Repository;
+using Model.SystemUsers;
 using Repository;
 using Service;
 using System;
@@ -11,38 +12,42 @@ namespace health_clinicClassDiagram.Service
     public class DoctorService : IService<Doctor>
     {
 
-        private readonly IRepository<Doctor> _doctorRepository;
+        private static DoctorService instance = null;
 
-        private static DoctorService Instance;
-
-        public MedicalRecordService GetInstance() { return null; }
-
-        public DoctorService(IRepository<Doctor> repository)
+        public static DoctorService Instance
         {
-            _doctorRepository = repository;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorService();
+                }
+                return instance;
+            }
+        }
 
+        private DoctorService()
+        {
         }
 
         public Doctor Create(Doctor obj)
         {
-            var newDoctor = _doctorRepository.Save(obj);
-            return newDoctor;
+            return DoctorRepository.Instance.Save(obj);
         }
 
         public bool Delete(Doctor obj)
         {
-            return _doctorRepository.Delete(obj);
+            return DoctorRepository.Instance.Delete(obj);
         }
 
         public Doctor Edit(Doctor obj)
         {
-            return _doctorRepository.Edit(obj);
+            return DoctorRepository.Instance.Edit(obj);
         }
 
         public List<Doctor> GetAll()
         {
-            var doctors = _doctorRepository.GetAll();
-            return doctors;
+            return DoctorRepository.Instance.GetAll();
         }
     }
 }

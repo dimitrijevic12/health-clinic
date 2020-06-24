@@ -16,7 +16,6 @@ namespace health_clinicClassDiagram.Repository
         private readonly CSVStream<Doctor> _stream = new CSVStream<Doctor>("C:\\health-clinic\\health-clinic\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter(",", ""));
         private readonly LongSequencer _sequencer = new LongSequencer();
 
-        private String _path;
         public static DoctorRepository Instance
         {
              get

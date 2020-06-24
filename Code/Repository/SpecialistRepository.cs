@@ -13,12 +13,8 @@ namespace health_clinicClassDiagram.Repository
     public class SpecialistRepository : IRepository<Specialist>
     {
         private static SpecialistRepository instance = null;
-        private readonly CSVStream<Specialist> stream = new CSVStream<Specialist>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\SpecialistRepo.csv", new SpecialistCSVConverter("|", ""));
-        private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly ICSVStream<Specialist> _stream;
-        private readonly iSequencer<long> _sequencer;
-
-        private String _path;
+        private readonly CSVStream<Specialist> _stream = new CSVStream<Specialist>("../../Resources/Data/Specialists.csv", new SpecialistCSVConverter(","));
+        private readonly LongSequencer _sequencer = new LongSequencer();
         public static SpecialistRepository Instance
         {
             get
@@ -35,14 +31,6 @@ namespace health_clinicClassDiagram.Repository
         {
         }
 
-        public SpecialistRepository(string path, CSVStream<Specialist> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
         private long GetMaxId(List<Specialist> specialists)
         {
             return specialists.Count() == 0 ? 0 : specialists.Max(apt => apt.Id);
@@ -55,14 +43,12 @@ namespace health_clinicClassDiagram.Repository
 
         public bool Delete(Specialist obj)
         {
-            //            var doctors = _stream.ReadAll().ToList();
-            var doctors = stream.ReadAll().ToList();
+            var doctors = _stream.ReadAll().ToList();
             var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
-                //                _stream.SaveAll(doctors);
-                stream.SaveAll(doctors);
+                _stream.SaveAll(doctors);
                 return true;
             }
             else
@@ -73,17 +59,15 @@ namespace health_clinicClassDiagram.Repository
 
         public Specialist Edit(Specialist obj)
         {
-            //            var doctors = _stream.ReadAll().ToList();
-            var doctors = stream.ReadAll().ToList();
+            var doctors = _stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            //            _stream.SaveAll(doctors);
-            stream.SaveAll(doctors);
+            _stream.SaveAll(doctors);
             return obj;
         }
 
         public List<Specialist> GetAll()
         {
-            var doctors = (List<Specialist>)stream.ReadAll();
+            var doctors = (List<Specialist>)_stream.ReadAll();
             return doctors;
         }
 
@@ -94,7 +78,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Specialist Save(Specialist obj)
         {
-            stream.AppendToFile(obj);
+            _stream.AppendToFile(obj);
             return obj;
         }
 

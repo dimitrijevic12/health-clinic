@@ -22,5 +22,7 @@ namespace Repository
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
+
+        List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
    }
 }

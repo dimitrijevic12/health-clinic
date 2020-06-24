@@ -53,7 +53,8 @@ namespace Service
             treatment.SpecialistAppointment = specialistAppointment;
             MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
             Patient patient = medicalRecord.Patient;
-            Appointment Appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
+            Appointment appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
+            AppointmentRepository.Instance.Save(appointment);
             return treatment.SpecialistAppointment;
         }
 

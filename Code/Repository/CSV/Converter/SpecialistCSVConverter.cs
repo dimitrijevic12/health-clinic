@@ -3,6 +3,7 @@ using Model.SystemUsers;
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -12,28 +13,30 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     {
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public SpecialistCSVConverter(string delimiter, string datetimeFormat)
+        public SpecialistCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public Specialist ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            String genderString = tokens[3];
-
+            long id = long.Parse(tokens[0]);
+            string name = tokens[1];
+            string surname = tokens[2];
+            
+            string genderString = tokens[3];
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
+            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             String specializationString = tokens[5];
 
             Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
-            Specialist specialist = new Specialist(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, specialization);
+            Specialist specialist = new Specialist(id, name, surname, gender, dateOfBirth, specialization);
 
             return specialist;
         }
@@ -45,7 +48,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             DateTime.Now,
+             entity.DateOfBirth.ToString("dd/MM/yyyy"),
              entity.Specialization);
         }
     }

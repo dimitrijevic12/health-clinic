@@ -17,7 +17,7 @@ namespace Repository
    public class DrugRepository : IDrugRepository
    {
         private static DrugRepository instance = null;
-        private readonly CSVStream<Drug> _stream = new CSVStream<Drug>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DrugRepo.csv", new DrugCSVConverter(","));
+        private readonly CSVStream<Drug> _stream = new CSVStream<Drug>("../../Resources/Data/Drugs.csv", new DrugCSVConverter(","));
         private readonly LongSequencer _sequencer = new LongSequencer();
 
         public DrugRepository GetInstance() { return null; }

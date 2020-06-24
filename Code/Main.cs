@@ -10,6 +10,7 @@ using Model.Surveys;
 using Controller;
 using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Model.Treatment;
+using health_clinicClassDiagram.Controller;
 
 namespace health_clinicClassDiagram
 {
@@ -73,7 +74,8 @@ namespace health_clinicClassDiagram
             DrugRepository.Instance.Save(drug2);
 
             Doctor doctor = new Doctor(123, "Marko", "Markovic", Model.SystemUsers.Gender.MALE, DateTime.Now);
-            DoctorRepository.Instance.Save(doctor);
+            DoctorController.Instance.Create(doctor);
+//            DoctorRepository.Instance.Save(doctor);
 
             DateTime startDate = DateTime.Now;
             DateTime endDate = DateTime.Now.AddDays(1);
@@ -81,23 +83,26 @@ namespace health_clinicClassDiagram
             Prescription prescription = new Prescription(drugs);
 
             Surgeon surgeon = new Surgeon(222, "Pera", "Peric", Model.SystemUsers.Gender.FEMALE, DateTime.Now, SurgicalSpecialty.CARDIOTHORACIC);
-            SurgeonRepository.Instance.Save(surgeon);
+            SurgeonController.Instance.Create(surgeon);
+ //           SurgeonRepository.Instance.Save(surgeon);
             ScheduledSurgery scheduledSurgery = new ScheduledSurgery(startDate, endDate, "Razlog za operaciju", surgeon);
 
             Specialist specialist = new Specialist(333, "Ana", "Jovanovic", Model.SystemUsers.Gender.FEMALE, DateTime.Now, Specialization.ENDOCRINOLOGY);
-            SpecialistRepository.Instance.Save(specialist);
+            SpecialistController.Instance.Create(specialist);
+//            SpecialistRepository.Instance.Save(specialist);
             SpecialistAppointment specialistAppointment = new SpecialistAppointment("Razlog za specijalistu", specialist);
 
             ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, "Razlog za bolnicko lecenje", drugs);
 
             DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Dijagnoza", "Procedura");
 
+            Patient patient = new Patient("Sima", "Simic", 345);
             Treatment treatment = new Treatment(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, startDate, endDate, 23, doctor, specialistAppointment);
+//            TreatmentController.Instance.Create(patient, treatment);
             TreatmentRepository.Instance.Save(treatment);
 
             Treatment treatment1 = TreatmentRepository.Instance.GetTreatment(23);
-
-            foreach(Drug oneDrug in treatment1.Prescription.Drug)
+            foreach (Drug oneDrug in treatment1.Prescription.Drug)
             {
                 Console.WriteLine(oneDrug.Name);
             }

@@ -13,29 +13,30 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     {
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public SurgeonCSVConverter(string delimiter, string datetimeFormat)
+        public SurgeonCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public Surgeon ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            String genderString = tokens[3];
+            long id = long.Parse(tokens[0]);
+            string name = tokens[1];
+            string surname = tokens[2];
 
+            string genderString = tokens[3];
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            DateTime date = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             String specializationString = tokens[5];
 
             SurgicalSpecialty surgicalSpecialty = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), specializationString, true);
 
-            Surgeon surgeon = new Surgeon(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, surgicalSpecialty);
+            Surgeon surgeon = new Surgeon(id, name, surname, gender, dateOfBirth, surgicalSpecialty);
 
             return surgeon;
         }

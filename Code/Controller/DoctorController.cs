@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Service;
 using Model.SystemUsers;
 using Service;
 using System;
@@ -10,37 +11,44 @@ namespace health_clinicClassDiagram.Controller
 {
     public class DoctorController : IController<Doctor>
     {
-        private static DoctorController Instance;
-        public DoctorController GetInstance() { return null; }
+        private static DoctorController instance = null;
 
-        private readonly IService<Doctor> _service;
-
-        public DoctorController(IService<Doctor> service)
+        public static DoctorController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorController();
+                }
+                return instance;
+            }
+        }
+
+        private DoctorController()
+        {
         }
 
         public Doctor Create(Doctor obj)
         {
-            return _service.Create(obj);
+            return DoctorService.Instance.Create(obj);
         }
 
         public bool Delete(Doctor obj)
         {
-            return _service.Delete(obj);
+            return DoctorService.Instance.Delete(obj);
 
         }
 
         public Doctor Edit(Doctor obj)
         {
-            return _service.Edit(obj);
+            return DoctorService.Instance.Edit(obj);
 
         }
 
         public List<Doctor> GetAll()
         {
-            var doctors = (List<Doctor>)_service.GetAll();
-            return doctors;
+            return DoctorService.Instance.GetAll();
         }
     }
 }
