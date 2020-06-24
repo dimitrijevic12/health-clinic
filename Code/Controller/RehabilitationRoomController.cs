@@ -12,11 +12,24 @@ namespace health_clinicClassDiagram.Controller
 {
     public class RehabilitationRoomController : IRehabilitationRoomController
     {
+        private readonly IRehabilitationRoomService _service = RehabilitationRoomService.Instance;
 
         private static RehabilitationRoomController instance;
-        public RehabilitationRoomController GetInstance() { return null; }
 
-        private readonly IRehabilitationRoomService _service;
+        public static RehabilitationRoomController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RehabilitationRoomController();
+                }
+                return instance;
+            }
+        }
+
+        private RehabilitationRoomController() { }
+      
 
         public RehabilitationRoomController(IRehabilitationRoomService service)
         {

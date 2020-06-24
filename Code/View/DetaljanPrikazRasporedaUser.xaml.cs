@@ -71,9 +71,12 @@ namespace health_clinicClassDiagram.View
 
             comboSala.SelectedIndex = 0;
 
-            var app = Application.Current as App;
+            /*var app = Application.Current as App;
             _roomController = app.ExamOperationRoomController;
-            _appointmentController = app.AppointmentController;
+            _appointmentController = app.AppointmentController;*/
+
+            _roomController = ExamOperationRoomController.Instance;
+            _appointmentController = AppointmentController.Instance;
 
             rooms = _roomController.GetAll();
 
@@ -111,20 +114,24 @@ namespace health_clinicClassDiagram.View
         {
             selectedAppointments = new List<Appointment>();
 
-            IList rows = dataGridNalozi.SelectedItems;
-
-            foreach (var row in rows)
+            if (dataGridNalozi.SelectedItem != null)
             {
-                selectedAppointments.Add((Appointment)row);
-            }
 
-            if (selectedAppointments.Count == 1)
-            {
-                appointment = selectedAppointments[0];
-            }
+                IList rows = dataGridNalozi.SelectedItems;
 
-            startDate = selectedAppointments[0].StartDate;
-            endDate = selectedAppointments[selectedAppointments.Count - 1].EndDate;
+                foreach (var row in rows)
+                {
+                    selectedAppointments.Add((Appointment)row);
+                }
+
+                if (selectedAppointments.Count == 1)
+                {
+                    appointment = selectedAppointments[0];
+                }
+
+                startDate = selectedAppointments[0].StartDate;
+                endDate = selectedAppointments[selectedAppointments.Count - 1].EndDate;
+            }
 
             /*try
             {

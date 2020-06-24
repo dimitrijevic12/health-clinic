@@ -112,10 +112,14 @@ namespace health_clinicClassDiagram.View
             }
 
 
-            var app = Application.Current as App;
+            /*var app = Application.Current as App;
             _roomController = app.ExamOperationRoomController;
             _appointmentController = app.AppointmentController;
-            _rehabilitationRoomController = app.RehabilitationRoomController;
+            _rehabilitationRoomController = app.RehabilitationRoomController;*/
+
+            _roomController = ExamOperationRoomController.Instance;
+            _appointmentController = AppointmentController.Instance;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
 
             rooms = _roomController.GetAll();
 
@@ -250,13 +254,9 @@ namespace health_clinicClassDiagram.View
 
             List<Appointment> trazeniAppointmenti = _appointmentController.GetAppointmentsByTimeAndRoom(room, startDate, endDate);
 
-            //blankAppointments = AppointmentGenerator.Instance.generateList(DateTime.Today);
-
             blankAppointments = AppointmentGenerator.Instance.generateList(startDate);
 
             AppointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
-
-
 
             foreach (Appointment a in trazeniAppointmenti)
             {

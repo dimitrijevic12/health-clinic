@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.AppointmentService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -17,10 +18,10 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-        public Repository.IAppointmentRepository iAppointmentRepository;
-        private readonly IService<Doctor> _doctorService;
-        private readonly IService<Patient> _patientService;
-        private readonly IService<ExamOperationRoom> _roomService;
+        public Repository.IAppointmentRepository iAppointmentRepository = AppointmentRepository.Instance;
+        private readonly IService<Doctor> _doctorService = DoctorService.Instance;
+        private readonly IService<Patient> _patientService = PatientService.Instance;
+        private readonly IService<ExamOperationRoom> _roomService = ExamOperationRoomService.Instance;
 
         private static AppointmentService instance;
 
@@ -187,6 +188,22 @@ namespace Service
         private void BindAllForAppointments(List<Appointment> appointments, List<Doctor> doctors, List<Patient> patients, List<ExamOperationRoom> rooms)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
+        {
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if ((a.Doctor.Id.Equals(doctor.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+            return trazeni;
         }
     }
 }

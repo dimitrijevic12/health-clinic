@@ -8,6 +8,7 @@ using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,11 @@ namespace Repository
 {
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
-        private readonly ICSVStream<MedicalRecord> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter("," , "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path;
-        private static MedicalRecordRepository instance;
+        private String _path = "../../Resources/Data/records.csv";
+        private static MedicalRecordRepository instance = null;
 
         public static MedicalRecordRepository Instance 
         {
@@ -35,7 +36,7 @@ namespace Repository
             }
         }
 
-        public MedicalRecordRepository GetInstance() { return null; }
+
 
         private MedicalRecordRepository()
         {
@@ -167,7 +168,11 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-
-
+        public MedicalRecord getMedRecById(long id)
+        {
+            var records = _stream.ReadAll().ToList();
+            return records[records.FindIndex(apt => apt.id == id)];
+            
+        }
     }
 }

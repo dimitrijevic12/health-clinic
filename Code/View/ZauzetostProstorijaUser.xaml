@@ -62,7 +62,7 @@
                     <DataGridTextColumn Width="*" Header="Kraj" Binding="{Binding EndDate}"/>
                     <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientIdNameSurname}"/>
                     <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorIdNameSurname}"/>
-                    <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding TypeAppointment}"/>
+                    <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding TypeString}"/>
 
                 </DataGrid.Columns>
             </DataGrid>

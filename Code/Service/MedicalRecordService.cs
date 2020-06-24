@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.MedicalRecordService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
@@ -15,12 +16,29 @@ namespace Service
 {
    public class MedicalRecordService : IMedicalRecordService
    {
-        private readonly IMedicalRecordRepository _medicalRecordRepository;
-        private readonly IUserService _patientService;
-        private static MedicalRecordService Instance;
-        public MedicalRecordService GetInstance() { return null; }
+        private readonly IMedicalRecordRepository _medicalRecordRepository = MedicalRecordRepository.Instance;
+        private readonly IService<Patient> _patientService = PatientService.Instance;
+        private static MedicalRecordService instance;
 
-        public MedicalRecordService(IMedicalRecordRepository repository, IUserService service)
+        public static MedicalRecordService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalRecordService();
+                }
+                return instance;
+            }
+        }
+
+        private MedicalRecordService()
+        {
+
+        }
+
+
+        public MedicalRecordService(IMedicalRecordRepository repository, IService<Patient> service)
         {
             _medicalRecordRepository = repository;
             _patientService = service;
@@ -79,6 +97,11 @@ namespace Service
         private void BindPatientsWithRecords(Patient[] patients, MedicalRecord[] records)
         {
             //records.ToList().ForEach(record => record.patient = GetMedRecByPatient(record.patient));
+        }
+
+        public MedicalRecord getMedRecById(long id)
+        {
+            return iMedicalRecordRepository.getMedRecById(id);
         }
 
         public Repository.IMedicalRecordRepository iMedicalRecordRepository;

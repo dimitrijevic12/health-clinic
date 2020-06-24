@@ -35,8 +35,9 @@ namespace health_clinicClassDiagram.View
 
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _recordController = app.MedicalRecordController;
+            //var app = Application.Current as App;
+            //_recordController = app.MedicalRecordController;
+            _recordController = MedicalRecordController.Instance;
 
             records = _recordController.GetAll();
 

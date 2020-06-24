@@ -13,13 +13,12 @@ namespace health_clinicClassDiagram.Repository
     public class DoctorRepository : IRepository<Doctor>
     {
         private static DoctorRepository instance = null;
-        private readonly CSVStream<Doctor> stream = new CSVStream<Doctor>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\DoctorRepo.csv", new DoctorCSVConverter("|", ""));
-        private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly ICSVStream<Doctor> _stream;
-        private readonly iSequencer<long> _sequencer;
+       
+        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path;
-        private static DoctorRepository Instance
+        private String _path = "../../Resources/Data/doctors.csv";
+        public static DoctorRepository Instance
         {
              get
             {
@@ -34,7 +33,7 @@ namespace health_clinicClassDiagram.Repository
         private DoctorRepository()
         {
         }
-        public MedicalRecordRepository GetInstance() { return null; }
+        
 
         public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
         {
@@ -93,6 +92,13 @@ namespace health_clinicClassDiagram.Repository
         {
             _stream.AppendToFile(obj);
             return obj;
+        }
+
+        public Doctor getDoctorById(long id)
+        {
+            var doctors = _stream.ReadAll().ToList();
+            return doctors[doctors.FindIndex(apt => apt.Id == id)];
+            
         }
     }
 }

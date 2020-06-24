@@ -35,7 +35,7 @@ namespace Model.SystemUsers
 
         public Patient()
         {
-
+            this.Id = 0;
         }
 
         public Patient(String name, String surname, long jmbg)

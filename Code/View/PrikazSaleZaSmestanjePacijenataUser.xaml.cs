@@ -48,8 +48,9 @@ namespace health_clinicClassDiagram.View
             this.DataContext = this;
             this.rehabilitationRoom = rehabilitationRoom;
 
-            var app = Application.Current as App;
-            _rehabilitationRoomController = app.RehabilitationRoomController;
+            //var app = Application.Current as App;
+            //_rehabilitationRoomController = app.RehabilitationRoomController;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
 
             records = rehabilitationRoom.Patients;
 

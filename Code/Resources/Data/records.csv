@@ -1,5 +1,5 @@
-123571,Petar,Petrovic,123,9/11/1972 12:00:00 AM,MALE,2,Stefan,Santrac,1,2,
-123412,Savo,Savo,112,6/14/1965 12:00:00 AM,MALE,1,Aleksa,Santrac,3,4,
-386,Ana,Simić,386,3/4/1998 12:00:00 AM,FEMALE,2,Stefan,Santrac,5,1,
-358,Nemanja,Kerkez,358,3/4/1995 12:00:00 AM,MALE,2,Stefan,Santrac,2,4,
-77,Bojana,Petak,77,3/12/1998 12:00:00 AM,MALE,3,Marko,Markovic,
+123571,Petar,Petrovic,123,9/11/1972 0:00,MALE,2,Stefan,Santrac,1|2,2
+123412,Savo,Savo,112,6/14/1965 0:00,MALE,1,Aleksa,Santrac,3|4,4
+386,Anaa,Simić,386,3/4/1998 0:00,MALE,2,Stefan,Santrac,2|1,1
+358,Nemanja22,Kerkez22,358,3/4/1995 0:00,MALE,2,Stefan,Santrac,2|4,4
+77,Bojana2,Petak2,77,3/12/1998 0:00,MALE,2,Stefan,Santrac,3|5,5

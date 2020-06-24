@@ -23,9 +23,9 @@ using System.Windows.Shapes;
 namespace health_clinicClassDiagram.View
 {
     /// <summary>
-    /// Interaction logic for ZakazivanjeGuestNalogaUser.xaml
+    /// Interaction logic for ZakazivanjePrioritet.xaml
     /// </summary>
-    public partial class ZakazivanjeGuestNalogaUser : UserControl, INotifyPropertyChanged
+    public partial class ZakazivanjePrioritet : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -66,7 +66,12 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
+        private DateTime _startDate;
+        private DateTime _endDate;
+
         private List<Doctor> doctors;
+        private List<Doctor> doctorsToRemove = new List<Doctor>();
+        private List<Appointment> appointments;
 
         private string _imePacijenta;
         private string _prezimePacijenta;
@@ -74,49 +79,53 @@ namespace health_clinicClassDiagram.View
         private Doctor _doctor;
         private ExamOperationRoom _room;
         private TypeOfAppointment _type;
-        private int _trajanje;
-
-        private DateTime _startDate;
-        private DateTime _endDate;
+        private String _priority;
 
 
-        public ZakazivanjeGuestNalogaUser(DateTime date, DateTime startDate, DateTime endDate, ExamOperationRoom room)
+
+        public ZakazivanjePrioritet(DateTime startDate, DateTime endDate, ExamOperationRoom room, Doctor doctor, String priority)
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
-            this.date = date;
+
+            date = DateTime.Now;
 
             _startDate = startDate;
             _endDate = endDate;
+            _doctor = doctor;
+            _room = room;
+            _priority = priority;
 
-            labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
+            labelSala.Content = "Sala broj: " + _room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
 
             /*var app = Application.Current as App;
             _appointmentController = app.AppointmentController;
             _doctorController = app.DoctorController;*/
 
             _appointmentController = AppointmentController.Instance;
-            _doctorController = DoctorController.Instance;
 
-            
-            _room = room;
+            appointments = _appointmentController.GetAll();
 
-            doctors = _doctorController.GetAll();
-
-            if (ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord != null)
+            if (ZakazivanjePrioritetIzaberiNalogUser.StaticZakazivanjeRecord != null)
             {
-                textImePacijenta.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.Name;
-                textPrezimePacijenta.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.Surname;
-                textJMBG.Text = ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord.IDPatient.ToString();
+                textImePacijenta.Text = ZakazivanjePrioritetIzaberiNalogUser.StaticZakazivanjeRecord.Name;
+                textPrezimePacijenta.Text = ZakazivanjePrioritetIzaberiNalogUser.StaticZakazivanjeRecord.Surname;
+                textJMBG.Text = ZakazivanjePrioritetIzaberiNalogUser.StaticZakazivanjeRecord.IDPatient.ToString();
             }
+        }
 
-            doctorsCollection = new ObservableCollection<Doctor>(doctors);
+        private void Button_Pronadji(object sender, RoutedEventArgs e)
+        {
+
+            ZakazivanjePrioritetIzaberiNalogUser izaberi = new ZakazivanjePrioritetIzaberiNalogUser(date, _startDate, _endDate, _room, _doctor, _priority);
+            (this.Parent as Panel).Children.Add(izaberi);
         }
 
         private void Button_Potvrda(object sender, RoutedEventArgs e)
         {
-            if ((textImePacijenta.Text == "") || (textPrezimePacijenta.Text == "") || (textJMBG.Text == "") || (DoktorCombo.SelectedIndex == -1) || (vrstaCombo.SelectedIndex == -1))
+
+            if ((textImePacijenta.Text == "") || (textPrezimePacijenta.Text == "") || (textJMBG.Text == "") || (vrstaCombo.SelectedIndex == -1))
             {
                 string message = "Sva polja moraju biti popunjena";
                 string title = "Greška";
@@ -131,14 +140,13 @@ namespace health_clinicClassDiagram.View
                 Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
 
 
-
                 Appointment appointment = new Appointment(LongRandom(0, 1000000000, new Random()), _doctor, patient, _room, _type, _startDate, _endDate);
 
                 _appointmentController.Create(appointment);
 
 
-                DetaljanPrikazRasporedaUser raspored = new DetaljanPrikazRasporedaUser(date);
-                (this.Parent as Panel).Children.Add(raspored);
+                PrioritetLista prioritet = new PrioritetLista(_priority, _doctor, _startDate, _endDate);
+                (this.Parent as Panel).Children.Add(prioritet);
             }
         }
 
@@ -156,35 +164,6 @@ namespace health_clinicClassDiagram.View
         private void Button_Back(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
-        }
-
-        private void DoktorCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = (ComboBox)sender;
-
-            _doctor = (Doctor)cmb.SelectedItem;
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = (ComboBox)sender;
-
-            int index = cmb.SelectedIndex;
-
-            if (index == 0)
-            {
-                _trajanje = 1;
-            }
-            else if (index == 1)
-            {
-                _trajanje = 2;
-            }
-            else
-            {
-                _trajanje = 3;
-            }
-
-            Console.WriteLine(_trajanje);
         }
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)

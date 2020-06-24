@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.SystemUsers;
 using System;
 using System.Collections;
@@ -33,8 +34,10 @@ namespace health_clinicClassDiagram.View
 
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _doctorController = app.DoctorController;
+            /*var app = Application.Current as App;
+            _doctorController = app.DoctorController;*/
+
+            _doctorController = DoctorController.Instance;
 
             doctors = _doctorController.GetAll();
 

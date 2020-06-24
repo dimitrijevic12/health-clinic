@@ -89,15 +89,27 @@
 
                 <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" Margin="0,10,0,30" Grid.RowSpan="2">Odaberi željeni datum:</Label>
                 <Label Grid.Row="2" Grid.Column="4"  FontSize="20" Margin="0,10,0,30" Grid.RowSpan="2">Od:</Label>
-                <DatePicker Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Height="25" Width="130" Margin="0,0,10,15"/>
+                <DatePicker Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Height="25" Width="130" Margin="0,0,10,15" Name="startDate"/>
                 <Label Grid.Row="2" Grid.Column="7"  FontSize="20" Margin="24,10,56,30" Grid.RowSpan="2" Grid.ColumnSpan="2">Do:</Label>
-                <DatePicker Grid.Row="2" Grid.Column="8" Height="25" Width="130" Margin="0,0,30,15" Grid.ColumnSpan="2"/>
+                <DatePicker Grid.Row="2" Grid.Column="8" Height="25" Width="130" Margin="0,0,30,15" Grid.ColumnSpan="2" Name="endDate"/>
 
                 <Label Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" Margin="0,10,0,29" Grid.RowSpan="2">Odaberi željenog doktora:</Label>
-                <ComboBox Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="5" Name="doktorCombo" ItemsSource="{Binding Path = DoktoriCollection}" FontSize="16" Height="25" Margin="0,0,0,15"/>
+                <ComboBox Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="5" Name="DoktorCombo"  ItemsSource="{Binding Path = doctorsCollection}" FontSize="16" Height="25" Margin="0,0,0,15" SelectionChanged="DoktorCombo_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=IdDoctor}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=NameDoctor}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=SurnameDoctor}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
 
                 <Label Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" Margin="0,10,0,29" Grid.RowSpan="2">Prioritet:</Label>
-                <ComboBox Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="5" Name="prioritetCombo" FontSize="16" Margin="0,0,0,15" Height="25">
+                <ComboBox Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="5" Name="prioritetCombo" FontSize="16" Margin="0,0,0,15" Height="25" SelectionChanged="prioritetCombo_SelectionChanged">
                     <ComboBoxItem Content="Doktor"/>
                     <ComboBoxItem Content="Datum"/>
                 </ComboBox>
@@ -120,7 +132,7 @@
                     <ColumnDefinition />
 
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="1" FontSize="18" Style="{StaticResource RoundButton}">Potvrdi</Button>
+                <Button Grid.Column="1" FontSize="18" Style="{StaticResource RoundButton}" Click="Button_Potvrdi">Potvrdi</Button>
             </Grid>
 
         </Grid>

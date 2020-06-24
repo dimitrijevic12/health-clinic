@@ -12,5 +12,6 @@ namespace Repository
    public interface IUserRepository : IRepository<RegisteredUser>
    {
       Model.SystemUsers.RegisteredUser GetRegisteredUser(String username);
+        RegisteredUser GetRegisteredUserById(long id);
    }
 }

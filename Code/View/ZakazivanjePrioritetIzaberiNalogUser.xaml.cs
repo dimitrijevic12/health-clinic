@@ -1,30 +1,43 @@
 ﻿using Controller;
 using Model.Appointment;
 using Model.Rooms;
+using Model.SystemUsers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace health_clinicClassDiagram.View
 {
     /// <summary>
-    /// Interaction logic for IzaberiNalogUser.xaml
+    /// Interaction logic for ZakazivanjePrioritetIzaberiNalogUser.xaml
     /// </summary>
-    public partial class IzaberiNalogUser : UserControl
+    public partial class ZakazivanjePrioritetIzaberiNalogUser : UserControl
     {
-        private static MedicalRecord staticRecord;
+        private static MedicalRecord staticZakazivanjeRecord;
         private int colNum = 0;
         private readonly IMedicalRecordController _recordController;
         private MedicalRecord record;
 
-        public static MedicalRecord StaticRecord{
-            get { return staticRecord; }
-            set { staticRecord = value; }
+        private DateTime _startDate;
+        private DateTime _endDate;
+
+        public static MedicalRecord StaticZakazivanjeRecord
+        {
+            get { return staticZakazivanjeRecord; }
+            set { staticZakazivanjeRecord = value; }
         }
         public ObservableCollection<MedicalRecord> recordsCollection
         {
@@ -32,10 +45,13 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        private RehabilitationRoom _rehabilitationRoom;
+        private DateTime _date;
+        private ExamOperationRoom _room;
         private List<MedicalRecord> records;
+        private Doctor _doctor;
+        private String _priority;
 
-        public IzaberiNalogUser(RehabilitationRoom rehabilitationRoom)
+        public ZakazivanjePrioritetIzaberiNalogUser(DateTime date, DateTime startDate, DateTime endDate, ExamOperationRoom room, Doctor doctor, String priority)
         {
             InitializeComponent();
             labelDateTime.Content = DateTime.Now.ToShortDateString();
@@ -46,7 +62,13 @@ namespace health_clinicClassDiagram.View
 
             _recordController = MedicalRecordController.Instance;
 
-            _rehabilitationRoom = rehabilitationRoom;
+            _startDate = startDate;
+            _endDate = endDate;
+            _date = date;
+            _room = room;
+            _doctor = doctor;
+            _priority = priority;
+
             records = _recordController.GetAll();
 
             recordsCollection = new ObservableCollection<MedicalRecord>(records);
@@ -84,7 +106,7 @@ namespace health_clinicClassDiagram.View
                         if (single_row.IsSelected == true)
                         {
                             record = records.ElementAt(single_row.GetIndex());
-                            StaticRecord = records.ElementAt(single_row.GetIndex());
+                            StaticZakazivanjeRecord = records.ElementAt(single_row.GetIndex());
 
                         }
                     }
@@ -96,10 +118,9 @@ namespace health_clinicClassDiagram.View
 
         private void Button_Izaberi(object sender, RoutedEventArgs e)
         {
+            ZakazivanjePrioritet zakazivanje = new ZakazivanjePrioritet(_startDate, _endDate, _room, _doctor, _priority);
+            (this.Parent as Panel).Children.Add(zakazivanje);
 
-            SmestiPacijentaUser smesti = new SmestiPacijentaUser(_rehabilitationRoom);  
-            (this.Parent as Panel).Children.Add(smesti);
-            
         }
 
         private void Button_Home(object sender, RoutedEventArgs e)

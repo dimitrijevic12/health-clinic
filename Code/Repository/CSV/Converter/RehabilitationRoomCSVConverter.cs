@@ -1,8 +1,11 @@
-﻿using Model.Appointment;
+﻿using health_clinicClassDiagram.Repository.Sequencer;
+using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
+using Repository;
 using Repository.Csv.Converter;
+using Repository.Csv.Stream;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +37,12 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             int i = 3;
 
+            /* var recordRepository = new MedicalRecordRepository(
+                 "../../Resources/Data/records.csv",
+                 new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(",", "dd.MM.yyyy.")),
+                 new LongSequencer());*/
+            var recordRepository = MedicalRecordRepository.Instance;
+
             while (i<tokens.Length-1)
             {
                 long idNaloga = long.Parse(tokens[i]);
@@ -46,7 +55,10 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
                 Patient patient = new Patient(ime, prezime, idPatient);
 
-                MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
+                //MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
+
+                MedicalRecord record = recordRepository.getMedRecById(idNaloga);
+
                 records.Add(record);
                 i++;
             }

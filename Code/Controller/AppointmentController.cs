@@ -16,9 +16,25 @@ namespace Controller
 {
    public class AppointmentController : IAppointmentController
    {
-        public Service.IAppointmentService _service;
+        public Service.IAppointmentService _service = AppointmentService.Instance;
 
-        private static AppointmentController Instance;
+        private static AppointmentController instance;
+
+        public static AppointmentController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AppointmentController();
+                }
+                return instance;
+            }
+        }
+
+        private AppointmentController()
+        {
+        }
 
         public AppointmentController(IAppointmentService service)
         {
@@ -121,7 +137,9 @@ namespace Controller
             
         }
 
-
-  
-   }
+        public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
+        {
+            return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
+        }
+    }
 }

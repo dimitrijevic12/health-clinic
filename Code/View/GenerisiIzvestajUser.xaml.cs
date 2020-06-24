@@ -60,7 +60,7 @@ namespace health_clinicClassDiagram.View
             {
                 _startDate = (DateTime)startDate.SelectedDate;
                 _endDate = (DateTime)endDate.SelectedDate;
-                //_endDate = _endDate.AddHours(24);
+
 
                 ZauzetostProstorijaUser zauzetost = new ZauzetostProstorijaUser(_startDate, _endDate);
                 (this.Parent as Panel).Children.Add(zauzetost);

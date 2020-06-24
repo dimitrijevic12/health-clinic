@@ -211,6 +211,7 @@
     <Compile Include="Controller\NotificationController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\RehabilitationRoomController.cs" />
     <Compile Include="Controller\RenovationController.cs">
       <SubType>Code</SubType>
@@ -398,6 +399,7 @@
     <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\PatientCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
@@ -489,6 +491,7 @@
     <Compile Include="Repository\NotificationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
@@ -594,6 +597,7 @@
     <Compile Include="Service\NotificationService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\RehabilitationRoomService.cs" />
     <Compile Include="Service\RenovationService.cs">
       <SubType>Code</SubType>
@@ -684,6 +688,9 @@
     <Compile Include="View\PrikazSaleZaSmestanjePacijenataUser.xaml.cs">
       <DependentUpon>PrikazSaleZaSmestanjePacijenataUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PrioritetLista.xaml.cs">
+      <DependentUpon>PrioritetLista.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RegistrovaniPacijentiUser.xaml.cs">
       <DependentUpon>RegistrovaniPacijentiUser.xaml</DependentUpon>
     </Compile>
@@ -708,6 +715,12 @@
     </Compile>
     <Compile Include="View\ZakazivanjePregledaUser.xaml.cs">
       <DependentUpon>ZakazivanjePregledaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjePrioritet.xaml.cs">
+      <DependentUpon>ZakazivanjePrioritet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml.cs">
+      <DependentUpon>ZakazivanjePrioritetIzaberiNalogUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ZauzetostProstorijaUser.xaml.cs">
       <DependentUpon>ZauzetostProstorijaUser.xaml</DependentUpon>
@@ -806,6 +819,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\PrioritetLista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\RegistrovaniPacijentiUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -837,6 +854,14 @@
     <Page Include="View\ZakazivanjePregledaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjePrioritet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ZauzetostProstorijaUser.xaml">
       <SubType>Designer</SubType>

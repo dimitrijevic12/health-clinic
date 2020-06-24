@@ -67,9 +67,9 @@ namespace Repository
 
         public RegisteredUser Edit(RegisteredUser obj)
         {
-            //var users = _stream.ReadAll().ToList();
-            //users[users.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            //_stream.SaveAll(users);
+            var users = _stream.ReadAll().ToList();
+            users[users.FindIndex(apt => apt.Id == obj.Id)] = obj;
+            _stream.SaveAll(users);
             return obj;
         }
 
@@ -108,5 +108,12 @@ namespace Repository
 
         protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
 
+        public RegisteredUser GetRegisteredUserById(long id)
+        {
+            var users = _stream.ReadAll().ToList();
+            return users[users.FindIndex(apt => apt.Id == id)];
+            
+            
+        }
     }
 }

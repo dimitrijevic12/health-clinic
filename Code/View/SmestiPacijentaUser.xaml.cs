@@ -64,8 +64,10 @@ namespace health_clinicClassDiagram.View
 
             _rehabilitationRoom = rehabilitationRoom;
 
-            var app = Application.Current as App;
-            _rehabilitationRoomController = app.RehabilitationRoomController;
+            /*var app = Application.Current as App;
+            _rehabilitationRoomController = app.RehabilitationRoomController;*/
+
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
 
             
 

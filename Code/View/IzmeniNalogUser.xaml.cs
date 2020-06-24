@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
@@ -52,10 +53,12 @@ namespace health_clinicClassDiagram.View
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
 
-            var app = Application.Current as App;
+            /*var app = Application.Current as App;
             _recordController = app.MedicalRecordController;
+            _doctorController = app.DoctorController;*/
 
-            _doctorController = app.DoctorController;
+            _recordController = MedicalRecordController.Instance;
+            _doctorController = DoctorController.Instance;
 
             doctors = _doctorController.GetAll();
 

@@ -36,8 +36,10 @@ namespace health_clinicClassDiagram.View
             labelDateTime.Content = DateTime.Now.ToShortDateString();
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _rehabilitationRoomController = app.RehabilitationRoomController;
+            //var app = Application.Current as App;
+            //_rehabilitationRoomController = app.RehabilitationRoomController;
+
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
 
             rehabilitationRooms = _rehabilitationRoomController.GetAll();
 

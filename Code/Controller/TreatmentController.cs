@@ -17,6 +17,8 @@ namespace Controller
 {
    public class TreatmentController : ITreatmentController
    {
+        public Service.ITreatmentService _service = TreatmentService.Instance;
+
         private static TreatmentController instance;
 
         public static TreatmentController Instance 
@@ -33,7 +35,6 @@ namespace Controller
 
         private TreatmentController()
         {
-            _service = TreatmentService.Instance;
         }
 
         public TreatmentController GetInstance() { return null; }
@@ -87,6 +88,6 @@ namespace Controller
             return _service.Edit(obj);
         }
 
-        public Service.ITreatmentService _service;
+        
     }
 }

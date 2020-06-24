@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -70,6 +71,8 @@ namespace health_clinicClassDiagram.View
         //private Appointment _appointment;
 
         private List<Doctor> doctors;
+        private List<Doctor> doctorsToRemove = new List<Doctor>();
+        private List<Appointment> appointments;
 
         private string _imePacijenta;
         private string _prezimePacijenta;
@@ -120,11 +123,12 @@ namespace health_clinicClassDiagram.View
             DoktorCombo.SelectedIndex = 0;
             VrstaCombo.SelectedIndex = 0;
 
-            var app = Application.Current as App;
-
+            /*var app = Application.Current as App;
             _appointmentController = app.AppointmentController;
+            _doctorController = app.DoctorController;*/
 
-            _doctorController = app.DoctorController;
+            _appointmentController = AppointmentController.Instance;
+            _doctorController = DoctorController.Instance;
 
             //_appointment = appointment;
 
@@ -135,6 +139,21 @@ namespace health_clinicClassDiagram.View
             _room = room;
 
             doctors = _doctorController.GetAll();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.StartDate <= _startDate && a.EndDate >= _endDate)
+                {
+                    doctorsToRemove.Add(a.Doctor);
+                }
+            }
+
+            foreach (Doctor d in doctorsToRemove)
+            {
+                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == d.Id);
+                if (doctorToRemove != null)
+                    doctors.Remove(doctorToRemove);
+            }
 
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
         }

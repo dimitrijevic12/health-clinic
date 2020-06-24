@@ -214,6 +214,26 @@
                         </StackPanel>
                     </Button.ToolTip>
                 </Button>
+
+                <Button Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Prioritet">
+                    <StackPanel>
+                        <Image Source="Images/priority.png" Height="25" />
+                        <StackPanel>
+                            <TextBlock Text="Zakayivanje putem prioriteta" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Iznegeriši izveštaj o zauzetosti prostorija u određenom vremenskom periodu.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
                 <Label  Grid.Column="9" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1">Dušan</Label>
                 <Image Grid.Column="10" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45" Margin="18,-4,17,37" Grid.RowSpan="2"></Image>
                 <Button Grid.Column="9" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="15" Margin="10,0,10,30" Click="Button_Odjava">

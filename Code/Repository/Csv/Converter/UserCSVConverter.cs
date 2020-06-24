@@ -26,7 +26,7 @@ namespace Repository.Csv.Converter
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
 
-            return new RegisteredUser();
+            return new RegisteredUser(long.Parse(tokens[0]), tokens[1], tokens[2]);
         }
 
         public string ConvertEntityToCSVFormat(RegisteredUser entity)
@@ -34,9 +34,7 @@ namespace Repository.Csv.Converter
             return string.Join(_delimiter,
               entity.Id,
               entity.Name,
-              entity.Surname,
-              entity.Adress,
-              entity.Username);
+              entity.Surname);
         }
     }
 }

@@ -29,6 +29,13 @@ namespace Model.SystemUsers
             Id = id;
         }
 
+        public RegisteredUser(long id, string name, string surname)
+        {
+            Name = name;
+            Surname = surname;
+            Id = id;
+        }
+
         public RegisteredUser()
         {
         }
