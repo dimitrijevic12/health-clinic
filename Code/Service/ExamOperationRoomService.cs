@@ -11,10 +11,22 @@ namespace health_clinicClassDiagram.Service
 {
     public class ExamOperationRoomService : IExamOperationRoomService
     {
-        private readonly IExamOperationRoomRepository _examOperationRoomRepository;
-        private static ExamOperationRoomService Instance;
+        private readonly IExamOperationRoomRepository _examOperationRoomRepository = ExamOperationRoomRepository.Instance;
+        private static ExamOperationRoomService instance;
 
-        public ExamOperationRoomService GetInstance() { return null; }
+        public static ExamOperationRoomService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ExamOperationRoomService();
+                }
+                return instance;
+            }
+        }
+
+        private ExamOperationRoomService() { }
 
         public ExamOperationRoomService(IExamOperationRoomRepository repository)
         {

@@ -26,6 +26,33 @@ namespace Model.Appointment
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
         public TypeOfAppointment Type { get => type; set => type = value; }
 
+        public long RoomId { get => examOperationRoom.Id; set => examOperationRoom.Id = value; }
+
+        public String DoctorIdNameSurname { get => doctor.NameDoctor + " " + doctor.SurnameDoctor; }
+
+        public String PatientIdNameSurname { get => patient.Name + " " + patient.Surname; }
+
+        public String TypeString
+        {
+            get
+            {
+                if (patient.Id == 0)
+                {
+                    return "";
+                }
+                else
+                {
+                    return Type.ToString();
+                }
+            }
+
+        }
+
+
+
+
+        public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
+
         private DateTime startDate;
         private DateTime endDate;
         private TypeOfAppointment type;

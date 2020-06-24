@@ -103,6 +103,7 @@
     <Compile Include="Controller\DecoratedDrugController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\SpecialistController.cs" />
     <Compile Include="Controller\SurgeonController.cs" />
     <Compile Include="Controller\DoctorController.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\PatientCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
       <SubType>Code</SubType>
@@ -456,6 +458,7 @@
     <Compile Include="Repository\NotificationRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
@@ -491,6 +494,7 @@
     <Compile Include="Service\DoctorDrugService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="Service\SurgeonService.cs" />
     <Compile Include="Service\DoctorService.cs" />

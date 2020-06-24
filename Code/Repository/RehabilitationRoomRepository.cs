@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository.Sequencer;
+﻿using health_clinicClassDiagram.Repository.Csv.Converter;
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.Rooms;
 using Model.Treatment;
@@ -13,10 +14,10 @@ namespace health_clinicClassDiagram.Repository
 {
     public class RehabilitationRoomRepository : IRehabilitationRoomRepository
     {
-        private readonly ICSVStream<RehabilitationRoom> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly ICSVStream<RehabilitationRoom> _stream = new CSVStream<RehabilitationRoom>("../../Resources/Data/rehabilitationrooms.csv", new RehabilitationRoomCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path;
+        private String _path = "../../Resources/Data/rehabilitationrooms.csv";
         private static RehabilitationRoomRepository instance;
 
         public static RehabilitationRoomRepository Instance
@@ -31,7 +32,6 @@ namespace health_clinicClassDiagram.Repository
             }
         }
 
-        public RehabilitationRoomRepository GetInstance() { return null; }
 
         private RehabilitationRoomRepository()
         {

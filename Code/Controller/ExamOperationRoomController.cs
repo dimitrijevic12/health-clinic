@@ -9,10 +9,27 @@ namespace health_clinicClassDiagram.Controller
 {
     public class ExamOperationRoomController : IExamOperationRoomController
     {
-        private static ExamOperationRoomController Instance;
-        public ExamOperationRoomController GetInstance() { return null; }
+        private static ExamOperationRoomController instance;
 
-        private readonly IExamOperationRoomService _service;
+
+        private readonly IExamOperationRoomService _service = ExamOperationRoomService.Instance;
+
+        public static ExamOperationRoomController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ExamOperationRoomController();
+                }
+                return instance;
+            }
+        }
+
+        private ExamOperationRoomController()
+        {
+
+        }
 
         public ExamOperationRoomController(IExamOperationRoomService service)
         {

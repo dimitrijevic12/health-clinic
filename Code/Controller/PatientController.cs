@@ -9,52 +9,49 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Controller
 {
-    public class DoctorController : IController<Doctor>
+    public class PatientController : IController<Patient>
     {
-        private static DoctorController instance;
+        private readonly IService<Patient> _service = PatientService.Instance;
 
-        private readonly IService<Doctor> _service = DoctorService.Instance;
-
-        public static DoctorController Instance
+        private static PatientController instance;
+        public static PatientController Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new DoctorController();
+                    instance = new PatientController();
                 }
                 return instance;
             }
         }
 
-        private DoctorController() { }
+        private PatientController() { }
 
-        public DoctorController(IService<Doctor> service)
+        public PatientController(IService<Patient> service)
         {
             _service = service;
         }
 
-        public Doctor Create(Doctor obj)
+        public Patient Create(Patient obj)
         {
             return _service.Create(obj);
         }
 
-        public bool Delete(Doctor obj)
+        public bool Delete(Patient obj)
         {
             return _service.Delete(obj);
-
         }
 
-        public Doctor Edit(Doctor obj)
+        public Patient Edit(Patient obj)
         {
             return _service.Edit(obj);
-
         }
 
-        public List<Doctor> GetAll()
+        public List<Patient> GetAll()
         {
-            var doctors = (List<Doctor>)_service.GetAll();
-            return doctors;
+            var patients = (List<Patient>)_service.GetAll();
+            return patients;
         }
     }
 }

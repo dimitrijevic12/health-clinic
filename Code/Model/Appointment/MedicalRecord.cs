@@ -29,6 +29,8 @@ namespace Model.Appointment
         private List<Model.Treatment.Treatment> treatments;
         public Doctor choosenDoctor;
         private Patient patient;
+        private DateTime rehabilitationFrom;
+        private DateTime rehabilitationTo;
 
         /// <pdGenerated>default getter</pdGenerated>
         /// 
@@ -144,6 +146,29 @@ namespace Model.Appointment
             }
         }
 
+        public DateTime RehabilitationFrom
+        {
+            get { return rehabilitationFrom; }   // get method
+            set { rehabilitationFrom = value; }
+        }
+
+        public DateTime RehabilitationTo
+        {
+            get { return rehabilitationTo; }   // get method
+            set { rehabilitationTo = value; }
+        }
+
+        public String DateOfBirthTekst { get => DateOfBirth.ToShortDateString(); }
+
+        public String IdNameSurnameDoctor
+        {
+            get
+            {
+                return (choosenDoctor.Id + " " + choosenDoctor.Name + " " + choosenDoctor.Surname);
+            }
+
+        }
+
         public List<Model.Treatment.Treatment> Treatments { get => treatments; set => treatments = value; }
         public Patient Patient { get => patient; set => patient = value; }
 
@@ -161,6 +186,16 @@ namespace Model.Appointment
             this.Patient = patient;
             this.Treatments = treatments;
             this.choosenDoctor = doctor;
+        }
+
+        public MedicalRecord(long id, Patient patient, Doctor doctor, List<Model.Treatment.Treatment> treatments, DateTime rehabilitationFrom, DateTime rehabilitationTo)
+        {
+            this.id = id;
+            this.Patient = patient;
+            this.choosenDoctor = doctor;
+            Treatments = treatments;
+            this.rehabilitationFrom = rehabilitationFrom;
+            this.rehabilitationTo = rehabilitationTo;
         }
 
     }

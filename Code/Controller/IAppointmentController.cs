@@ -6,6 +6,8 @@
 
 
 using Model.Appointment;
+using Model.Rooms;
+using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 
@@ -20,6 +22,8 @@ namespace Controller
       List<Appointment> GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
       List<Appointment> GetApointmentByPatient(Model.SystemUsers.Patient patient);
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
+      List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
+      List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
       Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
       Service.TypeOfPriority ChoosePriority(Service.TypeOfPriority priority);

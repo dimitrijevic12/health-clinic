@@ -12,7 +12,9 @@ namespace health_clinicClassDiagram.Service
     public class DoctorService : IService<Doctor>
     {
 
-        private static DoctorService instance = null;
+        private readonly IRepository<Doctor> _doctorRepository = DoctorRepository.Instance;
+
+        private static DoctorService instance;
 
         public static DoctorService Instance
         {
@@ -26,28 +28,35 @@ namespace health_clinicClassDiagram.Service
             }
         }
 
-        private DoctorService()
+        private DoctorService() { }
+
+        public DoctorService(IRepository<Doctor> repository)
         {
+            _doctorRepository = repository;
+
         }
 
         public Doctor Create(Doctor obj)
         {
-            return DoctorRepository.Instance.Save(obj);
+            var newDoctor = _doctorRepository.Save(obj);
+            return newDoctor;
         }
 
         public bool Delete(Doctor obj)
         {
-            return DoctorRepository.Instance.Delete(obj);
+            return _doctorRepository.Delete(obj);
         }
 
         public Doctor Edit(Doctor obj)
         {
-            return DoctorRepository.Instance.Edit(obj);
+            return _doctorRepository.Edit(obj);
         }
 
         public List<Doctor> GetAll()
         {
-            return DoctorRepository.Instance.GetAll();
+            var doctors = _doctorRepository.GetAll();
+            return doctors;
         }
+
     }
 }

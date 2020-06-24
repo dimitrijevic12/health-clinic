@@ -17,9 +17,11 @@ namespace Controller
 {
    public class TreatmentController : ITreatmentController
    {
+        public Service.ITreatmentService _service = TreatmentService.Instance;
+
         private static TreatmentController instance;
 
-        public static TreatmentController Instance 
+        public static TreatmentController Instance
         {
             get
             {
