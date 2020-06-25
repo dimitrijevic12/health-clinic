@@ -15,10 +15,25 @@ namespace Controller
 {
    public class MedicalRecordController : IMedicalRecordController
    {
-        private static MedicalRecordController Instance;
-        public MedicalRecordController GetInstance() { return null; }
+        private static MedicalRecordController instance;
+        public static MedicalRecordController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new MedicalRecordController();
+                }
+                return instance;
+            }
+        }
 
-        private readonly IMedicalRecordService _service;
+        private readonly IMedicalRecordService _service = MedicalRecordService.Instance;
+
+        private MedicalRecordController()
+        {
+
+        }
 
         public MedicalRecordController(IMedicalRecordService service)
         {
@@ -63,6 +78,11 @@ namespace Controller
         {
             _service.Edit(obj);
             return obj;
+        }
+
+        public MedicalRecord getMedRecById(long id)
+        {
+            return _service.getMedRecById(id);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository.Sequencer;
+﻿using health_clinicClassDiagram.Repository.Csv.Converter;
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.SystemUsers;
 using Repository;
 using Repository.Csv.Stream;
@@ -11,20 +12,26 @@ namespace health_clinicClassDiagram.Repository
 {
     public class DoctorRepository : IRepository<Doctor>
     {
+        private static DoctorRepository instance = null;
 
-        private readonly ICSVStream<Doctor> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path;
-        private static MedicalRecordRepository Instance;
-        public MedicalRecordRepository GetInstance() { return null; }
-
-        public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
+        private String _path = "../../Resources/Data/doctors.csv";
+        public static DoctorRepository Instance
         {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorRepository();
+                }
+                return instance;
+            }
+        }
+
+        private DoctorRepository()
+        {
         }
 
         private long GetMaxId(List<Doctor> doctors)
@@ -76,6 +83,13 @@ namespace health_clinicClassDiagram.Repository
         {
             _stream.AppendToFile(obj);
             return obj;
+        }
+
+        public Doctor GetDoctorById(long id)
+        {
+            var doctors = _stream.ReadAll().ToList();
+            return doctors[doctors.FindIndex(apt => apt.Id == id)];
+
         }
     }
 }

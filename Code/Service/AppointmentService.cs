@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.AppointmentService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -17,10 +18,10 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-        public Repository.IAppointmentRepository iAppointmentRepository;
-        private readonly IService<Doctor> _doctorService;
-        private readonly IService<Patient> _patientService;
-        private readonly IService<ExamOperationRoom> _roomService;
+        public Repository.IAppointmentRepository iAppointmentRepository = AppointmentRepository.Instance;
+        private readonly IService<Doctor> _doctorService = DoctorService.Instance;
+        private readonly IService<Patient> _patientService = PatientService.Instance;
+        private readonly IService<ExamOperationRoom> _roomService = ExamOperationRoomService.Instance;
 
         private static AppointmentService instance;
 
@@ -39,8 +40,6 @@ namespace Service
         private AppointmentService()
         {
         }
-
-        public AppointmentService GetInstance() { return null; }
 
         public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
         {
@@ -83,7 +82,19 @@ namespace Service
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            throw new NotImplementedException();
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.RoomId.Equals(room.Id))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+
+            return trazeni;
         }
 
         public Treatment GenerateTreatment(Appointment appointment)
@@ -160,5 +171,38 @@ namespace Service
         {
             throw new NotImplementedException();
         }
+
+        public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        {
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if ((a.RoomId.Equals(room.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+            return trazeni;
+        }
+
+        public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
+        {
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if ((a.Doctor.Id.Equals(doctor.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+            return trazeni;
+        }
+
     }
 }

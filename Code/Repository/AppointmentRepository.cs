@@ -8,6 +8,7 @@ using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -17,12 +18,13 @@ namespace Repository
 {
    public class AppointmentRepository : IAppointmentRepository
    {
-        private String _path;
-        private static AppointmentRepository instance;
-        private readonly ICSVStream<Appointment> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private static AppointmentRepository instance = null;
+        private const string APPOINMENT_FILE = "../../Resources/Data/appointments.csv";
+        private String _path = APPOINMENT_FILE;
+        private readonly ICSVStream<Appointment> _stream = new CSVStream<Appointment>(APPOINMENT_FILE, new AppointmentCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        public static AppointmentRepository Instance 
+        public static AppointmentRepository Instance
         {
             get
             {
@@ -33,11 +35,10 @@ namespace Repository
                 return instance;
             }
         }
-        
+
         private AppointmentRepository()
         {
         }
-        public AppointmentRepository GetInstance() { return null; }
 
         public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
         {
@@ -71,7 +72,7 @@ namespace Repository
             DateTime endOfDay = day.AddDays(1);
             foreach (Appointment appointment in getAppointmentsByDate(day, endOfDay))
             {
-                if(appointment.Doctor == doctor)
+                if(appointment.Doctor.Id == doctor.Id)
                 {
                     appointments.Add(appointment);
                 }
@@ -85,7 +86,20 @@ namespace Repository
             List<Appointment> appointments = new List<Appointment>();
             foreach (Appointment appointment in getAppointmentsByDayAndDoctor(day, doctor))
             {
-                if (appointment.ExamOperationRoom == room)
+                if (appointment.ExamOperationRoom.Id == room.Id)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
+        }
+
+        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            foreach (Appointment appointment in getAppointmentsByDayAndDoctorAndRoom(day, doctor, room))
+            {
+                if (appointment.Patient.Id == patient.Id)
                 {
                     appointments.Add(appointment);
                 }

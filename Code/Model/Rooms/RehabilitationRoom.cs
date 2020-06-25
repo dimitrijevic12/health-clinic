@@ -18,12 +18,13 @@ namespace Model.Rooms
         private int _maxCapacity;
         private int _currentlyInUse;
 
-        public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<MedicalRecord> patients)
+        public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<MedicalRecord> patients) : base(idRoom)
         {
             _patients = patients;
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
+            tip = TypeOfRoom.REHABILITATION;
         }
 
         public List<MedicalRecord> Patients
@@ -48,6 +49,11 @@ namespace Model.Rooms
         {
             get { return Id; }   // get method
             set { Id = value; }
+        }
+        public TypeOfRoom tip
+        {
+            get { return tipSobe; }
+            set { tipSobe = value; }
         }
 
     }

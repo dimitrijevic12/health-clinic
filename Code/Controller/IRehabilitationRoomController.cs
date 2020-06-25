@@ -15,7 +15,7 @@ namespace health_clinicClassDiagram.Controller
         List<Patient> GetAllPatientsByRoom();
         int GenerateReport(Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
-
+        Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
         RehabilitationRoom getRoom(RehabilitationRoom room);
     }
 }
