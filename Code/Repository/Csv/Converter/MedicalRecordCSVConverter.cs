@@ -11,6 +11,7 @@ using Model.SystemUsers;
 using Model.Treatment;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository.Csv.Converter
 {
@@ -125,11 +126,18 @@ namespace Repository.Csv.Converter
             String resenje = "";
 
 
+            Treatment last = entity.Treatments.Last();
             foreach (Treatment treatment in entity.Treatments)
             {
-                resenje += string.Join("|", treatment.Id);
-                resenje += "|";
-            }       
+                if (treatment != last)
+                {
+                    resenje += treatment.Id + "|";
+                }
+                else
+                {
+                    resenje += treatment.Id;
+                }
+            }
 
             return string.Join(_delimiter,
               entity.id,
