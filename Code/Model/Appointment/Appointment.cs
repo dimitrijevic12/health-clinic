@@ -36,14 +36,14 @@ namespace Model.Appointment
         {
             get
             {
-                if (patient.Id == 0)
+                /*if (patient.Id == 0)
                 {
                     return "";
                 }
                 else
-                {
+                {*/
                     return Type.ToString();
-                }
+                //}
             }
 
         }

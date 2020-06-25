@@ -94,12 +94,26 @@ namespace Repository
             return appointments;
         }
 
-        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        /*public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
         {
             List<Appointment> appointments = new List<Appointment>();
             foreach (Appointment appointment in getAppointmentsByDayAndDoctorAndRoom(day, doctor, room))
             {
                 if (appointment.Patient.Id == patient.Id)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
+        }*/
+
+        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            DateTime endDate = day.AddDays(1);
+            foreach (Appointment appointment in getAppointmentsByDate(day, endDate))
+            {
+                if (appointment.Patient.Id == patient.Id || appointment.Doctor.Id == doctor.Id || appointment.ExamOperationRoom.Id == room.Id)
                 {
                     appointments.Add(appointment);
                 }

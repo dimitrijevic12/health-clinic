@@ -1,4 +1,6 @@
-﻿using health_clinicClassDiagram.Repository;
+﻿using Controller;
+using health_clinicClassDiagram.Controller;
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.Treatment;
@@ -132,8 +134,9 @@ namespace health_clinicClassDiagram.View
             {
                 ReferralToHospitalTreatment.CauseForHospTreatment = textBoxRazlogBolnickogLecenja.Text;
                 ReferralToHospitalTreatment.Drugs = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
-                ReferralToHospitalTreatment.StartDate = (DateTime)DatePickerOd.SelectedDate;
-                ReferralToHospitalTreatment.EndDate = (DateTime)DatePickerDo.SelectedDate;
+                RehabilitationRoom rehabilitationRoom = dataGridSobe.SelectedItem as RehabilitationRoom;
+                MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedRecByPatient(Appointment.Patient);
+                RehabilitationRoomController.Instance.AddPatient(medicalRecord, rehabilitationRoom);
                 int thisCount = (this.Parent as Panel).Children.IndexOf(this);
                 (this.Parent as Panel).Children.RemoveRange(5, thisCount);
                 return;

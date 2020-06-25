@@ -73,15 +73,7 @@
                     <Label x:Name="labelGodinaRodjenja" Content="Godina rođenja:" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
                     <TextBlock x:Name="godinaRodjenja" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="24" Text="{Binding Appointment.Patient.DateOfBirth, StringFormat=dd/MM/yyyy}"/>
                 </DockPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="labelOd" Content="Od:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="30,0,0,0"/>
-                    <DatePicker Name="DatePickerOd" Width="300" VerticalContentAlignment="Center" Margin="10,5,0,0" FontSize="24" CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{Binding StartDate}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label x:Name="labelDo" Content="Do:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="30,10,0,0"/>
-                    <DatePicker Name="DatePickerDo"  Width="300" VerticalContentAlignment="Center" Margin="10,10,0,0" FontSize="24" CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{Binding EndDate}"/>
-                </StackPanel>
-                <StackPanel  Margin="30, 10, 40, 0">
+                <StackPanel  Margin="30, 5, 40, 0">
                     <Label x:Name="slobodneSobeLabel" Content="Slobodne sobe:" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Left" FontWeight="Bold"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5">
                         <Label x:Name="pretragaSobaLabel" FontSize="20" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Normal" Content="Pretraži:"/>

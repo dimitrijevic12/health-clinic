@@ -1,4 +1,6 @@
-﻿using health_clinicClassDiagram.Model.Treatment;
+﻿using Controller;
+using health_clinicClassDiagram.Controller;
+using health_clinicClassDiagram.Model.Treatment;
 using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
@@ -29,22 +31,30 @@ namespace health_clinicClassDiagram.View
     {
         private List<Doctor> doktori = new List<Doctor>();
         public Login()
-        {/*
+        {
             Doctor doctor = new Doctor(123456, "Marko", "Markovic");
+            DoctorController.Instance.Create(doctor);
             Patient patient = new Patient("Mika", "Mikic", 1234);
+            Patient patient2 = new Patient("Pacijent", "Pacijent", 2233);
+            PatientController.Instance.Create(patient);
+            PatientController.Instance.Create(patient2);
             ExamOperationRoom room = new ExamOperationRoom(222);
+            ExamOperationRoom room2 = new ExamOperationRoom(2);
             Appointment app1 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today, DateTime.Today.AddHours(3));
             Appointment app2 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(7), DateTime.Today.AddHours(8));
+            Appointment app3 = new Appointment(doctor, patient2, room2, TypeOfAppointment.EXAM, DateTime.Today.AddHours(17), DateTime.Today.AddHours(18));
             AppointmentRepository.Instance.Save(app1);
             AppointmentRepository.Instance.Save(app2);
+            AppointmentRepository.Instance.Save(app3);
 
             Surgeon surgeon1 = new Surgeon(123, "Pera", "Peric", Model.SystemUsers.Gender.MALE, DateTime.Today, SurgicalSpecialty.CARDIOTHORACIC);
             Surgeon surgeon2 = new Surgeon(333, "Ana", "Jovanovic", Model.SystemUsers.Gender.FEMALE, DateTime.Today, SurgicalSpecialty.NEUROSURGERY);
             SurgeonRepository.Instance.Save(surgeon1);
+            DoctorRepository.Instance.Save(surgeon1);
             SurgeonRepository.Instance.Save(surgeon2);
 
             ExamOperationRoom room1 = new ExamOperationRoom(1);
-            ExamOperationRoom room2 = new ExamOperationRoom(2);
+            
             List<ExamOperationRoom> examOperationRooms = new List<ExamOperationRoom>();
             examOperationRooms.Add(room1);
             examOperationRooms.Add(room2);
@@ -57,6 +67,7 @@ namespace health_clinicClassDiagram.View
             Specialist specialist1 = new Specialist(111, "Milos", "Milosevic", Model.SystemUsers.Gender.MALE, DateTime.Today, Specialization.CARDIOLOGY);
             Specialist specialist2 = new Specialist(212, "Dragan", "Jovanovic", Model.SystemUsers.Gender.FEMALE, DateTime.Today, Specialization.NEPHROLOGY);
             SpecialistRepository.Instance.Save(specialist1);
+            DoctorRepository.Instance.Save(specialist1);
             SpecialistRepository.Instance.Save(specialist2);
 
             Appointment specAppointment = new Appointment(specialist1, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(15), DateTime.Today.AddHours(17));
@@ -72,6 +83,8 @@ namespace health_clinicClassDiagram.View
             List<Drug> drugs = new List<Drug>();
             drugs.Add(d1);
             drugs.Add(d2);
+            DrugRepository.Instance.Save(d1);
+            DrugRepository.Instance.Save(d2);
             Prescription prescription = new Prescription(drugs);
             ScheduledSurgery scheduledSurgery = new ScheduledSurgery(DateTime.Today, DateTime.Today.AddHours(2), "Razlog operacije", surgeon1);
             DiagnosisAndReview diagnosisAndReview1 = new DiagnosisAndReview("Dijagnoza", "Procedura");
@@ -97,6 +110,8 @@ namespace health_clinicClassDiagram.View
             //            Doctor doctor = new Doctor(123456, "Marko", "Markovic");
             Drug d3 = new Drug(4, "Aspirin 100mg", 15);
             Drug d4 = new Drug(6, "Xyzal 50mg", 2);
+            DrugRepository.Instance.Save(d3);
+            DrugRepository.Instance.Save(d4);
             List <Drug> drugs2 = new List<Drug>();
             drugs2.Add(d3);
             drugs2.Add(d3);
@@ -113,7 +128,7 @@ namespace health_clinicClassDiagram.View
 
             Doctor doctor2 = new Doctor(2233, "Pera", "Perić");
             doktori.Add(doctor);
-            doktori.Add(doctor2);*/
+            doktori.Add(doctor2);
             InitializeComponent();
             DataContext = this;
         }
@@ -122,7 +137,7 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPrijaviSe_Click(object sender, RoutedEventArgs e)
         {
-            Boolean postoji = false;            
+            /*Boolean postoji = false;            
 
             foreach(Doctor oneDoctor in doktori)
             {
@@ -135,9 +150,10 @@ namespace health_clinicClassDiagram.View
             }
             String message = "Pogrešan Username ili Password, molim vas pokušajte ponovo";
             MessageBoxButton button = MessageBoxButton.OK;
-            MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);
+            MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);*/
+            PocetnaUser pocetnaUser = new PocetnaUser(DoctorRepository.Instance.GetDoctorById(123456));
+            (this.Parent as Panel).Children.Add(pocetnaUser);
             return;
-
 
         }
 
