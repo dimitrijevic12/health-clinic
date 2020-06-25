@@ -8,15 +8,22 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton x:Name="dropDownButton" VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" Name="title" Content="Zakaži kod specijaliste" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -39,9 +46,9 @@
             </DockPanel>
                 <StackPanel Margin="30,5,40,0">
                 <Label x:Name="labelSpecijalisti" Content="Specijalisti:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                <DataGrid x:Name="dataGrid" Height="248">
+                <DataGrid x:Name="dataGrid" Height="248" ItemsSource="{Binding Specialists}" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Ime i prezime" Width="*" IsReadOnly="True">
+                        <DataGridTextColumn Header="Ime i prezime" Width="*" IsReadOnly="True" Binding="{Binding NameAndSurname}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -49,7 +56,7 @@
                                 </Style>
                             </DataGridTextColumn.HeaderStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn Header="Specijalizacija" IsReadOnly="True">
+                            <DataGridTextColumn Header="Specijalizacija" IsReadOnly="True" Binding="{Binding Specialization}">
                             <DataGridTextColumn.HeaderStyle>
                                 <Style TargetType="DataGridColumnHeader">
                                     <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -63,7 +70,7 @@
                 <StackPanel>
                     <StackPanel Height="285" Margin="30,5,40,0">
                         <Label x:Name="labelRazlogOperacije" Content="Razlog za specijalistu:" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
-                        <TextBox x:Name="textBoxRazlogOperacije" Height="227" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" VerticalScrollBarVisibility="Auto"/>
+                        <TextBox x:Name="textBoxRazlog" Height="227" TextWrapping="Wrap" Text="" Width="350" FontSize="20" HorizontalAlignment="Center" VerticalScrollBarVisibility="Auto"/>
                     </StackPanel>
                     <StackPanel>
                         <Button x:Name="buttonOdaberiDatum" Content="Odaberi datum" Margin="0,20,0,25" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonOdaberiDatum_Click"/>

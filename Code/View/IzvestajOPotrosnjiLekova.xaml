@@ -5,19 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:health_clinicClassDiagram.View"
              xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="health_clinicClassDiagram.View.IzvestajOPotrosnjiLekova"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" x:Name="title" Content="Izveštaj o potrošnji lekova" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -29,37 +37,65 @@
             </Button>
         </DockPanel>
         <StackPanel Width="430">
-            <chartingToolkit:Chart VerticalAlignment="Top" Height="245" FontSize="24" FontWeight="Bold"/>
             <StackPanel>
-                <Label x:Name="imePregledLekova" Content="Potrošnja u poslednjih:" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="30, 5, 0, 0"/>
-                <ComboBox x:Name="comboBoxPeriod" Width="300" FontSize="24">
-                    <ComboBoxItem Tag="nedelja" Content="Nedelju dana"/>
-                    <ComboBoxItem Tag="mesec" Content="Mesec dana"/>
-                    <ComboBoxItem Tag="triMeseca" Content="3 meseca"/>
-                    <ComboBoxItem Tag="sestMeseci" Content="6 meseci"/>
-                    <ComboBoxItem Tag="godina" Content="Godinu dana" Height="32" Margin="0,0,0.4,0"/>
-                </ComboBox>
+                <Label x:Name="imePregledLekova" Content="Potrošnja u periodu:" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold" Margin="30, 5, 0, 0"/>
             </StackPanel>
-            <DataGrid x:Name="dataGrid" Height="187" Margin="30,20,30.4,10">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Količina" IsReadOnly="True">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
-                                <Setter Property="FontSize" Value="20"/>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                    </DataGridTextColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+            <DockPanel>
+                <DockPanel.Resources>
+                    <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Calendar}">
+                                    <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                                    <Viewbox Height="300"
+                         Width="300">
+                                        <CalendarItem x:Name="PART_CalendarItem"
+                                  Background="{TemplateBinding Background}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    </Viewbox>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style TargetType="{x:Type DatePickerTextBox}">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox x:Name="PART_TextBox"
+     Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
+     RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DockPanel.Resources>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="30,0,0,0">
+                    <Label x:Name="labelOd" Content="Od:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <DatePicker Name="DatePickerOd" Width="140" VerticalContentAlignment="Center" Margin="3,5,0,0" FontSize="20" CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="DatePickerOd_SelectedDateChanged" DisplayDateStart="{Binding DateTime.Today}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
+                    <Label x:Name="labelDo" Content="Do:" VerticalAlignment="Center" FontSize="20" HorizontalAlignment="Center"/>
+                    <DatePicker Name="DatePickerDo" Width="140" VerticalContentAlignment="Center" Margin="3,5,0,0" FontSize="20" CalendarStyle="{StaticResource styleCalendar}" SelectedDate="{x:Static sys:DateTime.Now}" SelectedDateChanged="DatePickerDo_SelectedDateChanged" DisplayDateStart="{Binding DateTime.Today}"/>
+                </StackPanel>
+            </DockPanel>
+            <chartingToolkit:Chart x:Name="grafikon" Height="388" Margin="0,0,0.4,0">
+                <chartingToolkit:Chart.LegendStyle>
+                    <Style x:Name="LegendHideStyle" TargetType="Control">
+                        <Setter Property="Width" Value="0"/>
+                        <Setter Property="Height" Value="0"/>
+                    </Style>
+                </chartingToolkit:Chart.LegendStyle>
+                <chartingToolkit:Chart.Axes>
+                    <chartingToolkit:LinearAxis Title="Količina" Orientation="X"/>
+                </chartingToolkit:Chart.Axes>
+                <chartingToolkit:Chart.Series>
+                    <chartingToolkit:BarSeries x:Name="graph" ItemsSource="{Binding DrugsToShow}" IndependentValueBinding="{Binding Name}" DependentValueBinding="{Binding Quantity}" FontSize="24"/>
+                </chartingToolkit:Chart.Series>
+            </chartingToolkit:Chart>
+            <StackPanel Height="100">
+                <Button x:Name="buttonGenerisiIzvestaj" Content="Generiši izveštaj" Margin="0,25,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonGenerisiIzvestaj_Click"/>
+            </StackPanel>
         </StackPanel>
     </DockPanel>
 </UserControl>

@@ -8,15 +8,22 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0, 0,-4.2" VerticalAlignment="Top" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" Name="title" Content="Izbor datuma operacije" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -29,7 +36,7 @@
         </DockPanel>
         <StackPanel>
             <Viewbox VerticalAlignment="Top">
-                <Calendar Height="187" FirstDayOfWeek="Monday"/>
+                <Calendar x:Name="calendar" Height="187" FirstDayOfWeek="Monday"/>
             </Viewbox>
             <StackPanel  Height="66" Width="430">
                 <Button x:Name="buttonIdiNaDatum" Content="Idi na datum" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonIdiNaDatum_Click"/>

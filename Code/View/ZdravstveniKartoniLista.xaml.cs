@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.SystemUsers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,30 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class ZdravstveniKartoniLista : UserControl
     {
+        private List<Patient> patients;
         public ZdravstveniKartoniLista()
         {
             InitializeComponent();
+            Patients = new List<Patient>();
+            Patient patient = new Patient("Mika", "Mikic", 1234);
+            Patient patient2 = new Patient("Jovan", "Jovanovic", 2222);
+            Patients.Add(patient);
+            Patients.Add(patient2);
+            InitializeComponent();
+            DataContext = this;
         }
+
+        public List<Patient> Patients { get => patients; set => patients = value; }
 
         private void buttonOtvori_Click(object sender, RoutedEventArgs e)
         {
-            UserControl usc = new ZdravstveniKartoniPacijent();
+            if (dataGridPacijenti.SelectedItem == null)
+            {
+                MessageBox.Show("Morate izabrati jednog pacijenta!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Patient patient = dataGridPacijenti.SelectedItem as Patient; 
+            UserControl usc = new ZdravstveniKartoniPacijent(patient);
             (this.Parent as Panel).Children.Add(usc);
         }
 
@@ -35,6 +52,32 @@ namespace health_clinicClassDiagram.View
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
             (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+            return;
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
+            return;
+        }
+
+        private void textBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            List<Patient> patients = new List<Patient>();
+            foreach (Patient patient in Patients)
+            {
+                if (patient.Name.ToLower().StartsWith(textBox.Text) || (patient.Surname.ToLower().StartsWith(textBox.Text)) || (patient.Id.ToString().ToLower().StartsWith(textBox.Text)))
+                {
+                    patients.Add(patient);
+                }
+            }
+            dataGridPacijenti.ItemsSource = patients;
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Kada izaberete pacijenta i kliknete na dugme \"Otvori\", prelazite na prozor koji sadrži listu prethodnih pregleda izabranog pacijenta. Pacijenta možete pretražiti po imenu ili prezimenu ili njegovom jmbg-u.";
+            MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

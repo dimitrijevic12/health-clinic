@@ -22,7 +22,7 @@ namespace health_clinicClassDiagram.View
     /// <summary>
     /// Interaction logic for ZdravstveniKartonPregled.xaml
     /// </summary>
-    public partial class ZdravstveniKartonPregled : UserControl
+    public partial class PregledZdravstveniKartonPregled : UserControl
     {
         private Treatment treatment;
         private Patient patient;
@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.View
         private List<Drug> hospTreatmentDrugs;
         private String diagnosis;
         private String review;
-        public ZdravstveniKartonPregled(Treatment treatment, Patient patient)
+        public PregledZdravstveniKartonPregled(Treatment treatment, Patient patient)
         {
             Treatment = treatment;
             Patient = patient;
@@ -57,8 +57,20 @@ namespace health_clinicClassDiagram.View
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+            String message = "Ako napustite pregled sve izmene koje ste napravili će biti poništene\n\nDa li ste sigurni da želite da napustite pregled?";
+            MessageBoxButton button = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, "Prekidanje pregleda", button, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+                (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+                return;
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -70,7 +82,7 @@ namespace health_clinicClassDiagram.View
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
             String message = "Klikom na strelicu na dole, otvarate detaljan prikaz tog dela pregleda\n" +
-                "\nMožete se vratiti na početnu stranu klikom na dugme koje izgleda kao strelica koja pokazuje levo, ili se možete vratiti na početnu stranu klikom na dugme koje izgleda kao kuća";
+                "\nMožete se vratiti na izbor pregleda pacijenta klikom na dugme koje izgleda kao strelica koja pokazuje levo, ili se možete vratiti na početnu stranu klikom na dugme koje izgleda kao kuća";
             MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

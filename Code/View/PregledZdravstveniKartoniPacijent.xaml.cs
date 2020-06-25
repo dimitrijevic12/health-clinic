@@ -23,12 +23,12 @@ namespace health_clinicClassDiagram.View
     /// <summary>
     /// Interaction logic for ZdravstveniKartoniPacijent.xaml
     /// </summary>
-    public partial class ZdravstveniKartoniPacijent : UserControl
+    public partial class PregledZdravstveniKartoniPacijent : UserControl
     {
         private Patient patient;
         private List<Treatment> treatments;
         private MedicalRecord medicalRecord;
-        public ZdravstveniKartoniPacijent(Patient patient)
+        public PregledZdravstveniKartoniPacijent(Patient patient)
         {
             //            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
             MedicalRecord  = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
@@ -51,15 +51,26 @@ namespace health_clinicClassDiagram.View
             }
             Treatment treatment= (Treatment)dataGridTermini.SelectedItem;
 
-            UserControl usc = new ZdravstveniKartonPregled(treatment, patient);
+            UserControl usc = new PregledZdravstveniKartonPregled(treatment, patient);
             (this.Parent as Panel).Children.Add(usc);
         }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
-            return;
+            String message = "Ako napustite pregled sve izmene koje ste napravili će biti poništene\n\nDa li ste sigurni da želite da napustite pregled?";
+            MessageBoxButton button = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, "Prekidanje pregleda", button, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+                (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+                return;
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

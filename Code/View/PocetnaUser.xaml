@@ -9,12 +9,25 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
             <Label DockPanel.Dock="Left" Name="title" Content="Početna strana" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                    <local:MyDropDownButton.DropDownContent>
+                        <StackPanel>
+                            <Button x:Name="buttonOdobravanjeOdjaviSe" Content="Odjavi se" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonOdobravanjeOdjaviSe_Click"/>
+                        </StackPanel>
+                    </local:MyDropDownButton.DropDownContent>
+                </local:MyDropDownButton>
+            </StackPanel>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
             <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
@@ -31,10 +44,9 @@
         <ScrollViewer>
             <StackPanel>
                 <DockPanel Width="430">
-                    <Image DockPanel.Dock="Left" Source="images/heart.png" Height="154"  Margin="50,20,0,0"/>
                     <StackPanel>
-                        <Image DockPanel.Dock="Right" Source="images/doctor.png" Height="77" Margin="0,50,0,0"/>
-                        <Label x:Name="imePrezime" Content="Ime Prezime" FontSize="20" HorizontalContentAlignment="Center"/>
+                        <Image DockPanel.Dock="Right" Source="images/doctor.png" Height="100" Margin="0,20,0,0"/>
+                        <TextBlock x:Name="imePrezime" FontSize="20" HorizontalAlignment="Center" Text="{Binding Doctor.NameAndSurname}"/>
                     </StackPanel>
                 </DockPanel>
                 <StackPanel>
@@ -42,7 +54,7 @@
                     <Button x:Name="buttonZapocniPregled" Content="Započni pregled" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonZapocniPregled_Click"/>
                     <Button x:Name="buttonNapisiClanak" Content="Napiši članak" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonNapisiClanak_Click"/>
                     <Button x:Name="buttonZdravstveniKartoni" Content="Zdravstveni kartoni" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonZdravstveniKartoni_Click"/>
-                    <Button x:Name="buttonPregledStatistike" Content="Pregled statistike" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonPregledStatistike_Click"/>
+                    <Button x:Name="buttonPregledStatistike" Content="Izveštaj o potrošnji lekova" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonPregledStatistike_Click"/>
                     <Button x:Name="buttonOdobravanjePregleda" Content="Odobravanje lekova" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,20" Click="buttonOdobravanjePregleda_Click"/>
                 </StackPanel>
             </StackPanel>

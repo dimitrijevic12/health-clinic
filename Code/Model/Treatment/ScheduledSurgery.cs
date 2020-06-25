@@ -29,5 +29,9 @@ namespace Model.Treatment
             CauseForOperation = causeForOperation;
             Surgeon = surgeon;
         }
+
+        public ScheduledSurgery()
+        {
+        }
     }
 }

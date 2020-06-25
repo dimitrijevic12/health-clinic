@@ -27,8 +27,20 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPotvrdi_Click(object sender, RoutedEventArgs e)
         {
+            if(textBoxNaslov.Text.Equals(""))
+            {
+                MessageBox.Show("Niste uneli naslov teksta", "Potvrdjivanje clanka", MessageBoxButton.OK, MessageBoxImage.Question);
+                return;
+            }
+
+            if (textBoxTekst.Text.Equals(""))
+            {
+                MessageBox.Show("Niste uneli tekst", "Potvrdjivanje clanka", MessageBoxButton.OK, MessageBoxImage.Question);
+                return;
+            }
+
             MessageBoxButton button = MessageBoxButton.YesNoCancel;
-            MessageBoxResult result  = MessageBox.Show("Da li ste sigurni da zelite da potvrdite clanak", "Potvrdjivanje clanka", button, MessageBoxImage.Question);
+            MessageBoxResult result  = MessageBox.Show("Da li ste sigurni da želite da potvrdite članak", "Potvrdjivanje clanka", button, MessageBoxImage.Question);
 
             switch (result)
             {
@@ -58,6 +70,18 @@ namespace health_clinicClassDiagram.View
         {
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
             (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
+            return;
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Kada unesete naslov i tekst i kliknete na dugme \"Potvrdi\" članak će se sačuvati.";
+            MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

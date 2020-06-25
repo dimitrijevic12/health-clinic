@@ -26,23 +26,28 @@ namespace health_clinicClassDiagram.View
         private Appointment appointment;
         public PregledTerminaUser(Appointment appointment)
         {
-            InitializeComponent();
-            DataContext = this;
             Appointment = appointment;
-            Appointment.Doctor = new Doctor("Pera", "Peric");
-            Appointment.Patient = new Patient("Marko", "Markovic", 1234);
+            InitializeComponent();
+            DataContext = this;;
         }
 
         public Appointment Appointment { get => appointment; set => appointment = value; }
 
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Content = new PocetnaUser();
+            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Možete se vratiti na izbor termina klikom na dugme koje izgleda kao strelica koja pokazuje u levo, ili se možete vratiti na početnu stranu ako kliknete na dugme koje izgleda kao kuća";
+            MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -9,21 +9,28 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel x:Name="mainPanel" Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton x:Name="dropDownButton" VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-                <local:MyDropDownButton.DropDownContent>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
                     <StackPanel>
-                        <Button x:Name="buttonNapisiRecept" Content="Napiši recept" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiRecept_Click"/>
-                        <Button x:Name="buttonZakaziOperaciju" Content="Zakaži operaciju" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiUputZaOperaciju_Click"/>
-                        <Button x:Name="buttonZakaziKodSpecijaliste" Content="Zakaži kod specijaliste" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiUputZaSpecijalistu_Click"/>
-                        <Button x:Name="buttonZakaziKontrolu" Content="Zakaži kontrolu" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonZakaziKontrolu_Click"/>
-                        <Button x:Name="buttonZahtevZaBolnickoLecenje" Content="Zahtev za bolničko lečenje" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonZahtevZaBolnickoLecenje_Click"/>
-                        <Button x:Name="buttonIstorijaBolesti" Content="Istorija bolesti" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonIstorijaBolesti_Click"/>
+                        <Image Source="images\help.png" Height="30"/>
                     </StackPanel>
-                </local:MyDropDownButton.DropDownContent>
-            </local:MyDropDownButton>
+                </Button>
+                <local:MyDropDownButton x:Name="dropDownButton" VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                    <local:MyDropDownButton.DropDownContent>
+                        <StackPanel>
+                            <Button x:Name="buttonNapisiRecept" Content="Napiši recept" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiRecept_Click"/>
+                            <Button x:Name="buttonZakaziOperaciju" Content="Zakaži operaciju" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiUputZaOperaciju_Click"/>
+                            <Button x:Name="buttonZakaziKodSpecijaliste" Content="Zakaži kod specijaliste" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonNapisiUputZaSpecijalistu_Click"/>
+                            <Button x:Name="buttonZakaziKontrolu" Content="Zakaži kontrolu" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonZakaziKontrolu_Click"/>
+                            <Button x:Name="buttonZahtevZaBolnickoLecenje" Content="Zahtev za bolničko lečenje" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonZahtevZaBolnickoLecenje_Click"/>
+                            <Button x:Name="buttonIstorijaBolesti" Content="Istorija bolesti" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonIstorijaBolesti_Click"/>
+                        </StackPanel>
+                    </local:MyDropDownButton.DropDownContent>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" Name="title" Content="Pregled" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
@@ -41,20 +48,20 @@
         <StackPanel Width="430">
             <DockPanel Margin="0,10,0,0">
                 <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 5, 0, 0"/>
-                <Label x:Name="imePrezime" Content="Pera Peric" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 5, 30, 0"/>
+                <TextBlock x:Name="imePrezime" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 5, 30, 0" Text="{Binding Appointment.Patient.NameAndSurname}"/>
             </DockPanel>
             <DockPanel Margin="0,10,0,0">
                 <Label x:Name="jmbgLabel" Content="JMBG:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 0, 0, 0"/>
-                <Label x:Name="jmbg" Content="1234567891234" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 0, 30, 0"/>
+                <TextBlock x:Name="jmbg"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 0, 30, 0" Text="{Binding Appointment.Patient.Id}"/>
             </DockPanel>
             <DockPanel Margin="0,10,0,0">
                 <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 0, 0, 0"/>
-                <Label x:Name="datumRodjenja" Content="01. 01. 1999." FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 0, 30, 0"/>
+                <TextBlock x:Name="datumRodjenja"  FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 0, 30, 0" Text="{Binding Appointment.Patient.DateOfBirth, StringFormat=dd/MM/yyyy}"/>
             </DockPanel>
             <StackPanel>
                 <Label x:Name="dijagnozaLabel" Content="Dijagnoza:" FontSize="24" FontWeight="Bold" VerticalAlignment="Top" Margin="30, 5, 0, 0"/>
                 <Border BorderBrush="Black" BorderThickness="1"  Margin="30, 10, 30, 0">
-                    <TextBlock x:Name="dijagnoza" FontSize="20" Margin="5.2,0,-0.4,0" TextWrapping="Wrap" Text="Dijagnoza pacijenta koja je poznata do trenutnog pregleda." Height="246"/>
+                    <TextBlock x:Name="dijagnoza" FontSize="20" Margin="5.2,0,-0.4,0" TextWrapping="Wrap" Text="{Binding LastDiagnosisAndReview}" Height="246"/>
                 </Border>
             </StackPanel>
             <StackPanel Height="100">

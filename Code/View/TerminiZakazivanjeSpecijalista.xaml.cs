@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository;
+﻿using health_clinicClassDiagram.Model.Treatment;
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -30,37 +31,37 @@ namespace health_clinicClassDiagram.View
     /// <summary>
     /// Interaction logic for TerminZaOperaciju.xaml
     /// </summary>
-    public partial class TerminiZakazivanje : UserControl
+    public partial class TerminiZakazivanjeSpecijalista : UserControl
     {
 //        List<Appointment> appointmentsToShow;
-        private Surgeon doctor;
+        private Doctor doctor;
         private String cause;
         private DateTime day;
         private List<ExamOperationRoom> allRooms = ExamOperationRoomRepository.Instance.GetAll();
         private TypeOfAppointment type;
         private Patient patient;
-        private ScheduledSurgery scheduledSurgery;
+        private SpecialistAppointment specialistAppointment;
         public ObservableCollection<Appointment> AppointmentsToShow
         {
             get;
             set;
         }
         public string Cause { get => cause; set => cause = value; }
-        public Surgeon Doctor { get => doctor; set => doctor = value; }
+        public Doctor Doctor { get => doctor; set => doctor = value; }
  //       public List<Appointment> AppointmentsToShow { get => appointmentsToShow; set => appointmentsToShow = value; }
         public List<ExamOperationRoom> AllRooms { get => allRooms; set => allRooms = value; }
         public DateTime Day { get => day; set => day = value; }
         public TypeOfAppointment Type { get => type; set => type = value; }
         public Patient Patient { get => patient; set => patient = value; }
-        public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
+        public SpecialistAppointment SpecialistAppointment { get => specialistAppointment; set => specialistAppointment = value; }
 
-        public TerminiZakazivanje(Surgeon doctor, String cause, DateTime day, TypeOfAppointment type, Patient patient, ScheduledSurgery scheduledSurgery)
+        public TerminiZakazivanjeSpecijalista(Doctor doctor, String cause, DateTime day, TypeOfAppointment type, Patient patient, SpecialistAppointment specialistAppointment)
         {
             InitializeComponent();
-            ScheduledSurgery = scheduledSurgery;
             Day = day;
             Type = type;
             Patient = patient;
+            SpecialistAppointment = specialistAppointment;
             //ExamOperationRoom room = (ExamOperationRoom)comboBoxListaSoba.SelectedItem;
             ExamOperationRoom room = new ExamOperationRoom(1);
             List<Appointment> blankAppointments = AppointmentGenerator.Instance.generateList(day);
@@ -113,7 +114,7 @@ namespace health_clinicClassDiagram.View
                 MessageBox.Show("Morate izabrati slobodne termine!", "Greška", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
+
             List<Appointment> appointments = new List<Appointment>();
             IList rows = listView.SelectedItems;
             foreach (var row in rows)
@@ -126,10 +127,10 @@ namespace health_clinicClassDiagram.View
                 }
                 appointments.Add((Appointment)row);
             }
-            
-            String message = "Termin operacije će biti zakazan\n\n Da li ste sigurni da želite da potvrdite sve informacije o operaciji?";
+
+            String message = "Pregled kod specijaliste će biti zakazan\n\n Da li ste sigurni da želite da potvrdite sve informacije o pregledu kod specijaliste?";
             MessageBoxButton button = MessageBoxButton.OKCancel;
-            MessageBoxResult result = MessageBox.Show(message, "Potvrda operacije", button, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show(message, "Potvrda pregleda kod specijaliste", button, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Cancel)
             {
@@ -140,18 +141,15 @@ namespace health_clinicClassDiagram.View
                 DateTime startDate = appointments[0].StartDate;
                 DateTime endDate = appointments[appointments.Count - 1].EndDate;
                 ExamOperationRoom room = (ExamOperationRoom)comboBoxListaSoba.SelectedItem;
-                Appointment surgery = new Appointment(Doctor, Patient, room, Type, startDate, endDate);
-                AppointmentRepository.Instance.Save(surgery);
+                Appointment specAppointment = new Appointment(Doctor, Patient, room, Type, startDate, endDate);
+                AppointmentRepository.Instance.Save(specAppointment);
 
-                ScheduledSurgery.StartDate = startDate;
-                ScheduledSurgery.EndDate = endDate;
-                ScheduledSurgery.Surgeon = Doctor;
-                ScheduledSurgery.CauseForOperation = Cause;
+                SpecialistAppointment.Cause = Cause;
+                SpecialistAppointment.Doctor = Doctor;
                 int thisCount = (this.Parent as Panel).Children.IndexOf(this);
                 (this.Parent as Panel).Children.RemoveRange(5, thisCount);
                 return;
             }
-
         }
 
         private void comboBoxListaSoba_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -180,7 +178,6 @@ namespace health_clinicClassDiagram.View
             }
             listView.ItemsSource = AppointmentsToShow;
         }
-
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
@@ -189,7 +186,7 @@ namespace health_clinicClassDiagram.View
 
         private void helpButton_Click(object sender, RoutedEventArgs e)
         {
-            String message = "Kada izaberete slobodne termine i kliknete na dugme \"Potvrdi zakazivanje\", operacije će biti zakazana";
+            String message = "Kada izaberete slobodne termine i kliknete na dugme \"Potvrdi zakazivanje\", pregled kod specijaliste će biti zakazan";
             MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

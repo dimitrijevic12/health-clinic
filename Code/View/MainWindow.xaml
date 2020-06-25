@@ -10,6 +10,9 @@
         Title="MainWindow" Height="750" Width="430"
         SizeToContent="WidthAndHeight"
         ResizeMode="NoResize">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.SystemUsers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,21 +21,27 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class PocetnaUser : UserControl
     {
-        public PocetnaUser()
+        private Doctor doctor;
+
+        public Doctor Doctor { get => doctor; set => doctor = value; }
+
+        public PocetnaUser(Doctor doctor)
         {
+            Doctor = doctor;
             InitializeComponent();
+            DataContext = this;
         }
 
         private void buttonRaspored_Click(object sender, RoutedEventArgs e)
         {
-            UserControl usc = new RasporedUser();
+            UserControl usc = new RasporedUser(doctor);
             (this.Parent as Panel).Children.Add(usc);
 //            this.Content = new RasporedUser();
         }
 
         private void buttonZapocniPregled_Click(object sender, RoutedEventArgs e)
         {
-            UserControl usc = new ZapocniPregled();
+            UserControl usc = new ZapocniPregled(Doctor);
             (this.Parent as Panel).Children.Add(usc);
         }
 
@@ -62,5 +69,22 @@ namespace health_clinicClassDiagram.View
             (this.Parent as Panel).Children.Add(usc);
         }
 
+        private void buttonPomoc_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonOdobravanjeOdjaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            (this.Parent as Panel).Children.Remove(this);
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Klikom na dugme desno od dugmeta help dobijate komandu za odjavu\n\nKlikom na dugme \"Raspored\" dobićete kalendar za vaš raspored\n\nKlikom na dugme \"Započni pregled\" otvara se raspored vaših zakazanih pregleda\n" +
+                "\nKlikom na dugme \"Napiši članak\" prelazi se na prozor za pisanje članka\n\nKlikom na dugme \"Zdravstveni kartoni\" otvara se lista pacijenata čije kartone možete da pogledate\n\nKlikom na dugme \"Izveštaj o potrošnji lekova\" prelazite na prozor koji sadrži informacije o potrošnji lekova u nekom određenom periodu\n" +
+                "\nKlikom na dugme \"Odobravanje lekova\" otvara se lista sa neodobrenim lekovima";
+            MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

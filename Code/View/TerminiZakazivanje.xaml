@@ -8,15 +8,22 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" Name="title" Content="Raspored" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -30,13 +37,24 @@
         <StackPanel Width="430">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Label x:Name="labelSobe" Content="Sobe:" FontSize="24" FontWeight="Bold" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="comboBoxListaSoba" FontSize="24" Width="250" Margin="10, 10, 30, 0"/>
+                <ComboBox x:Name="comboBoxListaSoba" FontSize="24" Width="250" Margin="10, 10, 30, 0" SelectionChanged="comboBoxListaSoba_SelectionChanged" ItemsSource="{Binding AllRooms}" SelectedIndex="0" DisplayMemberPath="Id"/>
             </StackPanel>
             <StackPanel Margin="0,15,0,0">
-                <ListView x:Name="listView" HorizontalAlignment="Left" VerticalAlignment="Top" Width="430">
+                <ListView x:Name="listView" HorizontalAlignment="Left" Height="415"  VerticalAlignment="Top" Width="430" Margin="0,0,0,-0.2" ItemsSource="{Binding AppointmentsToShow}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="30" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn/>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Start" DisplayMemberBinding="{Binding StartDate, StringFormat=HH:mm}"/>
+                                <GridViewColumn Header="End" DisplayMemberBinding="{Binding Path=EndDate, StringFormat=HH:mm}" />
+                                <GridViewColumn Header="Ime pacijenta" DisplayMemberBinding="{Binding Path=Patient.NameAndSurname}" />
+                                <GridViewColumn Header="Tip termina" DisplayMemberBinding="{Binding Path=TypeString}"/>
+                                <GridViewColumn Header="Ime lekara" DisplayMemberBinding="{Binding Path=Doctor.NameAndSurname}" />
+                            </GridView.Columns>
                         </GridView>
                     </ListView.View>
                 </ListView>

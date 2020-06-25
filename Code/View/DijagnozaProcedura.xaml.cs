@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Controller;
+using Model.SystemUsers;
+using Model.Treatment;
+using Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +24,27 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class DijagnozaProcedura : UserControl
     {
-        public DijagnozaProcedura()
+        private Treatment treatment;
+        private Patient patient;
+        public DijagnozaProcedura(Treatment treatment, Patient patient)
         {
+            Treatment = treatment;
+            Patient = patient;
             InitializeComponent();
         }
 
+        public Treatment Treatment { get => treatment; set => treatment = value; }
+        public Patient Patient { get => patient; set => patient = value; }
+
         private void buttonPotvrdi_Click(object sender, RoutedEventArgs e)
         {
+            String diagnnosis = textBoxDijagnoza.Text;
+            String review = textBoxProcedura.Text;
+            Treatment.DiagnosisAndReview = new DiagnosisAndReview(diagnnosis, review);
+            TreatmentRepository.Instance.Save(Treatment);
+            MedicalRecordRepository.Instance.AddTreatmentToMedRec(Patient, Treatment);
+            
+
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
             (this.Parent as Panel).Children.RemoveRange(3, thisCount);
         }

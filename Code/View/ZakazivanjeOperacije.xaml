@@ -8,15 +8,22 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="images/dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
-            <Label DockPanel.Dock="Left" Name="title" Content="Napiši uput za operaciju" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton x:Name="dropDownButton" VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
+            <Label DockPanel.Dock="Left" Name="title" Content="Zakaži operaciju" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
                 <StackPanel>
                     <Image Source="images/back.png" Height="59"/>
                 </StackPanel>
@@ -29,20 +36,20 @@
         </DockPanel>
         <ScrollViewer Width="430">
             <StackPanel Width="430">
-                <DockPanel Margin="30,10,40,0">
-                    <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label x:Name="imePrezime" Content="Pera Peric" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+                <DockPanel Margin="0,10,0,0">
+                    <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top"  FontWeight="Bold" Margin="30, 5, 0, 0"/>
+                    <TextBlock x:Name="imePrezime" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 5, 30, 0" Text="{Binding Appointment.Patient.NameAndSurname}"/>
                 </DockPanel>
-                <DockPanel Margin="30,10,40,0">
-                    <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label x:Name="datumRodjenja" Content="01. 01. 1999." FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+                <DockPanel Margin="0,10,0,0">
+                    <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 0, 0, 0"/>
+                    <TextBlock x:Name="datumRodjenja" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 0, 30, 0" Text="{Binding Appointment.Patient.DateOfBirth, StringFormat=dd/MM/yyyy}"/>
                 </DockPanel>
                 <StackPanel>
                     <StackPanel>
                         <Label x:Name="labelHirurzi" Content="Hirurzi:" VerticalAlignment="Center" FontSize="24" Margin="30,5,0,0" FontWeight="Bold"/>
-                        <DataGrid x:Name="dataGrid" Height="248" Margin="30,5,40,10">
+                        <DataGrid x:Name="dataGrid" Height="248" Margin="30,5,40,10" ItemsSource="{Binding Surgeons}" AutoGenerateColumns="False" CanUserAddRows="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Ime i prezime" Width="*" IsReadOnly="True">
+                                <DataGridTextColumn Header="Ime i prezime" Width="*" IsReadOnly="True" Binding="{Binding NameAndSurname}">
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -50,7 +57,7 @@
                                         </Style>
                                     </DataGridTextColumn.HeaderStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Header="Oblast" IsReadOnly="True">
+                                <DataGridTextColumn Header="Oblast" IsReadOnly="True" Binding="{Binding SurgicalSpecialty}">
                                     <DataGridTextColumn.HeaderStyle>
                                         <Style TargetType="DataGridColumnHeader">
                                             <Setter  Property="HorizontalContentAlignment" Value="Center"/>

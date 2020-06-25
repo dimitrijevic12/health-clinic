@@ -90,6 +90,12 @@
     <Reference Include="Microsoft.Toolkit">
       <HintPath>..\..\..\HCI projekat\HCI Lekar\packages\Microsoft.Toolkit.6.0.0\lib\netstandard2.0\Microsoft.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System">
@@ -119,6 +125,8 @@
       <Name>System.Windows.Forms</Name>
       <HintPath>%25windowsDirectory%25\\Microsoft.NET\\Framework\\v1.0.3705\\System.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
@@ -680,6 +688,12 @@
     <Compile Include="View\PregledTerminaUser.xaml.cs">
       <DependentUpon>PregledTerminaUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PregledZdravstveniKartoniPacijent.xaml.cs">
+      <DependentUpon>PregledZdravstveniKartoniPacijent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PregledZdravstveniKartonPregled .xaml.cs">
+      <DependentUpon>PregledZdravstveniKartonPregled .xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RasporedTerminiUser.xaml.cs">
       <DependentUpon>RasporedTerminiUser.xaml</DependentUpon>
     </Compile>
@@ -691,6 +705,9 @@
     </Compile>
     <Compile Include="View\TerminiZakazivanje.xaml.cs">
       <DependentUpon>TerminiZakazivanje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TerminiZakazivanjeSpecijalista.xaml.cs">
+      <DependentUpon>TerminiZakazivanjeSpecijalista.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Util\AppointmentGenerator.cs" />
     <Compile Include="View\ZahtevZaBolnickoLecenje.xaml.cs">
@@ -780,6 +797,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\PregledZdravstveniKartoniPacijent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PregledZdravstveniKartonPregled .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\RasporedTerminiUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -793,6 +818,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\TerminiZakazivanje.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TerminiZakazivanjeSpecijalista.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

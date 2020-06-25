@@ -8,11 +8,18 @@
              d:DesignHeight="750" d:DesignWidth="430">
     <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
         <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
-            <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
-                <StackPanel>
-                    <Image Source="C:\HCI projekat\HCI Lekar\HCI Lekar\images\dots.png" Height="46" Width="20"/>
-                </StackPanel>
-            </local:MyDropDownButton>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton x:Name="dropDownButton" VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
             <Label DockPanel.Dock="Left" Name="title" Content="Napiši recept" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
         </DockPanel>
         <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
@@ -31,14 +38,18 @@
             <StackPanel Width="430">
                 <DockPanel Margin="0,10,0,0">
                     <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top"  FontWeight="Bold" Margin="30, 5, 0, 0"/>
-                    <TextBlock x:Name="imePrezime" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 5, 30, 0" Text="{Binding ImePrezime}"/>
+                    <TextBlock x:Name="imePrezime" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 5, 30, 0" Text="{Binding Appointment.Patient.NameAndSurname}"/>
                 </DockPanel>
                 <DockPanel Margin="0,10,0,0">
                     <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold" Margin="30, 0, 0, 0"/>
-                    <Label x:Name="datumRodjenja" Content="01. 01. 1999." FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0, 0, 30, 0"/>
+                    <TextBlock x:Name="datumRodjenja" FontSize="24" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0, 0, 30, 0" Text="{Binding Appointment.Patient.DateOfBirth, StringFormat=dd/MM/yyyy}"/>
                 </DockPanel>
                 <StackPanel>
-                    <Label x:Name="sviLekoviLabel" Content="Svi lekovi:" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Bold"/>
+                    <Label x:Name="sviLekoviLabel" FontSize="24" VerticalAlignment="Top" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Bold" Content="Svi lekovi:"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5">
+                        <Label x:Name="pretragaLabel" FontSize="20" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Normal" Content="Pretraži:"/>
+                        <TextBox x:Name="textBox" Height="30" TextWrapping="Wrap" Width="200" FontSize="20" VerticalAlignment="Bottom" Margin="10,0,0,0" KeyUp="textBox_KeyUp"/>
+                    </StackPanel>
                     <DataGrid x:Name="dataGrid" Height="248" Margin="30,5,30,10" ItemsSource="{Binding AllDrugs}" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Width="*" IsReadOnly="True" Binding="{Binding Id}">
@@ -57,7 +68,7 @@
                                     </Style>
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Dostupan" IsReadOnly="True">
+                            <DataGridTextColumn Header="Dostupno" IsReadOnly="True" Binding="{Binding Quantity}">
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter  Property="HorizontalContentAlignment" Value="Center"/>
@@ -89,7 +100,7 @@
                                     </Style>
                                 </DataGridTextColumn.HeaderStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Dostupan" IsReadOnly="True">
+                            <DataGridTextColumn Header="Dostupno" IsReadOnly="True" Binding="{Binding Quantity}">
                                 <DataGridTextColumn.HeaderStyle>
                                     <Style TargetType="DataGridColumnHeader">
                                         <Setter  Property="HorizontalContentAlignment" Value="Center"/>

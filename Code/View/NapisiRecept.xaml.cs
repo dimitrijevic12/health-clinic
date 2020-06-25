@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections;
 using System;
+using Model.Appointment;
 
 namespace health_clinicClassDiagram.View
 {
@@ -16,7 +17,7 @@ namespace health_clinicClassDiagram.View
     public partial class NapisiRecept : UserControl
     {
         private Prescription prescription;
-        List<Drug> allDrugs = new List<Drug>();
+        Appointment appointment;
         public ObservableCollection<Drug> PresrcibedDrugs
         {
             get;
@@ -24,59 +25,71 @@ namespace health_clinicClassDiagram.View
         }
 
         public Prescription Prescription { get => prescription; set => prescription = value; }
-        public List<Drug> AllDrugs { get => allDrugs; set => allDrugs = value; }
+        public ObservableCollection<Drug> AllDrugs
+        {
+            get;
+            set;
+        }
+        public Appointment Appointment { get => appointment; set => appointment = value; }
 
-        public NapisiRecept(Prescription prescription)
+        public NapisiRecept(Appointment appointment, Prescription prescription)
         {
             InitializeComponent();
             DataContext = this;
             Prescription = prescription;
             PresrcibedDrugs = new ObservableCollection<Drug>(prescription.Drug);
- //           foreach(Drug drug in prescription.Drug)
- //           {
- //               PresrcibedDrugs.Add(drug);
- //           }
-            Drug d1 = new Drug("Ime leka 1");
-            Drug d2 = new Drug("Ime leka 2");
-            AllDrugs.Add(d1);
-            AllDrugs.Add(d2);
+            //           foreach(Drug drug in prescription.Drug)
+            //           {
+            //               PresrcibedDrugs.Add(drug);
+            //           }
+            AllDrugs = new ObservableCollection<Drug>();
+            AllDrugs.Add(new Drug(1, "Paracematol 100mg", 15));
+            /*AllDrugs.Add(new Drug("Aerius 50mg", 2, 5));
+            AllDrugs.Add(new Drug("Aspirin 100mg", 4, 15));
+            AllDrugs.Add(new Drug("Strepsils pakovanje 10 tableta", 5, 30));
+            AllDrugs.Add(new Drug("Xyzal 50mg", 6, 2));
+            AllDrugs.Add(new Drug("Fervex pakovanje 5 komada", 7, 3));
+            AllDrugs.Add(new Drug("Panklav 200mg", 2, 5));*/
+            Appointment = appointment;
         }
 
-/*        public String ImePrezime{
-            get { return _imePrezime; }
-            set
-            {
-                if( _imePrezime != value)
-                {
-                    _imePrezime = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-*/
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
-            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+            String message = "Ako napustite pregled sve izmene koje ste napravili će biti poništene\n\nDa li ste sigurni da želite da napustite pregled?";
+            MessageBoxButton button = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, "Potvrda recepta", button, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                int thisCount = (this.Parent as Panel).Children.IndexOf(this);
+                (this.Parent as Panel).Children.RemoveRange(3, thisCount);
+                return;
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            //            this.Content = new Pregled(_imePrezime);
-            (this.Parent as Panel).Children.Remove(this);
+            String message = "Svi prepisani lekovi neće biti sačuvani ako ne potvrdite recept!\n\nDa li ste sigurni da želite da prestanete sa pisanjem recepta?";
+            MessageBoxButton button = MessageBoxButton.OKCancel;
+            MessageBoxResult result = MessageBox.Show(message, "Potvrda recepta", button, MessageBoxImage.Warning);
+            
+            if (result == MessageBoxResult.Cancel)
+            {
+                return;
+            }
+            else
+            {
+                (this.Parent as Panel).Children.Remove(this);
+                return;
+            }
         }
 
-        /*        public event PropertyChangedEventHandler PropertyChanged;
-                private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-                {
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                }
-        */
         private void buttonPotvrdiRecept_Click(object sender, RoutedEventArgs e)
         {
-            //           _imePrezime = "Mika Mikic";
-            //           imePrezime.Text = _imePrezime;
-            //            this.Content = new Pregled(_imePrezime);
             String message = "Svi prepisani lekovi će biti sačuvani i moći ćete da ih ponovo promenite\n\n Da li ste sigurni da želite da potvrdite recept?";
             MessageBoxButton button = MessageBoxButton.OKCancel;
             MessageBoxResult result = MessageBox.Show(message, "Potvrda recepta", button, MessageBoxImage.Question);
@@ -106,6 +119,28 @@ namespace health_clinicClassDiagram.View
         {
             var row = dataGridDodati.SelectedItem;
             PresrcibedDrugs.Remove((Drug)row);
+        }
+
+        private void textBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            List<Drug> drugs = new List<Drug>();
+            foreach(Drug drug in AllDrugs)
+            {
+                if (drug.Name.ToLower().StartsWith(textBox.Text))
+                {
+                    drugs.Add(drug);
+                }
+            }
+            dataGrid.ItemsSource = drugs;
+        }
+
+        private void helpButton_Click(object sender, RoutedEventArgs e)
+        {
+            String message = "Klikom na dugme \"Dodaj\", dodajete jedan ili više izabranih lekova u prepisane lekove. Možete pretražiti sve lekove po imenu\n" +
+                  "\nKlikom na dugme \"Obriši\" brišete lek iz liste prepisanih lekova\n" +
+                  "\nKlikom na dugme \"Obriši\" brišete lek iz liste prepisanih lekova\n" +
+                  "\nKlikom na dugme \"Potvrdi recept\" završavate sa pisanjem recepta\n";
+            MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
