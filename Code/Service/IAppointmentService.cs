@@ -23,7 +23,8 @@ namespace Service
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
       List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
       List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
-        Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
+      List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority);
+      Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
       TypeOfPriority ChoosePriority(TypeOfPriority priority);
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);

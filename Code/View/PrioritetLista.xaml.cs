@@ -107,22 +107,7 @@ namespace health_clinicClassDiagram.View
                 dates.Add(dt);
             }
 
-            List<Appointment> appointmentsToShow = izlistajTermine();
-          
-            if (appointmentsToShow.Count == 0)
-            {
-                if (_priority.Equals("DOKTOR"))
-                {
-                    _endDate = _endDate.AddDays(1);
-                    appointmentsToShow = izlistajTermine();
-                } else
-                {
-                    doctors.Remove(_doctor);
-                    _doctor = doctors[0];
-                    appointmentsToShow = izlistajTermine();
-                }
-            }
-            
+            List<Appointment> appointmentsToShow = _appointmentController.GetPriorityAppointments(_doctor, _startDate, _endDate, _priority);       
 
             appointmentCollection = new ObservableCollection<Appointment>(appointmentsToShow);
 
@@ -131,56 +116,7 @@ namespace health_clinicClassDiagram.View
 
         }
 
-        private List<Appointment> izlistajTermine()
-        {
-            List<Appointment> trazeniAppointmenti = _appointmentController.GetAppointmentsByTimeAndDoctor(_doctor, _startDate, _endDate);
 
-            List<Appointment> zauzeteSale = new List<Appointment>();
-            int i = 0;
-            foreach (ExamOperationRoom r in rooms)
-            {
-                List<Appointment> zaJednuSalu = _appointmentController.GetAppointmentsByTimeAndRoom(rooms[i], _startDate, _endDate);
-                zauzeteSale.AddRange(zaJednuSalu);
-                i++;
-            }
-
-            blankAppointments = AppointmentGenerator.Instance.generateList(_startDate);
-
-            foreach (Appointment appoint in trazeniAppointmenti)
-            {
-                BlankAppointments.RemoveAll(x => x.StartDate == appoint.StartDate || x.EndDate == appoint.EndDate);
-            }
-
-            List<Appointment> appointmentsToShow = new List<Appointment>();
-
-            foreach (Appointment blank in BlankAppointments)
-            {
-                int flag = 0;
-                for (int j = 0; j < rooms.Count; j++)
-                {
-                    foreach (Appointment taken in zauzeteSale)
-                    {
-                        if (blank.StartDate >= taken.StartDate && blank.EndDate <= taken.EndDate)
-                        {
-                            flag = 1;
-                        }
-                    }
-                    if (flag == 0)
-                    {
-                        blank.ExamOperationRoom = rooms[j];
-                        appointmentsToShow.Add(blank);
-                        break;
-                    }
-                }
-
-                if (appointmentsToShow.Count > 3)
-                {
-                    break;
-                }
-            }
-
-            return appointmentsToShow;
-        }
 
         private void generateColumns(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
