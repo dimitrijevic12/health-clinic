@@ -495,10 +495,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PatientRepository.cs" />
-
+<<<<<<< HEAD
     <Compile Include="Repository\PrescriptionRepository.cs" />
-
-
+=======
+>>>>>>> master
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
