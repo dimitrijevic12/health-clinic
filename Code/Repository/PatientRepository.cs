@@ -7,10 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-<<<<<<< HEAD
 using System.Threading.Tasks;
-=======
->>>>>>> master
 
 namespace health_clinicClassDiagram.Repository
 {

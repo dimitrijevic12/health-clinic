@@ -156,29 +156,6 @@ namespace Model.Appointment
             
         }
 
-        public DateTime RehabilitationFrom
-        {
-            get { return rehabilitationFrom; }   // get method
-            set { rehabilitationFrom = value; }
-        }
-
-        public DateTime RehabilitationTo
-        {
-            get { return rehabilitationTo; }   // get method
-            set { rehabilitationTo = value; }
-        }
-
-        public String DateOfBirthTekst { get => DateOfBirth.ToShortDateString(); }
-
-        public String IdNameSurnameDoctor
-        {
-            get
-            {
-                return (choosenDoctor.Id + " " + choosenDoctor.Name + " " + choosenDoctor.Surname);
-            }
-
-        }
-
         public List<Model.Treatment.Treatment> Treatments { get => treatments; set => treatments = value; }
         public Patient Patient { get => patient; set => patient = value; }
 

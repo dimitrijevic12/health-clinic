@@ -7,7 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using System.Windows.Documents;
+=======
+>>>>>>> parent of fc3f88d... Merge branch 'master' into hci-sekretar
 
 namespace health_clinicClassDiagram.Controller
 {
@@ -27,11 +30,7 @@ namespace health_clinicClassDiagram.Controller
                 return instance;
             }
         }
-<<<<<<< HEAD
         
-=======
-
->>>>>>> master
         private PatientController() { }
 
         public PatientController(IService<Patient> service)

@@ -14,20 +14,14 @@ using System.Linq;
 
 namespace Repository
 {
-<<<<<<< HEAD
     public class TreatmentRepository : ITreatmentRepository
     {
         private const string TREATMENT_FILE = "../../Resources/Data/treatments.csv";
         private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("F:\\SIMS\\Projekat\\health-clinic\\Code\\treatmentRepo", new TreatmentCSVConverter("|"));//TODO: Namesti stream kao Stefan
-=======
-   public class TreatmentRepository : ITreatmentRepository
-   {
-        private readonly CSVStream<Treatment> _stream = new CSVStream<Treatment>("../../Resources/Data/Treatments.csv", new TreatmentCSVConverter(","));
->>>>>>> master
         private readonly LongSequencer _sequencer = new LongSequencer();
         private TreatmentRepository()
         {
-//            InitializeId();
+            InitializeId();
         }
         private static TreatmentRepository instance = null;
         public static TreatmentRepository Instance
@@ -100,9 +94,8 @@ namespace Repository
 
         public Treatment GetTreatment(long id)
         {
-            //            List<Treatment> treatments = _stream.ReadAll();
-            //            return FindById(treatments, id);
-            return GetAll().Find(treat => treat.Id == id);
+            List<Treatment> treatments = _stream.ReadAll();
+            return FindById(treatments, id);
         }
 
         private Treatment FindById(List<Treatment> treatments, long id)
@@ -124,11 +117,7 @@ namespace Repository
 
         public Treatment Save(Treatment obj)
         {
-<<<<<<< HEAD
             //obj.SetId(_sequencer.GenerateId());
-=======
-//            obj.SetId(_sequencer.GenerateId());
->>>>>>> master
             _stream.AppendToFile(obj);
             return obj;
         }

@@ -43,11 +43,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                  new LongSequencer());*/
             var recordRepository = MedicalRecordRepository.Instance;
 
-<<<<<<< HEAD
             while (i<tokens.Length-1)
-=======
-            while (i < tokens.Length - 1)
->>>>>>> master
             {
                 long idNaloga = long.Parse(tokens[i]);
                 i++;

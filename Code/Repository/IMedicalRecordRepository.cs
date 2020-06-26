@@ -18,9 +18,5 @@ namespace Repository
       Model.Appointment.MedicalRecord EditTreatmentInMedRec(Model.Treatment.Treatment treatment, Model.Appointment.MedicalRecord medRec);
         Treatment GetTreatmentByTreatmentId(long id);
         MedicalRecord getMedRecById(long id);
-<<<<<<< HEAD
    }
-=======
-    }
->>>>>>> master
 }

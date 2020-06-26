@@ -10,13 +10,8 @@ namespace health_clinicClassDiagram.Controller
     public class ExamOperationRoomController : IExamOperationRoomController
     {
         private static ExamOperationRoomController instance;
-<<<<<<< HEAD
         
 
-=======
-
-
->>>>>>> master
         private readonly IExamOperationRoomService _service = ExamOperationRoomService.Instance;
 
         public static ExamOperationRoomController Instance

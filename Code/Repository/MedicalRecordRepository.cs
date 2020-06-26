@@ -18,17 +18,13 @@ namespace Repository
 {
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
-<<<<<<< HEAD
         private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter("," , "dd.MM.yyyy."));
-=======
-        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(",", "dd.MM.yyyy."));
->>>>>>> master
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         private String _path = "../../Resources/Data/records.csv";
         private static MedicalRecordRepository instance = null;
 
-        public static MedicalRecordRepository Instance
+        public static MedicalRecordRepository Instance 
         {
             get
             {
@@ -40,11 +36,8 @@ namespace Repository
             }
         }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> master
         private MedicalRecordRepository()
         {
         }
@@ -179,13 +172,7 @@ namespace Repository
         {
             var records = _stream.ReadAll().ToList();
             return records[records.FindIndex(apt => apt.id == id)];
-<<<<<<< HEAD
             
         }
-=======
-
-        }
-
->>>>>>> master
     }
 }

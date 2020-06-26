@@ -2,13 +2,6 @@
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using Repository.Csv.Converter;
 using System;
-<<<<<<< HEAD
-=======
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
->>>>>>> master
 
 namespace health_clinicClassDiagram.Repository.Csv.Converter
 {
@@ -16,30 +9,28 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     {
 
         private readonly string _delimiter;
+        private readonly string _datetimeFormat;
 
-        public SurgeonCSVConverter(string delimiter)
+        public SurgeonCSVConverter(string delimiter, string datetimeFormat)
         {
             _delimiter = delimiter;
+            _datetimeFormat = datetimeFormat;
         }
 
         public Surgeon ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            long id = long.Parse(tokens[0]);
-            string name = tokens[1];
-            string surname = tokens[2];
+            String genderString = tokens[3];
 
-            string genderString = tokens[3];
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             String specializationString = tokens[5];
 
             SurgicalSpecialty surgicalSpecialty = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), specializationString, true);
 
-            Surgeon surgeon = new Surgeon(id, name, surname, gender, dateOfBirth, surgicalSpecialty);
+            Surgeon surgeon = new Surgeon(long.Parse(tokens[0]), tokens[1], tokens[2], gender, DateTime.Now, surgicalSpecialty);
 
             return surgeon;
         }
@@ -51,7 +42,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             entity.DateOfBirth.ToString("dd/MM/yyyy"),
+             DateTime.Now,
              entity.SurgicalSpecialty);
         }
     }

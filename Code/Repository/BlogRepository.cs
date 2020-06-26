@@ -4,77 +4,39 @@
  * Purpose: Definition of the Class Repository.UserRepository
  ***********************************************************************/
 
-using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Surveys;
-using Repository.Csv.Converter;
-using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Repository
 {
    public class BlogRepository : IBlogRepository
    {
-        private readonly CSVStream<Blog> _stream = new CSVStream<Blog>("C:\\health-clinic\\health-clinic\\Code\\resources\\data\\BlogRepo.csv", new BlogCSVConverter(","));//TODO: Namesti stream kao Stefan
-        private readonly LongSequencer _sequencer = new LongSequencer();
-        private static BlogRepository instance = null;
-
-        private BlogRepository()
-        {
-        }
-
-        public static BlogRepository Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new BlogRepository();
-                }
-                return instance;
-            }
-        }
+      public BlogRepository GetInstance() { return null; }
 
         public Blog GetBlog(string title)
         {
-            return GetAll().Find(blog => blog.Title.Equals(title));
+            throw new NotImplementedException();
         }
 
         public Blog Save(Blog obj)
         {
-//            obj.SetId(_sequencer.GenerateId());
-            _stream.AppendToFile(obj);
-            return obj;
+            throw new NotImplementedException();
         }
 
         public Blog Edit(Blog obj)
         {
-            var blogs = _stream.ReadAll().ToList();
-            blogs[blogs.FindIndex(blog => blog.Title == obj.Title)] = obj;
-            _stream.SaveAll(blogs);
-            return obj;
+            throw new NotImplementedException();
         }
 
         public bool Delete(Blog obj)
         {
-            var blogs = _stream.ReadAll().ToList();
-            var blogToRemove = blogs.SingleOrDefault(ent => ent.Title.CompareTo(obj.Title) == 0);
-            if (blogToRemove != null)
-            {
-                blogs.Remove(blogToRemove);
-                _stream.SaveAll(blogs);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            throw new NotImplementedException();
         }
 
         public List<Blog> GetAll()
         {
-            return _stream.ReadAll();
+            throw new NotImplementedException();
         }
 
         public bool OpenFile(string path)
@@ -87,5 +49,8 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-    }
+        private String Path;
+      private static BlogRepository Instance;
+   
+   }
 }

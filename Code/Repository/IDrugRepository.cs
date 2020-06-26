@@ -11,7 +11,6 @@ namespace Repository
 {
    public interface IDrugRepository : IRepository<Drug>
    {
-        bool DrugExists(string naziv);
-        Model.Rooms.Drug GetDrug(String naziv);
-    }
+      Model.Rooms.Drug GetDrug(Model.Rooms.Drug drug);
+   }
 }

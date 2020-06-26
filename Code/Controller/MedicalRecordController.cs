@@ -84,10 +84,6 @@ namespace Controller
         {
             return _service.getMedRecById(id);
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     }
 
 }

@@ -18,15 +18,8 @@ namespace Model.SystemUsers
             SurgicalSpecialty = surgicalSpecialty;
         }
 
-<<<<<<< HEAD
         public Surgeon(String name, String surname, SurgicalSpecialty surgicalSpecialty) : base( name, surname)
         {
-=======
-        public Surgeon(String name, String surname, SurgicalSpecialty surgicalSpecialty)
-        {
-            Name = name;
-            Surname = surname;
->>>>>>> master
             SurgicalSpecialty = surgicalSpecialty;
         }
 

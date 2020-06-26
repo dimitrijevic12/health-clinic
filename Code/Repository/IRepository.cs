@@ -4,7 +4,6 @@
  * Purpose: Definition of the Interface Repository.IRepository
  ***********************************************************************/
 
-using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 

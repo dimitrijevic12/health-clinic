@@ -13,21 +13,14 @@ namespace health_clinicClassDiagram.Repository
     public class DoctorRepository : IRepository<Doctor>
     {
         private static DoctorRepository instance = null;
-<<<<<<< HEAD
        
         private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-=======
-
-        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
-        private readonly iSequencer<long> _sequencer = new LongSequencer();
-
->>>>>>> master
         private String _path = "../../Resources/Data/doctors.csv";
         public static DoctorRepository Instance
         {
-            get
+             get
             {
                 if (instance == null)
                 {
@@ -40,7 +33,6 @@ namespace health_clinicClassDiagram.Repository
         private DoctorRepository()
         {
         }
-<<<<<<< HEAD
         
 
         public DoctorRepository(string path, CSVStream<Doctor> stream, iSequencer<long> sequencer)
@@ -50,8 +42,6 @@ namespace health_clinicClassDiagram.Repository
             _sequencer = sequencer;
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
         }
-=======
->>>>>>> master
 
         private long GetMaxId(List<Doctor> doctors)
         {
@@ -104,19 +94,11 @@ namespace health_clinicClassDiagram.Repository
             return obj;
         }
 
-<<<<<<< HEAD
         public Doctor getDoctorById(long id)
         {
             var doctors = _stream.ReadAll().ToList();
             return doctors[doctors.FindIndex(apt => apt.Id == id)];
             
-=======
-        public Doctor GetDoctorById(long id)
-        {
-            var doctors = _stream.ReadAll().ToList();
-            return doctors[doctors.FindIndex(apt => apt.Id == id)];
-
->>>>>>> master
         }
     }
 }

@@ -41,6 +41,8 @@ namespace Service
         {
         }
 
+        public AppointmentService GetInstance() { return null; }
+
         public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
         {
             iAppointmentRepository = repository;
@@ -95,7 +97,6 @@ namespace Service
 
 
             return trazeni;
-<<<<<<< HEAD
         }
 
         public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
@@ -112,8 +113,6 @@ namespace Service
             }
 
             return trazeni;
-=======
->>>>>>> master
         }
 
         public Treatment GenerateTreatment(Appointment appointment)
@@ -191,25 +190,6 @@ namespace Service
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
-=======
-        public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
-        {
-            List<Appointment> appointments = iAppointmentRepository.GetAll();
-            List<Appointment> trazeni = new List<Appointment>();
-
-            foreach (Appointment a in appointments)
-            {
-                if ((a.RoomId.Equals(room.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
-                {
-                    trazeni.Add(a);
-                }
-            }
-
-            return trazeni;
-        }
-
->>>>>>> master
         public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
         {
             List<Appointment> appointments = iAppointmentRepository.GetAll();
@@ -225,9 +205,5 @@ namespace Service
 
             return trazeni;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     }
 }
