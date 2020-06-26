@@ -4,6 +4,7 @@ using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.Treatment;
+using Repository;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,8 +31,8 @@ namespace health_clinicClassDiagram.View
     {
         private Appointment appointment;
         private ReferralToHospitalTreatment referralToHospitalTreatment;
-        private List<RehabilitationRoom> allRooms = RehabilitationRoomRepository.Instance.GetAll();
-        private List<Drug> allDrugs = new List<Drug>();
+        private List<RehabilitationRoom> allRooms = RehabilitationRoomController.Instance.GetAll();
+        private List<Drug> allDrugs = DrugRepository.Instance.GetAll();
         private DateTime startDate;
         private DateTime endDate;
         private String cause;
@@ -52,35 +53,10 @@ namespace health_clinicClassDiagram.View
 
         public ZahtevZaBolnickoLecenje(Appointment appointment, ReferralToHospitalTreatment referralToHospitalTreatment)
         {
-            AllDrugs = new List<Drug>();
-            AllDrugs.Add(new Drug(1, "Paracematol 100mg", 15));
-            /*AllDrugs.Add(new Drug("Aerius 50mg", 2, 5));
-            AllDrugs.Add(new Drug("Aspirin 100mg", 4, 15));
-            AllDrugs.Add(new Drug("Strepsils pakovanje 10 tableta", 5, 30));
-            AllDrugs.Add(new Drug("Xyzal 50mg", 6, 2));
-            AllDrugs.Add(new Drug("Fervex pakovanje 5 komada", 7, 3));
-            AllDrugs.Add(new Drug("Panklav 200mg", 2, 5));*/
             Appointment = appointment;
             ReferralToHospitalTreatment = referralToHospitalTreatment;
             PresrcibedDrugs = new ObservableCollection<Drug>(referralToHospitalTreatment.Drugs);
-            if(ReferralToHospitalTreatment.StartDate == null)
-            {
-                StartDate = DateTime.Today;
-            }
-            else
-            {
-                StartDate = ReferralToHospitalTreatment.StartDate;
-            }
-
-            if (ReferralToHospitalTreatment.EndDate == null)
-            {
-                endDate = DateTime.Today;
-            }
-            else
-            {
-                EndDate = ReferralToHospitalTreatment.EndDate;
-            }
-
+            
             if (ReferralToHospitalTreatment.CauseForHospTreatment == null)
             {
                 Cause = "";
@@ -149,6 +125,7 @@ namespace health_clinicClassDiagram.View
             foreach (var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
+                DoctorDrugController.Instance.lowerQuantity((Drug)row);
             }
         }
 
@@ -156,6 +133,8 @@ namespace health_clinicClassDiagram.View
         {
             var row = dataGridDodati.SelectedItem;
             PresrcibedDrugs.Remove((Drug)row);
+            DoctorDrugController.Instance.IncreaseQuantity((Drug)row);
+
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

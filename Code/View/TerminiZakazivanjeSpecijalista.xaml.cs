@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Model.Treatment;
+﻿using Controller;
+using health_clinicClassDiagram.Model.Treatment;
 using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
@@ -68,18 +69,16 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoom(day, doctor, room))
+                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {
                         int index =  AppointmentsToShow.IndexOf(blankAppointment);
-//                        int index = AppointmentsToShow.FindIndex(apt => apt.StartDate == blankAppointment.StartDate);
                         AppointmentsToShow[index] = appointment;
                     }
                     else if (blankAppointment.StartDate >= appointment.StartDate && blankAppointment.EndDate <= appointment.EndDate)
                     {
                         int index = AppointmentsToShow.IndexOf(blankAppointment);
-//                        int index = AppointmentsToShow.FindIndex(apt => apt.StartDate == blankAppointment.StartDate);
                         AppointmentsToShow.RemoveAt(index);
                     }
                 }
@@ -141,8 +140,8 @@ namespace health_clinicClassDiagram.View
                 DateTime startDate = appointments[0].StartDate;
                 DateTime endDate = appointments[appointments.Count - 1].EndDate;
                 ExamOperationRoom room = (ExamOperationRoom)comboBoxListaSoba.SelectedItem;
-                Appointment specAppointment = new Appointment(Doctor, Patient, room, Type, startDate, endDate);
-                AppointmentRepository.Instance.Save(specAppointment);
+                Appointment specialistAppointment = new Appointment(Doctor, Patient, room, Type, startDate, endDate);
+                AppointmentController.Instance.Create(specialistAppointment);
 
                 SpecialistAppointment.Cause = Cause;
                 SpecialistAppointment.Doctor = Doctor;
@@ -160,7 +159,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoom(Day, doctor, room))
+                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(Day, doctor, room, Patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {

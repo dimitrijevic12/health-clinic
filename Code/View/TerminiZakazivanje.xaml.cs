@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository;
+﻿using Controller;
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -67,18 +68,16 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(Day, doctor, room, Patient))
+                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {
                         int index =  AppointmentsToShow.IndexOf(blankAppointment);
-//                        int index = AppointmentsToShow.FindIndex(apt => apt.StartDate == blankAppointment.StartDate);
                         AppointmentsToShow[index] = appointment;
                     }
                     else if (blankAppointment.StartDate >= appointment.StartDate && blankAppointment.EndDate <= appointment.EndDate)
                     {
                         int index = AppointmentsToShow.IndexOf(blankAppointment);
-//                        int index = AppointmentsToShow.FindIndex(apt => apt.StartDate == blankAppointment.StartDate);
                         AppointmentsToShow.RemoveAt(index);
                     }
                 }
@@ -141,7 +140,7 @@ namespace health_clinicClassDiagram.View
                 DateTime endDate = appointments[appointments.Count - 1].EndDate;
                 ExamOperationRoom room = (ExamOperationRoom)comboBoxListaSoba.SelectedItem;
                 Appointment surgery = new Appointment(Doctor, Patient, room, Type, startDate, endDate);
-                AppointmentRepository.Instance.Save(surgery);
+                AppointmentController.Instance.Create(surgery);
 
                 ScheduledSurgery.StartDate = startDate;
                 ScheduledSurgery.EndDate = endDate;

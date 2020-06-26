@@ -43,27 +43,18 @@ namespace health_clinicClassDiagram.View
             Appointment = appointment;
             Treatment = treatment;
             Treatment.Prescription = new Prescription();
-            Treatment.Prescription.Drug = new List<Drug>();
             Treatment.ScheduledSurgery = new ScheduledSurgery();
             Treatment.SpecialistAppointment = new Model.Treatment.SpecialistAppointment();
             Treatment.ReferralToHospitalTreatment = new ReferralToHospitalTreatment();
-            Treatment.ReferralToHospitalTreatment.Drugs = new List<Drug>();
             Treatment.Doctor = Appointment.Doctor;
             DataContext = this;
         }
 
         private void buttonNapisiRecept_Click(object sender, RoutedEventArgs e)
         {
-            //            this.Content = new NapisiRecept(_imePrezime);
-            //            this.Content = napisiRecept;
             dropDownButton.IsOpen = false;
             UserControl usc = new NapisiRecept(appointment, treatment.Prescription);
             (this.Parent as Panel).Children.Add(usc);
-            //            this.mainPanel.Children.Remove();
-            //            this.mainPanel.Children.Add(napisiRecept);
-            //            (this.Parent as Panel).Children.Add(napisiRecept);
-            //            this.Content = this.;
-            //            this.Content = new NapisiRecept();
         }
 
         private void buttonNapisiUputZaOperaciju_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using Model.SystemUsers;
+﻿using health_clinicClassDiagram.Controller;
+using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,9 @@ namespace health_clinicClassDiagram.View
     /// </summary>
     public partial class ZdravstveniKartoniLista : UserControl
     {
-        private List<Patient> patients;
+        private List<Patient> patients = PatientController.Instance.GetAll();
         public ZdravstveniKartoniLista()
         {
-            InitializeComponent();
-            Patients = new List<Patient>();
-            Patient patient = new Patient("Mika", "Mikic", 1234);
-            Patient patient2 = new Patient("Jovan", "Jovanovic", 2222);
-            Patients.Add(patient);
-            Patients.Add(patient2);
             InitializeComponent();
             DataContext = this;
         }

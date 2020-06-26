@@ -48,7 +48,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoom(day, thisAppointment.Doctor, room))
+                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(day, thisAppointment.Doctor, room, thisAppointment.Patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {
@@ -137,7 +137,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoom(Day, Appointment.Doctor, room))
+                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(Day, Appointment.Doctor, room, Appointment.Patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {

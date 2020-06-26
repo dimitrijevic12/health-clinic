@@ -1,4 +1,6 @@
-﻿using Model.Rooms;
+﻿using Controller;
+using Model.Rooms;
+using Repository;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,8 +32,7 @@ namespace health_clinicClassDiagram.View
         }
         public OdobravanjeLekova()
         {
-            AllDrugs = new ObservableCollection<Drug>();
-            AllDrugs.Add(new Drug(1, "Paracematol 100mg", 15));
+            AllDrugs = new ObservableCollection<Drug>(DrugRepository.Instance.GetAll());
            /* AllDrugs.Add(new Drug("Aerius 50mg", 2, 5));
             AllDrugs.Add(new Drug("Aspirin 100mg", 4, 15));
             AllDrugs.Add(new Drug("Strepsils pakovanje 10 tableta", 5, 30));
@@ -51,20 +52,15 @@ namespace health_clinicClassDiagram.View
 
         private void buttonOdobriLek_Click(object sender, RoutedEventArgs e)
         {
-            int thisCount = (this.Parent as Panel).Children.IndexOf(this);
-            (this.Parent as Panel).Children.RemoveRange(3, thisCount);
-        }
-
-        private void buttonOdobriLek_Click_1(object sender, RoutedEventArgs e)
-        {
             IList rows = dataGridLekovi.SelectedItems;
-            List<Drug> drugsToRemove = new List<Drug>();
+            List<Drug> drugsToApprove = new List<Drug>();
             foreach (var row in rows)
             {
-                drugsToRemove.Add((Drug)row);
+                drugsToApprove.Add((Drug)row);
             }
-            foreach(Drug drug in drugsToRemove)
+            foreach(Drug drug in drugsToApprove)
             {
+                DoctorDrugController.Instance.ValidateDrug(drug);
                 AllDrugs.Remove(drug);
             }
         }

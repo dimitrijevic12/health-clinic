@@ -8,6 +8,8 @@ using System.Collections.ObjectModel;
 using System.Collections;
 using System;
 using Model.Appointment;
+using Controller;
+using Repository;
 
 namespace health_clinicClassDiagram.View
 {
@@ -42,8 +44,7 @@ namespace health_clinicClassDiagram.View
             //           {
             //               PresrcibedDrugs.Add(drug);
             //           }
-            AllDrugs = new ObservableCollection<Drug>();
-            AllDrugs.Add(new Drug(1, "Paracematol 100mg", 15));
+            AllDrugs = new ObservableCollection<Drug>(DrugRepository.Instance.GetAll());
             /*AllDrugs.Add(new Drug("Aerius 50mg", 2, 5));
             AllDrugs.Add(new Drug("Aspirin 100mg", 4, 15));
             AllDrugs.Add(new Drug("Strepsils pakovanje 10 tableta", 5, 30));
@@ -99,7 +100,7 @@ namespace health_clinicClassDiagram.View
                 return;
             }
             else
-            {
+            { 
                 Prescription.Drug = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
                 (this.Parent as Panel).Children.Remove(this);
                 return;
@@ -112,6 +113,7 @@ namespace health_clinicClassDiagram.View
             foreach(var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
+                DoctorDrugController.Instance.lowerQuantity((Drug)row);
             }
         }
 
@@ -119,6 +121,7 @@ namespace health_clinicClassDiagram.View
         {
             var row = dataGridDodati.SelectedItem;
             PresrcibedDrugs.Remove((Drug)row);
+            DoctorDrugController.Instance.IncreaseQuantity((Drug)row);
         }
 
         private void textBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Controller;
+using Model.Surveys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +58,8 @@ namespace health_clinicClassDiagram.View
                     }
                 case MessageBoxResult.Yes:
                     {
+                        Blog blog = new Blog(textBoxNaslov.Text, textBoxTekst.Text, DateTime.Now);
+                        BlogController.Instance.Create(blog);
                        int thisCount = (this.Parent as Panel).Children.IndexOf(this);
                        (this.Parent as Panel).Children.RemoveRange(3, thisCount);
                         return;

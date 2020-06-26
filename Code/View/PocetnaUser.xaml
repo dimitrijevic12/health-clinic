@@ -55,7 +55,8 @@
                     <Button x:Name="buttonNapisiClanak" Content="Napiši članak" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonNapisiClanak_Click"/>
                     <Button x:Name="buttonZdravstveniKartoni" Content="Zdravstveni kartoni" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonZdravstveniKartoni_Click"/>
                     <Button x:Name="buttonPregledStatistike" Content="Izveštaj o potrošnji lekova" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonPregledStatistike_Click"/>
-                    <Button x:Name="buttonOdobravanjePregleda" Content="Odobravanje lekova" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,20" Click="buttonOdobravanjePregleda_Click"/>
+                    <Button x:Name="buttonOdobravanjeLekova" Content="Odobravanje lekova" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,0" Click="buttonOdobravanjeLekova_Click"/>
+                    <Button x:Name="buttonOtpustanjePacijenata" Content="Otpuštanje pacijenata" FontSize="24" Background="#FF1C439F" Foreground="White" Height="55" Width="300" Margin="0,20,0,20" Click="buttonOtpustanjePacijenata_Click"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

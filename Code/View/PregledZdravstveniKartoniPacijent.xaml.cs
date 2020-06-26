@@ -1,4 +1,5 @@
-﻿using Model.Appointment;
+﻿using Controller;
+using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
 using Repository;
@@ -31,7 +32,7 @@ namespace health_clinicClassDiagram.View
         public PregledZdravstveniKartoniPacijent(Patient patient)
         {
             //            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
-            MedicalRecord  = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
+            MedicalRecord  = MedicalRecordController.Instance.GetMedRecByPatient(patient);
             Treatments = medicalRecord.Treatments;
             Patient = patient;
             InitializeComponent();

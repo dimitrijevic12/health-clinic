@@ -57,7 +57,7 @@ namespace health_clinicClassDiagram.View
             (this.Parent as Panel).Children.Add(usc);
         }
 
-        private void buttonOdobravanjePregleda_Click(object sender, RoutedEventArgs e)
+        private void buttonOdobravanjeLekova_Click(object sender, RoutedEventArgs e)
         {
             UserControl usc = new OdobravanjeLekova();
             (this.Parent as Panel).Children.Add(usc);
@@ -67,11 +67,6 @@ namespace health_clinicClassDiagram.View
         {
             UserControl usc = new IzvestajOPotrosnjiLekova();
             (this.Parent as Panel).Children.Add(usc);
-        }
-
-        private void buttonPomoc_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void buttonOdobravanjeOdjaviSe_Click(object sender, RoutedEventArgs e)
@@ -85,6 +80,12 @@ namespace health_clinicClassDiagram.View
                 "\nKlikom na dugme \"Napiši članak\" prelazi se na prozor za pisanje članka\n\nKlikom na dugme \"Zdravstveni kartoni\" otvara se lista pacijenata čije kartone možete da pogledate\n\nKlikom na dugme \"Izveštaj o potrošnji lekova\" prelazite na prozor koji sadrži informacije o potrošnji lekova u nekom određenom periodu\n" +
                 "\nKlikom na dugme \"Odobravanje lekova\" otvara se lista sa neodobrenim lekovima";
             MessageBox.Show(message, "Help", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void buttonOtpustanjePacijenata_Click(object sender, RoutedEventArgs e)
+        {
+            UserControl usc = new OtpustanjePacijenata();
+            (this.Parent as Panel).Children.Add(usc);
         }
     }
 }

@@ -113,16 +113,6 @@
                 </Expander>
                 <Expander x:Name="expanderZahtevZaBolnickoLecenje" Header="Zahtev za bolničko lečenje" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 0, 0">
                     <StackPanel Margin="20,5,40,0">
-                        <DockPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label x:Name="odDatumLabel" Content="Od:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold"/>
-                                <TextBlock x:Name="odDatum" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Normal" Text="{Binding Treatment.ReferralToHospitalTreatment.StartDate, StringFormat=dd/MM/yyyy}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
-                                <Label x:Name="doDatumLabel" Content="Do:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold" Margin="5, 0, 0, 0"/>
-                                <TextBlock x:Name="doDatum"  FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Normal" Text="{Binding Treatment.ReferralToHospitalTreatment.EndDate, StringFormat=dd/MM/yyyy}"/>
-                            </StackPanel>
-                        </DockPanel>
                         <StackPanel>
                             <DataGrid x:Name="dataGridBolLecLekovi" Height="248" ItemsSource="{Binding Treatment.ReferralToHospitalTreatment.Drugs}" FontSize="20" FontWeight="Normal">
                                 <DataGrid.Columns>

@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.View
         private List<Doctor> doktori = new List<Doctor>();
         public Login()
         {
-            Doctor doctor = new Doctor(123456, "Marko", "Markovic");
+            Doctor doctor = new Doctor(123456, "Marko", "Markovic", Model.SystemUsers.Gender.MALE, DateTime.Now, "marko", "marko");
             DoctorController.Instance.Create(doctor);
             Patient patient = new Patient("Mika", "Mikic", 1234);
             Patient patient2 = new Patient("Pacijent", "Pacijent", 2233);
@@ -75,9 +75,12 @@ namespace health_clinicClassDiagram.View
 
             RehabilitationRoom rehRoom1 = new RehabilitationRoom(1, 2, 5, new List<MedicalRecord>());
             RehabilitationRoom rehRoom2 = new RehabilitationRoom(2, 3, 15, new List<MedicalRecord>());
+            MedicalRecord medicalRecord2 = new MedicalRecord(patient2, new List<Treatment>(), doctor);
             RehabilitationRoomRepository.Instance.Save(rehRoom1);
             RehabilitationRoomRepository.Instance.Save(rehRoom2);
-
+            MedicalRecordController.Instance.Create(medicalRecord2);
+            RehabilitationRoomController.Instance.AddPatient(MedicalRecordRepository.Instance.GetMedRecByPatient(patient2), rehRoom1);
+            
             Drug d1 = new Drug(1, "Paracematol 100mg", 15);
             Drug d2 = new Drug(2, "Aerius 50mg", 5);
             List<Drug> drugs = new List<Drug>();
@@ -151,7 +154,16 @@ namespace health_clinicClassDiagram.View
             String message = "Pogrešan Username ili Password, molim vas pokušajte ponovo";
             MessageBoxButton button = MessageBoxButton.OK;
             MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);*/
-            PocetnaUser pocetnaUser = new PocetnaUser(DoctorRepository.Instance.GetDoctorById(123456));
+            Doctor doctor = DoctorController.Instance.ValidateLogin(textBoxUsername.Text, passwordBox.Password);
+            if (doctor == null)
+            {
+
+                String message = "Pogrešan Username ili Password, molim vas pokušajte ponovo";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);
+
+            }
+            PocetnaUser pocetnaUser = new PocetnaUser(doctor);
             (this.Parent as Panel).Children.Add(pocetnaUser);
             return;
 

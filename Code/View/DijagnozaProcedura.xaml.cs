@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
 using Repository;
@@ -41,8 +42,9 @@ namespace health_clinicClassDiagram.View
             String diagnnosis = textBoxDijagnoza.Text;
             String review = textBoxProcedura.Text;
             Treatment.DiagnosisAndReview = new DiagnosisAndReview(diagnnosis, review);
-            TreatmentRepository.Instance.Save(Treatment);
-            MedicalRecordRepository.Instance.AddTreatmentToMedRec(Patient, Treatment);
+            MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedRecByPatient(Patient);
+            TreatmentController.Instance.Create(Patient,Treatment);
+            MedicalRecordController.Instance.AddTreatment(Treatment, medicalRecord);
             
 
             int thisCount = (this.Parent as Panel).Children.IndexOf(this);
