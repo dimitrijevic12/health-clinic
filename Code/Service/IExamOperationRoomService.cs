@@ -11,6 +11,12 @@ namespace health_clinicClassDiagram.Service
     public interface IExamOperationRoomService : IService<ExamOperationRoom>
     {
         Boolean IsRoomFree(DateTime from, DateTime to, Room room);
+
+        ExamOperationRoom findExamRoom(long id);
+
+        Room IncreaseQuantity(Room r, Equipment eq);
+
+        Room DecreaseQuantity(Room r, Equipment eq);
     }
 
 }

@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -18,7 +19,12 @@ namespace Controller
         private static RenovationController Instance;
 
         public RenovationController GetInstance() { return null; }
-public List<Renovation> GetAll()
+
+        public RenovationController(IRenovationService service)
+        {
+            iRenovationService = service;
+        }
+        public List<Renovation> GetAll()
         {
             return iRenovationService.GetAll();
         }
@@ -38,6 +44,29 @@ public List<Renovation> GetAll()
             return iRenovationService.Edit(obj);
         }
 
-   
-   }
+        public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoPainting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoMerge()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoSplit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoChangeTypeOfRoom()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

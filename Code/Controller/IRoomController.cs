@@ -14,7 +14,11 @@ namespace Controller
    public interface IRoomController : IController<Room>
    {
       Boolean IsRoomFree(DateTime from, DateTime to, Model.Rooms.Room room);
-      List<Patient> GetAllPatientsByRoom();
+
+      Room IncreaseQuantity(Room r, Equipment eq);
+
+     Room DecreaseQuantity(Room r, Equipment eq);
+     List<Patient> GetAllPatientsByRoom();
       int GenerateReport(Model.Rooms.Room room);
       Boolean AddPatient(Model.SystemUsers.Patient patient);
    }

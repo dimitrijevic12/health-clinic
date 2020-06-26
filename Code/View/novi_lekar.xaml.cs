@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
 using System;
@@ -14,13 +15,17 @@ namespace health_clinicClassDiagram.view
     public partial class novi_lekar : Window
     {
         private readonly IController<Doctor> _doctorController;
+        private readonly IController<Specialist> specijalistaController;
+        private readonly IController<Surgeon> hirurgController;
 
         private long _id;
         private string _ime;
         private string _prezime;
+        private string _username;
+        private string _password;
         private Gender _gender;
-        /*private DateTime _datum;*/
-        private string _datum;
+        DateTime _datum;
+       // private string _datum;
         private Specialization _specijalnost;
         private SurgicalSpecialty _hirurg;
         private TypeOfWorkingSchedule smena;
@@ -32,6 +37,10 @@ namespace health_clinicClassDiagram.view
 
             var app = Application.Current as App;
             _doctorController = app.doctorController;
+            specijalistaController = SpecialistController.Instance;
+            hirurgController = SurgeonController.Instance;
+
+            
         }
 
         private void Button_otkazi(object sender, RoutedEventArgs e)
@@ -59,9 +68,11 @@ namespace health_clinicClassDiagram.view
                 String PREZIME = Prezime.Text;
 
                 // String JMBG = Jmbg.Text;
-                String DATUMRODJ = DatumRodjenja.Text;
+                DateTime DATUMRODJ = (DateTime)DatumRodjenja.SelectedDate;
                 // String RADNOVREME = RadnoVreme.Text;
                 String SPECIJALISTA = "DA";
+                _username = username.Text;
+                _password = password.Text;
 
                 int combo1 = PolCombo.SelectedIndex;
 
@@ -141,7 +152,7 @@ namespace health_clinicClassDiagram.view
                 _prezime = PREZIME;
 
                 /*_datum = DateTime.Now;*/
-                _datum = DatumRodjenja.Text;
+                _datum = (DateTime)DatumRodjenja.SelectedDate;
 
                 Doctor doctor = CreateDoctor();
 
@@ -151,7 +162,18 @@ namespace health_clinicClassDiagram.view
 
                 //lekar.Lekari.Add(new lekari() { IdLekara = ID, Ime = IME, Prezime = PREZIME, Pol = POL, Jmbg = JMBG, DatumRodjenja = DATUMRODJ, RadnoVreme = RADNOVREM, Specijalista = SPECIJALISTA } );
 
+                if (!(_specijalnost.Equals(Specialization.NOT_SPECIALIST)))
+                {
+                    Specialist spec = new Specialist(_id, _ime, _prezime, _gender, _datum, _specijalnost);
+                    specijalistaController.Create(spec);
+                }
 
+                if (!(_hirurg.Equals(SurgicalSpecialty.NOT_SURGEON)))
+                {
+                    
+                    Surgeon hirurg = new Surgeon(_id, _ime, _prezime, _gender, _datum, _hirurg);
+                    hirurgController.Create(hirurg);
+                }
 
                 var s = new lekar();
                 s.Show();
@@ -162,7 +184,7 @@ namespace health_clinicClassDiagram.view
 
         private Doctor CreateDoctor()
         {
-            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, smena, _specijalnost, _hirurg);
+            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, smena, _username,_password/*, _specijalnost, _hirurg*/);
 
             return _doctorController.Create(doctor);
         }

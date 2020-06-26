@@ -81,6 +81,19 @@ namespace health_clinicClassDiagram.Repository
             _stream.AppendToFile(obj);
             return obj;
         }
+
+        public ExamOperationRoom findExamRoom(long id)
+        {
+            var rooms = GetAll();
+            foreach (ExamOperationRoom er in rooms)
+            {
+                if (er.Id == id)
+                {
+                    return er;
+                }
+            }
+            return null;
+        }
     }
 
 }

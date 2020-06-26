@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Rooms;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,9 @@ namespace health_clinicClassDiagram.view
     /// </summary>
     public partial class premestanje_opreme : Window
     {
-        private readonly IController<ExamOperationRoom> _examOperationRoomController;
-        private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IExamOperationRoomController _examOperationRoomController;
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
+        private readonly IRoomController _roomController;
         private readonly IEquipmentController _equipController;
         private Room room;
         private Equipment equTest;
@@ -53,6 +55,7 @@ namespace health_clinicClassDiagram.view
             _equipController = app.equipController;
             _examOperationRoomController = app.examOperationRoomController;
             _rehabilitationRoomController = app.rehabilitationRoomController;
+            _roomController = app.roomController;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 
@@ -102,9 +105,16 @@ namespace health_clinicClassDiagram.view
                 Equipment equ = new Equipment(IdOpreme, naz, quan);
 
 
-
-
-                int flag = 0;
+                if(room.tip == TypeOfRoom.EXAMOPERATION)
+                {
+                    room = _examOperationRoomController.IncreaseQuantity(room, equ);
+                }
+                else
+                {
+                    room = _rehabilitationRoomController.IncreaseQuantity(room, equ);
+                }
+               
+              /*  int flag = 0;
                 if (room.Equipments != null)
                 {
                     //Console.WriteLine(" broj" + room.Equipments.Count);
@@ -134,9 +144,9 @@ namespace health_clinicClassDiagram.view
                     room.Equipments.Add(equ);
 
 
-                }
+                }*/
 
-                foreach (ExamOperationRoom r in rooms)
+                /*foreach (ExamOperationRoom r in rooms)
                 {
                     if (r.Id.Equals(room.Id))
                     {
@@ -154,14 +164,20 @@ namespace health_clinicClassDiagram.view
                         sobaZaDodavanje2.Equipments = room.Equipments;
                         break;
                     }
-                }
+                }*/
+
+                sobaZaDodavanje = _examOperationRoomController.findExamRoom(room.Id);
+
+                sobaZaDodavanje2 = _rehabilitationRoomController.findRehabRoom(room.Id);
 
                 if (sobaZaDodavanje != null)
                 {
+                    sobaZaDodavanje.Equipments = room.Equipments;
                     _examOperationRoomController.Edit(sobaZaDodavanje);
                 }
                 else
                 {
+                    sobaZaDodavanje2.Equipments = room.Equipments;
                     _rehabilitationRoomController.Edit(sobaZaDodavanje2);
                 }
 

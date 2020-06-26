@@ -33,46 +33,57 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.IdLekar}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,15,1,10" Height="52" Text="{x:Static language:Lang.IdLekar}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Ime}"/>
+        <TextBlock Grid.Column="0" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,67,0,35" Height="52" Text="{x:Static language:Lang.Ime}" Grid.RowSpan="2"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52"  Text="{x:Static language:Lang.Prezime}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,42,0,60" Height="52"  Text="{x:Static language:Lang.Prezime}" Grid.RowSpan="2"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="{x:Static language:Lang.Pol}"/>
+        <TextBlock Grid.Column="0" Grid.Row="2" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,1,0" Height="52" Text="{x:Static language:Lang.Pol}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,24,63,0" Height="52" Text="{x:Static language:Lang.DatumRodjenja}"/>
+        <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,9,63,16" Height="52" Text="{x:Static language:Lang.DatumRodjenja}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="297" Margin="0,38,19,63" Height="52" Text="{x:Static language:Lang.RadnoVreme}" Grid.RowSpan="2"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="297" Margin="0,0,20,25" Height="52" Text="{x:Static language:Lang.RadnoVreme}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,39,0,63" Height="52"  Text="{x:Static language:Lang.Specijalista}" Grid.RowSpan="2"/>
+        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,57,0,45" Height="52"  Text="{x:Static language:Lang.Specijalista}" Grid.RowSpan="2"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="7" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,39,0,63" Height="52"  Text="{x:Static language:Lang.hirurg}" Grid.RowSpan="2"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,38,0,64" Height="52"  Text="{x:Static language:Lang.hirurg}" Grid.RowSpan="2"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,38,0,64" Height="52"  Text="Username" Grid.RowSpan="2"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="7" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,35,0,67" Height="52"  Text="Password" Grid.RowSpan="2"/>
 
 
-        <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="5" Margin="105,0,23.143,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara" TextChanged="IdLekara_TextChanged"/>
-        <TextBox Grid.Column="2" Grid.Row="1" Margin="108,0,18.743,6" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right"  Name="Ime" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Height="48">
-        </TextBox>
-        <TextBox Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="5" Margin="108,0,21,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime"/>
-        <ComboBox Height="42" Name="PolCombo" Width="412" Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="4" Margin="3,25,19.743,10">
+        <TextBox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="5" Margin="108,0,18,26" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="IdLekara" TextChanged="IdLekara_TextChanged" Height="41"/>
+        <TextBox Grid.Column="2" Margin="107,0,19,48" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right"  Name="Ime" FlowDirection="RightToLeft" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="5" Height="44" Grid.RowSpan="2"/>
+        <TextBox Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="4" Margin="1,0,18,70" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="Prezime" Height="42" Grid.RowSpan="2"/>
+        <ComboBox Name="PolCombo" Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="4" Margin="0,25,15.714,16">
             <ComboBoxItem Content="Muški"/>
             <ComboBoxItem Content="Ženski"/>
         </ComboBox>
 
-        <DatePicker Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" Margin="105,34,0,0" VerticalAlignment="Top" Grid.ColumnSpan="5" Height="42" Width="416" Name="DatumRodjenja"/>
-        <ComboBox Height="42" Name="ComboRadnoVreme" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="0,38,19.743,74" Grid.RowSpan="2" >
+        <DatePicker Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="42" Width="416" Name="DatumRodjenja"/>
+        <ComboBox Name="ComboRadnoVreme" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="3,0,16.714,45" >
             <ComboBoxItem Content="08:00-16:00"/>
             <ComboBoxItem Content="16:00-00:00"/>
             <ComboBoxItem Content="00:00-08:00"/>
         </ComboBox>
-        <ComboBox Height="42" Name="SpecijalistaCombo" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="4" Margin="0,48.5,20,63.5" Grid.RowSpan="2">
+        <ComboBox Name="SpecijalistaCombo" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="3,57,16.714,62" Grid.RowSpan="2">
             <ComboBoxItem Content="CARDIOLOGY"/>
             <ComboBoxItem Content="PULMOLOGY"/>
             <ComboBoxItem Content="NEPHROLOGY"/>
             <ComboBoxItem Content="ENDOCRINOLOGY"/>
             <ComboBoxItem Content="NOT_SPECIALIST"/>
         </ComboBox>
-        <ComboBox Height="42" Name="HirurgCombo" Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="5" Margin="108,49,21,63" Grid.RowSpan="2">
+        <ComboBox Name="HirurgCombo" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="3,39,15.714,4" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-1.953"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.716"/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
             <ComboBoxItem Content="CARDIOTHORACIC"/>
             <ComboBoxItem Content="NEUROSURGERY"/>
             <ComboBoxItem Content="PLASTICAL"/>
@@ -81,6 +92,10 @@
         </ComboBox>
         <Button Grid.Column="4" Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="38,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.ColumnSpan="3" Click="Button_otkazi"/>
         <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="49,10,30,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>
+
+        <TextBox Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5" Margin="108,0,18,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="username" TextChanged="IdLekara_TextChanged" Height="41"/>
+
+        <TextBox Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="5" Margin="107,0,19,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="password" TextChanged="IdLekara_TextChanged" Height="43"/>
 
 
     </Grid>

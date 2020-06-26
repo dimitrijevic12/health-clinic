@@ -15,6 +15,12 @@ namespace health_clinicClassDiagram.Service
         List<Patient> GetAllPatientsByRoom(Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
 
+        RehabilitationRoom findRehabRoom(long id);
+
         RehabilitationRoom getRoom(RehabilitationRoom room);
+
+        Room IncreaseQuantity(Room r, Equipment eq);
+
+        Room DecreaseQuantity(Room r, Equipment eq);
     }
 }

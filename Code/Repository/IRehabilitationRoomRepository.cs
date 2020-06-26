@@ -10,6 +10,9 @@ namespace health_clinicClassDiagram.Repository
     public interface IRehabilitationRoomRepository : IRepository<RehabilitationRoom>
     {
         RehabilitationRoom GetRoom(RehabilitationRoom room);
+
+        RehabilitationRoom findRehabRoom(long id);
+
         List<RehabilitationRoom> GetFreeRoomsByDate(DateTime startDate, DateTime endDate);
     }
 }

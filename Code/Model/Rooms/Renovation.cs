@@ -5,28 +5,41 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Model.Rooms
 {
    public class Renovation
    {
-      public Room[] room;
-   
-      private DateTime StartDate;
-      private DateTime EndDate;
-      private TypeOfRenovation TypeOfRenovation;
+      private List<Room> rooms = new List<Room>();
+      private long id;
+      private DateTime startDate;
+      private DateTime endDate;
+      private TypeOfRenovation type;
 
-        public DateTime startDate  // property
+        public DateTime StartDate  // property
         {
-            get { return StartDate; }   // get method
-            set { StartDate = value; }  // set method
+            get { return startDate; }   // get method
+            set { startDate = value; }  // set method
         }
-        public DateTime endDate  // property
+        public DateTime EndDate  // property
         {
-            get { return EndDate; }   // get method
-            set { EndDate = value; }  // set method
+            get { return endDate; }   // get method
+            set { endDate = value; }  // set method
         }
 
-        public int Id { get; internal set; }
+        public long Id { get => id; set => id = value; }
+
+        public List<Room> Rooms { get => rooms; set => rooms = value; }
+        public TypeOfRenovation Type { get => type; set => type = value; }
+
+        public Renovation(long id, TypeOfRenovation type, DateTime startDate, DateTime endDate, List<Room> rooms) 
+        {
+            this.Id = id;
+            this.Type = type;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
+            this.Rooms = rooms;
+        }
     }
 }

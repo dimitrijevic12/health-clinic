@@ -30,7 +30,7 @@ namespace Service
             var workSc = iWorkingScheduleRepository.GetWorkingSchedulebyDoctor(doctor);
             //fali red
             return workSc;
-            return null;
+           
         }
 
         public List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day)

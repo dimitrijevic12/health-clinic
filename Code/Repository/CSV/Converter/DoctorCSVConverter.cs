@@ -4,6 +4,7 @@ using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -38,15 +39,17 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             TypeOfWorkingSchedule smena = (TypeOfWorkingSchedule)Enum.Parse(typeof(TypeOfWorkingSchedule), smenaString, true);
 
-            String specializationString = tokens[6];
+            /*String specializationString = tokens[6];
 
             Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
             String hirurgString = tokens[7];
 
             SurgicalSpecialty hirurg = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), hirurgString, true);
+*/
+            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, /*DateTime.Now*/ tokens[4] ,smena, specialization, hirurg);
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth ,smena, tokens[6], tokens[7]/*, specialization, hirurg*/);
 
             return doctor;
         }
@@ -59,10 +62,12 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Surname,
              entity.Gender,
              /*DateTime.Now,*/
-             entity.DateOfBirth,
+             entity.DateOfBirth.ToString("dd/MM/yyyy"),
              entity.Smena,
-             entity.Spec,
-             entity.Sur);
+             entity.Username,
+             entity.Password
+             //entity.Spec,
+            /* entity.Sur*/);
         }
     }
 }

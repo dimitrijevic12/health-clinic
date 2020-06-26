@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Rooms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,10 +14,12 @@ namespace health_clinicClassDiagram.view
     public partial class premestanje_u_ovu : Window
     {
         private int colNum = 0;
-        private readonly IController<ExamOperationRoom> _examOperationRoomController;
-        private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IExamOperationRoomController _examOperationRoomController;
+        private readonly IRehabilitationRoomController _rehabilitationRoomController;
+        private readonly IRoomController _roomController;
         private readonly IEquipmentController _equipController;
         private Room roomd;
+        private Room roomd2;
         private Equipment equTest;
 
         //public static ObservableCollection<oprema_detaljno> DetaljnaOprema
@@ -44,6 +47,7 @@ namespace health_clinicClassDiagram.view
             _equipController = app.equipController;
             _examOperationRoomController = app.examOperationRoomController;
             _rehabilitationRoomController = app.rehabilitationRoomController;
+            _roomController = app.roomController;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
             equips = _equipController.GetAll();
@@ -88,62 +92,78 @@ namespace health_clinicClassDiagram.view
                 Equipment equ = new Equipment(IdOpreme, naz, quan);
 
                 int flag = 0;
-                if (roomd.Equipments != null)
+
+                if (roomd.tip == TypeOfRoom.EXAMOPERATION)
                 {
-                    //Console.WriteLine(" broj" + room.Equipments.Count);
-                    foreach (Equipment ek in roomd.Equipments)
-                    {
-                        if (ek.Id == IdOpreme)
-                        {
-                            ek.Quantity += quan;
-                            flag += 1;
-
-                        }
-
-                    }
-
-                    if (flag == 0)
-                    {
-                        roomd.Equipments.Add(equ);
-                        foreach (Equipment ek in roomd.Equipments)
-                        {
-                            // Console.WriteLine(ek.Id);
-                        }
-                    }
+                    roomd = _examOperationRoomController.IncreaseQuantity(roomd, equ);
                 }
                 else
                 {
-
-                    roomd.Equipments.Add(equ);
-
-
+                    roomd = _rehabilitationRoomController.IncreaseQuantity(roomd, equ);
                 }
-                foreach (ExamOperationRoom r in rooms)
-                {
-                    if (r.Id.Equals(roomd.Id))
-                    {
-                        sobaZaDodavanje = r;
-                        sobaZaDodavanje.Equipments = roomd.Equipments;
-                        break;
-                    }
-                }
+                /* if (roomd.Equipments != null)
+                 {
+                     //Console.WriteLine(" broj" + room.Equipments.Count);
+                     foreach (Equipment ek in roomd.Equipments)
+                     {
+                         if (ek.Id == IdOpreme)
+                         {
+                             ek.Quantity += quan;
+                             flag += 1;
 
-                foreach (RehabilitationRoom r in rooms2)
-                {
-                    if (r.Id.Equals(roomd.Id))
-                    {
-                        sobaZaDodavanje2 = r;
-                        sobaZaDodavanje2.Equipments = roomd.Equipments;
-                        break;
-                    }
-                }
+                         }
+
+                     }
+
+
+                     if (flag == 0)
+                     {
+                         roomd.Equipments.Add(equ);
+                         foreach (Equipment ek in roomd.Equipments)
+                         {
+                             // Console.WriteLine(ek.Id);
+                         }
+                     }
+                 }
+                 else
+                 {
+
+                     roomd.Equipments.Add(equ);
+
+
+                 }*/
+
+                sobaZaDodavanje = _examOperationRoomController.findExamRoom(roomd.Id);
+               
+                /* foreach (ExamOperationRoom r in rooms)
+                 {
+                     if (r.Id.Equals(roomd.Id))
+                     {
+                         sobaZaDodavanje = r;
+                         sobaZaDodavanje.Equipments = roomd.Equipments;
+                         break;
+                     }
+                 }*/
+                sobaZaDodavanje2 = _rehabilitationRoomController.findRehabRoom(roomd.Id);
+                
+                /* foreach (RehabilitationRoom r in rooms2)
+                 {
+                     if (r.Id.Equals(roomd.Id))
+                     {
+                         sobaZaDodavanje2 = r;
+                         sobaZaDodavanje2.Equipments = roomd.Equipments;
+                         break;
+                     }
+                 }*/
 
                 if (sobaZaDodavanje != null)
                 {
+                    sobaZaDodavanje.Equipments = roomd.Equipments;
                     _examOperationRoomController.Edit(sobaZaDodavanje);
                 }
                 else
                 {
+                    sobaZaDodavanje2.Equipments = roomd.Equipments;
                     _rehabilitationRoomController.Edit(sobaZaDodavanje2);
                 }
 

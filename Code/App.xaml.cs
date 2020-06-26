@@ -34,6 +34,7 @@ namespace health_clinicClassDiagram
         private const string EQUIP_FILE = "../../Resources/Data/equipments.csv";
         private const string DRUGS_FILE = "../../Resources/Data/drugs.csv";
         private const string APPS_FILE = "../../Resources/Data/appointments.csv";
+        private const string RENO_FILE = "../../Resources/Data/renovations.csv";
         private const string CSV_DELIMITER = ",";
         private const string DATETIME_FORMAT = "dd.MM.yyyy.";
 
@@ -49,6 +50,7 @@ namespace health_clinicClassDiagram
         public IDrugController drugController { get; private set; }
 
         public IAppointmentController appController { get; private set; }
+        public IRenovationController renoController { get; private set; }
 
         public UserController userController { get; private set; }
 
@@ -83,6 +85,7 @@ namespace health_clinicClassDiagram
                new CSVStream<RehabilitationRoom>(REHABILITATIONROOM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                new LongSequencer());
 
+
             var userRepository = new UserRepository(
               USER_FILE,
               new CSVStream<RegisteredUser>(USER_FILE, new UserCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
@@ -103,6 +106,11 @@ namespace health_clinicClassDiagram
             new CSVStream<Appointment>(APPS_FILE, new AppointmentCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
             new LongSequencer());
 
+            var renoRepository = new RenovationRepository(
+             RENO_FILE,
+             new CSVStream<Renovation>(RENO_FILE, new RenovationCSVConverter(CSV_DELIMITER)),
+             new LongSequencer());
+
             var doctorService = new DoctorService(doctorRepository);
 
             var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
@@ -116,6 +124,8 @@ namespace health_clinicClassDiagram
 
             var appService = new AppointmentService(appRepository, doctorService, null, examOperationRoomService);
 
+            var renoService = new RenovationService(renoRepository);
+
 
             examOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
             doctorController = new DoctorController(doctorService);
@@ -123,6 +133,7 @@ namespace health_clinicClassDiagram
             equipController = new EquipmentController(equipService);
             drugController = new DrugController(drugsService);
             appController = new AppointmentController(appService);
+            renoController = new RenovationController(renoService);
 
         }
     }
