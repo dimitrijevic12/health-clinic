@@ -53,7 +53,8 @@ namespace Service
             treatment.SpecialistAppointment = specialistAppointment;
             MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
             Patient patient = medicalRecord.Patient;
-            Appointment Appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
+            Appointment appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
+            AppointmentRepository.Instance.Save(appointment);
             return treatment.SpecialistAppointment;
         }
 
@@ -63,7 +64,7 @@ namespace Service
             treatment.ScheduledSurgery = scheduledSurgery;
             MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
             Patient patient = medicalRecord.Patient;
-            Appointment surgery = new Appointment(surgeon, patient, room,TypeOfAppointment.SURGERY, startDate, endDate);
+            Appointment surgery = new Appointment(surgeon, patient, room, TypeOfAppointment.SURGERY, startDate, endDate);
             AppointmentRepository.Instance.Save(surgery);
             return treatment.ScheduledSurgery;
         }
@@ -93,7 +94,7 @@ namespace Service
         {
             MedicalRecordRepository.Instance.AddTreatmentToMedRec(patient, obj);
             return TreatmentRepository.Instance.Save(obj);
-//            return iTreatmentRepository.Save(obj);
+            //            return iTreatmentRepository.Save(obj);
         }
 
         public Treatment Edit(Treatment obj)
@@ -115,7 +116,7 @@ namespace Service
             return TreatmentRepository.Instance.GetAll();
         }
 
-        
-   
-   }
+
+
+    }
 }

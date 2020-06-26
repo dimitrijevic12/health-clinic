@@ -222,6 +222,8 @@
     <Compile Include="Controller\RoomController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\SpecialistController.cs" />
+    <Compile Include="Controller\SurgeonController.cs" />
     <Compile Include="Controller\TreatmentController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -410,6 +412,7 @@
     <Compile Include="Repository\Csv\Converter\RoomCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\SpecialistCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\SurgeonCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\TreatmentCSVConverter.cs">
       <SubType>Code</SubType>
@@ -492,7 +495,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PatientRepository.cs" />
-    <Compile Include="Repository\PrescriptionRepository.cs" />
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
@@ -505,6 +507,7 @@
     </Compile>
     <Compile Include="Repository\Sequencer\iSequencer.cs" />
     <Compile Include="Repository\Sequencer\LongSequencer.cs" />
+    <Compile Include="Repository\SpecialistRepository.cs" />
     <Compile Include="Repository\SurgeonRepository.cs" />
     <Compile Include="Repository\TreatmentRepository.cs">
       <SubType>Code</SubType>
@@ -608,6 +611,8 @@
     <Compile Include="Service\RoomService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\SpecialistService.cs" />
+    <Compile Include="Service\SurgeonService.cs" />
     <Compile Include="Service\TreatmentService.cs">
       <SubType>Code</SubType>
     </Compile>

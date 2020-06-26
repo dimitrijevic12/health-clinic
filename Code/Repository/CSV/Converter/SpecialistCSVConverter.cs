@@ -6,17 +6,17 @@ using System.Globalization;
 
 namespace health_clinicClassDiagram.Repository.Csv.Converter
 {
-    class SurgeonCSVConverter : ICSVConverter<Surgeon>
+    class SpecialistCSVConverter : ICSVConverter<Specialist>
     {
 
         private readonly string _delimiter;
 
-        public SurgeonCSVConverter(string delimiter)
+        public SpecialistCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
         }
 
-        public Surgeon ConvertCSVFormatToEntity(string entityCSVFormat)
+        public Specialist ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
@@ -31,14 +31,14 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             String specializationString = tokens[5];
 
-            SurgicalSpecialty surgicalSpecialty = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), specializationString, true);
+            Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
 
-            Surgeon surgeon = new Surgeon(id, name, surname, gender, dateOfBirth, surgicalSpecialty);
+            Specialist specialist = new Specialist(id, name, surname, gender, dateOfBirth, specialization);
 
-            return surgeon;
+            return specialist;
         }
 
-        public string ConvertEntityToCSVFormat(Surgeon entity)
+        public string ConvertEntityToCSVFormat(Specialist entity)
         {
             return string.Join(_delimiter,
              entity.Id,
@@ -46,7 +46,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Surname,
              entity.Gender,
              entity.DateOfBirth.ToString("dd/MM/yyyy"),
-             entity.SurgicalSpecialty);
+             entity.Specialization);
         }
     }
 }

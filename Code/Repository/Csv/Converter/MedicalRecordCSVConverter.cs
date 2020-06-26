@@ -15,6 +15,7 @@ using Repository.Csv.Stream;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository.Csv.Converter
 {
@@ -48,7 +49,6 @@ namespace Repository.Csv.Converter
                 "../../Resources/Data/doctors.csv",
                 new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy.")),
                 new LongSequencer());
-
             var patientRepository = new PatientRepository(
                 "../../Resources/Data/patients.csv",
                 new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy.")),
@@ -58,7 +58,7 @@ namespace Repository.Csv.Converter
             var patientRepository = PatientRepository.Instance;
 
             //Doctor doctor = new Doctor(idDoctor, tokens[7], tokens[8]);
-            Doctor doctor = doctorRepository.getDoctorById(idDoctor);
+            Doctor doctor = doctorRepository.GetDoctorById(idDoctor);
             Patient patient = patientRepository.getPatientById(long.Parse(tokens[3]));
             List<Treatment> treatments = new List<Treatment>();
 
@@ -72,7 +72,6 @@ namespace Repository.Csv.Converter
                     treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
                 }
             }
-
             if (tokens.Length >= 11)
             {
                 if (tokens[10] != "")
@@ -86,22 +85,20 @@ namespace Repository.Csv.Converter
             /*while (i <= tokens.Length-1)
             {
                 long id = long.Parse(tokens[i]);
-
-
                 treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
-
                 i++;
             }*/
 
-            if (tokens[9] != "") {
+            if (tokens[9] != "")
+            {
                 String treatmentsString = tokens[9];
 
                 String[] oneTreatment = treatmentsString.Split('|');
 
                 Console.WriteLine(oneTreatment.Length);
 
-                for (int j = 0; j<oneTreatment.Length; j++)
-                {            
+                for (int j = 0; j < oneTreatment.Length; j++)
+                {
                     treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(oneTreatment[j])));
                 }
             }
@@ -127,30 +124,24 @@ namespace Repository.Csv.Converter
                         treatments += treatment.Id + ",";
                     }
                 }
-
             }*/
 
 
             String resenje = "";
 
 
+            Treatment last = entity.Treatments.Last();
             foreach (Treatment treatment in entity.Treatments)
             {
-                resenje += string.Join("|", treatment.Id);
-                resenje += "|";
+                if (treatment != last)
+                {
+                    resenje += treatment.Id + "|";
+                }
+                else
+                {
+                    resenje += treatment.Id;
+                }
             }
-
-            /*return string.Join(_delimiter,
-              entity.id,
-              entity.Patient.Name,
-              entity.Patient.Surname,
-              entity.Patient.Id,
-              DateTime.DateOfBirth,
-              entity.Patient.Gender,
-              entity.choosenDoctor.Id,
-              entity.choosenDoctor.NameDoctor,
-              entity.choosenDoctor.SurnameDoctor,
-              treatments);*/
 
             return string.Join(_delimiter,
               entity.id,

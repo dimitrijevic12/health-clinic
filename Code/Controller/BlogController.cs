@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Surveys;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,35 +13,48 @@ namespace Controller
 {
    public class BlogController : IBlogController
    {
-        public BlogController GetInstance(){ return null; }
+        private static BlogController instance;
+
+        private BlogController()
+        {
+        }
+
+        public static BlogController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BlogController();
+                }
+                return instance;
+            }
+        }
         public Blog GetBlogByTitle(string title)
         {
-            throw new NotImplementedException();
+            return BlogService.Instance.GetBlogByTitle(title);
         }
 
         public List<Blog> GetAll()
         {
-            throw new NotImplementedException();
+            return BlogService.Instance.GetAll();
         }
 
         public bool Delete(Blog obj)
         {
-            throw new NotImplementedException();
+            BlogService.Instance.Delete(obj);
+            return true;
         }
 
         public Blog Create(Blog obj)
         {
-            throw new NotImplementedException();
+            return BlogService.Instance.Create(obj);
         }
 
         public Blog Edit(Blog obj)
         {
-            throw new NotImplementedException();
+            return BlogService.Instance.Edit(obj);
         }
 
-        public Service.IBlogService iBlogService;
-   
-      private static BlogController Instance;
-   
-   }
+    }
 }

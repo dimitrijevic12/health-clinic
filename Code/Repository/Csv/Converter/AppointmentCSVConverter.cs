@@ -56,7 +56,7 @@ namespace Repository.Csv.Converter
             var doctorRepository = DoctorRepository.Instance;
             var patientRepository = PatientRepository.Instance;
 
-            Doctor doctor = doctorRepository.getDoctorById(long.Parse(tokens[1]));
+            Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[1]));
 
             Patient patient = patientRepository.getPatientById(patientId);
 

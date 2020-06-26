@@ -10,33 +10,30 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class SpecialistRepository : IRepository<Specialist>
     {
-        private static DoctorRepository instance = null;
-
-        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
-        private readonly iSequencer<long> _sequencer = new LongSequencer();
-
-        private String _path = "../../Resources/Data/doctors.csv";
-        public static DoctorRepository Instance
+        private static SpecialistRepository instance = null;
+        private readonly CSVStream<Specialist> _stream = new CSVStream<Specialist>("../../Resources/Data/Specialists.csv", new SpecialistCSVConverter(","));
+        private readonly LongSequencer _sequencer = new LongSequencer();
+        public static SpecialistRepository Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new DoctorRepository();
+                    instance = new SpecialistRepository();
                 }
                 return instance;
             }
         }
 
-        private DoctorRepository()
+        private SpecialistRepository()
         {
         }
 
-        private long GetMaxId(List<Doctor> doctors)
+        private long GetMaxId(List<Specialist> specialists)
         {
-            return doctors.Count() == 0 ? 0 : doctors.Max(apt => apt.Id);
+            return specialists.Count() == 0 ? 0 : specialists.Max(apt => apt.Id);
         }
 
         public bool CloseFile(string path)
@@ -44,7 +41,7 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public bool Delete(Doctor obj)
+        public bool Delete(Specialist obj)
         {
             var doctors = _stream.ReadAll().ToList();
             var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
@@ -60,7 +57,7 @@ namespace health_clinicClassDiagram.Repository
             }
         }
 
-        public Doctor Edit(Doctor obj)
+        public Specialist Edit(Specialist obj)
         {
             var doctors = _stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
@@ -68,9 +65,9 @@ namespace health_clinicClassDiagram.Repository
             return obj;
         }
 
-        public List<Doctor> GetAll()
+        public List<Specialist> GetAll()
         {
-            var doctors = (List<Doctor>)_stream.ReadAll();
+            var doctors = (List<Specialist>)_stream.ReadAll();
             return doctors;
         }
 
@@ -79,26 +76,15 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public Doctor Save(Doctor obj)
+        public Specialist Save(Specialist obj)
         {
             _stream.AppendToFile(obj);
             return obj;
         }
 
-        public Doctor GetDoctorById(long id)
+        public Specialist GetSpecialistById(long id)
         {
-            var doctors = _stream.ReadAll().ToList();
-            return doctors[doctors.FindIndex(apt => apt.Id == id)];
-
-        }
-
-        public Doctor GetDoctorByUsernameAndPassword(string username, string password)
-        {
-            foreach (Doctor doctor in GetAll())
-            {
-                if (doctor.Username.Equals(username) && doctor.Password.Equals(password)) return doctor;
-            }
-            return null;
+            return GetAll().Find(specialist => specialist.Id == id);
         }
     }
 }

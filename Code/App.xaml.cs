@@ -76,10 +76,10 @@ namespace health_clinicClassDiagram
                 new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(CSV_DELIMITER)),
                 new LongSequencer());
 
-            var doctorRepository = new DoctorRepository(
+            /*var doctorRepository = new DoctorRepository(
                 DOCTOR_FILE,
                 new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
-                new LongSequencer());
+                new LongSequencer());*/
 
             var patientRepository = new PatientRepository(
                 PATIENT_FILE,
@@ -93,18 +93,18 @@ namespace health_clinicClassDiagram
 
 
             var patientService = new PatientService(patientRepository);
-            var doctorService = new DoctorService(doctorRepository);
+            //var doctorService = new DoctorService(doctorRepository);
             var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository);
             var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
             var recordService = new MedicalRecordService(recordRepository, patientService);
-            var appointmentService = new AppointmentService(appointmentRepository, doctorService, null, examOperationRoomService);
+            //var appointmentService = new AppointmentService(appointmentRepository, doctorService, null, examOperationRoomService);
 
 
             PatientController = new PatientController(patientService);
-            DoctorController = new DoctorController(doctorService);
+           // DoctorController = new DoctorController(doctorService);
             RehabilitationRoomController = new RehabilitationRoomController(rehabilitationRoomService);
             MedicalRecordController = new MedicalRecordController(recordService);
-            AppointmentController = new AppointmentController(appointmentService);
+            //AppointmentController = new AppointmentController(appointmentService);
             ExamOperationRoomController = new ExamOperationRoomController(examOperationRoomService);
 
         }
