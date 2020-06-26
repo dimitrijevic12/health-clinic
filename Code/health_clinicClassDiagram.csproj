@@ -492,14 +492,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PatientRepository.cs" />
-
-
     <Compile Include="Repository\PrescriptionRepository.cs" />
-
-
-
-    <Compile Include="Repository\PrescriptionRepository.cs" />
-
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>
