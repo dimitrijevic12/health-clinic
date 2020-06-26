@@ -31,9 +31,13 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture); 
+            DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth);
+            string username = tokens[5];
+
+            string password = tokens[6];
+
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth, username, password);
 
             return doctor;
         }
@@ -45,7 +49,9 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Name,
              entity.Surname,
              entity.Gender,
-             entity.DateOfBirth.ToString("dd/MM/yyyy"));
+             entity.DateOfBirth.ToString("dd/MM/yyyy"),
+             entity.Username,
+             entity.Password);
         }
     }
 }
