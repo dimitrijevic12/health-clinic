@@ -58,5 +58,17 @@ namespace health_clinicClassDiagram.Service
             return doctors;
         }
 
+        public Boolean ValidateLogin(string username, string password)
+        {
+            if(DoctorRepository.Instance.GetDoctorByUsernameAndPassword(username, password) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

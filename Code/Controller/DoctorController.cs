@@ -56,5 +56,10 @@ namespace health_clinicClassDiagram.Controller
             var doctors = (List<Doctor>)_service.GetAll();
             return doctors;
         }
+
+        public Boolean ValidateLogin(string username, string password)
+        {
+            return DoctorService.Instance.ValidateLogin(username, password);
+        }
     }
 }

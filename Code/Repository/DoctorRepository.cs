@@ -91,5 +91,14 @@ namespace health_clinicClassDiagram.Repository
             return doctors[doctors.FindIndex(apt => apt.Id == id)];
 
         }
+
+        public Doctor GetDoctorByUsernameAndPassword(string username, string password)
+        {
+            foreach (Doctor doctor in GetAll())
+            {
+                if (doctor.Username.Equals(username) && doctor.Password.Equals(password)) return doctor;
+            }
+            return null;
+        }
     }
 }

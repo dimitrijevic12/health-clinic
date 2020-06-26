@@ -128,7 +128,8 @@ namespace Repository.Csv.Converter
             Treatment last = entity.Treatments.Last();
             foreach (Treatment treatment in entity.Treatments)
             {
-                if(treatment != last)
+                if (treatment != last)
+
                 {
                     resenje += treatment.Id + "|";
                 }
@@ -136,7 +137,8 @@ namespace Repository.Csv.Converter
                 {
                     resenje += treatment.Id;
                 }
-            }       
+
+            }
 
             return string.Join(_delimiter,
               entity.id,
