@@ -492,14 +492,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\PatientRepository.cs" />
-<<<<<<< HEAD
+
 
     <Compile Include="Repository\PrescriptionRepository.cs" />
 
 
-=======
+
     <Compile Include="Repository\PrescriptionRepository.cs" />
->>>>>>> parent of fc3f88d... Merge branch 'master' into hci-sekretar
+
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
       <SubType>Code</SubType>

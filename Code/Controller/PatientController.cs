@@ -2,15 +2,7 @@
 using health_clinicClassDiagram.Service;
 using Model.SystemUsers;
 using Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-<<<<<<< HEAD
-using System.Windows.Documents;
-=======
->>>>>>> parent of fc3f88d... Merge branch 'master' into hci-sekretar
+using System.Web.UI.MobileControls;
 
 namespace health_clinicClassDiagram.Controller
 {
