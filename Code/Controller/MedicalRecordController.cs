@@ -40,14 +40,9 @@ namespace Controller
             _service = service;
         }
 
-        public List<Treatment> GetAllTreatments()
+        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
-        }
-
-        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medRec)
-        {
-            throw new NotImplementedException();
+            return MedicalRecordService.Instance.AddTreatment(treatment, medicalRecord);
         }
 
         public MedicalRecord GetMedRecByPatient(Patient patient)

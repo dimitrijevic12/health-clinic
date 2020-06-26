@@ -115,6 +115,5 @@ namespace Repository
             var drug = _stream.ReadAll().ToList();
             return drug[drug.FindIndex(ent => ent.Id == id)];
         }
-
     }
 }

@@ -19,12 +19,10 @@ namespace Repository.Csv.Converter
    {
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public MedicalRecordCSVConverter(string delimiter, string datetimeFormat)
+        public MedicalRecordCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)

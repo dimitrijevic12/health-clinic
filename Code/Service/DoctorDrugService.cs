@@ -38,10 +38,17 @@ namespace Service
             return DrugRepository.Instance.Edit(drugToValidate);
         }
 
-        public Drug lowerQuantity(Drug drug)
+        public Drug LowerQuantity(Drug drug)
         {
             Drug drugToEdit = DrugRepository.Instance.GetDrugById(drug.Id);
             drugToEdit.Quantity--;
+            return DrugRepository.Instance.Edit(drugToEdit);
+        }
+
+        public Drug IncreaseQuantity(Drug drug)
+        {
+            Drug drugToEdit = DrugRepository.Instance.GetDrugById(drug.Id);
+            drugToEdit.Quantity++;
             return DrugRepository.Instance.Edit(drugToEdit);
         }
 

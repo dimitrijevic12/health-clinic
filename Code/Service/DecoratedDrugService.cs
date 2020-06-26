@@ -19,7 +19,12 @@ namespace Service
             throw new NotImplementedException();
         }
 
-        List<Drug> IDrugService.GetAllDrugs()
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Drug> GetValidatedDrugs()
         {
             throw new NotImplementedException();
         }
