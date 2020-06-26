@@ -63,11 +63,11 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 {
                     if (record != last)
                     {
-                        resenje += record.IDnaloga + "|";
+                        resenje += record.Id + "|";
                     }
                     else
                     {
-                        resenje += record.IDnaloga;
+                        resenje += record.Id;
                     }
                 }
             }

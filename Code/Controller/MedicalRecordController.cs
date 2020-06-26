@@ -80,5 +80,10 @@ namespace Controller
             return _service.getMedRecById(id);
         }
 
+        public List<MedicalRecord> getAllAvailablePatientsForRehabilitation()
+        {
+            return _service.getAllAvailablePatientsForRehabilitation();
+        }
+
     }
 }

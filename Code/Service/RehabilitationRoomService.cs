@@ -33,13 +33,6 @@ namespace health_clinicClassDiagram.Service
         {
         }
 
-        public static RehabilitationRoomService GetInstance()
-        {
-
-            return null;
-
-        }
-
         public RehabilitationRoomService(IRehabilitationRoomRepository repository)
         {
             _roomRepository = repository;
@@ -49,7 +42,6 @@ namespace health_clinicClassDiagram.Service
         public bool AddPatient(MedicalRecord record, RehabilitationRoom room)
         {
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
-            //var foundPatient = _patientService.Get(patient);
             foundRehabilitationRoom.Patients.Add(record);
             foundRehabilitationRoom.CurrentlyInUse++;
             _roomRepository.Edit(foundRehabilitationRoom);
@@ -101,7 +93,7 @@ namespace health_clinicClassDiagram.Service
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
             foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
             {
-                if (oneRecord.IDnaloga.Equals(record.IDnaloga))
+                if (oneRecord.Id.Equals(record.Id))
                 {
                     foundRehabilitationRoom.Patients.Remove(oneRecord);
                     break;
