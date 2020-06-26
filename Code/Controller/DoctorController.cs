@@ -62,5 +62,10 @@ namespace health_clinicClassDiagram.Controller
             return DoctorService.Instance.ValidateLogin(username, password);
         }
 
+        public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
+        {
+            return DoctorService.Instance.getAllAvailableDoctors(_startDate, _endDate);
+        }
+
     }
 }

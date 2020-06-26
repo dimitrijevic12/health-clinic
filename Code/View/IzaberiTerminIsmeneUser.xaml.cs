@@ -80,10 +80,6 @@ namespace health_clinicClassDiagram.View
 
             comboSala.SelectedIndex = 0;
 
-            /*var app = Application.Current as App;
-            _roomController = app.ExamOperationRoomController;
-            _appointmentController = app.AppointmentController;*/
-
             _roomController = ExamOperationRoomController.Instance;
             _appointmentController = AppointmentController.Instance;
 
@@ -94,10 +90,6 @@ namespace health_clinicClassDiagram.View
             appointmentCollection = new ObservableCollection<Appointment>(BlankAppointments);
 
             dataGridNalozi.Items.Refresh();
-
-
-
-
 
         }
 
@@ -142,23 +134,6 @@ namespace health_clinicClassDiagram.View
                 endDate = selectedAppointments[selectedAppointments.Count - 1].EndDate;
             }
 
-            /*try
-            {
-                var row_list = GetDataGridRows(dataGridNalozi);
-                foreach (DataGridRow single_row in row_list)
-                {
-                    if (single_row != null)
-                    {
-                        if (single_row.IsSelected == true)
-                        {
-                            appointment = appointmentCollection.ElementAt(single_row.GetIndex());
-
-                        }
-                    }
-                }
-
-            }
-            catch { }*/
         }
 
         
@@ -187,8 +162,6 @@ namespace health_clinicClassDiagram.View
             List<Appointment> trazeni = _appointmentController.GetAppointmentsByRoom(room);
 
             List<Appointment> trazeniAppointmenti = _appointmentController.GetAppointmentsByTimeAndRoom(room, startDate, endDate);
-
-            //blankAppointments = AppointmentGenerator.Instance.generateList(DateTime.Today);
 
             blankAppointments = AppointmentGenerator.Instance.generateList(startDate);
 

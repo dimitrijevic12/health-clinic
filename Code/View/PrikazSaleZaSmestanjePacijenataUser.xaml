@@ -81,7 +81,7 @@
                   SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Stretch" 
                   Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="IDNaloga" Binding="{Binding IDnaloga}"/>
+                    <DataGridTextColumn Width="*" Header="IDNaloga" Binding="{Binding Id}"/>
                     <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding Name}"/>
                     <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding Surname}"/>
                 </DataGrid.Columns>

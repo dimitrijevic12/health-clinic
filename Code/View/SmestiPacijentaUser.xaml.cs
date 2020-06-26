@@ -64,21 +64,15 @@ namespace health_clinicClassDiagram.View
 
             _rehabilitationRoom = rehabilitationRoom;
 
-            /*var app = Application.Current as App;
-            _rehabilitationRoomController = app.RehabilitationRoomController;*/
-
             _rehabilitationRoomController = RehabilitationRoomController.Instance;
-
-            
 
             if (IzaberiNalogUser.StaticRecord != null)
             {
-                textIDNaloga.Text = IzaberiNalogUser.StaticRecord.IDnaloga.ToString();
+                textIDNaloga.Text = IzaberiNalogUser.StaticRecord.Id.ToString();
                 textIme.Text = IzaberiNalogUser.StaticRecord.Name.ToString();
                 textPrezime.Text = IzaberiNalogUser.StaticRecord.Surname.ToString();
                 textJMBG.Text = IzaberiNalogUser.StaticRecord.IDPatient.ToString();
             }
-
 
         }
 

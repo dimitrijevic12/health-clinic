@@ -16,16 +16,9 @@ using System.ComponentModel;
 namespace Model.Appointment
 {
 
-    public class MedicalRecord : INotifyPropertyChanged
+    public class MedicalRecord
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
+        
 
         public long id;
         private List<Model.Treatment.Treatment> treatments;
@@ -37,115 +30,14 @@ namespace Model.Appointment
         /// <pdGenerated>default getter</pdGenerated>
         /// 
 
-        public long IDnaloga
-        {
-            get
-            {
-                return id;
-            }
-            set
-            {
-                if (value != id)
-                {
-                    id = value;
-                    OnPropertyChanged("IDNaloga");
-                }
-            }
-        }
+        public long Id { get => id; set => id = value; }
+        public string Name { get => Patient.Name; set => Patient.Name = value; }
+        public string Surname { get => Patient.Surname; set => Patient.Surname = value; }
+        public long IDPatient { get => Patient.Id; set => Patient.Id = value; }
+        public DateTime DateOfBirth { get => Patient.DateOfBirth; set => Patient.DateOfBirth = value; }
+        public Gender GenderProp { get => Patient.Gender; set => Patient.Gender = value; }
 
-        public string Name
-        {
-            get
-            {
-                return Patient.Name;
-            }
-            set
-            {
-                if (!value.Equals(Patient.Name))
-                {
-                    Patient.Name = value;
-                    OnPropertyChanged("Name");
-                }
-            }
-        }
-
-        public string Surname
-        {
-            get
-            {
-                return Patient.Surname;
-            }
-            set
-            {
-                if (!value.Equals(Patient.Surname))
-                {
-                    Patient.Surname = value;
-                    OnPropertyChanged("Surname");
-                }
-            }
-        }
-
-        public long IDPatient
-        {
-            get
-            {
-                return Patient.Id;
-            }
-            set
-            {
-                if (value != Patient.Id)
-                {
-                    Patient.Id = value;
-                    OnPropertyChanged("IDPatient");
-                }
-            }
-        }
-
-        public DateTime DateOfBirth
-        {
-            get
-            {
-                return Patient.DateOfBirth;
-            }
-            set
-            {
-                if (!value.Equals(Patient.DateOfBirth))
-                {
-                    Patient.DateOfBirth = value;
-                    OnPropertyChanged("DateOfBirth");
-                }
-            }
-        }
-
-        public Gender GenderProp
-        {
-            get
-            {
-                return Patient.Gender;
-            }
-            set
-            {
-                if (!value.Equals(Patient.Gender))
-                {
-                    Patient.Gender = value;
-                    OnPropertyChanged("DateOfBirth");
-                }
-            }
-        }
-
-        public DateTime RehabilitationFrom
-        {
-            get { return rehabilitationFrom; }   // get method
-            set { rehabilitationFrom = value; }
-        }
-
-        public DateTime RehabilitationTo
-        {
-            get { return rehabilitationTo; }   // get method
-            set { rehabilitationTo = value; }
-        }
-
-        public String DateOfBirthTekst { get => DateOfBirth.ToShortDateString(); }
+        public String DateOfBirthString { get => DateOfBirth.ToShortDateString(); }
 
         public String IdNameSurnameDoctor
         {

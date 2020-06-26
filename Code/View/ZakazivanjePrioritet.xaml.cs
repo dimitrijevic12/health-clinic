@@ -57,8 +57,6 @@ namespace health_clinicClassDiagram.View
         }
 
         private readonly IAppointmentController _appointmentController;
-        private readonly IController<Patient> _patientController;
-        private readonly IController<Doctor> _doctorController;
 
         public ObservableCollection<Doctor> doctorsCollection
         {
@@ -98,10 +96,6 @@ namespace health_clinicClassDiagram.View
             _priority = priority;
 
             labelSala.Content = "Sala broj: " + _room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
-
-            /*var app = Application.Current as App;
-            _appointmentController = app.AppointmentController;
-            _doctorController = app.DoctorController;*/
 
             _appointmentController = AppointmentController.Instance;
 

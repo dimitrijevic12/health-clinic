@@ -17,15 +17,16 @@ namespace Model.Appointment
         private Patient patient;
         private Doctor doctor;
         private ExamOperationRoom examOperationRoom;
+        private DateTime startDate;
+        private DateTime endDate;
+        private TypeOfAppointment typeOfAppointment;
 
         public long Id { get; set; }
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
-        public Doctor Doctor { get => Doctor1; set => Doctor1 = value; }
-        public Patient Patient { get => Patient1; set => Patient1 = value; }
-        public Doctor Doctor1 { get => doctor; set => doctor = value; }
-        public Patient Patient1 { get => patient; set => patient = value; }
-        public TypeOfAppointment TypeAppointment { get => Type; set => Type = value; }
+        public Doctor Doctor { get => doctor; set => doctor = value; }
+        public Patient Patient { get => patient; set => patient = value; }
+        public TypeOfAppointment TypeOfAppointment { get => typeOfAppointment; set => typeOfAppointment = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
         public long RoomId { get => examOperationRoom.Id; set => examOperationRoom.Id = value; }
 
@@ -42,28 +43,23 @@ namespace Model.Appointment
                 }
                 else
                 {
-                    return Type.ToString();
+                    return TypeOfAppointment.ToString();
                 }
             }
                    
         }
 
-        
+        public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
 
 
-    public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
 
-
-        private DateTime startDate;
-        private DateTime endDate;
-        public TypeOfAppointment Type;
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {
             this.Doctor = doctor;
             this.Patient = patient;
             this.ExamOperationRoom = room;
-            this.Type = type;
+            this.TypeOfAppointment = type;
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
@@ -74,7 +70,7 @@ namespace Model.Appointment
             this.Doctor = doctor;
             this.Patient = patient;
             this.ExamOperationRoom = room;
-            this.Type = type;
+            this.TypeOfAppointment = type;
             this.StartDate = startDate;
             this.EndDate = endDate;
         }
@@ -83,7 +79,7 @@ namespace Model.Appointment
         {
             this.Doctor = doctor;
             this.Patient = patient;
-            this.Type = type;
+            this.TypeOfAppointment = type;
         }
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type)
@@ -91,7 +87,7 @@ namespace Model.Appointment
             this.Doctor = doctor;
             this.Patient = patient;
             this.ExamOperationRoom = room;
-            this.Type = type;
+            this.TypeOfAppointment = type;
         }
 
         public Appointment()

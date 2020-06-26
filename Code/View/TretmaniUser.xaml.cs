@@ -27,16 +27,12 @@ namespace health_clinicClassDiagram.View
     public partial class TretmaniUser : UserControl
     {
         private int colNum = 0;
-        private MedicalRecord _record;
-        private readonly ITreatmentController _treatmentController;
 
         public  static ObservableCollection<Treatment> treatmentsCollection
         {
             get;
             set;
         }
-
-        private List<Treatment> treatments;
 
         public TretmaniUser(MedicalRecord record)
         {
@@ -46,10 +42,7 @@ namespace health_clinicClassDiagram.View
 
             this.DataContext = this;
           
-
-            treatmentsCollection = new ObservableCollection<Treatment>(record.Treatments);
-
-            
+            treatmentsCollection = new ObservableCollection<Treatment>(record.Treatments);           
 
             dataGridTretmani.Items.Refresh();
 

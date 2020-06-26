@@ -57,7 +57,6 @@ namespace health_clinicClassDiagram.View
         }
 
         private readonly IAppointmentController _appointmentController;
-        private readonly IController<Patient> _patientController;
         private readonly IController<Doctor> _doctorController;
 
         public ObservableCollection<Doctor> doctorsCollection
@@ -70,7 +69,6 @@ namespace health_clinicClassDiagram.View
         private DateTime _endDate;
 
         private List<Doctor> doctors;
-        private List<Doctor> doctorsToRemove = new List<Doctor>();
         private List<Appointment> appointments;
 
         private string _imePacijenta;
@@ -94,37 +92,14 @@ namespace health_clinicClassDiagram.View
 
             labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
 
-            /*var app = Application.Current as App;
-            _appointmentController = app.AppointmentController;
-            _doctorController = app.DoctorController;*/
-
             _appointmentController = AppointmentController.Instance;
             _doctorController = DoctorController.Instance;
 
             _room = room;
 
-            doctors = _doctorController.GetAll();
-            appointments = _appointmentController.GetAll();
-
-            foreach (Appointment a in appointments)
-            {
-                if (a.StartDate<=_startDate && a.EndDate >= _endDate)
-                {
-                    doctorsToRemove.Add(a.Doctor);
-                }
-            }
-
-            foreach (Doctor d in doctorsToRemove)
-            {
-                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == d.Id);
-                if (doctorToRemove != null)
-                    doctors.Remove(doctorToRemove);
-            }
-
-            
-
-            
-
+            doctors = DoctorController.Instance.getAllAvailableDoctors(_startDate, _endDate);
+            appointments = _appointmentController.GetAll();           
+         
 
             if (ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord != null)
             {

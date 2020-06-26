@@ -92,14 +92,9 @@ namespace health_clinicClassDiagram.View
 
             labelSala.Content = "Sala broj: " + room.Id.ToString() + ", termin: " + _startDate.ToShortDateString() + " " + _startDate.ToShortTimeString() + "-" + _endDate.ToShortTimeString();
 
-            /*var app = Application.Current as App;
-            _appointmentController = app.AppointmentController;
-            _doctorController = app.DoctorController;*/
-
             _appointmentController = AppointmentController.Instance;
             _doctorController = DoctorController.Instance;
-
-            
+      
             _room = room;
 
             doctors = _doctorController.GetAll();
@@ -129,8 +124,6 @@ namespace health_clinicClassDiagram.View
                 _jmbgPacijenta = long.Parse(textJMBG.Text);
 
                 Patient patient = new Patient(_imePacijenta, _prezimePacijenta, _jmbgPacijenta);
-
-
 
                 Appointment appointment = new Appointment(LongRandom(0, 1000000000, new Random()), _doctor, patient, _room, _type, _startDate, _endDate);
 

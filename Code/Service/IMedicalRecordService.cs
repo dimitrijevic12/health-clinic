@@ -6,6 +6,8 @@
 
 using Model.Appointment;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace Service
 {
@@ -15,5 +17,6 @@ namespace Service
       Model.Appointment.MedicalRecord GetMedRecByPatient(Model.SystemUsers.Patient patient);
       Model.Appointment.MedicalRecord GetMedRecByTreatment(Model.Treatment.Treatment treatment);
         MedicalRecord getMedRecById(long id);
+        List<MedicalRecord> getAllAvailablePatientsForRehabilitation();
    }
 }

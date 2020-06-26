@@ -71,15 +71,18 @@ namespace Repository.Csv.Converter
             if (entity.Treatments.Count != 0)
             {
                 Treatment last = entity.Treatments.Last();
-                foreach (Treatment treatment in entity.Treatments)
+                foreach (Treatment treatment in entity.Treatments)              
                 {
-                    if (treatment != last)
+                    if (treatment != null)
                     {
-                        resenje += treatment.Id + "|";
-                    }
-                    else
-                    {
-                        resenje += treatment.Id;
+                        if (treatment != last)
+                        {
+                            resenje += treatment.Id + "|";
+                        }
+                        else
+                        {
+                            resenje += treatment.Id;
+                        }
                     }
                 }
             }

@@ -44,7 +44,6 @@ namespace health_clinicClassDiagram.View
 
         private int colNum = 0;
         private Appointment appointment;
-        private ExamOperationRoom room;
         private List<ExamOperationRoom> rooms;
         public static long staticID = 0;
 
@@ -89,10 +88,6 @@ namespace health_clinicClassDiagram.View
             _endDate = endDate;
             _doctor = doctor;
             _priority = priority;
-
-            /*var app = Application.Current as App;
-            _roomController = app.ExamOperationRoomController;
-            _appointmentController = app.AppointmentController;*/
 
             _roomController = ExamOperationRoomController.Instance;
             _appointmentController = AppointmentController.Instance;

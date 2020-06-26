@@ -68,8 +68,6 @@ namespace health_clinicClassDiagram.View
             set;
         }
 
-        //private Appointment _appointment;
-
         private List<Doctor> doctors;
         private List<Doctor> doctorsToRemove = new List<Doctor>();
         private List<Appointment> appointments;
@@ -119,18 +117,12 @@ namespace health_clinicClassDiagram.View
                 textJMBG.Text = izmenaAppointment.Patient.Id.ToString();
             }
 
-            //treba promeniti
+
             DoktorCombo.SelectedIndex = 0;
             VrstaCombo.SelectedIndex = 0;
 
-            /*var app = Application.Current as App;
-            _appointmentController = app.AppointmentController;
-            _doctorController = app.DoctorController;*/
-
             _appointmentController = AppointmentController.Instance;
             _doctorController = DoctorController.Instance;
-
-            //_appointment = appointment;
 
             if (appointment != null)
             {

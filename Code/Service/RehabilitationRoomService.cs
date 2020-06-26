@@ -100,7 +100,7 @@ namespace health_clinicClassDiagram.Service
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
             foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
             {
-                if (oneRecord.IDnaloga.Equals(record.IDnaloga))
+                if (oneRecord.Id.Equals(record.Id))
                 {
                     foundRehabilitationRoom.Patients.Remove(oneRecord);
                     break;

@@ -30,39 +30,6 @@ namespace health_clinicClassDiagram.View
             }
         }
 
-        private double _test1;
-        private double _test2;
-        public double Test1
-        {
-            get
-            {
-                return _test1;
-            }
-            set
-            {
-                if (value != _test1)
-                {
-                    _test1 = value;
-                    OnPropertyChanged("Test1");
-                }
-            }
-        }
-
-        public double Test2
-        {
-            get
-            {
-                return _test2;
-            }
-            set
-            {
-                if (value != _test2)
-                {
-                    _test2 = value;
-                    OnPropertyChanged("Test2");
-                }
-            }
-        }
 
         private readonly IMedicalRecordController _recordController;
         private readonly IController<Patient> _patientController;
@@ -89,11 +56,6 @@ namespace health_clinicClassDiagram.View
             InitializeComponent();
             this.DataContext = this;
             labelDateTime.Content = DateTime.Now.ToShortDateString();
-
-
-            /*var app = Application.Current as App;
-            _recordController = app.MedicalRecordController;
-            _doctorController = app.DoctorController;*/
 
             _recordController = MedicalRecordController.Instance;
             _doctorController = DoctorController.Instance;
@@ -147,7 +109,7 @@ namespace health_clinicClassDiagram.View
                 int flag = 0;
                 foreach (MedicalRecord mr in _recordController.GetAll())
                 {
-                    if ((mr.IDnaloga.Equals(_idNaloga)) || (mr.IDPatient.Equals(_jmbgPacijenta)))
+                    if ((mr.Id.Equals(_idNaloga)) || (mr.IDPatient.Equals(_jmbgPacijenta)))
                     {
                         string message = "Id naloga i jmbg moraju biti jedinstveni";
                         string title = "Greška";

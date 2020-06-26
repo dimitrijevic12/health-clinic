@@ -73,9 +73,19 @@
                 <Button Grid.Column="1" Grid.Row="0" Style="{StaticResource RoundButton}" Margin="0,21" Click="Button_Izaberi">Izaberi</Button>
 
             </Grid>
-            <DataGrid x:Name="dataGridNalozi" ItemsSource="{Binding Path=recordsCollection}" AutoGenerateColumns="True" Grid.Row="1" Grid.Column="0"
-                  SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Stretch" 
-                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged"/>
+            <DataGrid x:Name="dataGridNalozi" ItemsSource="{Binding Path=recordsCollection}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0"
+                  SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Stretch" 
+                  Margin="10,47,0,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="ID naloga" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="*" Header="Ime" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Width="*" Header="JMBG" Binding="{Binding IDPatient}"/>
+                    <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirthString}"/>
+                    <DataGridTextColumn Width="*" Header="Pol" Binding="{Binding GenderProp}"/>
+                    <DataGridTextColumn Width="*" Header="Izabrani doktor" Binding="{Binding IdNameSurnameDoctor}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>

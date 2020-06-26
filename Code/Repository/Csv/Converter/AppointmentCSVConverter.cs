@@ -57,7 +57,7 @@ namespace Repository.Csv.Converter
                entity.Id,
                entity.Doctor.Id,
                entity.Patient.Id,
-               entity.Type,
+               entity.TypeOfAppointment,
                entity.StartDate.ToString(),
                entity.EndDate.ToString(),
                entity.ExamOperationRoom.Id);
