@@ -24,6 +24,7 @@ namespace Controller
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
       List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
       List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
+      List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, String priority);
       Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
       Service.TypeOfPriority ChoosePriority(Service.TypeOfPriority priority);

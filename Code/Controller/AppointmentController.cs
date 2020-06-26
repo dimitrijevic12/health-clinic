@@ -142,7 +142,10 @@ namespace Controller
             return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
         }
 
-
+        public List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority)
+        {
+            return _service.GetPriorityAppointments(doctor, startDate, endDate, priority);
+        }
 
     }
 }

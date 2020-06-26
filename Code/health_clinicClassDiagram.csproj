@@ -586,6 +586,7 @@
     <Compile Include="Service\UserService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\Util\AppointmentGenerator.cs" />
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>

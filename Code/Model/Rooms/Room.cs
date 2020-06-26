@@ -34,5 +34,7 @@ namespace Model.Rooms
             this.Id = id;
             this.tipSobe = tip;
         }
+
+        public Room() { }
     }
 }
