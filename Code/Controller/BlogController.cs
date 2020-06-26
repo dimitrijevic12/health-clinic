@@ -13,7 +13,7 @@ namespace Controller
 {
    public class BlogController : IBlogController
    {
-        private static BlogController instance;
+        private static BlogController instance = null;
 
         private BlogController()
         {

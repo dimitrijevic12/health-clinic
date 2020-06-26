@@ -18,7 +18,7 @@ namespace Repository
 {
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
-        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter("," , "dd.MM.yyyy."));
+        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         private String _path = "../../Resources/Data/records.csv";
@@ -84,9 +84,8 @@ namespace Repository
             return null;
         }
 
-        public MedicalRecord AddTreatmentToMedRec(Patient patient, Treatment treatment)
+        public MedicalRecord AddTreatmentToMedicalRecord(MedicalRecord medicalRecord, Treatment treatment)
         {
-            MedicalRecord medicalRecord = GetMedRecByPatient(patient);
             medicalRecord.Treatments.Add(treatment);
             Edit(medicalRecord);
             return medicalRecord;

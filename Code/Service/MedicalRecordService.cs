@@ -47,9 +47,9 @@ namespace Service
             _patientService = service;
         }
 
-        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medRec)
+        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
+            return MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(medicalRecord, treatment);
         }
 
         public MedicalRecord GetMedRecByPatient(Patient patient)

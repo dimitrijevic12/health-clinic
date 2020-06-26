@@ -92,7 +92,7 @@ namespace Service
 
         public Treatment Create(Patient patient, Treatment obj)
         {
-            MedicalRecordRepository.Instance.AddTreatmentToMedRec(patient, obj);
+            MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(MedicalRecordRepository.Instance.GetMedRecByPatient(patient), obj);
             return TreatmentRepository.Instance.Save(obj);
             //            return iTreatmentRepository.Save(obj);
         }

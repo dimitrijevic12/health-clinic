@@ -18,5 +18,15 @@ namespace Controller
         {
             throw new NotImplementedException();
         }
+
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Repository
 {
     public class BlogRepository : IBlogRepository
     {
-        private readonly CSVStream<Blog> _stream = new CSVStream<Blog>("C:\\health-clinic\\health-clinic\\Code\\resources\\data\\BlogRepo.csv", new BlogCSVConverter(","));//TODO: Namesti stream kao Stefan
+        private readonly CSVStream<Blog> _stream = new CSVStream<Blog>("../../Resources/Data/BlogRepo.csv", new BlogCSVConverter(","));
         private readonly LongSequencer _sequencer = new LongSequencer();
         private static BlogRepository instance = null;
 

@@ -14,8 +14,8 @@ namespace Repository
    {
       Model.Appointment.MedicalRecord GetMedRecByPatient(Model.SystemUsers.Patient patient);
       Model.Appointment.MedicalRecord GetMedRecByTreatmentId(long id);
-      Model.Appointment.MedicalRecord AddTreatmentToMedRec(Model.SystemUsers.Patient patient, Model.Treatment.Treatment treatment);
-      Model.Appointment.MedicalRecord EditTreatmentInMedRec(Model.Treatment.Treatment treatment, Model.Appointment.MedicalRecord medRec);
+        Model.Appointment.MedicalRecord AddTreatmentToMedicalRecord(MedicalRecord medicalRecord, Model.Treatment.Treatment treatment);
+        Model.Appointment.MedicalRecord EditTreatmentInMedRec(Model.Treatment.Treatment treatment, Model.Appointment.MedicalRecord medRec);
         Treatment GetTreatmentByTreatmentId(long id);
         MedicalRecord getMedRecById(long id);
    }

@@ -57,7 +57,7 @@ namespace health_clinicClassDiagram.Controller
             return doctors;
         }
 
-        public Boolean ValidateLogin(string username, string password)
+        public Doctor ValidateLogin(string username, string password)
         {
             return DoctorService.Instance.ValidateLogin(username, password);
         }

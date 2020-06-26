@@ -12,6 +12,8 @@ namespace Controller
 {
    public interface IDrugController
    {
-      List<Drug> GetAllDrugs();
-   }
+        List<Drug> GetAllDrugs();
+        List<Drug> GetUnvalidatedDrugs();
+        List<Drug> GetValidatedDrugs();
+    }
 }

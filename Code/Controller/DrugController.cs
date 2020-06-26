@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -13,14 +14,40 @@ namespace Controller
    public class DrugController : IDrugController
    {
         public DrugController GetInstance(){ return null; }
+        private static DrugController instance = null;
+        public static DrugController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DrugController();
+                }
+                return instance;
+            }
+        }
+
+        private DrugController()
+        {
+
+        }
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
+            return DrugService.Instance.GetAllDrugs();
         }
 
         public Service.IDrugService iDrugService;
-   
-      private static DrugController Instance;
-   
-   }
+
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            return DrugService.Instance.GetUnvalidatedDrugs();
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            return DrugService.Instance.GetValidatedDrugs();
+        }
+
+
+    }
 }

@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -12,15 +13,51 @@ namespace Service
 {
    public class DrugService : IDrugService
    {
-      public DrugService GetInstance() { return null; }
-        public List<Drug> GetAllDrugs()
+        private static DrugService instance = null;
+        public static DrugService Instance
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DrugService();
+                }
+                return instance;
+            }
         }
 
-        public Repository.IDrugRepository iDrugRepository;
-   
-      private static DrugService Instance;
-   
-   }
+        private DrugService()
+        {
+
+        }
+
+        public List<Drug> GetAllDrugs()
+        {
+            return DrugRepository.Instance.GetAll();
+        }
+
+
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == false) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == true) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
+        }
+
+    }
 }
