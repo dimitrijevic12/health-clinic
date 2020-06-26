@@ -37,47 +37,47 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             int i = 3;
 
-            /* var recordRepository = new MedicalRecordRepository(
-                 "../../Resources/Data/records.csv",
-                 new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(",", "dd.MM.yyyy.")),
-                 new LongSequencer());*/
             var recordRepository = MedicalRecordRepository.Instance;
 
-            while (i<tokens.Length-1)
+            if (tokens[3] != "")
             {
-                long idNaloga = long.Parse(tokens[i]);
-                i++;
-                string ime = tokens[i];
-                i++;
-                string prezime = tokens[i];
-                i++;
-                int idPatient = int.Parse(tokens[i]);
+                String idString = tokens[3];
 
-                Patient patient = new Patient(ime, prezime, idPatient);
+                String[] oneId = idString.Split('|');
 
-                //MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
-
-                MedicalRecord record = recordRepository.getMedRecById(idNaloga);
-
-                records.Add(record);
-                i++;
+                for (int j = 0; j < oneId.Length; j++)
+                {
+                    records.Add(recordRepository.getMedRecById(long.Parse(oneId[j])));
+                }
             }
+
+            
 
             return new RehabilitationRoom(idRoom, inUse, max, records); 
         }
 
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
         {
+
             String resenje = "";
-            
-            
-            foreach(MedicalRecord record in entity.Patients)
+
+            if (entity.Patients.Count != 0)
             {
-                resenje += string.Join(_delimiter,record.IDnaloga, record.Name, record.Surname, record.IDPatient);
-                resenje += _delimiter;
+                MedicalRecord last = entity.Patients.Last();
+                foreach (MedicalRecord record in entity.Patients)
+                {
+                    if (record != last)
+                    {
+                        resenje += record.IDnaloga + "|";
+                    }
+                    else
+                    {
+                        resenje += record.IDnaloga;
+                    }
+                }
             }
 
-     
+
             return string.Join(_delimiter,
               entity.IdRoom,
               entity.CurrentlyInUse,

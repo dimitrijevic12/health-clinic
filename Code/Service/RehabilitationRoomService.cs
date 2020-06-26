@@ -50,12 +50,10 @@ namespace health_clinicClassDiagram.Service
         public bool AddPatient(MedicalRecord record, RehabilitationRoom room)
         {
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
-            //var foundPatient = _patientService.Get(patient);
             foundRehabilitationRoom.Patients.Add(record);
             foundRehabilitationRoom.CurrentlyInUse++;
             _roomRepository.Edit(foundRehabilitationRoom);
             return true;
-
 
         }
 
