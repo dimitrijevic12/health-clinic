@@ -32,7 +32,7 @@ namespace Model.Treatment
         private SpecialistAppointment specialistAppointment;
         private MedicalRecord record;
 
-        private DateTime fromDate;
+        private DateTime startDate;
         private DateTime endDate;
         private long id;
 
@@ -69,12 +69,20 @@ namespace Model.Treatment
         {
         }
 
+<<<<<<< HEAD
         public MedicalRecord Record { get => record; set => record = value; }
+=======
+        public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, long id, Doctor doctor, SpecialistAppointment specialistAppointment) : this(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, fromDate, endDate, id, doctor)
+        {
+            SpecialistAppointment = specialistAppointment;
+        }
+
+>>>>>>> master
         public Prescription Prescription { get => prescription; set => prescription = value; }
         public ScheduledSurgery ScheduledSurgery { get => scheduledSurgery; set => scheduledSurgery = value; }
         public DiagnosisAndReview DiagnosisAndReview { get => diagnosisAndReview; set => diagnosisAndReview = value; }
         public ReferralToHospitalTreatment ReferralToHospitalTreatment { get => referralToHospitalTreatment; set => referralToHospitalTreatment = value; }
-        public DateTime FromDate { get => fromDate; set => fromDate = value; }
+        public DateTime FromDate { get => startDate; set => startDate = value; }
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }

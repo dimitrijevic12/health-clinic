@@ -1,12 +1,16 @@
-/***********************************************************************
- * Module:  MedicalRecordCSVConverter.cs
+/********************************************************************** * Module:  MedicalRecordCSVConverter.cs
  * Author:  user
  * Purpose: Definition of the Class Repository.Csv.Converter.MedicalRecordCSVConverter
  ***********************************************************************/
 
+<<<<<<< HEAD
 using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Repository.Csv.Converter;
 using health_clinicClassDiagram.Repository.Sequencer;
+=======
+using health_clinicClassDiagram.Model.SystemUsers;
+using health_clinicClassDiagram.Repository;
+>>>>>>> master
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
@@ -15,6 +19,7 @@ using Repository.Csv.Stream;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository.Csv.Converter
 {
@@ -48,7 +53,10 @@ namespace Repository.Csv.Converter
                 "../../Resources/Data/doctors.csv",
                 new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy.")),
                 new LongSequencer());
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             var patientRepository = new PatientRepository(
                 "../../Resources/Data/patients.csv",
                 new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy.")),
@@ -58,7 +66,11 @@ namespace Repository.Csv.Converter
             var patientRepository = PatientRepository.Instance;
 
             //Doctor doctor = new Doctor(idDoctor, tokens[7], tokens[8]);
+<<<<<<< HEAD
             Doctor doctor = doctorRepository.getDoctorById(idDoctor);
+=======
+            Doctor doctor = doctorRepository.GetDoctorById(idDoctor);
+>>>>>>> master
             Patient patient = patientRepository.getPatientById(long.Parse(tokens[3]));
             List<Treatment> treatments = new List<Treatment>();
 
@@ -72,6 +84,7 @@ namespace Repository.Csv.Converter
                     treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
                 }
             }
+<<<<<<< HEAD
 
             if (tokens.Length >= 11)
             {
@@ -102,6 +115,35 @@ namespace Repository.Csv.Converter
 
                 for (int j = 0; j<oneTreatment.Length; j++)
                 {            
+=======
+            if (tokens.Length >= 11)
+            {
+                if (tokens[10] != "")
+                {
+                    long id = long.Parse(tokens[10]);
+                    treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
+                }
+            }*/
+
+
+            /*while (i <= tokens.Length-1)
+            {
+                long id = long.Parse(tokens[i]);
+                treatments.Add(TreatmentRepository.Instance.GetTreatment(id));
+                i++;
+            }*/
+
+            if (tokens[9] != "")
+            {
+                String treatmentsString = tokens[9];
+
+                String[] oneTreatment = treatmentsString.Split('|');
+
+                Console.WriteLine(oneTreatment.Length);
+
+                for (int j = 0; j < oneTreatment.Length; j++)
+                {
+>>>>>>> master
                     treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(oneTreatment[j])));
                 }
             }
@@ -127,17 +169,34 @@ namespace Repository.Csv.Converter
                         treatments += treatment.Id + ",";
                     }
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             }*/
 
 
             String resenje = "";
 
 
+<<<<<<< HEAD
             foreach (Treatment treatment in entity.Treatments)
             {
                 resenje += string.Join("|", treatment.Id);
                 resenje += "|";
+=======
+            Treatment last = entity.Treatments.Last();
+            foreach (Treatment treatment in entity.Treatments)
+            {
+                if (treatment != last)
+                {
+                    resenje += treatment.Id + "|";
+                }
+                else
+                {
+                    resenje += treatment.Id;
+                }
+>>>>>>> master
             }
 
             /*return string.Join(_delimiter,

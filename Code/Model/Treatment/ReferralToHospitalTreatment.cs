@@ -22,6 +22,10 @@ namespace Model.Treatment
         private DateTime endDate;
         private String causeForHospTreatment;
 
+        public ReferralToHospitalTreatment()
+        { 
+        }
+
         public ReferralToHospitalTreatment(DateTime startDate, DateTime endDate, string causeForHospTreatment)
         {
             StartDate = startDate;

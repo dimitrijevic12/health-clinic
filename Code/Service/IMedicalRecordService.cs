@@ -14,6 +14,11 @@ namespace Service
       Model.Appointment.MedicalRecord AddTreatment(Model.Treatment.Treatment treatment, Model.Appointment.MedicalRecord medRec);
       Model.Appointment.MedicalRecord GetMedRecByPatient(Model.SystemUsers.Patient patient);
       Model.Appointment.MedicalRecord GetMedRecByTreatment(Model.Treatment.Treatment treatment);
+<<<<<<< HEAD
         MedicalRecord getMedRecById(long id);
    }
+=======
+      MedicalRecord getMedRecById(long id);
+    }
+>>>>>>> master
 }

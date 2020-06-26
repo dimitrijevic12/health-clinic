@@ -21,8 +21,13 @@ namespace Service
       List<Appointment> GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
       List<Appointment> GetApointmentByPatient(Model.SystemUsers.Patient patient);
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
+<<<<<<< HEAD
       List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
       List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
+=======
+        List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
+        List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
+>>>>>>> master
         Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
       TypeOfPriority ChoosePriority(TypeOfPriority priority);

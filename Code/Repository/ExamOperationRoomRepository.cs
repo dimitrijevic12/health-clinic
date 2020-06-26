@@ -51,11 +51,13 @@ namespace health_clinicClassDiagram.Repository
 
         public bool Delete(ExamOperationRoom obj)
         {
+            //            var rooms = _stream.ReadAll().ToList();
             var rooms = _stream.ReadAll().ToList();
             var roomToRemove = rooms.SingleOrDefault(ro => ro.Id == obj.Id);
             if (roomToRemove != null)
             {
                 rooms.Remove(roomToRemove);
+//                _stream.SaveAll(rooms);
                 _stream.SaveAll(rooms);
                 return true;
             }
@@ -67,14 +69,17 @@ namespace health_clinicClassDiagram.Repository
 
         public ExamOperationRoom Edit(ExamOperationRoom obj)
         {
+//            var rooms = _stream.ReadAll().ToList();
             var rooms = _stream.ReadAll().ToList();
             rooms[rooms.FindIndex(ro => ro.Id == obj.Id)] = obj;
+//            _stream.SaveAll(rooms);
             _stream.SaveAll(rooms);
             return obj;
         }
 
         public List<ExamOperationRoom> GetAll()
         {
+//            var rooms = (List<ExamOperationRoom>)_stream.ReadAll();
             var rooms = (List<ExamOperationRoom>)_stream.ReadAll();
             return rooms;
         }
@@ -91,6 +96,7 @@ namespace health_clinicClassDiagram.Repository
 
         public ExamOperationRoom Save(ExamOperationRoom obj)
         {
+//            _stream.AppendToFile(obj);
             _stream.AppendToFile(obj);
             return obj;
         }

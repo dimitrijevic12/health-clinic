@@ -5,8 +5,11 @@
  ***********************************************************************/
 
 using health_clinicClassDiagram.Repository;
+<<<<<<< HEAD
 using health_clinicClassDiagram.Repository.Csv.Converter;
 using health_clinicClassDiagram.Repository.Sequencer;
+=======
+>>>>>>> master
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -47,7 +50,10 @@ namespace Repository.Csv.Converter
                 "../../Resources/Data/doctors.csv",
                 new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy.")),
                 new LongSequencer());
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             var patientRepository = new PatientRepository(
                 "../../Resources/Data/patients.csv",
                 new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy.")),
@@ -56,6 +62,7 @@ namespace Repository.Csv.Converter
             var doctorRepository = DoctorRepository.Instance;
             var patientRepository = PatientRepository.Instance;
 
+<<<<<<< HEAD
             Doctor doctor = doctorRepository.getDoctorById(long.Parse(tokens[1]));
 
             Patient patient = patientRepository.getPatientById(patientId);
@@ -65,6 +72,17 @@ namespace Repository.Csv.Converter
                doctor,
                 patient,
                 room, 
+=======
+            Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[1]));
+
+            Patient patient = patientRepository.getPatientById(patientId);
+
+
+            return new Appointment(long.Parse(tokens[0]),
+               doctor,
+                patient,
+                room,
+>>>>>>> master
                 type,
                 startDate,
                 endDate); //tokens[6]

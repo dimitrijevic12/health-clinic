@@ -12,17 +12,18 @@ namespace Model.Treatment
 {
    public class Prescription
    {
-        private long id;
         private List<Drug> drug;
+<<<<<<< HEAD
         public Prescription(long id, List<Drug> drug)
         {
             Id = id;
             this.Drug = drug; ;
         }
 
+=======
+>>>>>>> master
         public Prescription(List<Drug> drug)
         {
-            Id = id;
             this.Drug = drug;
         }
 
@@ -30,8 +31,8 @@ namespace Model.Treatment
         {
         }
 
-        public long Id { get => id; set => id = value; }
         public List<Drug> Drug { get => drug; set => drug = value; }
+<<<<<<< HEAD
 
         public long GetId() => Id;
 
@@ -47,5 +48,7 @@ namespace Model.Treatment
             }
             return outString;
         }
+=======
+>>>>>>> master
     }
 }

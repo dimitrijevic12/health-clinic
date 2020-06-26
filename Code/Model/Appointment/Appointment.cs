@@ -27,13 +27,23 @@ namespace Model.Appointment
         public Patient Patient1 { get => patient; set => patient = value; }
         public TypeOfAppointment TypeAppointment { get => Type; set => Type = value; }
         public ExamOperationRoom ExamOperationRoom { get => examOperationRoom; set => examOperationRoom = value; }
+<<<<<<< HEAD
+=======
+        public TypeOfAppointment Type { get => type; set => type = value; }
+
+>>>>>>> master
         public long RoomId { get => examOperationRoom.Id; set => examOperationRoom.Id = value; }
 
         public String DoctorIdNameSurname { get => doctor.NameDoctor + " " + doctor.SurnameDoctor; }
 
         public String PatientIdNameSurname { get => patient.Name + " " + patient.Surname; }
 
+<<<<<<< HEAD
         public String TypeString {
+=======
+        public String TypeString
+        {
+>>>>>>> master
             get
             {
                 if (patient.Id == 0)
@@ -45,6 +55,7 @@ namespace Model.Appointment
                     return Type.ToString();
                 }
             }
+<<<<<<< HEAD
                    
         }
 
@@ -53,10 +64,19 @@ namespace Model.Appointment
 
     public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
 
+=======
+
+        }
+
+
+
+
+        public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
+>>>>>>> master
 
         private DateTime startDate;
         private DateTime endDate;
-        public TypeOfAppointment Type;
+        private TypeOfAppointment type;
 
         public Appointment(Doctor doctor, Patient patient, ExamOperationRoom room, TypeOfAppointment type, DateTime startDate, DateTime endDate)
         {

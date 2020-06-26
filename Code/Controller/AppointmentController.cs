@@ -41,7 +41,7 @@ namespace Controller
             _service = service;
         }
         public AppointmentController GetInstance() { return null; }
-    
+
 
         public List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo)
         {
@@ -75,7 +75,11 @@ namespace Controller
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
+<<<<<<< HEAD
             return _service.GetAppointmentsByRoom(room); 
+=======
+            return _service.GetAppointmentsByRoom(room);
+>>>>>>> master
         }
 
         public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
@@ -116,7 +120,7 @@ namespace Controller
         public List<Appointment> GetAll()
         {
             return _service.GetAll();
-            
+
         }
 
         public bool Delete(Appointment obj)
@@ -128,18 +132,24 @@ namespace Controller
         public Appointment Create(Appointment obj)
         {
             return _service.Create(obj);
-            
+
         }
 
         public Appointment Edit(Appointment obj)
         {
             return _service.Edit(obj);
-            
+
         }
 
         public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
         {
             return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
         }
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> master
     }
 }

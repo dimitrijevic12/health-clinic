@@ -5,43 +5,59 @@
  ***********************************************************************/
 
 using Model.Surveys;
+using Repository;
 using System;
 using System.Collections.Generic;
 
 namespace Service
 {
    public class BlogService : IBlogService
-   {
-      public BlogService GetInstance() { return null; }
+    {
+        private static BlogService instance = null;
+
+        private BlogService()
+        {
+        }
+
+        public static BlogService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BlogService();
+                }
+                return instance;
+            }
+        }
 
         public Blog GetBlogByTitle(string title)
         {
-            throw new NotImplementedException();
+            return BlogRepository.Instance.GetBlog(title);
         }
 
         public Blog Create(Blog obj)
         {
-            throw new NotImplementedException();
+            return BlogRepository.Instance.Save(obj);
         }
 
         public Blog Edit(Blog obj)
         {
-            throw new NotImplementedException();
+            return BlogRepository.Instance.Edit(obj);
         }
 
         public bool Delete(Blog obj)
         {
-            throw new NotImplementedException();
+            BlogRepository.Instance.Delete(obj);
+            return true;
         }
 
         public List<Blog> GetAll()
         {
-            throw new NotImplementedException();
+            return BlogRepository.Instance.GetAll();
         }
 
-        public Repository.IBlogRepository iBlogRepository;
-   
-      private static BlogService Instance;
+        
    
    }
 }

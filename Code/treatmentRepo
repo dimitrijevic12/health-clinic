@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 1|Aleksa|Santrač|10-06-2020|10-06-2020|Panklav 200mg,Aerius 50mg,|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Izlečen, Oprezno ponašanje|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
 2|Stefan|Santrač|04-02-2020|04-02-2020|Brufen 250mg,Paracetamol 70mg,|2/12/2020 12:00:00 AM,2/12/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Bolestan, Mirovanje|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
 3|Marko|Marković|04-03-2020|04-03-2020|Aspirin 250mg,Panklav 175mg,|5/14/2020 12:00:00 AM,5/14/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Bolestan, Hospitalizacija|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
 4|Marko|Marković|06-03-2020|06-03-2020|Defrinol 250mg,Brufen 175mg,|3/21/2020 12:00:00 AM,3/21/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Izlečen, Povećano kretanje|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
 5|Slobodanka|Slobić|06-03-2020|06-03-2020|Pankalv 100mg,Paracetamol 200mg,|1/20/2020 12:00:00 AM,1/20/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Bolestan, Hospitalizacija|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
+=======
+1|Marko|Markovic|10-06-2020|10-06-2020|Panklav 200mg,Aerius 50mg,|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Nova dijagnoza,Nova procedura|6/10/2020 12:00:00 AM,6/10/2020 8:08:03 PM,Razlog bolnickog lecenja
+1|Marko|Markovic|10-06-2020|10-06-2020|Panklav 200mg,Aerius 50mg,|6/10/2020 12:00:00 AM,6/10/2020 8:10:36 PM,Razlog operacije,Pera,Peric,CARDIOLOGY|Nova dijagnoza,Nova procedura|6/10/2020 12:00:00 AM,6/10/2020 8:10:36 PM,Razlog bolnickog lecenja
+1|Marko|Markovic|13-06-2020|13-06-2020|Ime leka 1,Ime leka 2,|6/13/2020 7:00:00 AM,6/13/2020 8:00:00 AM,fsafas,Pera,Peric,CARDIOLOGY|gasfsa,gafasfas|6/13/2020 12:00:00 AM,6/20/2020 12:00:00 AM,fasfas
+>>>>>>> master

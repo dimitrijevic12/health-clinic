@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 ﻿using Model.SystemUsers;
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
+=======
+﻿using health_clinicClassDiagram.Model.SystemUsers;
+using Model.SystemUsers;
+>>>>>>> master
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< HEAD
 using System.Threading.Tasks;
+=======
+>>>>>>> master
 
 namespace health_clinicClassDiagram.Repository.Csv.Converter
 {

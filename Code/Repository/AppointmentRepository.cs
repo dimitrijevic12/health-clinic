@@ -24,7 +24,7 @@ namespace Repository
         private readonly ICSVStream<Appointment> _stream = new CSVStream<Appointment>(APPOINMENT_FILE, new AppointmentCSVConverter(",", "dd.MM.yyyy."));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        public static AppointmentRepository Instance 
+        public static AppointmentRepository Instance
         {
             get
             {
@@ -35,11 +35,10 @@ namespace Repository
                 return instance;
             }
         }
-        
+
         private AppointmentRepository()
         {
         }
-        public AppointmentRepository GetInstance() { return null; }
 
         public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
         {
@@ -87,7 +86,21 @@ namespace Repository
             List<Appointment> appointments = new List<Appointment>();
             foreach (Appointment appointment in getAppointmentsByDayAndDoctor(day, doctor))
             {
-                if (appointment.ExamOperationRoom == room)
+                if (appointment.ExamOperationRoom.Id == room.Id)
+                {
+                    appointments.Add(appointment);
+                }
+            }
+            return appointments;
+        }
+
+        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            DateTime endDate = day.AddDays(1);
+            foreach (Appointment appointment in getAppointmentsByDate(day, endDate))
+            {
+                if (appointment.Patient.Id == patient.Id || appointment.Doctor.Id == doctor.Id || appointment.ExamOperationRoom.Id == room.Id)
                 {
                     appointments.Add(appointment);
                 }

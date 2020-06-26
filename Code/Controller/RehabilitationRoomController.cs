@@ -29,7 +29,11 @@ namespace health_clinicClassDiagram.Controller
         }
 
         private RehabilitationRoomController() { }
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> master
 
         public RehabilitationRoomController(IRehabilitationRoomService service)
         {

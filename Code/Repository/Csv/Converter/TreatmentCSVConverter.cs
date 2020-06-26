@@ -4,11 +4,14 @@
  * Purpose: Definition of the Class Repository.Csv.Converter.TreatmentCSVConverter
  ***********************************************************************/
 
+using health_clinicClassDiagram.Model.Treatment;
+using health_clinicClassDiagram.Repository;
 using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Repository.Csv.Converter
 {
@@ -26,10 +29,10 @@ namespace Repository.Csv.Converter
             string[] tokens = entityCSVFormat.Split(Delimiter.ToCharArray());
             long id = long.Parse(tokens[0]);
 
-            string doctorName = tokens[1];
-            string doctorSurname = tokens[2];
-            Doctor doctor = new Doctor(doctorName, doctorSurname);
+            string doctorId = tokens[1];
+            Doctor doctor = DoctorRepository.Instance.GetDoctorById(long.Parse(doctorId));
 
+<<<<<<< HEAD
             DateTime fromDate = DateTime.Parse(tokens[3]);
             DateTime toDate = DateTime.Parse(tokens[4]);
             toDate = toDate.AddHours(2);
@@ -38,57 +41,91 @@ namespace Repository.Csv.Converter
             string drugString = tokens[5];
             string[] drugParts = drugString.Split(',');
             foreach (string oneDrug in drugParts)
+=======
+            DateTime startDate = DateTime.ParseExact(tokens[2], "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+            DateTime endDate = DateTime.ParseExact(tokens[3], "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+
+            List<Drug> prescriptionDrugs = new List<Drug>();
+            string prescriptionDrugString = tokens[4];
+            string[] prescriptionDrugParts = prescriptionDrugString.Split('|');
+            foreach(string drugID in prescriptionDrugParts)
+>>>>>>> master
             {
-                if (oneDrug == "") break;
-                Drug drug = new Drug(oneDrug);
-                drugs.Add(drug);
+                Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                prescriptionDrugs.Add(drug);
             }
-            Prescription prescription = new Prescription(drugs);
+            Prescription prescription = new Prescription(prescriptionDrugs);
 
-            string scheduledSurgeryString = tokens[6];
-            string[] scheduledSurgeryParts = scheduledSurgeryString.Split(',');
-            DateTime ssFromDate = DateTime.Parse(scheduledSurgeryParts[0]);
-            DateTime ssToDate = DateTime.Parse(scheduledSurgeryParts[1]);
-            string ssCause = scheduledSurgeryParts[2];
-            string surgeonName = scheduledSurgeryParts[3];
-            string surgeonSurname = scheduledSurgeryParts[4];
-            SurgicalSpecialty surgeonSpecialty; //Enum.Parse(SurgicalSpecialty, scheduledSurgeryParts[5]);
-            Enum.TryParse("Active", out surgeonSpecialty);
-            ScheduledSurgery scheduledSurgery = new ScheduledSurgery(ssFromDate, ssToDate, ssCause, new Surgeon(surgeonName, surgeonSurname, surgeonSpecialty));
+            DateTime surgeryStartDate = DateTime.ParseExact(tokens[5], "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+            DateTime surgeryEndDate = DateTime.ParseExact(tokens[6], "dd/MM/yyyy hh:mm", CultureInfo.InvariantCulture);
+            string causeForSurgery = tokens[7];
+            Surgeon surgeon = SurgeonRepository.Instance.GetSurgeonById(long.Parse(tokens[8]));
+            ScheduledSurgery scheduledSurgery = new ScheduledSurgery(surgeryStartDate, surgeryEndDate, causeForSurgery, surgeon);
 
-            string diagnosisAndReviewString = tokens[7];
-            string[] diagnosisAndReviewParts = diagnosisAndReviewString.Split(',');
-            string diagnosis = diagnosisAndReviewParts[0];
-            string review = diagnosisAndReviewParts[1];
+            Specialist specialist = SpecialistRepository.Instance.GetSpecialistById(long.Parse(tokens[9]));
+            string causeForSpecialistAppointment = tokens[10];
+            SpecialistAppointment specialistAppointment = new SpecialistAppointment(causeForSpecialistAppointment, specialist);
+
+            DateTime hospitalTreatmentStartDate = DateTime.ParseExact(tokens[11], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            DateTime hospitalTreatmentEndDate = DateTime.ParseExact(tokens[12], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            string causeForHospitalTreatment = tokens[13];
+            List<Drug> hospitalTreatmentDrugs = new List<Drug>();
+            string hospitalTreatmentDrugsString = tokens[14];
+            string[] hospitalTreatmentDrugsParts = hospitalTreatmentDrugsString.Split('|');
+            foreach (string drugID in hospitalTreatmentDrugsParts)
+            {
+                Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                hospitalTreatmentDrugs.Add(drug);
+            }
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(hospitalTreatmentStartDate, hospitalTreatmentEndDate, causeForHospitalTreatment, hospitalTreatmentDrugs);
+
+            string diagnosis = tokens[15];
+            string review = tokens[16];
             DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview(diagnosis, review);
 
-            string hospitalTreatmentString = tokens[8];
-            string[] hospitalTreatmentParts = hospitalTreatmentString.Split(',');
-            DateTime hospitalTreatmentFromDate = DateTime.Parse(hospitalTreatmentParts[0]);
-            DateTime hospitalTreatmentToDate = DateTime.Parse(hospitalTreatmentParts[1]);
-            string hospitalTreatmentCause = hospitalTreatmentParts[2];
-            ReferralToHospitalTreatment hospitalTreatment = new ReferralToHospitalTreatment(hospitalTreatmentFromDate, hospitalTreatmentToDate, hospitalTreatmentCause);
-
+<<<<<<< HEAD
             return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, hospitalTreatment, fromDate, toDate, id, doctor);
+=======
+            return new Treatment(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, startDate, endDate, id, doctor, specialistAppointment);
+>>>>>>> master
         }
 
         public string ConvertEntityToCSVFormat(Treatment entity)
         {
-            string doctorName = entity.Doctor.Name;
-            string doctorSurname = entity.Doctor.SurnameDoctor;
-            string fromDate = entity.FromDate.ToString("dd-MM-yyyy");
-            string toDate = entity.EndDate.ToString("dd-MM-yyyy");
             string id = entity.Id.ToString();
+            string doctorId = entity.Doctor.Id.ToString();           
+            string startDate = entity.FromDate.ToString("dd/MM/yyyy hh:mm");
+            string endDate = entity.EndDate.ToString("dd/MM/yyyy hh:mm");
             string prescription = "";
             foreach (Drug drug in entity.Prescription.Drug)
             {
-                prescription += drug.Name + ",";
+                if(entity.Prescription.Drug.IndexOf(drug) == entity.Prescription.Drug.Count - 1)
+                {
+                    prescription += drug.Id;
+                }
+                else
+                {
+                    prescription += drug.Id + "|";
+                }
             }
-            string scheduledSurgery = entity.ScheduledSurgery.StartDate + "," + entity.ScheduledSurgery.EndDate + "," + entity.ScheduledSurgery.CauseForOperation + "," + entity.ScheduledSurgery.Surgeon.NameDoctor + ',' + entity.ScheduledSurgery.Surgeon.SurnameDoctor + ',' + entity.ScheduledSurgery.Surgeon.Spec;
+            string scheduledSurgery = entity.ScheduledSurgery.StartDate.ToString("dd/MM/yyyy hh:mm") + "," + entity.ScheduledSurgery.EndDate.ToString("dd/MM/yyyy hh:mm") + "," + entity.ScheduledSurgery.CauseForOperation + "," + entity.ScheduledSurgery.Surgeon.Id;
+            string specialistAppointment = entity.SpecialistAppointment.Doctor.Id + "," + entity.SpecialistAppointment.Cause;
+            string referralToAHospitalTreatment = entity.ReferralToHospitalTreatment.StartDate.ToString("dd/MM/yyyy") + "," + entity.ReferralToHospitalTreatment.EndDate.ToString("dd/MM/yyyy") + "," + entity.ReferralToHospitalTreatment.CauseForHospTreatment + ",";
+            string hospitalTreatmentDrugs = "";
+            foreach (Drug drug in entity.ReferralToHospitalTreatment.Drugs)
+            {
+                if (entity.ReferralToHospitalTreatment.Drugs.IndexOf(drug) == entity.ReferralToHospitalTreatment.Drugs.Count - 1)
+                {
+                    hospitalTreatmentDrugs += drug.Id;
+                }
+                else
+                {
+                    hospitalTreatmentDrugs += drug.Id + "|";
+                }
+            }
+            referralToAHospitalTreatment += hospitalTreatmentDrugs;
             string diagnosisAndReview = entity.DiagnosisAndReview.Diagnosis + "," + entity.DiagnosisAndReview.Review;
-            string referralToAHospitalTreatment = entity.ReferralToHospitalTreatment.StartDate.ToString() + "," + entity.ReferralToHospitalTreatment.EndDate.ToString() + "," + entity.ReferralToHospitalTreatment.CauseForHospTreatment;
-
-            return string.Join(Delimiter, id, doctorName, doctorSurname, fromDate, toDate, prescription, scheduledSurgery, diagnosisAndReview, referralToAHospitalTreatment);
+            return string.Join(Delimiter, id, doctorId, startDate, endDate, prescription, scheduledSurgery, specialistAppointment, referralToAHospitalTreatment, diagnosisAndReview);
         }
     }
 }
