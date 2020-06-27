@@ -43,15 +43,6 @@ namespace Service
         {
         }
 
-        public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom> roomService)
-        {
-            _appointmentRepository = repository;
-            _doctorService = doctorService;
-            _patientService = patientService;
-            _roomService = roomService;
-
-        }
-
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
             List<Appointment> appointments = _appointmentRepository.GetAll();
@@ -71,13 +62,7 @@ namespace Service
 
         public Appointment Create(Appointment obj)
         {
-            var doctor = _doctorService.Create(obj.Doctor);
-            var patient = _patientService.Create(obj.Patient);
-            var room = _roomService.Create(obj.ExamOperationRoom);
             var appointment = _appointmentRepository.Save(obj);
-            appointment.Doctor = doctor;
-            appointment.Patient = patient;
-            appointment.ExamOperationRoom = room;
             return appointment;
         }
 

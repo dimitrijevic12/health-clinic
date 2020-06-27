@@ -36,7 +36,7 @@ namespace Model.Appointment
         {
             get
             {
-                if (patient.Id == 0)
+                if (patient == null || patient.Id == 0)
                 {
                     return "";
                 }
