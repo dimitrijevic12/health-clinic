@@ -86,5 +86,10 @@ namespace Controller
         {
             return TreatmentService.Instance.Edit(obj);
         }
+
+        public Treatment GetTreatment(Treatment obj)
+        {
+            return TreatmentService.Instance.GetTreatment(obj);
+        }
     }
 }
