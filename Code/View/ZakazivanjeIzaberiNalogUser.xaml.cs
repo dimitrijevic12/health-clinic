@@ -1,6 +1,8 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Appointment;
 using Model.Rooms;
+using Model.SystemUsers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -62,6 +64,7 @@ namespace health_clinicClassDiagram.View
             _room = room;
             
             records = _recordController.GetAll();
+            
 
             recordsCollection = new ObservableCollection<MedicalRecord>(records);
 

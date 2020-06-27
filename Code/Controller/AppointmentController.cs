@@ -85,5 +85,20 @@ namespace Controller
         {
             return _service.GetPriorityAppointments(doctor, startDate, endDate, priority);
         }
+
+        public List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate)
+        {
+            return _service.GetAppointmentsByDate(startDate, endDate);
+        }
+
+        public List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor)
+        {
+            return _service.GetAppointmentsByDayAndDoctor(day, doctor);
+        }
+
+        public List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        {
+            return _service.GetAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient);
+        }
     }
 }

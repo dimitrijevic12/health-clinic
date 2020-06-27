@@ -14,9 +14,9 @@ namespace Repository
 {
    public interface IAppointmentRepository : IRepository<Appointment>
    {
-        List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
+        /*List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
         List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
         List<Appointment> GetAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room);
-        List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
+        List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);*/
     }
 }

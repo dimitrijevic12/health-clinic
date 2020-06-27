@@ -7,28 +7,19 @@
 using Model.Rooms;
 using Repository;
 using System;
+using System.Collections.Generic;
 
 namespace Service
 {
    public class DoctorDrugService : DecoratedDrugService
    {
-        private static DoctorDrugService instance = null;
-
-        public static DoctorDrugService Instance
+        private DoctorDrugService(IDrugService decoratedDrug) : base(decoratedDrug)
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new DoctorDrugService();
-                }
-                return instance;
-            }
         }
 
-        private DoctorDrugService()
+        public List<Drug> GetAllDrugs()
         {
-
+            return base.GetAllDrugs();
         }
 
         public Drug ValidateDrug(Drug drug)
@@ -51,6 +42,7 @@ namespace Service
             drugToEdit.Quantity++;
             return DrugRepository.Instance.Edit(drugToEdit);
         }
+
 
     }
 }

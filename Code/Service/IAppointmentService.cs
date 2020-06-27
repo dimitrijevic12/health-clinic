@@ -18,5 +18,8 @@ namespace Service
       List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
       List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
       List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority);
-   }
+      List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
+      List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
+      List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
+    }
 }

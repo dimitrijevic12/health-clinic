@@ -8,7 +8,7 @@ using System;
 
 namespace Service
 {
-   public abstract class ManagerDrugService : DecoratedDrugService
+   /*public abstract class ManagerDrugService : DecoratedDrugService
    {
       public abstract Model.Rooms.Drug AddDrug(Model.SystemUsers.Doctor doctor, Model.Rooms.Drug drug);
       
@@ -16,5 +16,5 @@ namespace Service
       
       public abstract Boolean DeleteDrug(Model.Rooms.Drug drug);
    
-   }
+   }*/
 }
