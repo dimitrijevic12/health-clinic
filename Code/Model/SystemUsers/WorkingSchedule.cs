@@ -25,6 +25,14 @@ namespace Model.SystemUsers
             Id = id;
         }
 
+        public WorkingSchedule()
+        {
+            From = DateTime.Now;
+            To = DateTime.Now;
+            WorkingDays = new List<WorkingDays>();
+            Id = 0;
+        }
+
         public DateTime From { get => from; set => from = value; }
         public DateTime To { get => to; set => to = value; }
         public List<WorkingDays> WorkingDays { get => workingDays; set => workingDays = value; }

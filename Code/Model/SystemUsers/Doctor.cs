@@ -72,7 +72,6 @@ namespace Model.SystemUsers
             get { return Name + " " + Surname; }
         }
 
-        public Doctor() { }
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth)
         {
 
@@ -147,6 +146,13 @@ namespace Model.SystemUsers
             this.Name = name;
             this.Surname = surname;
 
+        }
+
+        public Doctor() : base()
+        {
+            Gender = Gender.MALE;
+            DateOfBirth = DateTime.Now;
+            WorkingSchedules = new List<WorkingSchedule>();
         }
 
     }
