@@ -68,7 +68,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
         {
 
-            String resenje = "";
+            String patients = "";
 
             if (entity.Patients.Count != 0)
             {
@@ -77,27 +77,27 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                 {
                     if (record != last)
                     {
-                        resenje += record.Id + "|";
+                        patients += record.Id + "|";
                     }
                     else
                     {
-                        resenje += record.Id;
+                        patients += record.Id;
                     }
                 }
             }
-            String resenje2 = "";
+            String equimpents = "";
             foreach (Equipment equipment in entity.Equipments)
             {
-                resenje2 += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
-                resenje2 += _delimiter;
+                equimpents += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                equimpents += _delimiter;
             }
 
             return string.Join(_delimiter,
               entity.IdRoom,
               entity.CurrentlyInUse,
               entity.MaxCapacity,
-              resenje,
-              resenje2);
+              patients,
+              equimpents);
         }
     }
 }

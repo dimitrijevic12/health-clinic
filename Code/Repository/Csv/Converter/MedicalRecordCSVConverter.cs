@@ -60,7 +60,7 @@ namespace Repository.Csv.Converter
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
 
-            String resenje = "";
+            String treatments = "";
 
             if (entity.Treatments.Count != 0)
             {
@@ -71,11 +71,11 @@ namespace Repository.Csv.Converter
                     {
                         if (treatment != last)
                         {
-                            resenje += treatment.Id + "|";
+                            treatments += treatment.Id + "|";
                         }
                         else
                         {
-                            resenje += treatment.Id;
+                            treatments += treatment.Id;
                         }
                     }
                 }
@@ -85,7 +85,7 @@ namespace Repository.Csv.Converter
               entity.id,
               entity.Patient.Id,
               entity.choosenDoctor.Id,
-              resenje);
+              treatments);
 
         }
     }
