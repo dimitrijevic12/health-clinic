@@ -51,7 +51,7 @@ namespace Service
         {
             SpecialistAppointment specialistAppointment = new SpecialistAppointment(cause, specialist);
             treatment.SpecialistAppointment = specialistAppointment;
-            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(treatment.Id);
             Patient patient = medicalRecord.Patient;
             Appointment appointment = new Appointment(specialist, patient, room, TypeOfAppointment.EXAM, startDate, endDate);
             AppointmentRepository.Instance.Save(appointment);
@@ -62,7 +62,7 @@ namespace Service
         {
             ScheduledSurgery scheduledSurgery = new ScheduledSurgery(startDate, endDate, cause, surgeon);
             treatment.ScheduledSurgery = scheduledSurgery;
-            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(treatment.Id);
             Patient patient = medicalRecord.Patient;
             Appointment surgery = new Appointment(surgeon, patient, room, TypeOfAppointment.SURGERY, startDate, endDate);
             AppointmentRepository.Instance.Save(surgery);
@@ -80,7 +80,7 @@ namespace Service
         {
             ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, cause, drugs);
             treatment.ReferralToHospitalTreatment = referralToHospitalTreatment;
-            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(treatment.Id);
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(treatment.Id);
             RehabilitationRoomService.Instance.AddPatient(medicalRecord, room);
             return treatment.ReferralToHospitalTreatment;
         }
@@ -92,21 +92,20 @@ namespace Service
 
         public Treatment Create(Patient patient, Treatment obj)
         {
-            MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(MedicalRecordRepository.Instance.GetMedRecByPatient(patient), obj);
+            MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(MedicalRecordRepository.Instance.GetMedicalRecordByPatient(patient), obj);
             return TreatmentRepository.Instance.Save(obj);
-            //            return iTreatmentRepository.Save(obj);
         }
 
         public Treatment Edit(Treatment obj)
         {
-            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(obj.Id);
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(obj.Id);
             MedicalRecordRepository.Instance.EditTreatmentInMedRec(obj, medicalRecord);
             return obj;
         }
 
         public bool Delete(Treatment obj)
         {
-            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByTreatmentId(obj.Id);
+            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(obj.Id);
             MedicalRecordRepository.Instance.EditTreatmentInMedRec(null, medicalRecord);
             return true;
         }

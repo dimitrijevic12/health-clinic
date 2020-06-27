@@ -14,13 +14,9 @@ namespace Repository
 {
    public interface IAppointmentRepository : IRepository<Appointment>
    {
-        List<Appointment> getAppointmentsByDate(DateTime startDate, DateTime endDate);
-        List<Appointment> getAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
-        List<Appointment> getAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room);
-        Model.Appointment.Appointment GetAppointment(Model.Appointment.Appointment appointment);
-      List<DateTime> GetDatesForAppointmentsInRoom(Model.Rooms.Room room);
-      List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
-      List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
-      List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
-   }
+        List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
+        List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
+        List<Appointment> GetAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room);
+        List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
+    }
 }

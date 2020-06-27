@@ -61,11 +61,6 @@ namespace health_clinicClassDiagram.Service
             return rooms;
         }
 
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public ExamOperationRoom findExamRoom(long id)
         {
             var rooms = _examOperationRoomRepository.GetAll();

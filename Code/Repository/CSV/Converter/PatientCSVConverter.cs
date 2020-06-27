@@ -12,8 +12,6 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     class PatientCSVConverter : ICSVConverter<Patient>
     {
 
-        private String Delimiter;
-
         private readonly string _delimiter;
         private readonly string _datetimeFormat;
 

@@ -44,7 +44,7 @@ namespace health_clinicClassDiagram.View
             _recordController = MedicalRecordController.Instance;
 
             _rehabilitationRoom = rehabilitationRoom;
-            records = _recordController.getAllAvailablePatientsForRehabilitation();
+            records = _recordController.GetAllAvailablePatientsForRehabilitation();
 
             recordsCollection = new ObservableCollection<MedicalRecord>(records);
 

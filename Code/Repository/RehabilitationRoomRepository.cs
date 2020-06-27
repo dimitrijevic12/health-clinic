@@ -51,10 +51,6 @@ namespace health_clinicClassDiagram.Repository
             return rooms.Count() == 0 ? 0 : rooms.Max(apt => apt.IdRoom);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Delete(RehabilitationRoom obj)
         {
@@ -84,11 +80,6 @@ namespace health_clinicClassDiagram.Repository
         {
             var rooms = (List<RehabilitationRoom>)_stream.ReadAll();
             return rooms;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public RehabilitationRoom Save(RehabilitationRoom obj)

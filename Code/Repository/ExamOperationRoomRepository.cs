@@ -44,11 +44,6 @@ namespace health_clinicClassDiagram.Repository
             return rooms.Count() == 0 ? 0 : rooms.Max(ro => ro.Id);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(ExamOperationRoom obj)
         {
             var rooms = _stream.ReadAll().ToList();
@@ -77,16 +72,6 @@ namespace health_clinicClassDiagram.Repository
         {
             var rooms = (List<ExamOperationRoom>)_stream.ReadAll();
             return rooms;
-        }
-
-        public Room GetRoom(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public ExamOperationRoom Save(ExamOperationRoom obj)

@@ -13,11 +13,9 @@ namespace health_clinicClassDiagram.Service
 {
     public interface IRehabilitationRoomService : IService<RehabilitationRoom>
     {
-        Boolean IsRoomFree(DateTime from, DateTime to, Room room);
-        List<Patient> GetAllPatientsByRoom(Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
-        Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
-        RehabilitationRoom getRoom(RehabilitationRoom room);
+        Boolean ReleasePatient(MedicalRecord record, RehabilitationRoom room);
+        RehabilitationRoom GetRoom(RehabilitationRoom room);
         RehabilitationRoom findRehabRoom(long id);
         Room IncreaseQuantity(Room r, Equipment eq);
         Room DecreaseQuantity(Room r, Equipment eq);

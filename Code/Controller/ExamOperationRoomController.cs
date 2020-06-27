@@ -59,11 +59,6 @@ namespace health_clinicClassDiagram.Controller
             return rooms;
         }
 
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public Room IncreaseQuantity(Room r, Equipment eq)
         {
             return _service.IncreaseQuantity(r, eq);

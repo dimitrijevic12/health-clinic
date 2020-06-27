@@ -29,7 +29,7 @@ namespace health_clinicClassDiagram.Controller
         }
 
         private RehabilitationRoomController() { }
-      
+
 
         public RehabilitationRoomController(IRehabilitationRoomService service)
         {
@@ -48,17 +48,12 @@ namespace health_clinicClassDiagram.Controller
 
         public bool Delete(RehabilitationRoom obj)
         {
-            return _service.Delete(obj);           
+            return _service.Delete(obj);
         }
 
         public RehabilitationRoom Edit(RehabilitationRoom obj)
         {
-            return _service.Edit(obj);          
-        }
-
-        public int GenerateReport(Room room)
-        {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
         }
 
         public List<RehabilitationRoom> GetAll()
@@ -67,24 +62,14 @@ namespace health_clinicClassDiagram.Controller
             return rooms;
         }
 
-        public List<Patient> GetAllPatientsByRoom()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public RehabilitationRoom getRoom(RehabilitationRoom room)
         {
-            return _service.getRoom(room);
+            return _service.GetRoom(room);
         }
 
         public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
         {
-            return _service.releasePatient(record, room);
+            return _service.ReleasePatient(record, room);
         }
 
         public Room IncreaseQuantity(Room r, Equipment eq)

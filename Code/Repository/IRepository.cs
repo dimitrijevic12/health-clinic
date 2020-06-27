@@ -15,7 +15,5 @@ namespace Repository
         T Edit(T obj);
       Boolean Delete(T obj);
       List<T> GetAll();
-      Boolean OpenFile(String path);
-      Boolean CloseFile(String path);
    }
 }

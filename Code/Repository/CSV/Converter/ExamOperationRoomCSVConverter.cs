@@ -42,18 +42,18 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
         public string ConvertEntityToCSVFormat(ExamOperationRoom entity)
         {
-            String resenje = "";
+            String equipemnts = "";
 
 
             foreach (Equipment equipment in entity.Equipments)
             {
-                resenje += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
-                resenje += _delimiter;
+                equipemnts += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                equipemnts += _delimiter;
             }
 
             return string.Join(_delimiter,
                 entity.Id,
-                resenje);
+                equipemnts);
         }
     }
 }

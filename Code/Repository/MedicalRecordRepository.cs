@@ -24,7 +24,7 @@ namespace Repository
         private String _path = "../../Resources/Data/records.csv";
         private static MedicalRecordRepository instance = null;
 
-        public static MedicalRecordRepository Instance 
+        public static MedicalRecordRepository Instance
         {
             get
             {
@@ -35,8 +35,6 @@ namespace Repository
                 return instance;
             }
         }
-
-
 
         private MedicalRecordRepository()
         {
@@ -55,12 +53,12 @@ namespace Repository
             return records.Count() == 0 ? 0 : records.Max(apt => apt.id);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
             List<MedicalRecord> medicalRecords = GetAll();
-            foreach(MedicalRecord medicalRecord in medicalRecords)
+            foreach (MedicalRecord medicalRecord in medicalRecords)
             {
-                if(patient.Id == medicalRecord.IDPatient)
+                if (patient.Id == medicalRecord.IDPatient)
                 {
                     return medicalRecord;
                 }
@@ -68,12 +66,12 @@ namespace Repository
             return null;
         }
 
-        public MedicalRecord GetMedRecByTreatmentId(long id)
+        public MedicalRecord GetMedicalRecordByTreatmentId(long id)
         {
             Treatment treatmentToChange;
-            foreach(MedicalRecord medicalRecord in GetAll())
+            foreach (MedicalRecord medicalRecord in GetAll())
             {
-                foreach(Treatment treatment in medicalRecord.Treatments)
+                foreach (Treatment treatment in medicalRecord.Treatments)
                 {
                     if (treatment.Id == id)
                     {
@@ -94,9 +92,9 @@ namespace Repository
         public MedicalRecord EditTreatmentInMedRec(Treatment treatment, MedicalRecord medicalRecord)
         {
             Treatment treatmentToChange;
-            foreach(Treatment oneTreatment in medicalRecord.Treatments)
+            foreach (Treatment oneTreatment in medicalRecord.Treatments)
             {
-                if(oneTreatment.Id == treatment.Id)
+                if (oneTreatment.Id == treatment.Id)
                 {
                     treatmentToChange = oneTreatment;
                 }
@@ -157,21 +155,11 @@ namespace Repository
             return records;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
             var records = _stream.ReadAll().ToList();
             return records[records.FindIndex(apt => apt.id == id)];
-            
+
         }
     }
 }
