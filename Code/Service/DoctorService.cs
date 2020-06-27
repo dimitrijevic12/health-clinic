@@ -1,4 +1,5 @@
 ﻿using health_clinicClassDiagram.Repository;
+using Model.Appointment;
 using Model.SystemUsers;
 using Repository;
 using Service;
@@ -58,16 +59,34 @@ namespace health_clinicClassDiagram.Service
             return doctors;
         }
 
-        public Boolean ValidateLogin(string username, string password)
+        public Doctor ValidateLogin(string username, string password)
         {
-            if(DoctorRepository.Instance.GetDoctorByUsernameAndPassword(username, password) == null)
+            return DoctorRepository.Instance.GetDoctorByUsernameAndPassword(username, password);
+        }
+
+        public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
+        {
+            var doctors = _doctorRepository.GetAll();
+            var appointments = AppointmentRepository.Instance.GetAll();
+
+            List<Doctor> doctorsToRemove = new List<Doctor>();
+
+            foreach (Appointment a in appointments)
             {
-                return false;
+                if (a.StartDate <= _startDate && a.EndDate >= _endDate)
+                {
+                    doctorsToRemove.Add(a.Doctor);
+                }
             }
-            else
+
+            foreach (Doctor d in doctorsToRemove)
             {
-                return true;
+                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == d.Id);
+                if (doctorToRemove != null)
+                    doctors.Remove(doctorToRemove);
             }
+
+            return doctors;
         }
 
     }

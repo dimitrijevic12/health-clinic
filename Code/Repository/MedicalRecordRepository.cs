@@ -18,7 +18,7 @@ namespace Repository
 {
    public class MedicalRecordRepository : IMedicalRecordRepository
    {
-        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(",", "dd.MM.yyyy."));
+        private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         private String _path = "../../Resources/Data/records.csv";
@@ -53,7 +53,7 @@ namespace Repository
             return records.Count() == 0 ? 0 : records.Max(apt => apt.id);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
             List<MedicalRecord> medicalRecords = GetAll();
             foreach(MedicalRecord medicalRecord in medicalRecords)
@@ -66,7 +66,7 @@ namespace Repository
             return null;
         }
 
-        public MedicalRecord GetMedRecByTreatmentId(long id)
+        public MedicalRecord GetMedicalRecordByTreatmentId(long id)
         {
             Treatment treatmentToChange;
             foreach(MedicalRecord medicalRecord in GetAll())
@@ -82,9 +82,8 @@ namespace Repository
             return null;
         }
 
-        public MedicalRecord AddTreatmentToMedRec(Patient patient, Treatment treatment)
+        public MedicalRecord AddTreatmentToMedicalRecord(MedicalRecord medicalRecord, Treatment treatment)
         {
-            MedicalRecord medicalRecord = GetMedRecByPatient(patient);
             medicalRecord.Treatments.Add(treatment);
             Edit(medicalRecord);
             return medicalRecord;
@@ -156,17 +155,7 @@ namespace Repository
             return records;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
             var records = _stream.ReadAll().ToList();
             return records[records.FindIndex(apt => apt.id == id)];

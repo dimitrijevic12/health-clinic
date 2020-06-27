@@ -14,20 +14,12 @@ namespace Service
 {
    public interface IAppointmentService : IService<Appointment>
    {
-      Model.Appointment.Appointment MoveAppointment(DateTime from, DateTime to, Model.Appointment.Appointment appointment);
-      Boolean CheckIfVacant(DateTime from, DateTime to);
-      List<Appointment> GetAppointmentsByDoctor(Model.SystemUsers.Doctor doctor);
-      List<Appointment> GetAppointmentsByTime(DateTime fromTime, DateTime toTime);
-      List<Appointment> GetAppointmentsByType(Model.Appointment.TypeOfAppointment type);
-      List<Appointment> GetApointmentByPatient(Model.SystemUsers.Patient patient);
-      List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
+        List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
         List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
         List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
-        Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
-      Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
-      TypeOfPriority ChoosePriority(TypeOfPriority priority);
-      List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
-      List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
-      List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
-   }
+        List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority);
+        List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
+        List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
+        List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
+    }
 }

@@ -30,54 +30,74 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             int inUse = int.Parse(tokens[1]);
             int max = int.Parse(tokens[2]);
 
-            int i = 3;
+           
 
-            /* var recordRepository = new MedicalRecordRepository(
-                 "../../Resources/Data/records.csv",
-                 new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(",", "dd.MM.yyyy.")),
-                 new LongSequencer());*/
             var recordRepository = MedicalRecordRepository.Instance;
+            List<Equipment> equipments = new List<Equipment>();
 
+            if (tokens[3] != "")
+            {
+                String idString = tokens[3];
+
+                String[] oneId = idString.Split('|');
+
+                for (int j = 0; j < oneId.Length; j++)
+                {
+                    records.Add(recordRepository.GetMedicalRecordById(long.Parse(oneId[j])));
+                }
+            }
+            int i = 4;
             while (i < tokens.Length - 1)
             {
-                long idNaloga = long.Parse(tokens[i]);
+                int idEquip = int.Parse(tokens[i]);
                 i++;
-                string ime = tokens[i];
+                string naziv = tokens[i];
                 i++;
-                string prezime = tokens[i];
-                i++;
-                int idPatient = int.Parse(tokens[i]);
+                int quantity = int.Parse(tokens[i]);
 
-                Patient patient = new Patient(ime, prezime, idPatient);
-
-                //MedicalRecord record = new MedicalRecord(idNaloga, patient, new Doctor(), new List<Treatment>());
-
-                MedicalRecord record = recordRepository.getMedRecById(idNaloga);
-
-                records.Add(record);
+                Equipment equipment = new Equipment(idEquip, naziv, quantity);
+                equipments.Add(equipment);
                 i++;
             }
 
-            return new RehabilitationRoom(idRoom, inUse, max, records);
+
+
+            return new RehabilitationRoom(idRoom, inUse, max, records, equipments);
         }
 
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
         {
-            String resenje = "";
 
+            String patients = "";
 
-            foreach (MedicalRecord record in entity.Patients)
+            if (entity.Patients.Count != 0)
             {
-                resenje += string.Join(_delimiter, record.IDnaloga, record.Name, record.Surname, record.IDPatient);
-                resenje += _delimiter;
+                MedicalRecord last = entity.Patients.Last();
+                foreach (MedicalRecord record in entity.Patients)
+                {
+                    if (record != last)
+                    {
+                        patients += record.Id + "|";
+                    }
+                    else
+                    {
+                        patients += record.Id;
+                    }
+                }
             }
-
+            String equimpents = "";
+            foreach (Equipment equipment in entity.Equipments)
+            {
+                equimpents += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                equimpents += _delimiter;
+            }
 
             return string.Join(_delimiter,
               entity.IdRoom,
               entity.CurrentlyInUse,
               entity.MaxCapacity,
-              resenje);
+              patients,
+              equimpents);
         }
     }
 }

@@ -4,13 +4,16 @@
  * Purpose: Definition of the Class Service.MedicalRecordService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Service;
 using Model.Appointment;
+using Model.Rooms;
 using Model.SystemUsers;
 using Model.Treatment;
 using Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Service
 {
@@ -44,22 +47,16 @@ namespace Service
             _patientService = service;
         }
 
-        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medRec)
+        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
+            return MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(medicalRecord, treatment);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            var record = _medicalRecordRepository.GetMedRecByPatient(patient);
-            //fali red
+            var record = _medicalRecordRepository.GetMedicalRecordByPatient(patient);
             return record;
 
-        }
-
-        public MedicalRecord GetMedRecByTreatment(Treatment treatment)
-        {
-            throw new NotImplementedException();
         }
 
         public MedicalRecord Create(MedicalRecord obj)
@@ -69,7 +66,6 @@ namespace Service
             var newMedicalRecord = _medicalRecordRepository.Save(obj);
             newMedicalRecord.Patient = patient;
             return newMedicalRecord;
-            //fali treatment ali to vrv u add treatment
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
@@ -88,23 +84,34 @@ namespace Service
 
         public List<MedicalRecord> GetAll()
         {
-            var patients = _patientService.GetAll();
             var records = _medicalRecordRepository.GetAll();
-            //BindPatientsWithRecords(patients, records);
             return records;
         }
-
-        private void BindPatientsWithRecords(Patient[] patients, MedicalRecord[] records)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
-            //records.ToList().ForEach(record => record.patient = GetMedRecByPatient(record.patient));
+            return _medicalRecordRepository.GetMedicalRecordById(id);
         }
 
-        public MedicalRecord getMedRecById(long id)
+        public List<MedicalRecord> GetAllAvailablePatientsForRehabilitation()
         {
-            return iMedicalRecordRepository.getMedRecById(id);
-        }
+            var records = _medicalRecordRepository.GetAll();
+            var rehabilitationRooms = RehabilitationRoomRepository.Instance.GetAll();
 
-        public Repository.IMedicalRecordRepository iMedicalRecordRepository;
+            List<MedicalRecord> placed = new List<MedicalRecord>();
+
+            foreach (RehabilitationRoom room in rehabilitationRooms)
+            {
+                placed.AddRange(room.Patients);
+            }
+
+            foreach (MedicalRecord record in placed)
+            {
+                var item = records.SingleOrDefault(x => x.Id == record.Id);
+                if (item != null)
+                    records.Remove(item);
+            }
+            return records;
+        }
 
     }
 }

@@ -11,5 +11,11 @@ namespace Service
 {
    public interface IEquipmentService : IService<Equipment>
    {
-   }
+        void addEquipment(string naziv, int quant);
+        void deleteEquipment(int Id, int quant);
+
+        String getNazivOpreme(int Id);
+
+        int getIdOpreme(string naziv);
+    }
 }

@@ -40,19 +40,14 @@ namespace Controller
             _service = service;
         }
 
-        public List<Treatment> GetAllTreatments()
+        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
-            throw new NotImplementedException();
+            return MedicalRecordService.Instance.AddTreatment(treatment, medicalRecord);
         }
 
-        public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medRec)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            throw new NotImplementedException();
-        }
-
-        public MedicalRecord GetMedRecByPatient(Patient patient)
-        {
-            var record = _service.GetMedRecByPatient(patient);
+            var record = _service.GetMedicalRecordByPatient(patient);
             return record;
         }
 
@@ -80,9 +75,14 @@ namespace Controller
             return obj;
         }
 
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
-            return _service.getMedRecById(id);
+            return _service.GetMedicalRecordById(id);
+        }
+
+        public List<MedicalRecord> GetAllAvailablePatientsForRehabilitation()
+        {
+            return _service.GetAllAvailablePatientsForRehabilitation();
         }
 
     }

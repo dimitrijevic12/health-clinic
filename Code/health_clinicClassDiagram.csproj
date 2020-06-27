@@ -207,14 +207,8 @@
     <Compile Include="Controller\IMedicalRecordController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\INotificaitonController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controller\IRehabilitationRoomController.cs" />
     <Compile Include="Controller\IRenovationController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\IReportController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\IRoomController.cs">
@@ -235,14 +229,8 @@
     <Compile Include="Controller\MedicalRecordController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\NotificationController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controller\RehabilitationRoomController.cs" />
     <Compile Include="Controller\RenovationController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\ReportController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\RoomController.cs">
@@ -422,15 +410,9 @@
     <Compile Include="Repository\Csv\Converter\MedicalRecordCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\Csv\Converter\NotificationCSVConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Repository\Csv\Converter\PatientCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RehabilitationRoomCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\RenovationCSVConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Repository\Csv\Converter\ReportCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\Csv\Converter\RoomCSVConverter.cs">
@@ -498,7 +480,6 @@
     <Compile Include="Repository\IRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\IRepository1.cs" />
     <Compile Include="Repository\IRoomRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -514,15 +495,9 @@
     <Compile Include="Repository\MedicalRecordRepository.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\NotificationRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\RehabilitationRoomRepository.cs" />
     <Compile Include="Repository\RenovationRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Repository\ReportRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\RoomRepository.cs">
@@ -592,14 +567,8 @@
     <Compile Include="Service\IMedicalRecordService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service\INotifcationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\IRehabilitationRoomService.cs" />
     <Compile Include="Service\IRenovationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\IReportService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\IRoomService.cs">
@@ -623,14 +592,8 @@
     <Compile Include="Service\MedicalRecordService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service\NotificationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\RehabilitationRoomService.cs" />
     <Compile Include="Service\RenovationService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\ReportService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\RoomService.cs">
@@ -645,6 +608,7 @@
     <Compile Include="Service\UserService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\Util\AppointmentGenerator.cs" />
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -50,11 +50,6 @@ namespace health_clinicClassDiagram.Repository
             return rooms.Count() == 0 ? 0 : rooms.Max(apt => apt.IdRoom);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(RehabilitationRoom obj)
         {
             var rooms = _stream.ReadAll().ToList();
@@ -85,11 +80,6 @@ namespace health_clinicClassDiagram.Repository
             return rooms;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public RehabilitationRoom Save(RehabilitationRoom obj)
         {
             _stream.AppendToFile(obj);
@@ -114,6 +104,19 @@ namespace health_clinicClassDiagram.Repository
             }
             */
             return rooms;
+        }
+
+        public RehabilitationRoom findRehabRoom(long id)
+        {
+            var rooms = GetAll();
+            foreach (RehabilitationRoom er in rooms)
+            {
+                if (er.Id == id)
+                {
+                    return er;
+                }
+            }
+            return null;
         }
     }
 }

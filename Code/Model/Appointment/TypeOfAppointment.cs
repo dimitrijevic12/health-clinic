@@ -11,7 +11,8 @@ namespace Model.Appointment
    public enum TypeOfAppointment
    {
       SURGERY,
-      EXAM
+      EXAM,
+      None
    
    }
 }
