@@ -1,0 +1,48 @@
+﻿<Window x:Class="health_clinicClassDiagram.view.promeni_vreme"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:health_clinicClassDiagram.view"
+        xmlns:language="clr-namespace:health_clinicClassDiagram.Properties.Langs"
+        mc:Ignorable="d"
+        Title="dodaj_salu"  Height="768" Width="1024" Background="AliceBlue"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label x:Name="label32" Content="Izaberi datum od do: " HorizontalAlignment="Left" Margin="74,105,0,0" VerticalAlignment="Top" Width="284" FontSize="18"/>
+        <Label x:Name="label323" Content="Izaberi id radnog vremena za promenu: " HorizontalAlignment="Left" Margin="74,40,0,0" VerticalAlignment="Top" Width="360" FontSize="18"/>
+        <DatePicker HorizontalAlignment="Left" Margin="438,105,0,0" VerticalAlignment="Top" x:Name="fromDate" RenderTransformOrigin="0.971,-5.083"/>
+        <DatePicker HorizontalAlignment="Left" Margin="746,105,0,0" VerticalAlignment="Top" x:Name="toDate" RenderTransformOrigin="1.108,0.542"/>
+
+        <Label x:Name="label" Content="Ponedeljak" HorizontalAlignment="Left" Margin="110,155,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy" Content="Utorak" HorizontalAlignment="Left" Margin="130,199,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy1" Content="Sreda" HorizontalAlignment="Left" Margin="130,254,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy2" Content="Cetvrtak" HorizontalAlignment="Left" Margin="130,327,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy3" Content="Petak" HorizontalAlignment="Left" Margin="130,423,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy4" Content="Subota" HorizontalAlignment="Left" Margin="130,502,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="label_Copy5" Content="Nedelja" HorizontalAlignment="Left" Margin="130,594,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="pon1" HorizontalAlignment="Left" Height="24" Margin="438,155,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="pon2" HorizontalAlignment="Left" Height="24" Margin="746,155,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="uto1" HorizontalAlignment="Left" Height="24" Margin="438,209,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="uto2" HorizontalAlignment="Left" Height="24" Margin="746,209,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="sre1" HorizontalAlignment="Left" Height="24" Margin="438,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="sre2" HorizontalAlignment="Left" Height="24" Margin="746,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="cet1" HorizontalAlignment="Left" Height="24" Margin="438,327,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="cet2" HorizontalAlignment="Left" Height="24" Margin="746,327,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="pet1" HorizontalAlignment="Left" Height="24" Margin="438,423,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="pet2" HorizontalAlignment="Left" Height="24" Margin="746,423,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="sub1" HorizontalAlignment="Left" Height="24" Margin="438,502,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="sub2" HorizontalAlignment="Left" Height="24" Margin="746,502,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ned1" HorizontalAlignment="Left" Height="24" Margin="438,594,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ned2" HorizontalAlignment="Left" Height="24" Margin="746,594,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="Potvrdi" HorizontalAlignment="Left" Margin="438,673,0,0" VerticalAlignment="Top" Width="192" Height="35" Click="button_Click"/>
+        <ComboBox x:Name="comboBox"  ItemsSource="{Binding Path = workingSchedulesCollection}" HorizontalAlignment="Left" Margin="622,40,0,0" VerticalAlignment="Top" Width="244" SelectionChanged="comboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Id}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </Grid>
+</Window>

@@ -13,21 +13,34 @@ namespace Service
 {
    public class WorkingScheduleService : IWorkingScheduleService
    {
-        public readonly IWorkingScheduleRepository iWorkingScheduleRepository;
-        private readonly IService<Doctor> _DoctorService;
+        public readonly IWorkingScheduleRepository _workingScheduleRepository = WorkingScheduleRepository.Instance;
 
-        private static WorkingScheduleService Instance;
-        public WorkingScheduleService GetInstance() { return null; }
+        private static WorkingScheduleService instance;
 
-        public WorkingScheduleService(IWorkingScheduleRepository repository, IService<Doctor> service)
+        public static WorkingScheduleService Instance
         {
-            iWorkingScheduleRepository = repository;
-            _DoctorService = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new WorkingScheduleService();
+                }
+                return instance;
+            }
+        }
+
+        private WorkingScheduleService()
+        {
+        }
+
+        public WorkingScheduleService(IWorkingScheduleRepository repository)
+        {
+            _workingScheduleRepository = repository;
         }
 
         public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
         {
-            var workSc = iWorkingScheduleRepository.GetWorkingSchedulebyDoctor(doctor);
+            var workSc = _workingScheduleRepository.GetWorkingSchedulebyDoctor(doctor);
             //fali red
             return workSc;
            
@@ -40,28 +53,25 @@ namespace Service
 
         public WorkingSchedule Create(WorkingSchedule obj)
         {           
-            var newWorkSc = iWorkingScheduleRepository.Save(obj);
+            var newWorkSc = _workingScheduleRepository.Save(obj);
             
             return newWorkSc;
         }
 
         public WorkingSchedule Edit(WorkingSchedule obj)
-        {        
-            iWorkingScheduleRepository.Edit(obj);
-            return obj;
+        {
+            return _workingScheduleRepository.Edit(obj);
         }
 
         public bool Delete(WorkingSchedule obj)
         {
-            iWorkingScheduleRepository.Delete(obj);
-            return true;
+            return _workingScheduleRepository.Delete(obj);
         }
 
         public List<WorkingSchedule> GetAll()
         {
-            var list = iWorkingScheduleRepository.GetAll();
-            
-            return list;
+            var workingSchedules = _workingScheduleRepository.GetAll();           
+            return workingSchedules;
         }
 
      

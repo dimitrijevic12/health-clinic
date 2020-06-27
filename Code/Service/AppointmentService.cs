@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.AppointmentService
  ***********************************************************************/
 
+using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -17,10 +18,10 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-        public Repository.IAppointmentRepository iAppointmentRepository;
-        private readonly IService<Doctor> _doctorService;
-        private readonly IService<Patient> _patientService;
-        private readonly IService<ExamOperationRoom> _roomService;
+        public Repository.IAppointmentRepository iAppointmentRepository = AppointmentRepository.Instance;
+        private readonly IService<Doctor> _doctorService = DoctorService.Instance;
+        private readonly IService<Patient> _patientService = PatientService.Instance;
+        private readonly IService<ExamOperationRoom> _roomService = ExamOperationRoomService.Instance;
 
         private static AppointmentService instance;
 

@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.SystemUsers;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,31 @@ namespace Repository
 {
    public class WorkingScheduleRepository : IWorkingScheduleRepository
    {
-        private String Path;
-        private static WorkingScheduleRepository Instance;
+        private static WorkingScheduleRepository instance = null;
+        private const string WORKINGSHCEDULE_FILE = "../../Resources/Data/workingSchedules.csv";
+        private String _path = WORKINGSHCEDULE_FILE;
+        private readonly ICSVStream<WorkingSchedule> _stream = new CSVStream<WorkingSchedule>(WORKINGSHCEDULE_FILE, new WorkingScheduleCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private readonly ICSVStream<WorkingSchedule> _stream;
-        private readonly iSequencer<long> _sequencer;
-        public WorkingScheduleRepository GetInstance() { return null; }
+        public static WorkingScheduleRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new WorkingScheduleRepository();
+                }
+                return instance;
+            }
+        }
+
+        private WorkingScheduleRepository()
+        {
+        }
 
         public WorkingScheduleRepository(string path, ICSVStream<WorkingSchedule> stream, iSequencer<long> sequencer)
         {
-            Path = path;
+            _path = path;
             _stream = stream;
             _sequencer = sequencer;
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
@@ -91,6 +107,12 @@ namespace Repository
         public List<WorkingSchedule> GetWorkingSchedulebyDoctor(Doctor doctor)
         {
             throw new NotImplementedException();
+        }
+
+        public WorkingSchedule GetWorkingShceduleById(long id)
+        {
+            var workingSchedukes = _stream.ReadAll().ToList();
+            return workingSchedukes[workingSchedukes.FindIndex(apt => apt.Id == id)];
         }
 
       

@@ -139,18 +139,7 @@ namespace health_clinicClassDiagram.view
                 c1 = 1;
             }
             //smena
-            if (doctor.Smena == TypeOfWorkingSchedule.PRVA)
-            {
-                c2 = 0;
-            }
-            else if (doctor.Smena == TypeOfWorkingSchedule.DRUGA)
-            {
-                c2 = 1;
-            }
-            else
-            {
-                c2 = 2;
-            }
+           
             //spec
             if (doctor.Spec == Specialization.CARDIOLOGY)
             {
@@ -249,7 +238,7 @@ namespace health_clinicClassDiagram.view
 
         private void pretragaLekari_KeyUp(object sender, KeyEventArgs e)
         {
-            var filter = doctors.Where(Doctor => Doctor.Name.Contains(pretragaLekari.Text) || Doctor.Surname.Contains(pretragaLekari.Text) || Doctor.IdDoctor.ToString().Contains(pretragaLekari.Text) || Doctor.Smena.ToString().Contains(pretragaLekari.Text) || Doctor.Gender.ToString().Contains(pretragaLekari.Text) || Doctor.Spec.ToString().Contains(pretragaLekari.Text) || Doctor.Sur.ToString().Contains(pretragaLekari.Text));
+            var filter = doctors.Where(Doctor => Doctor.Name.Contains(pretragaLekari.Text) || Doctor.Surname.Contains(pretragaLekari.Text) || Doctor.IdDoctor.ToString().Contains(pretragaLekari.Text) || Doctor.Gender.ToString().Contains(pretragaLekari.Text) || Doctor.Spec.ToString().Contains(pretragaLekari.Text) || Doctor.Sur.ToString().Contains(pretragaLekari.Text));
             dataGridLekari.ItemsSource = filter;
         }
     }

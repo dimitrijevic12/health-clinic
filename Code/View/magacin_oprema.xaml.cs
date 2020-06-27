@@ -61,8 +61,8 @@ namespace health_clinicClassDiagram.view
 
         private void Button_detaljno(object sender, RoutedEventArgs e)
         {
-            var s = new odabrana_oprema();
-            s.Show();
+            /*var s = new odabrana_oprema();
+            s.Show();*/
            
         }
 

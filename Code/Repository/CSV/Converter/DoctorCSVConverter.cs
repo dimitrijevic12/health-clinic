@@ -1,5 +1,6 @@
 ﻿using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
+using Repository;
 using Repository.Csv.Converter;
 using System;
 using System.Collections.Generic;
@@ -35,20 +36,52 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
 
-            String smenaString = tokens[5];
+            List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
 
-            TypeOfWorkingSchedule smena = (TypeOfWorkingSchedule)Enum.Parse(typeof(TypeOfWorkingSchedule), smenaString, true);
+            if (tokens[5] != "")
+            {
+                String workingString = tokens[5];
 
-           
+                String[] oneString = workingString.Split('|');
+
+                for (int j = 0; j < oneString.Length; j++)
+                {
+                    workingSchedules.Add(WorkingScheduleRepository.Instance.GetWorkingShceduleById(long.Parse(oneString[j])));
+                }
+            }
+
+
             DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth ,smena, tokens[6], tokens[7]/*, specialization, hirurg*/);
+            Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth , workingSchedules, tokens[6], tokens[7]/*, specialization, hirurg*/);
 
             return doctor;
         }
 
         public string ConvertEntityToCSVFormat(Doctor entity)
         {
+
+            String schedules = "";
+
+            if (entity.WorkingSchedules.Count != 0)
+            {
+                WorkingSchedule last = entity.WorkingSchedules.Last();
+                foreach (WorkingSchedule schedule in entity.WorkingSchedules)
+                {
+                    if (schedule != null)
+                    {
+                        if (schedule != last)
+                        {
+                            schedules += schedule.Id + "|";
+                        }
+                        else
+                        {
+                            schedules += schedule.Id;
+                        }
+                    }
+                }
+            }
+
             return string.Join(_delimiter,
              entity.Id,
              entity.Name,
@@ -56,7 +89,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
              entity.Gender,
              /*DateTime.Now,*/
              entity.DateOfBirth.ToString("dd/MM/yyyy"),
-             entity.Smena,
+             schedules,
              entity.Username,
              entity.Password
              //entity.Spec,

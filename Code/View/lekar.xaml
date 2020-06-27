@@ -45,7 +45,7 @@
                 <DataGridTextColumn Width="*" Header="Prezime" Binding="{Binding SurnameDoctor}"/>
                 <DataGridTextColumn Width="50" Header="Pol" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Width="*" Header="Datum rodjenja" Binding="{Binding DateOfBirth}"/>
-                <DataGridTextColumn Width="*" Header="Smena" Binding="{Binding Smena}"/>
+                
                 
 
 

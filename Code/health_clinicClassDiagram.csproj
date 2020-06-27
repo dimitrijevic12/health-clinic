@@ -259,6 +259,7 @@
     <Compile Include="Controller\UserController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\WorkingDaysController.cs" />
     <Compile Include="Controller\WorkingScheduleController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -471,6 +472,7 @@
     <Compile Include="Repository\Csv\Converter\UserCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\WorkingDaysCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\WorkingScheduleCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -567,6 +569,7 @@
     <Compile Include="Repository\UserRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\WorkingDaysRepository.cs" />
     <Compile Include="Repository\WorkingScheduleRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -674,6 +677,7 @@
     <Compile Include="Service\UserService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\WorkingDaysService.cs" />
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -753,6 +757,9 @@
     </Compile>
     <Compile Include="View\Lang\Lang.Designer.cs" />
     <Compile Include="View\Lang\Lang.en.Designer.cs" />
+    <Compile Include="View\promeni_vreme.xaml.cs">
+      <DependentUpon>promeni_vreme.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\renoviranje.xaml.cs">
       <DependentUpon>renoviranje.xaml</DependentUpon>
     </Compile>
@@ -764,6 +771,12 @@
     </Compile>
     <Compile Include="View\uredi_lekara.xaml.cs">
       <DependentUpon>uredi_lekara.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\dani_rad.xaml.cs">
+      <DependentUpon>dani_rad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\uredi_vreme.xaml.cs">
+      <DependentUpon>uredi_vreme.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -883,6 +896,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\promeni_vreme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\renoviranje.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -898,6 +915,14 @@
     <Page Include="View\uredi_lekara.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\dani_rad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\uredi_vreme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

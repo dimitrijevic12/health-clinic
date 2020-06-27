@@ -3,7 +3,9 @@ using health_clinicClassDiagram.Controller;
 using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace health_clinicClassDiagram.view
 {
@@ -24,6 +26,7 @@ namespace health_clinicClassDiagram.view
        // private string _datum;
         private Specialization _specijalnost;
         private SurgicalSpecialty _hirurg;
+        private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
         Doctor doktorZaRad = null;
         public uredi_lekara(Doctor doctor, int c1, int c2, int c3, int c4)
         {
@@ -43,7 +46,8 @@ namespace health_clinicClassDiagram.view
             DatumRodjenja.Text = doctor.DateOfBirth.ToString();
             //RadnoVreme.Text = doctor.;
             PolCombo.SelectedIndex = c1;
-            ComboRadnoVreme.SelectedIndex = c2;
+            //ComboRadnoVreme.SelectedIndex = c2;
+            workingSchedules = doctor.WorkingSchedules;
            // SpecijalistaCombo.SelectedIndex = c3;
            // HirurgCombo.SelectedIndex = c4;
 
@@ -60,7 +64,7 @@ namespace health_clinicClassDiagram.view
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
 
-            if ((IdLekara.Text == "") || (Ime.Text == "") || (Prezime.Text == "") || (DatumRodjenja.Text == "") || (PolCombo.SelectedIndex == -1) || /*(SpecijalistaCombo.SelectedIndex == -1) || (HirurgCombo.SelectedIndex == -1) ||*/ (ComboRadnoVreme.SelectedIndex == -1))
+            if ((IdLekara.Text == "") || (Ime.Text == "") || (Prezime.Text == "") || (DatumRodjenja.Text == "") || (PolCombo.SelectedIndex == -1)  /*(SpecijalistaCombo.SelectedIndex == -1) || (HirurgCombo.SelectedIndex == -1) ||*/)
             {
                 string message = "Sva polja moraju biti popunjena!";
                 string title = "Greška";
@@ -131,7 +135,7 @@ namespace health_clinicClassDiagram.view
                     _hirurg = SurgicalSpecialty.NOT_SURGEON;
                 }*/
 
-                int combo4 = ComboRadnoVreme.SelectedIndex;
+               /* int combo4 = ComboRadnoVreme.SelectedIndex;
                 if (combo4 == 0)
                 {
                     smena = TypeOfWorkingSchedule.PRVA;
@@ -143,7 +147,7 @@ namespace health_clinicClassDiagram.view
                 else
                 {
                     smena = TypeOfWorkingSchedule.TRECA;
-                }
+                }*/
 
                 _id = long.Parse(ID);
                 _ime = IME;
@@ -164,11 +168,82 @@ namespace health_clinicClassDiagram.view
             }
         }
 
+        
+        
+
         private Doctor EditDoctor()
         {
-            Doctor doctor1 = new Doctor(_id, _ime, _prezime, _gender, _datum, smena, _username, _password/*, _specijalnost, _hirurg*/);
+            Doctor doctor1 = new Doctor(_id, _ime, _prezime, _gender, _datum, workingSchedules, _username, _password/*, _specijalnost, _hirurg*/);
 
             return _doctorController.Edit(doctor1);
+        }
+
+        private void Button_dodajRV(object sender, RoutedEventArgs e)
+        {
+
+            String ID = IdLekara.Text;
+            String IME = Ime.Text;
+            String PREZIME = Prezime.Text;
+
+            // String JMBG = Jmbg.Text;
+            String DATUMRODJ = DatumRodjenja.Text;
+            //String RADNOVREME = RadnoVreme.Text;
+            String SPECIJALISTA = "DA";
+
+            int combo1 = PolCombo.SelectedIndex;
+
+            if (combo1 == 0)
+            {
+                _gender = Gender.MALE;
+            }
+            else
+            {
+                _gender = Gender.FEMALE;
+            }
+
+            _id = long.Parse(ID);
+            _ime = IME;
+            _prezime = PREZIME;
+            _username = username.Text;
+            _password = password.Text;
+            _datum = (DateTime)DatumRodjenja.SelectedDate;
+            var s = new uredi_vreme(_id, _ime, _prezime, _gender, _datum, workingSchedules, _username, _password);
+            s.Show();
+            this.Close();
+        }
+
+        private void Button_urediRV(object sender, RoutedEventArgs e)
+        {
+            String ID = IdLekara.Text;
+            String IME = Ime.Text;
+            String PREZIME = Prezime.Text;
+
+            // String JMBG = Jmbg.Text;
+            String DATUMRODJ = DatumRodjenja.Text;
+            //String RADNOVREME = RadnoVreme.Text;
+            String SPECIJALISTA = "DA";
+
+            int combo1 = PolCombo.SelectedIndex;
+
+            if (combo1 == 0)
+            {
+                _gender = Gender.MALE;
+            }
+            else
+            {
+                _gender = Gender.FEMALE;
+            }
+
+            _id = long.Parse(ID);
+            _ime = IME;
+            _prezime = PREZIME;
+            _username = username.Text;
+            _password = password.Text;
+            _datum = (DateTime)DatumRodjenja.SelectedDate;
+            var s = new promeni_vreme(_id, _ime, _prezime, _gender, _datum, workingSchedules, _username, _password);
+            s.Show();
+            this.Close();
+
         }
     }
 }

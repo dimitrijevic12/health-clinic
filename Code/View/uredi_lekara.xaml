@@ -43,9 +43,7 @@
 
         <TextBlock Grid.Column="0" Grid.Row="4" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,14,63,10" Height="52" Text="{x:Static language:Lang.DatumRodjenja}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="288" Margin="0,24,28,0" Height="52" Text="{x:Static language:Lang.RadnoVreme}"/>
-
-        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52" Text="Username"/>
+        <TextBlock Grid.Column="0" Grid.Row="5" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,15,1,10" Height="52" Text="Username"/>
 
 
         <TextBox Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="4" Margin="10,0,7,0" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" Width="416" FlowDirection="RightToLeft" Name="IdLekara" IsReadOnly="True" Height="50"/>
@@ -56,17 +54,14 @@
             <ComboBoxItem Content="Ženski"/>
         </ComboBox>
         <DatePicker Grid.Column="3" Grid.Row="4" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="42" Width="416" Name="DatumRodjenja"/>
-        <ComboBox Height="42" Name="ComboRadnoVreme" Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="10,25,10,10" >
-            <ComboBoxItem Content="08:00-16:00"/>
-            <ComboBoxItem Content="16:00-00:00"/>
-            <ComboBoxItem Content="00:00-08:00"/>
-        </ComboBox>
-        <TextBlock Grid.Column="0" Grid.Row="7" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52"  Text="Sifra"/>
+        <TextBlock Grid.Column="0" Grid.Row="6" FontSize="35" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,25,0,0" Height="52"  Text="Sifra"/>
         <Button Grid.Row="9" HorizontalAlignment="Center" Width="247" Margin="10,10,67,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmeOtkazi}" Grid.ColumnSpan="3" Click="Button_otkazi" Grid.Column="4"/>
-        <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="51,10,28,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>
+        <Button Grid.Row="9" HorizontalAlignment="Center" Width="248" Margin="45,10,34,10" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="{x:Static language:Lang.DugmePotvrdi}" Grid.ColumnSpan="3" Click="Button_potvrdi"/>
 
-        <TextBox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="4" Margin="10,0" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="username" Height="50"/>
-        <TextBox Grid.Column="3" Grid.Row="7" Grid.ColumnSpan="4" Margin="10,0" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="password" Height="50"/>
+        <TextBox Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="4" Margin="11,0,9,10" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="username" Height="50"/>
+        <TextBox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="4" Margin="10,0,10,2" FontSize="30" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" FlowDirection="RightToLeft" Name="password" Height="50"/>
+        <Button Grid.Row="8" HorizontalAlignment="Center" Width="248" Margin="45,0,34,21" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="Dodaj radno vreme" Grid.ColumnSpan="3" Click="Button_dodajRV"/>
+        <Button Grid.Row="8" HorizontalAlignment="Center" Width="248" Margin="9,0,67,21" FontSize="25" Style="{StaticResource RoundButton}" OpacityMask="Black" Content="Uredi radno vreme" Grid.ColumnSpan="3" Click="Button_urediRV" Grid.Column="4"/>
 
 
 

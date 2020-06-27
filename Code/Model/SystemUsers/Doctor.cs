@@ -6,21 +6,23 @@
 
 using health_clinicClassDiagram.Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Web.UI.WebControls;
+using System.Windows.Documents;
 
 namespace Model.SystemUsers
 {
    public class Doctor : RegisteredUser
    {
 
-      private WorkingSchedule[] workingSchedule;
+      private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
       private Gender gender;
          private DateTime dateOfBirth;
         //private string dateOfBirth;
       private Specialization spec;
       private SurgicalSpecialty sur;
-        private TypeOfWorkingSchedule smena;
 
 
 
@@ -64,10 +66,24 @@ namespace Model.SystemUsers
             get { return sur; }   // get method
             set { sur = value; }
         }
-        public TypeOfWorkingSchedule Smena
+        public List<WorkingSchedule> WorkingSchedules
         {
-            get { return smena; }   // get method
-            set { smena = value; }
+            get { return workingSchedules; }   // get method
+            set { workingSchedules = value; }
+        }
+
+        public String IdWorkingSchedules
+        {
+            get
+            {
+                String ids = "";
+                foreach (WorkingSchedule schedule in WorkingSchedules)
+                {
+                    ids += schedule.Id.ToString();
+                }
+
+                return ids;
+            }
         }
 
         public String NameAndSurname
@@ -77,7 +93,7 @@ namespace Model.SystemUsers
 
         public Doctor() { }
 
-        public Doctor(long jmbg, String name, String surname, Gender gender, /*String dateOfBirth*/ DateTime dateOfBirth, TypeOfWorkingSchedule sm, String uname, String pass/*, Specialization specijalista, SurgicalSpecialty surg*/) 
+        public Doctor(long jmbg, String name, String surname, Gender gender, /*String dateOfBirth*/ DateTime dateOfBirth, WorkingSchedule workingSchedule, String uname, String pass/*, Specialization specijalista, SurgicalSpecialty surg*/) 
 
         {
 
@@ -87,13 +103,33 @@ namespace Model.SystemUsers
             this.Surname = surname;            
             this.gender = gender;
             this.dateOfBirth = dateOfBirth;
-            this.smena = sm;
+            this.WorkingSchedules.Add(workingSchedule);
             this.Username = uname;
             this.Password = pass;
            // workingSchedule = workSc;
            // Spec = specijalista;
            // Sur = surg;
             
+
+        }
+
+        public Doctor(long jmbg, String name, String surname, Gender gender, /*String dateOfBirth*/ DateTime dateOfBirth, List<WorkingSchedule> workingSchedules, String uname, String pass/*, Specialization specijalista, SurgicalSpecialty surg*/)
+
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.WorkingSchedules = workingSchedules;
+            this.Username = uname;
+            this.Password = pass;
+            // workingSchedule = workSc;
+            // Spec = specijalista;
+            // Sur = surg;
+
 
         }
 

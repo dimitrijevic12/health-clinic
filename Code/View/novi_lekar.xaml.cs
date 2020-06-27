@@ -28,7 +28,7 @@ namespace health_clinicClassDiagram.view
        // private string _datum;
         private Specialization _specijalnost;
         private SurgicalSpecialty _hirurg;
-        private TypeOfWorkingSchedule smena;
+        private WorkingSchedule _workingSchedule;
 
         public novi_lekar()
         {
@@ -54,7 +54,7 @@ namespace health_clinicClassDiagram.view
 
         private void Button_potvrdi(object sender, RoutedEventArgs e)
         {
-            if ((IdLekara.Text == "") || (Ime.Text == "") || (Prezime.Text == "") || (DatumRodjenja.Text == "") || (PolCombo.SelectedIndex == -1) || (SpecijalistaCombo.SelectedIndex == -1) || (HirurgCombo.SelectedIndex == -1) || (ComboRadnoVreme.SelectedIndex == -1))
+            if ((IdLekara.Text == "") || (Ime.Text == "") || (Prezime.Text == "") || (DatumRodjenja.Text == "") || (PolCombo.SelectedIndex == -1) || (SpecijalistaCombo.SelectedIndex == -1) || (HirurgCombo.SelectedIndex == -1))
             {
                 string message = "Sva polja moraju biti popunjena!";
                 string title = "Greška";
@@ -131,21 +131,6 @@ namespace health_clinicClassDiagram.view
                     _hirurg = SurgicalSpecialty.NOT_SURGEON;
                 }
 
-                int combo4 = ComboRadnoVreme.SelectedIndex;
-                if (combo4 == 0)
-                {
-                    smena = TypeOfWorkingSchedule.PRVA;
-                }
-                else if (combo4 == 1)
-                {
-                    smena = TypeOfWorkingSchedule.DRUGA;
-                }
-                else
-                {
-                    smena = TypeOfWorkingSchedule.TRECA;
-                }
-
-
 
                 _id = long.Parse(ID);
                 _ime = IME;
@@ -154,7 +139,11 @@ namespace health_clinicClassDiagram.view
                 /*_datum = DateTime.Now;*/
                 _datum = (DateTime)DatumRodjenja.SelectedDate;
 
-                Doctor doctor = CreateDoctor();
+                odabrana_oprema odabrana = new odabrana_oprema(_id, _ime, _prezime, _gender, _datum, _username, _password, _specijalnost, _hirurg);
+                odabrana.Show();
+                this.Close();
+
+               /* Doctor doctor = CreateDoctor();
 
 
                 //lekari L = new lekari { IdLekara = ID, Ime = IME, Prezime = PREZIME, Pol = POL, Jmbg = JMBG, DatumRodjenja = DATUMRODJ, RadnoVreme = RADNOVREM, Specijalista = SPECIJALISTA};
@@ -176,7 +165,7 @@ namespace health_clinicClassDiagram.view
                 }
 
                 var s = new lekar();
-                s.Show();
+                s.Show();*/
                 this.Close();
             }
 
@@ -184,7 +173,7 @@ namespace health_clinicClassDiagram.view
 
         private Doctor CreateDoctor()
         {
-            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, smena, _username,_password/*, _specijalnost, _hirurg*/);
+            Doctor doctor = new Doctor(_id, _ime, _prezime, _gender, _datum, _workingSchedule, _username,_password/*, _specijalnost, _hirurg*/);
 
             return _doctorController.Create(doctor);
         }
@@ -198,5 +187,6 @@ namespace health_clinicClassDiagram.view
         {
 
         }
+
     }
 }

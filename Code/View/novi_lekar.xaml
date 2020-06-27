@@ -43,8 +43,6 @@
 
         <TextBlock Grid.Column="0" Grid.Row="3" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="254" Margin="0,9,63,16" Height="52" Text="{x:Static language:Lang.DatumRodjenja}"/>
 
-        <TextBlock Grid.Column="0" Grid.Row="4" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="3" Width="297" Margin="0,0,20,25" Height="52" Text="{x:Static language:Lang.RadnoVreme}"/>
-
         <TextBlock Grid.Column="0" Grid.Row="4" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,57,0,45" Height="52"  Text="{x:Static language:Lang.Specijalista}" Grid.RowSpan="2"/>
 
         <TextBlock Grid.Column="0" Grid.Row="5" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2" Width="207" Margin="0,38,0,64" Height="52"  Text="{x:Static language:Lang.hirurg}" Grid.RowSpan="2"/>
@@ -63,11 +61,6 @@
         </ComboBox>
 
         <DatePicker Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="4" Height="42" Width="416" Name="DatumRodjenja"/>
-        <ComboBox Name="ComboRadnoVreme" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="3,0,16.714,45" >
-            <ComboBoxItem Content="08:00-16:00"/>
-            <ComboBoxItem Content="16:00-00:00"/>
-            <ComboBoxItem Content="00:00-08:00"/>
-        </ComboBox>
         <ComboBox Name="SpecijalistaCombo" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="4" Margin="3,57,16.714,62" Grid.RowSpan="2">
             <ComboBoxItem Content="CARDIOLOGY"/>
             <ComboBoxItem Content="PULMOLOGY"/>
