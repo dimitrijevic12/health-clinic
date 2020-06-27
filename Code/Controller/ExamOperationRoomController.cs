@@ -76,7 +76,7 @@ namespace health_clinicClassDiagram.Controller
 
         public ExamOperationRoom findExamRoom(long id)
         {
-            throw new NotImplementedException();
+            return _service.findExamRoom(id);
         }
     }
 
