@@ -115,7 +115,10 @@ namespace Service
             return TreatmentRepository.Instance.GetAll();
         }
 
-        
-   
-   }
+
+        public Treatment GetTreatment(Treatment obj)
+        {
+            return TreatmentRepository.Instance.GetTreatment(obj.Id);
+        }
+    }
 }

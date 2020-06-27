@@ -102,6 +102,11 @@ namespace health_clinicClassDiagram
 //            TreatmentController.Instance.Create(patient, treatment);
             TreatmentRepository.Instance.Save(treatment);
 
+            Treatment treatment2 = new Treatment(prescription, new ScheduledSurgery(), diagnosisAndReview, referralToHospitalTreatment, startDate, endDate, 23, doctor, specialistAppointment);
+            //            TreatmentController.Instance.Create(patient, treatment);
+            TreatmentRepository.Instance.Save(treatment2);
+            Console.WriteLine(TreatmentController.Instance.GetTreatment(treatment2).Prescription.Drugs[0].Name);
+
             Treatment treatment1 = TreatmentRepository.Instance.GetTreatment(23);
             foreach (Drug oneDrug in treatment1.Prescription.Drugs)
             {
