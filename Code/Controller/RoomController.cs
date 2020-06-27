@@ -14,17 +14,24 @@ namespace Controller
 {
    public class RoomController : IRoomController
    {
-      
-        private readonly Service.IRoomService _service;
 
-        private static RoomController Instance;
+        private readonly IRoomService _service = RoomService.Instance;
 
-        public RoomController GetInstance() { return null; }
+        private static RoomController instance;
 
-        public RoomController(IRoomService service)
+        public static RoomController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomController();
+                }
+                return instance;
+            }
         }
+
+        private RoomController() { }
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();
@@ -65,8 +72,16 @@ namespace Controller
         {
             return _service.Edit(obj);
         }
+        public Room IncreaseQuantity(Room r, Equipment eq)
+        {
+            return _service.IncreaseQuantity(r, eq);
+        }
 
-     
-   
-   }
+        public Room DecreaseQuantity(Room r, Equipment eq)
+        {
+            return _service.DecreaseQuantity(r, eq);
+        }
+
+
+    }
 }

@@ -14,6 +14,11 @@ namespace Service
    {
         private IDrugService DrugServiceReference;
 
+        public void addDrug(string naziv, int quant)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Drug> GetAllDrugs()
         {
             throw new NotImplementedException();

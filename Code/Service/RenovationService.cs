@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Repository;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +13,26 @@ namespace Service
 {
    public class RenovationService : IRenovationService
    {
-      public RenovationService GetInstance() { return null; }
+        private readonly IRenovationRepository iRenovationRepository = RenovationRepository.Instance;
+
+
+        private static RenovationService instance = null;
+
+        public static RenovationService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RenovationService();
+                }
+                return instance;
+            }
+        }
+
+        private RenovationService()
+        {
+        }
 
         public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
         {
@@ -41,27 +61,28 @@ namespace Service
 
         public Renovation Create(Renovation obj)
         {
-            throw new NotImplementedException();
+            var renovation = iRenovationRepository.Save(obj);
+
+            return renovation;
         }
 
         public Renovation Edit(Renovation obj)
         {
-            throw new NotImplementedException();
+            var renovation = iRenovationRepository.Edit(obj);
+            return renovation;
         }
 
         public bool Delete(Renovation obj)
         {
-            throw new NotImplementedException();
+            bool Correct = iRenovationRepository.Delete(obj);
+            return Correct;
         }
 
         public List<Renovation> GetAll()
         {
-            throw new NotImplementedException();
+            return iRenovationRepository.GetAll();
         }
 
-        public Repository.IRenovationRepository iRenovationRepository;
-   
-      private static RenovationService Instance;
-   
-   }
+
+    }
 }

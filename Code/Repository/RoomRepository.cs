@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Rooms;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,28 @@ namespace Repository
 {
    public class RoomRepository : IRoomRepository
    {
-        private String _path;
-        private static RoomRepository Instance;
+        private readonly ICSVStream<Room> _stream = new CSVStream<Room>("../../Resources/Data/rooms.csv", new RoomCSVConverter(","));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private readonly ICSVStream<Room> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private String _path = "../../Resources/Data/rooms.csv";
+        private static RoomRepository instance;
 
-        public RoomRepository GetInstance() { return null; }
+        public static RoomRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomRepository();
+                }
+                return instance;
+            }
+        }
+
+
+        private RoomRepository()
+        {
+        }
 
         public RoomRepository(string path, CSVStream<Room> stream, iSequencer<long> sequencer)
         {
@@ -87,7 +103,7 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-       
-   
-   }
+
+
+    }
 }

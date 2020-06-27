@@ -18,5 +18,8 @@ namespace health_clinicClassDiagram.Service
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
         Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
         RehabilitationRoom getRoom(RehabilitationRoom room);
+        RehabilitationRoom findRehabRoom(long id);
+        Room IncreaseQuantity(Room r, Equipment eq);
+        Room DecreaseQuantity(Room r, Equipment eq);
     }
 }

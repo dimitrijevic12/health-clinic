@@ -15,5 +15,6 @@ namespace Service
         List<Drug> GetAllDrugs();
         List<Drug> GetUnvalidatedDrugs();
         List<Drug> GetValidatedDrugs();
+        void addDrug(String naziv, int quant);
     }
 }
