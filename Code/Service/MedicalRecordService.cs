@@ -52,17 +52,11 @@ namespace Service
             return MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(medicalRecord, treatment);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            var record = _medicalRecordRepository.GetMedRecByPatient(patient);
-            //fali red
+            var record = _medicalRecordRepository.GetMedicalRecordByPatient(patient);
             return record;
 
-        }
-
-        public MedicalRecord GetMedRecByTreatment(Treatment treatment)
-        {
-            throw new NotImplementedException();
         }
 
         public MedicalRecord Create(MedicalRecord obj)
@@ -72,7 +66,6 @@ namespace Service
             var newMedicalRecord = _medicalRecordRepository.Save(obj);
             newMedicalRecord.Patient = patient;
             return newMedicalRecord;
-            //fali treatment ali to vrv u add treatment
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
@@ -91,16 +84,15 @@ namespace Service
 
         public List<MedicalRecord> GetAll()
         {
-            var patients = _patientService.GetAll();
             var records = _medicalRecordRepository.GetAll();
             return records;
         }
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
-            return _medicalRecordRepository.getMedRecById(id);
+            return _medicalRecordRepository.GetMedicalRecordById(id);
         }
 
-        public List<MedicalRecord> getAllAvailablePatientsForRehabilitation()
+        public List<MedicalRecord> GetAllAvailablePatientsForRehabilitation()
         {
             var records = _medicalRecordRepository.GetAll();
             var rehabilitationRooms = RehabilitationRoomRepository.Instance.GetAll();

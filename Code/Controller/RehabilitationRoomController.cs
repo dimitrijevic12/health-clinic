@@ -55,35 +55,20 @@ namespace health_clinicClassDiagram.Controller
             return _service.Edit(obj);
         }
 
-        public int GenerateReport(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<RehabilitationRoom> GetAll()
         {
             var rooms = (List<RehabilitationRoom>)_service.GetAll();
             return rooms;
         }
 
-        public List<Patient> GetAllPatientsByRoom()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
         public RehabilitationRoom getRoom(RehabilitationRoom room)
         {
-            return _service.getRoom(room);
+            return _service.GetRoom(room);
         }
 
         public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
         {
-            return _service.releasePatient(record, room);
+            return _service.ReleasePatient(record, room);
         }
 
         public Room IncreaseQuantity(Room r, Equipment eq)

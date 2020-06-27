@@ -53,7 +53,7 @@ namespace Repository
             return appointments.Count() == 0 ? 0 : appointments.Max(apt => apt.Id);
         }
 
-        public List<Appointment> getAppointmentsByDate(DateTime startDate, DateTime endDate)
+        public List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate)
         {
             List<Appointment> appointments = new List<Appointment>();
             foreach(Appointment appointment in GetAll())
@@ -66,11 +66,11 @@ namespace Repository
             return appointments;
         }
 
-        public List<Appointment> getAppointmentsByDayAndDoctor(DateTime day, Doctor doctor)
+        public List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor)
         {
             List<Appointment> appointments = new List<Appointment>();
             DateTime endOfDay = day.AddDays(1);
-            foreach (Appointment appointment in getAppointmentsByDate(day, endOfDay))
+            foreach (Appointment appointment in GetAppointmentsByDate(day, endOfDay))
             {
                 if(appointment.Doctor.Id == doctor.Id)
                 {
@@ -81,10 +81,10 @@ namespace Repository
             return appointments;
         }
 
-        public List<Appointment> getAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room)
+        public List<Appointment> GetAppointmentsByDayAndDoctorAndRoom(DateTime day, Doctor doctor, ExamOperationRoom room)
         {
             List<Appointment> appointments = new List<Appointment>();
-            foreach (Appointment appointment in getAppointmentsByDayAndDoctor(day, doctor))
+            foreach (Appointment appointment in GetAppointmentsByDayAndDoctor(day, doctor))
             {
                 if (appointment.ExamOperationRoom.Id == room.Id)
                 {
@@ -94,11 +94,11 @@ namespace Repository
             return appointments;
         }
 
-        public List<Appointment> getAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
+        public List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
         {
             List<Appointment> appointments = new List<Appointment>();
             DateTime endDate = day.AddDays(1);
-            foreach (Appointment appointment in getAppointmentsByDate(day, endDate))
+            foreach (Appointment appointment in GetAppointmentsByDate(day, endDate))
             {
                 if (appointment.Patient.Id == patient.Id || appointment.Doctor.Id == doctor.Id || appointment.ExamOperationRoom.Id == room.Id)
                 {
@@ -106,32 +106,7 @@ namespace Repository
                 }
             }
             return appointments;
-        }
-
-        public Appointment GetAppointment(Appointment appointment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<DateTime> GetDatesForAppointmentsInRoom(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TermDTO> GetNewTermsForDoctor(Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo)
-        {
-            throw new NotImplementedException();
-        }
+        }       
 
         public Appointment Save(Appointment obj)
         {
@@ -170,17 +145,6 @@ namespace Repository
         {
             return _stream.ReadAll();
         }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
 
 
     }

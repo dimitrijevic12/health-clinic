@@ -73,22 +73,12 @@ namespace health_clinicClassDiagram.Service
             return records;
         }
 
-        public List<Patient> GetAllPatientsByRoom(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public RehabilitationRoom getRoom(RehabilitationRoom room)
+        public RehabilitationRoom GetRoom(RehabilitationRoom room)
         {
             return _roomRepository.GetRoom(room);
         }
 
-        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        public bool ReleasePatient(MedicalRecord record, RehabilitationRoom room)
         {
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
             foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)

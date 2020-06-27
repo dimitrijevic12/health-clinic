@@ -53,7 +53,7 @@ namespace Repository
             return records.Count() == 0 ? 0 : records.Max(apt => apt.id);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
             List<MedicalRecord> medicalRecords = GetAll();
             foreach(MedicalRecord medicalRecord in medicalRecords)
@@ -66,7 +66,7 @@ namespace Repository
             return null;
         }
 
-        public MedicalRecord GetMedRecByTreatmentId(long id)
+        public MedicalRecord GetMedicalRecordByTreatmentId(long id)
         {
             Treatment treatmentToChange;
             foreach(MedicalRecord medicalRecord in GetAll())
@@ -155,17 +155,7 @@ namespace Repository
             return records;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
             var records = _stream.ReadAll().ToList();
             return records[records.FindIndex(apt => apt.id == id)];

@@ -43,7 +43,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
                 for (int j = 0; j < oneId.Length; j++)
                 {
-                    records.Add(recordRepository.getMedRecById(long.Parse(oneId[j])));
+                    records.Add(recordRepository.GetMedicalRecordById(long.Parse(oneId[j])));
                 }
             }
             int i = 4;

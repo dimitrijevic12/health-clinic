@@ -20,7 +20,7 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-        public Repository.IAppointmentRepository iAppointmentRepository = AppointmentRepository.Instance;
+        public Repository.IAppointmentRepository _appointmentRepository = AppointmentRepository.Instance;
         private readonly IService<Doctor> _doctorService = DoctorService.Instance;
         private readonly IService<Patient> _patientService = PatientService.Instance;
         private readonly IService<ExamOperationRoom> _roomService = ExamOperationRoomService.Instance;
@@ -45,7 +45,7 @@ namespace Service
 
         public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
         {
-            iAppointmentRepository = repository;
+            _appointmentRepository = repository;
             _doctorService = doctorService;
             _patientService = patientService;
             _roomService = roomService;
@@ -84,19 +84,19 @@ namespace Service
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            List<Appointment> appointments = iAppointmentRepository.GetAll();
-            List<Appointment> trazeni = new List<Appointment>();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
+            List<Appointment> wantedAppointments = new List<Appointment>();
 
             foreach (Appointment a in appointments)
             {
                 if (a.RoomId.Equals(room.Id))
                 {
-                    trazeni.Add(a);
+                    wantedAppointments.Add(a);
                 }
             }
 
 
-            return trazeni;
+            return wantedAppointments;
         }
 
         public Treatment GenerateTreatment(Appointment appointment)
@@ -134,7 +134,7 @@ namespace Service
             var doctor = _doctorService.Create(obj.Doctor);
             var patient = _patientService.Create(obj.Patient);
             var room = _roomService.Create(obj.ExamOperationRoom);
-            var appointment = iAppointmentRepository.Save(obj);
+            var appointment = _appointmentRepository.Save(obj);
             appointment.Doctor = doctor;
             appointment.Patient = patient;
             appointment.ExamOperationRoom = room;
@@ -146,7 +146,7 @@ namespace Service
             _doctorService.Edit(obj.Doctor);
             _patientService.Edit(obj.Patient);
             _roomService.Edit(obj.ExamOperationRoom);
-            iAppointmentRepository.Edit(obj);
+            _appointmentRepository.Edit(obj);
             return obj;
         }
 
@@ -155,28 +155,19 @@ namespace Service
             _doctorService.Delete(obj.Doctor);
             _patientService.Delete(obj.Patient);
             _roomService.Delete(obj.ExamOperationRoom);
-            iAppointmentRepository.Delete(obj);
+            _appointmentRepository.Delete(obj);
             return true;
         }
 
         public List<Appointment> GetAll()
         {
-            var doctors = _doctorService.GetAll();
-            var patients = _patientService.GetAll();
-            var rooms = _roomService.GetAll();
-            var appointments = iAppointmentRepository.GetAll();
-            BindAllForAppointments(appointments, doctors, patients, rooms);
+            var appointments = _appointmentRepository.GetAll();
             return appointments;
-        }
-
-        private void BindAllForAppointments(List<Appointment> appointments, List<Doctor> doctors, List<Patient> patients, List<ExamOperationRoom> rooms)
-        {
-            throw new NotImplementedException();
         }
 
         public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
-            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
             List<Appointment> wantedAppointments = new List<Appointment>();
 
             foreach (Appointment a in appointments)
@@ -192,7 +183,7 @@ namespace Service
 
         public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
         {
-            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
             List<Appointment> wantedAppointments = new List<Appointment>();
 
             foreach (Appointment a in appointments)
@@ -225,11 +216,9 @@ namespace Service
                 {
                     while (appointmentsToShow.Count < 3)
                     {
-                        int d = 0;
                         doctors.Remove(doctor);
-                        doctor = doctors[d];
+                        doctor = doctors[0];
                         appointmentsToShow = listAppointments(doctor, startDate, endDate);
-                        d++;
                     }
                 }
             }

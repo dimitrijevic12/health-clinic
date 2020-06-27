@@ -45,9 +45,9 @@ namespace Controller
             return MedicalRecordService.Instance.AddTreatment(treatment, medicalRecord);
         }
 
-        public MedicalRecord GetMedRecByPatient(Patient patient)
+        public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            var record = _service.GetMedRecByPatient(patient);
+            var record = _service.GetMedicalRecordByPatient(patient);
             return record;
         }
 
@@ -75,14 +75,14 @@ namespace Controller
             return obj;
         }
 
-        public MedicalRecord getMedRecById(long id)
+        public MedicalRecord GetMedicalRecordById(long id)
         {
-            return _service.getMedRecById(id);
+            return _service.GetMedicalRecordById(id);
         }
 
-        public List<MedicalRecord> getAllAvailablePatientsForRehabilitation()
+        public List<MedicalRecord> GetAllAvailablePatientsForRehabilitation()
         {
-            return _service.getAllAvailablePatientsForRehabilitation();
+            return _service.GetAllAvailablePatientsForRehabilitation();
         }
 
     }
