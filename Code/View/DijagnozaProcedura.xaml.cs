@@ -42,7 +42,7 @@ namespace health_clinicClassDiagram.View
             String diagnnosis = textBoxDijagnoza.Text;
             String review = textBoxProcedura.Text;
             Treatment.DiagnosisAndReview = new DiagnosisAndReview(diagnnosis, review);
-            MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedRecByPatient(Patient);
+            MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedicalRecordByPatient(Patient);
             TreatmentController.Instance.Create(Patient,Treatment);
             MedicalRecordController.Instance.AddTreatment(Treatment, medicalRecord);
             

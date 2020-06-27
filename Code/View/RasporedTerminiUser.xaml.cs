@@ -1,4 +1,5 @@
-﻿using Model.Appointment;
+﻿using Controller;
+using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
 using Repository;
@@ -38,7 +39,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = AppointmentGenerator.Instance.generateList(day);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctor(day, doctor))
+                foreach (Appointment appointment in AppointmentController.Instance.GetAppointmentsByDayAndDoctor(day, doctor))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {

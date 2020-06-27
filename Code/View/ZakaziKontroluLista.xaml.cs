@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository;
+﻿using Controller;
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.Treatment;
@@ -48,7 +49,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(day, thisAppointment.Doctor, room, thisAppointment.Patient))
+                foreach (Appointment appointment in AppointmentController.Instance.GetAppointmentsByDayAndDoctorAndRoomAndPatient(day, thisAppointment.Doctor, room, thisAppointment.Patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {
@@ -137,7 +138,7 @@ namespace health_clinicClassDiagram.View
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
             {
-                foreach (Appointment appointment in AppointmentRepository.Instance.getAppointmentsByDayAndDoctorAndRoomAndPatient(Day, Appointment.Doctor, room, Appointment.Patient))
+                foreach (Appointment appointment in AppointmentController.Instance.GetAppointmentsByDayAndDoctorAndRoomAndPatient(Day, Appointment.Doctor, room, Appointment.Patient))
                 {
                     if (blankAppointment.StartDate == appointment.StartDate)
                     {

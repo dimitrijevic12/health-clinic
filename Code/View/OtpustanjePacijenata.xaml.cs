@@ -86,7 +86,7 @@ namespace health_clinicClassDiagram.View
             }
             foreach(Patient patient in patientToRelease)
             {
-                RehabilitationRoomController.Instance.releasePatient(MedicalRecordController.Instance.GetMedRecByPatient(patient), comboBoxListaSoba.SelectedItem as RehabilitationRoom);
+                RehabilitationRoomController.Instance.releasePatient(MedicalRecordController.Instance.GetMedicalRecordByPatient(patient), comboBoxListaSoba.SelectedItem as RehabilitationRoom);
                 Patients.Remove(patient);
             }
         }

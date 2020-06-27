@@ -643,6 +643,9 @@
     <Compile Include="View\OdobravanjeLekova.xaml.cs">
       <DependentUpon>OdobravanjeLekova.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\OtpustanjePacijenata.xaml.cs">
+      <DependentUpon>OtpustanjePacijenata.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PocetnaUser.xaml.cs">
       <DependentUpon>PocetnaUser.xaml</DependentUpon>
     </Compile>
@@ -746,6 +749,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\OdobravanjeLekova.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OtpustanjePacijenata.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

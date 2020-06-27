@@ -79,7 +79,7 @@ namespace health_clinicClassDiagram.View
             RehabilitationRoomRepository.Instance.Save(rehRoom1);
             RehabilitationRoomRepository.Instance.Save(rehRoom2);
             MedicalRecordController.Instance.Create(medicalRecord2);
-            RehabilitationRoomController.Instance.AddPatient(MedicalRecordRepository.Instance.GetMedRecByPatient(patient2), rehRoom1);
+            RehabilitationRoomController.Instance.AddPatient(MedicalRecordController.Instance.GetMedicalRecordByPatient(patient2), rehRoom1);
             
             Drug d1 = new Drug(1, "Paracematol 100mg", 15);
             Drug d2 = new Drug(2, "Aerius 50mg", 5);
@@ -106,7 +106,7 @@ namespace health_clinicClassDiagram.View
             TreatmentRepository.Instance.Save(treatment2);
 
             Treatment treatmentMedRec = MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(treatment1.Id);
-            MedicalRecord medRecByTreatment = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
+            MedicalRecord medRecByTreatment = MedicalRecordRepository.Instance.GetMedicalRecordByPatient(patient);
 //            List<Treatment> medTreatments = medRecByTreatment.Treatments;
  //           Console.WriteLine(treatmentMedRec.Id + " " + treatmentMedRec.FromDate);
 

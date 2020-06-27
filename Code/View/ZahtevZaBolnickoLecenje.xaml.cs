@@ -111,7 +111,7 @@ namespace health_clinicClassDiagram.View
                 ReferralToHospitalTreatment.CauseForHospTreatment = textBoxRazlogBolnickogLecenja.Text;
                 ReferralToHospitalTreatment.Drugs = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
                 RehabilitationRoom rehabilitationRoom = dataGridSobe.SelectedItem as RehabilitationRoom;
-                MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedRecByPatient(Appointment.Patient);
+                MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedicalRecordByPatient(Appointment.Patient);
                 RehabilitationRoomController.Instance.AddPatient(medicalRecord, rehabilitationRoom);
                 int thisCount = (this.Parent as Panel).Children.IndexOf(this);
                 (this.Parent as Panel).Children.RemoveRange(5, thisCount);
@@ -125,7 +125,7 @@ namespace health_clinicClassDiagram.View
             foreach (var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
-                DoctorDrugController.Instance.lowerQuantity((Drug)row);
+                DoctorDrugController.Instance.LowerQuantity((Drug)row);
             }
         }
 

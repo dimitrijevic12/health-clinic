@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.View
         public PregledZdravstveniKartoniPacijent(Patient patient)
         {
             //            MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedRecByPatient(patient);
-            MedicalRecord  = MedicalRecordController.Instance.GetMedRecByPatient(patient);
+            MedicalRecord  = MedicalRecordController.Instance.GetMedicalRecordByPatient(patient);
             Treatments = medicalRecord.Treatments;
             Patient = patient;
             InitializeComponent();

@@ -113,7 +113,7 @@ namespace health_clinicClassDiagram.View
             foreach(var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
-                DoctorDrugController.Instance.lowerQuantity((Drug)row);
+                DoctorDrugController.Instance.LowerQuantity((Drug)row);
             }
         }
 
