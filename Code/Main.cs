@@ -11,6 +11,7 @@ using Controller;
 using health_clinicClassDiagram.Repository;
 using health_clinicClassDiagram.Model.Treatment;
 using health_clinicClassDiagram.Controller;
+using Service;
 
 namespace health_clinicClassDiagram
 {
@@ -92,7 +93,7 @@ namespace health_clinicClassDiagram
 //            SpecialistRepository.Instance.Save(specialist);
             SpecialistAppointment specialistAppointment = new SpecialistAppointment("Razlog za specijalistu", specialist);
 
-            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, "Razlog za bolnicko lecenje", drugs);
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment("Razlog za bolnicko lecenje", drugs);
 
             DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Dijagnoza", "Procedura");
 
@@ -102,7 +103,7 @@ namespace health_clinicClassDiagram
             TreatmentRepository.Instance.Save(treatment);
 
             Treatment treatment1 = TreatmentRepository.Instance.GetTreatment(23);
-            foreach (Drug oneDrug in treatment1.Prescription.Drug)
+            foreach (Drug oneDrug in treatment1.Prescription.Drugs)
             {
                 Console.WriteLine(oneDrug.Name);
             }
@@ -117,6 +118,17 @@ namespace health_clinicClassDiagram
             Console.WriteLine(treatment1.Doctor.NameAndSurname);
             Console.WriteLine(treatment1.ScheduledSurgery.Surgeon.NameAndSurname);
             Console.WriteLine(treatment1.SpecialistAppointment.Doctor.NameAndSurname);
+//            DoctorDrugService doctorDrugService = new DoctorDrugService(new DrugService());
+//            doctorDrugService.LowerQuantity(drug1);
+
+            DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+            doctorDrugController.LowerQuantity(drug1);
+
+            //            ManagerDrugService managerDrugService = new ManagerDrugService(new DrugService());
+            //            managerDrugService.AddDrug("Prozak", 15);
+
+            ManagerDrugController managerDrugController = new ManagerDrugController(new DrugController());
+            managerDrugController.AddDrug("Prozak", 22);
         }
         
 */

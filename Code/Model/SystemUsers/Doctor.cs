@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 
 namespace Model.SystemUsers
 {
@@ -14,6 +15,7 @@ namespace Model.SystemUsers
         private WorkingSchedule[] workingSchedule;
         private Gender gender;
         private DateTime dateOfBirth;
+        private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
 
         public long IdDoctor
         {
@@ -44,12 +46,32 @@ namespace Model.SystemUsers
             set { dateOfBirth = value; }
         }
 
+
+        public List<WorkingSchedule> WorkingSchedules
+        {
+            get { return workingSchedules; }   // get method
+            set { workingSchedules = value; }
+        }
+
+        public String IdWorkingSchedules
+        {
+            get
+            {
+                String ids = "";
+                foreach (WorkingSchedule schedule in WorkingSchedules)
+                {
+                    ids += schedule.Id.ToString();
+                }
+
+                return ids;
+            }
+        }
+
         public String NameAndSurname
         {
             get { return Name + " " + Surname; }
         }
 
-        public Doctor() { }
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth)
         {
 
@@ -75,6 +97,41 @@ namespace Model.SystemUsers
             // workingSchedule = workSc;
 
         }
+        public Doctor(long jmbg, String name, String surname, Gender gender,  DateTime dateOfBirth, WorkingSchedule workingSchedule, String uname, String pass)
+
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.WorkingSchedules.Add(workingSchedule);
+            this.Username = uname;
+            this.Password = pass;
+           
+
+
+        }
+
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, List<WorkingSchedule> workingSchedules, String uname, String pass)
+
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.WorkingSchedules = workingSchedules;
+            this.Username = uname;
+            this.Password = pass;
+           
+
+
+        }
 
         public Doctor(long jmbg, String name, String surname)
         {
@@ -89,6 +146,13 @@ namespace Model.SystemUsers
             this.Name = name;
             this.Surname = surname;
 
+        }
+
+        public Doctor() : base()
+        {
+            Gender = Gender.MALE;
+            DateOfBirth = DateTime.Now;
+            WorkingSchedules = new List<WorkingSchedule>();
         }
 
     }

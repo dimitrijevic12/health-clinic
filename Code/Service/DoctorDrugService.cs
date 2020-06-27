@@ -13,13 +13,8 @@ namespace Service
 {
    public class DoctorDrugService : DecoratedDrugService
     {
-        private DoctorDrugService(IDrugService decoratedDrug) : base(decoratedDrug)
+        public DoctorDrugService(IDrugService decoratedDrug) : base(decoratedDrug)
         {   
-        }
-
-        public List<Drug> GetAllDrugs()
-        {
-            return base.GetAllDrugs();
         }
 
         public Drug ValidateDrug(Drug drug)
@@ -41,6 +36,28 @@ namespace Service
             Drug drugToEdit = DrugRepository.Instance.GetDrugById(drug.Id);
             drugToEdit.Quantity++;
             return DrugRepository.Instance.Edit(drugToEdit);
+        }
+
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == false) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == true) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
         }
 
     }

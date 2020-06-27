@@ -56,6 +56,14 @@ namespace Model.Treatment
 
         public Treatment()
         {
+            Prescription = new Prescription();
+            ScheduledSurgery = new ScheduledSurgery();
+            DiagnosisAndReview = new DiagnosisAndReview();
+            ReferralToHospitalTreatment = new ReferralToHospitalTreatment();
+            FromDate = DateTime.Now;
+            EndDate = DateTime.Now;
+            Id = 0;
+            Doctor = new Doctor();
         }
 
         public Treatment(Prescription prescription, ScheduledSurgery scheduledSurgery, DiagnosisAndReview diagnosisAndReview, ReferralToHospitalTreatment referralToHospitalTreatment, DateTime fromDate, DateTime endDate, long id, Doctor doctor, SpecialistAppointment specialistAppointment) : this(prescription, scheduledSurgery, diagnosisAndReview, referralToHospitalTreatment, fromDate, endDate, id, doctor)

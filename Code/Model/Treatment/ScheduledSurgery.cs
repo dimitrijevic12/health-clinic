@@ -32,6 +32,10 @@ namespace Model.Treatment
 
         public ScheduledSurgery()
         {
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
+            CauseForOperation = "";
+            Surgeon = new Surgeon();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Model.Rooms
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
-            tip = TypeOfRoom.REHABILITATION;
+            TypeOfRoom = TypeOfRoom.REHABILITATION;
             Equipments = new List<Equipment>();
         }
 
@@ -34,7 +34,7 @@ namespace Model.Rooms
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
-            tip = TypeOfRoom.REHABILITATION;
+            TypeOfRoom = TypeOfRoom.REHABILITATION;
             Equipments = equipments;
         }
 
@@ -60,11 +60,6 @@ namespace Model.Rooms
         {
             get { return Id; }   // get method
             set { Id = value; }
-        }
-        public TypeOfRoom tip
-        {
-            get { return tipSobe; }
-            set { tipSobe = value; }
         }
 
     }

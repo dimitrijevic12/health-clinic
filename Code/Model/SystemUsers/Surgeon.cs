@@ -27,6 +27,9 @@ namespace Model.SystemUsers
 
         public Surgeon()
         {
+            Name = "";
+            Surname = "";
+            SurgicalSpecialty = SurgicalSpecialty.GENERAL;
         }
 
         public SurgicalSpecialty SurgicalSpecialty { get => surgicalSpecialty; set => surgicalSpecialty = value; }
