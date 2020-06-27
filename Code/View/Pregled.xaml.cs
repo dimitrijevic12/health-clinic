@@ -47,6 +47,8 @@ namespace health_clinicClassDiagram.View
             Treatment.SpecialistAppointment = new Model.Treatment.SpecialistAppointment();
             Treatment.ReferralToHospitalTreatment = new ReferralToHospitalTreatment();
             Treatment.Doctor = Appointment.Doctor;
+            Treatment.FromDate = appointment.StartDate;
+            Treatment.EndDate = appointment.EndDate;
             DataContext = this;
         }
 

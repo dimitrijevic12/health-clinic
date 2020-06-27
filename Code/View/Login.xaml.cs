@@ -163,9 +163,12 @@ namespace health_clinicClassDiagram.View
                 MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);
 
             }
-            PocetnaUser pocetnaUser = new PocetnaUser(doctor);
-            (this.Parent as Panel).Children.Add(pocetnaUser);
-            return;
+            else
+            {
+                PocetnaUser pocetnaUser = new PocetnaUser(doctor);
+                (this.Parent as Panel).Children.Add(pocetnaUser);
+                return;
+            }
 
         }
 

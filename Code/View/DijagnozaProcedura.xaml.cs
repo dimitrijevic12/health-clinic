@@ -39,9 +39,9 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPotvrdi_Click(object sender, RoutedEventArgs e)
         {
-            String diagnnosis = textBoxDijagnoza.Text;
+            String diagnosis = textBoxDijagnoza.Text;
             String review = textBoxProcedura.Text;
-            Treatment.DiagnosisAndReview = new DiagnosisAndReview(diagnnosis, review);
+            Treatment.DiagnosisAndReview = new DiagnosisAndReview(diagnosis, review);
             MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedicalRecordByPatient(Patient);
             TreatmentController.Instance.Create(Patient,Treatment);
             MedicalRecordController.Instance.AddTreatment(Treatment, medicalRecord);

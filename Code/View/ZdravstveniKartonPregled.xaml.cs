@@ -36,7 +36,14 @@ namespace health_clinicClassDiagram.View
         {
             Treatment = treatment;
             Patient = patient;
-            SurgicalSpecialty = treatment.ScheduledSurgery.Surgeon.SurgicalSpecialty.ToString().ToLower();
+            if(treatment.ScheduledSurgery.Surgeon != null)
+            {
+                SurgicalSpecialty = treatment.ScheduledSurgery.Surgeon.SurgicalSpecialty.ToString().ToLower();
+            }
+            else
+            {
+                SurgicalSpecialty = "";
+            }
             Prescription = Treatment.Prescription.Drugs;
             HospTreatmentDrugs = Treatment.ReferralToHospitalTreatment.Drugs;
             Diagnosis = treatment.DiagnosisAndReview.Diagnosis;
