@@ -38,10 +38,13 @@ namespace Repository.Csv.Converter
             List<Drug> prescriptionDrugs = new List<Drug>();
             string prescriptionDrugString = tokens[4];
             string[] prescriptionDrugParts = prescriptionDrugString.Split('|');
-            foreach(string drugID in prescriptionDrugParts)
+            if (!prescriptionDrugString.Equals(""))
             {
-                Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
-                prescriptionDrugs.Add(drug);
+                foreach (string drugID in prescriptionDrugParts)
+                {
+                    Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                    prescriptionDrugs.Add(drug);
+                }
             }
             Prescription prescription = new Prescription(prescriptionDrugs);
 
@@ -59,10 +62,13 @@ namespace Repository.Csv.Converter
             List<Drug> hospitalTreatmentDrugs = new List<Drug>();
             string hospitalTreatmentDrugsString = tokens[12];
             string[] hospitalTreatmentDrugsParts = hospitalTreatmentDrugsString.Split('|');
-            foreach (string drugID in hospitalTreatmentDrugsParts)
+            if (!hospitalTreatmentDrugsString.Equals(""))
             {
-                Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
-                hospitalTreatmentDrugs.Add(drug);
+                foreach (string drugID in hospitalTreatmentDrugsParts)
+                {
+                    Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                    hospitalTreatmentDrugs.Add(drug);
+                }
             }
             ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(causeForHospitalTreatment, hospitalTreatmentDrugs);
 
