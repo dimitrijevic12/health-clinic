@@ -14,16 +14,23 @@ namespace Controller
    public class RenovationController : IRenovationController
    {
 
-        public Service.IRenovationService iRenovationService;
+        private readonly IRenovationService iRenovationService = RenovationService.Instance;
 
-        private static RenovationController Instance;
+        private static RenovationController instance;
 
-        public RenovationController GetInstance() { return null; }
-
-        public RenovationController(IRenovationService service)
+        public static RenovationController Instance
         {
-            iRenovationService = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RenovationController();
+                }
+                return instance;
+            }
         }
+
+        private RenovationController() { }
         public List<Renovation> GetAll()
         {
             return iRenovationService.GetAll();

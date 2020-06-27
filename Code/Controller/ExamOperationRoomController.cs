@@ -15,15 +15,28 @@ namespace health_clinicClassDiagram.Controller
 {
     public class ExamOperationRoomController : IExamOperationRoomController
     {
-        private static ExamOperationRoomController Instance;
-        public ExamOperationRoomController GetInstance() { return null; }
+        private static ExamOperationRoomController instance;
 
-        private readonly IExamOperationRoomService _service;
 
-        public ExamOperationRoomController(IExamOperationRoomService service)
+        private readonly IExamOperationRoomService _service = ExamOperationRoomService.Instance;
+
+        public static ExamOperationRoomController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ExamOperationRoomController();
+                }
+                return instance;
+            }
         }
+
+        private ExamOperationRoomController()
+        {
+
+        }
+
 
 
         public ExamOperationRoom Create(ExamOperationRoom obj)

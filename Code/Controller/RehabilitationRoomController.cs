@@ -11,10 +11,24 @@ namespace health_clinicClassDiagram.Controller
 {
     public class RehabilitationRoomController : IRehabilitationRoomController
     {
-        private static RehabilitationRoomController instance;
-        public RehabilitationRoomController GetInstance() { return null; }
+        private readonly IRehabilitationRoomService _service = RehabilitationRoomService.Instance;
 
-        private readonly IRehabilitationRoomService _service;
+        private static RehabilitationRoomController instance;
+
+        public static RehabilitationRoomController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RehabilitationRoomController();
+                }
+                return instance;
+            }
+        }
+
+        private RehabilitationRoomController() { }
+
 
         public RehabilitationRoomController(IRehabilitationRoomService service)
         {
@@ -79,6 +93,11 @@ namespace health_clinicClassDiagram.Controller
         public Room DecreaseQuantity(Room r, Equipment eq)
         {
             return _service.DecreaseQuantity(r, eq);
+        }
+
+        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        {
+            return _service.releasePatient(record, room);
         }
     }
 }

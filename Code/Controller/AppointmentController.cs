@@ -16,16 +16,27 @@ namespace Controller
 {
    public class AppointmentController : IAppointmentController
    {
-        public Service.IAppointmentService _service;
+        public Service.IAppointmentService _service = AppointmentService.Instance;
 
-        private static AppointmentController Instance;
+        private static AppointmentController instance;
 
-        public AppointmentController(IAppointmentService service)
+        public static AppointmentController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AppointmentController();
+                }
+                return instance;
+            }
         }
-        public AppointmentController GetInstance() { return null; }
-    
+
+        private AppointmentController()
+        {
+        }
+
+      
 
         public List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo)
         {
@@ -115,8 +126,17 @@ namespace Controller
             return _service.Edit(obj);
             
         }
+        public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
+        {
+            return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
+        }
 
-        
-   
-   }
+        public List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority)
+        {
+            return _service.GetPriorityAppointments(doctor, startDate, endDate, priority);
+        }
+
+
+
+    }
 }

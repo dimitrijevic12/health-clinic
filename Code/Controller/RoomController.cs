@@ -15,18 +15,23 @@ namespace Controller
    public class RoomController : IRoomController
    {
 
-       private readonly Service.IRoomService _service;
+        private readonly IRoomService _service = RoomService.Instance;
 
+        private static RoomController instance;
 
-        private static RoomController Instance;
-
-        public RoomController GetInstance() { return null; }
-
-        public RoomController(IRoomService service)
+        public static RoomController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomController();
+                }
+                return instance;
+            }
         }
 
+        private RoomController() { }
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();

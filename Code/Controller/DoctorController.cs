@@ -16,10 +16,23 @@ namespace health_clinicClassDiagram.Controller
 {
     public class DoctorController : IController<Doctor>
     {
-        private static DoctorController Instance;
-        public DoctorController GetInstance() { return null; }
+        private static DoctorController instance;
 
-        private readonly IService<Doctor> _service;
+        private readonly IService<Doctor> _service = DoctorService.Instance;
+
+        public static DoctorController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DoctorController();
+                }
+                return instance;
+            }
+        }
+
+        private DoctorController() { }
 
         public DoctorController(IService<Doctor> service)
         {
@@ -28,9 +41,7 @@ namespace health_clinicClassDiagram.Controller
 
         public Doctor Create(Doctor obj)
         {
-
-           return _service.Create(obj);
-
+            return _service.Create(obj);
         }
 
         public bool Delete(Doctor obj)
@@ -49,6 +60,16 @@ namespace health_clinicClassDiagram.Controller
         {
             var doctors = (List<Doctor>)_service.GetAll();
             return doctors;
+        }
+
+        public Doctor ValidateLogin(string username, string password)
+        {
+            return DoctorService.Instance.ValidateLogin(username, password);
+        }
+
+        public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
+        {
+            return DoctorService.Instance.getAllAvailableDoctors(_startDate, _endDate);
         }
     }
 }

@@ -12,7 +12,9 @@ namespace Controller
 {
    public interface IDrugController : IController<Drug>
     {
-      List<Drug> GetAllDrugs();
         void addDrug(String naziv, int quant);
+        List<Drug> GetAllDrugs();
+        List<Drug> GetUnvalidatedDrugs();
+        List<Drug> GetValidatedDrugs();
     }
 }

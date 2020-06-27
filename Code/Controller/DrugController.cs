@@ -13,50 +13,64 @@ namespace Controller
 {
    public class DrugController : IDrugController
    {
-        public IDrugService _service;
-
-        private static DrugController Instance;
-
-        public DrugController GetInstance(){ return null; }
-
-        public DrugController(IDrugService service)
+        private static DrugController instance = null;
+        public static DrugController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DrugController();
+                }
+                return instance;
+            }
         }
 
-        public List<Drug> GetAllDrugs()
+        private DrugController()
         {
-            var rooms = (List<Drug>)_service.GetAll();
-            return rooms;
+
         }
 
         public void addDrug(String naziv, int quant)
         {
-            _service.addDrug(naziv, quant);
-        }
-
-        public List<Drug> GetAll()
-        {
-            var rooms = (List<Drug>)_service.GetAll();
-            return rooms;
+            DrugService.Instance.addDrug(naziv, quant);
         }
 
         public bool Delete(Drug obj)
         {
-            return _service.Delete(obj);
+            return DrugService.Instance.Delete(obj);
         }
 
         public Drug Create(Drug obj)
         {
-            return _service.Create(obj);
+            return DrugService.Instance.Create(obj);
         }
 
         public Drug Edit(Drug obj)
         {
-            return _service.Edit(obj);
+            return DrugService.Instance.Edit(obj);
+        }
+        public List<Drug> GetAll()
+        {
+
+            var rooms = (List<Drug>)DrugService.Instance.GetAll();
+            return rooms;
+        }
+        public List<Drug> GetAllDrugs()
+        {
+            return DrugService.Instance.GetAllDrugs();
         }
 
-      
-   
-   }
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            return DrugService.Instance.GetUnvalidatedDrugs();
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            return DrugService.Instance.GetValidatedDrugs();
+        }
+
+
+    }
 }

@@ -13,20 +13,31 @@ namespace Controller
 {
    public class EquipmentController : IEquipmentController
    {
-        private readonly IEquipmentService _service;
+        private static EquipmentController instance = null;
+        private readonly IEquipmentService _service = EquipmentService.Instance;
 
-        private static EquipmentController Instance;
-        public EquipmentController GetInstance() { return null; }
-
-        public EquipmentController(IEquipmentService service)
+        public static EquipmentController Instance
         {
-            _service = service;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EquipmentController();
+                }
+                return instance;
+            }
         }
 
+        private EquipmentController()
+        {
+
+        }
         public List<Equipment> GetAll()
         {
+
             var rooms = (List<Equipment>)_service.GetAll();
             return rooms;
+
         }
 
         public bool Delete(Equipment obj)
@@ -36,17 +47,17 @@ namespace Controller
 
         public Equipment Create(Equipment obj)
         {
-            return _service.Create(obj);
+            return EquipmentService.Instance.Create(obj);
         }
 
         public Equipment Edit(Equipment obj)
         {
-            return _service.Edit(obj);
+            return EquipmentService.Instance.Edit(obj);
         }
 
-        public void addEquipment(string naz, int quant)
+        public void addEquipment(string naziv, int quant)
         {
-           _service.addEquipment(naz,quant);
+            _service.addEquipment(naziv, quant);
         }
 
         public void deleteEquipment(int Id, int quant)
