@@ -25,6 +25,17 @@ namespace Model.Rooms
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
             tip = TypeOfRoom.REHABILITATION;
+            Equipments = new List<Equipment>();
+        }
+
+        public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<MedicalRecord> patients, List<Equipment> equipments) : base(idRoom)
+        {
+            _patients = patients;
+            _maxCapacity = maxCapacity;
+            _currentlyInUse = currentlyInUse;
+            IdRoom = idRoom;
+            tip = TypeOfRoom.REHABILITATION;
+            Equipments = equipments;
         }
 
         public List<MedicalRecord> Patients

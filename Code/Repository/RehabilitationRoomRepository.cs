@@ -115,5 +115,18 @@ namespace health_clinicClassDiagram.Repository
             */
             return rooms;
         }
+
+        public RehabilitationRoom findRehabRoom(long id)
+        {
+            var rooms = GetAll();
+            foreach (RehabilitationRoom er in rooms)
+            {
+                if (er.Id == id)
+                {
+                    return er;
+                }
+            }
+            return null;
+        }
     }
 }

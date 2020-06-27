@@ -65,5 +65,54 @@ namespace health_clinicClassDiagram.Service
         {
             throw new NotImplementedException();
         }
+        public ExamOperationRoom findExamRoom(long id)
+        {
+            var rooms = _examOperationRoomRepository.GetAll();
+            foreach (ExamOperationRoom er in rooms)
+            {
+                if (er.Id == id)
+                {
+                    return er;
+                }
+            }
+            return null;
+        }
+
+        public Room IncreaseQuantity(Room r, Equipment eq)
+        {
+            foreach (Equipment equip in r.Equipments)
+            {
+                if (equip.Id == eq.Id)
+                {
+                    equip.Quantity += eq.Quantity;
+                    return r;
+                }
+            }
+            r.Equipments.Add(eq);
+            return r;
+
+
+        }
+
+        public Room DecreaseQuantity(Room r, Equipment eq)
+        {
+            foreach (Equipment equip in r.Equipments)
+            {
+                if (equip.Id == eq.Id)
+                {
+                    if ((equip.Quantity - eq.Quantity) < 0)
+                    {
+                        return r;
+                    }
+                    equip.Quantity -= eq.Quantity;
+                    if (equip.Quantity == 0)
+                    {
+                        r.Equipments.Remove(eq);
+                    }
+                    return r;
+                }
+            }
+            return r;
+        }
     }
 }

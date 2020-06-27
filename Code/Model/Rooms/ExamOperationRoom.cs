@@ -5,13 +5,14 @@
  ***********************************************************************/
 
 using System;
+using System.Collections.Generic;
 
 namespace Model.Rooms
 {
    public class ExamOperationRoom : Room
    {
       private Boolean InUse;
-      private TypeOfRoom TypeOfRoom;
+      
 
         public long _id;
        
@@ -24,6 +25,13 @@ namespace Model.Rooms
         {
             this.Id = id;
             tip = TypeOfRoom.EXAMOPERATION;
+        }
+
+        public ExamOperationRoom(long id, List<Equipment> equipments) : base(id)
+        {
+            this.Id = id;
+            tip = TypeOfRoom.EXAMOPERATION;
+            Equipments = equipments;
         }
         public long Id
         {

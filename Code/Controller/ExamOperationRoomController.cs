@@ -63,6 +63,21 @@ namespace health_clinicClassDiagram.Controller
         {
             throw new NotImplementedException();
         }
+        public Room IncreaseQuantity(Room r, Equipment eq)
+        {
+            return _service.IncreaseQuantity(r, eq);
+        }
+
+        public Room DecreaseQuantity(Room r, Equipment eq)
+        {
+            return _service.DecreaseQuantity(r, eq);
+        }
+     
+
+        public ExamOperationRoom findExamRoom(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

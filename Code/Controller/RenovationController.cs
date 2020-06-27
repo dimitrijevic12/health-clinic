@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Rooms;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -12,30 +13,69 @@ namespace Controller
 {
    public class RenovationController : IRenovationController
    {
-      public RenovationController GetInstance() { return null; }
-public List<Renovation> GetAll()
+        private readonly IRenovationService iRenovationService = RenovationService.Instance;
+
+        private static RenovationController instance;
+
+        public static RenovationController Instance
         {
-            throw new NotImplementedException();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RenovationController();
+                }
+                return instance;
+            }
+        }
+
+        private RenovationController() { }
+        public List<Renovation> GetAll()
+        {
+            return iRenovationService.GetAll();
         }
 
         public bool Delete(Renovation obj)
         {
-            throw new NotImplementedException();
+            return iRenovationService.Delete(obj);
         }
 
         public Renovation Create(Renovation obj)
         {
-            throw new NotImplementedException();
+            return iRenovationService.Create(obj);
         }
 
         public Renovation Edit(Renovation obj)
         {
+            return iRenovationService.Edit(obj);
+        }
+
+        public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
+        {
             throw new NotImplementedException();
         }
 
-        public Service.IRenovationService iRenovationService;
-   
-      private static RenovationController Instance;
+        public Renovation DoPainting()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoMerge()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoSplit()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Renovation DoChangeTypeOfRoom()
+        {
+            throw new NotImplementedException();
+        }
+
+      
    
    }
 }

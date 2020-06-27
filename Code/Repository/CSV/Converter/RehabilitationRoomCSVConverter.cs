@@ -30,9 +30,10 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             int inUse = int.Parse(tokens[1]);
             int max = int.Parse(tokens[2]);
 
-            int i = 3;
+           
 
             var recordRepository = MedicalRecordRepository.Instance;
+            List<Equipment> equipments = new List<Equipment>();
 
             if (tokens[3] != "")
             {
@@ -45,10 +46,23 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                     records.Add(recordRepository.getMedRecById(long.Parse(oneId[j])));
                 }
             }
+            int i = 4;
+            while (i < tokens.Length - 1)
+            {
+                int idEquip = int.Parse(tokens[i]);
+                i++;
+                string naziv = tokens[i];
+                i++;
+                int quantity = int.Parse(tokens[i]);
+
+                Equipment equipment = new Equipment(idEquip, naziv, quantity);
+                equipments.Add(equipment);
+                i++;
+            }
 
 
 
-            return new RehabilitationRoom(idRoom, inUse, max, records);
+            return new RehabilitationRoom(idRoom, inUse, max, records, equipments);
         }
 
         public string ConvertEntityToCSVFormat(RehabilitationRoom entity)
@@ -71,13 +85,19 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
                     }
                 }
             }
-
+            String resenje2 = "";
+            foreach (Equipment equipment in entity.Equipments)
+            {
+                resenje2 += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                resenje2 += _delimiter;
+            }
 
             return string.Join(_delimiter,
               entity.IdRoom,
               entity.CurrentlyInUse,
               entity.MaxCapacity,
-              resenje);
+              resenje,
+              resenje2);
         }
     }
 }

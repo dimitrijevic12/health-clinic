@@ -11,5 +11,6 @@ namespace health_clinicClassDiagram.Repository
     public interface IExamOperationRoomRepository : IRepository<ExamOperationRoom>
     {
         Room GetRoom(int id);
+        ExamOperationRoom findExamRoom(long id);
     }
 }
