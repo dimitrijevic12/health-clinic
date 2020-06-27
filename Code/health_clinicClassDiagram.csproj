@@ -183,6 +183,7 @@
     <Compile Include="Controller\UserController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controller\WorkingDaysController.cs" />
     <Compile Include="Controller\WorkingScheduleController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -366,6 +367,7 @@
     <Compile Include="Repository\Csv\Converter\UserCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Csv\Converter\WorkingDaysCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\WorkingScheduleCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -453,6 +455,7 @@
     <Compile Include="Repository\UserRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\WorkingDaysRepository.cs" />
     <Compile Include="Repository\WorkingScheduleRepository.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -549,6 +552,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\Util\AppointmentGenerator.cs" />
+    <Compile Include="Service\WorkingDaysService.cs" />
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
+using Service;
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +14,25 @@ namespace Controller
    public class WorkingScheduleController : IWorkingSchedule
    {
       public WorkingScheduleController GetInstance() { return null; }
+        public IWorkingScheduleService _service = WorkingScheduleService.Instance;
+
+        private static WorkingScheduleController instance;
+
+        public static WorkingScheduleController Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new WorkingScheduleController();
+                }
+                return instance;
+            }
+        }
+
+        private WorkingScheduleController()
+        {
+        }
         public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
         {
             throw new NotImplementedException();
@@ -25,27 +45,25 @@ namespace Controller
 
         public List<WorkingSchedule> GetAll()
         {
-            throw new NotImplementedException();
+            var workingSchedules = (List<WorkingSchedule>)_service.GetAll();
+            return workingSchedules;
         }
 
         public bool Delete(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            return _service.Delete(obj);
         }
 
         public WorkingSchedule Create(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            return _service.Create(obj);
         }
 
         public WorkingSchedule Edit(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            return _service.Edit(obj);
         }
 
-        public Service.IWorkingScheduleService iWorkingScheduleService;
-   
-      private static WorkingScheduleController Instance;
-   
-   }
+
+    }
 }
