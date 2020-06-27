@@ -14,30 +14,29 @@ namespace Service
 {
    public class RenovationService : IRenovationService
    {
-        public Repository.IRenovationRepository iRenovationRepository;
-        
-
-        private static RenovationService Instance;
-        
+        private readonly IRenovationRepository iRenovationRepository = RenovationRepository.Instance;
 
 
-        public RenovationService GetInstance() { return null; }
+        private static RenovationService instance = null;
 
-        public RenovationService(IRenovationRepository repository)
+        public static RenovationService Instance
         {
-            iRenovationRepository = repository;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RenovationService();
+                }
+                return instance;
+            }
+        }
 
+        private RenovationService()
+        {
         }
 
         public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
-        {
-            /*if(lastDate != null)
-            {
-                double traje = (renovation.endDate - renovation.startDate).TotalDays;
-                renovation.startDate = lastDate.AddDays(1); ;
-                renovation.endDate = renovation.endDate.AddDays(traje);
-            }
-            return renovation;*/
+        {           
             throw new NotImplementedException();
         }
 

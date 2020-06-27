@@ -46,9 +46,9 @@ namespace health_clinicClassDiagram.view
             //Oprema.Add(new oprema() { VrstaOpreme = "Sto", Sifra = "1", Kolicina = "2" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Krevet", Sifra = "2", Kolicina = "3" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Stolica", Sifra = "3", Kolicina = "5" });
-            var app = Application.Current as App;
+            
           
-            _equipController = app.equipController;
+            _equipController = EquipmentController.Instance;
             equips = room.Equipments;
             equipCollection = new ObservableCollection<Equipment>(equips);
             dataGridOdabranaSala.ItemsSource = equipCollection;

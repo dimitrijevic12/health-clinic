@@ -19,6 +19,7 @@ using Controller;
 using Model.SystemUsers;
 using health_clinicClassDiagram.View;
 using health_clinicClassDiagram.Model.SystemUsers;
+using health_clinicClassDiagram.Controller;
 
 namespace health_clinicClassDiagram.view
 {
@@ -53,8 +54,8 @@ namespace health_clinicClassDiagram.view
             Pocetnashortcut.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
             CommandBindings.Add(new CommandBinding(Pocetnashortcut, Button_pocetna));
 
-            var app = Application.Current as App;
-            _doctorController = app.doctorController;
+            
+            _doctorController = DoctorController.Instance;
 
             doctors = _doctorController.GetAll();
 

@@ -12,8 +12,9 @@ namespace health_clinicClassDiagram.Service
 {
     public class RehabilitationRoomService : IRehabilitationRoomService
     {
-        private readonly IRehabilitationRoomRepository _roomRepository;
-        private readonly IUserService _patientService;
+        private readonly IRehabilitationRoomRepository _roomRepository = RehabilitationRoomRepository.Instance;
+
+       // private readonly IUserService _patientService = PatientService.Instance;
 
         private static RehabilitationRoomService instance = null;
 
@@ -40,16 +41,15 @@ namespace health_clinicClassDiagram.Service
 
         }
 
-        public RehabilitationRoomService(IRehabilitationRoomRepository repository, IUserService service)
+        public RehabilitationRoomService(IRehabilitationRoomRepository repository)
         {
             _roomRepository = repository;
-            _patientService = service;
+
         }
 
         public bool AddPatient(MedicalRecord record, RehabilitationRoom room)
         {
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
-            //var foundPatient = _patientService.Get(patient);
             foundRehabilitationRoom.Patients.Add(record);
             foundRehabilitationRoom.CurrentlyInUse++;
             _roomRepository.Edit(foundRehabilitationRoom);
@@ -77,9 +77,7 @@ namespace health_clinicClassDiagram.Service
 
         public List<RehabilitationRoom> GetAll()
         {
-            var patients = _patientService.GetAll();
             var records = _roomRepository.GetAll();
-            //BindPatientsWithRecords(patients, records);
             return records;
         }
 
@@ -146,6 +144,22 @@ namespace health_clinicClassDiagram.Service
                 }
             }
             return r;
+        }
+
+        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        {
+            var foundRehabilitationRoom = _roomRepository.GetRoom(room);
+            foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
+            {
+                if (oneRecord.Id.Equals(record.Id))
+                {
+                    foundRehabilitationRoom.Patients.Remove(oneRecord);
+                    break;
+                }
+            }
+            foundRehabilitationRoom.CurrentlyInUse--;
+            _roomRepository.Edit(foundRehabilitationRoom);
+            return true;
         }
     }
 }

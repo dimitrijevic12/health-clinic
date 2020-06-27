@@ -32,8 +32,8 @@ namespace health_clinicClassDiagram.view
         {
             InitializeComponent();
             this.DataContext = this;
-            var app = Application.Current as App;
-            _equipController = app.equipController;
+            
+            _equipController = EquipmentController.Instance;
             //Oprema = new ObservableCollection<oprema>();
             //Oprema.Add(new oprema() { VrstaOpreme = "Sto", Sifra = "1", Kolicina = "10" });
             //Oprema.Add(new oprema() { VrstaOpreme = "Krevet", Sifra = "2", Kolicina = "20" });

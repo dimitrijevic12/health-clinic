@@ -35,8 +35,8 @@ namespace health_clinicClassDiagram.view
             InitializeComponent();
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _doctorController = app.doctorController;
+            
+            _doctorController = DoctorController.Instance;
             specijalistaController = SpecialistController.Instance;
             hirurgController = SurgeonController.Instance;
 

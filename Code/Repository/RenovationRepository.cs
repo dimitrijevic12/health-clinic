@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Rooms;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -15,15 +16,31 @@ namespace Repository
 {
    public class RenovationRepository : IRenovationRepository
    {
-        private String Path;
-        private static RenovationRepository Instance;
-        private readonly ICSVStream<Renovation> _stream;
-        private readonly iSequencer<long> _sequencer;
-        public RenovationRepository GetInstance() { return null; }
+        private readonly ICSVStream<Renovation> _stream = new CSVStream<Renovation>("../../Resources/Data/renovations.csv", new RenovationCSVConverter(","));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
+        private String _path = "../../Resources/Data/renovations.csv";
+        private static RenovationRepository instance;
+
+        public static RenovationRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RenovationRepository();
+                }
+                return instance;
+            }
+        }
+
+
+        private RenovationRepository()
+        {
+        }
         public RenovationRepository(string path, ICSVStream<Renovation> stream, iSequencer<long> sequencer)
         {
-            Path = path;
+            _path = path;
             _stream = stream;
             _sequencer = sequencer;
             _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
@@ -72,7 +89,8 @@ namespace Repository
 
         public List<Renovation> GetAll()
         {
-            throw new NotImplementedException();
+            var rooms = (List<Renovation>)_stream.ReadAll();
+            return rooms;
         }
 
         public bool OpenFile(string path)

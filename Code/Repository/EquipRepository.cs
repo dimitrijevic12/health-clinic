@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Rooms;
+using Repository.Csv.Converter;
 using Repository.Csv.Stream;
 using System;
 using System.Collections.Generic;
@@ -15,20 +16,28 @@ namespace Repository
 {
    public class EquipRepository : IEquipRepository
    {
-        private readonly ICSVStream<Equipment> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private static EquipRepository instance = null;
+        private readonly CSVStream<Equipment> _stream = new CSVStream<Equipment>("../../Resources/Data/Equipments.csv", new EquipmentCSVConverter(","));
+        private readonly LongSequencer _sequencer = new LongSequencer();
 
-        private String _path;
-        private static EquipRepository Instance;
         public EquipRepository GetInstance() { return null; }
 
-        public EquipRepository(string path, CSVStream<Equipment> stream, iSequencer<long> sequencer)
+        private EquipRepository()
         {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
         }
+
+        public static EquipRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EquipRepository();
+                }
+                return instance;
+            }
+        }
+
         private long GetMaxId(List<Equipment> equip)
         {
             return equip.Count() == 0 ? 0 : equip.Max(eq => eq.Id);

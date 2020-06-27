@@ -12,8 +12,10 @@ namespace Service
 {
    public interface IDrugService : IService<Drug>
     {
-      List<Drug> GetAllDrugs();
+        List<Drug> GetAllDrugs();
+        List<Drug> GetUnvalidatedDrugs();
+        List<Drug> GetValidatedDrugs();
 
-      void addDrug(String naziv, int quant);
+        void addDrug(String naziv, int quant);
     }
 }

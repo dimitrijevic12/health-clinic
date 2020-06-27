@@ -128,12 +128,14 @@ namespace Controller
         }
         public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
         {
-            return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
+            /*return _service.GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);*/
+            throw new NotImplementedException();
         }
 
         public List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority)
         {
-            return _service.GetPriorityAppointments(doctor, startDate, endDate, priority);
+            /*return _service.GetPriorityAppointments(doctor, startDate, endDate, priority);*/
+            throw new NotImplementedException();
         }
 
 

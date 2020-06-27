@@ -30,8 +30,8 @@ namespace health_clinicClassDiagram.view
         {
             InitializeComponent();
             this.DataContext = this;
-            var app = Application.Current as App;
-            _drugController = app.drugController;
+           
+            _drugController = DrugController.Instance;
             //Lekovi = new ObservableCollection<lekovi>();
             //Lekovi.Add(new lekovi() { Lek = "Brufen", SifraLeka = "213", Kolicina = "10" });
             //Lekovi.Add(new lekovi() { Lek = "Paracetamol", SifraLeka = "442", Kolicina = "20" });

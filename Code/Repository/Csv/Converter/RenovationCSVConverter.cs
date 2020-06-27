@@ -33,27 +33,11 @@ namespace Repository.Csv.Converter
             List<Room> rooms = new List<Room>();
              DateTime startingDate = DateTime.ParseExact(tokens[2], "dd/MM/yyyy", CultureInfo.InvariantCulture);
              DateTime endingDate = DateTime.ParseExact(tokens[3], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            /*DateTime startingDate = DateTime.Now;
-            DateTime endingDate = DateTime.Now;*/
-            const string EXAMOPERATIONROOM_FILE = "../../Resources/Data/examOperationRooms.csv";
-            const string REHABILITATIONROOM_FILE = "../../Resources/Data/rehabilitationRooms.csv";
-            var examOperationRoomRepository = new ExamOperationRoomRepository(
-               EXAMOPERATIONROOM_FILE,
-               new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(",")),
-               new LongSequencer());
+            var examOperationRoomRepository = ExamOperationRoomRepository.Instance;
 
-           
-            var rehabilitationRoomRepository = new RehabilitationRoomRepository(
-               REHABILITATIONROOM_FILE,
-               new CSVStream<RehabilitationRoom>(REHABILITATIONROOM_FILE, new RehabilitationRoomCSVConverter(",", "dd.MM.yyyy.")),
-               new LongSequencer());
 
-          /*  var examOperationRoomService = new ExamOperationRoomService(examOperationRoomRepository);
-           
+            var rehabilitationRoomRepository = RehabilitationRoomRepository.Instance;
 
-            var rehabilitationRoomService = new RehabilitationRoomService(rehabilitationRoomRepository, userService);*/
-
-          
 
             if (tokens[4] != "")
             {

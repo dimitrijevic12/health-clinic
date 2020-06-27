@@ -39,14 +39,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             TypeOfWorkingSchedule smena = (TypeOfWorkingSchedule)Enum.Parse(typeof(TypeOfWorkingSchedule), smenaString, true);
 
-            /*String specializationString = tokens[6];
-
-            Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), specializationString, true);
-
-            String hirurgString = tokens[7];
-
-            SurgicalSpecialty hirurg = (SurgicalSpecialty)Enum.Parse(typeof(SurgicalSpecialty), hirurgString, true);
-*/
+           
             DateTime dateOfBirth = DateTime.ParseExact(tokens[4], "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             Doctor doctor = new Doctor(long.Parse(tokens[0]), tokens[1], tokens[2], gender, dateOfBirth ,smena, tokens[6], tokens[7]/*, specialization, hirurg*/);

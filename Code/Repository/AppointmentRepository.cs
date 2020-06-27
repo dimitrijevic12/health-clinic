@@ -18,12 +18,11 @@ namespace Repository
 {
    public class AppointmentRepository : IAppointmentRepository
    {
-        private String _path;
         private static AppointmentRepository instance = null;
-        private readonly CSVStream<Appointment> stream/* = new CSVStream<Appointment>("C:\\Users\\Nemanja\\Desktop\\HCI-Lekar\\Code\\resources\\data\\AppointmentRepo.csv", new AppointmentCSVConverter("|", ""))*/;
-        private readonly ICSVStream<Appointment> _stream;
-        private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly iSequencer<long> _sequencer;
+        private const string APPOINMENT_FILE = "../../Resources/Data/appointments.csv";
+        private String _path = APPOINMENT_FILE;
+        private readonly ICSVStream<Appointment> _stream = new CSVStream<Appointment>(APPOINMENT_FILE, new AppointmentCSVConverter(",", "dd.MM.yyyy."));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         public static AppointmentRepository Instance 
         {
@@ -123,7 +122,7 @@ namespace Repository
 
         public Appointment Save(Appointment obj)
         {
-            stream.AppendToFile(obj);
+            _stream.AppendToFile(obj);
             return obj;
         }
 
@@ -132,7 +131,7 @@ namespace Repository
 
             var appointments = _stream.ReadAll().ToList();
             appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            stream.SaveAll(appointments);
+            _stream.SaveAll(appointments);
             return obj;
 
         }
@@ -145,7 +144,7 @@ namespace Repository
             if (appointmentToRemove != null)
             {
                 appointments.Remove(appointmentToRemove);
-                stream.SaveAll(appointments);
+                _stream.SaveAll(appointments);
                 return true;
             }
             else

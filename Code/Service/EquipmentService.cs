@@ -14,17 +14,24 @@ namespace Service
 {
    public class EquipmentService : IEquipmentService
    {
-        public IEquipRepository _equipmentRepository;
-
-        private static EquipmentService Instance;
-
-        public EquipmentService GetInstance() { return null; }
-
-        public EquipmentService(IEquipRepository repository)
+        private static EquipmentService instance = null;
+        public IEquipRepository _equipmentRepository = EquipRepository.Instance;
+        public static EquipmentService Instance
         {
-            _equipmentRepository = repository;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new EquipmentService();
+                }
+                return instance;
+            }
         }
 
+        private EquipmentService()
+        {
+
+        }
         public Equipment Create(Equipment obj)
         {
             var newEquip = _equipmentRepository.Save(obj);
@@ -106,18 +113,6 @@ namespace Service
             }
             return 0;
         }
-
-        /* public void addEquipment(TypeOfEquipment tip, int quantity)
-         {
-             var eq = _equipmentRepository.GetAll();
-             for (Equipment e : eq)
-             {
-
-             }
-
-         }*/
-
-
 
     }
 }

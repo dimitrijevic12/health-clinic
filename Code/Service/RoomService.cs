@@ -14,17 +14,26 @@ namespace Service
 {
    public class RoomService : IRoomService
    {
-        private readonly IRoomRepository _roomRepository;
+        private readonly IRoomRepository _roomRepository = RoomRepository.Instance;
 
-        private static RoomService Instance;
 
-        public RoomService GetInstance() { return null; }
+        private static RoomService instance = null;
 
-        public RoomService(IRoomRepository repository)
+        public static RoomService Instance
         {
-            _roomRepository = repository;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new RoomService();
+                }
+                return instance;
+            }
         }
 
+        private RoomService()
+        {
+        }
         public bool IsRoomFree(DateTime from, DateTime to, Room room)
         {
             throw new NotImplementedException();

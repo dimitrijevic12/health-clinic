@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using health_clinicClassDiagram.Model.SystemUsers;
 using Model.SystemUsers;
 using System;
@@ -30,8 +31,8 @@ namespace health_clinicClassDiagram.view
             InitializeComponent();
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _doctorController = app.doctorController;
+            
+            _doctorController = DoctorController.Instance;
 
             IdLekara.Text = doctor.IdDoctor.ToString();
             Ime.Text = doctor.NameDoctor;

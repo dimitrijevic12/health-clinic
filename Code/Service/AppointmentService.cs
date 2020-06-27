@@ -40,7 +40,7 @@ namespace Service
         {
         }
 
-        public AppointmentService GetInstance() { return null; }
+        
 
         public AppointmentService(IAppointmentRepository repository, IService<Doctor> doctorService, IService<Patient> patientService, IService<ExamOperationRoom>roomService)
         {
@@ -83,7 +83,19 @@ namespace Service
 
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            throw new NotImplementedException();
+            List<Appointment> appointments = iAppointmentRepository.GetAll();
+            List<Appointment> trazeni = new List<Appointment>();
+
+            foreach (Appointment a in appointments)
+            {
+                if (a.RoomId.Equals(room.Id))
+                {
+                    trazeni.Add(a);
+                }
+            }
+
+
+            return trazeni;
         }
 
         public Treatment GenerateTreatment(Appointment appointment)

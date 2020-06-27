@@ -32,17 +32,20 @@ namespace Controller
 
         public Drug ValidateDrug(Drug drug)
         {
-            return DoctorDrugService.Instance.ValidateDrug(drug);
+            /* return DoctorDrugService.Instance.ValidateDrug(drug);*/
+            throw new NotImplementedException();
         }
 
         public Drug LowerQuantity(Drug drug)
         {
-            return DoctorDrugService.Instance.LowerQuantity(drug);
+            /*return DoctorDrugService.Instance.LowerQuantity(drug);*/
+            throw new NotImplementedException();
         }
 
         public Drug IncreaseQuantity(Drug drug)
         {
-            return DoctorDrugService.Instance.IncreaseQuantity(drug);
+            /*return DoctorDrugService.Instance.IncreaseQuantity(drug);*/
+            throw new NotImplementedException();
         }
 
     }

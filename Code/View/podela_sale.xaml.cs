@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.Rooms;
 using System;
 using System.Collections.Generic;
@@ -58,10 +59,10 @@ namespace health_clinicClassDiagram.view
             //Spisak = new ObservableCollection<SpisakSala>();
             //Spisak.Add(new SpisakSala { Sala = "101", TipSale = "Operaciona" });
             //Spisak.Add(new SpisakSala { Sala = "103", TipSale = "Operaciona" });
-            var app = Application.Current as App;
-            _equipController = app.equipController;
-            _examOperationRoomController = app.examOperationRoomController;
-            _rehabilitationRoomController = app.rehabilitationRoomController;
+            
+            _equipController = EquipmentController.Instance;
+            _examOperationRoomController = ExamOperationRoomController.Instance;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 

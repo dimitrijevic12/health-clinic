@@ -45,9 +45,9 @@ namespace health_clinicClassDiagram.view
             InitializeComponent();
             this.DataContext = this;
 
-            var app = Application.Current as App;
-            _examOperationRoomController = app.examOperationRoomController;
-            _rehabilitationRoomController = app.rehabilitationRoomController;
+            
+            _examOperationRoomController = ExamOperationRoomController.Instance;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
 
 
 

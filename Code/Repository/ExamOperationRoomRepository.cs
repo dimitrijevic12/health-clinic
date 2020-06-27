@@ -1,4 +1,5 @@
-﻿using health_clinicClassDiagram.Repository.Sequencer;
+﻿using health_clinicClassDiagram.Repository.Csv.Converter;
+using health_clinicClassDiagram.Repository.Sequencer;
 using Model.Rooms;
 using Repository.Csv.Stream;
 using System;
@@ -11,12 +12,24 @@ namespace health_clinicClassDiagram.Repository
 {
     public class ExamOperationRoomRepository : IExamOperationRoomRepository
     {
-        private readonly ICSVStream<ExamOperationRoom> _stream;
-        private readonly iSequencer<long> _sequencer;
+        private readonly ICSVStream<ExamOperationRoom> _stream = new CSVStream<ExamOperationRoom>("../../Resources/Data/examoperationrooms.csv", new ExamOperationRoomCSVConverter(","));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path;
-        private static ExamOperationRoomRepository Instance;
-        public ExamOperationRoomRepository GetInstance() { return null; }
+        private String _path = "../../Resources/Data/examoperationrooms.csv";
+        private static ExamOperationRoomRepository instance;
+        public static ExamOperationRoomRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new ExamOperationRoomRepository();
+                }
+                return instance;
+            }
+        }
+
+        private ExamOperationRoomRepository() { }
 
         public ExamOperationRoomRepository(string path, CSVStream<ExamOperationRoom> stream, iSequencer<long> sequencer)
         {

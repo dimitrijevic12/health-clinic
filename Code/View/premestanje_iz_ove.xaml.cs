@@ -45,11 +45,11 @@ namespace health_clinicClassDiagram.view
             //DetaljnaOprema.Add(new oprema_detaljno() { VrstaOpreme = "Sto", Sifra = "1", Id = "100" });
             //DetaljnaOprema.Add(new oprema_detaljno() { VrstaOpreme = "Sto", Sifra = "1", Id = "204" });
             //DetaljnaOprema.Add(new oprema_detaljno() { VrstaOpreme = "Stolica", Sifra = "3", Id = "304" });
-            var app = Application.Current as App;
-            _equipController = app.equipController;
-            _examOperationRoomController = app.examOperationRoomController;
-            _rehabilitationRoomController = app.rehabilitationRoomController;
-            _roomController = app.roomController;
+           
+            _equipController = EquipmentController.Instance;
+            _examOperationRoomController = ExamOperationRoomController.Instance;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
+            _roomController = RoomController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 

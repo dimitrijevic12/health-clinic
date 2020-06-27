@@ -44,10 +44,10 @@ namespace health_clinicClassDiagram.view
             this.DataContext = this;
             var app = Application.Current as App;
             roomd = room;
-            _equipController = app.equipController;
-            _examOperationRoomController = app.examOperationRoomController;
-            _rehabilitationRoomController = app.rehabilitationRoomController;
-            _roomController = app.roomController;
+            _equipController = EquipmentController.Instance;
+            _examOperationRoomController = ExamOperationRoomController.Instance;
+            _rehabilitationRoomController = RehabilitationRoomController.Instance;
+            _roomController = RoomController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
             equips = _equipController.GetAll();

@@ -14,20 +14,30 @@ namespace Service
    public class DrugService : IDrugService
    {
 
-        public IDrugRepository _drugRepository;
+        private static DrugService instance = null;
+        public IDrugRepository _drugRepository = DrugRepository.Instance;
+        public static DrugService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DrugService();
+                }
+                return instance;
+            }
+        }
 
-        private static DrugService Instance;
-
-        public DrugService GetInstance() { return null; }
+        private DrugService()
+        {
+            
+        }
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
+            return DrugRepository.Instance.GetAll();
         }
 
-        public DrugService(IDrugRepository repository)
-        {
-            _drugRepository = repository;
-        }
+       
         public void addDrug(String naziv, int quant)
         {
             bool postoji = _drugRepository.DrugExists(naziv);
@@ -70,7 +80,28 @@ namespace Service
             return rooms;
         }
 
-       
-   
-   }
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == false) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            List<Drug> unvalidatedDrugs = new List<Drug>();
+            foreach (Drug drug in GetAllDrugs())
+            {
+                if (drug.Validation == true) unvalidatedDrugs.Add(drug);
+            }
+
+            return unvalidatedDrugs;
+        }
+
+
+    }
 }

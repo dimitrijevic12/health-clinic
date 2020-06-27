@@ -32,28 +32,27 @@ namespace Controller
         }
         public Blog GetBlogByTitle(string title)
         {
-            return BlogService.Instance.GetBlogByTitle(title);
+            throw new NotImplementedException();
         }
 
         public List<Blog> GetAll()
         {
-            return BlogService.Instance.GetAll();
+            throw new NotImplementedException();
         }
 
         public bool Delete(Blog obj)
         {
-            BlogService.Instance.Delete(obj);
-            return true;
+            throw new NotImplementedException();
         }
 
         public Blog Create(Blog obj)
         {
-            return BlogService.Instance.Create(obj);
+            throw new NotImplementedException();
         }
 
         public Blog Edit(Blog obj)
         {
-            return BlogService.Instance.Edit(obj);
+            throw new NotImplementedException();
         }
 
     }

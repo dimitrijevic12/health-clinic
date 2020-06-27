@@ -5,11 +5,13 @@
  ***********************************************************************/
 
 using health_clinicClassDiagram.Model.SystemUsers;
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.SystemUsers;
 using Model.Treatment;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository.Csv.Converter
 {
@@ -17,59 +19,74 @@ namespace Repository.Csv.Converter
    {
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public MedicalRecordCSVConverter(string delimiter, string datetimeFormat)
+        public MedicalRecordCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
-            String genderString = tokens[5];
+            var doctorRepository = DoctorRepository.Instance;
+            var patientRepository = PatientRepository.Instance;
 
-            Gender gender = (Gender)Enum.Parse(typeof(Gender), genderString, true);
-
-            Patient patient = new Patient(tokens[1], tokens[2], int.Parse(tokens[3]), DateTime.Now, gender);
-
-            String treatmentsString = tokens[7];
-            String[] treatmentsParts = treatmentsString.Split(',');
+            Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[2]));
+            Patient patient = patientRepository.getPatientById(long.Parse(tokens[1]));
             List<Treatment> treatments = new List<Treatment>();
-            foreach(String id in treatmentsParts)
-            {
-                //                treatmentIds.Add(long.Parse(id));
-                //                treatments.Add(MedicalRecordRepository.Instance.GetTreatmentByTreatmentId(long.Parse(id)));
-                treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(id)));
 
+            if (tokens[3] != "")
+            {
+                String treatmentsString = tokens[3];
+
+                String[] oneTreatment = treatmentsString.Split('|');
+
+                for (int j = 0; j < oneTreatment.Length; j++)
+                {
+                    treatments.Add(TreatmentRepository.Instance.GetTreatment(long.Parse(oneTreatment[j])));
+                }
             }
+
+
 
             return new MedicalRecord(
                 long.Parse(tokens[0]),
                 patient,
-                new Doctor(),
-                treatments); //ne treba new doctor treba promeniti (tokens[6]), kao i u patient u Gender.MALE
+                doctor,
+                treatments);
         }
 
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
-            String treatments = "";
-            foreach (Treatment treatment in entity.Treatments)
+
+            String resenje = "";
+
+            if (entity.Treatments.Count != 0)
             {
-                treatments += treatment.Id + ",";
+                Treatment last = entity.Treatments.Last();
+                foreach (Treatment treatment in entity.Treatments)
+                {
+                    if (treatment != null)
+                    {
+                        if (treatment != last)
+                        {
+                            resenje += treatment.Id + "|";
+                        }
+                        else
+                        {
+                            resenje += treatment.Id;
+                        }
+                    }
+                }
             }
 
             return string.Join(_delimiter,
               entity.id,
-              entity.Patient.Name,
-              entity.Patient.Surname,
               entity.Patient.Id,
-              DateTime.Now,
-              entity.Patient.Gender,
-              entity.choosenDoctor,
-              treatments);
+              entity.choosenDoctor.Id,
+              resenje);
+
         }
     }
 

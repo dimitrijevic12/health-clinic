@@ -65,7 +65,7 @@ namespace health_clinicClassDiagram
 
         public App()
         {
-            var doctorRepository = new DoctorRepository(
+           /* var doctorRepository = new DoctorRepository(
                 DOCTOR_FILE,
                 new CSVStream<Doctor>(DOCTOR_FILE, new DoctorCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
                 new LongSequencer());
@@ -75,10 +75,10 @@ namespace health_clinicClassDiagram
                 new CSVStream<ExamOperationRoom>(EXAMOPERATIONROOM_FILE, new ExamOperationRoomCSVConverter(CSV_DELIMITER)),
                 new LongSequencer());
 
-            /* var rehabilitationRoomRepository = new RehabilitationRoomRepository(
+            *//* var rehabilitationRoomRepository = new RehabilitationRoomRepository(
                 REHABILITATIONROOM_FILE,
                 new CSVStream<Room>(REHABILITATIONROOM_FILE, new RehabilitationRoomCSVConverter(CSV_DELIMITER, DATETIME_FORMAT)),
-                new LongSequencer());*/
+                new LongSequencer());*//*
 
             var rehabilitationRoomRepository = new RehabilitationRoomRepository(
                REHABILITATIONROOM_FILE,
@@ -133,7 +133,7 @@ namespace health_clinicClassDiagram
             equipController = new EquipmentController(equipService);
             drugController = new DrugController(drugsService);
             appController = new AppointmentController(appService);
-            renoController = new RenovationController(renoService);
+            renoController = new RenovationController(renoService);*/
 
         }
     }

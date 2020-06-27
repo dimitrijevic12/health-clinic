@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Repository.Csv.Converter.AppointmentCSVConverter
  ***********************************************************************/
 
+using health_clinicClassDiagram.Repository;
 using Model.Appointment;
 using Model.Rooms;
 using Model.SystemUsers;
@@ -25,37 +26,35 @@ namespace Repository.Csv.Converter
         public Appointment ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
-            string doctorName = tokens[2];
-            string doctorSurname = tokens[3];
-            string patientName = tokens[4];
-            string patientSurname = tokens[5];
-            int patientId = int.Parse(tokens[6]);
-            ExamOperationRoom room = new ExamOperationRoom(long.Parse(tokens[10]));
-            TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[7], true);
-            DateTime startDate = DateTime.Parse(tokens[8]);
-            DateTime endDate = DateTime.Parse(tokens[9]);
+            long patientId = long.Parse(tokens[2]);
+            ExamOperationRoom room = new ExamOperationRoom(long.Parse(tokens[6]));
+            TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[3], true);
+            DateTime startDate = DateTime.Parse(tokens[4]);
+            DateTime endDate = DateTime.Parse(tokens[5]);
 
-            //Patient patient = new Patient(tokens[0], tokens[1], int.Parse(tokens[2]));    //preskocimo prvi button select patient
+            var doctorRepository = DoctorRepository.Instance;
+            var patientRepository = PatientRepository.Instance;
+
+            Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[1]));
+
+            Patient patient = patientRepository.getPatientById(patientId);
+
 
             return new Appointment(long.Parse(tokens[0]),
-               new Doctor(long.Parse(tokens[1]), doctorName, doctorSurname), //doctor tokens[4]
-                new Patient(patientName, patientSurname, patientId),
-                room, 
+               doctor,
+                patient,
+                room,
                 type,
                 startDate,
-                endDate); //tokens[6]
+                endDate);
         }
 
         public string ConvertEntityToCSVFormat(Appointment entity)
              => string.Join(_delimiter,
                entity.Id,
                entity.Doctor.Id,
-               entity.Doctor.Name,
-               entity.Doctor.Surname,
-               entity.Patient.Name,
-               entity.Patient.Surname,
                entity.Patient.Id,
-               entity.Type,
+               entity.TypeOfAppointment,
                entity.StartDate.ToString(),
                entity.EndDate.ToString(),
                entity.ExamOperationRoom.Id);
