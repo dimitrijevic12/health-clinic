@@ -25,6 +25,13 @@ namespace Model.SystemUsers
             SurgicalSpecialty = surgicalSpecialty;
         }
 
+        public Surgeon()
+        {
+            Name = "";
+            Surname = "";
+            SurgicalSpecialty = SurgicalSpecialty.GENERAL;
+        }
+
         public SurgicalSpecialty SurgicalSpecialty { get => surgicalSpecialty; set => surgicalSpecialty = value; }
     }
 }

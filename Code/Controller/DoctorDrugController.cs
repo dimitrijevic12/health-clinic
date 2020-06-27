@@ -7,42 +7,40 @@
 using Model.Rooms;
 using Service;
 using System;
+using System.Collections.Generic;
 
 namespace Controller
 {
    public class DoctorDrugController : DecoratedDrugController
    {
-        private static DoctorDrugController instance = null;
-
-        public static DoctorDrugController Instance
-        {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new DoctorDrugController();
-                }
-                return instance;
-            }
-        }
-
-        private DoctorDrugController()
+        DoctorDrugService drugService = new DoctorDrugService(new DrugService());
+        public DoctorDrugController(IDrugController decoratedDrug) : base(decoratedDrug)
         {
         }
 
         public Drug ValidateDrug(Drug drug)
         {
-            return DoctorDrugService.Instance.ValidateDrug(drug);
+            return drugService.ValidateDrug(drug);
         }
 
         public Drug LowerQuantity(Drug drug)
         {
-            return DoctorDrugService.Instance.LowerQuantity(drug);
+            return drugService.LowerQuantity(drug);
         }
 
         public Drug IncreaseQuantity(Drug drug)
         {
-            return DoctorDrugService.Instance.IncreaseQuantity(drug);
+            return drugService.IncreaseQuantity(drug);
+        }
+
+        public List<Drug> GetUnvalidatedDrugs()
+        {
+            return drugService.GetUnvalidatedDrugs();
+        }
+
+        public List<Drug> GetValidatedDrugs()
+        {
+            return drugService.GetValidatedDrugs();
         }
     }
 }

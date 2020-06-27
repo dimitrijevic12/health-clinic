@@ -10,7 +10,13 @@ namespace Model.SystemUsers
 {
    public class Country
    {
-      private String Name;
-   
-   }
+      private String name;
+
+        public Country()
+        {
+            Name = "";
+        }
+
+        public string Name { get => name; set => name = value; }
+    }
 }

@@ -12,16 +12,17 @@ namespace Model.Treatment
 {
    public class Prescription
    {
-        private List<Drug> drug;
-        public Prescription(List<Drug> drug)
+        private List<Drug> drugs;
+        public Prescription(List<Drug> drugs)
         {
-            this.Drug = drug;
+            Drugs = drugs;
         }
 
         public Prescription()
         {
+            Drugs = new List<Drug>();
         }
 
-        public List<Drug> Drug { get => drug; set => drug = value; }
+        public List<Drug> Drugs { get => drugs; set => drugs = value; }
     }
 }

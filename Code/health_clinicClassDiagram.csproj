@@ -330,7 +330,6 @@
     <Compile Include="Repository\Csv\Converter\BlogCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\Csv\Converter\DiagnosisAndReviewCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\DoctorCSVConverter.cs" />
     <Compile Include="Repository\Csv\Converter\DrugCSVConverter.cs">
       <SubType>Code</SubType>

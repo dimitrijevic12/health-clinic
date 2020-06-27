@@ -78,7 +78,7 @@ namespace Service
 
         public ReferralToHospitalTreatment WriteReferralToHospTreat(Treatment treatment, DateTime startDate, DateTime endDate, string cause, List<Drug> drugs, RehabilitationRoom room)
         {
-            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, cause, drugs);
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(cause, drugs);
             treatment.ReferralToHospitalTreatment = referralToHospitalTreatment;
             MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(treatment.Id);
             RehabilitationRoomService.Instance.AddPatient(medicalRecord, room);

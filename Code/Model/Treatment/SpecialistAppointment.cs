@@ -13,6 +13,8 @@ namespace health_clinicClassDiagram.Model.Treatment
 
         public SpecialistAppointment()
         {
+            Doctor = new Doctor();
+            Cause = "";
         }
 
         public SpecialistAppointment(string cause, Doctor doctor)

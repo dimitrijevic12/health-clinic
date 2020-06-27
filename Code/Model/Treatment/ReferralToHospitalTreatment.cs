@@ -14,36 +14,21 @@ namespace Model.Treatment
    public class ReferralToHospitalTreatment
    {
         private List<Drug> drugs;
-
-        /// <pdGenerated>default getter</pdGenerated>
-       
-   
-      private DateTime startDate;
-      private DateTime endDate;
-      private String causeForHospTreatment;
+        private String causeForHospitalTreatment;
 
         public ReferralToHospitalTreatment()
-        { 
-        }
-
-        public ReferralToHospitalTreatment(DateTime startDate, DateTime endDate, string causeForHospTreatment)
         {
-            StartDate = startDate;
-            EndDate = endDate;
-            CauseForHospTreatment = causeForHospTreatment;
+            Drugs = new List<Drug>();
+            CauseForHospitalTreatment = "";
         }
 
-        public ReferralToHospitalTreatment(DateTime startDate, DateTime endDate, string causeForHospTreatment, List<Drug> drugs)
+        public ReferralToHospitalTreatment(string causeForHospTreatment, List<Drug> drugs)
         {
             Drugs = drugs;
-            StartDate = startDate;
-            EndDate = endDate;
-            CauseForHospTreatment = causeForHospTreatment;
+            CauseForHospitalTreatment = causeForHospTreatment;
         }
 
         public List<Drug> Drugs { get => drugs; set => drugs = value; }
-        public DateTime StartDate { get => startDate; set => startDate = value; }
-        public DateTime EndDate { get => endDate; set => endDate = value; }
-        public string CauseForHospTreatment { get => causeForHospTreatment; set => causeForHospTreatment = value; }
+        public string CauseForHospitalTreatment { get => causeForHospitalTreatment; set => causeForHospitalTreatment = value; }
     }
 }

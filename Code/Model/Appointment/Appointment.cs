@@ -91,6 +91,12 @@ namespace Model.Appointment
 
         public Appointment()
         {
+            Patient  = new Patient();
+            Doctor  = new Doctor();
+            ExamOperationRoom  = new ExamOperationRoom();
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now ;
+            TypeOfAppointment  = TypeOfAppointment.EXAM;
         }
 
 

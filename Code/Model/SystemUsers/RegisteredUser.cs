@@ -10,7 +10,7 @@ namespace Model.SystemUsers
 {
    public class RegisteredUser
    {
-        private Adress adress;
+        private Address adress;
 
         private String username;
         private String password;
@@ -18,10 +18,9 @@ namespace Model.SystemUsers
         private String surname;
         private long id;
 
-        public RegisteredUser(Adress adress, string username, string password, string name, string surname, long id)
+        public RegisteredUser(Address adress, string username, string password, string name, string surname, long id)
         {
-            Adress = adress;
-            Adress = adress;
+            Address = adress;
             Username = username;
             Password = password;
             Name = name;
@@ -38,9 +37,15 @@ namespace Model.SystemUsers
 
         public RegisteredUser()
         {
+            Address = new Address();
+            Username = "";
+            Password = "";
+            Name = "";
+            Surname = "";
+            Id = 0;
         }
 
-        public Adress Adress { get => adress; set => adress = value; }
+        public Address Address { get => adress; set => adress = value; }
         public string Username { get => username; set => username = value; }
         public string Password { get => password; set => password = value; }
         public string Name { get => name; set => name = value; }
