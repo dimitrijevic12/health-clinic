@@ -49,6 +49,11 @@ namespace Model.SystemUsers
             get { return Name + " " + Surname; }
         }
 
+        public String DateOfBirthString
+        {
+            get { return dateOfBirth.ToShortDateString(); }   // get method
+        }
+
         public Doctor() { }
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth)
         {
