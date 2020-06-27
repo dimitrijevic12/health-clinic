@@ -39,7 +39,7 @@ namespace health_clinicClassDiagram.View
             InitializeComponent();
             DataContext = this;
             Prescription = prescription;
-            PresrcibedDrugs = new ObservableCollection<Drug>(prescription.Drug);
+            PresrcibedDrugs = new ObservableCollection<Drug>(prescription.Drugs);
             //           foreach(Drug drug in prescription.Drug)
             //           {
             //               PresrcibedDrugs.Add(drug);
@@ -101,7 +101,7 @@ namespace health_clinicClassDiagram.View
             }
             else
             { 
-                Prescription.Drug = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
+                Prescription.Drugs = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
                 (this.Parent as Panel).Children.Remove(this);
                 return;
             }
@@ -113,7 +113,8 @@ namespace health_clinicClassDiagram.View
             foreach(var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
-                DoctorDrugController.Instance.LowerQuantity((Drug)row);
+                DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+                doctorDrugController.LowerQuantity((Drug)row);
             }
         }
 
@@ -121,7 +122,8 @@ namespace health_clinicClassDiagram.View
         {
             var row = dataGridDodati.SelectedItem;
             PresrcibedDrugs.Remove((Drug)row);
-            DoctorDrugController.Instance.IncreaseQuantity((Drug)row);
+            DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+            doctorDrugController.IncreaseQuantity((Drug)row);
         }
 
         private void textBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)

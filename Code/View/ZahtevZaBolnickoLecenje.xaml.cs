@@ -57,13 +57,13 @@ namespace health_clinicClassDiagram.View
             ReferralToHospitalTreatment = referralToHospitalTreatment;
             PresrcibedDrugs = new ObservableCollection<Drug>(referralToHospitalTreatment.Drugs);
             
-            if (ReferralToHospitalTreatment.CauseForHospTreatment == null)
+            if (ReferralToHospitalTreatment.CauseForHospitalTreatment == null)
             {
                 Cause = "";
             }
             else
             {
-                Cause = ReferralToHospitalTreatment.CauseForHospTreatment;
+                Cause = ReferralToHospitalTreatment.CauseForHospitalTreatment;
             }
 
             DataContext = this;
@@ -108,7 +108,7 @@ namespace health_clinicClassDiagram.View
             }
             else
             {
-                ReferralToHospitalTreatment.CauseForHospTreatment = textBoxRazlogBolnickogLecenja.Text;
+                ReferralToHospitalTreatment.CauseForHospitalTreatment = textBoxRazlogBolnickogLecenja.Text;
                 ReferralToHospitalTreatment.Drugs = new List<Drug>((IEnumerable<Drug>)PresrcibedDrugs);
                 RehabilitationRoom rehabilitationRoom = dataGridSobe.SelectedItem as RehabilitationRoom;
                 MedicalRecord medicalRecord = MedicalRecordController.Instance.GetMedicalRecordByPatient(Appointment.Patient);
@@ -125,7 +125,8 @@ namespace health_clinicClassDiagram.View
             foreach (var row in rows)
             {
                 PresrcibedDrugs.Add((Drug)row);
-                DoctorDrugController.Instance.LowerQuantity((Drug)row);
+                DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+                doctorDrugController.LowerQuantity((Drug)row);
             }
         }
 
@@ -133,7 +134,8 @@ namespace health_clinicClassDiagram.View
         {
             var row = dataGridDodati.SelectedItem;
             PresrcibedDrugs.Remove((Drug)row);
-            DoctorDrugController.Instance.IncreaseQuantity((Drug)row);
+            DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+            doctorDrugController.IncreaseQuantity((Drug)row);
 
         }
 

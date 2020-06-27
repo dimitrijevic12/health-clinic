@@ -37,7 +37,7 @@ namespace health_clinicClassDiagram.View
             Treatment = treatment;
             Patient = patient;
             SurgicalSpecialty = treatment.ScheduledSurgery.Surgeon.SurgicalSpecialty.ToString().ToLower();
-            Prescription = Treatment.Prescription.Drug;
+            Prescription = Treatment.Prescription.Drugs;
             HospTreatmentDrugs = Treatment.ReferralToHospitalTreatment.Drugs;
             Diagnosis = treatment.DiagnosisAndReview.Diagnosis;
             Review = treatment.DiagnosisAndReview.Review;

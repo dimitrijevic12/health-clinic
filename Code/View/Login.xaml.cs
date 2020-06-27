@@ -38,8 +38,8 @@ namespace health_clinicClassDiagram.View
             Patient patient2 = new Patient("Pacijent", "Pacijent", 2233);
             PatientController.Instance.Create(patient);
             PatientController.Instance.Create(patient2);
-            ExamOperationRoom room = new ExamOperationRoom(222);
-            ExamOperationRoom room2 = new ExamOperationRoom(2);
+            ExamOperationRoom room = new ExamOperationRoom(222, TypeOfRoom.EXAMOPERATION);
+            ExamOperationRoom room2 = new ExamOperationRoom(2, TypeOfRoom.EXAMOPERATION);
             Appointment app1 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today, DateTime.Today.AddHours(3));
             Appointment app2 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(7), DateTime.Today.AddHours(8));
             Appointment app3 = new Appointment(doctor, patient2, room2, TypeOfAppointment.EXAM, DateTime.Today.AddHours(17), DateTime.Today.AddHours(18));
@@ -53,7 +53,7 @@ namespace health_clinicClassDiagram.View
             DoctorRepository.Instance.Save(surgeon1);
             SurgeonRepository.Instance.Save(surgeon2);
 
-            ExamOperationRoom room1 = new ExamOperationRoom(1);
+            ExamOperationRoom room1 = new ExamOperationRoom();
             
             List<ExamOperationRoom> examOperationRooms = new List<ExamOperationRoom>();
             examOperationRooms.Add(room1);
@@ -91,7 +91,7 @@ namespace health_clinicClassDiagram.View
             Prescription prescription = new Prescription(drugs);
             ScheduledSurgery scheduledSurgery = new ScheduledSurgery(DateTime.Today, DateTime.Today.AddHours(2), "Razlog operacije", surgeon1);
             DiagnosisAndReview diagnosisAndReview1 = new DiagnosisAndReview("Dijagnoza", "Procedura");
-            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(DateTime.Today, DateTime.Today.AddHours(2), "Razlog bolnickog lecenja", drugs);
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment("Razlog bolnickog lecenja", drugs);
             SpecialistAppointment specialistAppointment = new SpecialistAppointment("Razlog za spec. termin", specialist2);
             Treatment treatment1 = new Treatment(prescription, scheduledSurgery, diagnosisAndReview1, referralToHospitalTreatment, DateTime.Today.AddHours(17), DateTime.Today.AddHours(19), 1, doctor, specialistAppointment);
             Treatment treatment2 = new Treatment(prescription, scheduledSurgery, diagnosisAndReview1, referralToHospitalTreatment, DateTime.Today.AddHours(15), DateTime.Today.AddHours(16), 2, doctor, specialistAppointment);

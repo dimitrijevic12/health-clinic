@@ -44,7 +44,7 @@ namespace health_clinicClassDiagram.View
         public ZakaziKontroluLista(Appointment thisAppointment, DateTime day)
         {
             InitializeComponent();
-            ExamOperationRoom room = new ExamOperationRoom(1);
+            ExamOperationRoom room = ExamOperationRoomRepository.Instance.GetAll()[0];
             List<Appointment> blankAppointments = AppointmentGenerator.Instance.generateList(day);
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)
@@ -133,7 +133,7 @@ namespace health_clinicClassDiagram.View
         private void comboBoxListaSoba_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ExamOperationRoom room = (ExamOperationRoom)comboBoxListaSoba.SelectedItem;
-            if (room == null) room = new ExamOperationRoom(0);
+            if (room == null) room = ExamOperationRoomRepository.Instance.GetAll()[0];
             List<Appointment> blankAppointments = AppointmentGenerator.Instance.generateList(Day);
             AppointmentsToShow = new ObservableCollection<Appointment>(blankAppointments);
             foreach (Appointment blankAppointment in blankAppointments)

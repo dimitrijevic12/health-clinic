@@ -60,7 +60,8 @@ namespace health_clinicClassDiagram.View
             }
             foreach(Drug drug in drugsToApprove)
             {
-                DoctorDrugController.Instance.ValidateDrug(drug);
+                DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+                doctorDrugController.ValidateDrug(drug);
                 AllDrugs.Remove(drug);
             }
         }
