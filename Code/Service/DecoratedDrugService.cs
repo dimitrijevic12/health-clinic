@@ -10,28 +10,33 @@ using System.Collections.Generic;
 
 namespace Service
 {
-   public class DecoratedDrugService : IDrugService
+   public abstract class DecoratedDrugService : IDrugService
    {
-      private IDrugService DrugServiceReference;
+      protected IDrugService drugServiceReference;
+
+        public DecoratedDrugService(IDrugService iDrugService)
+        {
+            this.drugServiceReference = iDrugService;
+        }
 
         public void addDrug(string naziv, int quant)
         {
-            throw new NotImplementedException();
+            drugServiceReference.addDrug(naziv, quant);
         }
 
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
+            return drugServiceReference.GetAllDrugs();
         }
 
         public List<Drug> GetUnvalidatedDrugs()
         {
-            throw new NotImplementedException();
+            return drugServiceReference.GetUnvalidatedDrugs();
         }
 
         public List<Drug> GetValidatedDrugs()
         {
-            throw new NotImplementedException();
+            return drugServiceReference.GetValidatedDrugs();
         }
     }
 }
