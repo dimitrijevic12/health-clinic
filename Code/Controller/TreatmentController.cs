@@ -44,7 +44,7 @@ namespace Controller
 
         public SpecialistAppointment WriteReferralToASpecialist(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
-            return TreatmentService.Instance.WriteReferralToASpecialist(specialist, cause, treatment, room, startDate, endDate);
+            return TreatmentService.Instance.ScheduleSpecialistAppointment(specialist, cause, treatment, room, startDate, endDate);
         }
 
         public ScheduledSurgery ScheduleSurgery(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, Surgeon surgeon, ExamOperationRoom room)
@@ -59,7 +59,7 @@ namespace Controller
 
         public ReferralToHospitalTreatment WriteReferralToHospTreat(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, List<Drug> drugs, RehabilitationRoom room)
         {
-            return TreatmentService.Instance.WriteReferralToHospTreat(treatment, startDate, endDate, cause, drugs, room);
+            return TreatmentService.Instance.WriteReferralToHospitalTreatment(treatment, startDate, endDate, cause, drugs, room);
         }
 
         public Appointment ScheduleControlAppointment(Appointment appointment)

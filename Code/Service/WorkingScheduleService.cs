@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace Service
 {
-    public class WorkingScheduleService : IWorkingScheduleService
+    public class WorkingScheduleService : IService<WorkingSchedule>
     {
         public readonly IWorkingScheduleRepository _workingScheduleRepository = WorkingScheduleRepository.Instance;
 

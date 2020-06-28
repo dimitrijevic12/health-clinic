@@ -32,25 +32,6 @@ namespace Controller
         }
 
         private RoomController() { }
-        public bool IsRoomFree(DateTime from, DateTime to, Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> GetAllPatientsByRoom()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GenerateReport(Room room)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool AddPatient(Patient patient)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Room> GetAll()
         {

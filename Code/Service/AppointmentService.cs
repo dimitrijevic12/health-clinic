@@ -20,7 +20,7 @@ namespace Service
 {
    public class AppointmentService : IAppointmentService
    {
-        public Repository.IAppointmentRepository _appointmentRepository = AppointmentRepository.Instance;
+        public IRepository<Appointment> _appointmentRepository = AppointmentRepository.Instance;
         private readonly IService<Doctor> _doctorService = DoctorService.Instance;
         private readonly IService<Patient> _patientService = PatientService.Instance;
         private readonly IService<ExamOperationRoom> _roomService = ExamOperationRoomService.Instance;

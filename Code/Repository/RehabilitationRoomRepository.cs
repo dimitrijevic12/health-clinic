@@ -92,20 +92,6 @@ namespace health_clinicClassDiagram.Repository
             return rooms[rooms.FindIndex(apt => apt.IdRoom == room.IdRoom)];
         }
 
-        public List<RehabilitationRoom> GetFreeRoomsByDate(DateTime startDate, DateTime endDate)
-        {
-            List<RehabilitationRoom> rooms = GetAll();
-            //TODO: Pronaci slobodne sobe
-            /*foreach(Treatment treatment in TreatmentRepository.Instance.GetAll())
-            {
-                if(treatment.ReferralToHospitalTreatment.StartDate >= startDate && ((treatment.ReferralToHospitalTreatment.EndDate <= endDate)){
-                    rooms. 
-                }
-            }
-            */
-            return rooms;
-        }
-
         public RehabilitationRoom findRehabRoom(long id)
         {
             var rooms = GetAll();

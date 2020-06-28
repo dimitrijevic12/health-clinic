@@ -16,7 +16,7 @@ using System.Linq;
 
 namespace Repository
 {
-   public class AppointmentRepository : IAppointmentRepository
+   public class AppointmentRepository : IRepository<Appointment>
    {
         private static AppointmentRepository instance = null;
         private const string APPOINMENT_FILE = "../../Resources/Data/appointments.csv";

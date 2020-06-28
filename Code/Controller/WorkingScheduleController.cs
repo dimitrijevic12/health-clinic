@@ -11,10 +11,10 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class WorkingScheduleController : IWorkingSchedule
+   public class WorkingScheduleController : IController<WorkingSchedule>
    {
       public WorkingScheduleController GetInstance() { return null; }
-        public IWorkingScheduleService _service = WorkingScheduleService.Instance;
+        public WorkingScheduleService _service = WorkingScheduleService.Instance;
 
         private static WorkingScheduleController instance;
 

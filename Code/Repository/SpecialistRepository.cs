@@ -10,7 +10,7 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class SpecialistRepository : IRepository<Specialist>
+    public class SpecialistRepository : ISpecialistRepository
     {
         private static SpecialistRepository instance = null;
         private readonly CSVStream<Specialist> _stream = new CSVStream<Specialist>("../../Resources/Data/Specialists.csv", new SpecialistCSVConverter(","));

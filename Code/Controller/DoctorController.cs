@@ -9,7 +9,7 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Controller
 {
-    public class DoctorController : IController<Doctor>
+    public class DoctorController : IDoctorController
     {
         private static DoctorController instance;
 
@@ -62,7 +62,7 @@ namespace health_clinicClassDiagram.Controller
             return DoctorService.Instance.ValidateLogin(username, password);
         }
 
-        public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
+        public List<Doctor> GetAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
         {
             return DoctorService.Instance.getAllAvailableDoctors(_startDate, _endDate);
         }

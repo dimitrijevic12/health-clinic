@@ -10,7 +10,7 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class PatientRepository : IRepository<Patient>
+    public class PatientRepository : IPatientRepository
     {
         private static PatientRepository instance = null;
         //private readonly CSVStream<Patient> stream = new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy."));
@@ -94,7 +94,7 @@ namespace health_clinicClassDiagram.Repository
             throw new NotImplementedException();
         }
 
-        public Patient getPatientById(long id)
+        public Patient GetPatientById(long id)
         {
             var patients = _stream.ReadAll().ToList();
             return patients[patients.FindIndex(apt => apt.Id == id)];

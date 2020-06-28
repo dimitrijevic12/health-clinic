@@ -37,7 +37,7 @@ namespace Repository.Csv.Converter
 
             Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[1]));
 
-            Patient patient = patientRepository.getPatientById(patientId);
+            Patient patient = patientRepository.GetPatientById(patientId);
 
 
             return new Appointment(long.Parse(tokens[0]),

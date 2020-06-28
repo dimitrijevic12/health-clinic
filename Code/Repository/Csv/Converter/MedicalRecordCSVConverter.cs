@@ -33,7 +33,7 @@ namespace Repository.Csv.Converter
             var patientRepository = PatientRepository.Instance;
 
             Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[2]));
-            Patient patient = patientRepository.getPatientById(long.Parse(tokens[1]));
+            Patient patient = patientRepository.GetPatientById(long.Parse(tokens[1]));
             List<Treatment> treatments = new List<Treatment>();
 
             if (tokens[3] != "")

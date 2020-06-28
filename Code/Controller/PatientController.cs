@@ -54,10 +54,5 @@ namespace health_clinicClassDiagram.Controller
             return patients;
         }
 
-
-        public List<Patient> GetAllAvailablePatients(DateTime _startDate, DateTime _endDate)
-        {
-            return PatientService.Instance.GetAllAvailablePatients(_startDate, _endDate);
-        }
     }
 }
