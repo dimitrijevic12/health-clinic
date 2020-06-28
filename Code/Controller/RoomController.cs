@@ -35,7 +35,7 @@ namespace Controller
 
         public List<Room> GetAll()
         {
-            var rooms = (List<Room>)_service.GetAll();
+            List<Room> rooms = (List<Room>)_service.GetAll();
             return rooms;
         }
 

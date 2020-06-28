@@ -12,7 +12,6 @@ namespace Model.SystemUsers
 {
    public class Doctor : RegisteredUser
    {
-        private WorkingSchedule[] workingSchedule;
         private Gender gender;
         private DateTime dateOfBirth;
         private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();

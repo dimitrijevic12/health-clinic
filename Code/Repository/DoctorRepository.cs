@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.UI.WebControls;
 
 namespace health_clinicClassDiagram.Repository
 {
@@ -14,10 +15,9 @@ namespace health_clinicClassDiagram.Repository
     {
         private static DoctorRepository instance = null;
 
-        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(",", "dd.MM.yyyy."));
+        private readonly ICSVStream<Doctor> _stream = new CSVStream<Doctor>("../../Resources/Data/doctors.csv", new DoctorCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/doctors.csv";
         public static DoctorRepository Instance
         {
             get
@@ -39,15 +39,10 @@ namespace health_clinicClassDiagram.Repository
             return doctors.Count() == 0 ? 0 : doctors.Max(apt => apt.Id);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(Doctor obj)
         {
-            var doctors = _stream.ReadAll().ToList();
-            var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
+            List<Doctor> doctors = _stream.ReadAll().ToList();
+            Doctor doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
@@ -62,7 +57,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Doctor Edit(Doctor obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            List<Doctor> doctors = _stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(doctors);
             return obj;
@@ -70,13 +65,8 @@ namespace health_clinicClassDiagram.Repository
 
         public List<Doctor> GetAll()
         {
-            var doctors = (List<Doctor>)_stream.ReadAll();
+            List<Doctor> doctors = (List<Doctor>)_stream.ReadAll();
             return doctors;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public Doctor Save(Doctor obj)
@@ -87,7 +77,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Doctor GetDoctorById(long id)
         {
-            var doctors = _stream.ReadAll().ToList();
+            List<Doctor> doctors = _stream.ReadAll().ToList();
             return doctors[doctors.FindIndex(apt => apt.Id == id)];
 
         }

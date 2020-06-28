@@ -31,15 +31,9 @@ namespace health_clinicClassDiagram.Service
 
         private DoctorService() { }
 
-        public DoctorService(IRepository<Doctor> repository)
-        {
-            _doctorRepository = repository;
-
-        }
-
         public Doctor Create(Doctor obj)
         {
-            var newDoctor = _doctorRepository.Save(obj);
+            Doctor newDoctor = _doctorRepository.Save(obj);
             return newDoctor;
         }
 
@@ -55,7 +49,7 @@ namespace health_clinicClassDiagram.Service
 
         public List<Doctor> GetAll()
         {
-            var doctors = _doctorRepository.GetAll();
+            List<Doctor> doctors = _doctorRepository.GetAll();
             return doctors;
         }
 
@@ -64,24 +58,24 @@ namespace health_clinicClassDiagram.Service
             return DoctorRepository.Instance.GetDoctorByUsernameAndPassword(username, password);
         }
 
-        public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
+        public List<Doctor> GetAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
         {
             var doctors = _doctorRepository.GetAll();
             var appointments = AppointmentRepository.Instance.GetAll();
 
             List<Doctor> doctorsToRemove = new List<Doctor>();
 
-            foreach (Appointment a in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                if (a.StartDate <= _startDate && a.EndDate >= _endDate)
+                if (appointment.StartDate <= _startDate && appointment.EndDate >= _endDate)
                 {
-                    doctorsToRemove.Add(a.Doctor);
+                    doctorsToRemove.Add(appointment.Doctor);
                 }
             }
 
-            foreach (Doctor d in doctorsToRemove)
+            foreach (Doctor doctor in doctorsToRemove)
             {
-                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == d.Id);
+                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == doctor.Id);
                 if (doctorToRemove != null)
                     doctors.Remove(doctorToRemove);
             }

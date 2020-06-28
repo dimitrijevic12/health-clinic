@@ -13,12 +13,9 @@ namespace health_clinicClassDiagram.Repository
     public class PatientRepository : IPatientRepository
     {
         private static PatientRepository instance = null;
-        //private readonly CSVStream<Patient> stream = new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy."));
-        //private readonly LongSequencer sequencer = new LongSequencer();
-        private readonly ICSVStream<Patient> _stream = new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(",", "dd.MM.yyyy."));
+        private readonly ICSVStream<Patient> _stream = new CSVStream<Patient>("../../Resources/Data/patients.csv", new PatientCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/patients.csv";
         public static PatientRepository Instance
         {
             get
@@ -35,14 +32,6 @@ namespace health_clinicClassDiagram.Repository
         {
         }
 
-        public PatientRepository(string path, CSVStream<Patient> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
         private long GetMaxId(List<Patient> patients)
         {
             return patients.Count() == 0 ? 0 : patients.Max(apt => apt.Id);
@@ -56,7 +45,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Patient Edit(Patient obj)
         {
-            var patients = _stream.ReadAll().ToList();
+            List<Patient> patients = _stream.ReadAll().ToList();
             patients[patients.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(patients);
             return obj;
@@ -64,8 +53,8 @@ namespace health_clinicClassDiagram.Repository
 
         public bool Delete(Patient obj)
         {
-            var patients = _stream.ReadAll().ToList();
-            var patientToRemove = patients.SingleOrDefault(acc => acc.Id == obj.Id);
+            List<Patient> patients = _stream.ReadAll().ToList();
+            Patient patientToRemove = patients.SingleOrDefault(acc => acc.Id == obj.Id);
             if (patientToRemove != null)
             {
                 patients.Remove(patientToRemove);
@@ -80,18 +69,8 @@ namespace health_clinicClassDiagram.Repository
 
         public List<Patient> GetAll()
         {
-            var patients = (List<Patient>)_stream.ReadAll();
+            List<Patient> patients = (List<Patient>)_stream.ReadAll();
             return patients;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public Patient GetPatientById(long id)

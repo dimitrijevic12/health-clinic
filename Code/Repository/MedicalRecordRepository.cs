@@ -21,7 +21,6 @@ namespace Repository
         private readonly ICSVStream<MedicalRecord> _stream = new CSVStream<MedicalRecord>("../../Resources/Data/records.csv", new MedicalRecordCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/records.csv";
         private static MedicalRecordRepository instance = null;
 
         public static MedicalRecordRepository Instance
@@ -38,14 +37,6 @@ namespace Repository
 
         private MedicalRecordRepository()
         {
-        }
-
-        public MedicalRecordRepository(string path, CSVStream<MedicalRecord> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
         }
 
         private long GetMaxId(List<MedicalRecord> records)
@@ -127,7 +118,7 @@ namespace Repository
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            var records = _stream.ReadAll().ToList();
+            List<MedicalRecord> records = _stream.ReadAll().ToList();
             records[records.FindIndex(apt => apt.id == obj.id)] = obj;
             _stream.SaveAll(records);
             return obj;
@@ -135,8 +126,8 @@ namespace Repository
 
         public bool Delete(MedicalRecord obj)
         {
-            var records = _stream.ReadAll().ToList();
-            var recordToRemove = records.SingleOrDefault(acc => acc.id == obj.id);
+            List<MedicalRecord> records = _stream.ReadAll().ToList();
+            MedicalRecord recordToRemove = records.SingleOrDefault(acc => acc.id == obj.id);
             if (recordToRemove != null)
             {
                 records.Remove(recordToRemove);
@@ -151,7 +142,7 @@ namespace Repository
 
         public List<MedicalRecord> GetAll()
         {
-            var records = (List<MedicalRecord>)_stream.ReadAll();
+            List<MedicalRecord> records = _stream.ReadAll();
             return records;
         }
 

@@ -18,8 +18,8 @@ using System.ComponentModel;
 
 namespace Service
 {
-   public class AppointmentService : IAppointmentService
-   {
+    public class AppointmentService : IAppointmentService
+    {
         public IRepository<Appointment> _appointmentRepository = AppointmentRepository.Instance;
         private readonly IService<Doctor> _doctorService = DoctorService.Instance;
         private readonly IService<Patient> _patientService = PatientService.Instance;
@@ -48,11 +48,11 @@ namespace Service
             List<Appointment> appointments = _appointmentRepository.GetAll();
             List<Appointment> wantedAppointments = new List<Appointment>();
 
-            foreach (Appointment a in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                if (a.RoomId.Equals(room.Id))
+                if (appointment.RoomId.Equals(room.Id))
                 {
-                    wantedAppointments.Add(a);
+                    wantedAppointments.Add(appointment);
                 }
             }
 
@@ -62,31 +62,24 @@ namespace Service
 
         public Appointment Create(Appointment obj)
         {
-            var appointment = _appointmentRepository.Save(obj);
+            Appointment appointment = _appointmentRepository.Save(obj);
             return appointment;
         }
 
         public Appointment Edit(Appointment obj)
         {
-            _doctorService.Edit(obj.Doctor);
-            _patientService.Edit(obj.Patient);
-            _roomService.Edit(obj.ExamOperationRoom);
             _appointmentRepository.Edit(obj);
             return obj;
         }
 
         public bool Delete(Appointment obj)
         {
-            _doctorService.Delete(obj.Doctor);
-            _patientService.Delete(obj.Patient);
-            _roomService.Delete(obj.ExamOperationRoom);
-            _appointmentRepository.Delete(obj);
-            return true;
+            return _appointmentRepository.Delete(obj);
         }
 
         public List<Appointment> GetAll()
         {
-            var appointments = _appointmentRepository.GetAll();
+            List<Appointment> appointments = _appointmentRepository.GetAll();
             return appointments;
         }
 
@@ -95,11 +88,11 @@ namespace Service
             List<Appointment> appointments = _appointmentRepository.GetAll();
             List<Appointment> wantedAppointments = new List<Appointment>();
 
-            foreach (Appointment a in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                if ((a.RoomId.Equals(room.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
+                if ((appointment.RoomId.Equals(room.Id)) && (appointment.StartDate >= startDate) && (appointment.EndDate <= endDate))
                 {
-                    wantedAppointments.Add(a);
+                    wantedAppointments.Add(appointment);
                 }
             }
 
@@ -111,11 +104,11 @@ namespace Service
             List<Appointment> appointments = _appointmentRepository.GetAll();
             List<Appointment> wantedAppointments = new List<Appointment>();
 
-            foreach (Appointment a in appointments)
+            foreach (Appointment appointment in appointments)
             {
-                if ((a.Doctor.Id.Equals(doctor.Id)) && (a.StartDate >= startDate) && (a.EndDate <= endDate))
+                if ((appointment.Doctor.Id.Equals(doctor.Id)) && (appointment.StartDate >= startDate) && (appointment.EndDate <= endDate))
                 {
-                    wantedAppointments.Add(a);
+                    wantedAppointments.Add(appointment);
                 }
             }
 
@@ -124,7 +117,7 @@ namespace Service
 
         public List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, string priority)
         {
-            List<Appointment> appointmentsToShow = listAppointments(doctor, startDate, endDate);
+            List<Appointment> appointmentsToShow = ListAppointments(doctor, startDate, endDate);
             List<Doctor> doctors = DoctorRepository.Instance.GetAll();
 
             if (appointmentsToShow.Count == 0)
@@ -134,7 +127,7 @@ namespace Service
                     while (appointmentsToShow.Count < 3)
                     {
                         endDate = endDate.AddDays(1);
-                        appointmentsToShow = listAppointments(doctor, startDate, endDate);
+                        appointmentsToShow = ListAppointments(doctor, startDate, endDate);
                     }
                 }
                 else
@@ -143,7 +136,7 @@ namespace Service
                     {
                         doctors.Remove(doctor);
                         doctor = doctors[0];
-                        appointmentsToShow = listAppointments(doctor, startDate, endDate);
+                        appointmentsToShow = ListAppointments(doctor, startDate, endDate);
                     }
                 }
             }
@@ -151,47 +144,65 @@ namespace Service
             return appointmentsToShow;
         }
 
-        private List<Appointment> listAppointments(Doctor doctor, DateTime startDate, DateTime endDate)
+        private List<Appointment> ListAppointments(Doctor doctor, DateTime startDate, DateTime endDate)
         {
 
             List<ExamOperationRoom> rooms = ExamOperationRoomRepository.Instance.GetAll();
 
             List<Appointment> wantedAppointments = GetAppointmentsByTimeAndDoctor(doctor, startDate, endDate);
 
-            List<Appointment> roomsInUse = new List<Appointment>();
-            int i = 0;
-            foreach (ExamOperationRoom r in rooms)
-            {
-                List<Appointment> forOneRoom = GetAppointmentsByTimeAndRoom(rooms[i], startDate, endDate);
-                roomsInUse.AddRange(forOneRoom);
-                i++;
-            }
+            List<Appointment> occupiedAppointmentsForRooms = ListOccupiedAppointments(startDate, endDate);
 
             List<Appointment> BlankAppointments = AppointmentGenerator.Instance.generateList(startDate);
 
-            foreach (Appointment appoint in wantedAppointments)
+            foreach (Appointment appointment in wantedAppointments)
             {
-                BlankAppointments.RemoveAll(x => x.StartDate >= appoint.StartDate && x.EndDate <= appoint.EndDate);
+                BlankAppointments.RemoveAll(x => x.StartDate >= appointment.StartDate && x.EndDate <= appointment.EndDate);
             }
+
+            List<Appointment> appointmentsToShow = ListAppointmentsToShow(BlankAppointments, occupiedAppointmentsForRooms);
+
+            return appointmentsToShow;
+        }
+
+        private List<Appointment> ListOccupiedAppointments(DateTime startDate, DateTime endDate)
+        {
+            List<ExamOperationRoom> rooms = ExamOperationRoomRepository.Instance.GetAll();
+
+            List<Appointment> occupiedAppointmentsForRooms = new List<Appointment>();
+            int i = 0;
+            foreach (ExamOperationRoom r in rooms)
+            {
+                List<Appointment> appointmentsForOneRoom = GetAppointmentsByTimeAndRoom(rooms[i], startDate, endDate);
+                occupiedAppointmentsForRooms.AddRange(appointmentsForOneRoom);
+                i++;
+            }
+
+            return occupiedAppointmentsForRooms;
+        }
+
+        private List<Appointment> ListAppointmentsToShow(List<Appointment>BlankAppointments, List<Appointment>occupiedAppointmentsForRooms)
+        {
+            List<ExamOperationRoom> rooms = ExamOperationRoomRepository.Instance.GetAll();
 
             List<Appointment> appointmentsToShow = new List<Appointment>();
 
-            foreach (Appointment blank in BlankAppointments)
+            foreach (Appointment blankAppointment in BlankAppointments)
             {
-                int flag = 0;
+                int alreadyOccupied = 0;
                 for (int j = 0; j < rooms.Count; j++)
                 {
-                    foreach (Appointment taken in roomsInUse)
+                    foreach (Appointment occupiedAppointment in occupiedAppointmentsForRooms)
                     {
-                        if (blank.StartDate >= taken.StartDate && blank.EndDate <= taken.EndDate)
+                        if (blankAppointment.StartDate >= occupiedAppointment.StartDate && blankAppointment.EndDate <= occupiedAppointment.EndDate)
                         {
-                            flag = 1;
+                            alreadyOccupied = 1;
                         }
                     }
-                    if (flag == 0)
+                    if (alreadyOccupied == 0)
                     {
-                        blank.ExamOperationRoom = rooms[j];
-                        appointmentsToShow.Add(blank);
+                        blankAppointment.ExamOperationRoom = rooms[j];
+                        appointmentsToShow.Add(blankAppointment);
                         break;
                     }
                 }

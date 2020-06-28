@@ -11,7 +11,6 @@ namespace Repository.Csv.Converter
 {
    public class RoomCSVConverter : ICSVConverter<Room>
    {
-      private String Delimiter;
         private readonly string _delimiter;
         public RoomCSVConverter(string delimiter)
         {
