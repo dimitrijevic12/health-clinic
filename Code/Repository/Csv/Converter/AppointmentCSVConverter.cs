@@ -15,19 +15,17 @@ namespace Repository.Csv.Converter
    public class AppointmentCSVConverter : ICSVConverter<Appointment>
    {
         private String _delimiter;
-        private readonly string _datetimeFormat;
 
-        public AppointmentCSVConverter(string delimiter, string datetimeFormat)
+        public AppointmentCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public Appointment ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
             long patientId = long.Parse(tokens[2]);
-            ExamOperationRoom room = ExamOperationRoomRepository.Instance.findExamRoom(long.Parse(tokens[6]));
+            ExamOperationRoom room = ExamOperationRoomRepository.Instance.GetRoomById(long.Parse(tokens[6]));
             TypeOfAppointment type = (TypeOfAppointment)Enum.Parse(typeof(TypeOfAppointment), tokens[3], true);
             DateTime startDate = DateTime.Parse(tokens[4]);
             DateTime endDate = DateTime.Parse(tokens[5]);

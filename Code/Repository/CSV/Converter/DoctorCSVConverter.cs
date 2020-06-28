@@ -13,15 +13,11 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     class DoctorCSVConverter : ICSVConverter<Doctor>
     {
 
-        private String Delimiter;
-
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public DoctorCSVConverter(string delimiter, string datetimeFormat)
+        public DoctorCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public Doctor ConvertCSVFormatToEntity(string entityCSVFormat)

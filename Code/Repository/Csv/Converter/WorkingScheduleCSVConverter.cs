@@ -18,12 +18,10 @@ namespace Repository.Csv.Converter
     public class WorkingScheduleCSVConverter : ICSVConverter<WorkingSchedule>
     {
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public WorkingScheduleCSVConverter(string delimiter, string datetimeFormat)
+        public WorkingScheduleCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
         public WorkingSchedule ConvertCSVFormatToEntity(string entityCSVFormat)
         {

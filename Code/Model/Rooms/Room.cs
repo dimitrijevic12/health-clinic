@@ -11,7 +11,6 @@ namespace Model.Rooms
 {
    public class Room
    {
-        public InventoryEquip[] inventoryEquip;
         protected List<Equipment> equipments;
         protected long _id;
         protected TypeOfRoom typeOfRoom;

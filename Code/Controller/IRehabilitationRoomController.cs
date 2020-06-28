@@ -12,12 +12,12 @@ namespace health_clinicClassDiagram.Controller
     public interface IRehabilitationRoomController : IController<RehabilitationRoom>
     {
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
-        Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
-        RehabilitationRoom getRoom(RehabilitationRoom room);
-        Room IncreaseQuantity(Room r, Equipment eq);
+        Boolean ReleasePatient(MedicalRecord record, RehabilitationRoom room);
+        RehabilitationRoom GetRoom(RehabilitationRoom room);
+        Room IncreaseQuantity(Room room, Equipment equipment);
 
-        Room DecreaseQuantity(Room r, Equipment eq);
+        Room DecreaseQuantity(Room room, Equipment equipment);
 
-        RehabilitationRoom findRehabRoom(long id);
+        RehabilitationRoom GetRoomById(long id);
     }
 }

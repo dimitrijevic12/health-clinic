@@ -11,6 +11,6 @@ namespace health_clinicClassDiagram.Repository
     {
         RehabilitationRoom GetRoom(RehabilitationRoom room);
 
-        RehabilitationRoom findRehabRoom(long id);
+        RehabilitationRoom GetRoomById(long id);
     }
 }

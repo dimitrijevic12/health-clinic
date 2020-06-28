@@ -10,13 +10,10 @@ using System.Collections.Generic;
 namespace Model.Rooms
 {
    public class ExamOperationRoom : Room
-   {
-      private Boolean inUse;
-      
+   {  
 
         public long _id;
        
-
         public ExamOperationRoom() : base()
         {
             

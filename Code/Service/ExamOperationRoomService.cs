@@ -28,11 +28,6 @@ namespace health_clinicClassDiagram.Service
 
         private ExamOperationRoomService() { }
 
-        public ExamOperationRoomService(IExamOperationRoomRepository repository)
-        {
-            _examOperationRoomRepository = repository;
-        }
-
         public ExamOperationRoom Create(ExamOperationRoom obj)
         {
 
@@ -43,8 +38,7 @@ namespace health_clinicClassDiagram.Service
 
         public bool Delete(ExamOperationRoom obj)
         {
-            _examOperationRoomRepository.Delete(obj);
-            return true;
+            return _examOperationRoomRepository.Delete(obj);
         }
 
         public ExamOperationRoom Edit(ExamOperationRoom obj)
@@ -57,58 +51,48 @@ namespace health_clinicClassDiagram.Service
 
         public List<ExamOperationRoom> GetAll()
         {
-            var rooms = _examOperationRoomRepository.GetAll();
+            List<ExamOperationRoom> rooms = _examOperationRoomRepository.GetAll();
             return rooms;
         }
 
-        public ExamOperationRoom findExamRoom(long id)
+        public ExamOperationRoom GetRoomById(long id)
         {
-            var rooms = _examOperationRoomRepository.GetAll();
-            foreach (ExamOperationRoom er in rooms)
-            {
-                if (er.Id == id)
-                {
-                    return er;
-                }
-            }
-            return null;
+            return _examOperationRoomRepository.GetRoomById(id);
         }
 
-        public Room IncreaseQuantity(Room r, Equipment eq)
+        public Room IncreaseQuantity(Room room, Equipment equipment)
         {
-            foreach (Equipment equip in r.Equipments)
+            foreach (Equipment equipmentInRoom in room.Equipments)
             {
-                if (equip.Id == eq.Id)
+                if (equipmentInRoom.Id == equipment.Id)
                 {
-                    equip.Quantity += eq.Quantity;
-                    return r;
+                    equipmentInRoom.Quantity += equipment.Quantity;
+                    return room;
                 }
             }
-            r.Equipments.Add(eq);
-            return r;
-
-
+            room.Equipments.Add(equipment);
+            return room;
         }
 
-        public Room DecreaseQuantity(Room r, Equipment eq)
+        public Room DecreaseQuantity(Room room, Equipment equipment)
         {
-            foreach (Equipment equip in r.Equipments)
+            foreach (Equipment equipmentInRoom in room.Equipments)
             {
-                if (equip.Id == eq.Id)
+                if (equipmentInRoom.Id == equipment.Id)
                 {
-                    if ((equip.Quantity - eq.Quantity) < 0)
+                    if ((equipmentInRoom.Quantity - equipment.Quantity) < 0)
                     {
-                        return r;
+                        return room;
                     }
-                    equip.Quantity -= eq.Quantity;
-                    if (equip.Quantity == 0)
+                    equipmentInRoom.Quantity -= equipment.Quantity;
+                    if (equipmentInRoom.Quantity == 0)
                     {
-                        r.Equipments.Remove(eq);
+                        room.Equipments.Remove(equipment);
                     }
-                    return r;
+                    return room;
                 }
             }
-            return r;
+            return room;
         }
     }
 }

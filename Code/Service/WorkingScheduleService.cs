@@ -13,7 +13,7 @@ namespace Service
 {
     public class WorkingScheduleService : IService<WorkingSchedule>
     {
-        public readonly IWorkingScheduleRepository _workingScheduleRepository = WorkingScheduleRepository.Instance;
+        public readonly IRepository<WorkingSchedule> _workingScheduleRepository = WorkingScheduleRepository.Instance;
 
         private static WorkingScheduleService instance;
 
@@ -33,27 +33,9 @@ namespace Service
         {
         }
 
-        public WorkingScheduleService(IWorkingScheduleRepository repository)
-        {
-            _workingScheduleRepository = repository;
-        }
-
-        public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
-        {
-            var workSc = _workingScheduleRepository.GetWorkingSchedulebyDoctor(doctor);
-            //fali red
-            return workSc;
-
-        }
-
-        public List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day)
-        {
-            throw new NotImplementedException();
-        }
-
         public WorkingSchedule Create(WorkingSchedule obj)
         {
-            var newWorkSc = _workingScheduleRepository.Save(obj);
+            WorkingSchedule newWorkSc = _workingScheduleRepository.Save(obj);
 
             return newWorkSc;
         }
@@ -70,7 +52,7 @@ namespace Service
 
         public List<WorkingSchedule> GetAll()
         {
-            var workingSchedules = _workingScheduleRepository.GetAll();
+            List<WorkingSchedule> workingSchedules = _workingScheduleRepository.GetAll();
             return workingSchedules;
         }
 
