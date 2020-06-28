@@ -86,7 +86,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             String equimpents = "";
             foreach (Equipment equipment in entity.Equipments)
             {
-                equimpents += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                equimpents += string.Join(_delimiter, equipment.Id, equipment.Name, equipment.Quantity);
                 equimpents += _delimiter;
             }
 

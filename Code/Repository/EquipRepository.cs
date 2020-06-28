@@ -48,7 +48,7 @@ namespace Repository
         public Equipment GetEquip(Equipment equipment)
         {
             List<Equipment> equipments = _stream.ReadAll().ToList();
-            return equipments[equipments.FindIndex(apt => apt.Naziv.Equals(equipment.Naziv))];
+            return equipments[equipments.FindIndex(apt => apt.Name.Equals(equipment.Name))];
         }
 
         public Equipment Save(Equipment obj)
@@ -92,7 +92,7 @@ namespace Repository
             List<Equipment> equipments = _stream.ReadAll().ToList();
             foreach (Equipment equipment in equipments)
             {
-                if (equipment.Naziv.Equals(name))
+                if (equipment.Name.Equals(name))
                 {
                     return true;
                     
@@ -101,13 +101,13 @@ namespace Repository
             return false;
         }
 
-        public Equipment GetEquip(int id)
+        public Equipment GetEquip(long id)
         {
             List<Equipment> equipments = _stream.ReadAll().ToList();
             return equipments[equipments.FindIndex(apt => apt.Id == id)];
         }
 
-        public bool EquipExists(int id)
+        public bool EquipExists(long id)
         {
             List<Equipment> equipments = _stream.ReadAll().ToList();
             foreach (Equipment equipment in equipments)
@@ -124,7 +124,7 @@ namespace Repository
         public Equipment GetEquip(string name)
         {
             List<Equipment> equipments = _stream.ReadAll().ToList();
-            return equipments[equipments.FindIndex(apt => apt.Naziv.Equals(name))];
+            return equipments[equipments.FindIndex(apt => apt.Name.Equals(name))];
         }
     }
 }

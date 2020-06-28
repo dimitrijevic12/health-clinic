@@ -21,18 +21,18 @@ namespace Model.Rooms
       private String name;
       private String Description;
       private Boolean validation;
-        Random rnd = new Random();
+        
         private int quantity;
 
        
         public Drug(string name, int quantity)
         {
-            Id = rnd.Next(1, 10000);
+            
             Name = name;
             Quantity = quantity;
             Validation = false;
         }
-        public Drug(int id, string name, int quantity)
+        public Drug(long id, string name, int quantity)
         {
             Id = id;
             Name = name;

@@ -36,8 +36,8 @@ namespace Controller
         public List<Equipment> GetAll()
         {
 
-            var rooms = (List<Equipment>)_service.GetAll();
-            return rooms;
+            List<Equipment> equipments = (List<Equipment>)_service.GetAll();
+            return equipments;
 
         }
 
@@ -56,24 +56,24 @@ namespace Controller
             return EquipmentService.Instance.Edit(obj);
         }
 
-        public void addEquipment(string naziv, int quant)
+        public void AddEquipment(string name, int quant)
         {
-            _service.addEquipment(naziv, quant);
+            _service.AddEquipment(name, quant); 
         }
 
-        public void deleteEquipment(int Id, int quant)
+        public void DeleteEquipment(long Id, int quant)
         {
-            _service.deleteEquipment(Id, quant);
+            _service.DeleteEquipment(Id, quant);
         }
 
-        public string getNazivOpreme(int Id)
+        public string GetNazivOpreme(long Id)
         {
-            return _service.getNazivOpreme(Id);
+            return _service.GetNazivOpreme(Id);
         }
 
-        public int getIdOpreme(string naziv)
+        public long GetIdOpreme(string name)
         {
-            return _service.getIdOpreme(naziv);
+            return _service.GetIdOpreme(name);
         }
     }
 }

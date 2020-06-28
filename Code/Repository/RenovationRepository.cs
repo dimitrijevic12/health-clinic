@@ -14,8 +14,8 @@ using System.Linq;
 
 namespace Repository
 {
-   public class RenovationRepository : IRenovationRepository
-   {
+   public class RenovationRepository : IRepository<Renovation>
+    {
         private readonly ICSVStream<Renovation> _stream = new CSVStream<Renovation>("../../Resources/Data/renovations.csv", new RenovationCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
