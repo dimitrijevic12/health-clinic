@@ -10,7 +10,7 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Service
 {
-    public class DoctorService : IService<Doctor>
+    public class DoctorService : IDoctorService
     {
 
         private readonly IRepository<Doctor> _doctorRepository = DoctorRepository.Instance;
