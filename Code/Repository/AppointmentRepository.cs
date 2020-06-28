@@ -16,12 +16,10 @@ using System.Linq;
 
 namespace Repository
 {
-   public class AppointmentRepository : IAppointmentRepository
+   public class AppointmentRepository : IRepository<Appointment>
    {
         private static AppointmentRepository instance = null;
-        private const string APPOINMENT_FILE = "../../Resources/Data/appointments.csv";
-        private String _path = APPOINMENT_FILE;
-        private readonly ICSVStream<Appointment> _stream = new CSVStream<Appointment>(APPOINMENT_FILE, new AppointmentCSVConverter(",", "dd.MM.yyyy."));
+        private readonly ICSVStream<Appointment> _stream = new CSVStream<Appointment>("../../Resources/Data/appointments.csv", new AppointmentCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         public static AppointmentRepository Instance
@@ -40,14 +38,6 @@ namespace Repository
         {
         }
 
-        public AppointmentRepository(string path, ICSVStream<Appointment> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
         private long GetMaxId(List<Appointment> appointments)
         {
             return appointments.Count() == 0 ? 0 : appointments.Max(apt => apt.Id);
@@ -62,7 +52,7 @@ namespace Repository
         public Appointment Edit(Appointment obj)
         {
 
-            var appointments = _stream.ReadAll().ToList();
+            List<Appointment> appointments = _stream.ReadAll().ToList();
             appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(appointments);
             return obj;
@@ -72,8 +62,8 @@ namespace Repository
 
         public bool Delete(Appointment obj)
         {
-            var appointments = _stream.ReadAll().ToList();
-            var appointmentToRemove = appointments.SingleOrDefault(acc => acc.Id == obj.Id);
+            List<Appointment> appointments = _stream.ReadAll().ToList();
+            Appointment appointmentToRemove = appointments.SingleOrDefault(acc => acc.Id == obj.Id);
             if (appointmentToRemove != null)
             {
                 appointments.Remove(appointmentToRemove);

@@ -19,5 +19,7 @@ namespace Controller
       List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate);
       List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate);
       List<Appointment> GetPriorityAppointments(Doctor doctor, DateTime startDate, DateTime endDate, String priority);
-   }
+
+      DateTime GetLastDateOfAppointmentForRoom(Room room);
+    }
 }

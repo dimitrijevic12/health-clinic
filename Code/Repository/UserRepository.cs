@@ -19,7 +19,7 @@ namespace Repository
         private String _path;
         private static UserRepository instance;
 
-        private readonly ICSVStream<RegisteredUser> _stream = new CSVStream<RegisteredUser>("C:\\health-clinic\\health-clinic\\Code\\resources\\data", new UserCSVConverter("|", "dd/MM//yyyy"));
+        private readonly ICSVStream<RegisteredUser> _stream = new CSVStream<RegisteredUser>("C:\\health-clinic\\health-clinic\\Code\\resources\\data", new UserCSVConverter("|"));
         private readonly iSequencer<long> _sequencer =  new LongSequencer();
 
         public UserRepository GetInstance() { return null; }

@@ -14,10 +14,9 @@ namespace health_clinicClassDiagram.Repository
 {
     public class RehabilitationRoomRepository : IRehabilitationRoomRepository
     {
-        private readonly ICSVStream<RehabilitationRoom> _stream = new CSVStream<RehabilitationRoom>("../../Resources/Data/rehabilitationrooms.csv", new RehabilitationRoomCSVConverter(",", "dd.MM.yyyy."));
+        private readonly ICSVStream<RehabilitationRoom> _stream = new CSVStream<RehabilitationRoom>("../../Resources/Data/rehabilitationrooms.csv", new RehabilitationRoomCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/rehabilitationrooms.csv";
         private static RehabilitationRoomRepository instance;
 
         public static RehabilitationRoomRepository Instance
@@ -37,14 +36,6 @@ namespace health_clinicClassDiagram.Repository
         {
         }
 
-        public RehabilitationRoomRepository(string path, CSVStream<RehabilitationRoom> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
         private long GetMaxId(List<RehabilitationRoom> rooms)
         {
             return rooms.Count() == 0 ? 0 : rooms.Max(apt => apt.IdRoom);
@@ -52,8 +43,8 @@ namespace health_clinicClassDiagram.Repository
 
         public bool Delete(RehabilitationRoom obj)
         {
-            var rooms = _stream.ReadAll().ToList();
-            var roomToRemove = rooms.SingleOrDefault(acc => acc.IdRoom == obj.IdRoom);
+            List<RehabilitationRoom> rooms = _stream.ReadAll().ToList();
+            RehabilitationRoom roomToRemove = rooms.SingleOrDefault(acc => acc.IdRoom == obj.IdRoom);
             if (roomToRemove != null)
             {
                 rooms.Remove(roomToRemove);
@@ -68,7 +59,7 @@ namespace health_clinicClassDiagram.Repository
 
         public RehabilitationRoom Edit(RehabilitationRoom obj)
         {
-            var rooms = _stream.ReadAll().ToList();
+            List<RehabilitationRoom> rooms = _stream.ReadAll().ToList();
             rooms[rooms.FindIndex(apt => apt.IdRoom == obj.IdRoom)] = obj;
             _stream.SaveAll(rooms);
             return obj;
@@ -76,7 +67,7 @@ namespace health_clinicClassDiagram.Repository
 
         public List<RehabilitationRoom> GetAll()
         {
-            var rooms = (List<RehabilitationRoom>)_stream.ReadAll();
+            List<RehabilitationRoom> rooms = (List<RehabilitationRoom>)_stream.ReadAll();
             return rooms;
         }
 
@@ -88,32 +79,18 @@ namespace health_clinicClassDiagram.Repository
 
         public RehabilitationRoom GetRoom(RehabilitationRoom room)
         {
-            var rooms = _stream.ReadAll().ToList();
+            List<RehabilitationRoom> rooms = _stream.ReadAll().ToList();
             return rooms[rooms.FindIndex(apt => apt.IdRoom == room.IdRoom)];
         }
 
-        public List<RehabilitationRoom> GetFreeRoomsByDate(DateTime startDate, DateTime endDate)
+        public RehabilitationRoom GetRoomById(long id)
         {
             List<RehabilitationRoom> rooms = GetAll();
-            //TODO: Pronaci slobodne sobe
-            /*foreach(Treatment treatment in TreatmentRepository.Instance.GetAll())
+            foreach (RehabilitationRoom rehabilitationRoom in rooms)
             {
-                if(treatment.ReferralToHospitalTreatment.StartDate >= startDate && ((treatment.ReferralToHospitalTreatment.EndDate <= endDate)){
-                    rooms. 
-                }
-            }
-            */
-            return rooms;
-        }
-
-        public RehabilitationRoom findRehabRoom(long id)
-        {
-            var rooms = GetAll();
-            foreach (RehabilitationRoom er in rooms)
-            {
-                if (er.Id == id)
+                if (rehabilitationRoom.Id == id)
                 {
-                    return er;
+                    return rehabilitationRoom;
                 }
             }
             return null;

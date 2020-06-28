@@ -39,57 +39,57 @@ namespace Controller
 
         public Prescription WritePrescription(List<Drug> drugs, Treatment treatment)
         {
-            return TreatmentService.Instance.WritePrescription(drugs, treatment);
+            return _service.WritePrescription(drugs, treatment);
         }
 
-        public SpecialistAppointment WriteReferralToASpecialist(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        public SpecialistAppointment ScheduleSpecialistAppointment(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
-            return TreatmentService.Instance.WriteReferralToASpecialist(specialist, cause, treatment, room, startDate, endDate);
+            return _service.ScheduleSpecialistAppointment(specialist, cause, treatment, room, startDate, endDate);
         }
 
         public ScheduledSurgery ScheduleSurgery(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, Surgeon surgeon, ExamOperationRoom room)
         {
-            return TreatmentService.Instance.ScheduleSurgery(treatment, startDate, endDate, cause, surgeon, room);
+            return _service.ScheduleSurgery(treatment, startDate, endDate, cause, surgeon, room);
         }
 
         public DiagnosisAndReview WriteDiagnosisAndReview(Treatment treatment, String diagnosis, String review)
         {
-            return TreatmentService.Instance.WriteDiagnosisAndReview(treatment, diagnosis, review);
+            return _service.WriteDiagnosisAndReview(treatment, diagnosis, review);
         }
 
-        public ReferralToHospitalTreatment WriteReferralToHospTreat(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, List<Drug> drugs, RehabilitationRoom room)
+        public ReferralToHospitalTreatment WriteReferralToHospitalTreatment(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, List<Drug> drugs, RehabilitationRoom room)
         {
-            return TreatmentService.Instance.WriteReferralToHospTreat(treatment, startDate, endDate, cause, drugs, room);
+            return _service.WriteReferralToHospitalTreatment(treatment, startDate, endDate, cause, drugs, room);
         }
 
         public Appointment ScheduleControlAppointment(Appointment appointment)
         {
-            return TreatmentService.Instance.ScheduleControlAppointment(appointment);
+            return _service.ScheduleControlAppointment(appointment);
         }
 
         public List<Treatment> GetAll()
         {
-            return TreatmentService.Instance.GetAll();
+            return _service.GetAll();
         }
 
         public bool Delete(Treatment obj)
         {
-            return TreatmentService.Instance.Delete(obj);
+            return _service.Delete(obj);
         }
 
         public Treatment Create(Patient patient, Treatment obj)
         {
-            return TreatmentService.Instance.Create(patient, obj);
+            return _service.Create(patient, obj);
         }
 
         public Treatment Edit(Treatment obj)
         {
-            return TreatmentService.Instance.Edit(obj);
+            return _service.Edit(obj);
         }
 
         public Treatment GetTreatment(Treatment obj)
         {
-            return TreatmentService.Instance.GetTreatment(obj);
+            return _service.GetTreatment(obj);
         }
     }
 }

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class DecoratedDrugController : IDrugController
+   public abstract class DecoratedDrugController : IDrugController
    {
       private IDrugController drugControllerReference;
 

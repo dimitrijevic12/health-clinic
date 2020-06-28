@@ -36,12 +36,6 @@ namespace Controller
         {
         }
 
-        public AppointmentController(IAppointmentService service)
-        {
-            _service = service;
-        }
-        public AppointmentController GetInstance() { return null; }
-
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
             return _service.GetAppointmentsByRoom(room);
@@ -60,8 +54,7 @@ namespace Controller
 
         public bool Delete(Appointment obj)
         {
-            _service.Delete(obj);
-            return true;
+            return _service.Delete(obj);          
         }
 
         public Appointment Create(Appointment obj)
@@ -99,6 +92,11 @@ namespace Controller
         public List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
         {
             return _service.GetAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient);
+        }
+
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            return _service.GetLastDateOfAppointmentForRoom(room);
         }
     }
 }

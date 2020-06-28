@@ -11,7 +11,6 @@ namespace health_clinicClassDiagram.Repository
     {
         RehabilitationRoom GetRoom(RehabilitationRoom room);
 
-        RehabilitationRoom findRehabRoom(long id);
-        List<RehabilitationRoom> GetFreeRoomsByDate(DateTime startDate, DateTime endDate);
+        RehabilitationRoom GetRoomById(long id);
     }
 }

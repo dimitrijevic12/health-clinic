@@ -10,7 +10,7 @@ using System.Text;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class SurgeonRepository : IRepository<Surgeon>
+    public class SurgeonRepository : ISurgeonRepository
     {
         private static SurgeonRepository instance = null;
         private readonly CSVStream<Surgeon> _stream = new CSVStream<Surgeon>("../../Resources/Data/Surgeon.csv", new SurgeonCSVConverter(","));
@@ -37,15 +37,10 @@ namespace health_clinicClassDiagram.Repository
             return doctors.Count() == 0 ? 0 : doctors.Max(apt => apt.Id);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(Surgeon obj)
         {
-            var doctors = _stream.ReadAll().ToList();
-            var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
+            List<Surgeon> doctors = _stream.ReadAll().ToList();
+            Surgeon doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
@@ -60,7 +55,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Surgeon Edit(Surgeon obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            List<Surgeon> doctors = _stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(doctors);
             return obj;
@@ -68,13 +63,8 @@ namespace health_clinicClassDiagram.Repository
 
         public List<Surgeon> GetAll()
         {
-            var doctors = (List<Surgeon>)_stream.ReadAll();
+            List<Surgeon> doctors = (List<Surgeon>)_stream.ReadAll();
             return doctors;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public Surgeon Save(Surgeon obj)
