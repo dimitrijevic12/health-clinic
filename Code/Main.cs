@@ -17,8 +17,8 @@ namespace health_clinicClassDiagram
 {
     public static class MainClass
     {
-        static void Main()
-         {/*
+        /*static void Main()
+         {
                          DiagnosisAndReview diagnosisAndReview = new DiagnosisAndReview("Nova dijagnoza", "Nova procedura");
                          DiagnosisAndReview diagnosisAndReview2 = new DiagnosisAndReview("Nova dijagnoza2", "Nova procedura2");
                          DiagnosisAndReviewRepository.Instance.Save(diagnosisAndReview);
@@ -65,7 +65,7 @@ namespace health_clinicClassDiagram
                         BlogController.Instance.GetBlogByTitle("naslov 1");
                         BlogController.Instance.Delete(blog1);
                         blog2.Text = "Promenjen text";
-                        BlogController.Instance.Edit(blog2);*/
+                        BlogController.Instance.Edit(blog2);
             Drug drug1 = new Drug(213, null, "Panklav 200mg", "Opis Panklava", true, 20);
             Drug drug2 = new Drug(312, null, "Aerius 50mg", "Opis Aeriusa", false, 5);
             List<Drug> drugs = new List<Drug>();
@@ -136,6 +136,6 @@ namespace health_clinicClassDiagram
             managerDrugController.AddDrug("Prozak", 22);
         }
         
-
+*/
     }
 }

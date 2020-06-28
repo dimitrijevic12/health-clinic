@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.OtpustanjePacijenata"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="430">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
+        <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
+            <Label DockPanel.Dock="Left" Name="title" Content="Otpustanje pacijenata" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
+                <StackPanel>
+                    <Image Source="images/back.png" Height="59"/>
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click">
+                <StackPanel>
+                    <Image Source="images/home.png" Height="67"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+        <StackPanel Margin="0,0,0,25">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label x:Name="labelSobe" Content="Sobe:" FontSize="24" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="comboBoxListaSoba" FontSize="24" Width="250" Margin="10, 10, 30, 0" SelectionChanged="comboBoxListaSoba_SelectionChanged" ItemsSource="{Binding Rooms}" SelectedIndex="0" DisplayMemberPath="Id"/>
+            </StackPanel>
+            <DataGrid x:Name="dataGridPacijenti" Height="387" Margin="30,20,30,10" ItemsSource="{Binding Patients}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Šifra" Width="Auto" IsReadOnly="True" Binding="{Binding Id}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True" Binding="{Binding Name}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Količina" IsReadOnly="True" Binding="{Binding Surname}">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="FontSize" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="buttonOtpusti" Content="Otpusti" Margin="0,15,0,0" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonOtpusti_Click"/>
+        </StackPanel>
+    </DockPanel>
+</UserControl>

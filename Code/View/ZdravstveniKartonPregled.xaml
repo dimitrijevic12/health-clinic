@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.ZdravstveniKartonPregled"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="430">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
+        <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
+            <Label DockPanel.Dock="Left" Name="title" Content="Pregled termina" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
+                <StackPanel>
+                    <Image Source="images/back.png" Height="59"/>
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click">
+                <StackPanel>
+                    <Image Source="images/home.png" Height="67"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+        <ScrollViewer Width="430">
+            <StackPanel>
+                <DockPanel Margin="30,10,40,0">
+                    <Label x:Name="imePrezimeLabel" Content="Ime i Prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock x:Name="imePrezime" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Patient.NameAndSurname}"/>
+                </DockPanel>
+                <DockPanel Margin="30,0,40,0">
+                    <Label x:Name="jmbgLabel" Content="JMBG:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock x:Name="jmbg" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Patient.Id}"/>
+                </DockPanel>
+                <DockPanel Margin="30,0,40,0">
+                    <Label x:Name="datumRodjenjaLabel" Content="Datum rođenja:" FontSize="24" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBlock x:Name="datumRodjenja" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding Patient.DateOfBirth, StringFormat=dd/MM/yyyy}"/>
+                </DockPanel>
+                <Expander x:Name="expanderUputZaOperaciju" Header="Uput za operaciju" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 40, 0">
+                    <StackPanel>
+                        <DockPanel Margin="20,5,0,0">
+                            <Label x:Name="specijalizacijaHirurgLabel" Content="Specijalizacija:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold" Margin="0, 0, 0, 0"/>
+                            <TextBlock x:Name="specijalizacijaHirurg" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 30, 0" FontWeight="Normal" Text="{Binding SurgicalSpecialty}"/>
+                        </DockPanel>
+                        <DockPanel Margin="20,0,0,0">
+                            <Label x:Name="imePrezimeHirurgaLabel" Content="Ime i prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold" Margin="0, 0, 0, 0"/>
+                            <TextBlock x:Name="imePrezimeHirurga" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0, 0, 30, 0" FontWeight="Normal" Text="{Binding Treatment.ScheduledSurgery.Surgeon.NameAndSurname}"/>
+                        </DockPanel>
+                        <StackPanel Margin="20,0,0,0">
+                            <Label x:Name="razlogZaOperacijuLabel" Content="Razlog za operaciju:" FontSize="24" VerticalAlignment="Top"  FontWeight="DemiBold"/>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <TextBlock x:Name="razlogZaSOperacijuTextBlock" FontSize="24" VerticalAlignment="Center" FontWeight="Normal" MaxHeight="245" Text="{Binding Treatment.ScheduledSurgery.CauseForOperation}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander x:Name="expanderUputZaSpecijalistu" Header="Uput za specijalistu" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 40, 0">
+                    <StackPanel>
+                        <DockPanel Margin="20,5,0,0">
+                            <Label x:Name="specijalizacijaLabel" Content="Specijalizacija:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold"/>
+                            <TextBlock x:Name="specijalizacija" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Normal" Text="nephrology"/>
+                        </DockPanel>
+                        <DockPanel Margin="20,0,0,0">
+                            <Label x:Name="imePrezimeSpecijalisteLabel" Content="Ime i prezime:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold"/>
+                            <TextBlock x:Name="imePrezimeSpecijaliste" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Normal" Text="{Binding Treatment.SpecialistAppointment.Doctor.NameAndSurname}"/>
+                        </DockPanel>
+                        <StackPanel Margin="20,0,0,0">
+                            <Label x:Name="razlogZaSpecijalistuLabel" Content="Razlog za specijalistu:" FontSize="24" VerticalAlignment="Top"  FontWeight="DemiBold"/>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <TextBlock x:Name="razlogZaSpecijalistuTextBlock" FontSize="24" VerticalAlignment="Center" FontWeight="Normal" MaxHeight="245" Text="{Binding Treatment.SpecialistAppointment.CauseForSpecialist}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander x:Name="expanderRecept" Header="Recept" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 40, 0">
+                    <StackPanel  Margin="20,0,0,0">
+                        <Label x:Name="prepisaniLekoviLabel" Content="Prepisani lekovi:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold"/>
+                        <DataGrid x:Name="dataGridRecept" Height="248" Margin="0,5,0,0" ItemsSource="{Binding Prescription}" AutoGenerateColumns="False" FontSize="20" FontWeight="Normal">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Ime leka" Width="*" IsReadOnly="True" Binding="{Binding Name}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="20"/>
+                                            <Setter Property="FontWeight" Value="Normal"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                </DataGridTextColumn>
+                                <DataGridTextColumn Header="Dostupan" IsReadOnly="True" Binding="{Binding Quantity}">
+                                    <DataGridTextColumn.HeaderStyle>
+                                        <Style TargetType="DataGridColumnHeader">
+                                            <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                            <Setter Property="FontSize" Value="20"/>
+                                            <Setter Property="FontWeight" Value="Normal"/>
+                                        </Style>
+                                    </DataGridTextColumn.HeaderStyle>
+                                </DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Expander>
+                <Expander x:Name="expanderZahtevZaBolnickoLecenje" Header="Zahtev za bolničko lečenje" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 0, 0">
+                    <StackPanel Margin="20,5,40,0">
+                        <StackPanel>
+                            <DataGrid x:Name="dataGridBolLecLekovi" Height="248" ItemsSource="{Binding Treatment.ReferralToHospitalTreatment.Drugs}" FontSize="20" FontWeight="Normal">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Ime leka" Width="Auto" IsReadOnly="True" Binding="{Binding Name}">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="FontWeight" Value="Normal"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Dostupan" IsReadOnly="True" Binding="{Binding Quantity}">
+                                        <DataGridTextColumn.HeaderStyle>
+                                            <Style TargetType="DataGridColumnHeader">
+                                                <Setter  Property="HorizontalContentAlignment" Value="Center"/>
+                                                <Setter Property="FontSize" Value="20"/>
+                                                <Setter Property="FontWeight" Value="Normal"/>
+                                            </Style>
+                                        </DataGridTextColumn.HeaderStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label x:Name="razlogZaBolnickoLecenjeLabel" Content="Razlog za bolničko lečenje:" FontSize="24" VerticalAlignment="Top" FontWeight="DemiBold" Margin="5, 0, 0, 0"/>
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <TextBlock x:Name="razlogZaBolnickoLecenje" FontSize="20" Margin="5.2,0,-0.4,0" TextWrapping="Wrap" FontWeight="Normal" MaxHeight="245" Text="{Binding Treatment.ReferralToHospitalTreatment.CauseForHospTreatment}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                <Expander x:Name="expanderDijagnozaProcedura" Header="Dijagnoza i procedura" FontSize="24"  VerticalAlignment="Top" FontWeight="Bold" Margin="30, 10, 40, 0">
+                    <StackPanel Margin="20,0,0,25">
+                        <Label x:Name="dijagnozaLabel" Content="Dijagnoza:" FontSize="24" FontWeight="DemiBold" VerticalAlignment="Top"/>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <TextBlock x:Name="dijagnoza" FontSize="20" Margin="5.2,0,-0.4,0" TextWrapping="Wrap" Text="{Binding Treatment.DiagnosisAndReview.Diagnosis}" FontWeight="Normal" MaxHeight="245"/>
+                        </Border>
+                        <Label x:Name="proceduraLabel" Content="Procedura:" FontSize="24" FontWeight="DemiBold" VerticalAlignment="Top"/>
+                        <Border BorderBrush="Black" BorderThickness="1">
+                            <TextBlock x:Name="izvestaj" FontSize="20" Margin="5.2,0,-0.4,0" TextWrapping="Wrap" Text="{Binding Treatment.DiagnosisAndReview.Review}" FontWeight="Normal" MaxHeight="245"/>
+                        </Border>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.RasporedTerminiUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="430">
+    <DockPanel Height="725" LastChildFill="False" Width="430" Margin="0,0,0,-4.2" Background="White">
+        <DockPanel DockPanel.Dock="Top" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <Button x:Name="helpButton" Width="50" Background="#FF4B86EB" BorderBrush="{x:Null}" VerticalAlignment="Center" Click="helpButton_Click">
+                    <StackPanel>
+                        <Image Source="images\help.png" Height="30"/>
+                    </StackPanel>
+                </Button>
+                <local:MyDropDownButton VerticalAlignment="Center" Height="52" Width="36" Background="#FF1C439F" Margin="10,10,10,10" DockPanel.Dock="Right">
+                    <StackPanel>
+                        <Image Source="images/dots.png" Height="46" Width="20"/>
+                    </StackPanel>
+                </local:MyDropDownButton>
+            </StackPanel>
+            <Label DockPanel.Dock="Left" Name="title" Content="Raspored" VerticalAlignment="Center" Margin="10,10,10,10" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" Height="80" VerticalAlignment="Top" Background="#FF4B86EB">
+            <Button DockPanel.Dock="Left" x:Name="backButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}" Margin="70,0,0,0" Click="backButton_Click">
+                <StackPanel>
+                    <Image Source="images/back.png" Height="59"/>
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Right" x:Name="homeButton" Width="120" Background="#FF4B86EB" BorderBrush="{x:Null}"  Margin="0,0,70,0" Click="homeButton_Click" FontSize="24">
+                <StackPanel>
+                    <Image Source="images/home.png" Height="67"/>
+                </StackPanel>
+            </Button>
+        </DockPanel>
+        <StackPanel Width="430">
+            <StackPanel Height="497" Margin="0,0,0.4,0">
+                <ListView x:Name="listView" HorizontalAlignment="Left" Height="470"  VerticalAlignment="Top" Width="430" ItemsSource="{Binding AppointmentsToShow}" SelectionMode="Single">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="30" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="Start" DisplayMemberBinding="{Binding StartDate, StringFormat=HH:mm}"/>
+                                <GridViewColumn Header="End" DisplayMemberBinding="{Binding Path=EndDate, StringFormat=HH:mm}" />
+                                <GridViewColumn Header="Ime pacijenta" DisplayMemberBinding="{Binding Path=Patient.NameAndSurname}" />
+                                <GridViewColumn Header="Tip termina" DisplayMemberBinding="{Binding Path=TypeString}"/>
+                                <GridViewColumn Header="Ime lekara" DisplayMemberBinding="{Binding Path=Doctor.NameAndSurname}" Width="Auto"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+            <Button x:Name="buttonPregledTermina" Content="Prikaži termin"  Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Background="#FF1C439F" Foreground="White"  FontSize="24" Click="buttonPregledTermina_Click" Margin="65,0,65.4,0"/>
+
+        </StackPanel>
+    </DockPanel>
+
+
+</UserControl>
