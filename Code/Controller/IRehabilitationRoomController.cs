@@ -19,5 +19,7 @@ namespace health_clinicClassDiagram.Controller
         Room DecreaseQuantity(Room room, Equipment equipment);
 
         RehabilitationRoom GetRoomById(long id);
+
+        List<RehabilitationRoom> GetAllFreeRooms();
     }
 }

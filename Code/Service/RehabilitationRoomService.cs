@@ -141,5 +141,16 @@ namespace health_clinicClassDiagram.Service
         {
             return _roomRepository.GetRoomById(id);
         }
+
+        public List<RehabilitationRoom> GetAllFreeRooms()
+        {
+            List<RehabilitationRoom> freeRooms = new List<RehabilitationRoom>();
+
+            foreach (RehabilitationRoom room in GetAll())
+            {
+                if (room.MaxCapacity - room.CurrentlyInUse > 0) freeRooms.Add(room);
+            }
+            return freeRooms;
+        }
     }
 }
