@@ -17,5 +17,6 @@ namespace health_clinicClassDiagram.Service
         RehabilitationRoom GetRoomById(long id);
         Room IncreaseQuantity(Room room, Equipment equipment);
         Room DecreaseQuantity(Room room, Equipment equipment);
+        List<RehabilitationRoom> GetAllFreeRooms();
     }
 }

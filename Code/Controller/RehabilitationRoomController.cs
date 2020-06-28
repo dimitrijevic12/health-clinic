@@ -79,5 +79,10 @@ namespace health_clinicClassDiagram.Controller
         {
             return _service.GetRoomById(id);
         }
+
+        public List<RehabilitationRoom> GetAllFreeRooms()
+        {
+            return _service.GetAllFreeRooms();
+        }
     }
 }
