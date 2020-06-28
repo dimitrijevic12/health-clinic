@@ -71,7 +71,7 @@ namespace Repository.Csv.Converter
 
         public string ConvertEntityToCSVFormat(Renovation entity)
         {
-            String resenje = "";
+            String roomsEntity = "";
             if (entity.Rooms.Count != 0)
             {
                 Room last = entity.Rooms.Last();
@@ -81,11 +81,11 @@ namespace Repository.Csv.Converter
                     {
                         if (room != last)
                         {
-                            resenje += room.Id + "|";
+                            roomsEntity += room.Id + "|";
                         }
                         else
                         {
-                            resenje += room.Id;
+                            roomsEntity += room.Id;
                         }
                     }
                 }
@@ -96,7 +96,7 @@ namespace Repository.Csv.Converter
             entity.Type,
             entity.StartDate,
             entity.EndDate,
-            resenje);
+            roomsEntity);
         }
     }
 }

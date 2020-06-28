@@ -49,7 +49,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
 
             foreach (Equipment equipment in entity.Equipments)
             {
-                equipemnts += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                equipemnts += string.Join(_delimiter, equipment.Id, equipment.Name, equipment.Quantity);
                 equipemnts += _delimiter;
             }
 

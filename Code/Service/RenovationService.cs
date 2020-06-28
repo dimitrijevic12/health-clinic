@@ -11,9 +11,9 @@ using System.Collections.Generic;
 
 namespace Service
 {
-   public class RenovationService : IRenovationService
-   {
-        private readonly IRenovationRepository iRenovationRepository = RenovationRepository.Instance;
+   public class RenovationService : IService<Renovation>
+    {
+        private readonly IRepository<Renovation> _renovationRepository = RenovationRepository.Instance;
 
 
         private static RenovationService instance = null;
@@ -34,53 +34,29 @@ namespace Service
         {
         }
 
-        public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoPainting()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoMerge()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoSplit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoChangeTypeOfRoom()
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public Renovation Create(Renovation obj)
         {
-            var renovation = iRenovationRepository.Save(obj);
+            Renovation renovation = _renovationRepository.Save(obj);
 
             return renovation;
         }
 
         public Renovation Edit(Renovation obj)
         {
-            var renovation = iRenovationRepository.Edit(obj);
+            Renovation renovation = _renovationRepository.Edit(obj);
             return renovation;
         }
 
         public bool Delete(Renovation obj)
         {
-            bool Correct = iRenovationRepository.Delete(obj);
+            bool Correct = _renovationRepository.Delete(obj);
             return Correct;
         }
 
         public List<Renovation> GetAll()
         {
-            return iRenovationRepository.GetAll();
+            return _renovationRepository.GetAll();
         }
 
         
