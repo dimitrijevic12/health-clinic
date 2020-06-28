@@ -70,7 +70,7 @@ namespace health_clinicClassDiagram.view
             String write = "Zakazani termini za izabranog lekara:\n\n";
             foreach(Appointment a in appsPrikaz)
             {
-                String st = "ID pregleda: " + a.Id + "Lekar: " + a.Doctor + "| Pacijent: " + a.Patient + "| Tip: " + a.TypeOfAppointment + "| Sala: " + a.RoomId + "| Početak: " + a.StartDate + "\n";
+                String st = "ID pregleda: " + a.Id + "Lekar: " + a.DoctorIdNameSurname + "| Pacijent: " + a.PatientIdNameSurname + "| Tip: " + a.TypeString + "| Sala: " + a.RoomId + "| Početak: " + a.StartDate + "\n";
                 write += st; 
             }
 

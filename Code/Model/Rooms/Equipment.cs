@@ -23,19 +23,19 @@ namespace Model.Rooms
       private int quantity;
         //private String Description;
 
-        public Equipment(TypeOfEquipment tip, int quantity)
+        public Equipment(TypeOfEquipment typeE, int quantity)
         {
           
-            type = tip;
+            Type = typeE;
             Quantity = quantity;
         }
 
        
-        public Equipment(long id,String naziv, int quantity)
+        public Equipment(long id,String name, int quantity)
         {
             
             Id = id;
-            Name = naziv;
+            Name = name;
             Quantity = quantity;
         }
 

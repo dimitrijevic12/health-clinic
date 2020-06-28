@@ -24,6 +24,7 @@ namespace Repository
 
         private EquipRepository()
         {
+            InitializeId();
         }
 
         public static EquipRepository Instance
@@ -51,6 +52,7 @@ namespace Repository
 
         public Equipment Save(Equipment obj)
         {
+            obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -120,5 +122,6 @@ namespace Repository
             }
             return false;
         }
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }

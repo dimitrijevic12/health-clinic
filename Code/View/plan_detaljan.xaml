@@ -16,10 +16,10 @@
             <DataGrid.Columns>
 
                 <DataGridTextColumn Width="*"  Header="Id Appointmenta" Binding="{Binding Id}"/>
-                <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorPrikaz}"/>
-                <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientPrikaz}"/>
-                <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding Type}"/>
-                <DataGridTextColumn Width="*" Header="id Sobe" Binding="{Binding roomPrikaz}"/>
+                <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorIdNameSurname}"/>
+                <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientIdNameSurname}"/>
+                <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding TypeString}"/>
+                <DataGridTextColumn Width="*" Header="id Sobe" Binding="{Binding RoomId}"/>
                 <DataGridTextColumn Width="*" Header="Pocetak" Binding="{Binding StartDate}"/>
                 
 

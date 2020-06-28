@@ -1,4 +1,5 @@
 ﻿using Controller;
+using health_clinicClassDiagram.Controller;
 using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace health_clinicClassDiagram.view
             //Lekari.Add(new lekari() { IdLekara = "4", Ime = "Lazar", Prezime = "Markovic", Pol = "M", Jmbg = "213123213", DatumRodjenja = "12/12/1974", RadnoVreme = "08:00-16:00", Specijalista = "NE" });
             //Lekari.Add(new lekari() { IdLekara = "4", Ime = "Sara", Prezime = "Simic", Pol = "Z", Jmbg = "2131123213", DatumRodjenja = "5/2/1984", RadnoVreme = "08:00-16:00", Specijalista = "DA" });
             var app = Application.Current as App;
-            _doctorController = app.doctorController;
+            _doctorController = DoctorController.Instance;
 
             doctors = _doctorController.GetAll();
 
