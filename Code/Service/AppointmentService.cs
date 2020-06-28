@@ -4,6 +4,7 @@
  * Purpose: Definition of the Class Service.AppointmentService
  ***********************************************************************/
 
+using health_clinicClassDiagram;
 using health_clinicClassDiagram.Service;
 using Model.Appointment;
 using Model.Rooms;
@@ -172,6 +173,25 @@ namespace Service
         private void BindAllForAppointments(List<Appointment> appointments, List<Doctor> doctors, List<Patient> patients, List<ExamOperationRoom> rooms)
         {
             throw new NotImplementedException();
+        }
+
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            var appointments = iAppointmentRepository.GetAll();
+
+            DateTime latestDate = DateTime.Now;
+
+            foreach(Appointment appointment in appointments)
+            {
+                if(appointment.RoomId == room.Id)
+                {
+                    if(appointment.StartDate > latestDate)
+                    {
+                        latestDate = appointment.StartDate;
+                    }
+                }
+            }
+            return latestDate;
         }
     }
 }

@@ -18,6 +18,8 @@ namespace health_clinicClassDiagram.view
         private int colNum = 0;
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IAppointmentController _appointmentController;
+        private readonly IRenovationController _renovationController;
         private Room room1;
         private Room room2;
         private Equipment equ;
@@ -52,6 +54,8 @@ namespace health_clinicClassDiagram.view
             //_equipController = app.equipController;
             _examOperationRoomController = ExamOperationRoomController.Instance;
             _rehabilitationRoomController = RehabilitationRoomController.Instance;
+            _appointmentController = AppointmentController.Instance;
+            _renovationController = RenovationController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 
@@ -88,13 +92,26 @@ namespace health_clinicClassDiagram.view
             }
             else
             {
-
-
                 DateTime dt1 = (DateTime)datep1.SelectedDate;
-                //int result = DateTime.Compare(dt1, dt2);
-                if (DateTime.Now.Date == dt1)
-                {
+                DateTime dt2 = (DateTime)datep2.SelectedDate;
+                
+                int difference = (dt2.Date - dt1.Date).Days;
+                DateTime lastDate1 = _appointmentController.GetLastDateOfAppointmentForRoom(room1);
+                DateTime lastDate2 = _appointmentController.GetLastDateOfAppointmentForRoom(room2);
+                DateTime lastDate = lastDate1;
+                if (lastDate1 < lastDate2) { lastDate = lastDate2; }
+                
+                
 
+
+                //int result = DateTime.Compare(dt1, dt2);
+                if (lastDate < dt1 && DateTime.Now.Date == dt1)
+                {
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room1);
+                    rooms.Add(room2);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, rooms);
+                    _renovationController.Create(renovation);
                     foreach (Equipment ek2 in room2.Equipments)
                     {
                         int flag = 0;
@@ -176,9 +193,31 @@ namespace health_clinicClassDiagram.view
                     {
                         _rehabilitationRoomController.Delete(sobaZaBrisanje2);
                     }
+                    
                 }
+                else
+                {
+                    dt1 = lastDate.AddDays(1);
+                    dt2 = dt1.AddDays(difference);
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room1);
+                    rooms.Add(room2);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, rooms);
+                    _renovationController.Create(renovation);
+                }
+
                 this.Close();
             }
+            
+        }
+
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
 
         private void comboSala1_SelectionChanged(object sender, SelectionChangedEventArgs e)

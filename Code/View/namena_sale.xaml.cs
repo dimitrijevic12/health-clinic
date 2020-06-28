@@ -27,6 +27,8 @@ namespace health_clinicClassDiagram.view
         private int colNum = 0;
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IAppointmentController _appointmentController;
+        private readonly IRenovationController _renovationController;
         private Room room;
 
         public static ObservableCollection<Room> roomsCollection
@@ -51,7 +53,8 @@ namespace health_clinicClassDiagram.view
            
             _examOperationRoomController = ExamOperationRoomController.Instance;
             _rehabilitationRoomController = RehabilitationRoomController.Instance;
-
+            _appointmentController = AppointmentController.Instance;
+            _renovationController = RenovationController.Instance;
 
 
             rooms = _examOperationRoomController.GetAll();
@@ -91,12 +94,18 @@ namespace health_clinicClassDiagram.view
             else
             {
 
-                DateTime dt1 = DateTime.Now;
-                DateTime dt2 = (DateTime)DatumPicker.SelectedDate;
-                int result = DateTime.Compare(dt1, dt2);
-                if (DateTime.Now.Date == dt2)
+                DateTime dt1 = (DateTime)DatumPicker.SelectedDate;
+                DateTime lastDate = _appointmentController.GetLastDateOfAppointmentForRoom(room);
+
+                if (lastDate < dt1 && DateTime.Now.Date == dt1)
                 {
                     //Console.WriteLine("dosao ovde");
+                    dt1 = lastDate.AddDays(1);
+
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, rooms);
+                    _renovationController.Create(renovation);
                     String tipSale;
                     if (tip.SelectedIndex == 0)
                     {
@@ -171,9 +180,26 @@ namespace health_clinicClassDiagram.view
                         }
                     }
                 }
+                else
+                {
+                    dt1 = lastDate.AddDays(1);
+                    
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, rooms);
+                    _renovationController.Create(renovation);
+                }
 
                 this.Close();
             }
+        }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
 
         private void comboSala_SelectionChanged(object sender, SelectionChangedEventArgs e)

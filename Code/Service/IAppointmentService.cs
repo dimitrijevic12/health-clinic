@@ -5,6 +5,7 @@
  ***********************************************************************/
 
 using Model.Appointment;
+using Model.Rooms;
 using System;
 using System.Collections.Generic;
 
@@ -25,5 +26,7 @@ namespace Service
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);
+
+      DateTime GetLastDateOfAppointmentForRoom(Room room);
    }
 }

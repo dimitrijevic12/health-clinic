@@ -20,6 +20,8 @@ namespace health_clinicClassDiagram.view
         private int colNum = 0;
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IAppointmentController _appointmentController;
+        private readonly IRenovationController _renovationController;
         private readonly IController<Equipment> _equipController;
         
         private Room room;
@@ -63,6 +65,8 @@ namespace health_clinicClassDiagram.view
             _equipController = EquipmentController.Instance;
             _examOperationRoomController = ExamOperationRoomController.Instance;
             _rehabilitationRoomController = RehabilitationRoomController.Instance;
+            _appointmentController = AppointmentController.Instance;
+            _renovationController = RenovationController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 
@@ -113,12 +117,20 @@ namespace health_clinicClassDiagram.view
 
                 // string nazivDruge = ime.Text;
                 DateTime dt1 = (DateTime)date1.SelectedDate;
+                DateTime dt2 = (DateTime)date2.SelectedDate;
+                int difference = (dt2.Date - dt1.Date).Days;
+                DateTime lastDate = _appointmentController.GetLastDateOfAppointmentForRoom(room);
                 //int result = DateTime.Compare(dt1, dt2);
-                if (DateTime.Now.Date == dt1)
+                if (lastDate < dt1/* && DateTime.Now.Date == dt1*/)
                 {
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.SPLITTING, dt1, dt2, rooms);
+                    _renovationController.Create(renovation);
                     int idDruge = (int)room.Id + 100;
                     if (room.tip == TypeOfRoom.EXAMOPERATION)
                     {
+                       
                         ExamOperationRoom soba1 = new ExamOperationRoom(idDruge);
                         foreach (ExamOperationRoom s1 in rooms)
                         {
@@ -142,6 +154,7 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
+                        
                         RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5);
                         foreach (RehabilitationRoom s2 in rooms2)
                         {
@@ -163,9 +176,27 @@ namespace health_clinicClassDiagram.view
                         //Console.WriteLine("ovde2");
                     }
                 }
+                else
+                {
+                    dt1 = lastDate.AddDays(1);
+                    dt2 = dt1.AddDays(difference);
+                    List<Room> rooms = new List<Room>();
+                    rooms.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()),TypeOfRenovation.SPLITTING, dt1, dt2, rooms);
+                    _renovationController.Create(renovation);
+
+                }
                 //foreach (ek)
                 this.Close();
             }
+        }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
     }
 }

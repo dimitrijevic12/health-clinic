@@ -6,6 +6,7 @@
 
 
 using Model.Appointment;
+using Model.Rooms;
 using System;
 using System.Collections.Generic;
 
@@ -26,5 +27,6 @@ namespace Controller
       Boolean IsPatientRegistered(Model.SystemUsers.Patient patient);
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
-   }
+      DateTime GetLastDateOfAppointmentForRoom(Room room);
+    }
 }

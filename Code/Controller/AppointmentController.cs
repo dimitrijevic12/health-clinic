@@ -138,7 +138,9 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-
-
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            return _service.GetLastDateOfAppointmentForRoom(room);
+        }
     }
 }

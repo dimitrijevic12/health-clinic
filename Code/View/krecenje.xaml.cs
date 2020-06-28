@@ -27,6 +27,8 @@ namespace health_clinicClassDiagram.view
         private int colNum = 0;
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
+        private readonly IAppointmentController _appointmentController;
+        private readonly IRenovationController _renovationController;
 
         public static ObservableCollection<Room> roomsCollection
         {
@@ -41,6 +43,7 @@ namespace health_clinicClassDiagram.view
         public List<ExamOperationRoom> rooms;
         public List<RehabilitationRoom> rooms2;
         public List<Room> finalRooms;
+        private Room room;
         public krecenje()
         {
             InitializeComponent();
@@ -49,6 +52,8 @@ namespace health_clinicClassDiagram.view
            
             _examOperationRoomController = ExamOperationRoomController.Instance;
             _rehabilitationRoomController = RehabilitationRoomController.Instance;
+            _appointmentController = AppointmentController.Instance;
+            _renovationController = RenovationController.Instance;
             rooms = _examOperationRoomController.GetAll();
             rooms2 = _rehabilitationRoomController.GetAll();
 
@@ -85,8 +90,33 @@ namespace health_clinicClassDiagram.view
             }
             else
             {
+                DateTime dt1 = (DateTime)dat1.SelectedDate;
+                DateTime dt2 = (DateTime)dat2.SelectedDate;
+                int difference = (dt2.Date - dt1.Date).Days;
+                DateTime lastDate = _appointmentController.GetLastDateOfAppointmentForRoom(room);
+                List<Room> rooms = new List<Room>();
+                rooms.Add(room);
+                Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.PAINTING, dt1, dt2, rooms);
+                _renovationController.Create(renovation);
+
+
                 this.Close();
             }
+           
+        }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
+        }
+
+        private void comboSala_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            room = (Room)cb.SelectedItem;
         }
     }
 }
