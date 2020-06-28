@@ -14,7 +14,7 @@ namespace Repository
         bool EquipExists(string name);
         Model.Rooms.Equipment GetEquip(String name);
 
-        Equipment GetEquip(int id);
-        bool EquipExists(int id);
+        Equipment GetEquip(long id);
+        bool EquipExists(long id);
     }
 }

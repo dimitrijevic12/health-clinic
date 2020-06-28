@@ -85,10 +85,10 @@ namespace health_clinicClassDiagram.view
             else
             {
 
-                string naz = equTest.Naziv;
-                int IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
+                string naz = equTest.Name;
+                long IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
                 int quan = int.Parse(quantity.Text);
-                // string naz = _equipController.getNazivOpreme(IdOpreme);
+                
                 Equipment equ = new Equipment(IdOpreme, naz, quan);
 
                 int flag = 0;
@@ -101,60 +101,14 @@ namespace health_clinicClassDiagram.view
                 {
                     roomd = _rehabilitationRoomController.IncreaseQuantity(roomd, equ);
                 }
-                /* if (roomd.Equipments != null)
-                 {
-                     //Console.WriteLine(" broj" + room.Equipments.Count);
-                     foreach (Equipment ek in roomd.Equipments)
-                     {
-                         if (ek.Id == IdOpreme)
-                         {
-                             ek.Quantity += quan;
-                             flag += 1;
-
-                         }
-
-                     }
-
-
-                     if (flag == 0)
-                     {
-                         roomd.Equipments.Add(equ);
-                         foreach (Equipment ek in roomd.Equipments)
-                         {
-                             // Console.WriteLine(ek.Id);
-                         }
-                     }
-                 }
-                 else
-                 {
-
-                     roomd.Equipments.Add(equ);
-
-
-                 }*/
+                
 
                 sobaZaDodavanje = _examOperationRoomController.GetRoomById(roomd.Id);
                
-                /* foreach (ExamOperationRoom r in rooms)
-                 {
-                     if (r.Id.Equals(roomd.Id))
-                     {
-                         sobaZaDodavanje = r;
-                         sobaZaDodavanje.Equipments = roomd.Equipments;
-                         break;
-                     }
-                 }*/
+               
                 sobaZaDodavanje2 = _rehabilitationRoomController.GetRoomById(roomd.Id);
                 
-                /* foreach (RehabilitationRoom r in rooms2)
-                 {
-                     if (r.Id.Equals(roomd.Id))
-                     {
-                         sobaZaDodavanje2 = r;
-                         sobaZaDodavanje2.Equipments = roomd.Equipments;
-                         break;
-                     }
-                 }*/
+                
 
                 if (sobaZaDodavanje != null)
                 {
@@ -167,11 +121,7 @@ namespace health_clinicClassDiagram.view
                     _rehabilitationRoomController.Edit(sobaZaDodavanje2);
                 }
 
-                /* foreach (Equipment es in room.Equipments)
-                 {
-                     Console.WriteLine(es.Ispisi().ToString());
-                 }
-     */
+               
                 _equipController.deleteEquipment(IdOpreme, quan);
                 this.Close();
             }

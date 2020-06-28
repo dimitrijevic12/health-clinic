@@ -11,11 +11,11 @@ namespace Controller
 {
    public interface IEquipmentController : IController<Equipment>
    {
-        void addEquipment(string naziv, int quant);
-        void deleteEquipment(int Id, int quant);
+        void addEquipment(string name, int quant);
+        void deleteEquipment(long Id, int quant);
 
-        String getNazivOpreme(int Id);
+        String getNazivOpreme(long Id);
 
-        int getIdOpreme(String naziv);
+        long getIdOpreme(String name);
     }
 }

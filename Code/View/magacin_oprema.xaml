@@ -36,7 +36,7 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
-                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Naziv}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
             <DataGrid.Resources>

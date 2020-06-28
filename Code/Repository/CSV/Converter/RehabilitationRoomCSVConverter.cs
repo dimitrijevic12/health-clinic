@@ -130,7 +130,7 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
             String resenje2 = "";
             foreach (Equipment equipment in entity.Equipments)
             {
-                resenje2 += string.Join(_delimiter, equipment.Id, equipment.Naziv, equipment.Quantity);
+                resenje2 += string.Join(_delimiter, equipment.Id, equipment.Name, equipment.Quantity);
                 resenje2 += _delimiter;
             }
 

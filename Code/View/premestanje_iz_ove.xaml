@@ -36,7 +36,7 @@
                   SelectionMode="Single" IsReadOnly="True" AutoGeneratingColumn="generateColumns" HorizontalAlignment="Left" Margin="0,13,0,99" VerticalAlignment="Stretch" Width="1016" Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="0" SelectionChanged="dataGridNaruciOpremu_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*"  Header="Id opreme" Binding="{Binding Id}"/>
-                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Naziv}"/>
+                <DataGridTextColumn Width="*"  Header="Naziv opreme" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="*"  Header="Količina" Binding="{Binding Quantity}"/>
             </DataGrid.Columns>
             <DataGrid.Resources>

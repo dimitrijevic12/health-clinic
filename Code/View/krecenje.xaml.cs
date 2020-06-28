@@ -28,7 +28,7 @@ namespace health_clinicClassDiagram.view
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
         private readonly IAppointmentController _appointmentController;
-        private readonly IRenovationController _renovationController;
+        private readonly IController<Renovation> _renovationController;
 
         public static ObservableCollection<Room> roomsCollection
         {

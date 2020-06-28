@@ -92,8 +92,8 @@ namespace health_clinicClassDiagram.view
             }
             else
             {
-                string naz = equTest.Naziv;
-                int IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
+                string naz = equTest.Name;
+                long IdOpreme = _equipController.getIdOpreme(naz);// int.Parse(id.Text);
                 int quan = int.Parse(quantity.Text);
                 // string naz = _equipController.getNazivOpreme(IdOpreme);
                 Equipment equ = new Equipment(IdOpreme, naz, quan);

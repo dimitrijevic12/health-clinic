@@ -11,10 +11,10 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class RenovationController : IRenovationController
-   {
+   public class RenovationController : IController<Renovation>
+    {
 
-        private readonly IRenovationService iRenovationService = RenovationService.Instance;
+        private readonly IService<Renovation> _renovationService = RenovationService.Instance;
 
         private static RenovationController instance;
 
@@ -33,47 +33,24 @@ namespace Controller
         private RenovationController() { }
         public List<Renovation> GetAll()
         {
-            return iRenovationService.GetAll();
+            return _renovationService.GetAll();
         }
 
         public bool Delete(Renovation obj)
         {
-            return iRenovationService.Delete(obj);
+            return _renovationService.Delete(obj);
         }
 
         public Renovation Create(Renovation obj)
         {
-            return iRenovationService.Create(obj);
+            return _renovationService.Create(obj);
         }
 
         public Renovation Edit(Renovation obj)
         {
-            return iRenovationService.Edit(obj);
+            return _renovationService.Edit(obj);
         }
 
-        public Renovation ChangeDates(DateTime lastDate, Renovation renovation)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoPainting()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoMerge()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoSplit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Renovation DoChangeTypeOfRoom()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

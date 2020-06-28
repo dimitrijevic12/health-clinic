@@ -22,7 +22,7 @@ namespace health_clinicClassDiagram.view
         private readonly IController<ExamOperationRoom> _examOperationRoomController;
         private readonly IController<RehabilitationRoom> _rehabilitationRoomController;
         private readonly IAppointmentController _appointmentController;
-        private readonly IRenovationController _renovationController;
+        private readonly IController<Renovation> _renovationController;
         private readonly IController<Equipment> _equipController;
         
         private Room room;
@@ -142,7 +142,7 @@ namespace health_clinicClassDiagram.view
                         {
                              int pola = ek.Quantity / 2;
                              ek.Quantity -= pola;
-                             Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                             Equipment noviEk = new Equipment(ek.Id, ek.Name, pola);
                              sobaZaAdd.Equipments.Add(noviEk);
                         }
                             
@@ -165,7 +165,7 @@ namespace health_clinicClassDiagram.view
                         {
                              int pola = ek.Quantity / 2;
                              ek.Quantity -= pola;
-                             Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                             Equipment noviEk = new Equipment(ek.Id, ek.Name, pola);
                              sobaZaAdd2.Equipments.Add(noviEk);
                         }
                            

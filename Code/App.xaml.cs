@@ -50,7 +50,7 @@ namespace health_clinicClassDiagram
         public IDrugController drugController { get; private set; }
 
         public IAppointmentController appController { get; private set; }
-        public IRenovationController renoController { get; private set; }
+        //public IRenovationController renoController { get; private set; }
 
         public UserController userController { get; private set; }
 

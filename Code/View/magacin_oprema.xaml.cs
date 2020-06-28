@@ -73,7 +73,7 @@ namespace health_clinicClassDiagram.view
 
         private void pretragaOprema_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            var filter = equips.Where(Equipment => Equipment.Id.ToString().Contains(pretragaOprema.Text) || Equipment.Naziv.Contains(pretragaOprema.Text) || Equipment.Quantity.ToString().Contains(pretragaOprema.Text));
+            var filter = equips.Where(Equipment => Equipment.Id.ToString().Contains(pretragaOprema.Text) || Equipment.Name.Contains(pretragaOprema.Text) || Equipment.Quantity.ToString().Contains(pretragaOprema.Text));
             dataGridMagacinOprema.ItemsSource = filter;
         }
     }

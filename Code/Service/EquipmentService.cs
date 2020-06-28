@@ -58,24 +58,24 @@ namespace Service
             return rooms;
         }
 
-        public void addEquipment(string naziv, int quant)
+        public void addEquipment(string name, int quant)
         {
-            bool postoji = _equipmentRepository.EquipExists(naziv);
+            bool postoji = _equipmentRepository.EquipExists(name);
             if (postoji)
             {
-                var Foundequip = _equipmentRepository.GetEquip(naziv);
+                var Foundequip = _equipmentRepository.GetEquip(name);
                 Foundequip.Quantity += quant;
                 _equipmentRepository.Edit(Foundequip);
             }
             else
             {
-                Equipment d = new Equipment(naziv, quant);
+                Equipment d = new Equipment(name, quant);
                 var newDrag = _equipmentRepository.Save(d);
             }
 
         }
 
-        public void deleteEquipment(int Id, int quant)
+        public void deleteEquipment(long Id, int quant)
         {
             bool postoji = _equipmentRepository.EquipExists(Id);
             if (postoji)
@@ -86,29 +86,29 @@ namespace Service
             }
         }
 
-        public string getNazivOpreme(int Id)
+        public string getNazivOpreme(long Id)
         {
             var eqs = _equipmentRepository.GetAll();
             foreach(Equipment e in eqs)
             {
                 if(e.Id == Id)
                 {
-                    return e.Naziv;
-                    break;
+                    return e.Name;
+                    
                 }
             }
             return "ne postoji";
         }
 
-        public int getIdOpreme(string naziv)
+        public long getIdOpreme(string name)
         {
             var eqs = _equipmentRepository.GetAll();
             foreach (Equipment e in eqs)
             {
-                if (e.Naziv.Equals(naziv))
+                if (e.Name.Equals(name))
                 {
                     return e.Id;
-                    break;
+                    
                 }
             }
             return 0;
