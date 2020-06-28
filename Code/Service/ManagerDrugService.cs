@@ -28,10 +28,19 @@ namespace Service
             }
             else
             {
-                Drug drug = new Drug(name, quantity);
+                Drug drug = new Drug(LongRandom(0, 100000, new Random()),name, quantity);
                 var newDrug = _drugRepository.Save(drug);
             }
         }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
+        }
 
     }
+
 }

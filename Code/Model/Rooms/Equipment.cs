@@ -17,8 +17,7 @@ namespace Model.Rooms
       }
 
       
-      private long id;
-      Random rnd = new Random();
+      private long id;  
       private TypeOfEquipment type;
       private String name;
       private int quantity;
@@ -31,13 +30,7 @@ namespace Model.Rooms
             Quantity = quantity;
         }
 
-        public Equipment(String naziv, int quantity)
-        {
-            
-            Id = rnd.Next(1, 10000);
-            Name = naziv;
-            Quantity = quantity;
-        }
+       
         public Equipment(long id,String naziv, int quantity)
         {
             

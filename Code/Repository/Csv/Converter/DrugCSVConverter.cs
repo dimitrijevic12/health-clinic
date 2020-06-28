@@ -25,7 +25,7 @@ namespace Repository.Csv.Converter
 
             
 
-            Drug eq = new Drug(int.Parse(tokens[0]), tokens[1], int.Parse(tokens[2]));
+            Drug eq = new Drug(long.Parse(tokens[0]), tokens[1], int.Parse(tokens[2]));
             return eq;
         }
 

@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Model.Rooms;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -75,10 +76,20 @@ namespace health_clinicClassDiagram.view
                 int quant = int.Parse(quantity.Text);
 
                 _equipController.addEquipment(naz, quant);
+               
 
                 this.Close();
             }
 
         }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
+        }
+
     }
 }

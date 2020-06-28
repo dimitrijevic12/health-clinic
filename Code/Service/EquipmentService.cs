@@ -69,7 +69,7 @@ namespace Service
             }
             else
             {
-                Equipment d = new Equipment(name, quant);
+                Equipment d = new Equipment(LongRandom(0, 100000, new Random()),name, quant);
                 var newDrag = _equipmentRepository.Save(d);
             }
 
@@ -112,6 +112,14 @@ namespace Service
                 }
             }
             return 0;
+        }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
+
+            return (Math.Abs(longRand % (max - min)) + min);
         }
 
     }
