@@ -39,7 +39,7 @@
                 <Label x:Name="labelSobe" Content="Sobe:" FontSize="24" FontWeight="Bold" VerticalContentAlignment="Center"/>
                 <ComboBox x:Name="comboBoxListaSoba" FontSize="24" Width="250" Margin="10, 10, 30, 0" SelectionChanged="comboBoxListaSoba_SelectionChanged" ItemsSource="{Binding Rooms}" SelectedIndex="0" DisplayMemberPath="Id"/>
             </StackPanel>
-            <DataGrid x:Name="dataGridPacijenti" Height="387" Margin="30,20,30,10" ItemsSource="{Binding Patients}" AutoGenerateColumns="False">
+            <DataGrid x:Name="dataGridPacijenti" Height="387" Margin="30,20,30,10" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Šifra" Width="Auto" IsReadOnly="True" Binding="{Binding Id}">
                         <DataGridTextColumn.HeaderStyle>

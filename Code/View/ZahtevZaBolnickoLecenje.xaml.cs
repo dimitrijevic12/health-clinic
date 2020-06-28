@@ -32,11 +32,15 @@ namespace health_clinicClassDiagram.View
         private Appointment appointment;
         private ReferralToHospitalTreatment referralToHospitalTreatment;
         private List<RehabilitationRoom> allRooms = RehabilitationRoomController.Instance.GetAll();
-        private List<Drug> allDrugs = DrugRepository.Instance.GetAll();
         private DateTime startDate;
         private DateTime endDate;
         private String cause;
 
+        public ObservableCollection<Drug> AllDrugs
+        {
+            get;
+            set;
+        }
         public ObservableCollection<Drug> PresrcibedDrugs
         {
             get;
@@ -46,13 +50,14 @@ namespace health_clinicClassDiagram.View
         public Appointment Appointment { get => appointment; set => appointment = value; }
         public ReferralToHospitalTreatment ReferralToHospitalTreatment { get => referralToHospitalTreatment; set => referralToHospitalTreatment = value; }
         public List<RehabilitationRoom> AllRooms { get => allRooms; set => allRooms = value; }
-        public List<Drug> AllDrugs { get => allDrugs; set => allDrugs = value; }
         public DateTime StartDate { get => startDate; set => startDate = value; }
         public DateTime EndDate { get => endDate; set => endDate = value; }
         public string Cause { get => cause; set => cause = value; }
 
         public ZahtevZaBolnickoLecenje(Appointment appointment, ReferralToHospitalTreatment referralToHospitalTreatment)
         {
+            DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+            AllDrugs = new ObservableCollection<Drug>(doctorDrugController.GetValidatedDrugs());
             Appointment = appointment;
             ReferralToHospitalTreatment = referralToHospitalTreatment;
             PresrcibedDrugs = new ObservableCollection<Drug>(referralToHospitalTreatment.Drugs);

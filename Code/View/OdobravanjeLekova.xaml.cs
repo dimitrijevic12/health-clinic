@@ -32,7 +32,8 @@ namespace health_clinicClassDiagram.View
         }
         public OdobravanjeLekova()
         {
-            AllDrugs = new ObservableCollection<Drug>(DrugRepository.Instance.GetAll());
+            DoctorDrugController doctorDrugController = new DoctorDrugController(new DrugController());
+            AllDrugs = new ObservableCollection<Drug>(doctorDrugController.GetUnvalidatedDrugs());
            /* AllDrugs.Add(new Drug("Aerius 50mg", 2, 5));
             AllDrugs.Add(new Drug("Aspirin 100mg", 4, 15));
             AllDrugs.Add(new Drug("Strepsils pakovanje 10 tableta", 5, 30));
