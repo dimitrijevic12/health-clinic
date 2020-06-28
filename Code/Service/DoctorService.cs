@@ -5,6 +5,7 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -80,7 +81,32 @@ namespace health_clinicClassDiagram.Service
                     doctors.Remove(doctorToRemove);
             }
 
-            return doctors;
+            List<Doctor> availableDoctors = GetAvailableDoctorsForWorkingSchedule(doctors, _startDate, _endDate);
+
+            return availableDoctors;
+
+        }
+
+        private List<Doctor> GetAvailableDoctorsForWorkingSchedule(List<Doctor> doctors, DateTime _startDate, DateTime _endDate)
+        {
+            List<Doctor> availableDoctors = new List<Doctor>();
+
+            DateTime _startDateJustTime = default(DateTime).Add(_startDate.TimeOfDay);
+            DateTime _endDateJustTime = default(DateTime).Add(_endDate.TimeOfDay);
+
+            foreach (Doctor doctor in doctors)
+            {
+                List<DateTime> times = GetWorkingScheduleForDateAndDoctor(doctor, _startDate);
+                DateTime doctorWorkingStartTime = default(DateTime).Add(times[0].TimeOfDay);
+                DateTime doctorWorkingEndTime = default(DateTime).Add(times[1].TimeOfDay);
+
+                if (_startDateJustTime >= doctorWorkingStartTime && _endDateJustTime <= doctorWorkingEndTime)
+                {
+                    availableDoctors.Add(doctor);
+                }
+            }
+
+            return availableDoctors;
         }
 
         public Doctor GetDoctorByUsernameAndPassword(string username, string password)
@@ -90,6 +116,56 @@ namespace health_clinicClassDiagram.Service
                 if (doctor.Username.Equals(username) && doctor.Password.Equals(password)) return doctor;
             }
             return null;
+        }
+
+        public List<DateTime> GetWorkingScheduleForDateAndDoctor(Doctor doctor, DateTime date)
+        {
+
+            List<WorkingSchedule> workingSchedules = doctor.WorkingSchedules;
+
+            WorkingSchedule wantedWorkingSchedule = FindWorkingScheduleForDate(workingSchedules, date);
+
+            List<WorkingDays> allWorkingDays = wantedWorkingSchedule.WorkingDays;
+
+            Calendar calendar = CultureInfo.InvariantCulture.Calendar;
+
+            DayOfWeek dayOfWeek = calendar.GetDayOfWeek(date);
+
+            DateTime startTime = new DateTime();
+            DateTime endTime = new DateTime();
+
+            foreach (WorkingDays workingDays in allWorkingDays)
+            {
+                String myDay = workingDays.Day.ToString().ToLower();
+                String day = dayOfWeek.ToString().ToLower();
+
+                if (myDay.Equals(day))
+                {
+                    startTime = workingDays.FromTime;
+                    endTime = workingDays.ToTime;
+                }
+            }
+
+            List<DateTime> times = new List<DateTime>();
+            times.Add(startTime);
+            times.Add(endTime);
+
+            return times;
+        }
+
+        private WorkingSchedule FindWorkingScheduleForDate(List<WorkingSchedule> workingSchedules, DateTime date)
+        {
+            WorkingSchedule wantedWorkingSchedule = new WorkingSchedule();
+            foreach (WorkingSchedule workingSchedule in workingSchedules)
+            {
+                if (workingSchedule.From <= date && workingSchedule.To >= date)
+                {
+                    wantedWorkingSchedule = workingSchedule;
+                    break;
+                }
+            }
+
+            return wantedWorkingSchedule;
         }
 
     }
