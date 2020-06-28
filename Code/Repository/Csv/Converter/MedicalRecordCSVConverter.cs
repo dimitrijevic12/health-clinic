@@ -24,20 +24,20 @@ namespace Repository.Csv.Converter
 
         private readonly string _delimiter;
 
-        public MedicalRecordCSVConverter(string delimiter) 
-        { 
+        public MedicalRecordCSVConverter(string delimiter)
+        {
             _delimiter = delimiter;
         }
 
         public MedicalRecord ConvertCSVFormatToEntity(string entityCSVFormat)
         {
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
-        
+
             var doctorRepository = DoctorRepository.Instance;
             var patientRepository = PatientRepository.Instance;
-    
+
             Doctor doctor = doctorRepository.GetDoctorById(long.Parse(tokens[2]));
-            Patient patient = patientRepository.getPatientById(long.Parse(tokens[1]));
+            Patient patient = patientRepository.GetPatientById(long.Parse(tokens[1]));
             List<Treatment> treatments = new List<Treatment>();
 
             if (tokens[3] != "")
@@ -63,13 +63,13 @@ namespace Repository.Csv.Converter
 
         public string ConvertEntityToCSVFormat(MedicalRecord entity)
         {
-            
+
             String treatments = "";
 
             if (entity.Treatments.Count != 0)
             {
                 Treatment last = entity.Treatments.Last();
-                foreach (Treatment treatment in entity.Treatments)              
+                foreach (Treatment treatment in entity.Treatments)
                 {
                     if (treatment != null)
                     {

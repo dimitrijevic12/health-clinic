@@ -9,8 +9,8 @@ using System;
 
 namespace Service
 {
-   public interface IBlogService : IService<Blog>
-   {
-      Model.Surveys.Blog GetBlogByTitle(String title);
-   }
+    public interface IBlogService : IService<Blog>
+    {
+        Model.Surveys.Blog GetBlogByTitle(String title);
+    }
 }

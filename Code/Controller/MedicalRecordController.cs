@@ -13,8 +13,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class MedicalRecordController : IMedicalRecordController
-   {
+    public class MedicalRecordController : IMedicalRecordController
+    {
         private static MedicalRecordController instance;
         public static MedicalRecordController Instance
         {
@@ -35,10 +35,6 @@ namespace Controller
 
         }
 
-        public MedicalRecordController(IMedicalRecordService service)
-        {
-            _service = service;
-        }
 
         public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
@@ -47,32 +43,29 @@ namespace Controller
 
         public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            var record = _service.GetMedicalRecordByPatient(patient);
+            MedicalRecord record = _service.GetMedicalRecordByPatient(patient);
             return record;
         }
 
         public List<MedicalRecord> GetAll()
         {
-            var records = (List<MedicalRecord>)_service.GetAll();
+            List<MedicalRecord> records = (List<MedicalRecord>)_service.GetAll();
             return records;
         }
 
         public bool Delete(MedicalRecord obj)
         {
-            _service.Delete(obj);
-            return true;
+            return _service.Delete(obj);
         }
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            _service.Create(obj);
-            return obj;
+            return _service.Create(obj);
         }
 
         public MedicalRecord Edit(MedicalRecord obj)
         {
-            _service.Edit(obj);
-            return obj;
+            return _service.Edit(obj);
         }
 
         public MedicalRecord GetMedicalRecordById(long id)
@@ -84,6 +77,6 @@ namespace Controller
         {
             return _service.GetAllAvailablePatientsForRehabilitation();
         }
-    }
 
+    }
 }

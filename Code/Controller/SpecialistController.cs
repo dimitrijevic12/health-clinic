@@ -11,8 +11,8 @@ namespace health_clinicClassDiagram.Controller
 {
     public class SpecialistController : IController<Specialist>
     {
-        private static SpecialistController instance;
-
+        private static SpecialistController instance = null;
+        public IService<Specialist> _service = SpecialistService.Instance;
         public static SpecialistController Instance
         {
             get
@@ -31,24 +31,24 @@ namespace health_clinicClassDiagram.Controller
 
         public Specialist Create(Specialist obj)
         {
-            return SpecialistService.Instance.Create(obj);
+            return _service.Create(obj);
         }
 
         public bool Delete(Specialist obj)
         {
-            return SpecialistService.Instance.Delete(obj);
+            return _service.Delete(obj);
 
         }
 
         public Specialist Edit(Specialist obj)
         {
-            return SpecialistService.Instance.Edit(obj);
+            return _service.Edit(obj);
 
         }
 
         public List<Specialist> GetAll()
         {
-            return SpecialistService.Instance.GetAll();
+            return _service.GetAll();
         }
     }
 }

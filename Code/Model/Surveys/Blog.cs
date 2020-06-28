@@ -8,8 +8,8 @@ using System;
 
 namespace Model.Surveys
 {
-   public class Blog
-   {
+    public class Blog
+    {
         public Model.SystemUsers.Doctor doctor;
 
         private String title;
@@ -26,6 +26,5 @@ namespace Model.Surveys
             Text = text;
             Date = date;
         }
-
     }
 }

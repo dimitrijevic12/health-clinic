@@ -1,3 +1,9 @@
+/***********************************************************************
+ * Module:  WorkingScheduleService.cs
+ * Author:  Nemanja
+ * Purpose: Definition of the Class Service.WorkingScheduleService
+ ***********************************************************************/
+
 using Model.SystemUsers;
 using Service;
 using System;
@@ -5,10 +11,9 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-    public class WorkingScheduleController : IWorkingSchedule
+    public class WorkingScheduleController : IController<WorkingSchedule>
     {
-        public WorkingScheduleController GetInstance() { return null; }
-        public IWorkingScheduleService _service = WorkingScheduleService.Instance;
+        public WorkingScheduleService _service = WorkingScheduleService.Instance;
 
         private static WorkingScheduleController instance;
 
@@ -27,19 +32,10 @@ namespace Controller
         private WorkingScheduleController()
         {
         }
-        public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<WorkingSchedule> GetAll()
         {
-            var workingSchedules = (List<WorkingSchedule>)_service.GetAll();
+            List<WorkingSchedule> workingSchedules = (List<WorkingSchedule>)_service.GetAll();
             return workingSchedules;
         }
 

@@ -34,6 +34,8 @@ namespace Repository.Csv.Converter
 
             var rehabilitationRoomRepository = RehabilitationRoomRepository.Instance;
 
+
+
             if (tokens[4] != "")
             {
                 String roomString = tokens[4];
@@ -41,8 +43,8 @@ namespace Repository.Csv.Converter
                 Room room = null;
                 for (int j = 0; j < oneRoom.Length; j++)
                 {
-                    var roomFinder = examOperationRoomRepository.findExamRoom(long.Parse(oneRoom[j]));
-                    var roomFinder2 = rehabilitationRoomRepository.findRehabRoom(long.Parse(oneRoom[j]));
+                    var roomFinder = examOperationRoomRepository.GetRoomById(long.Parse(oneRoom[j]));
+                    var roomFinder2 = rehabilitationRoomRepository.GetRoomById(long.Parse(oneRoom[j]));
                     if (roomFinder != null)
                     {
                         room = (Room)roomFinder;

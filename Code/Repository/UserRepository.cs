@@ -19,8 +19,8 @@ namespace Repository
         private String _path;
         private static UserRepository instance;
 
-        private readonly ICSVStream<RegisteredUser> _stream = new CSVStream<RegisteredUser>("C:\\health-clinic\\health-clinic\\Code\\resources\\data", new UserCSVConverter("|", "dd/MM//yyyy"));
-        private readonly iSequencer<long> _sequencer =  new LongSequencer();
+        private readonly ICSVStream<RegisteredUser> _stream = new CSVStream<RegisteredUser>("C:\\health-clinic\\health-clinic\\Code\\resources\\data", new UserCSVConverter("|"));
+        private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         public UserRepository GetInstance() { return null; }
 
@@ -38,7 +38,7 @@ namespace Repository
 
         private UserRepository()
         {
-//            InitializeId();
+            //            InitializeId();
         }
 
         public UserRepository(string path, CSVStream<RegisteredUser> stream, iSequencer<long> sequencer)
@@ -67,9 +67,9 @@ namespace Repository
 
         public RegisteredUser Edit(RegisteredUser obj)
         {
-            var users = _stream.ReadAll().ToList();
-            users[users.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            _stream.SaveAll(users);
+            //var users = _stream.ReadAll().ToList();
+            //users[users.FindIndex(apt => apt.Id == obj.Id)] = obj;
+            //_stream.SaveAll(users);
             return obj;
         }
 
@@ -105,15 +105,6 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-
         protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-
-        public RegisteredUser GetRegisteredUserById(long id)
-        {
-            var users = _stream.ReadAll().ToList();
-            return users[users.FindIndex(apt => apt.Id == id)];
-            
-            
-        }
     }
 }

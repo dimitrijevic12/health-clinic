@@ -14,8 +14,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class AppointmentController : IAppointmentController
-   {
+    public class AppointmentController : IAppointmentController
+    {
         public Service.IAppointmentService _service = AppointmentService.Instance;
 
         private static AppointmentController instance;
@@ -36,15 +36,9 @@ namespace Controller
         {
         }
 
-        public AppointmentController(IAppointmentService service)
-        {
-            _service = service;
-        }
-        public AppointmentController GetInstance() { return null; }
-
         public List<Appointment> GetAppointmentsByRoom(ExamOperationRoom room)
         {
-            return _service.GetAppointmentsByRoom(room); 
+            return _service.GetAppointmentsByRoom(room);
         }
 
         public List<Appointment> GetAppointmentsByTimeAndRoom(ExamOperationRoom room, DateTime startDate, DateTime endDate)
@@ -55,25 +49,24 @@ namespace Controller
         public List<Appointment> GetAll()
         {
             return _service.GetAll();
-            
+
         }
 
         public bool Delete(Appointment obj)
         {
-            _service.Delete(obj);
-            return true;
+            return _service.Delete(obj);
         }
 
         public Appointment Create(Appointment obj)
         {
             return _service.Create(obj);
-            
+
         }
 
         public Appointment Edit(Appointment obj)
         {
             return _service.Edit(obj);
-            
+
         }
 
         public List<Appointment> GetAppointmentsByTimeAndDoctor(Doctor doctor, DateTime startDate, DateTime endDate)
@@ -99,6 +92,11 @@ namespace Controller
         public List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient)
         {
             return _service.GetAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient);
+        }
+
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            return _service.GetLastDateOfAppointmentForRoom(room);
         }
     }
 }

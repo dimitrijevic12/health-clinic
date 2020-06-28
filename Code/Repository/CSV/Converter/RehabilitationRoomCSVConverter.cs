@@ -19,12 +19,10 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     public class RehabilitationRoomCSVConverter : ICSVConverter<RehabilitationRoom>
     {
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public RehabilitationRoomCSVConverter(string delimiter, string datetimeFormat)
+        public RehabilitationRoomCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public RehabilitationRoom ConvertCSVFormatToEntity(string entityCSVFormat)

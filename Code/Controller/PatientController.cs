@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace health_clinicClassDiagram.Controller
 {
@@ -26,13 +25,8 @@ namespace health_clinicClassDiagram.Controller
                 return instance;
             }
         }
-        
-        private PatientController() { }
 
-        public PatientController(IService<Patient> service)
-        {
-            _service = service;
-        }
+        private PatientController() { }
 
         public Patient Create(Patient obj)
         {
@@ -51,13 +45,9 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Patient> GetAll()
         {
-            var patients = (List<Patient>)_service.GetAll();
+            List<Patient> patients = (List<Patient>)_service.GetAll();
             return patients;
         }
 
-        public List<Patient> GetAllAvailablePatients(DateTime _startDate, DateTime _endDate)
-        {
-            return PatientService.Instance.GetAllAvailablePatients(_startDate, _endDate);
-        }
     }
 }

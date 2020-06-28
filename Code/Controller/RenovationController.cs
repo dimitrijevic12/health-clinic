@@ -11,8 +11,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class RenovationController : IRenovationController
-   {
+    public class RenovationController : IRenovationController
+    {
         private readonly IRenovationService iRenovationService = RenovationService.Instance;
 
         private static RenovationController instance;
@@ -74,6 +74,7 @@ namespace Controller
         {
             throw new NotImplementedException();
         }
+
 
 
     }

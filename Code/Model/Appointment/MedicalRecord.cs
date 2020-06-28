@@ -5,21 +5,14 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
-
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
-using Model.Treatment;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Model.Appointment
 {
-
     public class MedicalRecord
     {
-        
-
         public long id;
         private List<Model.Treatment.Treatment> treatments;
         public Doctor choosenDoctor;
@@ -45,7 +38,7 @@ namespace Model.Appointment
             {
                 return (choosenDoctor.Id + " " + choosenDoctor.Name + " " + choosenDoctor.Surname);
             }
-            
+
         }
 
         public List<Model.Treatment.Treatment> Treatments { get => treatments; set => treatments = value; }
@@ -75,6 +68,7 @@ namespace Model.Appointment
             this.rehabilitationFrom = rehabilitationFrom;
             this.rehabilitationTo = rehabilitationTo;
         }
+
 
     }
 }

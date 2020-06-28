@@ -13,7 +13,7 @@ namespace Repository
    {
         T Save(T obj);
         T Edit(T obj);
-      Boolean Delete(T obj);
-      List<T> GetAll();
-   }
+        Boolean Delete(T obj);
+        List<T> GetAll();
+    }
 }

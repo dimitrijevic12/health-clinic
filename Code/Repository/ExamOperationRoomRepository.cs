@@ -15,7 +15,6 @@ namespace health_clinicClassDiagram.Repository
         private readonly ICSVStream<ExamOperationRoom> _stream = new CSVStream<ExamOperationRoom>("../../Resources/Data/examoperationrooms.csv", new ExamOperationRoomCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/examoperationrooms.csv";
         private static ExamOperationRoomRepository instance;
         public static ExamOperationRoomRepository Instance
         {
@@ -31,23 +30,16 @@ namespace health_clinicClassDiagram.Repository
 
         private ExamOperationRoomRepository() { }
 
-        public ExamOperationRoomRepository(string path, CSVStream<ExamOperationRoom> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
-
         private long GetMaxId(List<ExamOperationRoom> rooms)
         {
             return rooms.Count() == 0 ? 0 : rooms.Max(ro => ro.Id);
         }
 
+
         public bool Delete(ExamOperationRoom obj)
         {
-            var rooms = _stream.ReadAll().ToList();
-            var roomToRemove = rooms.SingleOrDefault(ro => ro.Id == obj.Id);
+            List<ExamOperationRoom> rooms = _stream.ReadAll().ToList();
+            ExamOperationRoom roomToRemove = rooms.SingleOrDefault(ro => ro.Id == obj.Id);
             if (roomToRemove != null)
             {
                 rooms.Remove(roomToRemove);
@@ -62,7 +54,7 @@ namespace health_clinicClassDiagram.Repository
 
         public ExamOperationRoom Edit(ExamOperationRoom obj)
         {
-            var rooms = _stream.ReadAll().ToList();
+            List<ExamOperationRoom> rooms = _stream.ReadAll().ToList();
             rooms[rooms.FindIndex(ro => ro.Id == obj.Id)] = obj;
             _stream.SaveAll(rooms);
             return obj;
@@ -70,7 +62,7 @@ namespace health_clinicClassDiagram.Repository
 
         public List<ExamOperationRoom> GetAll()
         {
-            var rooms = (List<ExamOperationRoom>)_stream.ReadAll();
+            List<ExamOperationRoom> rooms = _stream.ReadAll();
             return rooms;
         }
 
@@ -79,15 +71,14 @@ namespace health_clinicClassDiagram.Repository
             _stream.AppendToFile(obj);
             return obj;
         }
-
-        public ExamOperationRoom findExamRoom(long id)
+        public ExamOperationRoom GetRoomById(long id)
         {
             var rooms = GetAll();
-            foreach (ExamOperationRoom er in rooms)
+            foreach (ExamOperationRoom examOperationRoom in rooms)
             {
-                if (er.Id == id)
+                if (examOperationRoom.Id == id)
                 {
-                    return er;
+                    return examOperationRoom;
                 }
             }
             return null;

@@ -9,8 +9,8 @@ using System.Collections.Generic;
 
 namespace Model.Rooms
 {
-   public class Renovation
-   {
+    public class Renovation
+    {
         private List<Room> rooms = new List<Room>();
         private long id;
         private DateTime startDate;

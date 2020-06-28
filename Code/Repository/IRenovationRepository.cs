@@ -11,6 +11,6 @@ namespace Repository
 {
    public interface IRenovationRepository : IRepository<Renovation>
    {
-      Model.Rooms.Renovation GetRenovation(Model.Rooms.Renovation renovation);
-   }
+        Model.Rooms.Renovation GetRenovation(Model.Rooms.Renovation renovation);
+    }
 }

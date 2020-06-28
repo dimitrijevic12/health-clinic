@@ -9,8 +9,8 @@ using System;
 
 namespace Controller
 {
-   public interface IRenovationController : IController<Renovation>
-   {
+    public interface IRenovationController : IController<Renovation>
+    {
         Model.Rooms.Renovation ChangeDates(DateTime lastDate, Model.Rooms.Renovation renovation);
         Model.Rooms.Renovation DoPainting();
         Model.Rooms.Renovation DoMerge();

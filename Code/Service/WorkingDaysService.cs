@@ -36,7 +36,7 @@ namespace health_clinicClassDiagram.Service
 
         public WorkingDays Create(WorkingDays obj)
         {
-            var newWorkingDays = _workingDaysRepository.Save(obj);
+            WorkingDays newWorkingDays = _workingDaysRepository.Save(obj);
             return newWorkingDays;
         }
 
@@ -52,7 +52,7 @@ namespace health_clinicClassDiagram.Service
 
         public List<WorkingDays> GetAll()
         {
-            var allWorkingDays = _workingDaysRepository.GetAll();
+            List<WorkingDays> allWorkingDays = _workingDaysRepository.GetAll();
             return allWorkingDays;
         }
     }

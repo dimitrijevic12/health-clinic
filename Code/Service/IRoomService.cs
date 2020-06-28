@@ -16,7 +16,9 @@ namespace Service
         Boolean IsRoomFree(DateTime from, DateTime to, Model.Rooms.Room room);
         List<Patient> GetAllPatientsByRoom(Model.Rooms.Room room);
         Boolean AddPatient(Model.SystemUsers.Patient patient, Model.Rooms.Room room);
-        Room IncreaseQuantity(Room r, Equipment eq);
-        Room DecreaseQuantity(Room r, Equipment eq);
+
+        Room IncreaseQuantity(Room room, Equipment equipment);
+
+        Room DecreaseQuantity(Room room, Equipment equipment);
     }
 }

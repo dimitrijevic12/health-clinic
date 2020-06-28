@@ -56,5 +56,6 @@ namespace Service
         {
             return BlogRepository.Instance.GetAll();
         }
+
     }
 }

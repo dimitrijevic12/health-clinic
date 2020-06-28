@@ -9,8 +9,8 @@ using System;
 
 namespace Controller
 {
-   public interface IBlogController : IController<Blog>
-   {
-      Model.Surveys.Blog GetBlogByTitle(String title);
-   }
+    public interface IBlogController : IController<Blog>
+    {
+        Model.Surveys.Blog GetBlogByTitle(String title);
+    }
 }

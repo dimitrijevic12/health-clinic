@@ -12,7 +12,6 @@ namespace Model.SystemUsers
 {
     public class Doctor : RegisteredUser
     {
-        private WorkingSchedule[] workingSchedule;
         private Gender gender;
         private DateTime dateOfBirth;
         private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
@@ -46,6 +45,7 @@ namespace Model.SystemUsers
             set { dateOfBirth = value; }
         }
 
+
         public List<WorkingSchedule> WorkingSchedules
         {
             get { return workingSchedules; }   // get method
@@ -66,18 +66,11 @@ namespace Model.SystemUsers
             }
         }
 
-
         public String NameAndSurname
         {
             get { return Name + " " + Surname; }
         }
 
-        public String DateOfBirthString
-        {
-            get { return dateOfBirth.ToShortDateString(); }   // get method
-        }
-
-        public Doctor() { }
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth)
         {
 
@@ -103,7 +96,6 @@ namespace Model.SystemUsers
             // workingSchedule = workSc;
 
         }
-
         public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, WorkingSchedule workingSchedule, String uname, String pass)
 
         {
@@ -135,9 +127,12 @@ namespace Model.SystemUsers
             this.WorkingSchedules = workingSchedules;
             this.Username = uname;
             this.Password = pass;
+
+
+
         }
 
-            public Doctor(long jmbg, String name, String surname)
+        public Doctor(long jmbg, String name, String surname)
         {
             this.Id = jmbg;
             this.Name = name;
@@ -150,6 +145,13 @@ namespace Model.SystemUsers
             this.Name = name;
             this.Surname = surname;
 
+        }
+
+        public Doctor() : base()
+        {
+            Gender = Gender.MALE;
+            DateOfBirth = DateTime.Now;
+            WorkingSchedules = new List<WorkingSchedule>();
         }
 
     }

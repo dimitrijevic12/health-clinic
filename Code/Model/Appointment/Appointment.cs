@@ -7,11 +7,9 @@
 using Model.Rooms;
 using Model.SystemUsers;
 using System;
-using System.ComponentModel;
 
 namespace Model.Appointment
 {
-
     public class Appointment
     {
         private Patient patient;
@@ -34,10 +32,11 @@ namespace Model.Appointment
 
         public String PatientIdNameSurname { get => patient.Name + " " + patient.Surname; }
 
-        public String TypeString {
+        public String TypeString
+        {
             get
             {
-                if (patient.Id == 0)
+                if (patient == null || patient.Id == 0)
                 {
                     return "";
                 }
@@ -46,7 +45,7 @@ namespace Model.Appointment
                     return TypeOfAppointment.ToString();
                 }
             }
-                   
+
         }
 
         public String RoomIdTekst { get => "Soba broj. " + examOperationRoom.Id; }
@@ -92,7 +91,14 @@ namespace Model.Appointment
 
         public Appointment()
         {
+            Patient = new Patient();
+            Doctor = new Doctor();
+            ExamOperationRoom = new ExamOperationRoom();
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now;
+            TypeOfAppointment = TypeOfAppointment.EXAM;
         }
+
 
     }
 }

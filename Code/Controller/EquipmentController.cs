@@ -11,8 +11,9 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class EquipmentController : IEquipmentController
-   {
+    public class EquipmentController : IEquipmentController
+    {
+
         private static EquipmentController instance = null;
         private readonly IEquipmentService _service = EquipmentService.Instance;
 
@@ -74,6 +75,5 @@ namespace Controller
         {
             return _service.getIdOpreme(naziv);
         }
-
     }
 }

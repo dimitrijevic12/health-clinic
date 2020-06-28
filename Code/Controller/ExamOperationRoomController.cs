@@ -10,7 +10,7 @@ namespace health_clinicClassDiagram.Controller
     public class ExamOperationRoomController : IExamOperationRoomController
     {
         private static ExamOperationRoomController instance;
-        
+
 
         private readonly IExamOperationRoomService _service = ExamOperationRoomService.Instance;
 
@@ -31,12 +31,6 @@ namespace health_clinicClassDiagram.Controller
 
         }
 
-        public ExamOperationRoomController(IExamOperationRoomService service)
-        {
-            _service = service;
-        }
-
-
         public ExamOperationRoom Create(ExamOperationRoom obj)
         {
             return _service.Create(obj);
@@ -55,24 +49,24 @@ namespace health_clinicClassDiagram.Controller
         public List<ExamOperationRoom> GetAll()
         {
 
-            var rooms = (List<ExamOperationRoom>)_service.GetAll();
+            List<ExamOperationRoom> rooms = (List<ExamOperationRoom>)_service.GetAll();
             return rooms;
         }
 
-        public Room IncreaseQuantity(Room r, Equipment eq)
+        public Room IncreaseQuantity(Room room, Equipment equipment)
         {
-            return _service.IncreaseQuantity(r, eq);
+            return _service.IncreaseQuantity(room, equipment);
         }
 
-        public Room DecreaseQuantity(Room r, Equipment eq)
+        public Room DecreaseQuantity(Room room, Equipment equipment)
         {
-            return _service.DecreaseQuantity(r, eq);
+            return _service.DecreaseQuantity(room, equipment);
         }
 
 
-        public ExamOperationRoom findExamRoom(long id)
+        public ExamOperationRoom GetRoomById(long id)
         {
-            return _service.findExamRoom(id);
+            return _service.GetRoomById(id);
         }
     }
 

@@ -13,12 +13,10 @@ namespace health_clinicClassDiagram.Repository.Csv.Converter
     {
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public PatientCSVConverter(string delimiter, string datetimeFormat)
+        public PatientCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
         public Patient ConvertCSVFormatToEntity(string entityCSVFormat)
         {

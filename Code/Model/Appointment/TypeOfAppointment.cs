@@ -8,11 +8,11 @@ using System;
 
 namespace Model.Appointment
 {
-   public enum TypeOfAppointment
-   {
-      SURGERY,
-      EXAM,
-      None
-   
-   }
+    public enum TypeOfAppointment
+    {
+        SURGERY,
+        EXAM,
+        None
+
+    }
 }

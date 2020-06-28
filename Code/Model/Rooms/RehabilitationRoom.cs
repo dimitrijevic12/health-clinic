@@ -10,13 +10,12 @@ using System.Collections.Generic;
 
 namespace Model.Rooms
 {
-   public class RehabilitationRoom : Room
-   {
-      public List<InventoryDrugs> inventoryDrugs;
-      private List<MedicalRecord> _patients;
-   
-      private int _maxCapacity;
-      private int _currentlyInUse;
+    public class RehabilitationRoom : Room
+    {
+        private List<MedicalRecord> _patients;
+
+        private int _maxCapacity;
+        private int _currentlyInUse;
 
         public RehabilitationRoom(long idRoom, int currentlyInUse, int maxCapacity, List<MedicalRecord> patients) : base(idRoom)
         {
@@ -24,7 +23,7 @@ namespace Model.Rooms
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
-            tip = TypeOfRoom.REHABILITATION;
+            TypeOfRoom = TypeOfRoom.REHABILITATION;
             Equipments = new List<Equipment>();
         }
 
@@ -34,7 +33,7 @@ namespace Model.Rooms
             _maxCapacity = maxCapacity;
             _currentlyInUse = currentlyInUse;
             IdRoom = idRoom;
-            tip = TypeOfRoom.REHABILITATION;
+            TypeOfRoom = TypeOfRoom.REHABILITATION;
             Equipments = equipments;
         }
 
@@ -61,13 +60,6 @@ namespace Model.Rooms
             get { return Id; }   // get method
             set { Id = value; }
         }
-        public TypeOfRoom tip
-        {
-            get { return tipSobe; }
-            set { tipSobe = value; }
-        }
-
-
 
     }
 }

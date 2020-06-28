@@ -9,21 +9,20 @@ using System.Collections.Generic;
 
 namespace Model.Rooms
 {
-   public class Room
-   {
-        public InventoryEquip[] inventoryEquip;
+    public class Room
+    {
         protected List<Equipment> equipments;
         protected long _id;
-        protected TypeOfRoom tipSobe;
+        protected TypeOfRoom typeOfRoom;
         public long Id
         {
             get { return _id; }
             set { _id = value; }
         }
-        public TypeOfRoom tip
+        public TypeOfRoom TypeOfRoom
         {
-            get { return tipSobe; }
-            set { tipSobe = value; }
+            get { return typeOfRoom; }
+            set { typeOfRoom = value; }
         }
 
         public List<Equipment> Equipments
@@ -40,12 +39,16 @@ namespace Model.Rooms
         public Room(long id, TypeOfRoom tip)
         {
             this.Id = id;
-            this.tipSobe = tip;
+            this.TypeOfRoom = tip;
             Equipments = new List<Equipment>();
         }
 
 
-        public Room() { }
+        public Room()
+        {
+            Id = 0;
+            TypeOfRoom = TypeOfRoom.EXAMOPERATION;
+            Equipments = new List<Equipment>();
+        }
     }
-
 }

@@ -16,7 +16,7 @@ namespace Repository
 {
     public class BlogRepository : IBlogRepository
     {
-        private readonly CSVStream<Blog> _stream = new CSVStream<Blog>("../../Resources/Data/BlogRepo.csv", new BlogCSVConverter(","));
+        private readonly CSVStream<Blog> _stream = new CSVStream<Blog>("../../Resources/Data/BlogRepo.csv", new BlogCSVConverter(","));//TODO: Namesti stream kao Stefan
         private readonly LongSequencer _sequencer = new LongSequencer();
         private static BlogRepository instance = null;
 
@@ -50,7 +50,7 @@ namespace Repository
 
         public Blog Edit(Blog obj)
         {
-            var blogs = _stream.ReadAll().ToList();
+            List<Blog> blogs = _stream.ReadAll().ToList();
             blogs[blogs.FindIndex(blog => blog.Title == obj.Title)] = obj;
             _stream.SaveAll(blogs);
             return obj;
@@ -58,8 +58,8 @@ namespace Repository
 
         public bool Delete(Blog obj)
         {
-            var blogs = _stream.ReadAll().ToList();
-            var blogToRemove = blogs.SingleOrDefault(ent => ent.Title.CompareTo(obj.Title) == 0);
+            List<Blog> blogs = _stream.ReadAll().ToList();
+            Blog blogToRemove = blogs.SingleOrDefault(ent => ent.Title.CompareTo(obj.Title) == 0);
             if (blogToRemove != null)
             {
                 blogs.Remove(blogToRemove);
@@ -75,16 +75,6 @@ namespace Repository
         public List<Blog> GetAll()
         {
             return _stream.ReadAll();
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
     }

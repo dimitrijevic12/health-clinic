@@ -11,8 +11,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class BlogController : IBlogController
-   {
+    public class BlogController : IBlogController
+    {
         private static BlogController instance = null;
 
         private BlogController()
@@ -55,6 +55,5 @@ namespace Controller
         {
             return BlogService.Instance.Edit(obj);
         }
-
     }
 }

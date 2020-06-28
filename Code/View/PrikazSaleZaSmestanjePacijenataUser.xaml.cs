@@ -122,7 +122,7 @@ namespace health_clinicClassDiagram.View
                 MessageBox.Show(message, title);
             } else
             {
-                _rehabilitationRoomController.releasePatient(record, rehabilitationRoom);
+                _rehabilitationRoomController.ReleasePatient(record, rehabilitationRoom);
 
                 SaleZaSmestanjePacijenataUser sale = new SaleZaSmestanjePacijenataUser();
                 (this.Parent as Panel).Children.Add(sale);

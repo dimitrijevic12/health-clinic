@@ -37,19 +37,13 @@ namespace Repository
 
         private long GetMaxId(List<Treatment> treatments)
         {
-            //            return dAndRs.OrderBy(d => d.Id).First().Id;
             return treatments.Count() == 0 ? default : treatments.Max(trt => trt.Id);
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public bool Delete(Treatment treatment)
         {
-            var treatments = _stream.ReadAll().ToList();
-            var treatmentToRemove = treatments.SingleOrDefault(ent => ent.Id.CompareTo(treatment.Id) == 0);
+            List<Treatment> treatments = _stream.ReadAll().ToList();
+            Treatment treatmentToRemove = treatments.SingleOrDefault(trt => trt.Id.CompareTo(treatment.Id) == 0);
             if (treatmentToRemove != null)
             {
                 treatments.Remove(treatmentToRemove);
@@ -62,10 +56,10 @@ namespace Repository
             }
         }
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
-            var treatments = _stream.ReadAll().ToList();
-            var treatmentToRemove = treatments.SingleOrDefault(ent => ent.Id.CompareTo(id) == 0);
+            List<Treatment> treatments = _stream.ReadAll().ToList();
+            Treatment treatmentToRemove = treatments.SingleOrDefault(trt => trt.Id.CompareTo(id) == 0);
             if (treatmentToRemove != null)
             {
                 treatments.Remove(treatmentToRemove);
@@ -80,8 +74,8 @@ namespace Repository
 
         public Treatment Edit(Treatment obj)
         {
-            var treatments = _stream.ReadAll().ToList();
-            treatments[treatments.FindIndex(apt => apt.Id == obj.Id)] = obj;
+            List<Treatment> treatments = _stream.ReadAll().ToList();
+            treatments[treatments.FindIndex(trt => trt.Id == obj.Id)] = obj;
             _stream.SaveAll(treatments);
             return obj;
         }
@@ -93,26 +87,7 @@ namespace Repository
 
         public Treatment GetTreatment(long id)
         {
-            //            List<Treatment> treatments = _stream.ReadAll();
-            //            return FindById(treatments, id);
             return GetAll().Find(treat => treat.Id == id);
-        }
-
-        private Treatment FindById(List<Treatment> treatments, long id)
-        {
-            foreach (Treatment treatment in treatments)
-            {
-                if (treatment.Id == id)
-                {
-                    return treatment;
-                }
-            }
-            return null;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public Treatment Save(Treatment obj)

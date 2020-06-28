@@ -76,41 +76,39 @@ namespace Service
             return rooms;
         }
 
-        public Room IncreaseQuantity(Room r, Equipment eq)
+        public Room IncreaseQuantity(Room room, Equipment equipment)
         {
-            foreach (Equipment equip in r.Equipments)
+            foreach (Equipment equipmentInRoom in room.Equipments)
             {
-                if (equip.Id == eq.Id)
+                if (equipmentInRoom.Id == equipment.Id)
                 {
-                    equip.Quantity += eq.Quantity;
-                    return r;
+                    equipmentInRoom.Quantity += equipment.Quantity;
+                    return room;
                 }
             }
-            r.Equipments.Add(eq);
-            return r;
-
-
+            room.Equipments.Add(equipment);
+            return room;
         }
 
-        public Room DecreaseQuantity(Room r, Equipment eq)
+        public Room DecreaseQuantity(Room room, Equipment equipment)
         {
-            foreach (Equipment equip in r.Equipments)
+            foreach (Equipment equipmentInRoom in room.Equipments)
             {
-                if (equip.Id == eq.Id)
+                if (equipmentInRoom.Id == equipment.Id)
                 {
-                    if ((equip.Quantity - eq.Quantity) < 0)
+                    if ((equipmentInRoom.Quantity - equipment.Quantity) < 0)
                     {
-                        return r;
+                        return room;
                     }
-                    equip.Quantity -= eq.Quantity;
-                    if (equip.Quantity == 0)
+                    equipmentInRoom.Quantity -= equipment.Quantity;
+                    if (equipmentInRoom.Quantity == 0)
                     {
-                        r.Equipments.Remove(eq);
+                        room.Equipments.Remove(equipment);
                     }
-                    return r;
+                    return room;
                 }
             }
-            return r;
+            return room;
         }
 
 

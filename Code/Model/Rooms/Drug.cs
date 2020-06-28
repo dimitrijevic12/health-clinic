@@ -44,7 +44,6 @@ namespace Model.Rooms
         {
             Name = name;
             Validation = false;
-            // id = brojac++;
         }
 
 

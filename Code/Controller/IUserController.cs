@@ -9,8 +9,8 @@ using System;
 
 namespace Controller
 {
-   public interface IUserController : IController<RegisteredUser>
-   {
-      Model.SystemUsers.RegisteredUser LoginUser(String username, String password);
-   }
+    public interface IUserController : IController<RegisteredUser>
+    {
+        Model.SystemUsers.RegisteredUser LoginUser(String username, String password);
+    }
 }

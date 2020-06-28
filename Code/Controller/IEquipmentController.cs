@@ -9,8 +9,8 @@ using System;
 
 namespace Controller
 {
-   public interface IEquipmentController : IController<Equipment>
-   {
+    public interface IEquipmentController : IController<Equipment>
+    {
         void addEquipment(string naziv, int quant);
         void deleteEquipment(int Id, int quant);
 

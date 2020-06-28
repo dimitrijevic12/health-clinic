@@ -13,12 +13,10 @@ namespace Repository.Csv.Converter
    public class UserCSVConverter : ICSVConverter<RegisteredUser>
    {
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public UserCSVConverter(string delimiter, string datetimeFormat)
+        public UserCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public RegisteredUser ConvertCSVFormatToEntity(string entityCSVFormat)
@@ -26,7 +24,7 @@ namespace Repository.Csv.Converter
             string[] tokens = entityCSVFormat.Split(_delimiter.ToCharArray());
 
 
-            return new RegisteredUser(long.Parse(tokens[0]), tokens[1], tokens[2]);
+            return new RegisteredUser();
         }
 
         public string ConvertEntityToCSVFormat(RegisteredUser entity)
@@ -34,7 +32,9 @@ namespace Repository.Csv.Converter
             return string.Join(_delimiter,
               entity.Id,
               entity.Name,
-              entity.Surname);
+              entity.Surname,
+              entity.Address,
+              entity.Username);
         }
     }
 }

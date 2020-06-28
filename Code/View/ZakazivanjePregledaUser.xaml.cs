@@ -97,7 +97,7 @@ namespace health_clinicClassDiagram.View
 
             _room = room;
 
-            doctors = DoctorController.Instance.getAllAvailableDoctors(_startDate, _endDate);
+            doctors = DoctorController.Instance.GetAllAvailableDoctors(_startDate, _endDate);
             appointments = _appointmentController.GetAll();           
          
 

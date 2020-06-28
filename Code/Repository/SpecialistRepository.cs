@@ -36,15 +36,10 @@ namespace health_clinicClassDiagram.Repository
             return specialists.Count() == 0 ? 0 : specialists.Max(apt => apt.Id);
         }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool Delete(Specialist obj)
         {
-            var doctors = _stream.ReadAll().ToList();
-            var doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
+            List<Specialist> doctors = _stream.ReadAll().ToList();
+            Specialist doctorToRemove = doctors.SingleOrDefault(acc => acc.Id == obj.Id);
             if (doctorToRemove != null)
             {
                 doctors.Remove(doctorToRemove);
@@ -59,7 +54,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Specialist Edit(Specialist obj)
         {
-            var doctors = _stream.ReadAll().ToList();
+            List<Specialist> doctors = _stream.ReadAll().ToList();
             doctors[doctors.FindIndex(apt => apt.Id == obj.Id)] = obj;
             _stream.SaveAll(doctors);
             return obj;
@@ -67,13 +62,8 @@ namespace health_clinicClassDiagram.Repository
 
         public List<Specialist> GetAll()
         {
-            var doctors = (List<Specialist>)_stream.ReadAll();
+            List<Specialist> doctors = (List<Specialist>)_stream.ReadAll();
             return doctors;
-        }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
         }
 
         public Specialist Save(Specialist obj)

@@ -19,24 +19,9 @@ namespace Service
             this.drugServiceReference = iDrugService;
         }
 
-        public void addDrug(string naziv, int quant)
-        {
-            drugServiceReference.addDrug(naziv, quant);
-        }
-
         public List<Drug> GetAllDrugs()
         {
             return drugServiceReference.GetAllDrugs();
-        }
-
-        public List<Drug> GetUnvalidatedDrugs()
-        {
-            return drugServiceReference.GetUnvalidatedDrugs();
-        }
-
-        public List<Drug> GetValidatedDrugs()
-        {
-            return drugServiceReference.GetValidatedDrugs();
         }
     }
 }

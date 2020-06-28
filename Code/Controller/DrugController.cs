@@ -11,66 +11,17 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class DrugController : IDrugController
-   {
-        private static DrugController instance = null;
-        public static DrugController Instance
+    public class DrugController : IDrugController
+    {
+        DrugService drugService = new DrugService();
+        public DrugController()
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new DrugController();
-                }
-                return instance;
-            }
         }
 
-        private DrugController()
-        {
-
-        }
-
-        public void addDrug(String naziv, int quant)
-        {
-            DrugService.Instance.addDrug(naziv, quant);
-        }
-
-        public bool Delete(Drug obj)
-        {
-            return DrugService.Instance.Delete(obj);
-        }
-
-        public Drug Create(Drug obj)
-        {
-            return DrugService.Instance.Create(obj);
-        }
-
-        public Drug Edit(Drug obj)
-        {
-            return DrugService.Instance.Edit(obj);
-        }
-        public List<Drug> GetAll()
-        {
-
-            var rooms = (List<Drug>)DrugService.Instance.GetAll();
-            return rooms;
-        }
         public List<Drug> GetAllDrugs()
         {
-            return DrugService.Instance.GetAllDrugs();
+            return drugService.GetAllDrugs();
         }
-
-        public List<Drug> GetUnvalidatedDrugs()
-        {
-            return DrugService.Instance.GetUnvalidatedDrugs();
-        }
-
-        public List<Drug> GetValidatedDrugs()
-        {
-            return DrugService.Instance.GetValidatedDrugs();
-        }
-
 
     }
 }

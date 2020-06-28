@@ -34,28 +34,28 @@ namespace health_clinicClassDiagram.Service
         {
         }
 
-        public RehabilitationRoomService(IRehabilitationRoomRepository repository)
-        {
-            _roomRepository = repository;
-
-        }
-
         public bool AddPatient(MedicalRecord record, RehabilitationRoom room)
         {
-            var foundRehabilitationRoom = _roomRepository.GetRoom(room);
-            foundRehabilitationRoom.Patients.Add(record);
-            foundRehabilitationRoom.CurrentlyInUse++;
-            _roomRepository.Edit(foundRehabilitationRoom);
-            return true;
-
+            RehabilitationRoom foundRehabilitationRoom = _roomRepository.GetRoom(room);
+            if (foundRehabilitationRoom.CurrentlyInUse >= foundRehabilitationRoom.MaxCapacity)
+            {
+                return false;
+            }
+            else
+            {
+                foundRehabilitationRoom.Patients.Add(record);
+                foundRehabilitationRoom.CurrentlyInUse++;
+                _roomRepository.Edit(foundRehabilitationRoom);
+                return true;
+            }
 
         }
 
         public RehabilitationRoom Create(RehabilitationRoom obj)
         {
 
-            var RehabilitationRoom = _roomRepository.Save(obj);
-            return RehabilitationRoom;
+            RehabilitationRoom rehabilitationRoom = _roomRepository.Save(obj);
+            return rehabilitationRoom;
         }
 
         public bool Delete(RehabilitationRoom obj)
@@ -70,7 +70,7 @@ namespace health_clinicClassDiagram.Service
 
         public List<RehabilitationRoom> GetAll()
         {
-            var records = _roomRepository.GetAll();
+            List<RehabilitationRoom> records = _roomRepository.GetAll();
             return records;
         }
 
@@ -82,65 +82,65 @@ namespace health_clinicClassDiagram.Service
         public bool ReleasePatient(MedicalRecord record, RehabilitationRoom room)
         {
             var foundRehabilitationRoom = _roomRepository.GetRoom(room);
-            foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
-            {
-                if (oneRecord.Id.Equals(record.Id))
-                {
-                    foundRehabilitationRoom.Patients.Remove(oneRecord);
-                    break;
-                }
-            }
-            foundRehabilitationRoom.CurrentlyInUse--;
-            _roomRepository.Edit(foundRehabilitationRoom);
-            return true;
-        }
 
-        public Room IncreaseQuantity(Room r, Equipment eq)
-        {
-            foreach (Equipment equip in r.Equipments)
+            if (foundRehabilitationRoom.CurrentlyInUse > 0)
             {
-                if (equip.Id == eq.Id)
+                foreach (MedicalRecord oneRecord in foundRehabilitationRoom.Patients)
                 {
-                    equip.Quantity += eq.Quantity;
-                    return r;
-                }
-            }
-            r.Equipments.Add(eq);
-            return r;
-        }
-
-        public Room DecreaseQuantity(Room r, Equipment eq)
-        {
-            foreach (Equipment equip in r.Equipments)
-            {
-                if (equip.Id == eq.Id)
-                {
-                    if ((equip.Quantity - eq.Quantity) < 0)
+                    if (oneRecord.Id.Equals(record.Id))
                     {
-                        return r;
+                        foundRehabilitationRoom.Patients.Remove(oneRecord);
+                        break;
                     }
-                    equip.Quantity -= eq.Quantity;
-                    if (equip.Quantity == 0)
-                    {
-                        r.Equipments.Remove(eq);
-                    }
-                    return r;
                 }
+                foundRehabilitationRoom.CurrentlyInUse--;
+                _roomRepository.Edit(foundRehabilitationRoom);
+                return true;
             }
-            return r;
+            else
+            {
+                return false;
+            }
         }
 
-        public RehabilitationRoom findRehabRoom(long id)
+        public Room IncreaseQuantity(Room room, Equipment equipment)
         {
-            var rooms = _roomRepository.GetAll();
-            foreach (RehabilitationRoom er in rooms)
+            foreach (Equipment equipmentInRoom in room.Equipments)
             {
-                if (er.Id == id)
+                if (equipmentInRoom.Id == equipment.Id)
                 {
-                    return er;
+                    equipmentInRoom.Quantity += equipment.Quantity;
+                    return room;
                 }
             }
-            return null;
+            room.Equipments.Add(equipment);
+            return room;
+        }
+
+        public Room DecreaseQuantity(Room room, Equipment equipment)
+        {
+            foreach (Equipment equipmentInRoom in room.Equipments)
+            {
+                if (equipmentInRoom.Id == equipment.Id)
+                {
+                    if ((equipmentInRoom.Quantity - equipment.Quantity) < 0)
+                    {
+                        return room;
+                    }
+                    equipmentInRoom.Quantity -= equipment.Quantity;
+                    if (equipmentInRoom.Quantity == 0)
+                    {
+                        room.Equipments.Remove(equipment);
+                    }
+                    return room;
+                }
+            }
+            return room;
+        }
+
+        public RehabilitationRoom GetRoomById(long id)
+        {
+            return _roomRepository.GetRoomById(id);
         }
     }
 }

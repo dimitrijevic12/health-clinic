@@ -29,5 +29,13 @@ namespace Model.Treatment
             CauseForOperation = causeForOperation;
             Surgeon = surgeon;
         }
+
+        public ScheduledSurgery()
+        {
+            StartDate = new DateTime();
+            EndDate = new DateTime();
+            CauseForOperation = "";
+            Surgeon = new Surgeon();
+        }
     }
 }

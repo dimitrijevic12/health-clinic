@@ -47,7 +47,7 @@ namespace Service
             return treatment.Prescription;
         }
 
-        public SpecialistAppointment WriteReferralToASpecialist(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
+        public SpecialistAppointment ScheduleSpecialistAppointment(Doctor specialist, String cause, Treatment treatment, ExamOperationRoom room, DateTime startDate, DateTime endDate)
         {
             SpecialistAppointment specialistAppointment = new SpecialistAppointment(cause, specialist);
             treatment.SpecialistAppointment = specialistAppointment;
@@ -76,9 +76,9 @@ namespace Service
             return treatment.DiagnosisAndReview;
         }
 
-        public ReferralToHospitalTreatment WriteReferralToHospTreat(Treatment treatment, DateTime startDate, DateTime endDate, string cause, List<Drug> drugs, RehabilitationRoom room)
+        public ReferralToHospitalTreatment WriteReferralToHospitalTreatment(Treatment treatment, DateTime startDate, DateTime endDate, string cause, List<Drug> drugs, RehabilitationRoom room)
         {
-            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(startDate, endDate, cause, drugs);
+            ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(cause, drugs);
             treatment.ReferralToHospitalTreatment = referralToHospitalTreatment;
             MedicalRecord medicalRecord = MedicalRecordRepository.Instance.GetMedicalRecordByTreatmentId(treatment.Id);
             RehabilitationRoomService.Instance.AddPatient(medicalRecord, room);
@@ -113,6 +113,12 @@ namespace Service
         public List<Treatment> GetAll()
         {
             return TreatmentRepository.Instance.GetAll();
+        }
+
+
+        public Treatment GetTreatment(Treatment obj)
+        {
+            return TreatmentRepository.Instance.GetTreatment(obj.Id);
         }
 
 

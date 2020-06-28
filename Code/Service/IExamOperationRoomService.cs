@@ -10,8 +10,10 @@ namespace health_clinicClassDiagram.Service
 {
     public interface IExamOperationRoomService : IService<ExamOperationRoom>
     {
-        ExamOperationRoom findExamRoom(long id);
-        Room IncreaseQuantity(Room r, Equipment eq);
-        Room DecreaseQuantity(Room r, Equipment eq);
+        ExamOperationRoom GetRoomById(long id);
+
+        Room IncreaseQuantity(Room room, Equipment equipment);
+
+        Room DecreaseQuantity(Room room, Equipment equipment);
     }
 }

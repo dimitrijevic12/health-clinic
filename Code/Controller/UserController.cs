@@ -11,8 +11,8 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class UserController : IUserController
-   {
+    public class UserController : IUserController
+    {
         public Service.IUserService _service;
 
         private static UserController Instance;
@@ -31,7 +31,7 @@ namespace Controller
 
         public List<RegisteredUser> GetAll()
         {
-            var users = (List<RegisteredUser>)_service.GetAll();
+            List<RegisteredUser> users = (List<RegisteredUser>)_service.GetAll();
             return users;
         }
 
@@ -54,5 +54,4 @@ namespace Controller
         }
 
     }
-
 }
