@@ -1,4 +1,5 @@
-﻿using Model.Rooms;
+﻿using Controller;
+using Model.Rooms;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
@@ -42,19 +43,29 @@ namespace health_clinicClassDiagram.View
         public IzvestajOPotrosnjiLekova()
         {
             DrugsToShow = new ObservableCollection<Drug>();
-/*            foreach (var drug in DrugsToShowMap)
+            foreach (Drug drug in TreatmentController.Instance.GetDrugsByDate(StartDate, EndDate))
             {
-                Drug drugToAdd = new Drug(drug.Key.Name, drug.Value);
-                DrugsToShow.Add(drugToAdd);
+                if (DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name) != null)
+                {
+                    //                   int index = DrugsToShow.IndexOf(drug);
+                    Drug drugToEdit = DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name);
+                    drugToEdit.Quantity++;
+                    //                    DrugsToShow[index].Quantity++;
+                }
+                else
+                {
+                    Drug drugToAdd = new Drug(drug.Name, drug.Quantity);
+                    DrugsToShow.Add(drugToAdd);  
+                }
+
             }
-*/            
-/*            Drug d1 = new Drug("Ime leka 1", 3);
-            Drug d2 = new Drug("Ime leka 2", 6);
-            DrugsToShow.Add(d1);
-            DrugsToShow.Add(d2);
-            DrugsToShowMap.Add(d1.Name, d1.Quantity);
-            DrugsToShowMap.Add(d2.Name, d2.Quantity);*/
-//            grafikon.DataContext = DrugsToShow;
+            /*            Drug d1 = new Drug("Ime leka 1", 3);
+                        Drug d2 = new Drug("Ime leka 2", 6);
+                        DrugsToShow.Add(d1);
+                        DrugsToShow.Add(d2);
+                        DrugsToShowMap.Add(d1.Name, d1.Quantity);
+                        DrugsToShowMap.Add(d2.Name, d2.Quantity);*/
+            //            grafikon.DataContext = DrugsToShow;
             InitializeComponent();
             DataContext = this;      
         }
@@ -83,13 +94,24 @@ namespace health_clinicClassDiagram.View
 
          //   DrugsToShowMap = TreatmentRepository.Instance.FindDrugsByDate(StartDate, EndDate);
             DrugsToShow = new ObservableCollection<Drug>();
-//            foreach (var drug in DrugsToShowMap)
-            foreach (var drug in new List<Drug>())
+            //            foreach (var drug in DrugsToShowMap)
+            foreach (Drug drug in TreatmentController.Instance.GetDrugsByDate(StartDate, EndDate))
             {
- //               Drug drugToAdd = new Drug(drug.Value.Quantity, drug.Value.Name);
-//                DrugsToShow.Add(drugToAdd);
+                if (DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name) != null)
+                {
+                    //                   int index = DrugsToShow.IndexOf(drug);
+                    Drug drugToEdit = DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name);
+                    drugToEdit.Quantity++;
+                    //                    DrugsToShow[index].Quantity++;
+                }
+                else
+                {
+                    Drug drugToAdd = new Drug(drug.Name, drug.Quantity);
+                    DrugsToShow.Add(drugToAdd);
+                }
+
             }
-//            if(!(dataGrid == null)) dataGrid.ItemsSource = DrugsToShow;
+            //            if(!(dataGrid == null)) dataGrid.ItemsSource = DrugsToShow;
             if (!(graph == null)) graph.ItemsSource = DrugsToShow;
 
         }
@@ -108,12 +130,23 @@ namespace health_clinicClassDiagram.View
 
            // DrugsToShowMap = TreatmentRepository.Instance.FindDrugsByDate(StartDate, EndDate);
             DrugsToShow = new ObservableCollection<Drug>();
- /*           foreach (var drug in DrugsToShowMap)
+            foreach (Drug drug in TreatmentController.Instance.GetDrugsByDate(StartDate, EndDate))
             {
-                Drug drugToAdd = new Drug(drug.Value.Quantity, drug.Value.Name);
-                DrugsToShow.Add(drugToAdd);
-            }*/
-//            if (!(dataGrid == null)) dataGrid.ItemsSource = DrugsToShow;
+                if (DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name) != null)
+                {
+                    //                   int index = DrugsToShow.IndexOf(drug);
+                    Drug drugToEdit = DrugsToShow.SingleOrDefault(ent => ent.Name == drug.Name);
+                    drugToEdit.Quantity++;
+//                    DrugsToShow[index].Quantity++;
+                }
+                else
+                {
+                    Drug drugToAdd = new Drug(drug.Name, drug.Quantity);
+                    DrugsToShow.Add(drugToAdd);
+                }
+
+            }
+            //            if (!(dataGrid == null)) dataGrid.ItemsSource = DrugsToShow;
             if (!(graph == null)) graph.ItemsSource = DrugsToShow;
         }
 

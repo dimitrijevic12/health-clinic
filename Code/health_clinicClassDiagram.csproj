@@ -772,11 +772,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\images\back.png" />
-    <Content Include="View\images\doctor.png" />
-    <Content Include="View\images\dots.png" />
-    <Content Include="View\images\heart.png" />
-    <Content Include="View\images\home.png" />
+    <Resource Include="View\images\back.png" />
+    <Resource Include="View\images\doctor.png" />
+    <Resource Include="View\images\dots.png" />
+    <Resource Include="View\images\heart.png" />
+    <Resource Include="View\images\home.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\Dialogs\" />

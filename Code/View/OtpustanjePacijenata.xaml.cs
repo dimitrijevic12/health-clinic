@@ -40,7 +40,7 @@ namespace health_clinicClassDiagram.View
             InitializeComponent();
             Patients = new ObservableCollection<Patient>();
             RehabilitationRoom room = RehabilitationRoomController.Instance.GetAll()[0];
-            RehabilitationRoom rehabilitationRoom = RehabilitationRoomController.Instance.getRoom(room);
+            RehabilitationRoom rehabilitationRoom = RehabilitationRoomController.Instance.GetRoom(room);
             foreach (MedicalRecord medicalRecord in rehabilitationRoom.Patients)
             {
                 Patients.Add(medicalRecord.Patient);
@@ -86,7 +86,7 @@ namespace health_clinicClassDiagram.View
             }
             foreach(Patient patient in patientToRelease)
             {
-                RehabilitationRoomController.Instance.releasePatient(MedicalRecordController.Instance.GetMedicalRecordByPatient(patient), comboBoxListaSoba.SelectedItem as RehabilitationRoom);
+                RehabilitationRoomController.Instance.ReleasePatient(MedicalRecordController.Instance.GetMedicalRecordByPatient(patient), comboBoxListaSoba.SelectedItem as RehabilitationRoom);
                 Patients.Remove(patient);
             }
         }
@@ -95,7 +95,7 @@ namespace health_clinicClassDiagram.View
         {
             Patients = new ObservableCollection<Patient>();
             RehabilitationRoom room = (RehabilitationRoom)comboBoxListaSoba.SelectedItem;
-            RehabilitationRoom rehabilitationRoom = RehabilitationRoomController.Instance.getRoom(room);
+            RehabilitationRoom rehabilitationRoom = RehabilitationRoomController.Instance.GetRoom(room);
             foreach(MedicalRecord medicalRecord in rehabilitationRoom.Patients)
             {
                 Patients.Add(medicalRecord.Patient);
