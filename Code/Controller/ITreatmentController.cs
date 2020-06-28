@@ -25,5 +25,7 @@ namespace Controller
         Model.Treatment.DiagnosisAndReview WriteDiagnosisAndReview(Model.Treatment.Treatment treatment, String diagnosis, String review);
         Model.Treatment.ReferralToHospitalTreatment WriteReferralToHospitalTreatment(Model.Treatment.Treatment treatment, DateTime startDate, DateTime endDate, String cause, List<Drug> drugs, RehabilitationRoom room);
         Model.Appointment.Appointment ScheduleControlAppointment(Model.Appointment.Appointment appointment);
+        Treatment GetTreatment(Treatment obj);
+        List<Drug> GetDrugsByDate(DateTime startDate, DateTime endDate);
     }
 }
