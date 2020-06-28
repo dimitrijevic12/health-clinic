@@ -93,5 +93,10 @@ namespace Controller
         {
             return _service.GetAppointmentsByDayAndDoctorAndRoomAndPatient(day, doctor, room, patient);
         }
+
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            return _service.GetLastDateOfAppointmentForRoom(room);
+        }
     }
 }

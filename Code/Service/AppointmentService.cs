@@ -258,5 +258,24 @@ namespace Service
             return appointments;
         }
 
+        public DateTime GetLastDateOfAppointmentForRoom(Room room)
+        {
+            var appointments = _appointmentRepository.GetAll();
+
+            DateTime latestDate = DateTime.Now;
+            latestDate = latestDate.AddDays(-1);
+
+            foreach (Appointment appointment in appointments)
+            {
+                if (appointment.RoomId == room.Id)
+                {
+                    if (appointment.StartDate > latestDate)
+                    {
+                        latestDate = appointment.StartDate;
+                    }
+                }
+            }
+            return latestDate;
+        }
     }
 }
