@@ -31,7 +31,7 @@ namespace health_clinicClassDiagram.View
     {
         private Appointment appointment;
         private ReferralToHospitalTreatment referralToHospitalTreatment;
-        private List<RehabilitationRoom> allRooms = RehabilitationRoomController.Instance.GetAll();
+        private List<RehabilitationRoom> allRooms = RehabilitationRoomController.Instance.GetAllFreeRooms();
         private DateTime startDate;
         private DateTime endDate;
         private String cause;

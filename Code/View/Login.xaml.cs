@@ -38,11 +38,11 @@ namespace health_clinicClassDiagram.View
             Patient patient2 = new Patient("Pacijent", "Pacijent", 2233);
             PatientController.Instance.Create(patient);
             PatientController.Instance.Create(patient2);
-            ExamOperationRoom room = new ExamOperationRoom(222, TypeOfRoom.EXAMOPERATION);
+            ExamOperationRoom room = new ExamOperationRoom(1, TypeOfRoom.EXAMOPERATION);
             ExamOperationRoom room2 = new ExamOperationRoom(2, TypeOfRoom.EXAMOPERATION);
-            Appointment app1 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today, DateTime.Today.AddHours(3));
-            Appointment app2 = new Appointment(doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(7), DateTime.Today.AddHours(8));
-            Appointment app3 = new Appointment(doctor, patient2, room2, TypeOfAppointment.EXAM, DateTime.Today.AddHours(17), DateTime.Today.AddHours(18));
+            Appointment app1 = new Appointment(1, doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today, DateTime.Today.AddHours(3));
+            Appointment app2 = new Appointment(2, doctor, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(7), DateTime.Today.AddHours(8));
+            Appointment app3 = new Appointment(3, doctor, patient2, room2, TypeOfAppointment.EXAM, DateTime.Today.AddHours(17), DateTime.Today.AddHours(18));
             AppointmentRepository.Instance.Save(app1);
             AppointmentRepository.Instance.Save(app2);
             AppointmentRepository.Instance.Save(app3);
@@ -52,16 +52,17 @@ namespace health_clinicClassDiagram.View
             SurgeonRepository.Instance.Save(surgeon1);
             DoctorRepository.Instance.Save(surgeon1);
             SurgeonRepository.Instance.Save(surgeon2);
+            DoctorRepository.Instance.Save(surgeon2);
 
-            ExamOperationRoom room1 = new ExamOperationRoom();
+            ExamOperationRoom room1 = new ExamOperationRoom(3, TypeOfRoom.EXAMOPERATION);
             
             List<ExamOperationRoom> examOperationRooms = new List<ExamOperationRoom>();
             examOperationRooms.Add(room1);
             examOperationRooms.Add(room2);
-            ExamOperationRoomRepository.Instance.Save(room1);
-            ExamOperationRoomRepository.Instance.Save(room2);
             ExamOperationRoomRepository.Instance.Save(room);
-            Appointment surgery = new Appointment(surgeon1, patient, room, TypeOfAppointment.SURGERY, DateTime.Today.AddHours(5), DateTime.Today.AddHours(6));
+            ExamOperationRoomRepository.Instance.Save(room2);
+            ExamOperationRoomRepository.Instance.Save(room1);
+            Appointment surgery = new Appointment(4, surgeon1, patient, room, TypeOfAppointment.SURGERY, DateTime.Today.AddHours(5), DateTime.Today.AddHours(6));
             AppointmentRepository.Instance.Save(surgery);
 
             Specialist specialist1 = new Specialist(111, "Milos", "Milosevic", Model.SystemUsers.Gender.MALE, DateTime.Today, Specialization.CARDIOLOGY);
@@ -69,15 +70,18 @@ namespace health_clinicClassDiagram.View
             SpecialistRepository.Instance.Save(specialist1);
             DoctorRepository.Instance.Save(specialist1);
             SpecialistRepository.Instance.Save(specialist2);
+            DoctorRepository.Instance.Save(specialist2);
 
-            Appointment specAppointment = new Appointment(specialist1, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(15), DateTime.Today.AddHours(17));
+            Appointment specAppointment = new Appointment(5, specialist1, patient, room, TypeOfAppointment.EXAM, DateTime.Today.AddHours(15), DateTime.Today.AddHours(17));
             AppointmentRepository.Instance.Save(specAppointment);
 
             RehabilitationRoom rehRoom1 = new RehabilitationRoom(1, 2, 5, new List<MedicalRecord>());
             RehabilitationRoom rehRoom2 = new RehabilitationRoom(2, 3, 15, new List<MedicalRecord>());
+            RehabilitationRoom rehRoom3 = new RehabilitationRoom(3, 10, 10, new List<MedicalRecord>());
             MedicalRecord medicalRecord2 = new MedicalRecord(patient2, new List<Treatment>(), doctor);
             RehabilitationRoomRepository.Instance.Save(rehRoom1);
             RehabilitationRoomRepository.Instance.Save(rehRoom2);
+            RehabilitationRoomRepository.Instance.Save(rehRoom3);
             MedicalRecordController.Instance.Create(medicalRecord2);
             RehabilitationRoomController.Instance.AddPatient(MedicalRecordController.Instance.GetMedicalRecordByPatient(patient2), rehRoom1);
             
@@ -111,10 +115,14 @@ namespace health_clinicClassDiagram.View
  //           Console.WriteLine(treatmentMedRec.Id + " " + treatmentMedRec.FromDate);
 
             //            Doctor doctor = new Doctor(123456, "Marko", "Markovic");
-            Drug d3 = new Drug(4, "Aspirin 100mg", 15);
-            Drug d4 = new Drug(6, "Xyzal 50mg", 2);
+            Drug d3 = new Drug(3, "Aspirin 100mg", 15);
+            Drug d4 = new Drug(4, "Xyzal 50mg", 2);
+            Drug d5 = new Drug(5, "Brufen 100mg", 200, true);
+            Drug d6 = new Drug(6, "Kafetin 150mg", 500, true);
             DrugRepository.Instance.Save(d3);
             DrugRepository.Instance.Save(d4);
+            DrugRepository.Instance.Save(d5);
+            DrugRepository.Instance.Save(d6);
             List <Drug> drugs2 = new List<Drug>();
             drugs2.Add(d3);
             drugs2.Add(d3);
