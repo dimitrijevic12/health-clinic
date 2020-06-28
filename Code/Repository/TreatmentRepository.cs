@@ -20,7 +20,7 @@ namespace Repository
         private readonly LongSequencer _sequencer = new LongSequencer();
         private TreatmentRepository()
         {
-//            InitializeId();
+            InitializeId();
         }
         private static TreatmentRepository instance = null;
         public static TreatmentRepository Instance
@@ -92,7 +92,7 @@ namespace Repository
 
         public Treatment Save(Treatment obj)
         {
-//            obj.SetId(_sequencer.GenerateId());
+            obj.SetId(_sequencer.GenerateId());
             _stream.AppendToFile(obj);
             return obj;
         }

@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.View
         private List<Doctor> doktori = new List<Doctor>();
         public Login()
         {
-            Doctor doctor = new Doctor(123456, "Marko", "Markovic", Model.SystemUsers.Gender.MALE, DateTime.Now, "marko", "marko");
+            /*Doctor doctor = new Doctor(123456, "Marko", "Markovic", Model.SystemUsers.Gender.MALE, DateTime.Now, "marko", "marko");
             DoctorController.Instance.Create(doctor);
             Patient patient = new Patient("Mika", "Mikic", 1234);
             Patient patient2 = new Patient("Pacijent", "Pacijent", 2233);
@@ -139,7 +139,7 @@ namespace health_clinicClassDiagram.View
 
             Doctor doctor2 = new Doctor(2233, "Pera", "Perić");
             doktori.Add(doctor);
-            doktori.Add(doctor2);
+            doktori.Add(doctor2);*/
             InitializeComponent();
             DataContext = this;
         }
@@ -148,20 +148,6 @@ namespace health_clinicClassDiagram.View
 
         private void buttonPrijaviSe_Click(object sender, RoutedEventArgs e)
         {
-            /*Boolean postoji = false;            
-
-            foreach(Doctor oneDoctor in doktori)
-            {
-                if(oneDoctor.Username.Equals(textBoxUsername.Text) || oneDoctor.Password.Equals(passwordBox.Password))
-                {
-                    PocetnaUser pocetnaUser = new PocetnaUser(oneDoctor);
-                    (this.Parent as Panel).Children.Add(pocetnaUser);
-                    return;
-                }
-            }
-            String message = "Pogrešan Username ili Password, molim vas pokušajte ponovo";
-            MessageBoxButton button = MessageBoxButton.OK;
-            MessageBox.Show(message, "Pogrešni podaci!", button, MessageBoxImage.Error);*/
             Doctor doctor = DoctorController.Instance.ValidateLogin(textBoxUsername.Text, passwordBox.Password);
             if (doctor == null)
             {
