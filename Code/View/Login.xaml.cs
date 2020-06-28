@@ -78,7 +78,8 @@ namespace health_clinicClassDiagram.View
             RehabilitationRoom rehRoom1 = new RehabilitationRoom(1, 2, 5, new List<MedicalRecord>());
             RehabilitationRoom rehRoom2 = new RehabilitationRoom(2, 3, 15, new List<MedicalRecord>());
             RehabilitationRoom rehRoom3 = new RehabilitationRoom(3, 10, 10, new List<MedicalRecord>());
-            MedicalRecord medicalRecord2 = new MedicalRecord(patient2, new List<Treatment>(), doctor);
+            //           MedicalRecord medicalRecord2 = new MedicalRecord(2,patient2, new List<Treatment>(), doctor);
+            MedicalRecord medicalRecord2 = new MedicalRecord(2, patient2, doctor, new List<Treatment>());
             RehabilitationRoomRepository.Instance.Save(rehRoom1);
             RehabilitationRoomRepository.Instance.Save(rehRoom2);
             RehabilitationRoomRepository.Instance.Save(rehRoom3);
@@ -102,7 +103,7 @@ namespace health_clinicClassDiagram.View
             List<Treatment> treatments = new List<Treatment>();
             treatments.Add(treatment1);
             treatments.Add(treatment2);
-            MedicalRecord medicalRecord = new MedicalRecord(patient, treatments, doctor); //zameni sa ovim dole
+            MedicalRecord medicalRecord = new MedicalRecord(1, patient, doctor, treatments); //zameni sa ovim dole
 //            MedicalRecord medicalRecord = new MedicalRecord(patient, new List<Treatment>(), doctor);
             MedicalRecordRepository.Instance.Save(medicalRecord);
 

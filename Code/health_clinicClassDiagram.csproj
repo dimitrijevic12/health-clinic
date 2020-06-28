@@ -772,6 +772,9 @@
   <ItemGroup>
     <Folder Include="View\Dialogs\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\images\help.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />

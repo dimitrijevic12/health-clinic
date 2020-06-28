@@ -54,9 +54,7 @@ namespace Service
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            Patient patient = _patientService.Create(obj.Patient);
             MedicalRecord newMedicalRecord = _medicalRecordRepository.Save(obj);
-            newMedicalRecord.Patient = patient;
             return newMedicalRecord;
         }
 

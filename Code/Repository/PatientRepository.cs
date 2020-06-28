@@ -40,7 +40,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Patient Save(Patient obj)
         {
-            obj.Id = (_sequencer.GenerateId()) + 1;
+//            obj.Id = (_sequencer.GenerateId()) + 1;
             _stream.AppendToFile(obj);
             return obj;
         }

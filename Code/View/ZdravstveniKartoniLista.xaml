@@ -39,7 +39,7 @@
                 <Label x:Name="pretragaLabel" FontSize="20" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" Margin="30, 10, 0, 0" FontWeight="Normal" Content="Pretraži:"/>
                 <TextBox x:Name="textBox" Height="30" TextWrapping="Wrap" Width="200" FontSize="20" VerticalAlignment="Bottom" Margin="10,0,0,0" KeyUp="textBox_KeyUp"/>
             </StackPanel>
-            <DataGrid x:Name="dataGridPacijenti" Height="384" Margin="30,20,30,10" ItemsSource="{Binding Patients}" AutoGenerateColumns="False">
+            <DataGrid x:Name="dataGridPacijenti" Height="384" Margin="30,20,30,10" ItemsSource="{Binding Patients}" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Ime i Prezime" Width="*" IsReadOnly="True" Binding="{Binding NameAndSurname}">
                         <DataGridTextColumn.HeaderStyle>

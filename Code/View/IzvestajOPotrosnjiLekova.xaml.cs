@@ -54,7 +54,7 @@ namespace health_clinicClassDiagram.View
                 }
                 else
                 {
-                    Drug drugToAdd = new Drug(drug.Name, drug.Quantity);
+                    Drug drugToAdd = new Drug(drug.Name, 1);
                     DrugsToShow.Add(drugToAdd);  
                 }
 
@@ -141,7 +141,7 @@ namespace health_clinicClassDiagram.View
                 }
                 else
                 {
-                    Drug drugToAdd = new Drug(drug.Name, drug.Quantity);
+                    Drug drugToAdd = new Drug(drug.Name, 1);
                     DrugsToShow.Add(drugToAdd);
                 }
 

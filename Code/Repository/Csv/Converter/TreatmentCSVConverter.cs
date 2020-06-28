@@ -42,8 +42,11 @@ namespace Repository.Csv.Converter
             {
                 foreach (string drugID in prescriptionDrugParts)
                 {
-                    Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
-                    prescriptionDrugs.Add(drug);
+                    if (!drugID.Equals(""))
+                    {
+                        Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                        prescriptionDrugs.Add(drug);
+                    }
                 }
             }
             Prescription prescription = new Prescription(prescriptionDrugs);
@@ -69,9 +72,12 @@ namespace Repository.Csv.Converter
             if (!hospitalTreatmentDrugsString.Equals(""))
             {
                 foreach (string drugID in hospitalTreatmentDrugsParts)
-                {
-                    Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
-                    hospitalTreatmentDrugs.Add(drug);
+                {  
+                    if (!drugID.Equals(""))
+                    {
+                        Drug drug = DrugRepository.Instance.GetDrugById(long.Parse(drugID));
+                        hospitalTreatmentDrugs.Add(drug);
+                    }
                 }
             }
             ReferralToHospitalTreatment referralToHospitalTreatment = new ReferralToHospitalTreatment(causeForHospitalTreatment, hospitalTreatmentDrugs);
