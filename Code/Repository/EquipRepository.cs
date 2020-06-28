@@ -24,6 +24,7 @@ namespace Repository
 
         private EquipRepository()
         {
+            //InitializeId();
         }
 
         public static EquipRepository Instance
@@ -53,6 +54,7 @@ namespace Repository
 
         public Equipment Save(Equipment obj)
         {
+            // obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -126,5 +128,6 @@ namespace Repository
             List<Equipment> equipments = _stream.ReadAll().ToList();
             return equipments[equipments.FindIndex(apt => apt.Name.Equals(name))];
         }
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }
