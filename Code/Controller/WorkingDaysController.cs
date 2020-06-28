@@ -47,7 +47,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<WorkingDays> GetAll()
         {
-            var workingDays = (List<WorkingDays>)_service.GetAll();
+            List<WorkingDays> workingDays = (List<WorkingDays>)_service.GetAll();
             return workingDays;
         }
 

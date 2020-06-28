@@ -29,11 +29,6 @@ namespace health_clinicClassDiagram.Controller
 
         private DoctorController() { }
 
-        public DoctorController(IService<Doctor> service)
-        {
-            _service = service;
-        }
-
         public Doctor Create(Doctor obj)
         {
             return _service.Create(obj);
@@ -53,7 +48,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Doctor> GetAll()
         {
-            var doctors = (List<Doctor>)_service.GetAll();
+            List<Doctor> doctors = (List<Doctor>)_service.GetAll();
             return doctors;
         }
 
@@ -64,7 +59,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Doctor> GetAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
         {
-            return DoctorService.Instance.getAllAvailableDoctors(_startDate, _endDate);
+            return DoctorService.Instance.GetAllAvailableDoctors(_startDate, _endDate);
         }
     }
 }

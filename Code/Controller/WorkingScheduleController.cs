@@ -13,7 +13,6 @@ namespace Controller
 {
    public class WorkingScheduleController : IController<WorkingSchedule>
    {
-      public WorkingScheduleController GetInstance() { return null; }
         public WorkingScheduleService _service = WorkingScheduleService.Instance;
 
         private static WorkingScheduleController instance;
@@ -33,19 +32,10 @@ namespace Controller
         private WorkingScheduleController()
         {
         }
-        public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<WorkingSchedule> GetAll()
         {
-            var workingSchedules = (List<WorkingSchedule>)_service.GetAll();
+            List<WorkingSchedule> workingSchedules = (List<WorkingSchedule>)_service.GetAll();
             return workingSchedules;
         }
 

@@ -31,7 +31,7 @@ namespace Controller
 
         public List<RegisteredUser> GetAll()
         {
-            var users = (List<RegisteredUser>)_service.GetAll();
+            List<RegisteredUser> users = (List<RegisteredUser>)_service.GetAll();
             return users;
         }
 

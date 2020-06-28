@@ -52,7 +52,7 @@ namespace Repository
 
         public Drug Edit(Drug obj)
         {
-            var drugs = _stream.ReadAll().ToList();
+            List<Drug> drugs = _stream.ReadAll().ToList();
             drugs[drugs.FindIndex(dr => dr.Id == obj.Id)] = obj;
             _stream.SaveAll(drugs);
             return obj;
@@ -60,8 +60,8 @@ namespace Repository
 
         public bool Delete(Drug obj)
         {
-            var drugs = _stream.ReadAll().ToList();
-            var drugsToRemove = drugs.SingleOrDefault(dr => dr.Id == obj.Id);
+            List<Drug> drugs = _stream.ReadAll().ToList();
+            Drug drugsToRemove = drugs.SingleOrDefault(dr => dr.Id == obj.Id);
             if (drugsToRemove != null)
             {
                 drugs.Remove(drugsToRemove);
@@ -76,44 +76,33 @@ namespace Repository
 
         public List<Drug> GetAll()
         {
-            var eq = (List<Drug>)_stream.ReadAll();
-            return eq;
+            List<Drug> drugs = _stream.ReadAll();
+            return drugs;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DrugExists(string naziv)
+        public bool DrugExists(string name)
         {
             var drugs = _stream.ReadAll().ToList();
-            foreach (Drug d in drugs)
+            foreach (Drug drug in drugs)
             {
-                if (d.Name.Equals(naziv))
+                if (drug.Name.Equals(name))
                 {
                     return true;
-                    break;
                 }
             }
             return false;
         }
 
-        public Drug GetDrug(string naziv)
+        public Drug GetDrug(string name)
         {
-            var drug = _stream.ReadAll().ToList();
-            return drug[drug.FindIndex(apt => apt.Name.Equals(naziv))];
+            List<Drug> drugs = _stream.ReadAll().ToList();
+            return drugs[drugs.FindIndex(apt => apt.Name.Equals(name))];
         }
 
         public Drug GetDrugById(long id)
         {
-            var drug = _stream.ReadAll().ToList();
-            return drug[drug.FindIndex(ent => ent.Id == id)];
+            List<Drug> drugs = _stream.ReadAll().ToList();
+            return drugs[drugs.FindIndex(ent => ent.Id == id)];
         }
     }
 }

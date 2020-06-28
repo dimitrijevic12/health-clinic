@@ -21,5 +21,6 @@ namespace Service
         List<Appointment> GetAppointmentsByDate(DateTime startDate, DateTime endDate);
         List<Appointment> GetAppointmentsByDayAndDoctor(DateTime day, Doctor doctor);
         List<Appointment> GetAppointmentsByDayAndDoctorAndRoomAndPatient(DateTime day, Doctor doctor, ExamOperationRoom room, Patient patient);
+        DateTime GetLastDateOfAppointmentForRoom(Room room);
     }
 }

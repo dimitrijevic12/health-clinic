@@ -40,13 +40,6 @@ namespace Service
 
         }
 
-
-        public MedicalRecordService(IMedicalRecordRepository repository, IService<Patient> service)
-        {
-            _medicalRecordRepository = repository;
-            _patientService = service;
-        }
-
         public MedicalRecord AddTreatment(Treatment treatment, MedicalRecord medicalRecord)
         {
             return MedicalRecordRepository.Instance.AddTreatmentToMedicalRecord(medicalRecord, treatment);
@@ -54,16 +47,15 @@ namespace Service
 
         public MedicalRecord GetMedicalRecordByPatient(Patient patient)
         {
-            var record = _medicalRecordRepository.GetMedicalRecordByPatient(patient);
+            MedicalRecord record = _medicalRecordRepository.GetMedicalRecordByPatient(patient);
             return record;
 
         }
 
         public MedicalRecord Create(MedicalRecord obj)
         {
-            var _user = _patientService.Create(obj.Patient);
-            var patient = (Patient)_user;
-            var newMedicalRecord = _medicalRecordRepository.Save(obj);
+            Patient patient = _patientService.Create(obj.Patient);
+            MedicalRecord newMedicalRecord = _medicalRecordRepository.Save(obj);
             newMedicalRecord.Patient = patient;
             return newMedicalRecord;
         }
@@ -94,8 +86,8 @@ namespace Service
 
         public List<MedicalRecord> GetAllAvailablePatientsForRehabilitation()
         {
-            var records = _medicalRecordRepository.GetAll();
-            var rehabilitationRooms = RehabilitationRoomRepository.Instance.GetAll();
+            List<MedicalRecord> records = _medicalRecordRepository.GetAll();
+            List<RehabilitationRoom> rehabilitationRooms = RehabilitationRoomRepository.Instance.GetAll();
 
             List<MedicalRecord> placed = new List<MedicalRecord>();
 
@@ -106,9 +98,9 @@ namespace Service
 
             foreach (MedicalRecord record in placed)
             {
-                var item = records.SingleOrDefault(x => x.Id == record.Id);
-                if (item != null)
-                    records.Remove(item);
+                MedicalRecord medicalRecordToDelete = records.SingleOrDefault(x => x.Id == record.Id);
+                if (medicalRecordToDelete != null)
+                    records.Remove(medicalRecordToDelete);
             }
             return records;
         }

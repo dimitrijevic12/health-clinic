@@ -11,15 +11,12 @@ namespace Repository.Csv.Converter
 {
    public class UserCSVConverter : ICSVConverter<RegisteredUser>
    {
-      private String Delimiter;
 
         private readonly string _delimiter;
-        private readonly string _datetimeFormat;
 
-        public UserCSVConverter(string delimiter, string datetimeFormat)
+        public UserCSVConverter(string delimiter)
         {
             _delimiter = delimiter;
-            _datetimeFormat = datetimeFormat;
         }
 
         public RegisteredUser ConvertCSVFormatToEntity(string entityCSVFormat)

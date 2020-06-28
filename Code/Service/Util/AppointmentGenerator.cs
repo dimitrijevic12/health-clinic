@@ -30,11 +30,6 @@ namespace health_clinicClassDiagram.View.Util
         public List<Appointment> generateList(DateTime date)
         {
             List<Appointment> blankAppointments = new List<Appointment>();
-            //           DateTime startDate = date;
-            //           DateTime endDate = date;
-
-            double testDouble = 0.0;
-            DateTime test = date.AddHours(testDouble + 3.0);
 
             for (double i = 0.0; i < 24.0; i += 1.0)
             {
