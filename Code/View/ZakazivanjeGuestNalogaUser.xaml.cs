@@ -97,7 +97,7 @@ namespace health_clinicClassDiagram.View
       
             _room = room;
 
-            doctors = _doctorController.GetAll();
+            doctors = DoctorController.Instance.GetAllAvailableDoctors(_startDate, _endDate);
 
             if (ZakazivanjeIzaberiNalogUser.StaticZakazivanjeRecord != null)
             {

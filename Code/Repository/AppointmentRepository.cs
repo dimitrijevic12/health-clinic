@@ -36,6 +36,7 @@ namespace Repository
 
         private AppointmentRepository()
         {
+            InitializeId();
         }
 
         private long GetMaxId(List<Appointment> appointments)
@@ -45,6 +46,7 @@ namespace Repository
 
         public Appointment Save(Appointment obj)
         {
+            obj.Id = (_sequencer.GenerateId()) + 1;
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -81,7 +83,7 @@ namespace Repository
             return _stream.ReadAll();
         }
 
-
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
 
 
     }

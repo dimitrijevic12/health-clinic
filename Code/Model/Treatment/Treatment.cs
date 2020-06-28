@@ -6,6 +6,7 @@
 
 using health_clinicClassDiagram.Model.Treatment;
 using Model.Appointment;
+using Model.Rooms;
 using Model.SystemUsers;
 using System;
 using System.ComponentModel;
@@ -82,6 +83,23 @@ namespace Model.Treatment
         public long Id { get => id; set => id = value; }
         public Doctor Doctor { get => doctor; set => doctor = value; }
         public SpecialistAppointment SpecialistAppointment { get => specialistAppointment; set => specialistAppointment = value; }
+
+        public String DoctorNameSurname { get => doctor.Name + " " + doctor.Surname; }
+
+        public String PrescriptionDrugs 
+        {
+            get
+            {
+                String drugs = "";
+                foreach (Drug drug in prescription.Drugs)
+                {
+                    drugs += drug.Name + ", ";
+
+                }
+                return drugs;
+            }
+            
+        }
 
         public long GetId() => Id;
 

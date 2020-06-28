@@ -37,6 +37,7 @@ namespace Repository
 
         private MedicalRecordRepository()
         {
+            InitializeId();
         }
 
         private long GetMaxId(List<MedicalRecord> records)
@@ -112,6 +113,7 @@ namespace Repository
 
         public MedicalRecord Save(MedicalRecord obj)
         {
+            obj.Id = (_sequencer.GenerateId()) + 1;
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -152,5 +154,7 @@ namespace Repository
             return records[records.FindIndex(apt => apt.id == id)];
 
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }

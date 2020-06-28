@@ -31,6 +31,7 @@ namespace health_clinicClassDiagram.Repository
 
         private PatientRepository()
         {
+            InitializeId();
         }
 
         private long GetMaxId(List<Patient> patients)
@@ -40,6 +41,7 @@ namespace health_clinicClassDiagram.Repository
 
         public Patient Save(Patient obj)
         {
+            obj.Id = (_sequencer.GenerateId()) + 1;
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -80,5 +82,7 @@ namespace health_clinicClassDiagram.Repository
             return patients[patients.FindIndex(apt => apt.Id == id)];
 
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }

@@ -130,22 +130,7 @@ namespace health_clinicClassDiagram.View
             }
             _room = room;
 
-            doctors = _doctorController.GetAll();
-
-            foreach (Appointment a in appointments)
-            {
-                if (a.StartDate <= _startDate && a.EndDate >= _endDate)
-                {
-                    doctorsToRemove.Add(a.Doctor);
-                }
-            }
-
-            foreach (Doctor d in doctorsToRemove)
-            {
-                var doctorToRemove = doctors.SingleOrDefault(x => x.Id == d.Id);
-                if (doctorToRemove != null)
-                    doctors.Remove(doctorToRemove);
-            }
+            doctors = DoctorController.Instance.GetAllAvailableDoctors(_startDate, _endDate);
 
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
         }

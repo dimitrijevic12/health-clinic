@@ -1,3 +1,3 @@
-23,1,24/06/2020 07:09,25/06/2020 07:09,213|312,24/06/2020 07:09,25/06/2020 07:09,Razlog za operaciju,222,333,Razlog za specijalistu,24/06/2020,25/06/2020,Razlog za bolnicko lecenje,213|312,Dijagnoza,Procedura
-1,2,25/06/2020 05:00,25/06/2020 07:00,213|312,25/06/2020 12:00,25/06/2020 02:00,Razlog operacije,123,212,Razlog za spec. termin,25/06/2020,25/06/2020,Razlog bolnickog lecenja,213|312,Dijagnoza,Procedura
-2,3,25/06/2020 03:00,25/06/2020 04:00,213|312,25/06/2020 12:00,25/06/2020 02:00,Razlog operacije,123,212,Razlog za spec. termin,25/06/2020,25/06/2020,Razlog bolnickog lecenja,213|312,Dijagnoza,Procedura
+23,1,24/06/2020 07:09,25/06/2020 07:09,213|312,24/06/2020 07:09,25/06/2020 07:09,Razlog za operaciju,222,333,Razlog za specijalistu,Razlog za bolnicko lecenje,213|312,Dijagnoza,Procedura
+1,2,25/06/2020 05:00,25/06/2020 07:00,213|312,25/06/2020 12:00,25/06/2020 02:00,Razlog operacije,123,212,Razlog za spec. termin,Razlog bolnickog lecenja,213|312,Dijagnoza,Procedura
+2,3,25/06/2020 03:00,25/06/2020 04:00,213|312,25/06/2020 12:00,25/06/2020 02:00,Razlog operacije,123,212,Razlog za spec. termin,Razlog bolnickog lecenja,213|312,Dijagnoza,Procedura

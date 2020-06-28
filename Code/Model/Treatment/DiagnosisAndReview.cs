@@ -27,5 +27,10 @@ namespace Model.Treatment
             Diagnosis = "";
             Review = "";
         }
+
+        public override string ToString()
+        {
+            return diagnosis + ", " + review;
+        }
     }
 }

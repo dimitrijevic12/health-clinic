@@ -79,7 +79,7 @@
                     <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorNameSurname}"/>
                     <DataGridTextColumn Width="*" Header="Od" Binding="{Binding FromDate}"/>
                     <DataGridTextColumn Width="*" Header="Do" Binding="{Binding EndDate}"/>
-                    <DataGridTextColumn Width="*" Header="Lekovi" Binding="{Binding Prescription}"/>
+                    <DataGridTextColumn Width="*" Header="Lekovi" Binding="{Binding PrescriptionDrugs}"/>
                     <DataGridTextColumn Width="*" Header="Dijagnoza" Binding="{Binding DiagnosisAndReview}"/>
 
                 </DataGrid.Columns>

@@ -1,6 +1,4 @@
-1,Aleksa,Santrac,MALE,25/06/1972,1|2,aleksa,aleksa
-2,Stefan,Santrac,MALE,25/01/1976,1|2,stefan,stefan
-3,Marko,Markovic,MALE,22/02/1982,812143208|812143208,marko,marko
-4,Slobodanka,Slobic,FEMALE,16/09/1992,1|2,slobodanka,slobodanka
-2,Stefan,Santrac,MALE,25/01/1976,1|2,stefan,stefan
-1,Aleksa,Santrac,MALE,25/06/1972,1|2,aleksa,aleksa
+1,Aleksa,Santrac,MALE,25/06/1972,1,aleksa,aleksa
+2,Stefan,Santrac,MALE,25/01/1976,1,stefan,stefan
+3,Marko,Markovic,MALE,22/02/1982,2,marko,marko
+4,Slobodanka,Slobic,FEMALE,16/09/1992,2,slobodanka,slobodanka
