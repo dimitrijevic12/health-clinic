@@ -23,7 +23,8 @@ namespace Repository
         public DrugRepository GetInstance() { return null; }
 
         private DrugRepository()
-        { 
+        {
+            //InitializeId();
         }
 
         public static DrugRepository Instance
@@ -46,6 +47,7 @@ namespace Repository
 
         public Drug Save(Drug obj)
         {
+            // obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -104,5 +106,6 @@ namespace Repository
             List<Drug> drugs = _stream.ReadAll().ToList();
             return drugs[drugs.FindIndex(ent => ent.Id == id)];
         }
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
     }
 }
