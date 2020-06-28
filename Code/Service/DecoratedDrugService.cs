@@ -12,16 +12,16 @@ namespace Service
 {
    public class DecoratedDrugService //: IDrugService
    {
-      private IDrugService DrugServiceReference;
+        protected IDrugService drugServiceReference;
+
+        public DecoratedDrugService(IDrugService iDrugService)
+        {
+            this.drugServiceReference = iDrugService;
+        }
 
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
+            return drugServiceReference.GetAllDrugs();
         }
-
-      /*  List<Drug> IDrugService.GetAllDrugs()
-        {
-            throw new NotImplementedException();
-        }*/
     }
 }

@@ -30,13 +30,13 @@ namespace health_clinicClassDiagram.view
         {
             InitializeComponent();
             this.DataContext = this;
-           
-            _drugController = DrugController.Instance;
+
+            // _drugController = DrugController.Instance;
             //Lekovi = new ObservableCollection<lekovi>();
             //Lekovi.Add(new lekovi() { Lek = "Brufen", SifraLeka = "213", Kolicina = "10" });
             //Lekovi.Add(new lekovi() { Lek = "Paracetamol", SifraLeka = "442", Kolicina = "20" });
-
-            drugs = _drugController.GetAll();
+            DrugController drugController = new DrugController();
+            drugs = drugController.GetAllDrugs();
             drugCollection = new ObservableCollection<Drug>(drugs);
             dataGridNaruciLek.Items.Refresh();
         }
@@ -67,7 +67,8 @@ namespace health_clinicClassDiagram.view
             {
                 string naziv = name.Text;
                 int qu = int.Parse(quant.Text);
-                _drugController.addDrug(naziv, qu);
+                ManagerDrugController managerDrugController = new ManagerDrugController(new DrugController());
+                managerDrugController.AddDrug(naziv, qu);
 
                 this.Close();
             }

@@ -180,6 +180,7 @@ namespace Service
             var appointments = iAppointmentRepository.GetAll();
 
             DateTime latestDate = DateTime.Now;
+            latestDate = latestDate.AddDays(-1);
 
             foreach(Appointment appointment in appointments)
             {

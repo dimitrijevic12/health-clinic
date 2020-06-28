@@ -36,10 +36,9 @@ namespace health_clinicClassDiagram.view
             //Lekovi = new ObservableCollection<lekovi>();
             //Lekovi.Add(new lekovi() { Lek = "Brufen" , SifraLeka = "213", Kolicina = "10"});
             //Lekovi.Add(new lekovi() { Lek = "Paracetamol", SifraLeka = "442", Kolicina = "20" });
-            
-            _drugController = DrugController.Instance;
 
-            drugs = _drugController.GetAll();
+            DrugController drugController = new DrugController();
+            drugs = drugController.GetAllDrugs();
             drugCollection = new ObservableCollection<Drug>(drugs);
             dataGridMagacinLekovi.Items.Refresh();
 

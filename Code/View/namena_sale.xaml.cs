@@ -1,7 +1,9 @@
 ﻿
 using Controller;
 using health_clinicClassDiagram.Controller;
+using Model.Appointment;
 using Model.Rooms;
+using Model.SystemUsers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -97,96 +99,54 @@ namespace health_clinicClassDiagram.view
                 DateTime dt1 = (DateTime)DatumPicker.SelectedDate;
                 DateTime lastDate = _appointmentController.GetLastDateOfAppointmentForRoom(room);
 
-                if (lastDate < dt1 && DateTime.Now.Date == dt1)
+                if (lastDate < dt1 && DateTime.Now.Date == dt1.Date)
                 {
-                    //Console.WriteLine("dosao ovde");
-                    dt1 = lastDate.AddDays(1);
+                   
+                   
 
-                    List<Room> rooms = new List<Room>();
-                    rooms.Add(room);
-                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, rooms);
+                    List<Room> roomsReturn = new List<Room>();
+                    roomsReturn.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, roomsReturn);
                     _renovationController.Create(renovation);
                     String tipSale;
                     if (tip.SelectedIndex == 0)
                     {
-                        foreach (ExamOperationRoom r in rooms)
+
+                        sobaZaDodavanje2 = RehabilitationRoomController.Instance.findRehabRoom(room.Id);
+                        sobaZaDodavanje2.tip = TypeOfRoom.EXAMOPERATION;
+                        if (sobaZaDodavanje2 != null)
                         {
-                            if (r.Id.Equals(room.Id))
-                            {
-                                sobaZaDodavanje = r;
-                                sobaZaDodavanje.tip = TypeOfRoom.EXAMOPERATION;
-                                break;
-                            }
-                        }
-                        foreach (RehabilitationRoom r in rooms2)
-                        {
-                            if (r.Id.Equals(room.Id))
-                            {
-                                sobaZaDodavanje2 = r;
-                                sobaZaDodavanje2.tip = TypeOfRoom.EXAMOPERATION;
-                                break;
-                            }
-                        }
-                        if (sobaZaDodavanje != null)
-                        {
-                            /* bool del = _examOperationRoomController.Delete(sobaZaDodavanje);
-                             RehabilitationRoom roomZaDodati = new RehabilitationRoom(sobaZaDodavanje.Id, 0, 5, sobaZaDodavanje.Equipments);
-                             RehabilitationRoom r = _rehabilitationRoomController.Create(roomZaDodati);*/
-                            //Console.WriteLine("dosao ovde1");
-                        }
-                        else
-                        {
-                            // Console.WriteLine("dosao ovde2");
                             bool del = _rehabilitationRoomController.Delete(sobaZaDodavanje2);
                             ExamOperationRoom roomZaDodati = new ExamOperationRoom(sobaZaDodavanje2.Id, sobaZaDodavanje2.Equipments);
                             ExamOperationRoom r = _examOperationRoomController.Create(roomZaDodati);
                         }
+                      
                     }
                     else
                     {
-                        foreach (ExamOperationRoom r in rooms)
-                        {
-                            if (r.Id.Equals(room.Id))
-                            {
-                                sobaZaDodavanje = r;
-                                sobaZaDodavanje.tip = TypeOfRoom.REHABILITATION;
-                                break;
-                            }
-                        }
-                        foreach (RehabilitationRoom r in rooms2)
-                        {
-                            if (r.Id.Equals(room.Id))
-                            {
-                                sobaZaDodavanje2 = r;
-                                sobaZaDodavanje2.tip = TypeOfRoom.REHABILITATION;
-                                break;
-                            }
-                        }
+                        sobaZaDodavanje = ExamOperationRoomController.Instance.findExamRoom(room.Id);
+                        sobaZaDodavanje.tip = TypeOfRoom.REHABILITATION;
                         if (sobaZaDodavanje != null)
                         {
                             bool del = _examOperationRoomController.Delete(sobaZaDodavanje);
-                            RehabilitationRoom roomZaDodati = new RehabilitationRoom(sobaZaDodavanje.Id, 0, 5, sobaZaDodavanje.Equipments);
+                            List<MedicalRecord> medicalRecords = new List<MedicalRecord>();
+                            RehabilitationRoom roomZaDodati = new RehabilitationRoom(sobaZaDodavanje.Id, 0, 5, medicalRecords, sobaZaDodavanje.Equipments);
                             RehabilitationRoom r = _rehabilitationRoomController.Create(roomZaDodati);
-                            // Console.WriteLine("dosao ovde3");
-                            //_examOperationRoomController.Edit(sobaZaDodavanje);
                         }
-                        else
-                        {
-                            /* bool del = _rehabilitationRoomController.Delete(sobaZaDodavanje2);
-                             ExamOperationRoom roomZaDodati = new ExamOperationRoom(sobaZaDodavanje2.Id, sobaZaDodavanje2.Equipments);
-                             ExamOperationRoom r = _examOperationRoomController.Create(roomZaDodati);*/
-                            //Console.WriteLine("dosao ovde4");
-                            //_rehabilitationRoomController.Edit(sobaZaDodavanje2);
-                        }
+
+                       
                     }
                 }
                 else
                 {
-                    dt1 = lastDate.AddDays(1);
+                    if (lastDate > dt1)
+                    {
+                        dt1 = lastDate.AddDays(1);
+                    }
                     
-                    List<Room> rooms = new List<Room>();
-                    rooms.Add(room);
-                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, rooms);
+                    List<Room> roomsReturn = new List<Room>();
+                    roomsReturn.Add(room);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.CHANGINGTYPEOFROOM, dt1, dt1, roomsReturn);
                     _renovationController.Create(renovation);
                 }
 

@@ -10,28 +10,18 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class DecoratedDrugController //: IDrugController
-   {
-        private IDrugController DrugControllerReference;
+    public abstract class DecoratedDrugController : IDrugController
+    {
+        private IDrugController drugControllerReference;
 
-        public void addDrug(string naziv, int quant)
+        public DecoratedDrugController(IDrugController iDrugController)
         {
-            throw new NotImplementedException();
+            this.drugControllerReference = iDrugController;
         }
 
         public List<Drug> GetAllDrugs()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Drug> GetUnvalidatedDrugs()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Drug> GetValidatedDrugs()
-        {
-            throw new NotImplementedException();
+            return drugControllerReference.GetAllDrugs();
         }
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Web.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -107,10 +108,10 @@ namespace health_clinicClassDiagram.view
                 //int result = DateTime.Compare(dt1, dt2);
                 if (lastDate < dt1 && DateTime.Now.Date == dt1)
                 {
-                    List<Room> rooms = new List<Room>();
-                    rooms.Add(room1);
-                    rooms.Add(room2);
-                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, rooms);
+                    List<Room> roomsReturn = new List<Room>();
+                    roomsReturn.Add(room1);
+                    roomsReturn.Add(room2);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, roomsReturn);
                     _renovationController.Create(renovation);
                     foreach (Equipment ek2 in room2.Equipments)
                     {
@@ -124,7 +125,7 @@ namespace health_clinicClassDiagram.view
                                 flag += 1;
 
                             }
-                            //equ = ek2;
+                           
 
                         }
                         if (flag == 0)
@@ -133,26 +134,10 @@ namespace health_clinicClassDiagram.view
                         }
                     }
 
+                    sobaZaEdit = ExamOperationRoomController.Instance.findExamRoom(room1.Id);
 
-                    foreach (ExamOperationRoom r in rooms)
-                    {
-                        if (r.Id.Equals(room1.Id))
-                        {
-                            sobaZaEdit = r;
-
-                            break;
-                        }
-                    }
-
-                    foreach (RehabilitationRoom r in rooms2)
-                    {
-                        if (r.Id.Equals(room1.Id))
-                        {
-                            sobaZaEdit2 = r;
-
-                            break;
-                        }
-                    }
+                    
+                   
 
                     if (sobaZaEdit != null)
                     {
@@ -160,30 +145,15 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
+                        sobaZaEdit2 = RehabilitationRoomController.Instance.findRehabRoom(room1.Id);
                         _rehabilitationRoomController.Edit(sobaZaEdit2);
                     }
 
 
+                    sobaZaBrisanje = ExamOperationRoomController.Instance.findExamRoom(room2.Id);
 
-                    foreach (ExamOperationRoom r in rooms)
-                    {
-                        if (r.Id.Equals(room2.Id))
-                        {
-                            sobaZaBrisanje = r;
-
-                            break;
-                        }
-                    }
-
-                    foreach (RehabilitationRoom r in rooms2)
-                    {
-                        if (r.Id.Equals(room2.Id))
-                        {
-                            sobaZaBrisanje2 = r;
-
-                            break;
-                        }
-                    }
+                    
+                   
 
                     if (sobaZaBrisanje != null)
                     {
@@ -191,18 +161,22 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
+                        sobaZaBrisanje2 = RehabilitationRoomController.Instance.findRehabRoom(room2.Id);
                         _rehabilitationRoomController.Delete(sobaZaBrisanje2);
                     }
                     
                 }
                 else
                 {
+                    if(lastDate > dt1) 
+                    { 
                     dt1 = lastDate.AddDays(1);
                     dt2 = dt1.AddDays(difference);
-                    List<Room> rooms = new List<Room>();
-                    rooms.Add(room1);
-                    rooms.Add(room2);
-                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, rooms);
+                    }
+                    List<Room> roomsReturn = new List<Room>();
+                    roomsReturn.Add(room1);
+                    roomsReturn.Add(room2);
+                    Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()), TypeOfRenovation.MERGING, dt1, dt2, roomsReturn);
                     _renovationController.Create(renovation);
                 }
 

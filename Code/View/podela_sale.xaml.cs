@@ -1,5 +1,6 @@
 ﻿using Controller;
 using health_clinicClassDiagram.Controller;
+using Model.Appointment;
 using Model.Rooms;
 using System;
 using System.Collections.Generic;
@@ -121,7 +122,7 @@ namespace health_clinicClassDiagram.view
                 int difference = (dt2.Date - dt1.Date).Days;
                 DateTime lastDate = _appointmentController.GetLastDateOfAppointmentForRoom(room);
                 //int result = DateTime.Compare(dt1, dt2);
-                if (lastDate < dt1/* && DateTime.Now.Date == dt1*/)
+                if (lastDate < dt1 && DateTime.Now.Date == dt1)
                 {
                     List<Room> rooms = new List<Room>();
                     rooms.Add(room);
@@ -132,21 +133,20 @@ namespace health_clinicClassDiagram.view
                     {
                        
                         ExamOperationRoom soba1 = new ExamOperationRoom(idDruge);
-                        foreach (ExamOperationRoom s1 in rooms)
+
+                        sobaZaEdit = ExamOperationRoomController.Instance.findExamRoom(room.Id);
+                       
+                        sobaZaAdd = soba1;
+                               
+                        foreach (Equipment ek in sobaZaEdit.Equipments)
                         {
-                            if (s1.Id == room.Id)
-                            {
-                                sobaZaAdd = soba1;
-                                sobaZaEdit = s1;
-                                foreach (Equipment ek in sobaZaEdit.Equipments)
-                                {
-                                    int pola = ek.Quantity / 2;
-                                    ek.Quantity -= pola;
-                                    Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
-                                    sobaZaAdd.Equipments.Add(noviEk);
-                                }
-                            }
+                             int pola = ek.Quantity / 2;
+                             ek.Quantity -= pola;
+                             Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                             sobaZaAdd.Equipments.Add(noviEk);
                         }
+                            
+                        
 
                         _examOperationRoomController.Edit(sobaZaEdit);
                         _examOperationRoomController.Create(sobaZaAdd);
@@ -154,23 +154,21 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
-                        
-                        RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5);
-                        foreach (RehabilitationRoom s2 in rooms2)
+                        List<MedicalRecord> medicalRecords = new List<MedicalRecord>();
+                        RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5, medicalRecords);
+
+                        sobaZaEdit2 = RehabilitationRoomController.Instance.findRehabRoom(room.Id);
+                       
+                        sobaZaAdd2 = soba2;
+                          
+                        foreach (Equipment ek in sobaZaEdit2.Equipments)
                         {
-                            if (s2.Id == room.Id)
-                            {
-                                sobaZaAdd2 = soba2;
-                                sobaZaEdit2 = s2;
-                                foreach (Equipment ek in sobaZaEdit2.Equipments)
-                                {
-                                    int pola = ek.Quantity / 2;
-                                    ek.Quantity -= pola;
-                                    Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
-                                    sobaZaAdd2.Equipments.Add(noviEk);
-                                }
-                            }
+                             int pola = ek.Quantity / 2;
+                             ek.Quantity -= pola;
+                             Equipment noviEk = new Equipment(ek.Id, ek.Naziv, pola);
+                             sobaZaAdd2.Equipments.Add(noviEk);
                         }
+                           
                         _rehabilitationRoomController.Edit(sobaZaEdit2);
                         _rehabilitationRoomController.Create(sobaZaAdd2);
                         //Console.WriteLine("ovde2");
@@ -178,8 +176,11 @@ namespace health_clinicClassDiagram.view
                 }
                 else
                 {
-                    dt1 = lastDate.AddDays(1);
-                    dt2 = dt1.AddDays(difference);
+                    if(lastDate > dt1)
+                    { 
+                        dt1 = lastDate.AddDays(1);
+                        dt2 = dt1.AddDays(difference);
+                    }
                     List<Room> rooms = new List<Room>();
                     rooms.Add(room);
                     Renovation renovation = new Renovation(LongRandom(0, 1000000000, new Random()),TypeOfRenovation.SPLITTING, dt1, dt2, rooms);
