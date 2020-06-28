@@ -78,6 +78,7 @@ namespace health_clinicClassDiagram.View
         private Doctor _doctor;
         private ExamOperationRoom _room;
         private TypeOfAppointment _type;
+        private static Doctor doctor;
 
         public static Appointment izmenaAppointment;
 
@@ -106,6 +107,7 @@ namespace health_clinicClassDiagram.View
                 textIme.Text = appointment.Patient.Name;
                 textPrezime.Text = appointment.Patient.Surname;
                 textJMBG.Text = appointment.Patient.Id.ToString();
+                doctor = appointment.Doctor;
             }else if (IzmenaIzaberiNalog.StaticIzmenaRecord!=null){
                 textIme.Text = IzmenaIzaberiNalog.StaticIzmenaRecord.Name;
                 textPrezime.Text = IzmenaIzaberiNalog.StaticIzmenaRecord.Surname;
@@ -115,6 +117,7 @@ namespace health_clinicClassDiagram.View
                 textIme.Text = izmenaAppointment.Patient.Name;
                 textPrezime.Text = izmenaAppointment.Patient.Surname;
                 textJMBG.Text = izmenaAppointment.Patient.Id.ToString();
+                doctor = izmenaAppointment.Doctor;
             }
 
 
@@ -131,6 +134,7 @@ namespace health_clinicClassDiagram.View
             _room = room;
 
             doctors = DoctorController.Instance.GetAllAvailableDoctors(_startDate, _endDate);
+            doctors.Add(doctor);
 
             doctorsCollection = new ObservableCollection<Doctor>(doctors);
         }
