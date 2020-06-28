@@ -55,7 +55,7 @@ namespace health_clinicClassDiagram.Service
 
         public Doctor ValidateLogin(string username, string password)
         {
-            return DoctorRepository.Instance.GetDoctorByUsernameAndPassword(username, password);
+            return GetDoctorByUsernameAndPassword(username, password);
         }
 
         public List<Doctor> GetAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
@@ -81,6 +81,15 @@ namespace health_clinicClassDiagram.Service
             }
 
             return doctors;
+        }
+
+        public Doctor GetDoctorByUsernameAndPassword(string username, string password)
+        {
+            foreach (Doctor doctor in GetAll())
+            {
+                if (doctor.Username.Equals(username) && doctor.Password.Equals(password)) return doctor;
+            }
+            return null;
         }
 
     }

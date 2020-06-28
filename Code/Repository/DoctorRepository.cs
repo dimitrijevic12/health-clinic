@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace health_clinicClassDiagram.Repository
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class DoctorRepository : IDoctorRepository
     {
         private static DoctorRepository instance = null;
 
@@ -77,18 +77,9 @@ namespace health_clinicClassDiagram.Repository
 
         public Doctor GetDoctorById(long id)
         {
-            List<Doctor> doctors = _stream.ReadAll().ToList();
+            List<Doctor> doctors = GetAll();
             return doctors[doctors.FindIndex(apt => apt.Id == id)];
 
-        }
-
-        public Doctor GetDoctorByUsernameAndPassword(string username, string password)
-        {
-            foreach (Doctor doctor in GetAll())
-            {
-                if (doctor.Username.Equals(username) && doctor.Password.Equals(password)) return doctor;
-            }
-            return null;
         }
     }
 }

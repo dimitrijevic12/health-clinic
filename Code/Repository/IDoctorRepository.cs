@@ -10,6 +10,5 @@ namespace health_clinicClassDiagram.Repository
     public interface IDoctorRepository : IRepository<Doctor>
     {
         Doctor GetDoctorById(long id);
-        Doctor GetDoctorByUsernameAndPassword(string username, string password);
     }
 }

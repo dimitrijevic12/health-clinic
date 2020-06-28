@@ -423,6 +423,7 @@
     <Compile Include="Service\DoctorDrugService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Service\IDoctorService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="Service\SurgeonService.cs" />

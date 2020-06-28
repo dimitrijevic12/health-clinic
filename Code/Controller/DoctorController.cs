@@ -13,7 +13,7 @@ namespace health_clinicClassDiagram.Controller
     {
         private static DoctorController instance;
 
-        private readonly IService<Doctor> _service = DoctorService.Instance;
+        private readonly DoctorService _service = DoctorService.Instance;
 
         public static DoctorController Instance
         {
@@ -54,12 +54,17 @@ namespace health_clinicClassDiagram.Controller
 
         public Doctor ValidateLogin(string username, string password)
         {
-            return DoctorService.Instance.ValidateLogin(username, password);
+            return _service.ValidateLogin(username, password);
         }
 
         public List<Doctor> GetAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
         {
-            return DoctorService.Instance.GetAllAvailableDoctors(_startDate, _endDate);
+            return _service.GetAllAvailableDoctors(_startDate, _endDate);
         }
+        public Doctor GetDoctorByUsernameAndPassword(string username, string password)
+        {
+            return _service.GetDoctorByUsernameAndPassword(username, password);
+        }
+
     }
 }
