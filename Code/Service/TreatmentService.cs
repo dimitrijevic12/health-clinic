@@ -120,5 +120,20 @@ namespace Service
         {
             return TreatmentRepository.Instance.GetTreatment(obj.Id);
         }
+
+        public List<Drug> GetDrugsByDate(DateTime startDate, DateTime endDate)
+        {
+            List<Drug> drugs = new List<Drug>();
+
+            foreach (Treatment treatment in GetAll())
+            {
+                if (treatment.FromDate >= startDate && treatment.EndDate <= endDate)
+                {
+                    drugs.AddRange(treatment.Prescription.Drugs);
+                    drugs.AddRange(treatment.ReferralToHospitalTreatment.Drugs);
+                }
+            }
+            return drugs;
+        }
     }
 }

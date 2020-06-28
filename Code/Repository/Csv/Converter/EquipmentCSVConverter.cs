@@ -30,7 +30,7 @@ namespace Repository.Csv.Converter
         {
             return string.Join(_delimiter,
                  entity.Id,
-                 entity.Naziv,
+                 entity.Name,
                  entity.Quantity
                  );
         }

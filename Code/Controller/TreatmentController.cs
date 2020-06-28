@@ -91,5 +91,10 @@ namespace Controller
         {
             return _service.GetTreatment(obj);
         }
+
+        public List<Drug> GetDrugsByDate(DateTime startDate, DateTime endDate)
+        {
+            return _service.GetDrugsByDate(startDate, endDate);
+        }
     }
 }

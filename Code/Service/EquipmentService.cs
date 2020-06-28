@@ -58,24 +58,24 @@ namespace Service
             return rooms;
         }
 
-        public void addEquipment(string naziv, int quant)
+        public void AddEquipment(string name, int quant)
         {
-            bool postoji = _equipmentRepository.EquipExists(naziv);
+            bool postoji = _equipmentRepository.EquipExists(name);
             if (postoji)
             {
-                var Foundequip = _equipmentRepository.GetEquip(naziv);
+                var Foundequip = _equipmentRepository.GetEquip(name);
                 Foundequip.Quantity += quant;
                 _equipmentRepository.Edit(Foundequip);
             }
             else
             {
-                Equipment d = new Equipment(naziv, quant);
-                var newDrag = _equipmentRepository.Save(d);
+                Equipment equipment = new Equipment(LongRandom(0, 100000, new Random()), name, quant);
+                var newEquipment = _equipmentRepository.Save(equipment);
             }
 
         }
 
-        public void deleteEquipment(int Id, int quant)
+        public void DeleteEquipment(long Id, int quant)
         {
             bool postoji = _equipmentRepository.EquipExists(Id);
             if (postoji)
@@ -86,34 +86,41 @@ namespace Service
             }
         }
 
-        public string getNazivOpreme(int Id)
+        public string GetNazivOpreme(long Id)
         {
             var eqs = _equipmentRepository.GetAll();
             foreach (Equipment e in eqs)
             {
                 if (e.Id == Id)
                 {
-                    return e.Naziv;
-                    break;
+                    return e.Name;
+                   
                 }
             }
             return "ne postoji";
         }
 
-        public int getIdOpreme(string naziv)
+        public long GetIdOpreme(string name)
         {
             var eqs = _equipmentRepository.GetAll();
             foreach (Equipment e in eqs)
             {
-                if (e.Naziv.Equals(naziv))
+                if (e.Name.Equals(name))
                 {
                     return e.Id;
-                    break;
+                    
                 }
             }
-            return 0;
+            return -1;
         }
+        private long LongRandom(long min, long max, Random rand)
+        {
+            byte[] buf = new byte[8];
+            rand.NextBytes(buf);
+            long longRand = BitConverter.ToInt64(buf, 0);
 
+            return (Math.Abs(longRand % (max - min)) + min);
+        }
 
     }
 }
