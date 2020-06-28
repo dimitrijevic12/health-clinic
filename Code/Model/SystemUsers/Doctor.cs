@@ -6,6 +6,7 @@
 
 using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using System;
+using System.Collections.Generic;
 
 namespace Model.SystemUsers
 {
@@ -14,6 +15,7 @@ namespace Model.SystemUsers
         private WorkingSchedule[] workingSchedule;
         private Gender gender;
         private DateTime dateOfBirth;
+        private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
 
         public long IdDoctor
         {
@@ -43,6 +45,27 @@ namespace Model.SystemUsers
             get { return dateOfBirth; }   // get method
             set { dateOfBirth = value; }
         }
+
+        public List<WorkingSchedule> WorkingSchedules
+        {
+            get { return workingSchedules; }   // get method
+            set { workingSchedules = value; }
+        }
+
+        public String IdWorkingSchedules
+        {
+            get
+            {
+                String ids = "";
+                foreach (WorkingSchedule schedule in WorkingSchedules)
+                {
+                    ids += schedule.Id.ToString();
+                }
+
+                return ids;
+            }
+        }
+
 
         public String NameAndSurname
         {
@@ -81,7 +104,40 @@ namespace Model.SystemUsers
 
         }
 
-        public Doctor(long jmbg, String name, String surname)
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, WorkingSchedule workingSchedule, String uname, String pass)
+
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.WorkingSchedules.Add(workingSchedule);
+            this.Username = uname;
+            this.Password = pass;
+
+
+
+        }
+
+        public Doctor(long jmbg, String name, String surname, Gender gender, DateTime dateOfBirth, List<WorkingSchedule> workingSchedules, String uname, String pass)
+
+        {
+
+            this.Id = jmbg;
+            this.Name = name;
+
+            this.Surname = surname;
+            this.gender = gender;
+            this.dateOfBirth = dateOfBirth;
+            this.WorkingSchedules = workingSchedules;
+            this.Username = uname;
+            this.Password = pass;
+        }
+
+            public Doctor(long jmbg, String name, String surname)
         {
             this.Id = jmbg;
             this.Name = name;

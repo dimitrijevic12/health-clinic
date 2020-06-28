@@ -5,7 +5,9 @@ using Repository;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 
 namespace health_clinicClassDiagram.Service
@@ -87,6 +89,22 @@ namespace health_clinicClassDiagram.Service
             }
 
             return doctors;
+        }
+
+        public List<Doctor> GetAvailableDoctorWorkingSchedule(DateTime _startDate, DateTime _endDate, List<Doctor>doctors)
+        {
+            List<Doctor> availableDoctors = new List<Doctor>();
+            Calendar calendar = CultureInfo.InvariantCulture.Calendar;
+            DayOfWeek day = calendar.GetDayOfWeek(_startDate);
+
+            foreach (Doctor doctor in doctors)
+            {
+                foreach (WorkingSchedule workingSchedule in doctor.WorkingSchedules)
+                {
+                    
+                }
+            }
+            return availableDoctors;
         }
 
 

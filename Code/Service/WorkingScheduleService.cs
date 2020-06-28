@@ -5,18 +5,45 @@
  ***********************************************************************/
 
 using Model.SystemUsers;
+using Repository;
 using System;
 using System.Collections.Generic;
 
 namespace Service
 {
-   public class WorkingScheduleService : IWorkingScheduleService
-   {
-      public WorkingScheduleService GetInstance() { return null; }
+    public class WorkingScheduleService : IWorkingScheduleService
+    {
+        public readonly IWorkingScheduleRepository _workingScheduleRepository = WorkingScheduleRepository.Instance;
+
+        private static WorkingScheduleService instance;
+
+        public static WorkingScheduleService Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new WorkingScheduleService();
+                }
+                return instance;
+            }
+        }
+
+        private WorkingScheduleService()
+        {
+        }
+
+        public WorkingScheduleService(IWorkingScheduleRepository repository)
+        {
+            _workingScheduleRepository = repository;
+        }
 
         public List<WorkingSchedule> GetWorkingScheduleByDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            var workSc = _workingScheduleRepository.GetWorkingSchedulebyDoctor(doctor);
+            //fali red
+            return workSc;
+
         }
 
         public List<WorkingSchedule> GetWorkingScheduleByDate(DateTime day)
@@ -26,27 +53,27 @@ namespace Service
 
         public WorkingSchedule Create(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            var newWorkSc = _workingScheduleRepository.Save(obj);
+
+            return newWorkSc;
         }
 
         public WorkingSchedule Edit(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            return _workingScheduleRepository.Edit(obj);
         }
 
         public bool Delete(WorkingSchedule obj)
         {
-            throw new NotImplementedException();
+            return _workingScheduleRepository.Delete(obj);
         }
 
         public List<WorkingSchedule> GetAll()
         {
-            throw new NotImplementedException();
+            var workingSchedules = _workingScheduleRepository.GetAll();
+            return workingSchedules;
         }
 
-        public Repository.IWorkingScheduleRepository iWorkingScheduleRepository;
-   
-      private static WorkingScheduleService Instance;
-   
-   }
+
+    }
 }
