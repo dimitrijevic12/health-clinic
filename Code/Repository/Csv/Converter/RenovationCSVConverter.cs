@@ -91,8 +91,8 @@ namespace Repository.Csv.Converter
             return string.Join(_delimiter,
             entity.Id,
             entity.Type,
-            entity.StartDate,
-            entity.EndDate,
+            entity.StartDate.ToString("dd/MM/yyyy"),
+            entity.EndDate.ToString("dd/MM/yyyy"),
             resenje);
         }
     }

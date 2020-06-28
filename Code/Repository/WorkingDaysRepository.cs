@@ -32,6 +32,7 @@ namespace health_clinicClassDiagram.Repository
 
         private WorkingDaysRepository()
         {
+            // InitializeId();
         }
 
         private long GetMaxId(List<WorkingDays> allWorkingDays)
@@ -41,6 +42,7 @@ namespace health_clinicClassDiagram.Repository
 
         public WorkingDays Save(WorkingDays obj)
         {
+            // obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -80,6 +82,8 @@ namespace health_clinicClassDiagram.Repository
             List<WorkingDays> allWorkingDays = _stream.ReadAll().ToList();
             return allWorkingDays[allWorkingDays.FindIndex(apt => apt.Id == id)];
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
 
     }
 }

@@ -36,6 +36,7 @@ namespace Repository
 
         private RenovationRepository()
         {
+            // InitializeId();
         }
 
         private long GetMaxId(List<Renovation> renos)
@@ -49,6 +50,7 @@ namespace Repository
 
         public Renovation Save(Renovation obj)
         {
+            //obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -83,6 +85,8 @@ namespace Repository
 
             return renovations;
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
 
 
     }

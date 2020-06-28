@@ -40,6 +40,14 @@ namespace Model.Rooms
             Validation = false;
         }
 
+        public Drug(long id, string name, int quantity, Boolean validation)
+        {
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Validation = validation;
+        }
+
         public Drug(string name)
         {
             Name = name;

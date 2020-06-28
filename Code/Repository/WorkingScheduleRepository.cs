@@ -34,6 +34,7 @@ namespace Repository
 
         private WorkingScheduleRepository()
         {
+            //InitializeId();
         }
 
         private long GetMaxId(List<WorkingSchedule> list)
@@ -48,6 +49,7 @@ namespace Repository
 
         public WorkingSchedule Save(WorkingSchedule obj)
         {
+            //obj.Id = _sequencer.GenerateId();
             _stream.AppendToFile(obj);
             return obj;
         }
@@ -94,6 +96,8 @@ namespace Repository
             var workingSchedukes = _stream.ReadAll().ToList();
             return workingSchedukes[workingSchedukes.FindIndex(apt => apt.Id == id)];
         }
+
+        protected void InitializeId() => _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
 
 
     }
