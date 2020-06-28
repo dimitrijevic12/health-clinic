@@ -20,9 +20,10 @@ namespace Model.SystemUsers
       private List<WorkingSchedule> workingSchedules = new List<WorkingSchedule>();
       private Gender gender;
          private DateTime dateOfBirth;
+        private Specialization spec;
+        private SurgicalSpecialty sur;
         //private string dateOfBirth;
-      private Specialization spec;
-      private SurgicalSpecialty sur;
+
 
 
 

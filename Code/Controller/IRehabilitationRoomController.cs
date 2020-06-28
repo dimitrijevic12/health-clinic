@@ -13,15 +13,14 @@ namespace health_clinicClassDiagram.Controller
     {
         Boolean IsRoomFree(DateTime from, DateTime to, Room room);
 
-        RehabilitationRoom findRehabRoom(long id);
+        RehabilitationRoom GetRoomById(long id);
         List<Patient> GetAllPatientsByRoom();
         int GenerateReport(Room room);
         Boolean AddPatient(MedicalRecord record, RehabilitationRoom room);
-        Boolean releasePatient(MedicalRecord record, RehabilitationRoom room);
-        RehabilitationRoom getRoom(RehabilitationRoom room);
+        Boolean ReleasePatient(MedicalRecord record, RehabilitationRoom room);
+        RehabilitationRoom GetRoom(RehabilitationRoom room);
+        Room IncreaseQuantity(Room room, Equipment equipment);
 
-        Room IncreaseQuantity(Room r, Equipment eq);
-
-        Room DecreaseQuantity(Room r, Equipment eq);
+        Room DecreaseQuantity(Room room, Equipment equipment);
     }
 }

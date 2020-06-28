@@ -58,7 +58,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Doctor> GetAll()
         {
-            var doctors = (List<Doctor>)_service.GetAll();
+            List<Doctor> doctors = (List<Doctor>)_service.GetAll();
             return doctors;
         }
 
@@ -69,7 +69,8 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Doctor> getAllAvailableDoctors(DateTime _startDate, DateTime _endDate)
         {
-            return DoctorService.Instance.getAllAvailableDoctors(_startDate, _endDate);
+            //return DoctorService.Instance.GetAllAvailableDoctors(_startDate, _endDate);
+            return null;
         }
     }
 }

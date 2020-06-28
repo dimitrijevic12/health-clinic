@@ -23,7 +23,7 @@ namespace Controller
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
       Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
-      Service.TypeOfPriority ChoosePriority(Service.TypeOfPriority priority);
+     
       Boolean IsPatientRegistered(Model.SystemUsers.Patient patient);
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);

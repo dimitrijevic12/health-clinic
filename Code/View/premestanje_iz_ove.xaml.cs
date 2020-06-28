@@ -158,8 +158,8 @@ namespace health_clinicClassDiagram.view
                         break;
                     }
                 }*/
-                sobaZaDodavanje = _examOperationRoomController.findExamRoom(roomd.Id);
-                sobaZaDodavanje2 = _rehabilitationRoomController.findRehabRoom(roomd.Id);
+                sobaZaDodavanje = _examOperationRoomController.GetRoomById(roomd.Id);
+                sobaZaDodavanje2 = _rehabilitationRoomController.GetRoomById(roomd.Id);
 
                 if (sobaZaDodavanje != null)
                 {

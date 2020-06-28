@@ -19,7 +19,7 @@ namespace Repository
         private readonly ICSVStream<Renovation> _stream = new CSVStream<Renovation>("../../Resources/Data/renovations.csv", new RenovationCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/renovations.csv";
+       
         private static RenovationRepository instance;
 
         public static RenovationRepository Instance
@@ -38,14 +38,7 @@ namespace Repository
         private RenovationRepository()
         {
         }
-        public RenovationRepository(string path, ICSVStream<Renovation> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-
-        }
+       
         private long GetMaxId(List<Renovation> renovations)
         {
             return renovations.Count() == 0 ? 0 : renovations.Max(reno => reno.Id);
@@ -65,16 +58,16 @@ namespace Repository
 
         public Renovation Edit(Renovation obj)
         {
-            var appointments = _stream.ReadAll().ToList();
-            appointments[appointments.FindIndex(apt => apt.Id == obj.Id)] = obj;
-            _stream.SaveAll(appointments);
+            List<Renovation> renovations = _stream.ReadAll().ToList();
+            renovations[renovations.FindIndex(apt => apt.Id == obj.Id)] = obj;
+            _stream.SaveAll(renovations);
             return obj;
         }
 
         public bool Delete(Renovation obj)
         {
-            var renovations = _stream.ReadAll().ToList();
-            var renovationToRemove = renovations.SingleOrDefault(reno => reno.Id == obj.Id);
+            List<Renovation> renovations = _stream.ReadAll().ToList();
+            Renovation renovationToRemove = renovations.SingleOrDefault(reno => reno.Id == obj.Id);
             if (renovationToRemove != null)
             {
                 renovations.Remove(renovationToRemove);
@@ -89,21 +82,9 @@ namespace Repository
 
         public List<Renovation> GetAll()
         {
-            var rooms = (List<Renovation>)_stream.ReadAll();
-            return rooms;
+            List<Renovation> renovations = _stream.ReadAll();
+            return renovations;
         }
-
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-    
    
    }
 }

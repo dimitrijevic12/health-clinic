@@ -12,7 +12,7 @@ namespace Model.Rooms
 {
    public class RehabilitationRoom : Room
    {
-        public List<InventoryDrugs> inventoryDrugs;
+       
         private List<MedicalRecord> _patients;
 
         private int _maxCapacity;

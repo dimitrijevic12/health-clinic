@@ -83,10 +83,7 @@ namespace Controller
             throw new NotImplementedException();
         }
 
-        public TypeOfPriority ChoosePriority(TypeOfPriority priority)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public bool IsPatientRegistered(Patient patient)
         {
@@ -111,8 +108,8 @@ namespace Controller
 
         public bool Delete(Appointment obj)
         {
-            _service.Delete(obj);
-            return true;
+            return _service.Delete(obj);
+           
         }
 
         public Appointment Create(Appointment obj)

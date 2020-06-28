@@ -133,7 +133,7 @@ namespace health_clinicClassDiagram.view
 
                  }*/
 
-                sobaZaDodavanje = _examOperationRoomController.findExamRoom(roomd.Id);
+                sobaZaDodavanje = _examOperationRoomController.GetRoomById(roomd.Id);
                
                 /* foreach (ExamOperationRoom r in rooms)
                  {
@@ -144,7 +144,7 @@ namespace health_clinicClassDiagram.view
                          break;
                      }
                  }*/
-                sobaZaDodavanje2 = _rehabilitationRoomController.findRehabRoom(roomd.Id);
+                sobaZaDodavanje2 = _rehabilitationRoomController.GetRoomById(roomd.Id);
                 
                 /* foreach (RehabilitationRoom r in rooms2)
                  {

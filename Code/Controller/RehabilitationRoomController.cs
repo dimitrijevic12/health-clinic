@@ -62,7 +62,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<RehabilitationRoom> GetAll()
         {
-            var rooms = (List<RehabilitationRoom>)_service.GetAll();
+            List<RehabilitationRoom> rooms = (List<RehabilitationRoom>)_service.GetAll();
             return rooms;
         }
 
@@ -76,28 +76,28 @@ namespace health_clinicClassDiagram.Controller
             throw new NotImplementedException();
         }
 
-        public RehabilitationRoom getRoom(RehabilitationRoom room)
+        public RehabilitationRoom GetRoom(RehabilitationRoom room)
         {
             return _service.getRoom(room);
         }
 
-        public RehabilitationRoom findRehabRoom(long id)
+        public RehabilitationRoom GetRoomById(long id)
         {
-            return _service.findRehabRoom(id);
+            return _service.GetRoomById(id);
         }
-        public Room IncreaseQuantity(Room r, Equipment eq)
+        public Room IncreaseQuantity(Room room, Equipment equipment)
         {
-            return _service.IncreaseQuantity(r, eq);
-        }
-
-        public Room DecreaseQuantity(Room r, Equipment eq)
-        {
-            return _service.DecreaseQuantity(r, eq);
+            return _service.IncreaseQuantity(room, equipment);
         }
 
-        public bool releasePatient(MedicalRecord record, RehabilitationRoom room)
+        public Room DecreaseQuantity(Room room, Equipment equipment)
         {
-            return _service.releasePatient(record, room);
+            return _service.DecreaseQuantity(room, equipment);
+        }
+
+        public bool ReleasePatient(MedicalRecord record, RehabilitationRoom room)
+        {
+            return _service.ReleasePatient(record, room);
         }
     }
 }

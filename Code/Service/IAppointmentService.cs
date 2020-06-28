@@ -22,7 +22,7 @@ namespace Service
       List<Appointment> GetAppointmentsByRoom(Model.Rooms.ExamOperationRoom room);
       Model.Treatment.Treatment GenerateTreatment(Model.Appointment.Appointment appointment);
       Model.Appointment.Appointment ScheduleAppointmentForGuest(Model.Appointment.Appointment appointment);
-      TypeOfPriority ChoosePriority(TypeOfPriority priority);
+
       List<TermDTO> GetTermsByDoctorAndDatePeriod(DateTime dateFrom, DateTime dateTo, Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDoctor(Model.SystemUsers.Doctor doctor);
       List<TermDTO> GetNewTermsForDatePeriod(DateTime dateFrom, DateTime dateTo);

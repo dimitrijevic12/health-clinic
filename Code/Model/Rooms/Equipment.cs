@@ -16,7 +16,7 @@ namespace Model.Rooms
          return null;
       }
 
-      private static int brojac = 100;
+      
       private int id;
       Random rnd = new Random();
       private TypeOfEquipment type;
@@ -26,21 +26,21 @@ namespace Model.Rooms
 
         public Equipment(TypeOfEquipment tip, int quantity)
         {
-          //  Id = brojac++;
+          
             type = tip;
             Quantity = quantity;
         }
 
         public Equipment(String naziv, int quantity)
         {
-            //  Id = brojac++;
+            
             Id = rnd.Next(1, 10000);
             Naziv = naziv;
             Quantity = quantity;
         }
         public Equipment(int id,String naziv, int quantity)
         {
-            //  Id = brojac++;
+            
             Id = id;
             Naziv = naziv;
             Quantity = quantity;
@@ -48,14 +48,14 @@ namespace Model.Rooms
 
         public Equipment(int id, int quantity)
         {
-            //  Id = brojac++;
+            
             Id = id;
             Quantity = quantity;
         }
 
         public Equipment(int id, TypeOfEquipment tip, int quantity)
         {
-            //  Id = brojac++;
+            
             Id = id;
             type = tip;
             Quantity = quantity;
@@ -81,6 +81,6 @@ namespace Model.Rooms
         }
 
        
-        //public int Type { get => type; set => type = value; }
+        
     }
 }

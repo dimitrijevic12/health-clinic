@@ -38,15 +38,15 @@ namespace Repository
             }
         }
 
-        private long GetMaxId(List<Equipment> equip)
+        private long GetMaxId(List<Equipment> equipments)
         {
-            return equip.Count() == 0 ? 0 : equip.Max(eq => eq.Id);
+            return equipments.Count() == 0 ? 0 : equipments.Max(eq => eq.Id);
         }
 
-        public Equipment GetEquip(String naz)
+        public Equipment GetEquip(string name)
         {
-            var equip = _stream.ReadAll().ToList();
-            return equip[equip.FindIndex(apt => apt.Naziv.Equals(naz))];
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            return equipments[equipments.FindIndex(apt => apt.Naziv.Equals(name))];
         }
 
         public Equipment Save(Equipment obj)
@@ -57,20 +57,20 @@ namespace Repository
 
         public Equipment Edit(Equipment obj)
         {
-            var equip = _stream.ReadAll().ToList();
-            equip[equip.FindIndex(eq => eq.Id == obj.Id)] = obj;
-            _stream.SaveAll(equip);
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            equipments[equipments.FindIndex(eq => eq.Id == obj.Id)] = obj;
+            _stream.SaveAll(equipments);
             return obj;
         }
 
         public bool Delete(Equipment obj)
         {
-            var equip = _stream.ReadAll().ToList();
-            var equipToRemove = equip.SingleOrDefault(eq => eq.Id == obj.Id);
-            if (equipToRemove != null)
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            Equipment equipmentToRemove = equipments.SingleOrDefault(eq => eq.Id == obj.Id);
+            if (equipmentToRemove != null)
             {
-                equip.Remove(equipToRemove);
-                _stream.SaveAll(equip);
+                equipments.Remove(equipmentToRemove);
+                _stream.SaveAll(equipments);
                 return true;
             }
             else
@@ -81,29 +81,21 @@ namespace Repository
 
         public List<Equipment> GetAll()
         {
-            var eq = (List<Equipment>)_stream.ReadAll();
-            return eq;
+            List<Equipment> equipments = _stream.ReadAll();
+            return equipments;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool EquipExists(string naziv)
+
+        public bool EquipExists(string name)
         {
-            var equips = _stream.ReadAll().ToList();
-            foreach (Equipment d in equips)
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            foreach (Equipment equipment in equipments)
             {
-                if (d.Naziv.Equals(naziv))
+                if (equipment.Naziv.Equals(name))
                 {
-                    return true;
-                    break;
+                    return true;                   
                 }
             }
             return false;
@@ -111,16 +103,16 @@ namespace Repository
 
         public Equipment GetEquip(int id)
         {
-            var equip = _stream.ReadAll().ToList();
-            return equip[equip.FindIndex(apt => apt.Id == id)];
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            return equipments[equipments.FindIndex(apt => apt.Id == id)];
         }
 
         public bool EquipExists(int id)
         {
-            var equips = _stream.ReadAll().ToList();
-            foreach (Equipment d in equips)
+            List<Equipment> equipments = _stream.ReadAll().ToList();
+            foreach (Equipment equipment in equipments)
             {
-                if (d.Id == id)
+                if (equipment.Id == id)
                 {
                     return true;
                     break;

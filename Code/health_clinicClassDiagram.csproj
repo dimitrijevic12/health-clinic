@@ -174,12 +174,6 @@
     <Compile Include="Controller\DrugController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controller\DrugInventoryController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\EquipInventoryController.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Controller\EquipmentController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -194,12 +188,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\IDrugController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\IDrugInvetoryController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\IEquipInvetoryController.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\IEquipmentController.cs">
@@ -226,9 +214,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\IUserController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controller\IWorkingSchedule.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controller\ManagerDrugController.cs">
@@ -292,12 +277,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Rooms\Ingredients.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Rooms\InventoryDrugs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Model\Rooms\InventoryEquip.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Rooms\RehabilitationRoom.cs">
@@ -433,13 +412,7 @@
     <Compile Include="Repository\Csv\Converter\DrugCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Repository\Csv\Converter\DrugInvetoryCSVConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Repository\Csv\Converter\EquipmentCSVConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Repository\Csv\Converter\EquipmentInvetoryCSVConverter.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\Csv\Converter\ExamOperationRoomCSVConverter.cs" />
@@ -484,13 +457,7 @@
     </Compile>
     <Compile Include="Repository\DiagnosisAndReviewRepository.cs" />
     <Compile Include="Repository\DoctorRepository.cs" />
-    <Compile Include="Repository\DrugInventoryRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Repository\DrugRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Repository\EquipInventoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\EquipRepository.cs">
@@ -504,13 +471,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\IDiagnosisAndReviewRepository.cs" />
-    <Compile Include="Repository\IDrugInvetoryRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Repository\IDrugRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Repository\IEquipInvetoryRepository.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Repository\IEquipRepository.cs">
@@ -586,13 +547,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\DoctorService.cs" />
-    <Compile Include="Service\DrugInventoryService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\DrugService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\EquipInventoryService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\EquipmentService.cs">
@@ -605,13 +560,7 @@
     <Compile Include="Service\IBlogService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service\IDrugInvetoryService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\IDrugService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\IEquipInvetoryService.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\IEquipmentService.cs">
@@ -643,9 +592,6 @@
     <Compile Include="Service\IUserService.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Service\IWorkingScheduleService.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Service\ManagerDrugService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -669,9 +615,6 @@
     <Compile Include="Service\SpecialistService.cs" />
     <Compile Include="Service\SurgeonService.cs" />
     <Compile Include="Service\TreatmentService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Service\TypeOfPriority.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Service\UserService.cs">

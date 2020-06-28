@@ -40,7 +40,7 @@ namespace health_clinicClassDiagram.view
 
         private readonly IController<Doctor> _doctorController;
         private readonly IController<WorkingDays> _workingDaysController;
-        private readonly IWorkingSchedule _workingScheduleController;
+        private readonly IController<WorkingSchedule> _workingScheduleController;
 
         public promeni_vreme(long id, string ime, string prezime, Gender pol, DateTime datumRodjenja, List<WorkingSchedule> workingSchedules, string username, string password)
         {

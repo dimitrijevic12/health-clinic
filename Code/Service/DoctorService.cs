@@ -41,7 +41,7 @@ namespace health_clinicClassDiagram.Service
         }
         public Doctor Create(Doctor obj)
         {
-            var newDoctor = _doctorRepository.Save(obj);
+            Doctor newDoctor = _doctorRepository.Save(obj);
             return newDoctor;
         }
 
@@ -61,7 +61,7 @@ namespace health_clinicClassDiagram.Service
 
         public List<Doctor> GetAll()
         {
-            var doctors = _doctorRepository.GetAll();
+            List<Doctor> doctors = _doctorRepository.GetAll();
             return doctors;
         }
 

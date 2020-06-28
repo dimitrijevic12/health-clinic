@@ -112,7 +112,7 @@ namespace health_clinicClassDiagram.view
                     if (tip.SelectedIndex == 0)
                     {
 
-                        sobaZaDodavanje2 = RehabilitationRoomController.Instance.findRehabRoom(room.Id);
+                        sobaZaDodavanje2 = RehabilitationRoomController.Instance.GetRoomById(room.Id);
                         sobaZaDodavanje2.tip = TypeOfRoom.EXAMOPERATION;
                         if (sobaZaDodavanje2 != null)
                         {
@@ -124,7 +124,7 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
-                        sobaZaDodavanje = ExamOperationRoomController.Instance.findExamRoom(room.Id);
+                        sobaZaDodavanje = ExamOperationRoomController.Instance.GetRoomById(room.Id);
                         sobaZaDodavanje.tip = TypeOfRoom.REHABILITATION;
                         if (sobaZaDodavanje != null)
                         {

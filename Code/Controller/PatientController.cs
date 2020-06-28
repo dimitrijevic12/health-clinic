@@ -51,7 +51,7 @@ namespace health_clinicClassDiagram.Controller
 
         public List<Patient> GetAll()
         {
-            var patients = (List<Patient>)_service.GetAll();
+            List<Patient> patients = (List<Patient>)_service.GetAll();
             return patients;
         }
     }

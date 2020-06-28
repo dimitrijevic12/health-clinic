@@ -19,7 +19,7 @@ namespace Repository
         private readonly ICSVStream<Room> _stream = new CSVStream<Room>("../../Resources/Data/rooms.csv", new RoomCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
-        private String _path = "../../Resources/Data/rooms.csv";
+       
         private static RoomRepository instance;
 
         public static RoomRepository Instance
@@ -38,13 +38,7 @@ namespace Repository
         private RoomRepository()
         {
         }
-        public RoomRepository(string path, CSVStream<Room> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
+       
 
         private long GetMaxId(List<Room> rooms)
         {
@@ -63,7 +57,7 @@ namespace Repository
 
         public Room Edit(Room obj)
         {
-            var rooms = _stream.ReadAll().ToList();
+            List<Room> rooms = _stream.ReadAll().ToList();
             rooms[rooms.FindIndex(ro => ro.Id == obj.Id)] = obj;
             _stream.SaveAll(rooms);
             return obj;
@@ -71,8 +65,8 @@ namespace Repository
 
         public bool Delete(Room obj)
         {
-            var rooms = _stream.ReadAll().ToList();
-            var roomToRemove = rooms.SingleOrDefault(ro => ro.Id == obj.Id);
+            List<Room> rooms = _stream.ReadAll().ToList();
+            Room roomToRemove = rooms.SingleOrDefault(ro => ro.Id == obj.Id);
             if (roomToRemove != null)
             {
                 rooms.Remove(roomToRemove);
@@ -87,7 +81,7 @@ namespace Repository
 
         public List<Room> GetAll()
         {
-            var rooms = (List<Room>)_stream.ReadAll();
+            List<Room> rooms = (List<Room>)_stream.ReadAll();
             return rooms;
         }
 

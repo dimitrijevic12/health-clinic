@@ -16,10 +16,8 @@ namespace Repository
 {
    public class WorkingScheduleRepository : IWorkingScheduleRepository
    {
-        private static WorkingScheduleRepository instance = null;
-        private const string WORKINGSHCEDULE_FILE = "../../Resources/Data/workingSchedules.csv";
-        private String _path = WORKINGSHCEDULE_FILE;
-        private readonly ICSVStream<WorkingSchedule> _stream = new CSVStream<WorkingSchedule>(WORKINGSHCEDULE_FILE, new WorkingScheduleCSVConverter(",", "dd.MM.yyyy."));
+        private static WorkingScheduleRepository instance = null;       
+        private readonly ICSVStream<WorkingSchedule> _stream = new CSVStream<WorkingSchedule>("../../Resources/Data/workingSchedules.csv", new WorkingScheduleCSVConverter(","));
         private readonly iSequencer<long> _sequencer = new LongSequencer();
 
         public static WorkingScheduleRepository Instance
@@ -38,13 +36,7 @@ namespace Repository
         {
         }
 
-        public WorkingScheduleRepository(string path, ICSVStream<WorkingSchedule> stream, iSequencer<long> sequencer)
-        {
-            _path = path;
-            _stream = stream;
-            _sequencer = sequencer;
-            _sequencer.Initialize(GetMaxId(_stream.ReadAll()));
-        }
+       
 
         private long GetMaxId(List<WorkingSchedule> list)
         {
@@ -64,22 +56,22 @@ namespace Repository
 
         public WorkingSchedule Edit(WorkingSchedule obj)
         {
-            var list = _stream.ReadAll().ToList();
-            list[list.FindIndex(li => li.Id == obj.Id)] = obj;
-            _stream.SaveAll(list);
+            List<WorkingSchedule> workingSchedules = _stream.ReadAll().ToList();
+            workingSchedules[workingSchedules.FindIndex(li => li.Id == obj.Id)] = obj;
+            _stream.SaveAll(workingSchedules);
 
             return obj;
         }
 
         public bool Delete(WorkingSchedule obj)
         {
-            var list = _stream.ReadAll().ToList();
-            var listToRemove = list.SingleOrDefault(li => li.Id == obj.Id);
+            List<WorkingSchedule> workingSchedules = _stream.ReadAll().ToList();
+            WorkingSchedule workingScheduleToRemove = workingSchedules.SingleOrDefault(li => li.Id == obj.Id);
 
-            if (listToRemove != null)
+            if (workingScheduleToRemove != null)
             {
-                list.Remove(listToRemove);
-                _stream.SaveAll(list);
+                workingSchedules.Remove(workingScheduleToRemove);
+                _stream.SaveAll(workingSchedules);
                 return true;
             }
             else
@@ -90,19 +82,11 @@ namespace Repository
 
         public List<WorkingSchedule> GetAll()
         {
-            var list = (List<WorkingSchedule>)_stream.ReadAll();
-            return list;
+            List<WorkingSchedule> workingSchedules = (List<WorkingSchedule>)_stream.ReadAll();
+            return workingSchedules;
         }
 
-        public bool OpenFile(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CloseFile(string path)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public List<WorkingSchedule> GetWorkingSchedulebyDoctor(Doctor doctor)
         {

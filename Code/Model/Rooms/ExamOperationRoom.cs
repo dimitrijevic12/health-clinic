@@ -11,13 +11,6 @@ namespace Model.Rooms
 {
    public class ExamOperationRoom : Room
    {
-      private Boolean InUse;
-
-      
-
-        
-       
-
 
         public ExamOperationRoom(long id) : base(id)
         {
@@ -44,11 +37,7 @@ namespace Model.Rooms
             get { return tipSobe; }
             set { tipSobe = value; }
         }
-        /*public List<Equipment> Equipments
-        {
-            get { return equipments; }
-            set { equipments = value; }
-        }*/
+      
 
     }
 }

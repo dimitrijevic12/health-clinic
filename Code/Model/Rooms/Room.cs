@@ -12,7 +12,7 @@ namespace Model.Rooms
    public class Room
    {
        //bio private ili protected (ne secam se) long Id, ali sam ga obrisao zbog dole gettera i settera
-      public InventoryEquip[] inventoryEquip;
+      
 
         protected List<Equipment> equipments;
         protected long _id;

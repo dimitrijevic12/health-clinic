@@ -32,7 +32,7 @@ namespace health_clinicClassDiagram.view
 
         private readonly IController<Doctor> _doctorController;
         private readonly IController<WorkingDays> _workingDaysController;
-        private readonly IWorkingSchedule _workingScheduleController;
+        private readonly IController<WorkingSchedule> _workingScheduleController;
         private readonly IController<Specialist> _specijalistaController;
         private readonly IController<Surgeon> _hirurgController;
 

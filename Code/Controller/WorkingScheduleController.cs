@@ -11,9 +11,9 @@ using System.Collections.Generic;
 
 namespace Controller
 {
-   public class WorkingScheduleController : IWorkingSchedule
-   {
-        public IWorkingScheduleService _service = WorkingScheduleService.Instance;
+   public class WorkingScheduleController : IController<WorkingSchedule>
+    {
+        public WorkingScheduleService _service = WorkingScheduleService.Instance;
 
         private static WorkingScheduleController instance;
 
@@ -44,7 +44,7 @@ namespace Controller
 
         public List<WorkingSchedule> GetAll()
         {
-            var workingSchedules = (List<WorkingSchedule>)_service.GetAll();
+            List<WorkingSchedule> workingSchedules = (List<WorkingSchedule>)_service.GetAll();
             return workingSchedules;
         }
 

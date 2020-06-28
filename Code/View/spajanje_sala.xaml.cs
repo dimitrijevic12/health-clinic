@@ -134,7 +134,7 @@ namespace health_clinicClassDiagram.view
                         }
                     }
 
-                    sobaZaEdit = ExamOperationRoomController.Instance.findExamRoom(room1.Id);
+                    sobaZaEdit = ExamOperationRoomController.Instance.GetRoomById(room1.Id);
 
                     
                    
@@ -145,12 +145,12 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
-                        sobaZaEdit2 = RehabilitationRoomController.Instance.findRehabRoom(room1.Id);
+                        sobaZaEdit2 = RehabilitationRoomController.Instance.GetRoomById(room1.Id);
                         _rehabilitationRoomController.Edit(sobaZaEdit2);
                     }
 
 
-                    sobaZaBrisanje = ExamOperationRoomController.Instance.findExamRoom(room2.Id);
+                    sobaZaBrisanje = ExamOperationRoomController.Instance.GetRoomById(room2.Id);
 
                     
                    
@@ -161,7 +161,7 @@ namespace health_clinicClassDiagram.view
                     }
                     else
                     {
-                        sobaZaBrisanje2 = RehabilitationRoomController.Instance.findRehabRoom(room2.Id);
+                        sobaZaBrisanje2 = RehabilitationRoomController.Instance.GetRoomById(room2.Id);
                         _rehabilitationRoomController.Delete(sobaZaBrisanje2);
                     }
                     

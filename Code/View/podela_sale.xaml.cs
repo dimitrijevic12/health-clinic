@@ -134,7 +134,7 @@ namespace health_clinicClassDiagram.view
                        
                         ExamOperationRoom soba1 = new ExamOperationRoom(idDruge);
 
-                        sobaZaEdit = ExamOperationRoomController.Instance.findExamRoom(room.Id);
+                        sobaZaEdit = ExamOperationRoomController.Instance.GetRoomById(room.Id);
                        
                         sobaZaAdd = soba1;
                                
@@ -157,7 +157,7 @@ namespace health_clinicClassDiagram.view
                         List<MedicalRecord> medicalRecords = new List<MedicalRecord>();
                         RehabilitationRoom soba2 = new RehabilitationRoom(idDruge, 0, 5, medicalRecords);
 
-                        sobaZaEdit2 = RehabilitationRoomController.Instance.findRehabRoom(room.Id);
+                        sobaZaEdit2 = RehabilitationRoomController.Instance.GetRoomById(room.Id);
                        
                         sobaZaAdd2 = soba2;
                           
