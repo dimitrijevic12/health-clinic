@@ -1,8 +1,8 @@
 ﻿using Controller;
 using health_clinicClassDiagram.Controller;
+using health_clinicClassDiagram.Model.SystemUsers;
 using Model.Appointment;
 using Model.SystemUsers;
-using Model.SystemUsers.health_clinicClassDiagram.Model.SystemUsers;
 using Model.Treatment;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms.VisualStyles;
 
 namespace health_clinicClassDiagram.View
 {

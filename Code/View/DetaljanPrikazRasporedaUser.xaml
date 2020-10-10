@@ -1,0 +1,165 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.DetaljanPrikazRasporedaUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid Name ="GridDetaljan">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="44"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="2" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Name="Datum">07/04/2020</Label>
+
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Background="SkyBlue" Height="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="68*" />
+                    <ColumnDefinition Width="157*" />
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" Click="Button_Home" HorizontalAlignment="Right" Width="89">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue" Click="Button_Back">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+                <Label Grid.Column="8" Grid.Row="0" FontSize="20" Foreground="White" Name ="labelDateTime" Margin="40,0,0,0">Datum i vreme</Label>
+            </Grid>
+
+            <DataGrid x:Name="dataGridNalozi" ItemsSource="{Binding Path=appointmentCollection}" AutoGenerateColumns="False" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="2"
+                  SelectionMode="Extended" IsReadOnly="True" HorizontalAlignment="Stretch" 
+                  Margin="10,47,10,0" VerticalAlignment="Stretch" SelectionChanged="dataGridNalozi_SelectionChanged" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Header="Pocetak" Binding="{Binding StartDate}"/>
+                    <DataGridTextColumn Width="*" Header="Kraj" Binding="{Binding EndDate}"/>
+                    <DataGridTextColumn Width="*" Header="Pacijent" Binding="{Binding PatientIdNameSurname}"/>
+                    <DataGridTextColumn Width="*" Header="Doktor" Binding="{Binding DoctorIdNameSurname}"/>
+                    <DataGridTextColumn Width="*" Header="Tip" Binding="{Binding TypeString}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Grid.Column="0" Grid.Row="3" Margin="30,21,30,21" Click="Button_Zakazivanje" Style="{StaticResource RoundButton}">Zakazivanje pregleda
+                <Button.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Izaberite slobodan termin kada želite da zakažete pregled.
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Grid.Column="1" Grid.Row="3" Margin="30,21,30,21" Click="Button_Otkazivanje" Style="{StaticResource RoundButton}">Oktazivanje pregleda
+                <Button.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Izaberite jedan od termina koji želite da otkažete.
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Grid.Column="2" Grid.Row="3" Margin="30,21,30,21" Click="Button_Izmena" Style="{StaticResource RoundButton}">Izmena pregleda
+                <Button.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Izaberite jedan od termina koji želite da izmenite.
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Grid.Column="3" Grid.Row="3" Margin="30,21,30,21" Click="Button_Guest" Style="{StaticResource RoundButton}">Zakazivanje guest naloga
+                <Button.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Izaberite slobodan termin kada želite da zakažete pregled
+                        <LineBreak />
+                        za neregistrovanog korisnika.
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+
+            <Button Grid.Column="4" Grid.Row="3" Margin="30,21,30,21" Click="Button_Prikaz" Style="{StaticResource RoundButton}">Sale za smeštanje
+                <Button.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Prikaz sala koje služe za smeštanje pacijenata
+                        <LineBreak />
+                        na bolničko lečenje.
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </Button.ToolTip>
+            </Button>
+
+            <ComboBox x:Name="comboSala" ItemsSource="{Binding Path = roomsCollection}" Grid.Column="2" HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="comboSala_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Id}"/>
+                            <!--<TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Path=NameDoctor}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Path=SurnameDoctor}"/>-->
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+                <ComboBox.ToolTip>
+                    <StackPanel>
+
+                        <TextBlock>
+                        Spisak svih sala namenjenje za vršenje pregleda i operacija.
+                        <LineBreak />
+
+                        </TextBlock>
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                    </StackPanel>
+                </ComboBox.ToolTip>
+            </ComboBox>
+
+        </Grid>
+    </Grid>
+</UserControl>

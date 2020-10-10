@@ -1,0 +1,250 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.HomeUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Name="Home" >
+    <Grid Name ="GridHome">
+        <DockPanel>
+            <Menu DockPanel.Dock ="Top" Background="SkyBlue">
+                <MenuItem Header="_Početna"></MenuItem>
+                <MenuItem Header="_Raspored"></MenuItem>
+                <MenuItem Header="_Registrovani pacijenti"></MenuItem>
+                <MenuItem Header="_Doktori"></MenuItem>
+                <MenuItem Header="_Help"></MenuItem>
+                <MenuItem Header="_User"></MenuItem>
+
+            </Menu>
+
+            <Grid DockPanel.Dock="Bottom" Background="SkyBlue" Height="44">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="113*" />
+                    <ColumnDefinition Width="68*" />
+                    <ColumnDefinition Width="157*" />
+
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="5" Grid.Row="0" Background="LightSkyBlue" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/home_icon.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Grid.Column="3" Grid.Row="0" Background="LightSkyBlue" Click ="Button_Back">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/arrow_back.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </StackPanel>
+                </Button>
+
+                <Label Grid.Column="8" Grid.Row="0" FontSize="20" Foreground="White" Name ="labelDateTime" Margin="40,0,0,0"></Label>
+            </Grid>
+
+            <Grid DockPanel.Dock="Right" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="69*" />
+                    <ColumnDefinition Width="11*"/>
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="80*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" Click="Button_DanasnjiRaspored">
+                    <StackPanel>
+                        <Image Source="Images/onecalendar.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Prikaz današnjeg rasporeda" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Prikaz rasporeda prostorija za vršenje pregleda i operacija
+                        <LineBreak />
+                            za današnji datum.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="3" Style="{StaticResource RoundButton}"  Click="Button_Smestaj">
+                    <StackPanel>
+                        <Image Source="Images/bed.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Današnje sale za smeštanje" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Prikaz svih sala za smeštanje pacijenata
+                        <LineBreak />
+                            na bolničko lečenje.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="8" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Raspored">
+                    <StackPanel>
+                        <Image Source="Images/calendar.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Raspored" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Kalenadr koji služi za prikaz
+                        <LineBreak />
+                            zauzetosti prostorija za izabrani datum.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Pacijenti">
+                    <StackPanel>
+                        <Image Source="Images/patient.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Registrovani pacijenti" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Spisak svih pacijenata koji imaju nalog u bolnici.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="3" Style="{StaticResource RoundButton}"  Click="Button_Doktori">
+                    <StackPanel>
+                        <Image Source="Images/doctor.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Doktori" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                        Spisak svih doktora koji rade u bolnici.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="8" Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Help">
+                    <StackPanel>
+                        <Image Source="Images/help.png" Height="20" />
+                        <StackPanel>
+                            <TextBlock Text="Help" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                        Detaljniji prikaz pomoći.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Izvestaj">
+                    <StackPanel>
+                        <Image Source="Images/report.png" Height="25" />
+                        <StackPanel>
+                            <TextBlock Text="Generiši izveštaj" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Iznegeriši izveštaj o zauzetosti prostorija u određenom vremenskom periodu.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Grid.Column="8" Grid.Row="8" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}"  Click="Button_Prioritet">
+                    <StackPanel>
+                        <Image Source="Images/priority.png" Height="25" />
+                        <StackPanel>
+                            <TextBlock Text="Zakayivanje putem prioriteta" FontSize="12"/>
+                        </StackPanel>
+
+                    </StackPanel>
+                    <Button.ToolTip>
+                        <StackPanel>
+
+                            <TextBlock>
+                            Iznegeriši izveštaj o zauzetosti prostorija u određenom vremenskom periodu.
+                            </TextBlock>
+                            <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,8" />
+
+                        </StackPanel>
+                    </Button.ToolTip>
+                </Button>
+                <Label  Grid.Column="9" Grid.Row="0" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,1">Dušan</Label>
+                <Image Grid.Column="10" Grid.Row="0" Source="Images/indetification.png" Width="45" Height="45" Margin="18,-4,17,37" Grid.RowSpan="2"></Image>
+                <Button Grid.Column="9" Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource RoundButton}" FontSize="15" Margin="10,0,10,30" Click="Button_Odjava">
+                    Odjavi se
+                </Button>
+                <CheckBox x:Name="checkBox" FontSize="15" Content="Uključeni Tooltip-ovi" Grid.Column="9" Margin="24,28,-48,-14" Grid.Row="9" VerticalAlignment="Top" Checked="checkBox_Checked" Grid.ColumnSpan="2" Height="25" Unchecked="checkBox_Unchecked"/>
+
+            </Grid>
+
+
+
+        </DockPanel>
+    </Grid>
+</UserControl>

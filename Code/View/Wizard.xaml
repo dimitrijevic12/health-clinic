@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="health_clinicClassDiagram.View.Wizard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:health_clinicClassDiagram.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="700"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="tabControl" Grid.Row="0" BorderThickness="0">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem" />
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem>
+            <Image Source="Images/Home1.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/Home2.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/Home3.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/Home4.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/Home5.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/DetaljanPrikazRasporeda1.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/PrikazSaleZaSmestanje.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/RegistrovaniPacijenti.png"></Image>
+            </TabItem>
+            <TabItem>
+                <Image Source="Images/GenerisiIzvestaj.png"></Image>
+            </TabItem>
+        </TabControl>
+        <WrapPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="previousButton" Content="Prethodna" Width="100" Click="previousButton_Click" Background="{x:Null}" BorderBrush="Black" BorderThickness="2"/>
+            <Button x:Name="nextButton" Content="Sledeća" Width="100" Click="nextButton_Click" Background="{x:Null}" BorderBrush="Black" BorderThickness="2"/>
+            <Button x:Name="finishButton" Content="Izađi" Width="100" Click="finishButton_Click" Background="{x:Null}" BorderBrush="Black" BorderThickness="2"/>
+        </WrapPanel>
+
+
+    </Grid>
+</UserControl>

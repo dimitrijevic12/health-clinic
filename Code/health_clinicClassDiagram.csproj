@@ -510,43 +510,246 @@
     <Compile Include="View\Converter\MedicalRecordConverter.cs" />
     <Compile Include="View\Converter\RehabilitationRoomConverter.cs" />
     <Compile Include="View\Converter\UserConverter.cs" />
-    <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs" />
-    <Compile Include="View\Doktori.xaml.cs" />
-    <Compile Include="View\GenerisiIzvestajUser.xaml.cs" />
-    <Compile Include="View\HelpUser.xaml.cs" />
-    <Compile Include="View\HomeUser.xaml.cs" />
-    <Compile Include="View\IzaberiNalogUser.xaml.cs" />
-    <Compile Include="View\IzaberiTerminIsmeneUser.xaml.cs" />
-    <Compile Include="View\IzmenaIzaberiNalog.xaml.cs" />
-    <Compile Include="View\IzmenaPregledaUser.xaml.cs" />
-    <Compile Include="View\IzmeniNalogUser.xaml.cs" />
-    <Compile Include="View\IzvestajLekoviUser.xaml.cs" />
-    <Compile Include="View\IzvestajPacijentaUser.xaml.cs" />
-    <Compile Include="View\Kalendar.xaml.cs" />
-    <Compile Include="View\KreirajNalogUser.xaml.cs" />
-    <Compile Include="View\LoginUser.xaml.cs" />
-    <Compile Include="View\MainWindow.xaml.cs" />
-    <Compile Include="View\OdabirPrioritetaUser.xaml.cs" />
-    <Compile Include="View\PregledKontroleUser.xaml.cs" />
-    <Compile Include="View\PregledNalogaUser.xaml.cs" />
-    <Compile Include="View\PrikazPregledaUser.xaml.cs" />
-    <Compile Include="View\PrikazSaleZaSmestanjePacijenataUser.xaml.cs" />
-    <Compile Include="View\PrioritetLista.xaml.cs" />
-    <Compile Include="View\RegistrovaniPacijentiUser.xaml.cs" />
-    <Compile Include="View\SaleZaSmestanjePacijenataUser.xaml.cs" />
-    <Compile Include="View\SmestiPacijentaUser.xaml.cs" />
-    <Compile Include="View\TretmaniUser.xaml.cs" />
-    <Compile Include="View\Util\AppointmentGenerator.cs" />
-    <Compile Include="View\Wizard.xaml.cs" />
-    <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs" />
-    <Compile Include="View\ZakazivanjeIzaberiNalogUser.xaml.cs" />
-    <Compile Include="View\ZakazivanjePregledaUser.xaml.cs" />
-    <Compile Include="View\ZakazivanjePrioritet.xaml.cs" />
-    <Compile Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml.cs" />
-    <Compile Include="View\ZauzetostProstorijaUser.xaml.cs" />
+    <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs">
+      <DependentUpon>DetaljanPrikazRasporedaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doktori.xaml.cs">
+      <DependentUpon>Doktori.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GenerisiIzvestajUser.xaml.cs">
+      <DependentUpon>GenerisiIzvestajUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HelpUser.xaml.cs">
+      <DependentUpon>HelpUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeUser.xaml.cs">
+      <DependentUpon>HomeUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzaberiNalogUser.xaml.cs">
+      <DependentUpon>IzaberiNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzaberiTerminIsmeneUser.xaml.cs">
+      <DependentUpon>IzaberiTerminIsmeneUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzmenaIzaberiNalog.xaml.cs">
+      <DependentUpon>IzmenaIzaberiNalog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzmenaPregledaUser.xaml.cs">
+      <DependentUpon>IzmenaPregledaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzmeniNalogUser.xaml.cs">
+      <DependentUpon>IzmeniNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzvestajLekoviUser.xaml.cs">
+      <DependentUpon>IzvestajLekoviUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IzvestajPacijentaUser.xaml.cs">
+      <DependentUpon>IzvestajPacijentaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Kalendar.xaml.cs">
+      <DependentUpon>Kalendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\KreirajNalogUser.xaml.cs">
+      <DependentUpon>KreirajNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginUser.xaml.cs">
+      <DependentUpon>LoginUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OdabirPrioritetaUser.xaml.cs">
+      <DependentUpon>OdabirPrioritetaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PregledKontroleUser.xaml.cs">
+      <DependentUpon>PregledKontroleUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PregledNalogaUser.xaml.cs">
+      <DependentUpon>PregledNalogaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrikazPregledaUser.xaml.cs">
+      <DependentUpon>PrikazPregledaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrikazSaleZaSmestanjePacijenataUser.xaml.cs">
+      <DependentUpon>PrikazSaleZaSmestanjePacijenataUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrioritetLista.xaml.cs">
+      <DependentUpon>PrioritetLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RegistrovaniPacijentiUser.xaml.cs">
+      <DependentUpon>RegistrovaniPacijentiUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SaleZaSmestanjePacijenataUser.xaml.cs">
+      <DependentUpon>SaleZaSmestanjePacijenataUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SmestiPacijentaUser.xaml.cs">
+      <DependentUpon>SmestiPacijentaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TretmaniUser.xaml.cs">
+      <DependentUpon>TretmaniUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wizard.xaml.cs">
+      <DependentUpon>Wizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs">
+      <DependentUpon>ZakazivanjeGuestNalogaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjeIzaberiNalogUser.xaml.cs">
+      <DependentUpon>ZakazivanjeIzaberiNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjePregledaUser.xaml.cs">
+      <DependentUpon>ZakazivanjePregledaUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjePrioritet.xaml.cs">
+      <DependentUpon>ZakazivanjePrioritet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml.cs">
+      <DependentUpon>ZakazivanjePrioritetIzaberiNalogUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ZauzetostProstorijaUser.xaml.cs">
+      <DependentUpon>ZauzetostProstorijaUser.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DetaljanPrikazRasporedaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Doktori.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\GenerisiIzvestajUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\HelpUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\HomeUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzaberiNalogUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzaberiTerminIsmeneUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzmenaIzaberiNalog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzmenaPregledaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzmeniNalogUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzvestajLekoviUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IzvestajPacijentaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Kalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\KreirajNalogUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LoginUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OdabirPrioritetaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PregledKontroleUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PregledNalogaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PrikazPregledaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PrikazSaleZaSmestanjePacijenataUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\PrioritetLista.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\RegistrovaniPacijentiUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SaleZaSmestanjePacijenataUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\SmestiPacijentaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TretmaniUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wizard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjeGuestNalogaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjeIzaberiNalogUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjePregledaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjePrioritet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ZauzetostProstorijaUser.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Content Include="View\Images\arrow_back.png" />
@@ -571,12 +774,6 @@
     <Content Include="View\Images\priority.png" />
     <Content Include="View\Images\RegistrovaniPacijenti.png" />
     <Content Include="View\Images\report.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
