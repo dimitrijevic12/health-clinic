@@ -482,6 +482,70 @@
     <Compile Include="Service\WorkingScheduleService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\Converter\AbstractConverter.cs" />
+    <Compile Include="View\Converter\AppointmentConverter.cs" />
+    <Compile Include="View\Converter\MedicalRecordConverter.cs" />
+    <Compile Include="View\Converter\RehabilitationRoomConverter.cs" />
+    <Compile Include="View\Converter\UserConverter.cs" />
+    <Compile Include="View\DetaljanPrikazRasporedaUser.xaml.cs" />
+    <Compile Include="View\Doktori.xaml.cs" />
+    <Compile Include="View\GenerisiIzvestajUser.xaml.cs" />
+    <Compile Include="View\HelpUser.xaml.cs" />
+    <Compile Include="View\HomeUser.xaml.cs" />
+    <Compile Include="View\IzaberiNalogUser.xaml.cs" />
+    <Compile Include="View\IzaberiTerminIsmeneUser.xaml.cs" />
+    <Compile Include="View\IzmenaIzaberiNalog.xaml.cs" />
+    <Compile Include="View\IzmenaPregledaUser.xaml.cs" />
+    <Compile Include="View\IzmeniNalogUser.xaml.cs" />
+    <Compile Include="View\IzvestajLekoviUser.xaml.cs" />
+    <Compile Include="View\IzvestajPacijentaUser.xaml.cs" />
+    <Compile Include="View\Kalendar.xaml.cs" />
+    <Compile Include="View\KreirajNalogUser.xaml.cs" />
+    <Compile Include="View\LoginUser.xaml.cs" />
+    <Compile Include="View\MainWindow.xaml.cs" />
+    <Compile Include="View\OdabirPrioritetaUser.xaml.cs" />
+    <Compile Include="View\PregledKontroleUser.xaml.cs" />
+    <Compile Include="View\PregledNalogaUser.xaml.cs" />
+    <Compile Include="View\PrikazPregledaUser.xaml.cs" />
+    <Compile Include="View\PrikazSaleZaSmestanjePacijenataUser.xaml.cs" />
+    <Compile Include="View\PrioritetLista.xaml.cs" />
+    <Compile Include="View\RegistrovaniPacijentiUser.xaml.cs" />
+    <Compile Include="View\SaleZaSmestanjePacijenataUser.xaml.cs" />
+    <Compile Include="View\SmestiPacijentaUser.xaml.cs" />
+    <Compile Include="View\TretmaniUser.xaml.cs" />
+    <Compile Include="View\Util\AppointmentGenerator.cs" />
+    <Compile Include="View\Wizard.xaml.cs" />
+    <Compile Include="View\ZakazivanjeGuestNalogaUser.xaml.cs" />
+    <Compile Include="View\ZakazivanjeIzaberiNalogUser.xaml.cs" />
+    <Compile Include="View\ZakazivanjePregledaUser.xaml.cs" />
+    <Compile Include="View\ZakazivanjePrioritet.xaml.cs" />
+    <Compile Include="View\ZakazivanjePrioritetIzaberiNalogUser.xaml.cs" />
+    <Compile Include="View\ZauzetostProstorijaUser.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="View\Images\arrow_back.png" />
+    <Content Include="View\Images\bed.png" />
+    <Content Include="View\Images\calendar.png" />
+    <Content Include="View\Images\DetaljanPrikazRasporeda.png" />
+    <Content Include="View\Images\DetaljanPrikazRasporeda1.png" />
+    <Content Include="View\Images\doctor.png" />
+    <Content Include="View\Images\GenerisiIzvestaj.png" />
+    <Content Include="View\Images\help.png" />
+    <Content Include="View\Images\Home.png" />
+    <Content Include="View\Images\Home1.png" />
+    <Content Include="View\Images\Home2.png" />
+    <Content Include="View\Images\Home3.png" />
+    <Content Include="View\Images\Home4.png" />
+    <Content Include="View\Images\Home5.png" />
+    <Content Include="View\Images\home_icon.png" />
+    <Content Include="View\Images\indetification.png" />
+    <Content Include="View\Images\onecalendar.png" />
+    <Content Include="View\Images\patient.png" />
+    <Content Include="View\Images\PrikazSaleZaSmestanje.png" />
+    <Content Include="View\Images\priority.png" />
+    <Content Include="View\Images\RegistrovaniPacijenti.png" />
+    <Content Include="View\Images\report.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
