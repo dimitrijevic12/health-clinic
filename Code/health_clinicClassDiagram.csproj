@@ -612,12 +612,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
+    </ApplicationDefinition>
     <Page Include="View\DetaljanPrikazRasporedaUser.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -752,28 +753,72 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="View\Images\arrow_back.png" />
-    <Content Include="View\Images\bed.png" />
-    <Content Include="View\Images\calendar.png" />
-    <Content Include="View\Images\DetaljanPrikazRasporeda.png" />
-    <Content Include="View\Images\DetaljanPrikazRasporeda1.png" />
-    <Content Include="View\Images\doctor.png" />
-    <Content Include="View\Images\GenerisiIzvestaj.png" />
-    <Content Include="View\Images\help.png" />
-    <Content Include="View\Images\Home.png" />
-    <Content Include="View\Images\Home1.png" />
-    <Content Include="View\Images\Home2.png" />
-    <Content Include="View\Images\Home3.png" />
-    <Content Include="View\Images\Home4.png" />
-    <Content Include="View\Images\Home5.png" />
-    <Content Include="View\Images\home_icon.png" />
-    <Content Include="View\Images\indetification.png" />
-    <Content Include="View\Images\onecalendar.png" />
-    <Content Include="View\Images\patient.png" />
-    <Content Include="View\Images\PrikazSaleZaSmestanje.png" />
-    <Content Include="View\Images\priority.png" />
-    <Content Include="View\Images\RegistrovaniPacijenti.png" />
-    <Content Include="View\Images\report.png" />
+    <Content Include="View\Images\arrow_back.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\bed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\calendar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\DetaljanPrikazRasporeda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\DetaljanPrikazRasporeda1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\doctor.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\GenerisiIzvestaj.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\help.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\Home5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\home_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\indetification.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\onecalendar.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\patient.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\PrikazSaleZaSmestanje.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\priority.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\RegistrovaniPacijenti.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\report.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
